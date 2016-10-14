@@ -87,7 +87,7 @@ void		(* aftersort) (void);
 boolean		mmstarted;
 
 void far	*farheap;
-void		*nearheap;
+void near	*nearheap;
 
 mmblocktype	far mmblocks[MAXBLOCKS]
 			,far *mmhead,far *mmfree,far *mmrover,far *mmnew;
@@ -321,7 +321,7 @@ void MML_ClearBlock (void)
 =
 = MM_Startup
 =
-= Grabs all space from turbo with malloc/farmalloc
+= Grabs all space from turbo with malloc/_fmalloc
 = Allocates bufferseg misc buffer
 =
 ===================
@@ -366,8 +366,9 @@ void MM_Startup (void)
 //
 // get all available near conventional memory segments
 //
-	length=coreleft();
-	start = (void far *)(nearheap = malloc(length));
+	_nheapgrow();
+	length=(longword)_memavl();
+	start = (void far *)(nearheap = _nmalloc(length));
 
 	length -= 16-(FP_OFF(start)&15);
 	length -= SAVENEARHEAP;
@@ -379,8 +380,9 @@ void MM_Startup (void)
 //
 // get all available far conventional memory segments
 //
-	length=farcoreleft();
-	start = farheap = farmalloc(length);
+	_fheapgrow();
+	length=_FCORELEFT;
+	start = farheap = _fmalloc(length);
 	length -= 16-(FP_OFF(start)&15);
 	length -= SAVEFARHEAP;
 	seglength = length / 16;			// now in paragraphs
@@ -414,8 +416,8 @@ void MM_Shutdown (void)
   if (!mmstarted)
 	return;
 
-  farfree (farheap);
-  free (nearheap);
+  _ffree (farheap);
+  _nfree (nearheap);
 //  MML_ShutdownXMS ();
 }
 
@@ -683,7 +685,7 @@ void MM_SortMem (void)
 			playing += STARTADLIBSOUNDS;
 			break;
 		}
-		MM_SetLock(&(memptr)audiosegs[playing],true);
+		MM_SetLock((memptr)audiosegs[playing],true);
 	}
 
 
@@ -754,7 +756,7 @@ void MM_SortMem (void)
 		aftersort();
 
 	if (playing)
-		MM_SetLock(&(memptr)audiosegs[playing],false);
+		MM_SetLock((memptr)audiosegs[playing],false);
 }
 
 
