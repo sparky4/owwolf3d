@@ -67,11 +67,11 @@ UPXQ=-qqq
 S_FLAGS=-sg -st -of+ -zu -zdf -zff -zgf -k32768#54096#60000
 Z_FLAGS=-zk0 -zc -zp8 -zm
 O_FLAGS=-obmilr -oe=24 -out -oh -ei -onac -ol+ -ok##x
-T_FLAGS=-bt=dos -mh -0 -fpi87 -fo=.$(OBJ) -d1###### -e=65536
+T_FLAGS=-bt=dos -mh -0 -fpi87 -fo=.$(OBJ) -d1 -e=65536
 
 CPPFLAGS=-DTARGET_MSDOS=16 -DMSDOS=1
 AFLAGS=$(WCLQ) $(T_FLAGS)
-CFLAGS=$(WCLQ) $(T_FLAGS) -wo -i"$(DOSLIB)" $(O_FLAGS) $(S_FLAGS) $(Z_FLAGS)
+CFLAGS=$(WCLQ) $(T_FLAGS) -wo $(O_FLAGS) $(S_FLAGS) $(Z_FLAGS)
 LFLAGS=$(WCLQ) -l=dos -fm=$^&.mah $(S_FLAGS)
 LIBFLAGS=$(WLIBQ) -b -n
 
@@ -88,7 +88,7 @@ LIBFLAGS=$(WLIBQ) -b -n
 #
 .c : $(SRC)
 
-.asm : $(MODEXLIB)
+.asm : $(SRC)
 
 #.lib : .;$(DOSLIB_CPU)/dos86h;$(DOSLIB_DOS)/dos86h;$(DOSLIB_VGA)/dos86h;$(DOSLIB_8250)/dos86h
 
@@ -114,7 +114,7 @@ LIBFLAGS=$(WLIBQ) -b -n
 # List of executables to build
 #
 EXEC = &
-#    16.exe &
+    wolf3d.exe
 
 
 all: $(EXEC)
@@ -122,7 +122,7 @@ all: $(EXEC)
 #
 # game and bakapi executables
 #
-16.exe:           16.$(OBJ) mapread.$(OBJ) jsmn.$(OBJ) $(16LIB) gfx.lib $(DOSLIBLIBS)
+wolf3d.exe:           wl_main.$(OBJ)
 
 #
 # Test Executables!
@@ -132,15 +132,15 @@ all: $(EXEC)
 #
 # executable's objects
 #
-16.$(OBJ):        $(SRC)/16.c $(SRC)/16.h
+wl_main.$(OBJ):	$(SRC)/wl_main.c
 
 
 #
 # non executable objects libraries
 #
 
-gfx.lib: $(GFXLIBOBJS)
-	*wlib $(LIBFLAGS) $(extra_$^&_lib_opts) $@ $<
+#gfx.lib: $(GFXLIBOBJS)
+#	*wlib $(LIBFLAGS) $(extra_$^&_lib_opts) $@ $<
 
 
 modex16.$(OBJ):   $(SRCLIB)/modex16.c $(SRCLIB)/modex16.h
@@ -153,13 +153,10 @@ clean: .symbolic
 	@for %f in ($(EXEC)) do @if exist %f $(REMOVECOMMAND) %f
 !ifdef __LINUX__
 	@rm *.LIB
-	@. src/util/bcexmm.sh
 	@rm *.EXE
 !endif
 	@if exist *.obj $(REMOVECOMMAND) *.obj
 	@if exist *.OBJ $(REMOVECOMMAND) *.OBJ
-	@if exist *.bco $(REMOVECOMMAND) *.bco
-	@if exist *.BCO $(REMOVECOMMAND) *.BCO
 	@if exist *.LIB $(REMOVECOMMAND) *.LIB
 	@if exist *.lnk $(REMOVECOMMAND) *.lnk
 	@if exist *.LNK $(REMOVECOMMAND) *.LNK

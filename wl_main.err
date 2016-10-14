@@ -1,11 +1,3 @@
-wolfsrc/ID_HEADS.H(4): Error! E1055: Unable to open 'ALLOC.H'
-wolfsrc/ID_HEADS.H(15): Error! E1055: Unable to open 'SYS\STAT.H'
-wolfsrc/ID_HEADS.H(16): Error! E1055: Unable to open 'VALUES.H'
-wolfsrc/ID_HEADS.H(17): Error! E1055: Unable to open 'DIR.H'
-wolfsrc/VERSION.H(10): Error! E1061: Expecting data or function declaration, but found ' '
-wolfsrc/VERSION.H(10): Warning! W138: No newline at end of file
-wolfsrc/ID_HEADS.H(23): Error! E1026: Invalid declarator
-wolfsrc/ID_HEADS.H(23): Error! E1009: Expecting ';' but found 'extern'
 wolfsrc/ID_MM.H(58): Error! E1009: Expecting ',' but found '*'
 wolfsrc/ID_MM.H(96): Warning! W138: No newline at end of file
 wolfsrc/ID_CA.H(23): Error! E1009: Expecting ',' but found '*'
@@ -59,16 +51,15 @@ wolfsrc/ID_IN.H(167): Error! E1034: Symbol '_seg' already defined
 wolfsrc/ID_IN.H(167): Note! I2002: '_seg' defined in: wolfsrc/ID_MM.H(58)
 wolfsrc/ID_IN.H(167): Error! E1129: Type does not agree with previous definition of '_seg'
 wolfsrc/ID_IN.H(167): Note! I2002: '_seg' defined in: wolfsrc/ID_MM.H(58)
-wolfsrc/WL_DEF.H(8): Error! E1055: Unable to open 'VALUES.H'
 wolfsrc/FOREIGN.H(110): Error! E1061: Expecting data or function declaration, but found ' '
 wolfsrc/FOREIGN.H(110): Warning! W138: No newline at end of file
-wolfsrc/WL_DEF.H(159): Error! E1026: Invalid declarator
-wolfsrc/WL_DEF.H(159): Error! E1009: Expecting ';' but found 'enum'
-wolfsrc/WL_DEF.H(1080): Error! E1009: Expecting ',' but found '*'
-wolfsrc/WL_DEF.H(1080): Error! E1034: Symbol '_seg' already defined
-wolfsrc/WL_DEF.H(1080): Note! I2002: '_seg' defined in: wolfsrc/ID_MM.H(58)
-wolfsrc/WL_DEF.H(1080): Error! E1129: Type does not agree with previous definition of '_seg'
-wolfsrc/WL_DEF.H(1080): Note! I2002: '_seg' defined in: wolfsrc/ID_MM.H(58)
+wolfsrc/wl_def.h(159): Error! E1026: Invalid declarator
+wolfsrc/wl_def.h(159): Error! E1009: Expecting ';' but found 'enum'
+wolfsrc/wl_def.h(1080): Error! E1009: Expecting ',' but found '*'
+wolfsrc/wl_def.h(1080): Error! E1034: Symbol '_seg' already defined
+wolfsrc/wl_def.h(1080): Note! I2002: '_seg' defined in: wolfsrc/ID_MM.H(58)
+wolfsrc/wl_def.h(1080): Error! E1129: Type does not agree with previous definition of '_seg'
+wolfsrc/wl_def.h(1080): Note! I2002: '_seg' defined in: wolfsrc/ID_MM.H(58)
 wolfsrc/wl_main.c(248): Error! E1011: Symbol '_argc' has not been declared
 wolfsrc/wl_main.c(249): Error! E1011: Symbol '_argv' has not been declared
 wolfsrc/wl_main.c(249): Error! E1045: Subscript on non-array

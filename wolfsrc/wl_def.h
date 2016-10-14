@@ -3,11 +3,11 @@
 #define MONTH	9
 #define DAY		30
 
-#include "ID_HEADS.H"
-#include <MATH.H>
-#include <VALUES.H>
+#include "id_heads.h"
+#include <math.h>
+//#include <values.h>
 
-#include "WL_MENU.H"
+#include "wl_menu.h"
 
 #ifdef SPANISH
 #include "SPANISH.H"

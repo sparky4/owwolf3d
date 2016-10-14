@@ -1,22 +1,22 @@
 // ID_GLOB.H
 
 
-#include <ALLOC.H>
-#include <CTYPE.H>
-#include <DOS.H>
-#include <ERRNO.H>
-#include <FCNTL.H>
-#include <IO.H>
-#include <MEM.H>
-#include <PROCESS.H>
-#include <STDIO.H>
-#include <STDLIB.H>
-#include <STRING.H>
-#include <SYS\STAT.H>
-#include <VALUES.H>
-#include <DIR.H>
+#include <malloc.h>
+#include <ctype.h>
+#include <dos.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <io.h>
+#include <mem.h>
+#include <process.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/stat.h>
+//#include <values.h>
+//#include <dir.h>
 #define __ID_GLOB__
-#include "VERSION.H"
+#include "version.h"
 
 //--------------------------------------------------------------------------
 
@@ -83,14 +83,14 @@ typedef	struct
 #define	nil	((void *)0)
 
 
-#include "ID_MM.H"
-#include "ID_PM.H"
-#include "ID_CA.H"
-#include "ID_VL.H"
-#include "ID_VH.H"
-#include "ID_IN.H"
-#include "ID_SD.H"
-#include "ID_US.H"
+#include "ID_MM.h"
+#include "ID_PM.h"
+#include "ID_CA.h"
+#include "ID_VL.h"
+#include "ID_VH.h"
+#include "ID_IN.h"
+#include "ID_SD.h"
+#include "ID_US.h"
 
 
 void	Quit (char *error);		// defined in user program
