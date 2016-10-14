@@ -44,7 +44,7 @@ typedef	struct
 		} Rect;
 
 typedef void __based( void ) * memptr;	////old //----typedef void __based(__self) * memptr;
-typedef unsigned short _seg; // it will contains segment value (as Borland _seg)
+#define _seg __segment
 
 #define BSEG byte
 //_seg

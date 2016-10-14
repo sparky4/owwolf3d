@@ -1,5 +1,0 @@
-wolfsrc/wl_main.c(737): Warning! W106: Parameter 1: Constant out of range - truncated
-wolfsrc/wl_main.c(737): Note! I2003: source conversion type is 'unsigned int'
-wolfsrc/wl_main.c(737): Note! I2004: target conversion type is 'int'
-wolfsrc/wl_main.c(1382): Warning! W131: No prototype found for function 'clrscr'
-wolfsrc/wl_main.c(1481): Warning! W131: No prototype found for function 'PG13'

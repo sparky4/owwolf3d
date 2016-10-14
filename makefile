@@ -122,7 +122,7 @@ all: $(EXEC)
 #
 # game and bakapi executables
 #
-wolf3d.exe:           wl_main.$(OBJ) $(WOLFOBJS)
+wolf3d.exe:           $(WOLFOBJS) wl_main.$(OBJ)
 
 #
 # Test Executables!

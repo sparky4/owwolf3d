@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/stat.h>
+#include <limits.h> /* for LONG_MAX */
 //#include <values.h>
 //#include <dir.h>
 #define __ID_GLOB__

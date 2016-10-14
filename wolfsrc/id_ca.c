@@ -215,20 +215,20 @@ boolean CA_FarRead (int handle, byte far *dest, long length)
 	if (length>0xffffl)
 		Quit ("CA_FarRead doesn't support 64K reads yet!");
 
-asm		push	ds
-asm		mov	bx,[handle]
-asm		mov	cx,[WORD PTR length]
-asm		mov	dx,[WORD PTR dest]
-asm		mov	ds,[WORD PTR dest+2]
-asm		mov	ah,0x3f				// READ w/handle
-asm		int	21h
-asm		pop	ds
-asm		jnc	good
+__asm		push	ds
+__asm		mov	bx,[handle]
+__asm		mov	cx,[WORD PTR length]
+__asm		mov	dx,[WORD PTR dest]
+__asm		mov	ds,[WORD PTR dest+2]
+__asm		mov	ah,0x3f				// READ w/handle
+__asm		int	21h
+__asm		pop	ds
+__asm		jnc	good
 	errno = _AX;
 	return	false;
 good:
-asm		cmp	ax,[WORD PTR length]
-asm		je	done
+__asm		cmp	ax,[WORD PTR length]
+__asm		je	done
 	errno = EINVFMT;			// user manager knows this is bad read
 	return	false;
 done:
@@ -251,20 +251,20 @@ boolean CA_FarWrite (int handle, byte far *source, long length)
 	if (length>0xffffl)
 		Quit ("CA_FarWrite doesn't support 64K reads yet!");
 
-asm		push	ds
-asm		mov	bx,[handle]
-asm		mov	cx,[WORD PTR length]
-asm		mov	dx,[WORD PTR source]
-asm		mov	ds,[WORD PTR source+2]
-asm		mov	ah,0x40			// WRITE w/handle
-asm		int	21h
-asm		pop	ds
-asm		jnc	good
+__asm		push	ds
+__asm		mov	bx,[handle]
+__asm		mov	cx,[WORD PTR length]
+__asm		mov	dx,[WORD PTR source]
+__asm		mov	ds,[WORD PTR source+2]
+__asm		mov	ah,0x40			// WRITE w/handle
+__asm		int	21h
+__asm		pop	ds
+__asm		jnc	good
 	errno = _AX;
 	return	false;
 good:
-asm		cmp	ax,[WORD PTR length]
-asm		je	done
+__asm		cmp	ax,[WORD PTR length]
+__asm		je	done
 	errno = ENOMEM;				// user manager knows this is bad write
 	return	false;
 
@@ -434,9 +434,9 @@ void CAL_HuffExpand (byte huge *source, byte huge *dest,
   if (screenhack)
   {
 	mapmask = 1;
-asm	mov	dx,SC_INDEX
-asm	mov	ax,SC_MAPMASK + 256
-asm	out	dx,ax
+__asm	mov	dx,SC_INDEX
+__asm	mov	ax,SC_MAPMASK + 256
+__asm	out	dx,ax
 	length >>= 2;
   }
 
@@ -459,65 +459,65 @@ asm	out	dx,ax
 // expand less than 64k of data
 //--------------------------
 
-asm mov	bx,[headptr]
+__asm mov	bx,[headptr]
 
-asm	mov	si,[sourceoff]
-asm	mov	di,[destoff]
-asm	mov	es,[destseg]
-asm	mov	ds,[sourceseg]
-asm	mov	ax,[endoff]
+__asm	mov	si,[sourceoff]
+__asm	mov	di,[destoff]
+__asm	mov	es,[destseg]
+__asm	mov	ds,[sourceseg]
+__asm	mov	ax,[endoff]
 
-asm	mov	ch,[si]				// load first byte
-asm	inc	si
-asm	mov	cl,1
+__asm	mov	ch,[si]				// load first byte
+__asm	inc	si
+__asm	mov	cl,1
 
 expandshort:
-asm	test	ch,cl			// bit set?
-asm	jnz	bit1short
-asm	mov	dx,[ss:bx]			// take bit0 path from node
-asm	shl	cl,1				// advance to next bit position
-asm	jc	newbyteshort
-asm	jnc	sourceupshort
+__asm	test	ch,cl			// bit set?
+__asm	jnz	bit1short
+__asm	mov	dx,[ss:bx]			// take bit0 path from node
+__asm	shl	cl,1				// advance to next bit position
+__asm	jc	newbyteshort
+__asm	jnc	sourceupshort
 
 bit1short:
-asm	mov	dx,[ss:bx+2]		// take bit1 path
-asm	shl	cl,1				// advance to next bit position
-asm	jnc	sourceupshort
+__asm	mov	dx,[ss:bx+2]		// take bit1 path
+__asm	shl	cl,1				// advance to next bit position
+__asm	jnc	sourceupshort
 
 newbyteshort:
-asm	mov	ch,[si]				// load next byte
-asm	inc	si
-asm	mov	cl,1				// back to first bit
+__asm	mov	ch,[si]				// load next byte
+__asm	inc	si
+__asm	mov	cl,1				// back to first bit
 
 sourceupshort:
-asm	or	dh,dh				// if dx<256 its a byte, else move node
-asm	jz	storebyteshort
-asm	mov	bx,dx				// next node = (huffnode *)code
-asm	jmp	expandshort
+__asm	or	dh,dh				// if dx<256 its a byte, else move node
+__asm	jz	storebyteshort
+__asm	mov	bx,dx				// next node = (huffnode *)code
+__asm	jmp	expandshort
 
 storebyteshort:
-asm	mov	[es:di],dl
-asm	inc	di					// write a decopmpressed byte out
-asm	mov	bx,[headptr]		// back to the head node for next bit
+__asm	mov	[es:di],dl
+__asm	inc	di					// write a decopmpressed byte out
+__asm	mov	bx,[headptr]		// back to the head node for next bit
 
-asm	cmp	di,ax				// done?
-asm	jne	expandshort
+__asm	cmp	di,ax				// done?
+__asm	jne	expandshort
 
 //
 // perform screenhack if needed
 //
-asm	test	[screenhack],1
-asm	jz	notscreen
-asm	shl	[mapmask],1
-asm	mov	ah,[mapmask]
-asm	cmp	ah,16
-asm	je	notscreen			// all four planes done
-asm	mov	dx,SC_INDEX
-asm	mov	al,SC_MAPMASK
-asm	out	dx,ax
-asm	mov	di,[destoff]
-asm	mov	ax,[endoff]
-asm	jmp	expandshort
+__asm	test	[screenhack],1
+__asm	jz	notscreen
+__asm	shl	[mapmask],1
+__asm	mov	ah,[mapmask]
+__asm	cmp	ah,16
+__asm	je	notscreen			// all four planes done
+__asm	mov	dx,SC_INDEX
+__asm	mov	al,SC_MAPMASK
+__asm	out	dx,ax
+__asm	mov	di,[destoff]
+__asm	mov	ax,[endoff]
+__asm	jmp	expandshort
 
 notscreen:;
 	}
@@ -530,65 +530,65 @@ notscreen:;
 
   length--;
 
-asm mov	bx,[headptr]
-asm	mov	cl,1
+__asm mov	bx,[headptr]
+__asm	mov	cl,1
 
-asm	mov	si,[sourceoff]
-asm	mov	di,[destoff]
-asm	mov	es,[destseg]
-asm	mov	ds,[sourceseg]
+__asm	mov	si,[sourceoff]
+__asm	mov	di,[destoff]
+__asm	mov	es,[destseg]
+__asm	mov	ds,[sourceseg]
 
-asm	lodsb			// load first byte
+__asm	lodsb			// load first byte
 
 expand:
-asm	test	al,cl		// bit set?
-asm	jnz	bit1
-asm	mov	dx,[ss:bx]	// take bit0 path from node
-asm	jmp	gotcode
+__asm	test	al,cl		// bit set?
+__asm	jnz	bit1
+__asm	mov	dx,[ss:bx]	// take bit0 path from node
+__asm	jmp	gotcode
 bit1:
-asm	mov	dx,[ss:bx+2]	// take bit1 path
+__asm	mov	dx,[ss:bx+2]	// take bit1 path
 
 gotcode:
-asm	shl	cl,1		// advance to next bit position
-asm	jnc	sourceup
-asm	lodsb
-asm	cmp	si,0x10		// normalize ds:si
-asm  	jb	sinorm
-asm	mov	cx,ds
-asm	inc	cx
-asm	mov	ds,cx
-asm	xor	si,si
+__asm	shl	cl,1		// advance to next bit position
+__asm	jnc	sourceup
+__asm	lodsb
+__asm	cmp	si,0x10		// normalize ds:si
+__asm  	jb	sinorm
+__asm	mov	cx,ds
+__asm	inc	cx
+__asm	mov	ds,cx
+__asm	xor	si,si
 sinorm:
-asm	mov	cl,1		// back to first bit
+__asm	mov	cl,1		// back to first bit
 
 sourceup:
-asm	or	dh,dh		// if dx<256 its a byte, else move node
-asm	jz	storebyte
-asm	mov	bx,dx		// next node = (huffnode *)code
-asm	jmp	expand
+__asm	or	dh,dh		// if dx<256 its a byte, else move node
+__asm	jz	storebyte
+__asm	mov	bx,dx		// next node = (huffnode *)code
+__asm	jmp	expand
 
 storebyte:
-asm	mov	[es:di],dl
-asm	inc	di		// write a decopmpressed byte out
-asm	mov	bx,[headptr]	// back to the head node for next bit
+__asm	mov	[es:di],dl
+__asm	inc	di		// write a decopmpressed byte out
+__asm	mov	bx,[headptr]	// back to the head node for next bit
 
-asm	cmp	di,0x10		// normalize es:di
-asm  	jb	dinorm
-asm	mov	dx,es
-asm	inc	dx
-asm	mov	es,dx
-asm	xor	di,di
+__asm	cmp	di,0x10		// normalize es:di
+__asm  	jb	dinorm
+__asm	mov	dx,es
+__asm	inc	dx
+__asm	mov	es,dx
+__asm	xor	di,di
 dinorm:
 
-asm	sub	[WORD PTR ss:length],1
-asm	jnc	expand
-asm  	dec	[WORD PTR ss:length+2]
-asm	jns	expand		// when length = ffff ffff, done
+__asm	sub	[WORD PTR ss:length],1
+__asm	jnc	expand
+__asm  	dec	[WORD PTR ss:length+2]
+__asm	jns	expand		// when length = ffff ffff, done
 
 	}
 
-asm	mov	ax,ss
-asm	mov	ds,ax
+__asm	mov	ax,ss
+__asm	mov	ds,ax
 
 }
 
@@ -782,60 +782,60 @@ void CA_RLEWexpand (unsigned huge *source, unsigned huge *dest,long length,
 // NOTE: A repeat count that produces 0xfff0 bytes can blow this!
 //
 
-asm	mov	bx,rlewtag
-asm	mov	si,sourceoff
-asm	mov	di,destoff
-asm	mov	es,destseg
-asm	mov	ds,sourceseg
+__asm	mov	bx,rlewtag
+__asm	mov	si,sourceoff
+__asm	mov	di,destoff
+__asm	mov	es,destseg
+__asm	mov	ds,sourceseg
 
 expand:
-asm	lodsw
-asm	cmp	ax,bx
-asm	je	repeat
-asm	stosw
-asm	jmp	next
+__asm	lodsw
+__asm	cmp	ax,bx
+__asm	je	repeat
+__asm	stosw
+__asm	jmp	next
 
 repeat:
-asm	lodsw
-asm	mov	cx,ax		// repeat count
-asm	lodsw			// repeat value
-asm	rep stosw
+__asm	lodsw
+__asm	mov	cx,ax		// repeat count
+__asm	lodsw			// repeat value
+__asm	rep stosw
 
 next:
 
-asm	cmp	si,0x10		// normalize ds:si
-asm  	jb	sinorm
-asm	mov	ax,si
-asm	shr	ax,1
-asm	shr	ax,1
-asm	shr	ax,1
-asm	shr	ax,1
-asm	mov	dx,ds
-asm	add	dx,ax
-asm	mov	ds,dx
-asm	and	si,0xf
+__asm	cmp	si,0x10		// normalize ds:si
+__asm  	jb	sinorm
+__asm	mov	ax,si
+__asm	shr	ax,1
+__asm	shr	ax,1
+__asm	shr	ax,1
+__asm	shr	ax,1
+__asm	mov	dx,ds
+__asm	add	dx,ax
+__asm	mov	ds,dx
+__asm	and	si,0xf
 sinorm:
-asm	cmp	di,0x10		// normalize es:di
-asm  	jb	dinorm
-asm	mov	ax,di
-asm	shr	ax,1
-asm	shr	ax,1
-asm	shr	ax,1
-asm	shr	ax,1
-asm	mov	dx,es
-asm	add	dx,ax
-asm	mov	es,dx
-asm	and	di,0xf
+__asm	cmp	di,0x10		// normalize es:di
+__asm  	jb	dinorm
+__asm	mov	ax,di
+__asm	shr	ax,1
+__asm	shr	ax,1
+__asm	shr	ax,1
+__asm	shr	ax,1
+__asm	mov	dx,es
+__asm	add	dx,ax
+__asm	mov	es,dx
+__asm	and	di,0xf
 dinorm:
 
-asm	cmp     di,ss:endoff
-asm	jne	expand
-asm	mov	ax,es
-asm	cmp	ax,ss:endseg
-asm	jb	expand
+__asm	cmp     di,ss:endoff
+__asm	jne	expand
+__asm	mov	ax,es
+__asm	cmp	ax,ss:endseg
+__asm	jb	expand
 
-asm	mov	ax,ss
-asm	mov	ds,ax
+__asm	mov	ax,ss
+__asm	mov	ds,ax
 
 }
 

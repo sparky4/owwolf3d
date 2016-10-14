@@ -16,7 +16,7 @@
 //	EMS specific variables
 	boolean			EMSPresent;
 	word			EMSAvail,EMSPagesAvail,EMSHandle,
-					EMSPageFrame,EMSPhysicalPage;
+					EMSPageFrame,EMSPhysicalPage,EMSVer,totalEMSpages,freeEMSpages;
 	EMSListStruct	EMSList[EMSFrameCount];
 
 //	XMS specific variables
@@ -40,8 +40,8 @@
 					MainPagesUsed,
 					PMNumBlocks;
 	long			PMFrameCount;
-	PageListStruct	far *PMPages,
-					_seg *PMSegPages;
+	PageListStruct	far *PMPages;
+	__segment *PMSegPages;
 
 static	char		*ParmStrings[] = {"nomain","noems","noxms",nil};
 
@@ -61,7 +61,7 @@ PML_MapEMS(word logical,word physical)
 	_BX = logical;
 	_DX = EMSHandle;
 	_AH = EMS_MAPPAGE;
-asm	int	EMS_INT
+__asm	int	EMS_INT
 
 	if (_AH)
 		Quit("PML_MapEMS: Page mapping failed");
@@ -76,67 +76,83 @@ asm	int	EMS_INT
 //			to the maximum we need)
 //
 
-	char	EMMDriverName[9] = "EMMXXXX0";
+	//char	EMMDriverName[9] = "EMMXXXX0";
 
 boolean
 PML_StartupEMS(void)
 {
 	int		i;
 	long	size;
+	static char	emmname[] = "EMMXXXX0";	//fix by andrius4669
+	byte	err, str[64];
+	boolean errorflag=false;
 
 	EMSPresent = false;			// Assume that we'll fail
 	EMSAvail = 0;
 
-	_DX = (word)EMMDriverName;
-	_AX = 0x3d00;
-	geninterrupt(0x21);			// try to open EMMXXXX0 device
-asm	jnc	gothandle
-	goto error;
+__asm {
+		mov	dx,OFFSET emmname	//fix by andrius4669
+		mov	ax,0x3d00
+		int	EMM_INT		// try to open EMMXXXX0 device
+		jc	error1
 
-gothandle:
-	_BX = _AX;
-	_AX = 0x4400;
-	geninterrupt(0x21);			// get device info
-asm	jnc	gotinfo;
-	goto error;
+		mov	bx,ax
+		mov	ax,0x4400
 
-gotinfo:
-asm	and	dx,0x80
-	if (!_DX)
-		goto error;
+		int	EMM_INT		// get device info
+		jc	error1
 
-	_AX = 0x4407;
-	geninterrupt(0x21);			// get status
-asm	jc	error
-	if (!_AL)
-		goto error;
+		and	dx,0x80
+		jz	error1
 
-	_AH = 0x3e;
-	geninterrupt(0x21);			// close handle
+		mov	ax,0x4407
 
-	_AH = EMS_STATUS;
-	geninterrupt(EMS_INT);
-	if (_AH)
-		goto error;				// make sure EMS hardware is present
+		int	EMM_INT		// get status
+		jc	error1
+		or	al,al
+		jz	error1
 
-	_AH = EMS_VERSION;
-	geninterrupt(EMS_INT);
-	if (_AH || (_AL < 0x32))	// only work on EMS 3.2 or greater (silly, but...)
-		goto error;
+		mov	ah,0x3e
+		int	EMM_INT		// close handle
+		jc	error1
 
-	_AH = EMS_GETFRAME;
-	geninterrupt(EMS_INT);
-	if (_AH)
-		goto error;				// find the page frame address
-	EMSPageFrame = _BX;
+		mov	ah,EMS_STATUS
+		int	EMS_INT
+		jc	error1			// make sure EMS hardware is present
 
-	_AH = EMS_GETPAGES;
-	geninterrupt(EMS_INT);
-	if (_AH)
-		goto error;
-	if (_BX < 2)
-		goto error;         	// Require at least 2 pages (32k)
-	EMSAvail = _BX;
+		mov	ah,EMS_VERSION
+		int	EMS_INT			// only work on EMS 3.2 or greater (silly, but...)
+		or	ah,ah
+		jnz	error1
+		mov	[EMSVer],ax		//	set EMSVer
+		cmp	al,0x32			// only work on ems 3.2 or greater
+		jb	error1
+
+		mov	ah,EMS_GETFRAME
+		int	EMS_INT			// find the page frame address
+		or	ah,ah
+		jnz	error1
+		mov	[EMSPageFrame],bx
+
+		mov	ah,EMS_GETPAGES
+		int	EMS_INT			// find out how much EMS is there
+		or	ah,ah
+		jnz	error1
+		or	bx,bx
+		jz	noEMS			// no EMS at all to allocate
+		cmp	bx,2
+		jl	noEMS			// Require at least 2 pages (32k)
+		mov	[totalEMSpages],dx
+		mov	[freeEMSpages],bx
+		mov	[EMSAvail],bx
+		jmp End1
+	error1:
+		mov	err,ah
+		mov	errorflag,1
+		jmp End1
+noEMS:
+End1:
+	}
 
 	// Don't hog all available EMS
 	size = EMSAvail * (long)EMSPageSize;
@@ -173,9 +189,9 @@ PML_ShutdownEMS(void)
 {
 	if (EMSPresent)
 	{
-	asm	mov	ah,EMS_FREEPAGES
-	asm	mov	dx,[EMSHandle]
-	asm	int	EMS_INT
+	__asm	mov	ah,EMS_FREEPAGES
+	__asm	mov	dx,[EMSHandle]
+	__asm	int	EMS_INT
 		if (_AH)
 			Quit ("PML_ShutdownEMS: Error freeing EMS");
 	}
@@ -199,16 +215,16 @@ PML_StartupXMS(void)
 	XMSPresent = false;					// Assume failure
 	XMSAvail = 0;
 
-asm	mov	ax,0x4300
-asm	int	XMS_INT         				// Check for presence of XMS driver
+__asm	mov	ax,0x4300
+__asm	int	XMS_INT         				// Check for presence of XMS driver
 	if (_AL != 0x80)
 		goto error;
 
 
-asm	mov	ax,0x4310
-asm	int	XMS_INT							// Get address of XMS driver
-asm	mov	[WORD PTR XMSDriver],bx
-asm	mov	[WORD PTR XMSDriver+2],es		// function pointer to XMS driver
+__asm	mov	ax,0x4310
+__asm	int	XMS_INT							// Get address of XMS driver
+__asm	mov	[WORD PTR XMSDriver],bx
+__asm	mov	[WORD PTR XMSDriver+2],es		// function pointer to XMS driver
 
 	XMS_CALL(XMS_QUERYFREE);			// Find out how much XMS is available
 	XMSAvail = _AX;
@@ -264,10 +280,10 @@ PML_XMSCopy(boolean toxms,byte far *addr,word xmspage,word length)
 	copy.target_handle = toxms? XMSHandle : 0;
 	copy.target_offset = toxms? xoffset : (long)addr;
 
-asm	push si
+__asm	push si
 	_SI = (word)&copy;
 	XMS_CALL(XMS_MOVE);
-asm	pop	si
+__asm	pop	si
 	if (!_AX)
 		Quit("PML_XMSCopy: Error on copy");
 }
@@ -486,7 +502,7 @@ PML_OpenPageFile(void)
 {
 	int				i;
 	long			size;
-	void			_seg *buf;
+	memptr		buf;
 	longword		far *offsetptr;
 	word			far *lengthptr;
 	PageListStruct	far *page;
@@ -502,8 +518,8 @@ PML_OpenPageFile(void)
 
 	// Allocate and clear the page list
 	PMNumBlocks = ChunksInFile;
-	MM_GetPtr(&(memptr)PMSegPages,sizeof(PageListStruct) * PMNumBlocks);
-	MM_SetLock(&(memptr)PMSegPages,true);
+	MM_GetPtr((memptr)PMSegPages,sizeof(PageListStruct) * PMNumBlocks);
+	MM_SetLock((memptr)PMSegPages,true);
 	PMPages = (PageListStruct far *)PMSegPages;
 	_fmemset(PMPages,0,sizeof(PageListStruct) * PMNumBlocks);
 
@@ -538,8 +554,8 @@ PML_ClosePageFile(void)
 		close(PageFile);
 	if (PMSegPages)
 	{
-		MM_SetLock(&(memptr)PMSegPages,false);
-		MM_FreePtr(&(void _seg *)PMSegPages);
+		MM_SetLock((memptr)PMSegPages,false);
+		MM_FreePtr((memptr)PMSegPages);
 	}
 }
 
@@ -581,7 +597,7 @@ PML_GetEMSAddress(int page,PMLockType lock)
 	// If page isn't already mapped in, find LRU EMS frame, and use it
 	if (emspage == -1)
 	{
-		longword last = MAXLONG;
+		longword last = LONG_MAX;
 		for (i = 0;i < EMSFrameCount;i++)
 		{
 			if (EMSList[i].lastHit < last)
@@ -649,7 +665,7 @@ PML_GiveLRUPage(boolean mainonly)
 	long			last;
 	PageListStruct	far *page;
 
-	for (i = 0,page = PMPages,lru = -1,last = MAXLONG;i < ChunksInFile;i++,page++)
+	for (i = 0,page = PMPages,lru = -1,last = LONG_MAX;i < ChunksInFile;i++,page++)
 	{
 		if
 		(
@@ -681,7 +697,7 @@ PML_GiveLRUXMSPage(void)
 	long			last;
 	PageListStruct	far *page;
 
-	for (i = 0,page = PMPages,lru = -1,last = MAXLONG;i < ChunksInFile;i++,page++)
+	for (i = 0,page = PMPages,lru = -1,last = LONG_MAX;i < ChunksInFile;i++,page++)
 	{
 		if
 		(
@@ -882,13 +898,13 @@ PM_GetPage(int pagenum)
 		Quit("PM_GetPage: Invalid page request");
 
 #if 0	// for debugging
-asm	mov	dx,STATUS_REGISTER_1
-asm	in	al,dx
-asm	mov	dx,ATR_INDEX
-asm	mov	al,ATR_OVERSCAN
-asm	out	dx,al
-asm	mov	al,10	// bright green
-asm	out	dx,al
+__asm	mov	dx,STATUS_REGISTER_1
+__asm	in	al,dx
+__asm	mov	dx,ATR_INDEX
+__asm	mov	al,ATR_OVERSCAN
+__asm	out	dx,al
+__asm	mov	al,10	// bright green
+__asm	out	dx,al
 #endif
 
 	if (!(result = PM_GetPageAddress(pagenum)))
@@ -908,15 +924,15 @@ if (!PMPages[pagenum].offset)	// JDC: sparse page
 	PMPages[pagenum].lastHit = PMFrameCount;
 
 #if 0	// for debugging
-asm	mov	dx,STATUS_REGISTER_1
-asm	in	al,dx
-asm	mov	dx,ATR_INDEX
-asm	mov	al,ATR_OVERSCAN
-asm	out	dx,al
-asm	mov	al,3	// blue
-asm	out	dx,al
-asm	mov	al,0x20	// normal
-asm	out	dx,al
+__asm	mov	dx,STATUS_REGISTER_1
+__asm	in	al,dx
+__asm	mov	dx,ATR_INDEX
+__asm	mov	al,ATR_OVERSCAN
+__asm	out	dx,al
+__asm	mov	al,3	// blue
+__asm	out	dx,al
+__asm	mov	al,0x20	// normal
+__asm	out	dx,al
 #endif
 
 	return(result);
@@ -1075,7 +1091,7 @@ PM_NextFrame(void)
 	int	i;
 
 	// Frame count overrun - kill the LRU hit entries & reset frame count
-	if (++PMFrameCount >= MAXLONG - 4)
+	if (++PMFrameCount >= LONG_MAX - 4)
 	{
 		for (i = 0;i < PMNumBlocks;i++)
 			PMPages[i].lastHit = 0;
@@ -1164,7 +1180,7 @@ PM_Startup(void)
 		}
 	}
 
-	PML_OpenPageFile();
+	//PML_OpenPageFile();
 
 	if (!noems)
 		PML_StartupEMS();
@@ -1193,7 +1209,7 @@ PM_Shutdown(void)
 	if (!PMStarted)
 		return;
 
-	PML_ClosePageFile();
+	//PML_ClosePageFile();
 
 	PML_ShutdownMainMem();
 }
