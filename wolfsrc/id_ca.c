@@ -96,8 +96,8 @@ char extension[5],	// Need a string, not constant to change cache files
 
 void CA_CannotOpen(char *string);
 
-long		_seg *grstarts;	// array of offsets in egagraph, -1 for sparse
-long		_seg *audiostarts;	// array of offsets in audio / audiot
+LSEG *grstarts;	// array of offsets in egagraph, -1 for sparse
+LSEG *audiostarts;	// array of offsets in audio / audiot
 
 #ifdef GRHEADERLINKED
 huffnode	*grhuffman;
@@ -1449,15 +1449,15 @@ void CA_CacheMap (int mapnum)
 		pos = mapheaderseg[mapnum]->planestart[plane];
 		compressed = mapheaderseg[mapnum]->planelength[plane];
 
-		dest = &(memptr)mapsegs[plane];
+		dest = (memptr)mapsegs[plane];
 
 		lseek(maphandle,pos,SEEK_SET);
 		if (compressed<=BUFFERSIZE)
 			source = bufferseg;
 		else
 		{
-			MM_GetPtr(&bigbufferseg,compressed);
-			MM_SetLock (&bigbufferseg,true);
+			MM_GetPtr(bigbufferseg,compressed);
+			MM_SetLock (bigbufferseg,true);
 			source = bigbufferseg;
 		}
 

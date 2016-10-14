@@ -46,19 +46,26 @@ typedef	struct
 typedef void __based( void ) * memptr;	////old //----typedef void __based(__self) * memptr;
 #define _seg __segment
 
-#define BSEG byte
+#define BSEG __segment
+//byte
 //_seg
-#define USEG unsigned
+#define USEG __segment
+//unsigned
 //_seg
-#define MSEG maptype
+#define MSEG __segment
+//maptype
 //_seg
 #define VSEG __segment
+//void
 //_seg
-#define LSEG long
+#define LSEG __segment
+//long
 //_seg
-#define PSEG pictabletype
+#define PSEG __segment
+//pictabletype
 //_seg
-#define SSEG spritetabletype
+#define SSEG __segment
+//spritetabletype
 //_seg
 
 

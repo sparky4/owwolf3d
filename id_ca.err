@@ -1,9 +1,3 @@
-wolfsrc/id_ca.c(99): Error! E1060: Invalid type
-wolfsrc/id_ca.c(99): Error! E1129: Type does not agree with previous definition of 'grstarts'
-wolfsrc/id_ca.c(99): Note! I2002: 'grstarts' defined in: wolfsrc/id_ca.h(47)
-wolfsrc/id_ca.c(100): Error! E1060: Invalid type
-wolfsrc/id_ca.c(100): Error! E1129: Type does not agree with previous definition of 'audiostarts'
-wolfsrc/id_ca.c(100): Note! I2002: 'audiostarts' defined in: wolfsrc/id_ca.h(48)
 wolfsrc/id_ca.c(226): Error! E1011: Symbol 'good' has not been declared
 wolfsrc/id_ca.c(231): Error! E1011: Symbol 'done' has not been declared
 wolfsrc/id_ca.c(232): Error! E1011: Symbol 'EINVFMT' has not been declared
@@ -70,6 +64,9 @@ wolfsrc/id_ca.c(853): Warning! W118: Label 'expand' has been defined but not ref
 wolfsrc/id_ca.c(906): Warning! W120: lvalue cast is not standard C
 wolfsrc/id_ca.c(936): Warning! W120: lvalue cast is not standard C
 wolfsrc/id_ca.c(974): Warning! W120: lvalue cast is not standard C
+wolfsrc/id_ca.c(975): Error! E1176: Parameter 2, pointer type mismatch
+wolfsrc/id_ca.c(975): Note! I2003: source conversion type is 'unsigned short *'
+wolfsrc/id_ca.c(975): Note! I2004: target conversion type is 'unsigned char __far *'
 wolfsrc/id_ca.c(1007): Error! E1060: Invalid type
 wolfsrc/id_ca.c(1011): Warning! W120: lvalue cast is not standard C
 wolfsrc/id_ca.c(1012): Warning! W120: lvalue cast is not standard C
@@ -78,6 +75,9 @@ wolfsrc/id_ca.c(1023): Warning! W120: lvalue cast is not standard C
 wolfsrc/id_ca.c(1057): Warning! W120: lvalue cast is not standard C
 wolfsrc/id_ca.c(1158): Warning! W120: lvalue cast is not standard C
 wolfsrc/id_ca.c(1173): Warning! W120: lvalue cast is not standard C
+wolfsrc/id_ca.c(1177): Error! E1176: Parameter 2, pointer type mismatch
+wolfsrc/id_ca.c(1177): Note! I2003: source conversion type is 'unsigned short *'
+wolfsrc/id_ca.c(1177): Note! I2004: target conversion type is 'unsigned char __far *'
 wolfsrc/id_ca.c(1239): Warning! W120: lvalue cast is not standard C
 wolfsrc/id_ca.c(1314): Error! E1071: Type of parameter 1 does not agree with previous definition
 wolfsrc/id_ca.c(1314): Note! I2003: source conversion type is 'unsigned short **'
@@ -88,15 +88,321 @@ wolfsrc/id_ca.c(1317): Note! I2004: target conversion type is 'unsigned char __h
 wolfsrc/id_ca.c(1341): Error! E1071: Type of parameter 1 does not agree with previous definition
 wolfsrc/id_ca.c(1341): Note! I2003: source conversion type is 'unsigned short **'
 wolfsrc/id_ca.c(1341): Note! I2004: target conversion type is 'void __based(void) **'
-wolfsrc/id_ca.c(1465): Warning! W120: lvalue cast is not standard C
-wolfsrc/id_ca.c(1490): Error! E1060: Invalid type
-wolfsrc/id_ca.c(1528): Warning! W120: lvalue cast is not standard C
-wolfsrc/id_ca.c(1619): Warning! W120: lvalue cast is not standard C
-wolfsrc/id_ca.c(1644): Warning! W120: lvalue cast is not standard C
-wolfsrc/id_ca.c(1680): Error! E1071: Type of parameter 1 does not agree with previous definition
-wolfsrc/id_ca.c(1680): Note! I2003: source conversion type is 'unsigned short **'
-wolfsrc/id_ca.c(1680): Note! I2004: target conversion type is 'void __based(void) **'
-wolfsrc/id_ca.c(1687): Error! E1071: Type of parameter 1 does not agree with previous definition
-wolfsrc/id_ca.c(1687): Note! I2003: source conversion type is 'unsigned short **'
-wolfsrc/id_ca.c(1687): Note! I2004: target conversion type is 'void __based(void) **'
-wolfsrc/id_ca.c(1719): Error! E1060: Invalid type
+wolfsrc/id_ca.c(1462): Error! E1033: Expression for '->' must be 'pointer to struct or union'
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1063: Missing operand
+wolfsrc/id_ca.c(1462): Warning! W111: Meaningless use of an expression
+wolfsrc/id_ca.c(1462): Error! E1009: Expecting ';' but found ']'
+wolfsrc/id_ca.c(1462): Error! E1147: Too many errors: compilation aborted
