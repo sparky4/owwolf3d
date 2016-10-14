@@ -52,7 +52,7 @@ typedef unsigned short _seg; // it will contains segment value (as Borland _seg)
 //_seg
 #define MSEG maptype
 //_seg
-#define VSEG void __based( void )
+#define VSEG __segment
 //_seg
 #define LSEG long
 //_seg

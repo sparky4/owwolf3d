@@ -16,7 +16,8 @@
 //#include <values.h>
 //#include <dir.h>
 #define __ID_GLOB__
-#include "version.h"
+#include "wolfsrc/version.h"
+#include "wolfsrc/type.h"
 
 //--------------------------------------------------------------------------
 
@@ -68,14 +69,14 @@ extern	char		far signon;
 #define	nil	((void *)0)
 
 
-#include "id_mm.h"
-#include "id_pm.h"
-#include "id_ca.h"
-#include "id_vl.h"
-#include "id_vh.h"
-#include "id_in.h"
-#include "id_sd.h"
-#include "id_us.h"
+#include "wolfsrc/id_mm.h"
+#include "wolfsrc/id_pm.h"
+#include "wolfsrc/id_ca.h"
+#include "wolfsrc/id_vl.h"
+#include "wolfsrc/id_vh.h"
+#include "wolfsrc/id_in.h"
+#include "wolfsrc/id_sd.h"
+#include "wolfsrc/id_us.h"
 
 
 void	Quit (char *error);		// defined in user program

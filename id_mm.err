@@ -1,8 +1,3 @@
-wolfsrc/id_mm.c(138): Error! E1011: Symbol 'good' has not been declared
-wolfsrc/id_mm.c(143): Warning! W118: Label 'good' has been defined but not referenced
-wolfsrc/id_mm.c(182): Error! E1011: Symbol 'gotone' has not been declared
-wolfsrc/id_mm.c(197): Warning! W118: Label 'done' has been defined but not referenced
-wolfsrc/id_mm.c(197): Warning! W118: Label 'gotone' has been defined but not referenced
 wolfsrc/id_mm.c(370): Warning! W131: No prototype found for function 'coreleft'
 wolfsrc/id_mm.c(383): Warning! W131: No prototype found for function 'farcoreleft'
 wolfsrc/id_mm.c(384): Warning! W131: No prototype found for function 'farmalloc'

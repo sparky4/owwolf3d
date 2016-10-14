@@ -126,20 +126,22 @@ void 		MML_ClearBlock (void);
 =======================
 */
 
-boolean MML_CheckForXMS (void)
+boolean MML_CheckForXMS(void)
 {
+	boolean	errorflag=false;
+
 	numUMBs = 0;
 
-__asm {
-	mov	ax,0x4300
-	int	0x2f				// query status of installed diver
-	cmp	al,0x80
-	je	good
+	__asm {
+		mov	ax,0x4300
+		int	0x2f				// query status of installed diver
+		cmp	al,0x80
+		je	good
+		mov	errorflag,1
+		good:
 	}
-
-	return false;
-good:
-	return true;
+	if(errorflag==true) return false;
+	else return true;
 }
 
 
@@ -155,36 +157,34 @@ good:
 
 void MML_SetupXMS (void)
 {
-	unsigned	base,size;
+	word	base,size;
 
-__asm	{
-	mov	ax,0x4310
-	int	0x2f
-	mov	[WORD PTR XMSaddr],bx
-	mov	[WORD PTR XMSaddr+2],es		// function pointer to XMS driver
+	__asm {
+		mov	ax,0x4310
+		int	0x2f
+		mov	[WORD PTR XMSaddr],bx
+		mov	[WORD PTR XMSaddr+2],es		// function pointer to XMS driver
 	}
-
 getmemory:
-__asm	{
-	mov	ah,XMS_ALLOCUMB
-	mov	dx,0xffff					// try for largest block possible
-	call	[DWORD PTR XMSaddr]
-	or	ax,ax
-	jnz	gotone
+	__asm {
+		mov	ah,XMS_ALLOCUMB
+		mov	dx,0xffff					// try for largest block possible
+		//mov     ax,dx						// Set available Kbytes.
+		call	[DWORD PTR XMSaddr]
+		or	ax,ax
+		jnz	gotone
 
-	cmp	bl,0xb0						// error: smaller UMB is available
-	jne	done;
+		cmp	bl,0xb0						// error: smaller UMB is available
+		jne	done;
 
-	mov	ah,XMS_ALLOCUMB
-	call	[DWORD PTR XMSaddr]		// DX holds largest available UMB
-	or	ax,ax
-	jz	done						// another error...
-	}
-
-gotone:
-__asm	{
-	mov	[base],bx
-	mov	[size],dx
+		mov	ah,XMS_ALLOCUMB
+		call	[DWORD PTR XMSaddr]		// DX holds largest available UMB
+		or	ax,ax
+		jz	done						// another error...
+		gotone:
+		mov	[base],bx
+		mov	[size],dx
+		done:
 	}
 	MML_UseSpace (base,size);
 	mminfo.XMSmem += size*16;
@@ -193,7 +193,6 @@ __asm	{
 	if (numUMBs < MAXUMBS)
 		goto getmemory;
 
-done:;
 }
 
 
