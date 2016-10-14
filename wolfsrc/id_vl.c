@@ -4,8 +4,8 @@
 #include <alloc.h>
 #include <mem.h>
 #include <string.h>
-#include "ID_HEAD.H"
-#include "ID_VL.H"
+#include "id_head.h"
+#include "id_vl.h"
 #pragma hdrstop
 
 //
@@ -33,7 +33,7 @@ byte		far	palette1[256][3],far palette2[256][3];
 
 int	 VL_VideoID (void);
 void VL_SetCRTC (int crtc);
-void VL_SetScreen (int crtc, int pelpan);
+void VL_SetScreen (unsigned int crtc, int pelpan);
 void VL_WaitVBL (int vbls);
 
 //===========================================================================

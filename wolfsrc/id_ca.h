@@ -20,13 +20,13 @@ typedef	struct
 
 extern	char		audioname[13];
 
-extern	byte 		_seg	*tinf;
+extern	BSEG	*tinf;
 extern	int			mapon;
 
-extern	unsigned	_seg	*mapsegs[MAPPLANES];
-extern	maptype		_seg	*mapheaderseg[NUMMAPS];
-extern	byte		_seg	*audiosegs[NUMSNDCHUNKS];
-extern	void		_seg	*grsegs[NUMCHUNKS];
+extern	USEG	*mapsegs[MAPPLANES];
+extern	MSEG	*mapheaderseg[NUMMAPS];
+extern	BSEG	*audiosegs[NUMSNDCHUNKS];
+extern	VSEG	*grsegs[NUMCHUNKS];
 
 extern	byte		far	grneeded[NUMCHUNKS];
 extern	byte		ca_levelbit,ca_levelnum;
@@ -44,8 +44,8 @@ extern	char		extension[5],
 			aheadname[10],
 			afilename[10];
 
-extern long		_seg *grstarts;	// array of offsets in egagraph, -1 for sparse
-extern long		_seg *audiostarts;	// array of offsets in audio / audiot
+extern LSEG *grstarts;	// array of offsets in egagraph, -1 for sparse
+extern LSEG *audiostarts;	// array of offsets in audio / audiot
 //
 // hooks for custom cache dialogs
 //

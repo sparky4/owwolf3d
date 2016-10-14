@@ -48,7 +48,6 @@ DUMP=type
 TARGET_OS = dos
 
 BUILD_ROOT=$+$(%__CWD__)$-
-#EXMMTESTDIR=16$(DIRSEP)exmmtest$(DIRSEP)
 DATADIR=data$(DIRSEP)
 
 SRC=wolfsrc
@@ -67,7 +66,7 @@ UPXQ=-qqq
 S_FLAGS=-sg -st -of+ -zu -zdf -zff -zgf -k32768#54096#60000
 Z_FLAGS=-zk0 -zc -zp8 -zm
 O_FLAGS=-obmilr -oe=24 -out -oh -ei -onac -ol+ -ok##x
-T_FLAGS=-bt=dos -mh -0 -fpi87 -fo=.$(OBJ) -d1 -e=65536
+T_FLAGS=-bt=dos -mh -0 -fpi87 -fo=.$(OBJ) -d1 -e=256
 
 CPPFLAGS=-DTARGET_MSDOS=16 -DMSDOS=1
 AFLAGS=$(WCLQ) $(T_FLAGS)
@@ -78,6 +77,7 @@ LIBFLAGS=$(WLIBQ) -b -n
 #
 # objects
 #
+WOLFOBJS = id_mm.$(OBJ) id_pm.$(OBJ) id_ca.$(OBJ) id_vl.$(OBJ) id_vl_a.$(OBJ)
 
 #
 # libraries
@@ -122,7 +122,7 @@ all: $(EXEC)
 #
 # game and bakapi executables
 #
-wolf3d.exe:           wl_main.$(OBJ)
+wolf3d.exe:           wl_main.$(OBJ) $(WOLFOBJS)
 
 #
 # Test Executables!
@@ -134,7 +134,6 @@ wolf3d.exe:           wl_main.$(OBJ)
 #
 wl_main.$(OBJ):	$(SRC)/wl_main.c
 
-
 #
 # non executable objects libraries
 #
@@ -142,9 +141,11 @@ wl_main.$(OBJ):	$(SRC)/wl_main.c
 #gfx.lib: $(GFXLIBOBJS)
 #	*wlib $(LIBFLAGS) $(extra_$^&_lib_opts) $@ $<
 
-
-modex16.$(OBJ):   $(SRCLIB)/modex16.c $(SRCLIB)/modex16.h
-
+id_pm.$(OBJ):	$(SRC)/id_pm.c
+id_mm.$(OBJ):	$(SRC)/id_mm.c
+id_ca.$(OBJ):	$(SRC)/id_ca.c
+id_vl.$(OBJ):	$(SRC)/id_vl.c
+id_vl_a.$(OBJ):	$(SRC)/id_vl_a.asm
 
 #
 #other~

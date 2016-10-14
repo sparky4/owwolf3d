@@ -24,7 +24,7 @@ EMS / XMS unmanaged routines
 =============================================================================
 */
 
-#include "ID_HEADS.H"
+#include "id_heads.h"
 #pragma hdrstop
 
 #pragma warn -pro
@@ -54,7 +54,7 @@ typedef struct mmblockstruct
 } mmblocktype;
 
 
-//#define GETNEWBLOCK {if(!(mmnew=mmfree))Quit("MM_GETNEWBLOCK: No free blocks!")\
+//#define GETNEWBLOCK {if(!(mmnew=mmfree))Quit("MM_GETNEWBLOCK: No free blocks!")
 //	;mmfree=mmfree->next;}
 
 #define GETNEWBLOCK {if(!mmfree)MML_ClearBlock();mmnew=mmfree;mmfree=mmfree->next;}
@@ -130,7 +130,7 @@ boolean MML_CheckForXMS (void)
 {
 	numUMBs = 0;
 
-asm {
+__asm {
 	mov	ax,0x4300
 	int	0x2f				// query status of installed diver
 	cmp	al,0x80
@@ -157,7 +157,7 @@ void MML_SetupXMS (void)
 {
 	unsigned	base,size;
 
-asm	{
+__asm	{
 	mov	ax,0x4310
 	int	0x2f
 	mov	[WORD PTR XMSaddr],bx
@@ -165,7 +165,7 @@ asm	{
 	}
 
 getmemory:
-asm	{
+__asm	{
 	mov	ah,XMS_ALLOCUMB
 	mov	dx,0xffff					// try for largest block possible
 	call	[DWORD PTR XMSaddr]
@@ -182,7 +182,7 @@ asm	{
 	}
 
 gotone:
-asm	{
+__asm	{
 	mov	[base],bx
 	mov	[size],dx
 	}
@@ -214,9 +214,9 @@ void MML_ShutdownXMS (void)
 	{
 		base = UMBbase[i];
 
-asm	mov	ah,XMS_FREEUMB
-asm	mov	dx,[base]
-asm	call	[DWORD PTR XMSaddr]
+__asm	mov	ah,XMS_FREEUMB
+__asm	mov	dx,[base]
+__asm	call	[DWORD PTR XMSaddr]
 	}
 }
 

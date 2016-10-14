@@ -55,7 +55,7 @@
 
 //==========================================================================
 
-typedef void _seg * memptr;
+//typedef void _seg * memptr;
 
 typedef struct
 {

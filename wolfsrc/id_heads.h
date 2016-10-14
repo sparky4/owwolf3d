@@ -26,30 +26,30 @@ extern	char		far signon;
 
 #ifdef JAPAN
 #ifdef JAPDEMO
-#include "FOREIGN\JAPAN\GFXV_WJ1.H"
+#include "foreign/japan/gfxv_wj1.h"
 #else
-#include "FOREIGN\JAPAN\GFXV_WJ6.H"
+#include "foreign/japan/gfxv_wj6.h"
 #endif
-#include "AUDIOWL6.H"
-#include "MAPSWL6.H"
+#include "audiowl6.h"
+#include "mapswl6.h"
 #else
 
 #ifndef SPEAR
 
-#include "GFXV_WL6.H"
-#include "AUDIOWL6.H"
-#include "MAPSWL6.H"
+#include "gfxv_wl6.h"
+#include "audiowl6.h"
+#include "mapswl6.h"
 
 #else
 
 #ifndef SPEARDEMO
-#include "GFXV_SOD.H"
-#include "AUDIOSOD.H"
-#include "MAPSSOD.H"
+#include "gfxv_sod.h"
+#include "audiosod.h"
+#include "mapssod.h"
 #else
-#include "GFXV_SDM.H"
-#include "AUDIOSDM.H"
-#include "MAPSSDM.H"
+#include "gfxv_sdm.h"
+#include "audiosdm.h"
+#include "mapssdm.h"
 #endif
 
 #endif
@@ -65,32 +65,17 @@ extern	char		far signon;
 //	v1.0d1
 //
 
-typedef	enum	{false,true}	boolean;
-typedef	unsigned	char		byte;
-typedef	unsigned	int			word;
-typedef	unsigned	long		longword;
-typedef	byte *					Ptr;
-
-typedef	struct
-		{
-			int	x,y;
-		} Point;
-typedef	struct
-		{
-			Point	ul,lr;
-		} Rect;
-
 #define	nil	((void *)0)
 
 
-#include "ID_MM.h"
-#include "ID_PM.h"
-#include "ID_CA.h"
-#include "ID_VL.h"
-#include "ID_VH.h"
-#include "ID_IN.h"
-#include "ID_SD.h"
-#include "ID_US.h"
+#include "id_mm.h"
+#include "id_pm.h"
+#include "id_ca.h"
+#include "id_vl.h"
+#include "id_vh.h"
+#include "id_in.h"
+#include "id_sd.h"
+#include "id_us.h"
 
 
 void	Quit (char *error);		// defined in user program

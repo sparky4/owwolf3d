@@ -14,7 +14,7 @@ loaded into the data segment
 =============================================================================
 */
 
-#include "ID_HEADS.H"
+#include "id_heads.h"
 #pragma hdrstop
 
 #pragma warn -pro
@@ -52,13 +52,13 @@ typedef struct
 =============================================================================
 */
 
-byte 		_seg	*tinf;
+BSEG	*tinf;
 int			mapon;
 
-unsigned	_seg	*mapsegs[MAPPLANES];
-maptype		_seg	*mapheaderseg[NUMMAPS];
-byte		_seg	*audiosegs[NUMSNDCHUNKS];
-void		_seg	*grsegs[NUMCHUNKS];
+USEG	*mapsegs[MAPPLANES];
+MSEG	*mapheaderseg[NUMMAPS];
+BSEG	*audiosegs[NUMSNDCHUNKS];
+__segment	*grsegs[NUMCHUNKS];
 
 byte		far	grneeded[NUMCHUNKS];
 byte		ca_levelbit,ca_levelnum;

@@ -10,13 +10,13 @@
 #include "wl_menu.h"
 
 #ifdef SPANISH
-#include "SPANISH.H"
+#include "spanish.h"
 #else
-#include "FOREIGN.H"
+#include "foreign.h"
 #endif
 
 #ifdef SPEAR
-#include "F_SPEAR.H"
+#include "f_spear.h"
 #endif
 
 /*
@@ -1076,8 +1076,11 @@ typedef struct
 // table data after dataofs[rightpix-leftpix+1]
 }	t_compshape;
 
+#define TSEG t_compscale
+//_seg
 
-extern	t_compscale _seg *scaledirectory[MAXSCALEHEIGHT+1];
+
+extern	TSEG *scaledirectory[MAXSCALEHEIGHT+1];
 extern	long			fullscalefarcall[MAXSCALEHEIGHT+1];
 
 extern	byte		bitmasks1[8][8];
