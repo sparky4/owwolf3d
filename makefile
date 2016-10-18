@@ -77,7 +77,7 @@ LIBFLAGS=$(WLIBQ) -b -n
 #
 # objects
 #
-WOLFOBJS = id_mm.$(OBJ) id_pm.$(OBJ) id_ca.$(OBJ) id_vl.$(OBJ) wl_inter.$(OBJ)
+WOLFOBJS = id_mm.$(OBJ) id_pm.$(OBJ) id_ca.$(OBJ) id_vl.$(OBJ) wl_inter.$(OBJ) signon.$(OBJ)
 #id_vl_a.$(OBJ)
 
 #
@@ -148,6 +148,7 @@ id_ca.$(OBJ):	$(SRC)/id_ca.c
 id_vl.$(OBJ):	$(SRC)/id_vl.c
 wl_inter.$(OBJ):	$(SRC)/wl_inter.c
 wl_menu.$(OBJ):	$(SRC)/wl_menu.c
+signon.$(OBJ):	$(SRC)/signon.c
 #id_vl_a.$(OBJ):	$(SRC)/id_vl_a.asm
 
 #

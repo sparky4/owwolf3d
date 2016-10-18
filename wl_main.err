@@ -1,9 +1,0 @@
-src/wl_main.c(738): Error! E1011: Symbol 'signon' has not been declared
-src/wl_main.c(738): Error! E1176: Parameter 1, pointer type mismatch
-src/wl_main.c(738): Note! I2003: source conversion type is 'int *'
-src/wl_main.c(738): Note! I2004: target conversion type is 'unsigned char __far *'
-src/wl_main.c(739): Error! E1176: Parameter 1, pointer type mismatch
-src/wl_main.c(739): Note! I2003: source conversion type is 'int *'
-src/wl_main.c(739): Note! I2004: target conversion type is 'unsigned char __far *'
-src/wl_main.c(746): Error! E1011: Symbol 'signon' has not been declared
-src/wl_main.c(1382): Warning! W131: No prototype found for function 'clrscr'

@@ -107,4 +107,4 @@ extern	unsigned	blockstarts[UPDATEWIDE*UPDATEHIGH];
 extern	byte		fontcolor,backcolor;
 
 #define SETFONTCOLOR(f,b) fontcolor=f;backcolor=b;
-
+extern byte far signon[];
