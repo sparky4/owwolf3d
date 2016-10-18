@@ -2347,7 +2347,7 @@ SD_MusicOn(void)
 //	SD_MusicOff() - turns off the sequencer and any playing notes
 //
 ///////////////////////////////////////////////////////////////////////////
-void
+int
 SD_MusicOff(void)
 {
 	word	i;
@@ -2363,6 +2363,7 @@ SD_MusicOff(void)
 		break;
 	}
 	sqActive = false;
+	return 0;
 }
 
 ///////////////////////////////////////////////////////////////////////////

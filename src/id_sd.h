@@ -211,9 +211,9 @@ extern	void	SD_SetPosition(int leftvol,int rightvol),
 				SD_WaitSoundDone(void),
 
 				SD_StartMusic(MusicGroup far *music),
-				SD_MusicOn(void),
-				SD_MusicOff(void),
-				SD_FadeOutMusic(void),
+				SD_MusicOn(void);
+extern	int		SD_MusicOff(void);
+extern	void	SD_FadeOutMusic(void),
 
 				SD_SetUserHook(void (*hook)(void));
 extern	boolean	SD_MusicPlaying(void),

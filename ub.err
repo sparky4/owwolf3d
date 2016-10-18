@@ -1,24 +1,26 @@
-src/wl_act1.c(271): Error! E1129: Type does not agree with previous definition of 'doornum'
-src/wl_act1.c(271): Note! I2002: 'doornum' defined in: src/wl_def.h(825)
-src/wl_act1.c(276): Error! E1057: Modifiers disagree with previous definition of 'areaconnect'
-src/wl_act1.c(276): Note! I2002: 'areaconnect' defined in: src/wl_def.h(1155)
-src/wl_act1.c(372): Error! E1011: Symbol 'mapshift' has not been declared
-src/wl_act1.c(372): Error! E1066: Cannot perform operation with pointer to void
-src/wl_act1.c(372): Error! E1066: Cannot perform operation with pointer to void
-src/wl_act1.c(471): Error! E1011: Symbol 'mapshift' has not been declared
-src/wl_act1.c(472): Error! E1066: Cannot perform operation with pointer to void
-src/wl_act1.c(472): Error! E1066: Cannot perform operation with pointer to void
-src/wl_act1.c(472): Error! E1052: Expression has void type
-src/wl_act1.c(565): Error! E1011: Symbol 'mapshift' has not been declared
-src/wl_act1.c(566): Error! E1066: Cannot perform operation with pointer to void
-src/wl_act1.c(566): Error! E1066: Cannot perform operation with pointer to void
-src/wl_act1.c(653): Error! E1011: Symbol 'mapshift' has not been declared
-src/wl_act1.c(653): Error! E1066: Cannot perform operation with pointer to void
-src/wl_act1.c(653): Error! E1066: Cannot perform operation with pointer to void
-src/wl_act1.c(730): Error! E1129: Type does not agree with previous definition of 'pwalldir'
-src/wl_act1.c(730): Note! I2002: 'pwalldir' defined in: src/wl_def.h(1162)
-src/wl_act1.c(774): Error! E1011: Symbol 'mapshift' has not been declared
-src/wl_act1.c(774): Error! E1066: Cannot perform operation with pointer to void
-src/wl_act1.c(774): Error! E1066: Cannot perform operation with pointer to void
-src/wl_act1.c(774): Error! E1113: Expression has incomplete type
-src/wl_act1.c(774): Error! E1147: Too many errors: compilation aborted
+src/wl_play.c(44): Error! E1129: Type does not agree with previous definition of 'godmode'
+src/wl_play.c(44): Note! I2002: 'godmode' defined in: src/wl_def.h(891)
+src/wl_play.c(44): Error! E1129: Type does not agree with previous definition of 'singlestep'
+src/wl_play.c(44): Note! I2002: 'singlestep' defined in: src/wl_def.h(891)
+src/wl_play.c(71): Error! E1129: Type does not agree with previous definition of 'demoptr'
+src/wl_play.c(71): Note! I2002: 'demoptr' defined in: src/wl_def.h(915)
+src/wl_play.c(71): Error! E1129: Type does not agree with previous definition of 'lastdemoptr'
+src/wl_play.c(71): Note! I2002: 'lastdemoptr' defined in: src/wl_def.h(915)
+src/wl_play.c(90): Error! E1062: Inconsistent return type for function 'StopMusic'
+src/wl_play.c(90): Note! I2003: source conversion type is 'int'
+src/wl_play.c(90): Note! I2004: target conversion type is 'void'
+src/wl_play.c(90): Note! I2002: 'StopMusic' defined in: src/wl_def.h(928)
+src/wl_play.c(677): Error! E1011: Symbol 'vdisp' has not been declared
+src/wl_play.c(734): Error! E1011: Symbol 'vdisp' has not been declared
+src/wl_play.c(756): Error! E1011: Symbol 'vdisp' has not been declared
+src/wl_play.c(860): Error! E1011: Symbol 'vdisp' has not been declared
+src/wl_state.c(95): Error! E1011: Symbol 'mapshift' has not been declared
+src/wl_state.c(320): Error! E1011: Symbol 'mapshift' has not been declared
+src/wl_state.c(704): Error! E1031: Name 'hidden' not found in struct/union objstruct
+src/wl_text.c(375): Error! E1176: Parameter 2, pointer type mismatch
+src/wl_text.c(375): Note! I2003: source conversion type is 'unsigned short *'
+src/wl_text.c(375): Note! I2004: target conversion type is 'unsigned int *'
+src/wl_text.c(375): Error! E1176: Parameter 3, pointer type mismatch
+src/wl_text.c(375): Note! I2003: source conversion type is 'unsigned short *'
+src/wl_text.c(375): Note! I2004: target conversion type is 'unsigned int *'
+src/wl_text.c(375): Note! I2002: 'VW_MeasurePropString' defined in: src/id_vh.c(217)

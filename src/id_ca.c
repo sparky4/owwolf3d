@@ -57,7 +57,7 @@ memptr	tinf;
 int			mapon;
 
 //USEG	*
-memptr	mapsegs[MAPPLANES];
+unsigned	*mapsegs[MAPPLANES];
 MSEG	*mapheaderseg[NUMMAPS];
 //BSEG	*
 memptr	audiosegs[NUMSNDCHUNKS];

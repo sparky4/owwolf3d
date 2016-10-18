@@ -25,7 +25,7 @@ extern	char		audioname[13];
 extern	/*BSEG	**/memptr	tinf;
 extern	int			mapon;
 
-extern	/*USEG	**/memptr	mapsegs[MAPPLANES];
+extern	/*USEG	**/unsigned *mapsegs[MAPPLANES];
 extern	MSEG	*mapheaderseg[NUMMAPS];
 extern	/*BSEG	**/memptr	audiosegs[NUMSNDCHUNKS];
 extern	/*VSEG	**/memptr	grsegs[NUMCHUNKS];

@@ -1,4 +1,6 @@
 //#define BETA
+#ifndef __WL_DEF_H__
+#define __WL_DEF_H__
 #define YEAR	1992
 #define MONTH	9
 #define DAY		30
@@ -93,6 +95,7 @@
 
 
 #define PI	3.141592657
+#define M_PI PI
 
 #define GLOBAL1		(1l<<16)
 #define TILEGLOBAL  GLOBAL1
@@ -822,7 +825,7 @@ void		ShutdownId (void);
 extern	boolean		ingame,fizzlein;
 extern	unsigned	latchpics[NUMLATCHPICS];
 extern	gametype	gamestate;
-extern	int			doornum;
+extern	int			doornum;//short?
 
 extern	char		demoname[13];
 
@@ -1152,7 +1155,7 @@ extern	int			doornum;
 
 extern	unsigned	doorposition[MAXDOORS],pwallstate;
 
-extern	byte		far areaconnect[NUMAREAS][NUMAREAS];
+extern	byte		/*far*/ areaconnect[NUMAREAS][NUMAREAS];
 
 extern	boolean		areabyplayer[NUMAREAS];
 
@@ -1279,3 +1282,4 @@ extern	char	helpfilename[],endfilename[];
 
 extern	void	HelpScreens(void);
 extern	void	EndText(void);
+#endif
