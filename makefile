@@ -50,7 +50,7 @@ TARGET_OS = dos
 BUILD_ROOT=$+$(%__CWD__)$-
 DATADIR=data$(DIRSEP)
 
-SRC=wolfsrc
+SRC=src
 
 
 #
