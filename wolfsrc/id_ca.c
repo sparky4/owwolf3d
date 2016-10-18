@@ -52,13 +52,17 @@ typedef struct
 =============================================================================
 */
 
-BSEG	*tinf;
+//BSEG	*
+memptr	tinf;
 int			mapon;
 
-USEG	*mapsegs[MAPPLANES];
+//USEG	*
+memptr	mapsegs[MAPPLANES];
 MSEG	*mapheaderseg[NUMMAPS];
-BSEG	*audiosegs[NUMSNDCHUNKS];
-__segment	*grsegs[NUMCHUNKS];
+//BSEG	*
+memptr	audiosegs[NUMSNDCHUNKS];
+//__segment	*
+memptr	grsegs[NUMCHUNKS];
 
 byte		far	grneeded[NUMCHUNKS];
 byte		ca_levelbit,ca_levelnum;
@@ -1287,10 +1291,10 @@ void CAL_ExpandGrChunk (int chunk, byte far *source)
 // allocate final space, decompress it, and free bigbuffer
 // Sprites need to have shifts made and various other junk
 //
-	MM_GetPtr (&grsegs[chunk],expanded);
+	MM_GetPtr ((memptr)grsegs[chunk],expanded);
 	if (mmerror)
 		return;
-	CAL_HuffExpand (source,grsegs[chunk],expanded,grhuffman,false);
+	CAL_HuffExpand (source,(memptr)grsegs[chunk],expanded,grhuffman,false);
 }
 
 
@@ -1314,7 +1318,7 @@ void CA_CacheGrChunk (int chunk)
 	grneeded[chunk] |= ca_levelbit;		// make sure it doesn't get removed
 	if (grsegs[chunk])
 	{
-		MM_SetPurge (&grsegs[chunk],0);
+		MM_SetPurge (grsegs[chunk],0);
 		return;							// allready in memory
 	}
 
@@ -1438,7 +1442,7 @@ void CA_CacheMap (int mapnum)
 		pos = mapheaderseg[mapnum]->planestart[plane];
 		compressed = mapheaderseg[mapnum]->planelength[plane];
 
-		dest = &(memptr)mapsegs[plane];
+		dest = (memptr)mapsegs[plane];
 
 		lseek(maphandle,pos,SEEK_SET);
 		if (compressed<=BUFFERSIZE)
@@ -1463,7 +1467,7 @@ void CA_CacheMap (int mapnum)
 		MM_GetPtr (&buffer2seg,expanded);
 		CAL_CarmackExpand (source, (unsigned far *)buffer2seg,expanded);
 		CA_RLEWexpand (((unsigned far *)buffer2seg)+1,*dest,size,
-		((mapfiletype _seg *)tinf)->RLEWtag);
+		((mapfiletype /*_seg*/ *)tinf)->RLEWtag);
 		MM_FreePtr (&buffer2seg);
 
 #else
@@ -1501,7 +1505,7 @@ void CA_UpLevel (void)
 
 	for (i=0;i<NUMCHUNKS;i++)
 		if (grsegs[i])
-			MM_SetPurge (&(memptr)grsegs[i],3);
+			MM_SetPurge ((memptr)grsegs[i],3);
 	ca_levelbit<<=1;
 	ca_levelnum++;
 }
@@ -1592,7 +1596,7 @@ void CA_SetGrPurge (void)
 
 	for (i=0;i<NUMCHUNKS;i++)
 		if (grsegs[i])
-			MM_SetPurge (&(memptr)grsegs[i],3);
+			MM_SetPurge ((memptr)grsegs[i],3);
 }
 
 
@@ -1617,7 +1621,7 @@ void CA_SetAllPurge (void)
 //
 	for (i=0;i<NUMSNDCHUNKS;i++)
 		if (audiosegs[i])
-			MM_SetPurge (&(memptr)audiosegs[i],3);
+			MM_SetPurge ((memptr)audiosegs[i],3);
 
 //
 // free graphics
@@ -1692,7 +1696,7 @@ void CA_CacheMarks (void)
 				&& bufferend>= endpos)
 				{
 				// data is allready in buffer
-					source = (byte _seg *)bufferseg+(pos-bufferstart);
+					source = (byte /*_seg*/ *)bufferseg+(pos-bufferstart);
 				}
 				else
 				{

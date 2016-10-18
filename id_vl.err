@@ -1,0 +1,24 @@
+wolfsrc/id_head.h(19): Error! E1034: Symbol 'Point' already defined
+wolfsrc/id_head.h(19): Note! I2002: 'Point' defined in: wolfsrc/type.h(40)
+wolfsrc/id_head.h(24): Error! E1034: Symbol 'Rect' already defined
+wolfsrc/id_head.h(24): Note! I2002: 'Rect' defined in: wolfsrc/type.h(44)
+wolfsrc/id_vl.c(36): Error! E1071: Type of parameter 1 does not agree with previous definition
+wolfsrc/id_vl.c(36): Note! I2003: source conversion type is 'unsigned int'
+wolfsrc/id_vl.c(36): Note! I2004: target conversion type is 'int'
+wolfsrc/id_vl.c(36): Note! I2002: 'VL_SetScreen' defined in: wolfsrc/id_vl.h(131)
+wolfsrc/id_vl.c(75): Error! E1011: Symbol 'asm' has not been declared
+wolfsrc/id_vl.c(75): Error! E1009: Expecting ';' but found 'cld'
+wolfsrc/id_vl.c(75): Error! E1011: Symbol 'cld' has not been declared
+wolfsrc/id_vl.c(78): Error! E1011: Symbol '__argc' has not been declared
+wolfsrc/id_vl.c(79): Warning! W131: No prototype found for function 'US_CheckParm'
+wolfsrc/id_vl.c(79): Error! E1011: Symbol '__argv' has not been declared
+wolfsrc/id_vl.c(79): Error! E1045: Subscript on non-array
+wolfsrc/id_vl.c(117): Error! E1011: Symbol 'asm' has not been declared
+wolfsrc/id_vl.c(117): Error! E1009: Expecting ';' but found 'mov'
+wolfsrc/id_vl.c(117): Error! E1011: Symbol 'mov' has not been declared
+wolfsrc/id_vl.c(117): Error! E1009: Expecting ';' but found 'ax'
+wolfsrc/id_vl.c(117): Error! E1011: Symbol 'ax' has not been declared
+wolfsrc/id_vl.c(118): Warning! W111: Meaningless use of an expression
+wolfsrc/id_vl.c(118): Error! E1009: Expecting ';' but found 'asm'
+wolfsrc/id_vl.c(118): Error! E1009: Expecting ';' but found 'int'
+wolfsrc/id_vl.c(118): Error! E1147: Too many errors: compilation aborted

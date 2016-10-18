@@ -20,13 +20,13 @@ typedef	struct
 
 extern	char		audioname[13];
 
-extern	BSEG	*tinf;
+extern	/*BSEG	**/memptr	tinf;
 extern	int			mapon;
 
-extern	USEG	*mapsegs[MAPPLANES];
+extern	/*USEG	**/memptr	mapsegs[MAPPLANES];
 extern	MSEG	*mapheaderseg[NUMMAPS];
-extern	BSEG	*audiosegs[NUMSNDCHUNKS];
-extern	VSEG	*grsegs[NUMCHUNKS];
+extern	/*BSEG	**/memptr	audiosegs[NUMSNDCHUNKS];
+extern	/*VSEG	**/memptr	grsegs[NUMCHUNKS];
 
 extern	byte		far	grneeded[NUMCHUNKS];
 extern	byte		ca_levelbit,ca_levelnum;

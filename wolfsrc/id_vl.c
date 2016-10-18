@@ -1,7 +1,7 @@
 // ID_VL.C
 
 #include <dos.h>
-#include <alloc.h>
+#include <malloc.h>
 #include <mem.h>
 #include <string.h>
 #include "id_head.h"

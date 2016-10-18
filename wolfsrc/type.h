@@ -52,8 +52,7 @@ typedef void __based( void ) * memptr;	////old //----typedef void __based(__self
 #define USEG __segment
 //unsigned
 //_seg
-#define MSEG __segment
-//maptype
+#define MSEG maptype
 //_seg
 #define VSEG __segment
 //void
