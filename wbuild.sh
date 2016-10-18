@@ -1,2 +1,3 @@
-wmake -h clean
-wmake -h
+#!/bin/bash
+wmake -f mk.mak -h clean
+wmake -f mk.mak -h

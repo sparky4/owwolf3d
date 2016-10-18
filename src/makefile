@@ -63,8 +63,9 @@ UPXQ=-qqq
 #
 # compile flags
 #
+#-bt=dos -0-fpi87 -ohx -j -zp1 -zq -w0
 S_FLAGS=-sg -st -of+ -zu -zdf -zff -zgf -k32768#54096#60000
-Z_FLAGS=-zk0 -zc -zp8 -zm
+Z_FLAGS=-zk0 -zc -zp8 -zm -zp1
 O_FLAGS=-obmilr -oe=24 -out -oh -ei -onac -ol+ -ok##x
 T_FLAGS=-bt=dos -mh -0 -fpi87 -fo=.$(OBJ) -d1 -e=64
 
@@ -74,10 +75,13 @@ CFLAGS=$(WCLQ) $(T_FLAGS) -wo $(O_FLAGS) $(S_FLAGS) $(Z_FLAGS)
 LFLAGS=$(WCLQ) -l=dos -fm=$^&.mah $(S_FLAGS)
 LIBFLAGS=$(WLIBQ) -b -n
 
+INCLUDE = $(%WATCOM)\h
+SODDEF  = -DSPEAR -DSODPAL
+
 #
 # objects
 #
-WOLFOBJS = id_mm.$(OBJ) id_pm.$(OBJ) id_ca.$(OBJ) id_vl.$(OBJ) wl_inter.$(OBJ)
+#WOLFOBJS = id_mm.$(OBJ) id_pm.$(OBJ) id_ca.$(OBJ) id_vl.$(OBJ) wl_inter.$(OBJ)
 #id_vl_a.$(OBJ)
 
 #
@@ -99,7 +103,7 @@ WOLFOBJS = id_mm.$(OBJ) id_pm.$(OBJ) id_ca.$(OBJ) id_vl.$(OBJ) wl_inter.$(OBJ)
 #	Default make rules
 #
 .c.obj:
-	*wcl $(CPPFLAGS) $(CFLAGS) $(extra_$^&_obj_opts) -c $[@
+	*wcl $(CPPFLAGS) $(CFLAGS) -i=$(INCLUDE) $(extra_$^&_obj_opts) -c $[@
 
 .asm.obj:
 	*wcl $(AFLAGS) $(extra_$^&_obj_opts) -c $[@
@@ -115,15 +119,18 @@ WOLFOBJS = id_mm.$(OBJ) id_pm.$(OBJ) id_ca.$(OBJ) id_vl.$(OBJ) wl_inter.$(OBJ)
 # List of executables to build
 #
 EXEC = &
-    wolf3d.exe
+    wolf3d.exe &
+    sod.exe
 
-
-all: $(EXEC)
+all: $(EXEC) .symbolic
 
 #
 # game and bakapi executables
 #
-wolf3d.exe:	wl_main.$(OBJ) $(WOLFOBJS)
+#wolf3d.exe:	wl_main.$(OBJ) $(WOLFOBJS)
+wold3d.exe:	$(INCLUDE) ub.c
+sod.exe:	$(INCLUDE) $(SODDEF) ub.c
+#  $(LD) name SOD4GW sys op el FILE ub.obj
 
 #
 # Test Executables!
@@ -154,22 +161,8 @@ wl_menu.$(OBJ):	$(SRC)/wl_menu.c
 #other~
 #
 clean: .symbolic
-	@for %f in ($(EXEC)) do @if exist %f $(REMOVECOMMAND) %f
-!ifdef __LINUX__
-	@rm *.LIB
-	@rm *.EXE
-!endif
-	@if exist *.obj $(REMOVECOMMAND) *.obj
-	@if exist *.OBJ $(REMOVECOMMAND) *.OBJ
-	@if exist *.LIB $(REMOVECOMMAND) *.LIB
-	@if exist *.lnk $(REMOVECOMMAND) *.lnk
-	@if exist *.LNK $(REMOVECOMMAND) *.LNK
-	@if exist *.smp $(REMOVECOMMAND) *.smp
-	@if exist *.SMP $(REMOVECOMMAND) *.SMP
-	@if exist *.hed $(REMOVECOMMAND) *.hed
-	@if exist *.mah $(REMOVECOMMAND) *.mah
-	@if exist *.MAH $(REMOVECOMMAND) *.MAH
-	@if exist *.err $(REMOVECOMMAND) *.err
+CLEANEXT = sys exe obj err lnk sym lst map lib
+  @for %a in ($(CLEANEXT)) do -@rm *.%a
 
 backupconfig: .symbolic
 	@$(COPYCOMMAND) .git$(DIRSEP)config git_con.fig
