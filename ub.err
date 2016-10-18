@@ -1,7 +1,3 @@
-src/signon.c(2): Error! E1057: Modifiers disagree with previous definition of 'signon'
-src/signon.c(2): Note! I2002: 'signon' defined in: src/id_heads.h(25)
-src/signon.c(2): Error! E1129: Type does not agree with previous definition of 'signon'
-src/signon.c(2): Note! I2002: 'signon' defined in: src/id_heads.h(25)
 src/wl_act1.c(271): Error! E1129: Type does not agree with previous definition of 'doornum'
 src/wl_act1.c(271): Note! I2002: 'doornum' defined in: src/wl_def.h(825)
 src/wl_act1.c(276): Error! E1057: Modifiers disagree with previous definition of 'areaconnect'
@@ -23,4 +19,6 @@ src/wl_act1.c(730): Error! E1129: Type does not agree with previous definition o
 src/wl_act1.c(730): Note! I2002: 'pwalldir' defined in: src/wl_def.h(1162)
 src/wl_act1.c(774): Error! E1011: Symbol 'mapshift' has not been declared
 src/wl_act1.c(774): Error! E1066: Cannot perform operation with pointer to void
+src/wl_act1.c(774): Error! E1066: Cannot perform operation with pointer to void
+src/wl_act1.c(774): Error! E1113: Expression has incomplete type
 src/wl_act1.c(774): Error! E1147: Too many errors: compilation aborted

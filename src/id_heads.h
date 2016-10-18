@@ -22,7 +22,7 @@
 
 //--------------------------------------------------------------------------
 
-extern	char		far signon;
+//extern	unsigned	char		far signon;
 
 #define	introscn	signon
 
