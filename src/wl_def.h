@@ -885,8 +885,8 @@ extern	byte		spotvis[MAPSIZE][MAPSIZE];
 extern	objtype		*actorat[MAPSIZE][MAPSIZE];
 
 #define UPDATESIZE			(UPDATEWIDE*UPDATEHIGH)
-//extern	byte		update[UPDATESIZE];
-extern	byte	update[UPDATEHIGH][UPDATEWIDE];
+extern	byte		update[UPDATESIZE];
+//extern	byte	update[UPDATEHIGH][UPDATEWIDE];
 
 extern	boolean		singlestep,godmode,noclip;
 extern	int			extravbls;
