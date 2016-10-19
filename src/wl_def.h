@@ -884,7 +884,7 @@ extern	byte		tilemap[MAPSIZE][MAPSIZE];	// wall values only
 extern	byte		spotvis[MAPSIZE][MAPSIZE];
 extern	objtype		*actorat[MAPSIZE][MAPSIZE];
 
-//#define UPDATESIZE			(UPDATEWIDE*UPDATEHIGH)
+#define UPDATESIZE			(UPDATEWIDE*UPDATEHIGH)
 //extern	byte		update[UPDATESIZE];
 extern	byte	update[UPDATEHIGH][UPDATEWIDE];
 
