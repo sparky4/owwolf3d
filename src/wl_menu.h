@@ -1,6 +1,10 @@
 //
 // WL_MENU.H
 //
+#ifndef __WL_MENU_H__
+#define __WL_MENU_H__
+#include "src/wl_def.h"
+
 #ifdef SPEAR
 
 #define BORDCOLOR       0x99
@@ -115,7 +119,7 @@ extern CP_iteminfo MainItems;
 // FUNCTION PROTOTYPES
 //
 
-void    US_ControlPanel(byte);
+void    US_ControlPanel();
 
 void SetupControlPanel(void);
 void CleanupControlPanel(void);
@@ -132,7 +136,7 @@ void ReadAnyControl(ControlInfo *ci);
 void TicDelay(int count);
 void CacheLump(int lumpstart,int lumpend);
 void UnCacheLump(int lumpstart,int lumpend);
-int StartCPMusic(int song);
+void StartCPMusic(int song);
 int  Confirm(char *string);
 void Message(char *string);
 void CheckPause(void);
@@ -183,7 +187,7 @@ int  CP_SaveGame(int quick);
 int CP_Control();
 int CP_ChangeView();
 void CP_ExitOptions();
-void CP_Quit();
+int CP_Quit();
 int CP_ViewScores();
 int  CP_EndGame();
 int  CP_CheckQuick(unsigned scancode);
@@ -195,6 +199,9 @@ void CheckForEpisodes();
 void CheckForEpisodes(void);
 
 void FreeMusic(void);
+
+void ShootSnd(void);
+
 
 //
 // VARIABLES
@@ -239,5 +246,5 @@ extern LRstruct LevelRatios[];
 void Write (int x,int y,char *string);
 void NonShareware(void);
 int GetYorN(int x,int y,int pic);
-
+#endif
 

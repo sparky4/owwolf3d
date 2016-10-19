@@ -1,6 +1,7 @@
 // WL_DEBUG.C
 
-#include <BIOS.H>
+#include <bios.h>
+#include "src/wl_def.h"
 
 /*
 =============================================================================
@@ -20,6 +21,8 @@
 
 =============================================================================
 */
+
+byte *vbuf=(byte *)0xa0000;
 
 #ifdef DEBUGKEYS
 
@@ -155,7 +158,7 @@ void PictureGrabber (void)
                 byte bmpheads[54]={'B','M',0x8e,0x3f,0,0,0,0,0,0,0x36,4,0,0,
                     40,0,0,0,0x40,1,0,0,200,0,0,0,1,0,8,0,0,0,0,0,
                     0,0xfa,0,0,0xc4,0x0e,0,0,0xc4,0x0e,0,0,0,0,0,0,0,0,0,0};
-                     
+
                 for(i=0;i<1000;i++)
                 {
                         fname[7]=i%10+'0';
@@ -187,7 +190,7 @@ void PictureGrabber (void)
                              (((unsigned long)wolfpal[i*3+2])<<2);
                         write(file,&col,4);
                 }
-                
+
                 for(i=199;i>=0;i--)
                 {                                               // 64000 bytes image data
                         for(x=0;x<320;x++)
@@ -225,7 +228,7 @@ void BasicOverhead (void)
                 z = 128/MAPSIZE; // zoom scale
                 offx = 320/2;
                 offy = (160-MAPSIZE*z)/2;
-                
+
         #ifdef MAPBORDER
                 int temp = viewsize;
                 NewViewSize(16);
@@ -233,16 +236,16 @@ void BasicOverhead (void)
         #endif
 
                 // right side (raw)
-                        
+
                 for(x=0;x<MAPSIZE;x++)
                         for(y=0;y<MAPSIZE;y++)
                                 VWB_Bar(x*z+offx, y*z+offy,z,z,(unsigned)actorat[x][y]);
 
                 // left side (filtered)
-                
+
                 int tile, color;
                 offx -= 128;
-                
+
                 for(x=0;x<MAPSIZE;x++)
                         for(y=0;y<MAPSIZE;y++)
                         {
@@ -257,7 +260,7 @@ void BasicOverhead (void)
                                 else if (tile == 64) color = 158; // solid obj
                                 else if (tile < 128) color = 154;  // walls
                                 else if (tile < 256) color = 146;  // doors
-                                
+
                                 VWB_Bar(x*z+offx, y*z+offy,z,z,color);
                         }
 
@@ -267,7 +270,7 @@ void BasicOverhead (void)
 
                 VW_UpdateScreen();
                 IN_Ack();
-                
+
         #ifdef MAPBORDER
                 NewViewSize(temp);
                 DrawAllPlayBorder();
@@ -518,16 +521,16 @@ int DebugKeys (void)
                                         if (level > 56) level=31;
                                         else level -= 26;
                                 }
-                                        
+
                                 bordercol=level*4+3;
 
                                 if (bordercol == VIEWCOLOR)
                                         DrawAllStatusBorder(bordercol);
-                                
+
                                 DrawAllPlayBorder();
-                                        
+
                                 return 0;
-                        }                            
+                        }
                 }
                 return 1;
         }
@@ -547,7 +550,7 @@ int DebugKeys (void)
                 IN_Ack();
                 fpscounter ^= 1;
         /*      if (!fpscounter)
-                        DrawPlayScreen(); */                
+                        DrawPlayScreen(); */
                 return 1;
         }
         if (Keyboard[sc_E])             // E = quit level
@@ -576,7 +579,7 @@ int DebugKeys (void)
                 US_Print (" 3:");
                 if ((unsigned)actorat[player->tilex][player->tiley] < 256)
                         US_PrintUnsigned (spotvis[player->tilex][player->tiley]);
-                else              
+                else
                         US_PrintUnsigned (actorat[player->tilex][player->tiley]->flags);
                 VW_UpdateScreen();
                 IN_Ack();
@@ -640,12 +643,12 @@ int DebugKeys (void)
         else if (Keyboard[sc_L])                        // L = level ratios
         {
                 byte x,start,end=LRpack;
-                
+
                 if (end == 8)   // wolf3d
                 {
                         CenterWindow(17,10);
                         start = 0;
-                }                        
+                }
                 else            // sod
                 {
                         CenterWindow(17,12);
@@ -668,7 +671,7 @@ int DebugKeys (void)
                         US_Print("% ");
                         US_PrintUnsigned(LevelRatios[x].treasure);
                         US_Print("%\n");
-                }                        
+                }
                 VW_UpdateScreen();
                 IN_Ack();
                 if (end == 10 && gamestate.mapon > 9)

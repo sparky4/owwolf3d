@@ -58,7 +58,7 @@ extern	byte	fontcolor;
 extern	int	fontnumber;
 extern	int	px,py;
 
-byte *vbuf=(byte *)0xa0000;
+extern byte *vbuf;
 
 
 //

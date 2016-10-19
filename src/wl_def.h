@@ -123,6 +123,14 @@
 #define MAXVIEWWIDTH		320
 
 #define MAPSIZE		64					// maps are 64*64 max
+#define mapshift        6               // 2^mapshift = MAPSIZE
+#define maparea         4096            // MAPSIZE<<mapshift or MAPSIZE*MAPSIZE
+#define mapspotend      8191            // 64<<mapshift-1 or 64*MAPSIZE-1
+#define MAPPLANES       2
+
+#define mapheight MAPSIZE
+#define mapwidth MAPSIZE
+
 #define NORTH	0
 #define EAST	1
 #define SOUTH	2
@@ -1159,10 +1167,10 @@ extern	byte		/*far*/ areaconnect[NUMAREAS][NUMAREAS];
 
 extern	boolean		areabyplayer[NUMAREAS];
 
-extern unsigned	pwallstate;
-extern unsigned	pwallpos;			// amount a pushable wall has been moved (0-63)
-extern unsigned	pwallx,pwally;
-extern int			pwalldir;
+extern word	pwallstate;
+extern word	pwallpos;			// amount a pushable wall has been moved (0-63)
+extern word	pwallx,pwally;
+extern byte			pwalldir;
 
 
 void InitDoorList (void);
@@ -1269,6 +1277,9 @@ void SpawnGift (int tilex, int tiley);
 void SpawnFat (int tilex, int tiley);
 void SpawnFakeHitler (int tilex, int tiley);
 void SpawnHitler (int tilex, int tiley);
+void SpawnBJVictory (void);
+void A_DeathScream (objtype *ob);
+
 
 /*
 =============================================================================

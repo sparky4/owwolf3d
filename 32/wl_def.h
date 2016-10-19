@@ -14,7 +14,7 @@
         Wolf3d Shareware v1.4                     - define UPLOAD
         Wolf3d Full v1.4 Apogee (with ReadThis)   - define none
         Spear of Destiny Full                     - define SPEAR (and GOODTIMES for no FormGen quiz)
-       
+
         Spear Demo, Wolf3d Full v1.1 and Shareware v1.0-1.1    - can be added by the user
 */
 
@@ -33,8 +33,8 @@
 #include <stdlib.h>
 #include <mem.h>
 
-#include "FOREIGN.H"
-        
+#include "foreign.h"
+
 #ifndef SPEAR
         #include "audiowl6.h"
 #ifdef UPLOAD
@@ -49,7 +49,7 @@
 #else
         #include "audiosod.h"
         #include "gfxv_sod.h"
-        #include "F_SPEAR.H"
+        #include "f_spear.h"
 #endif
 
 typedef unsigned char byte;
@@ -75,10 +75,10 @@ typedef struct
 #include "id_us.h"
 #include "id_ca.h"
 
-#include "WL_MENU.H"
+#include "wl_menu.h"
 
 #ifdef SPEAR
-#include "F_SPEAR.H"
+#include "f_spear.h"
 #endif
 
 #define outportb outp

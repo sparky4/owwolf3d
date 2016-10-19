@@ -21,22 +21,22 @@ struct
 	stat_t	type;
 } statinfo[] =
 {
-{SPR_STAT_0},					// puddle          spr1v
+{SPR_STAT_0},					// puddle	  spr1v
 {SPR_STAT_1,block},				// Green Barrel    "
 {SPR_STAT_2,block},				// Table/chairs    "
 {SPR_STAT_3,block},				// Floor lamp      "
 {SPR_STAT_4},					// Chandelier      "
 {SPR_STAT_5,block},				// Hanged man      "
-{SPR_STAT_6,bo_alpo},			// Bad food        "
+{SPR_STAT_6,bo_alpo},			// Bad food	"
 {SPR_STAT_7,block},				// Red pillar      "
 //
 // NEW PAGE
 //
-{SPR_STAT_8,block},				// Tree            spr2v
+{SPR_STAT_8,block},				// Tree	    spr2v
 {SPR_STAT_9},					// Skeleton flat   "
-{SPR_STAT_10,block},			// Sink            " (SOD:gibs)
+{SPR_STAT_10,block},			// Sink	    " (SOD:gibs)
 {SPR_STAT_11,block},			// Potted plant    "
-{SPR_STAT_12,block},			// Urn             "
+{SPR_STAT_12,block},			// Urn	     "
 {SPR_STAT_13,block},			// Bare table      "
 {SPR_STAT_14},					// Ceiling light   "
 #ifndef SPEAR
@@ -51,8 +51,8 @@ struct
 {SPR_STAT_17,block},			// Hanging cage    "
 {SPR_STAT_18,block},			// SkeletoninCage  "
 {SPR_STAT_19},					// Skeleton relax  "
-{SPR_STAT_20,bo_key1},			// Key 1           "
-{SPR_STAT_21,bo_key2},			// Key 2           "
+{SPR_STAT_20,bo_key1},			// Key 1	   "
+{SPR_STAT_21,bo_key2},			// Key 2	   "
 {SPR_STAT_22,block},			// stuff				(SOD:gibs)
 {SPR_STAT_23},					// stuff
 //
@@ -60,22 +60,22 @@ struct
 //
 {SPR_STAT_24,bo_food}, 			// Good food       spr4v
 {SPR_STAT_25,bo_firstaid},		// First aid       "
-{SPR_STAT_26,bo_clip},			// Clip            "
+{SPR_STAT_26,bo_clip},			// Clip	    "
 {SPR_STAT_27,bo_machinegun},	// Machine gun     "
 {SPR_STAT_28,bo_chaingun},		// Gatling gun     "
-{SPR_STAT_29,bo_cross},			// Cross           "
-{SPR_STAT_30,bo_chalice},		// Chalice         "
-{SPR_STAT_31,bo_bible},			// Bible           "
+{SPR_STAT_29,bo_cross},			// Cross	   "
+{SPR_STAT_30,bo_chalice},		// Chalice	 "
+{SPR_STAT_31,bo_bible},			// Bible	   "
 //
 // NEW PAGE
 //
-{SPR_STAT_32,bo_crown},			// crown           spr5v
-{SPR_STAT_33,bo_fullheal},		// one up          "
-{SPR_STAT_34,bo_gibs},			// gibs            "
-{SPR_STAT_35,block},			// barrel          "
-{SPR_STAT_36,block},			// well            "
+{SPR_STAT_32,bo_crown},			// crown	   spr5v
+{SPR_STAT_33,bo_fullheal},		// one up	  "
+{SPR_STAT_34,bo_gibs},			// gibs	    "
+{SPR_STAT_35,block},			// barrel	  "
+{SPR_STAT_36,block},			// well	    "
 {SPR_STAT_37,block},			// Empty well      "
-{SPR_STAT_38,bo_gibs},			// Gibs 2          "
+{SPR_STAT_38,bo_gibs},			// Gibs 2	  "
 {SPR_STAT_39,block},			// flag				"
 //
 // NEW PAGE
@@ -88,16 +88,16 @@ struct
 //
 // NEW PAGE
 //
-{SPR_STAT_41},					// junk            "
+{SPR_STAT_41},					// junk	    "
 {SPR_STAT_42},					// junk 		   "
-{SPR_STAT_43},					// junk            "
+{SPR_STAT_43},					// junk	    "
 #ifndef SPEAR
-{SPR_STAT_44},					// pots            "
+{SPR_STAT_44},					// pots	    "
 #else
 {SPR_STAT_44,block},			// Gibs!
 #endif
-{SPR_STAT_45,block},			// stove           " (SOD:gibs)
-{SPR_STAT_46,block},			// spears          " (SOD:gibs)
+{SPR_STAT_45,block},			// stove	   " (SOD:gibs)
+{SPR_STAT_46,block},			// spears	  " (SOD:gibs)
 {SPR_STAT_47},					// vines			"
 //
 // NEW PAGE
@@ -109,7 +109,7 @@ struct
 {SPR_STAT_51,bo_spear},			// SPEAR OF DESTINY!
 #endif
 
-{SPR_STAT_26,bo_clip2},			// Clip            "
+{SPR_STAT_26,bo_clip2},			// Clip	    "
 {-1}							// terminator
 };
 
@@ -146,7 +146,7 @@ void SpawnStatic (int tilex, int tiley, int type)
 	switch (statinfo[type].type)
 	{
 	case block:
-		/*(unsigned)*/actorat[tilex][tiley] = 1;		// consider it a blocking tile
+		/*(unsigned)*/actorat[tilex][tiley] = (objtype *) 1;		// consider it a blocking tile
 	case dressing:
 		laststatobj->flags = 0;
 		break;
@@ -362,7 +362,7 @@ void SpawnDoor (int tilex, int tiley, boolean vertical, int lock)
 	lastdoorobj->lock = lock;
 	lastdoorobj->action = dr_closed;
 
-	/*(unsigned)*/actorat[tilex][tiley] = doornum | 0x80;	// consider it a solid wall
+	/*(unsigned)*/actorat[tilex][tiley] = (objtype *)(doornum | 0x80);	// consider it a solid wall
 
 //
 // make the door tile a special tile, and mark the adjacent tiles
@@ -372,7 +372,7 @@ void SpawnDoor (int tilex, int tiley, boolean vertical, int lock)
 	map = mapsegs[0] + farmapylookup[tiley]+tilex;
 	if (vertical)
 	{
-		*map = *(map-1);                        // set area number
+		*map = *(map-1);			// set area number
 		tilemap[tilex][tiley-1] |= 0x40;
 		tilemap[tilex][tiley+1] |= 0x40;
 	}
@@ -480,7 +480,7 @@ void CloseDoor (int door)
 // make the door space solid
 //
 	/*(unsigned)*/actorat[tilex][tiley]
-		= door | 0x80;
+		= (objtype *)(door | 0x80);
 }
 
 
@@ -599,7 +599,7 @@ void DoorOpening (int door)
 		position = 0xffff;
 		doorobjlist[door].ticcount = 0;
 		doorobjlist[door].action = dr_open;
-		actorat[doorobjlist[door].tilex][doorobjlist[door].tiley] = 0;
+		actorat[doorobjlist[door].tilex][doorobjlist[door].tiley] = (objtype *)0;
 	}
 
 	doorposition[door] = position;
@@ -624,7 +624,7 @@ void DoorClosing (int door)
 	tilex = doorobjlist[door].tilex;
 	tiley = doorobjlist[door].tiley;
 
-	if ( ((unsigned)actorat[tilex][tiley] != (door | 0x80))
+	if ( (/*(unsigned)*/actorat[tilex][tiley] != (objtype *)(door | 0x80))
 	|| (player->tilex == tilex && player->tiley == tiley) )
 	{			// something got inside the door
 		OpenDoor (door);
@@ -716,10 +716,13 @@ void MoveDoors (void)
 =============================================================================
 */
 
-unsigned	pwallstate;
-unsigned	pwallpos;			// amount a pushable wall has been moved (0-63)
-unsigned	pwallx,pwally;
-int			pwalldir;
+word pwallstate;
+word pwallpos;		  // amount a pushable wall has been moved (0-63)
+word pwallx,pwally;
+byte pwalldir,pwalltile;
+int dirs[4][2]={{0,-1},{1,0},{0,1},{-1,0}};
+
+char PushwallSteps = 0;
 
 /*
 ===============
@@ -731,58 +734,25 @@ int			pwalldir;
 
 void PushWall (int checkx, int checky, int dir)
 {
-	int		oldtile;
+	int oldtile, dx, dy;
 
 	if (pwallstate)
-	  return;
+	   return;
 
 
 	oldtile = tilemap[checkx][checky];
 	if (!oldtile)
-		return;
+	   return;
 
-	switch (dir)
+		  dx = dirs[dir][0];
+		  dy = dirs[dir][1];
+
+	if (actorat[checkx+dx][checky+dy])
 	{
-	case di_north:
-		if (actorat[checkx][checky-1])
-		{
-			SD_PlaySound (NOWAYSND);
-			return;
-		}
-		/*(unsigned)*/actorat[checkx][checky-1] =
-		tilemap[checkx][checky-1] = oldtile;
-		break;
-
-	case di_east:
-		if (actorat[checkx+1][checky])
-		{
-			SD_PlaySound (NOWAYSND);
-			return;
-		}
-		/*(unsigned)*/actorat[checkx+1][checky] =
-		tilemap[checkx+1][checky] = oldtile;
-		break;
-
-	case di_south:
-		if (actorat[checkx][checky+1])
-		{
-			SD_PlaySound (NOWAYSND);
-			return;
-		}
-		/*(unsigned)*/actorat[checkx][checky+1] =
-		tilemap[checkx][checky+1] = oldtile;
-		break;
-
-	case di_west:
-		if (actorat[checkx-1][checky])
-		{
-			SD_PlaySound (NOWAYSND);
-			return;
-		}
-		(unsigned)actorat[checkx-1][checky] =
-		tilemap[checkx-1][checky] = oldtile;
-		break;
+	    SD_PlaySound (NOWAYSND);
+	    return;
 	}
+	actorat[checkx+dx][checky+dy] = (objtype *) (tilemap[checkx+dx][checky+dy] = oldtile);
 
 	gamestate.secretcount++;
 	pwallx = checkx;
@@ -790,8 +760,11 @@ void PushWall (int checkx, int checky, int dir)
 	pwalldir = dir;
 	pwallstate = 1;
 	pwallpos = 0;
-	tilemap[pwallx][pwally] |= 0xc0;
-	*(mapsegs[1]+farmapylookup[pwally]+pwallx) = 0;	// remove P tile info
+	pwalltile = tilemap[pwallx][pwally];
+	tilemap[pwallx][pwally] = 64;
+		  tilemap[pwallx+dx][pwally+dy] = 64;
+	*(mapsegs[1]+(pwally<<mapshift)+pwallx) = 0;   // remove P tile info
+	*(mapsegs[0]+(pwally<<mapshift)+pwallx) = *(mapsegs[0]+(player->tiley<<mapshift)+player->tilex); // set correct floorcode (BrotherTank's fix)
 
 	SD_PlaySound (PUSHWALLSND);
 }
@@ -808,93 +781,82 @@ void PushWall (int checkx, int checky, int dir)
 
 void MovePWalls (void)
 {
-	int		oldblock,oldtile;
+	int	oldblock,oldtile;
+	int	dx, dy;
+		  static int ppressed = 0;
+		  static long ptimecount = 0;
 
 	if (!pwallstate)
 		return;
 
 	oldblock = pwallstate/128;
 
-	pwallstate += tics;
+#ifdef DEBUGKEYS
+		  if(PushwallSteps)
+		  {
+			  if(ppressed)
+			  {
+				  if(Keyboard[sc_P] && TimeCount-ptimecount<10) return;
+				  ppressed=0;
+				  return;
+			  }
+			  if(!Keyboard[sc_P]) return;
+			  ppressed=1;
+			  ptimecount = TimeCount;
+
+			  pwallstate += 4;
+		  }
+		  else
+#endif
+		  	  pwallstate += (word)tics;
 
 	if (pwallstate/128 != oldblock)
 	{
-	// block crossed into a new block
-		oldtile = tilemap[pwallx][pwally] & 63;
+		// block crossed into a new block
+		oldtile = pwalltile; // tilemap[pwallx][pwally] & 63;
 
 		//
 		// the tile can now be walked into
 		//
 		tilemap[pwallx][pwally] = 0;
-		/*(unsigned)*/actorat[pwallx][pwally] = 0;
-		*(mapsegs[0]+farmapylookup[pwally]+pwallx) = player->areanumber+AREATILE;
+		actorat[pwallx][pwally] = 0;
+		*(mapsegs[0]+(pwally<<mapshift)+pwallx) = player->areanumber+AREATILE;
 
+			 		 dx=dirs[pwalldir][0], dy=dirs[pwalldir][1];
 		//
 		// see if it should be pushed farther
 		//
-		if (pwallstate>256)
+		if (pwallstate>=256)	    // only move two tiles fix
 		{
 		//
 		// the block has been pushed two tiles
 		//
 			pwallstate = 0;
+								tilemap[pwallx+dx][pwally+dy] = oldtile;
 			return;
 		}
 		else
 		{
-			switch (pwalldir)
+						 		int xl,yl,xh,yh;
+						 		xl = (player->x-PLAYERSIZE) >> TILESHIFT;
+						 		yl = (player->y-PLAYERSIZE) >> TILESHIFT;
+						 		xh = (player->x+PLAYERSIZE) >> TILESHIFT;
+						 		yh = (player->y+PLAYERSIZE) >> TILESHIFT;
+
+						 		pwallx+=dx;
+								pwally+=dy;
+
+			if (actorat[pwallx+dx][pwally+dy]
+									|| xl<=pwallx+dx && pwallx+dx<=xh && yl<=pwally+dy && pwally+dy<=yh)
 			{
-			case di_north:
-				pwally--;
-				if (actorat[pwallx][pwally-1])
-				{
-					pwallstate = 0;
-					return;
-				}
-				/*(unsigned)*/actorat[pwallx][pwally-1] =
-				tilemap[pwallx][pwally-1] = oldtile;
-				break;
-
-			case di_east:
-				pwallx++;
-				if (actorat[pwallx+1][pwally])
-				{
-					pwallstate = 0;
-					return;
-				}
-				/*(unsigned)*/actorat[pwallx+1][pwally] =
-				tilemap[pwallx+1][pwally] = oldtile;
-				break;
-
-			case di_south:
-				pwally++;
-				if (actorat[pwallx][pwally+1])
-				{
-					pwallstate = 0;
-					return;
-				}
-				/*(unsigned)*/actorat[pwallx][pwally+1] =
-				tilemap[pwallx][pwally+1] = oldtile;
-				break;
-
-			case di_west:
-				pwallx--;
-				if (actorat[pwallx-1][pwally])
-				{
-					pwallstate = 0;
-					return;
-				}
-				/*(unsigned)*/actorat[pwallx-1][pwally] =
-				tilemap[pwallx-1][pwally] = oldtile;
-				break;
+			   pwallstate = 0;
+									tilemap[pwallx][pwally] = oldtile;
+			   return;
 			}
-
-			tilemap[pwallx][pwally] = oldtile | 0xc0;
+			actorat[pwallx+dx][pwally+dy] = (objtype *) (tilemap[pwallx+dx][pwally+dy] = oldtile);
+								tilemap[pwallx+dx][pwally+dy] = 64;
 		}
 	}
 
-
 	pwallpos = (pwallstate/2)&63;
-
 }
-

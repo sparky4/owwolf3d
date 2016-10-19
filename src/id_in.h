@@ -8,6 +8,8 @@
 #ifndef	__ID_IN__
 #define	__ID_IN__
 
+#include "src/id_heads.h"
+
 #ifdef	__DEBUG__
 #define	__DEBUG_InputMgr__
 #endif

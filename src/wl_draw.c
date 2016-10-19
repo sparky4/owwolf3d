@@ -140,6 +140,7 @@ void AsmRefresh (void);			// in WL_DR_A.ASM
 
 fixed FixedByFrac (fixed a, fixed b)
 {
+	word pee;
 //
 // setup
 //
@@ -176,9 +177,10 @@ aok:
 		neg	dx
 		neg	ax
 		sbb	dx,0
-
 ansok:;
+		mov	pee,dx
 	}
+	return pee;
 }
 
 #pragma warn +rvl
@@ -386,6 +388,7 @@ int	CalcHeight (void)
 		mov	dx,[WORD PTR heightnumerator+2]
 		idiv	[WORD PTR nx+1]			// nx>>8
 	}
+	return nx;
 }
 
 
@@ -499,7 +502,7 @@ void HitVertWall (void)
 	if (lastside==1 && lastintercept == xtile && lasttilehit == tilehit)
 	{
 		// in the same wall type as last time, so check for optimized draw
-		if (texture == (unsigned)postsource)
+		if (texture == postsource)
 		{
 		// wide scale
 			postwidth++;
@@ -509,7 +512,7 @@ void HitVertWall (void)
 		else
 		{
 			ScalePost ();
-			(unsigned)postsource = texture;
+			postsource = texture;
 			postwidth = 1;
 			postx = pixx;
 		}
@@ -538,8 +541,9 @@ void HitVertWall (void)
 		else
 			wallpic = vertwall[tilehit];
 
-		*( ((unsigned *)&postsource)+1) = (unsigned)PM_GetPage(wallpic);
-		(unsigned)postsource = texture;
+		//*( ((unsigned *)&postsource)+1) = PM_GetPage(wallpic);
+		*( ((memptr *)&postsource)+1) = PM_GetPage(wallpic);
+		postsource = texture;
 
 	}
 }
@@ -571,7 +575,7 @@ void HitHorizWall (void)
 	if (lastside==0 && lastintercept == ytile && lasttilehit == tilehit)
 	{
 		// in the same wall type as last time, so check for optimized draw
-		if (texture == (unsigned)postsource)
+		if (texture == postsource)
 		{
 		// wide scale
 			postwidth++;
@@ -581,7 +585,7 @@ void HitHorizWall (void)
 		else
 		{
 			ScalePost ();
-			(unsigned)postsource = texture;
+			postsource = texture;
 			postwidth = 1;
 			postx = pixx;
 		}
@@ -610,8 +614,9 @@ void HitHorizWall (void)
 		else
 			wallpic = horizwall[tilehit];
 
-		*( ((unsigned *)&postsource)+1) = (unsigned)PM_GetPage(wallpic);
-		(unsigned)postsource = texture;
+		//*( ((unsigned *)&postsource)+1) = PM_GetPage(wallpic);
+		*( ((memptr *)&postsource)+1) = PM_GetPage(wallpic);
+		postsource = texture;
 	}
 
 }
@@ -638,7 +643,7 @@ void HitHorizDoor (void)
 	if (lasttilehit == tilehit)
 	{
 	// in the same door as last time, so check for optimized draw
-		if (texture == (unsigned)postsource)
+		if (texture == postsource)
 		{
 		// wide scale
 			postwidth++;
@@ -648,7 +653,7 @@ void HitHorizDoor (void)
 		else
 		{
 			ScalePost ();
-			(unsigned)postsource = texture;
+			postsource = texture;
 			postwidth = 1;
 			postx = pixx;
 		}
@@ -679,8 +684,9 @@ void HitHorizDoor (void)
 			break;
 		}
 
-		*( ((unsigned *)&postsource)+1) = (unsigned)PM_GetPage(doorpage);
-		(unsigned)postsource = texture;
+		//*( ((unsigned *)&postsource)+1) = PM_GetPage(doorpage);
+		*( ((memptr *)&postsource)+1) = PM_GetPage(doorpage);
+		postsource = texture;
 	}
 }
 
@@ -706,7 +712,7 @@ void HitVertDoor (void)
 	if (lasttilehit == tilehit)
 	{
 	// in the same door as last time, so check for optimized draw
-		if (texture == (unsigned)postsource)
+		if (texture == postsource)
 		{
 		// wide scale
 			postwidth++;
@@ -716,7 +722,7 @@ void HitVertDoor (void)
 		else
 		{
 			ScalePost ();
-			(unsigned)postsource = texture;
+			postsource = texture;
 			postwidth = 1;
 			postx = pixx;
 		}
@@ -747,8 +753,9 @@ void HitVertDoor (void)
 			break;
 		}
 
-		*( ((unsigned *)&postsource)+1) = (unsigned)PM_GetPage(doorpage+1);
-		(unsigned)postsource = texture;
+		//*( ((unsigned *)&postsource)+1) = PM_GetPage(doorpage+1);
+		*( ((memptr *)&postsource)+1) = PM_GetPage(doorpage+1);
+		postsource = texture;
 	}
 }
 
@@ -785,7 +792,7 @@ void HitHorizPWall (void)
 	if (lasttilehit == tilehit)
 	{
 		// in the same wall type as last time, so check for optimized draw
-		if (texture == (unsigned)postsource)
+		if (texture == postsource)
 		{
 		// wide scale
 			postwidth++;
@@ -795,7 +802,7 @@ void HitHorizPWall (void)
 		else
 		{
 			ScalePost ();
-			(unsigned)postsource = texture;
+			postsource = texture;
 			postwidth = 1;
 			postx = pixx;
 		}
@@ -812,8 +819,9 @@ void HitHorizPWall (void)
 
 		wallpic = horizwall[tilehit&63];
 
-		*( ((unsigned *)&postsource)+1) = (unsigned)PM_GetPage(wallpic);
-		(unsigned)postsource = texture;
+		//*( ((unsigned *)&postsource)+1) = PM_GetPage(wallpic);
+		*( ((memptr *)&postsource)+1) = PM_GetPage(wallpic);
+		postsource = texture;
 	}
 
 }
@@ -849,7 +857,7 @@ void HitVertPWall (void)
 	if (lasttilehit == tilehit)
 	{
 		// in the same wall type as last time, so check for optimized draw
-		if (texture == (unsigned)postsource)
+		if (texture == postsource)
 		{
 		// wide scale
 			postwidth++;
@@ -859,7 +867,7 @@ void HitVertPWall (void)
 		else
 		{
 			ScalePost ();
-			(unsigned)postsource = texture;
+			postsource = texture;
 			postwidth = 1;
 			postx = pixx;
 		}
@@ -876,8 +884,9 @@ void HitVertPWall (void)
 
 		wallpic = vertwall[tilehit&63];
 
-		*( ((unsigned *)&postsource)+1) = (unsigned)PM_GetPage(wallpic);
-		(unsigned)postsource = texture;
+		//*( ((unsigned *)&postsource)+1) = PM_GetPage(wallpic);
+		*( ((memptr *)&postsource)+1) = PM_GetPage(wallpic);
+		postsource = texture;
 	}
 
 }
@@ -1354,7 +1363,7 @@ void	ThreeDRefresh (void)
 	int tracedir;
 
 // this wouldn't need to be done except for my debugger/video wierdness
-	outportb (SC_INDEX,SC_MAPMASK);
+	outp(SC_INDEX,SC_MAPMASK);
 
 //
 // clear out the traced array

@@ -102,37 +102,6 @@ extern	unsigned	bordercolor;
 // VGA hardware routines
 //
 
-/*#define VGAWRITEMODE(x) __asm{\
-cli;\
-mov dx,GC_INDEX;\
-mov al,GC_MODE;\
-out dx,al;\
-inc dx;\
-in al,dx;\
-and al,252;\
-or al,x;\
-out dx,al;\
-sti;\
-}*/
-
-/*#define VGAMAPMASK(x) __asm{\
-cli;\
-mov dx,SC_INDEX;\
-mov al,SC_MAPMASK;\
-mov ah,x;\
-out dx,ax;\
-sti;\
-}*/
-
-/*#define VGAREADMAP(x) __asm{\
-cli;\
-mov dx,GC_INDEX;\
-mov al,GC_READMAP;\
-mov ah,x;\
-out dx,ax;\
-sti;\
-}*/
-
 inline void vgawritemode(byte x)
 {
 	__asm {
@@ -188,7 +157,7 @@ void VL_SetSplitScreen (int linenum);
 
 void VL_WaitVBL (int vbls);
 void VL_CrtcStart (int crtc);
-void VL_SetScreen (unsigned int crtc, int pelpan);
+//void VL_SetScreen (unsigned int crtc, int pelpan);
 
 void VL_FillPalette (int red, int green, int blue);
 void VL_SetColor	(int color, int red, int green, int blue);
@@ -219,4 +188,19 @@ void VL_SizePropString (char *str, int *width, int *height, char far *font);
 
 void VL_TestPaletteSet (void);
 void VL_LatchToScreen (unsigned source, int width, int height, int x, int y);
+
+void SetScreen (int offset);
+#pragma aux SetScreen = \
+		"cli" \
+		"mov	dx,0x3d4" \
+		"mov	al,0x0c" \
+		"out	dx,al" \
+		"inc	dx" \
+		"mov	al,ah" \
+		"out	dx,al" \
+		"sti" \
+		parm [ax] \
+		modify exact [dx ax]
+
+#define VL_SetScreen(crtc,pan) SetScreen(crtc)
 #endif

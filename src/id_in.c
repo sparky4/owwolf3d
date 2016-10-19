@@ -17,7 +17,7 @@
 //	DEBUG - there are more globals
 //
 
-#include "id_heads.h"
+#include "src/id_heads.h"
 #pragma	hdrstop
 
 #define	KeyInt		9	// The keyboard ISR number

@@ -4,3 +4,4 @@ rm *.obj
 #wmake -f mk.mak -h
 wmake -h clean
 wmake -h
+rm *.obj

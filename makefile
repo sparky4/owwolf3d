@@ -48,7 +48,8 @@ DUMP=type
 TARGET_OS = dos
 
 BUILD_ROOT=$+$(%__CWD__)$-
-DATADIR=data$(DIRSEP)
+#DATADIR=data$(DIRSEP)
+
 
 SRC=src
 
@@ -77,7 +78,7 @@ LIBFLAGS=$(WLIBQ) -b -n
 #
 # objects
 #
-WOLFOBJS = id_mm.$(OBJ) id_pm.$(OBJ) id_ca.$(OBJ) id_vl.$(OBJ) wl_inter.$(OBJ) signon.$(OBJ) gamepal3.$(OBJ) id_in.$(OBJ) id_sd.$(OBJ) id_us_1.$(OBJ) id_vh.$(OBJ) wl_act1.$(OBJ) wl_act2.$(OBJ) wl_agent.$(OBJ) wl_debug.$(OBJ) wl_draw.$(OBJ) wl_game.$(OBJ) wl_main.$(OBJ) wl_menu.$(OBJ) wl_play.$(OBJ) wl_state.$(OBJ) wl_text.$(OBJ)
+WOLFOBJS = id_mm.$(OBJ) id_pm.$(OBJ) id_ca.$(OBJ) id_vl.$(OBJ) wl_inter.$(OBJ) signon.$(OBJ) gamepal3.$(OBJ) id_in.$(OBJ) id_sd.$(OBJ) id_us_1.$(OBJ) id_vh.$(OBJ) wl_act1.$(OBJ) wl_act2.$(OBJ) wl_agent.$(OBJ) wl_debug.$(OBJ) wl_draw.$(OBJ) wl_game.$(OBJ) wl_menu.$(OBJ) wl_play.$(OBJ) wl_state.$(OBJ) wl_text.$(OBJ)
 #id_vl_a.$(OBJ)
 
 #
@@ -117,13 +118,12 @@ WOLFOBJS = id_mm.$(OBJ) id_pm.$(OBJ) id_ca.$(OBJ) id_vl.$(OBJ) wl_inter.$(OBJ) s
 EXEC = &
     wolf3d.exe
 
-
 all: $(EXEC)
 
 #
-# game and bakapi executables
+# game executables
 #
-wolf3d.exe:	wl_main.$(OBJ) $(WOLFOBJS)
+wolf3d.exe:	wolf3d.$(OBJ) $(WOLFOBJS)
 
 #
 # Test Executables!
@@ -133,7 +133,7 @@ wolf3d.exe:	wl_main.$(OBJ) $(WOLFOBJS)
 #
 # executable's objects
 #
-wl_main.$(OBJ):	$(SRC)/wl_main.c
+wolf3d.$(OBJ):	$(SRC)/wolf3d.c
 
 #
 # non executable objects libraries
