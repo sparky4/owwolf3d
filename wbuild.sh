@@ -1,4 +1,6 @@
 #!/bin/bash
-rm *.o
-wmake -f mk.mak -h clean
-wmake -f mk.mak -h
+rm *.obj
+#wmake -f mk.mak -h clean
+#wmake -f mk.mak -h
+wmake -h clean
+wmake -h

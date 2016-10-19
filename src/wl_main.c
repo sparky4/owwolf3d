@@ -1379,7 +1379,7 @@ void Quit (char *error)
 	else
 	if (!error || !(*error))
 	{
-		clrscr();
+		//clrscr();
 		#ifndef JAPAN
 		movedata ((unsigned)screen,7,0xb800,0,4000);
 		//gotoxy(1,24);

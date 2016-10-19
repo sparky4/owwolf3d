@@ -1065,7 +1065,7 @@ byte	far whiteshifts[NUMREDSHIFTS][768];
 int		damagecount,bonuscount;
 boolean	palshifted;
 
-extern 	byte	far	gamepal;
+extern 	byte	/*far*/	gamepal[768];
 
 /*
 =====================

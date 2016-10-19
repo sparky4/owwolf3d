@@ -1,0 +1,71 @@
+src/wl_menu.c(53): Error! E1022: Missing or misspelled data type near 'CP_iteminfo'
+src/wl_menu.c(53): Warning! W132: No storage class or type specified
+src/wl_menu.c(53): Error! E1011: Symbol 'MENU_X' has not been declared
+src/wl_menu.c(53): Error! E1054: Expression must be constant
+src/wl_menu.c(53): Error! E1175: Too many initializers
+src/wl_menu.c(54): Error! E1011: Symbol 'SM_X' has not been declared
+src/wl_menu.c(54): Error! E1054: Expression must be constant
+src/wl_menu.c(54): Error! E1175: Too many initializers
+src/wl_menu.c(55): Error! E1011: Symbol 'LSM_X' has not been declared
+src/wl_menu.c(55): Error! E1054: Expression must be constant
+src/wl_menu.c(55): Error! E1175: Too many initializers
+src/wl_menu.c(56): Error! E1011: Symbol 'CTL_X' has not been declared
+src/wl_menu.c(56): Error! E1054: Expression must be constant
+src/wl_menu.c(56): Error! E1175: Too many initializers
+src/wl_menu.c(57): Error! E1175: Too many initializers
+src/wl_menu.c(59): Error! E1011: Symbol 'NE_X' has not been declared
+src/wl_menu.c(59): Error! E1054: Expression must be constant
+src/wl_menu.c(59): Error! E1175: Too many initializers
+src/wl_menu.c(61): Error! E1011: Symbol 'NM_X' has not been declared
+src/wl_menu.c(61): Error! E1054: Expression must be constant
+src/wl_menu.c(61): Error! E1175: Too many initializers
+src/wl_menu.c(63): Error! E1022: Missing or misspelled data type near 'CP_itemtype'
+src/wl_menu.c(63): Warning! W132: No storage class or type specified
+src/wl_menu.c(78): Error! E1175: Too many initializers
+src/wl_menu.c(79): Error! E1175: Too many initializers
+src/wl_menu.c(80): Error! E1175: Too many initializers
+src/wl_menu.c(81): Error! E1175: Too many initializers
+src/wl_menu.c(82): Error! E1175: Too many initializers
+src/wl_menu.c(83): Error! E1175: Too many initializers
+src/wl_menu.c(91): Error! E1175: Too many initializers
+src/wl_menu.c(97): Error! E1175: Too many initializers
+src/wl_menu.c(98): Error! E1175: Too many initializers
+src/wl_menu.c(99): Error! E1175: Too many initializers
+src/wl_menu.c(103): Error! E1022: Missing or misspelled data type near 'CP_itemtype'
+src/wl_menu.c(103): Warning! W132: No storage class or type specified
+src/wl_menu.c(119): Error! E1175: Too many initializers
+src/wl_menu.c(120): Error! E1175: Too many initializers
+src/wl_menu.c(121): Error! E1175: Too many initializers
+src/wl_menu.c(122): Error! E1175: Too many initializers
+src/wl_menu.c(123): Error! E1175: Too many initializers
+src/wl_menu.c(124): Error! E1175: Too many initializers
+src/wl_menu.c(125): Error! E1175: Too many initializers
+src/wl_menu.c(126): Error! E1175: Too many initializers
+src/wl_menu.c(127): Error! E1175: Too many initializers
+src/wl_menu.c(128): Error! E1175: Too many initializers
+src/wl_menu.c(129): Error! E1175: Too many initializers
+src/wl_menu.c(130): Error! E1175: Too many initializers
+src/wl_menu.c(134): Error! E1022: Missing or misspelled data type near 'CP_itemtype'
+src/wl_menu.c(134): Warning! W132: No storage class or type specified
+src/wl_menu.c(144): Error! E1175: Too many initializers
+src/wl_menu.c(145): Error! E1175: Too many initializers
+src/wl_menu.c(146): Error! E1175: Too many initializers
+src/wl_menu.c(147): Error! E1175: Too many initializers
+src/wl_menu.c(148): Error! E1175: Too many initializers
+src/wl_menu.c(149): Error! E1175: Too many initializers
+src/wl_menu.c(154): Error! E1022: Missing or misspelled data type near 'CP_itemtype'
+src/wl_menu.c(154): Warning! W132: No storage class or type specified
+src/wl_menu.c(204): Error! E1175: Too many initializers
+src/wl_menu.c(206): Error! E1175: Too many initializers
+src/wl_menu.c(207): Error! E1175: Too many initializers
+src/wl_menu.c(209): Error! E1175: Too many initializers
+src/wl_menu.c(210): Error! E1175: Too many initializers
+src/wl_menu.c(212): Error! E1175: Too many initializers
+src/wl_menu.c(213): Error! E1175: Too many initializers
+src/wl_menu.c(215): Error! E1175: Too many initializers
+src/wl_menu.c(216): Error! E1175: Too many initializers
+src/wl_menu.c(218): Error! E1175: Too many initializers
+src/wl_menu.c(219): Error! E1175: Too many initializers
+src/wl_menu.c(227): Error! E1022: Missing or misspelled data type near 'CP_itemtype'
+src/wl_menu.c(227): Warning! W132: No storage class or type specified
+src/wl_menu.c(235): Error! E1147: Too many errors: compilation aborted

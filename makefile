@@ -77,7 +77,7 @@ LIBFLAGS=$(WLIBQ) -b -n
 #
 # objects
 #
-WOLFOBJS = id_mm.$(OBJ) id_pm.$(OBJ) id_ca.$(OBJ) id_vl.$(OBJ) wl_inter.$(OBJ) signon.$(OBJ)
+WOLFOBJS = id_mm.$(OBJ) id_pm.$(OBJ) id_ca.$(OBJ) id_vl.$(OBJ) wl_inter.$(OBJ) signon.$(OBJ) gamepal3.$(OBJ) id_in.$(OBJ) id_sd.$(OBJ) id_us_1.$(OBJ) id_vh.$(OBJ) wl_act1.$(OBJ) wl_act2.$(OBJ) wl_agent.$(OBJ) wl_debug.$(OBJ) wl_draw.$(OBJ) wl_game.$(OBJ) wl_main.$(OBJ) wl_menu.$(OBJ) wl_play.$(OBJ) wl_state.$(OBJ) wl_text.$(OBJ)
 #id_vl_a.$(OBJ)
 
 #
@@ -149,6 +149,20 @@ id_vl.$(OBJ):	$(SRC)/id_vl.c
 wl_inter.$(OBJ):	$(SRC)/wl_inter.c
 wl_menu.$(OBJ):	$(SRC)/wl_menu.c
 signon.$(OBJ):	$(SRC)/signon.c
+gamepal3.$(OBJ):	$(SRC)/gamepal3.c
+id_in.$(OBJ):	$(SRC)/id_in.c
+id_sd.$(OBJ):	$(SRC)/id_sd.c
+id_us_1.$(OBJ):	$(SRC)/id_us_1.c
+id_vh.$(OBJ):	$(SRC)/id_vh.c
+wl_act1.$(OBJ):	$(SRC)/wl_act1.c
+wl_act2.$(OBJ):	$(SRC)/wl_act2.c
+wl_agent.$(OBJ):	$(SRC)/wl_agent.c
+wl_debug.$(OBJ):	$(SRC)/wl_debug.c
+wl_draw.$(OBJ):	$(SRC)/wl_draw.c
+wl_game.$(OBJ):	$(SRC)/wl_game.c
+wl_play.$(OBJ):	$(SRC)/wl_play.c
+wl_state.$(OBJ):	$(SRC)/wl_state.c
+wl_text.$(OBJ):	$(SRC)/wl_text.c
 #id_vl_a.$(OBJ):	$(SRC)/id_vl_a.asm
 
 #

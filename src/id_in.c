@@ -139,7 +139,7 @@ static	char			*ParmStringsin[] = {"nojoys","nomouse",nil};
 //	INL_KeyService() - Handles a keyboard interrupt (key up/down)
 //
 ///////////////////////////////////////////////////////////////////////////
-static void interrupt
+void interrupt
 INL_KeyService(void)
 {
 static	boolean	special;
@@ -147,11 +147,11 @@ static	boolean	special;
 				temp;
 		int		i;
 
-	k = inportb(0x60);	// Get the scan code
+	k = inp(0x60);	// Get the scan code
 
 	// Tell the XT keyboard controller to clear the key
-	outportb(0x61,(temp = inportb(0x61)) | 0x80);
-	outportb(0x61,temp);
+	outp(0x61,(temp = inp(0x61)) | 0x80);
+	outp(0x61,temp);
 
 	if (k == 0xe0)		// Special key prefix
 		special = true;
@@ -205,7 +205,7 @@ static	boolean	special;
 
 	if (INL_KeyHook && !special)
 		INL_KeyHook();
-	outportb(0x20,0x20);
+	outp(0x20,0x20);
 }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -390,7 +390,7 @@ INL_GetJoyButtons(word joy)
 {
 register	word	result;
 
-	result = inportb(0x201);	// Get all the joystick buttons
+	result = inp(0x201);	// Get all the joystick buttons
 	result >>= joy? 6 : 4;	// Shift into bits 0-1
 	result &= 3;				// Mask off the useless bits
 	result ^= 3;
@@ -414,7 +414,6 @@ IN_GetJoyButtonsDB(word joy)
 		result1 = INL_GetJoyButtons(joy);
 		lasttime = TimeCount;
 		while (TimeCount == lasttime)
-			;
 		result2 = INL_GetJoyButtons(joy);
 	} while (result1 != result2);
 	return(result1);
@@ -432,8 +431,8 @@ INL_StartKbd(void)
 
 	IN_ClearKeysDown();
 
-	OldKeyVect = getvect(KeyInt);
-	setvect(KeyInt,INL_KeyService);
+	OldKeyVect = _dos_getvect(KeyInt);
+	_dos_setvect(KeyInt,INL_KeyService);
 }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -444,9 +443,9 @@ INL_StartKbd(void)
 static void
 INL_ShutKbd(void)
 {
-	poke(0x40,0x17,peek(0x40,0x17) & 0xfaf0);	// Clear ctrl/alt/shift flags
+	pokeb(0x40,0x17,peekb(0x40,0x17) & 0xfaf0);	// Clear ctrl/alt/shift flags
 
-	setvect(KeyInt,OldKeyVect);
+	_dos_setvect(KeyInt,OldKeyVect);
 }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -458,7 +457,7 @@ static boolean
 INL_StartMouse(void)
 {
 #if 0
-	if (getvect(MouseInt))
+	if (_dos_getvect(MouseInt))
 	{
 		Mouse(MReset);
 		if (_AX == 0xffff)
@@ -470,7 +469,7 @@ INL_StartMouse(void)
  unsigned char far *vector;
 
 
- if ((vector=MK_FP(peek(0,0x33*4+2),peek(0,0x33*4)))==NULL)
+ if ((vector=MK_FP(peekb(0,0x33*4+2),peekb(0,0x33*4)))==NULL)
    return false;
 
  if (*vector == 207)
@@ -979,7 +978,7 @@ byte	IN_JoyButtons (void)
 {
 	unsigned joybits;
 
-	joybits = inportb(0x201);	// Get all the joystick buttons
+	joybits = inp(0x201);	// Get all the joystick buttons
 	joybits >>= 4;				// only the high bits are useful
 	joybits ^= 15;				// return with 1=pressed
 

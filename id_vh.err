@@ -1,0 +1,5 @@
+src/id_vh.c(188): Warning! W120: lvalue cast is not standard C
+src/id_vh.c(208): Warning! W120: lvalue cast is not standard C
+src/id_vh.c(299): Warning! W131: No prototype found for function 'VL_LatchToScreen'
+src/id_vh.c(459): Warning! W131: No prototype found for function 'VGAMAPMASK'
+src/id_vh.c(554): Warning! W111: Meaningless use of an expression

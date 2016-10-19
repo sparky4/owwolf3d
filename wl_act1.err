@@ -1,0 +1,12 @@
+src/wl_act1.c(149): Warning! W120: lvalue cast is not standard C
+src/wl_act1.c(365): Warning! W120: lvalue cast is not standard C
+src/wl_act1.c(483): Warning! W120: lvalue cast is not standard C
+src/wl_act1.c(753): Warning! W120: lvalue cast is not standard C
+src/wl_act1.c(763): Warning! W120: lvalue cast is not standard C
+src/wl_act1.c(773): Warning! W120: lvalue cast is not standard C
+src/wl_act1.c(783): Warning! W120: lvalue cast is not standard C
+src/wl_act1.c(829): Warning! W120: lvalue cast is not standard C
+src/wl_act1.c(855): Warning! W120: lvalue cast is not standard C
+src/wl_act1.c(866): Warning! W120: lvalue cast is not standard C
+src/wl_act1.c(877): Warning! W120: lvalue cast is not standard C
+src/wl_act1.c(888): Warning! W120: lvalue cast is not standard C
