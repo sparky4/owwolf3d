@@ -47,6 +47,7 @@ void VL_WaitVBL (int vbls);
 =======================
 */
 
+#ifdef ASSVL
 #if 0
 void	VL_Startup (void)
 {
@@ -87,7 +88,7 @@ Quit ("Improper video card!  If you really have a VGA card that I am not \n"
 	  "detecting, use the -HIDDENCARD command line parameter!");
 
 }
-
+#endif
 
 
 /*
@@ -905,8 +906,6 @@ drawline:
 
 //===========================================================================
 
-#if 0
-
 /*
 =================
 =
@@ -945,9 +944,6 @@ drawline:
 
 	vgawritemode(0);
 }
-
-
-#endif
 
 /*
 =============================================================================

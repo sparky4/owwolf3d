@@ -59,11 +59,11 @@
 #define	readstat()	inp(alFMStatus)
 
 //	Imports from ID_SD_A.ASM
-extern	void			SDL_SetDS(void),
-						SDL_IndicatePC(boolean on);
-extern	void interrupt	SDL_t0ExtremeAsmService(void),
-						SDL_t0FastAsmService(void),
-						SDL_t0SlowAsmService(void);
+// // extern	void			SDL_SetDS(void),
+// // 						SDL_IndicatePC(boolean on);
+// // extern	void __interrupt	SDL_t0ExtremeAsmService(void),
+// // 						SDL_t0FastAsmService(void),
+// // 						SDL_t0SlowAsmService(void);
 
 //	Global variables
 	boolean		SoundSourcePresent,
@@ -140,7 +140,7 @@ static	byte					sbpOldFMMix,sbpOldVOCMix;
 
 //	PC Sound variables
 		volatile byte	pcLastSample,far *pcSound;
-		longword		pcLengthLeft;
+		word		pcLengthLeft;
 		word			pcSoundLookup[255];
 
 //	AdLib variables
@@ -150,6 +150,7 @@ static	byte					sbpOldFMMix,sbpOldVOCMix;
 		longword		alLengthLeft;
 		longword		alTimeCount;
 		Instrument		alZeroInst;
+		boolean	 alNoIRQ;
 
 // This table maps channel numbers to carrier and modulator op cells
 static	byte			carriers[9] =  { 3, 4, 5,11,12,13,19,20,21},
@@ -169,6 +170,246 @@ static	word			sqMode,sqFadeStep;
 
 //	Internal routines
 		void			SDL_DigitizedDone(void);
+
+int count_time=0;
+int count_fx=0;
+int extreme=0;
+volatile boolean pcindicate;
+
+void SDL_turnOnPCSpeaker(word timerval);
+#pragma aux SDL_turnOnPCSpeaker = \
+	"mov    al,0b6h" \
+	"out    43h,al" \
+	"mov    al,bl" \
+	"out    42h,al" \
+	"mov    al,bh" \
+	"out    42h,al" \
+	"in     al,61h" \
+	"or     al,3"   \
+	"out    61h,al" \
+	parm [bx] \
+	modify exact [al]
+
+void SDL_turnOffPCSpeaker();
+#pragma aux SDL_turnOffPCSpeaker = \
+	"in     al,61h" \
+	"and    al,0fch" \
+	"out    61h,al" \
+	modify exact [al]
+
+void SDL_setPCSpeaker(byte val);
+#pragma aux SDL_setPCSpeaker = \
+	"in     al,61h" \
+	"and    al,0fch" \
+	"or     al,ah" \
+	"out    61h,al" \
+	parm [ah] \
+	modify exact [al]
+
+void inline SDL_DoFX()
+{
+	if(pcSound)
+	{
+		if(*pcSound!=pcLastSample)
+		{
+			pcLastSample=*pcSound;
+
+			if(pcLastSample)
+				SDL_turnOnPCSpeaker(pcLastSample*60);
+			else
+				SDL_turnOffPCSpeaker();
+		}
+		pcSound++;
+		pcLengthLeft--;
+		if(!pcLengthLeft)
+		{
+			pcSound=0;
+			SoundNumber=(soundnames)0;
+			SoundPriority=0;
+			SDL_turnOffPCSpeaker();
+		}
+	}
+
+	if(alSound && !alNoIRQ)
+	{
+		if(*alSound)
+		{
+			alOutInIRQ(alFreqL,*alSound);
+			alOutInIRQ(alFreqH,alBlock);
+		}
+		else alOutInIRQ(alFreqH,0);
+		alSound++;
+		alLengthLeft--;
+		if(!alLengthLeft)
+		{
+			alSound=0;
+			SoundNumber=(soundnames)0;
+			SoundPriority=0;
+			alOutInIRQ(alFreqH,0);
+		}
+	}
+
+}
+
+void inline SDL_DoFast()
+{
+	count_fx++;
+	if(count_fx>=5)
+	{
+		count_fx=0;
+
+		SDL_DoFX();
+
+		count_time++;
+		if(count_time>=2)
+		{
+			TimeCount++;
+			count_time=0;
+		}
+	}
+
+	if(sqActive && !alNoIRQ)
+	{
+		if(sqHackLen)
+		{
+			do
+			{
+				if(sqHackTime>alTimeCount) break;
+				sqHackTime=alTimeCount+*(sqHackPtr+1);
+				alOutInIRQ(*(byte *)sqHackPtr,*(((byte *)sqHackPtr)+1));
+				sqHackPtr+=2;
+				sqHackLen-=4;
+			}
+			while(sqHackLen);
+		}
+		alTimeCount++;
+		if(!sqHackLen)
+		{
+			sqHackPtr=sqHack;
+			sqHackLen=sqHackSeqLen;
+			alTimeCount=0;
+			sqHackTime=0;
+		}
+	}
+
+	if(ssSample)
+	{
+		if(!(inp(ssStatus)&0x40))
+		{
+			outp(ssData,*ssSample++);
+			outp(ssControl,ssOff);
+			__asm push ax
+			__asm pop ax
+			outp(ssControl,ssOn);
+			__asm push ax
+			__asm pop ax
+			ssLengthLeft--;
+			if(!ssLengthLeft)
+			{
+				ssSample=0;
+				SDL_DigitizedDoneInIRQ();
+			}
+		}
+	}
+
+	TimerCount+=TimerDivisor;
+	if(*((word *)&TimerCount+1))
+	{
+		*((word *)&TimerCount+1)=0;
+		t0OldService();
+	}
+	else
+	{
+		outp(0x20,0x20);
+	}
+}
+
+// Timer 0 ISR for 7000Hz interrupts
+void __interrupt SDL_t0ExtremeAsmService(void)
+{
+	if(pcindicate)
+	{
+		if(pcSound)
+		{
+			SDL_setPCSpeaker(((*pcSound++)&0x80)>>6);
+			pcLengthLeft--;
+			if(!pcLengthLeft)
+			{
+				pcSound=0;
+				SDL_turnOffPCSpeaker();
+				SDL_DigitizedDoneInIRQ();
+			}
+		}
+	}
+	extreme++;
+	if(extreme>=10)
+	{
+		extreme=0;
+		SDL_DoFast();
+	}
+	else
+		outp(0x20,0x20);
+}
+
+// Timer 0 ISR for 7000Hz interrupts
+void __interrupt __SDL_t0ExtremeAsmService(void)
+{
+	if(pcindicate)
+	{
+		if(pcSound)
+		{
+			SDL_setPCSpeaker(((*pcSound++)&0x80)>>6);
+			pcLengthLeft--;
+			if(!pcLengthLeft)
+			{
+				pcSound=0;
+				SDL_turnOffPCSpeaker();
+				SDL_DigitizedDoneInIRQ();
+			}
+		}
+	}
+	extreme++;
+	if(extreme>=10)
+	{
+		extreme=0;
+		SDL_DoFast();
+	}
+	else
+		outp(0x20,0x20);
+}
+
+// Timer 0 ISR for 700Hz interrupts
+void __interrupt SDL_t0FastAsmService(void)
+{
+	SDL_DoFast();
+}
+
+// Timer 0 ISR for 140Hz interrupts
+void __interrupt SDL_t0SlowAsmService(void)
+{
+	count_time++;
+	if(count_time>=2)
+	{
+		TimeCount++;
+		count_time=0;
+	}
+
+	SDL_DoFX();
+
+	TimerCount+=TimerDivisor;
+	if(*((word *)&TimerCount+1))
+	{
+		*((word *)&TimerCount+1)=0;
+		t0OldService();
+	}
+	else
+		outp(0x20,0x20);
+}
+
+void SDL_IndicatePC(boolean ind)
+{
+	pcindicate=ind;
+}
 
 ///////////////////////////////////////////////////////////////////////////
 //
@@ -1240,6 +1481,37 @@ SDL_DigitizedDone(void)
 }
 
 void
+SDL_DigitizedDoneInIRQ(void)
+{
+	if (DigiNextAddr)
+	{
+		SDL_PlayDigiSegment(DigiNextAddr,DigiNextLen/*,true*/);
+		DigiNextAddr = nil;
+		DigiMissed = false;
+	}
+	else
+	{
+		if (DigiLastSegment)
+		{
+			DigiPlaying = false;
+			DigiLastSegment = false;
+			if ((DigiMode == sds_PC) && (SoundMode == sdm_PC))
+			{
+				SDL_SoundFinished();
+			}
+			else
+			{
+				DigiNumber = (soundnames) 0;
+				DigiPriority = 0;
+			}
+			SoundPositioned = false;
+		}
+		else
+			DigiMissed = true;
+	}
+}
+
+void
 SD_SetDigiDevice(SDSMode mode)
 {
 	boolean	devicenotpresent;
@@ -1311,74 +1583,138 @@ SDL_SetupDigi(void)
 		DigiMap[i] = -1;
 }
 
-// 	AdLib Code
+//      AdLib Code
 
 ///////////////////////////////////////////////////////////////////////////
 //
-//	alOut(n,b) - Puts b in AdLib card register n
+//      alOut(n,b) - Puts b in AdLib card register n
 //
 ///////////////////////////////////////////////////////////////////////////
 void
 alOut(byte n,byte b)
 {
 	__asm {
-	pushf
-	cli
+	      pushf
+		cli
 
-	mov	dx,0x388
-	mov	al,[n]
-	out	dx,al
-	in	al,dx
-	in	al,dx
-	in	al,dx
-	in	al,dx
-	in	al,dx
-	in	al,dx
-	inc	dx
-	mov	al,[b]
-	out	dx,al
+		mov     dx,0x388
+		mov     al,[n]
+		out     dx,al
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		inc     dx
+		mov     al,[b]
+		out     dx,al
 
-__asm popf
+	      popf
+		sti
 
-	dec	dx
-	in	al,dx
-	in	al,dx
-	in	al,dx
-	in	al,dx
-	in	al,dx
-	in	al,dx
-	in	al,dx
-	in	al,dx
-	in	al,dx
-	in	al,dx
+		dec     dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
 
-	in	al,dx
-	in	al,dx
-	in	al,dx
-	in	al,dx
-	in	al,dx
-	in	al,dx
-	in	al,dx
-	in	al,dx
-	in	al,dx
-	in	al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
 
-	in	al,dx
-	in	al,dx
-	in	al,dx
-	in	al,dx
-	in	al,dx
-	in	al,dx
-	in	al,dx
-	in	al,dx
-	in	al,dx
-	in	al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
 
-	in	al,dx
-	in	al,dx
-	in	al,dx
-	in	al,dx
-	in	al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+	}
+}
+
+// Inside an interrupt handler interrupts should already be disabled
+// so don't disable them again and cause V86 exceptions which cost
+// aprox. 300 processor tics!
+
+//static
+void alOutInIRQ(byte n,byte b)
+{
+	__asm {
+		mov     dx,0x388
+		mov     al,[n]
+		out     dx,al
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		inc     dx
+		mov     al,[b]
+		out     dx,al
+
+		dec     dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
 	}
 }
 
@@ -1934,7 +2270,7 @@ SD_Startup(void)
 	if (SD_Started)
 		return;
 
-	SDL_SetDS();
+	////SDL_SetDS();
 
 	ssIsTandy = false;
 	ssNoCheck = false;
@@ -1965,11 +2301,11 @@ SD_Startup(void)
 			ssPort = 1;
 			ssNoCheck = SoundSourcePresent = true;
 			break;
-		case 6:                     // Sound Source present at LPT2
+		case 6:		     // Sound Source present at LPT2
 			ssPort = 2;
 			ssNoCheck = SoundSourcePresent = true;
 			break;
-		case 7:                     // Sound Source present at LPT3
+		case 7:		     // Sound Source present at LPT3
 			ssPort = 3;
 			ssNoCheck = SoundSourcePresent = true;
 			break;

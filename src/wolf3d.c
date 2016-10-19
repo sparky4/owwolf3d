@@ -1156,7 +1156,7 @@ void InitGame (void)
 
 	SignonScreen ();
 
-	VW_Startup ();
+	////VW_Startup ();
 	IN_Startup ();
 	PM_Startup ();
 	PM_UnlockMainMem ();

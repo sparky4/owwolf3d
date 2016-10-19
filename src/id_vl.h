@@ -143,7 +143,22 @@ inline void vgareadmap(byte x)
 	}
 }
 
-void VL_Startup (void);
+void VL_WaitVBL(int num);
+#pragma aux VL_WaitVBL = \
+		"mov	dx,03dah" \
+		"VBLActive:"\
+		"in al,dx"\
+		"test al,8"\
+		"jnz VBLActive"\
+		"noVBL:"\
+		"in al,dx"\
+		"test al,8"\
+		"jz noVBL"\
+		"loop VBLActive"\
+		parm [cx] \
+		modify exact [dx al cx]
+
+//void VL_Startup (void);
 void VL_Shutdown (void);
 
 void VL_SetVGAPlane (void);
@@ -189,7 +204,7 @@ void VL_SizePropString (char *str, int *width, int *height, char far *font);
 void VL_TestPaletteSet (void);
 void VL_LatchToScreen (unsigned source, int width, int height, int x, int y);
 
-void SetScreen (int offset);
+void SetScreen (unsigned int offset);
 #pragma aux SetScreen = \
 		"cli" \
 		"mov	dx,0x3d4" \

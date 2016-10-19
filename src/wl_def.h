@@ -100,7 +100,7 @@
 #define GLOBAL1		(1l<<16)
 #define TILEGLOBAL  GLOBAL1
 #define PIXGLOBAL	(GLOBAL1/64)
-#define TILESHIFT		16l
+#define TILESHIFT		8//16l
 #define UNSIGNEDSHIFT	8
 
 #define ANGLES		360					// must be divisable by 4
@@ -912,6 +912,7 @@ extern	int			buttonjoy[4];
 extern	boolean		buttonheld[NUMBUTTONS];
 
 extern	int			viewsize;
+extern unsigned tics;
 
 //
 // curent user input
@@ -965,7 +966,7 @@ void PG13 (void);
 */
 
 int DebugKeys (void);
-void PicturePause (void);
+////void PicturePause (void);
 
 
 /*
@@ -1171,6 +1172,7 @@ extern word	pwallstate;
 extern word	pwallpos;			// amount a pushable wall has been moved (0-63)
 extern word	pwallx,pwally;
 extern byte			pwalldir;
+extern byte     pwalldir,pwalltile;
 
 
 void InitDoorList (void);

@@ -233,5 +233,8 @@ extern	void	SDL_PCPlaySound(PCSound far *sound),
 				SDL_ALStopSound(void);
 #endif
 
+void alOutInIRQ(byte n,byte b);
+void SDL_DigitizedDoneInIRQ(void);
+
 #endif
 

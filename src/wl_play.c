@@ -51,6 +51,7 @@ unsigned	mapwidthtable[64];
 unsigned	uwidthtable[UPDATEHIGH];
 unsigned	blockstarts[UPDATEWIDE*UPDATEHIGH];
 //byte		update[UPDATESIZE];
+unsigned tics;
 
 //
 // control info
@@ -823,7 +824,7 @@ void CheckKeys (void)
 		CA_CacheGrChunk (STARTFONT);
 		fontnumber=0;
 		SETFONTCOLOR(0,15);
-		DebugKeys();
+		////DebugKeys();
 		if (MousePresent)
 			Mouse(MDelta);	// Clear accumulated mouse movement
 		lasttimecount = TimeCount;

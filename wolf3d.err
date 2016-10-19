@@ -1,4 +1,0 @@
-src/wolf3d.c(737): Warning! W106: Parameter 1: Constant out of range - truncated
-src/wolf3d.c(737): Note! I2003: source conversion type is 'unsigned int'
-src/wolf3d.c(737): Note! I2004: target conversion type is 'int'
-src/wolf3d.c(737): Note! I2002: 'SetScreen' defined in: src/id_vl.h(192)

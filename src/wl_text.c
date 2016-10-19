@@ -709,10 +709,10 @@ void ShowArticle (char far *article)
 			break;
 		}
 
-		#ifndef SPEAR
-		if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("goobers"))
-			PicturePause();
-		#endif
+// // 		#ifndef SPEAR
+// // 		if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("goobers"))
+// // 			PicturePause();
+// // 		#endif
 
 	} while (LastScan != sc_Escape);
 
