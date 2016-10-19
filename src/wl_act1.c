@@ -146,7 +146,7 @@ void SpawnStatic (int tilex, int tiley, int type)
 	switch (statinfo[type].type)
 	{
 	case block:
-		(unsigned)actorat[tilex][tiley] = 1;		// consider it a blocking tile
+		/*(unsigned)*/actorat[tilex][tiley] = 1;		// consider it a blocking tile
 	case dressing:
 		laststatobj->flags = 0;
 		break;
@@ -362,7 +362,7 @@ void SpawnDoor (int tilex, int tiley, boolean vertical, int lock)
 	lastdoorobj->lock = lock;
 	lastdoorobj->action = dr_closed;
 
-	(unsigned)actorat[tilex][tiley] = doornum | 0x80;	// consider it a solid wall
+	/*(unsigned)*/actorat[tilex][tiley] = doornum | 0x80;	// consider it a solid wall
 
 //
 // make the door tile a special tile, and mark the adjacent tiles
@@ -479,7 +479,7 @@ void CloseDoor (int door)
 //
 // make the door space solid
 //
-	(unsigned)actorat[tilex][tiley]
+	/*(unsigned)*/actorat[tilex][tiley]
 		= door | 0x80;
 }
 
@@ -749,7 +749,7 @@ void PushWall (int checkx, int checky, int dir)
 			SD_PlaySound (NOWAYSND);
 			return;
 		}
-		(unsigned)actorat[checkx][checky-1] =
+		/*(unsigned)*/actorat[checkx][checky-1] =
 		tilemap[checkx][checky-1] = oldtile;
 		break;
 
@@ -759,7 +759,7 @@ void PushWall (int checkx, int checky, int dir)
 			SD_PlaySound (NOWAYSND);
 			return;
 		}
-		(unsigned)actorat[checkx+1][checky] =
+		/*(unsigned)*/actorat[checkx+1][checky] =
 		tilemap[checkx+1][checky] = oldtile;
 		break;
 
@@ -769,7 +769,7 @@ void PushWall (int checkx, int checky, int dir)
 			SD_PlaySound (NOWAYSND);
 			return;
 		}
-		(unsigned)actorat[checkx][checky+1] =
+		/*(unsigned)*/actorat[checkx][checky+1] =
 		tilemap[checkx][checky+1] = oldtile;
 		break;
 
@@ -826,7 +826,7 @@ void MovePWalls (void)
 		// the tile can now be walked into
 		//
 		tilemap[pwallx][pwally] = 0;
-		(unsigned)actorat[pwallx][pwally] = 0;
+		/*(unsigned)*/actorat[pwallx][pwally] = 0;
 		*(mapsegs[0]+farmapylookup[pwally]+pwallx) = player->areanumber+AREATILE;
 
 		//
@@ -851,7 +851,7 @@ void MovePWalls (void)
 					pwallstate = 0;
 					return;
 				}
-				(unsigned)actorat[pwallx][pwally-1] =
+				/*(unsigned)*/actorat[pwallx][pwally-1] =
 				tilemap[pwallx][pwally-1] = oldtile;
 				break;
 
@@ -862,7 +862,7 @@ void MovePWalls (void)
 					pwallstate = 0;
 					return;
 				}
-				(unsigned)actorat[pwallx+1][pwally] =
+				/*(unsigned)*/actorat[pwallx+1][pwally] =
 				tilemap[pwallx+1][pwally] = oldtile;
 				break;
 
@@ -873,7 +873,7 @@ void MovePWalls (void)
 					pwallstate = 0;
 					return;
 				}
-				(unsigned)actorat[pwallx][pwally+1] =
+				/*(unsigned)*/actorat[pwallx][pwally+1] =
 				tilemap[pwallx][pwally+1] = oldtile;
 				break;
 
@@ -884,7 +884,7 @@ void MovePWalls (void)
 					pwallstate = 0;
 					return;
 				}
-				(unsigned)actorat[pwallx-1][pwally] =
+				/*(unsigned)*/actorat[pwallx-1][pwally] =
 				tilemap[pwallx-1][pwally] = oldtile;
 				break;
 			}

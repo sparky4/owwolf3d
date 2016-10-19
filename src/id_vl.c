@@ -1093,7 +1093,7 @@ void VL_SizeTile8String (char *str, int *width, int *height)
 // VGA hardware routines
 //
 
-void vgawritemode(byte x)
+/*void vgawritemode(byte x)
 {
 	__asm {
 		cli
@@ -1132,4 +1132,4 @@ void vgareadmap(byte x)
 		out dx,ax
 		sti
 	}
-}
+}*/

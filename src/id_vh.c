@@ -116,7 +116,7 @@ void VW_DrawColorPropString (char far *string)
 		while (width--)
 		{
 			//VGAMAPMASK(mask);
-
+			vgamapmask(mask);
 			__asm {
 		mov	ah,[BYTE PTR fontcolor]
 		mov	bx,[step]
@@ -184,7 +184,7 @@ void VL_MungePic (byte far *source, unsigned width, unsigned height)
 //
 // copy the pic to a temp buffer
 //
-	MM_GetPtr (&(memptr)temp,size);
+	MM_GetPtr ((memptr)temp,size);
 	_fmemcpy (temp,source,size);
 
 //
@@ -204,7 +204,7 @@ void VL_MungePic (byte far *source, unsigned width, unsigned height)
 		}
 	}
 
-	MM_FreePtr (&(memptr)temp);
+	MM_FreePtr ((memptr)temp);
 }
 
 void VWL_MeasureString (char far *string, word *width, word *height
@@ -455,7 +455,8 @@ void LoadLatchMem (void)
 		UNCACHEGRCHUNK(i);
 	}
 
-	EGAMAPMASK(15);
+	//EGAMAPMASK(15);
+	vgamapmask(15);
 }
 
 //==========================================================================
@@ -494,7 +495,7 @@ boolean FizzleFade (unsigned source, unsigned dest,
 		if (abortable && IN_CheckAck () )
 			return true;
 
-				__asm mov	es,[screenseg]
+			__asm mov	es,[screenseg]
 
 		for (p=0;p<pixperframe;p++)
 		{
@@ -548,7 +549,7 @@ noxor:
 		}
 		frame++;
 		while (TimeCount<frame)		// don't go too fast
-		;
+		{}
 	} while (1);
 
 

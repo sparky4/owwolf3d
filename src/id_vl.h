@@ -1,7 +1,8 @@
 // ID_VL.H
 
 // wolf compatability
-
+#ifndef __ID_VL_H__
+#define __ID_VL_H__
 #include <conio.h>
 #include "src/type.h"
 
@@ -101,8 +102,6 @@ extern	unsigned	bordercolor;
 // VGA hardware routines
 //
 
-void vgawritemode(byte x);
-
 /*#define VGAWRITEMODE(x) __asm{\
 cli;\
 mov dx,GC_INDEX;\
@@ -116,8 +115,6 @@ out dx,al;\
 sti;\
 }*/
 
-void vgamapmask(byte x);
-
 /*#define VGAMAPMASK(x) __asm{\
 cli;\
 mov dx,SC_INDEX;\
@@ -126,8 +123,6 @@ mov ah,x;\
 out dx,ax;\
 sti;\
 }*/
-
-void vgareadmap(byte x);
 
 /*#define VGAREADMAP(x) __asm{\
 cli;\
@@ -138,6 +133,46 @@ out dx,ax;\
 sti;\
 }*/
 
+inline void vgawritemode(byte x)
+{
+	__asm {
+		cli
+		mov dx,GC_INDEX
+		mov al,GC_MODE
+		out dx,al
+		inc dx
+		in al,dx
+		and al,252
+		or al,x
+		out dx,al
+		sti
+	}
+}
+
+
+inline void vgamapmask(byte x)
+{
+	__asm {
+		cli
+		mov dx,SC_INDEX
+		mov al,SC_MAPMASK
+		mov ah,x
+		out dx,ax
+		sti
+	}
+}
+
+inline void vgareadmap(byte x)
+{
+	__asm {
+		cli
+		mov dx,GC_INDEX
+		mov al,GC_READMAP
+		mov ah,x
+		out dx,ax
+		sti
+	}
+}
 
 void VL_Startup (void);
 void VL_Shutdown (void);
@@ -183,4 +218,5 @@ void VL_DrawPropString (char *str, unsigned tile8ptr, int printx, int printy);
 void VL_SizePropString (char *str, int *width, int *height, char far *font);
 
 void VL_TestPaletteSet (void);
-
+void VL_LatchToScreen (unsigned source, int width, int height, int x, int y);
+#endif

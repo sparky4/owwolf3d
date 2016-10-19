@@ -1,7 +1,7 @@
 // ID_VH.H
 
-#ifndef __ID_H__
-#define __ID_H__
+#ifndef __ID_VH_H__
+#define __ID_VH_H__
 
 #define WHITE			15			// graphics mode independant colors
 #define BLACK			0
