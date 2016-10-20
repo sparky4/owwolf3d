@@ -1,7 +1,7 @@
 Open Watcom Linker Version 2.0 beta Oct 11 2016 22:37:14 (64-bit)
 Copyright (c) 2002-2016 The Open Watcom Contributors. All Rights Reserved.
 Portions Copyright (c) 1985-2002 Sybase, Inc. All Rights Reserved.
-Created on:       16/10/19 19:41:51
+Created on:       16/10/19 19:53:26
 Executable Image: wolf3d.exe
 creating a DOS executable
 Error! E2020: size of group DGROUP exceeds 64k by 7280 bytes
