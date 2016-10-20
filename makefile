@@ -191,7 +191,7 @@ clean: .symbolic
 
 backupconfig: .symbolic
 	@$(COPYCOMMAND) .git$(DIRSEP)config git_con.fig
-	@$(COPYCOMMAND) .gitmodules git_modu.les
+	#@$(COPYCOMMAND) .gitmodules git_modu.les
 	@$(COPYCOMMAND) .gitignore git_igno.re
 
 comp: .symbolic
