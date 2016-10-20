@@ -54,7 +54,7 @@ char            str[80],str2[20];
 int				tedlevelnum;
 boolean         tedlevel;
 boolean         nospr;
-//boolean         IsA386;
+boolean         IsA386;
 int                     dirangle[9] = {0,ANGLES/8,2*ANGLES/8,3*ANGLES/8,4*ANGLES/8,
 	5*ANGLES/8,6*ANGLES/8,7*ANGLES/8,ANGLES};
 
@@ -246,7 +246,7 @@ char	configname[13]="CONFIG.";
 ========================
 */
 
-/*char    *JHParmStringsma[] = {"no386",nil};
+char    *JHParmStringsma[] = {"no386",nil};
 void Patch386 (void)
 {
 //extern void far jabhack2(void);
@@ -268,7 +268,7 @@ void Patch386 (void)
 	//}
 	//else
 		IsA386 = false;
-}*/
+}
 
 //===========================================================================
 
@@ -1166,7 +1166,7 @@ void InitGame (void)
 	//SignonScreen ();
 
 	////VW_Startup ();
-	IN_Startup ();
+	//IN_Startup ();
 	PM_Startup ();
 	PM_UnlockMainMem ();
 	//SD_Startup ();
@@ -1597,28 +1597,29 @@ void main (void)
 	int     i;
 
 
-#ifdef BETA
-	//
-	// THIS IS FOR BETA ONLY!
-	//
-	struct dosdate_t d;
-
-	_dos_getdate(&d);
-	if (d.year > YEAR ||
-		(d.month >= MONTH && d.day >= DAY))
-	{
-	 printf("Sorry, BETA-TESTING is over. Thanks for you help.\n");
-	 exit(1);
-	}
-#endif
+// #ifdef BETA
+// 	//
+// 	// THIS IS FOR BETA ONLY!
+// 	//
+// 	struct dosdate_t d;
+//
+// 	_dos_getdate(&d);
+// 	if (d.year > YEAR ||
+// 		(d.month >= MONTH && d.day >= DAY))
+// 	{
+// 	 printf("Sorry, BETA-TESTING is over. Thanks for you help.\n");
+// 	 exit(1);
+// 	}
+// #endif
 
 	//CheckForEpisodes();
 
-	//Patch386 ();
+	Patch386 ();
+	printf("initgame	");
+	InitGame ();	printf("ok!\n");
 
-	InitGame ();
-
-	DemoLoop();
+	printf("demoloop	");
+	DemoLoop();	printf("ok!\n");
 
 	Quit("Demo loop exited???");
 }
