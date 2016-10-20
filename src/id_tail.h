@@ -18,7 +18,7 @@
 #include <sys/stat.h>
 #include <limits.h> /* for LONG_MAX */
 #include "type.h"
-//#include "id_in.h"
+#include "id_in.h"
 
 #define	nil	((void *)0)
 #define	TickBase	70		// 70Hz per tick - used as a base for timer 0

@@ -568,7 +568,7 @@ void ShutdownId (void)
 //	US_Shutdown ();
 //	SD_Shutdown ();
 	//PM_Shutdown ();
-	//IN_Shutdown ();
+	IN_Shutdown ();
 //	VW_Shutdown ();
 	//CA_Shutdown ();
 	//MM_Shutdown ();
@@ -1166,7 +1166,7 @@ void InitGame (void)
 	//SignonScreen ();
 
 	////VW_Startup ();
-//	IN_Startup ();
+	IN_Startup ();
 //	PM_Startup ();
 //	PM_UnlockMainMem ();
 	//SD_Startup ();
@@ -1272,6 +1272,7 @@ close(profilehandle);
 		NoWait = true;
 		geninterrupt(0x60);
 	}*/
+	IN_Default(1,ctrl_Keyboard);
 }
 
 //===========================================================================
@@ -1419,6 +1420,7 @@ static  char *ParmStringsmo[] = {"baby","easy","normal","hard",""};
 
 void    DemoLoop (void)
 {
+	ControlInfo ci;
 	//static int LastDemo;
 	//int     i,level;
 	//long nsize;
@@ -1492,12 +1494,14 @@ void    DemoLoop (void)
 
 #endif
 */
-	printf("pee\n");
+	printf("\npee\n");
 	while (1)
 	{
+		IN_ReadControl(0, &ci);
 		//printf("p");
 		while (!NoWait)
 		{
+			IN_ReadControl(0, &ci);
 //
 // title page
 //
@@ -1556,7 +1560,8 @@ void    DemoLoop (void)
 //			if (playstate == ex_abort)
 //				break;
 //			StartCPMusic(INTROSONG);
-if(kbhit()) break;
+//if(kbhit()) break;
+		if(IN_KeyDown(sc_Escape)) break;
 		}
 
 /*		VW_FadeOut ();
@@ -1569,7 +1574,8 @@ if(kbhit()) break;
 			RecordDemo ();
 		else
 			US_ControlPanel (0);*/
-if(kbhit()) break;
+//if(kbhit()) break;
+		if(IN_KeyDown(sc_Escape)) break;
 		if (startgame || loadedgame)
 		{
 			printf("wwww");
@@ -1578,6 +1584,7 @@ if(kbhit()) break;
 			StartCPMusic(INTROSONG);*/
 		}
 	}
+	ShutdownId();
 }
 
 
