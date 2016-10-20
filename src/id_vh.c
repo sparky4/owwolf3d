@@ -16,7 +16,7 @@
 
 #define PIXTOBLOCK		4		// 16 pixels to an update block
 
-#define UNCACHEGRCHUNK(chunk)	{MM_FreePtr(&grsegs[chunk]);grneeded[chunk]&=~ca_levelbit;}
+//#define UNCACHEGRCHUNK(chunk)	{MM_FreePtr(&grsegs[chunk]);grneeded[chunk]&=~ca_levelbit;}
 
 //byte	update[UPDATEHIGH][UPDATEWIDE];
 #define UPDATESIZE			(UPDATEWIDE*UPDATEHIGH)
@@ -316,7 +316,7 @@ void VWB_DrawPic (int x, int y, int chunknum)
 	height = pictable[picnum].height;
 
 	if (VW_MarkUpdateBlock (x,y,x+width-1,y+height-1))
-		VL_MemToScreen (grsegs[chunknum],width,height,x,y);
+		VL_MemToScreen ((memptr)grsegs[chunknum],width,height,x,y);
 }
 
 
@@ -450,7 +450,7 @@ void LoadLatchMem (void)
 		CA_CacheGrChunk (i);
 		width = pictable[i-STARTPICS].width;
 		height = pictable[i-STARTPICS].height;
-		VL_MemToLatch (grsegs[i],width,height,destoff);
+		VL_MemToLatch ((memptr)grsegs[i],width,height,destoff);
 		destoff += width/4 *height;
 		UNCACHEGRCHUNK(i);
 	}

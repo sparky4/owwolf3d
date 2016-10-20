@@ -766,7 +766,7 @@ void HelpScreens (void)
 	artnum = helpextern;
 	CA_CacheGrChunk (artnum);
 	text = (char /*_seg*/ *)grsegs[artnum];
-	MM_SetLock (&grsegs[artnum], true);
+	MM_SetLock ((memptr)grsegs[artnum], true);
 #else
 	CA_LoadFile (helpfilename,&layout);
 	text = (char /*_seg*/ *)layout;
@@ -776,7 +776,7 @@ void HelpScreens (void)
 	ShowArticle (text);
 
 #ifdef ARTSEXTERN
-	MM_FreePtr (&grsegs[artnum]);
+	MM_FreePtr ((memptr)grsegs[artnum]);
 #else
 	MM_FreePtr (&layout);
 #endif
@@ -827,7 +827,7 @@ void EndText (void)
 	artnum = endextern+gamestate.episode;
 	CA_CacheGrChunk (artnum);
 	text = (char /*_seg*/ *)grsegs[artnum];
-	MM_SetLock (&grsegs[artnum], true);
+	MM_SetLock ((memptr)grsegs[artnum], true);
 #else
 	endfilename[6] = '1'+gamestate.episode;
 	CA_LoadFile (endfilename,&layout);
@@ -838,7 +838,7 @@ void EndText (void)
 	ShowArticle (text);
 
 #ifdef ARTSEXTERN
-	MM_FreePtr (&grsegs[artnum]);
+	MM_FreePtr ((memptr)grsegs[artnum]);
 #else
 	MM_FreePtr (&layout);
 #endif

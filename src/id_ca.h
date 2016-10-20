@@ -6,7 +6,7 @@
 #define NUMMAPS		60
 #define MAPPLANES	2
 
-#define UNCACHEGRCHUNK(chunk)	{MM_FreePtr(&grsegs[chunk]);grneeded[chunk]&=~ca_levelbit;}
+#define UNCACHEGRCHUNK(chunk)	{MM_FreePtr((memptr)grsegs[chunk]);grneeded[chunk]&=~ca_levelbit;}
 
 //===========================================================================
 
@@ -27,8 +27,8 @@ extern	int			mapon;
 
 extern	/*USEG	**/unsigned *mapsegs[MAPPLANES];
 extern	MSEG	*mapheaderseg[NUMMAPS];
-extern	/*BSEG	**/memptr	audiosegs[NUMSNDCHUNKS];
-extern	/*VSEG	**/memptr	grsegs[NUMCHUNKS];
+extern	/*BSEG	**/byte	*audiosegs;//[NUMSNDCHUNKS];
+extern	/*VSEG	**/byte	*grsegs;//[NUMCHUNKS];
 
 extern	byte		far	grneeded[NUMCHUNKS];
 extern	byte		ca_levelbit,ca_levelnum;

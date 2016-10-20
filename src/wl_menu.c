@@ -3749,7 +3749,7 @@ void Message(char far *string)
 
 	CA_CacheGrChunk (STARTFONT+1);
 	fontnumber=1;
-	font=grsegs[STARTFONT+fontnumber];
+	font=(fontstruct *)grsegs[STARTFONT+fontnumber];
 	h=font->height;
 	for (i=0;i<_fstrlen(string);i++)
 		if (string[i]=='\n')

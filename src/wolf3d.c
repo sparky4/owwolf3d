@@ -1174,7 +1174,7 @@ void InitGame (void)
 		memptr screen;
 
 		CA_CacheGrChunk (ERRORSCREEN);
-		screen = grsegs[ERRORSCREEN];
+		screen = (memptr)grsegs[ERRORSCREEN];
 		ShutdownId();
 		movedata ((unsigned)screen,7+7*160,0xb800,0,17*160);
 		//gotoxy (1,23);
@@ -1227,7 +1227,7 @@ void InitGame (void)
 //
 
 	CA_CacheGrChunk(STARTFONT);
-	MM_SetLock (&grsegs[STARTFONT],true);
+	MM_SetLock ((memptr)grsegs[STARTFONT],true);
 
 	LoadLatchMem ();
 	BuildTables ();          // trig tables
@@ -1356,14 +1356,14 @@ void Quit (char *error)
 	{
 	 #ifndef JAPAN
 	 CA_CacheGrChunk (ORDERSCREEN);
-	 screen = grsegs[ORDERSCREEN];
+	 screen = (memptr)grsegs[ORDERSCREEN];
 	 #endif
 	 WriteConfig ();
 	}
 	else
 	{
 	 CA_CacheGrChunk (ERRORSCREEN);
-	 screen = grsegs[ERRORSCREEN];
+	 screen = (memptr)grsegs[ERRORSCREEN];
 	}
 
 	ShutdownId ();

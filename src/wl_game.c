@@ -1054,8 +1054,8 @@ void PlayDemo (int demonumber)
 #endif
 
 	CA_CacheGrChunk(dems[demonumber]);
-	demoptr = grsegs[dems[demonumber]];
-	MM_SetLock (&grsegs[dems[demonumber]],true);
+	demoptr = (memptr)grsegs[dems[demonumber]];
+	MM_SetLock ((memptr)grsegs[dems[demonumber]],true);
 #else
 	demoname[4] = '0'+demonumber;
 	CA_LoadFile (demoname,&demobuffer);

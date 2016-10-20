@@ -60,9 +60,9 @@ int			mapon;
 unsigned	*mapsegs[MAPPLANES];
 MSEG	*mapheaderseg[NUMMAPS];
 //BSEG	*
-memptr	audiosegs[NUMSNDCHUNKS];
+byte		*audiosegs;//[NUMSNDCHUNKS];
 //__segment	*
-memptr	grsegs[NUMCHUNKS];
+byte	*grsegs;//[NUMCHUNKS];
 
 byte		far	grneeded[NUMCHUNKS];
 byte		ca_levelbit,ca_levelnum;
@@ -1318,7 +1318,7 @@ void CA_CacheGrChunk (int chunk)
 	grneeded[chunk] |= ca_levelbit;		// make sure it doesn't get removed
 	if (grsegs[chunk])
 	{
-		MM_SetPurge (grsegs[chunk],0);
+		MM_SetPurge ((memptr)grsegs[chunk],0);
 		return;							// allready in memory
 	}
 
@@ -1657,14 +1657,14 @@ void CA_CacheMarks (void)
 		if (grneeded[i]&ca_levelbit)
 		{
 			if (grsegs[i])					// its allready in memory, make
-				MM_SetPurge(&grsegs[i],0);	// sure it stays there!
+				MM_SetPurge((memptr)grsegs[i],0);	// sure it stays there!
 			else
 				numcache++;
 		}
 		else
 		{
 			if (grsegs[i])					// not needed, so make it purgeable
-				MM_SetPurge(&grsegs[i],3);
+				MM_SetPurge((memptr)grsegs[i],3);
 		}
 
 	if (!numcache)			// nothing to cache!
