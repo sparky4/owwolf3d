@@ -116,7 +116,8 @@ WOLFOBJS = id_mm.$(OBJ) id_pm.$(OBJ) id_ca.$(OBJ) id_vl.$(OBJ) wl_inter.$(OBJ) g
 # List of executables to build
 #
 EXEC = &
-    wolf3d.exe
+	test.exe &
+	wolf3d.exe
 
 all: $(EXEC)
 
@@ -128,12 +129,13 @@ wolf3d.exe:	wolf3d.$(OBJ) $(WOLFOBJS)
 #
 # Test Executables!
 #
-
+test.exe:	test.$(OBJ) $(WOLFOBJS)
 
 #
 # executable's objects
 #
 wolf3d.$(OBJ):	$(SRC)/wolf3d.c
+test.$(OBJ):	test.c
 
 #
 # non executable objects libraries

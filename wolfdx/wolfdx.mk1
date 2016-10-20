@@ -1,173 +1,171 @@
 !define BLANK ""
-c:\watcom\wolfDX\id_us_a.obj : c:\watcom\wolfDX\id_u&
+id_us_a.obj : id_u&
 s_a.asm .AUTODEPEND
- @C:
- cd c:\watcom\wolfDX
- *wasm id_us_a.asm -i=C:\watcom\h -mf -5r -w4 -e25 -zq
 
-c:\watcom\wolfDX\Gamepal3.obj : c:\watcom\wolfDX\Gamepal3.cpp .AUTODEPEND
- @C:
- cd c:\watcom\wolfDX
- *wpp386 Gamepal3.cpp -i=C:\watcom\h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=d&
+ 
+ *wasm id_us_a.asm -mf -0 -w4 -e25 -zq
+
+Gamepal3.obj : Gamepal3.cpp .AUTODEPEND
+
+
+ *wcc Gamepal3.cpp -w4 -e25 -j -zp1 -zq -od -d2 -0 -bt=d&
 os -mf
 
-c:\watcom\wolfDX\id_ca.obj : c:\watcom\wolfDX\id_ca.&
+id_ca.obj : id_ca.&
 cpp .AUTODEPEND
- @C:
- cd c:\watcom\wolfDX
- *wpp386 id_ca.cpp -i=C:\watcom\h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=dos -&
+
+
+ *wcc id_ca.cpp -w4 -e25 -j -zp1 -zq -od -d2 -0 -bt=dos -&
 mf
 
-c:\watcom\wolfDX\id_in.obj : c:\watcom\wolfDX\id_in.&
+id_in.obj : id_in.&
 cpp .AUTODEPEND
- @C:
- cd c:\watcom\wolfDX
- *wpp386 id_in.cpp -i=C:\watcom\h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=dos -&
+
+
+ *wcc id_in.cpp -w4 -e25 -j -zp1 -zq -od -d2 -0 -bt=dos -&
 mf
 
-c:\watcom\wolfDX\id_pm.obj : c:\watcom\wolfDX\id_pm.&
+id_pm.obj : id_pm.&
 cpp .AUTODEPEND
- @C:
- cd c:\watcom\wolfDX
- *wpp386 id_pm.cpp -i=C:\watcom\h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=dos -&
+
+
+ *wcc id_pm.cpp -w4 -e25 -j -zp1 -zq -od -d2 -0 -bt=dos -&
 mf
 
-c:\watcom\wolfDX\id_sd.obj : c:\watcom\wolfDX\id_sd.&
+id_sd.obj : id_sd.&
 cpp .AUTODEPEND
- @C:
- cd c:\watcom\wolfDX
- *wpp386 id_sd.cpp -i=C:\watcom\h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=dos -&
+ *wcc id_sd.cpp -w4 -e25 -j -zp1 -zq -od -d2 -0 -bt=dos -&
 mf
 
-c:\watcom\wolfDX\id_us_1.obj : c:\watcom\wolfDX\id_u&
+id_us_1.obj : id_u&
 s_1.cpp .AUTODEPEND
- @C:
- cd c:\watcom\wolfDX
- *wpp386 id_us_1.cpp -i=C:\watcom\h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=dos&
+
+
+ *wcc id_us_1.cpp -w4 -e25 -j -zp1 -zq -od -d2 -0 -bt=dos&
  -mf
 
-c:\watcom\wolfDX\id_vh.obj : c:\watcom\wolfDX\id_vh.&
+id_vh.obj : id_vh.&
 cpp .AUTODEPEND
- @C:
- cd c:\watcom\wolfDX
- *wpp386 id_vh.cpp -i=C:\watcom\h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=dos -&
+
+
+ *wcc id_vh.cpp -w4 -e25 -j -zp1 -zq -od -d2 -0 -bt=dos -&
 mf
 
-c:\watcom\wolfDX\id_vl.obj : c:\watcom\wolfDX\id_vl.&
+id_vl.obj : id_vl.&
 cpp .AUTODEPEND
- @C:
- cd c:\watcom\wolfDX
- *wpp386 id_vl.cpp -i=C:\watcom\h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=dos -&
+
+
+ *wcc id_vl.cpp -w4 -e25 -j -zp1 -zq -od -d2 -0 -bt=dos -&
 mf
 
-c:\watcom\wolfDX\signon.obj : c:\watcom\wolfDX\signo&
+signon.obj : signo&
 n.cpp .AUTODEPEND
- @C:
- cd c:\watcom\wolfDX
- *wpp386 signon.cpp -i=C:\watcom\h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=dos &
+
+
+ *wcc signon.cpp -w4 -e25 -j -zp1 -zq -od -d2 -0 -bt=dos &
 -mf
 
-c:\watcom\wolfDX\wl_act1.obj : c:\watcom\wolfDX\wl_a&
+wl_act1.obj : wl_a&
 ct1.cpp .AUTODEPEND
- @C:
- cd c:\watcom\wolfDX
- *wpp386 wl_act1.cpp -i=C:\watcom\h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=dos&
+
+
+ *wcc wl_act1.cpp -w4 -e25 -j -zp1 -zq -od -d2 -0 -bt=dos&
  -mf
 
-c:\watcom\wolfDX\wl_act2.obj : c:\watcom\wolfDX\wl_a&
+wl_act2.obj : wl_a&
 ct2.cpp .AUTODEPEND
- @C:
- cd c:\watcom\wolfDX
- *wpp386 wl_act2.cpp -i=C:\watcom\h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=dos&
+
+
+ *wcc wl_act2.cpp -w4 -e25 -j -zp1 -zq -od -d2 -0 -bt=dos&
  -mf
 
-c:\watcom\wolfDX\wl_agent.obj : c:\watcom\wolfDX\wl_&
+wl_agent.obj : wl_&
 agent.cpp .AUTODEPEND
- @C:
- cd c:\watcom\wolfDX
- *wpp386 wl_agent.cpp -i=C:\watcom\h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=do&
+
+
+ *wcc wl_agent.cpp -w4 -e25 -j -zp1 -zq -od -d2 -0 -bt=do&
 s -mf
 
-c:\watcom\wolfDX\wl_debug.obj : c:\watcom\wolfDX\wl_&
+wl_debug.obj : wl_&
 debug.cpp .AUTODEPEND
- @C:
- cd c:\watcom\wolfDX
- *wpp386 wl_debug.cpp -i=C:\watcom\h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=do&
+
+
+ *wcc wl_debug.cpp -w4 -e25 -j -zp1 -zq -od -d2 -0 -bt=do&
 s -mf
 
-c:\watcom\wolfDX\wl_draw.obj : c:\watcom\wolfDX\wl_d&
+wl_draw.obj : wl_d&
 raw.cpp .AUTODEPEND
- @C:
- cd c:\watcom\wolfDX
- *wpp386 wl_draw.cpp -i=C:\watcom\h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=dos&
+
+
+ *wcc wl_draw.cpp -w4 -e25 -j -zp1 -zq -od -d2 -0 -bt=dos&
  -mf
 
-c:\watcom\wolfDX\wl_game.obj : c:\watcom\wolfDX\wl_g&
+wl_game.obj : wl_g&
 ame.cpp .AUTODEPEND
- @C:
- cd c:\watcom\wolfDX
- *wpp386 wl_game.cpp -i=C:\watcom\h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=dos&
+
+
+ *wcc wl_game.cpp -w4 -e25 -j -zp1 -zq -od -d2 -0 -bt=dos&
  -mf
 
-c:\watcom\wolfDX\wl_inter.obj : c:\watcom\wolfDX\wl_&
+wl_inter.obj : wl_&
 inter.cpp .AUTODEPEND
- @C:
- cd c:\watcom\wolfDX
- *wpp386 wl_inter.cpp -i=C:\watcom\h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=do&
+
+
+ *wcc wl_inter.cpp -w4 -e25 -j -zp1 -zq -od -d2 -0 -bt=do&
 s -mf
 
-c:\watcom\wolfDX\wl_main.obj : c:\watcom\wolfDX\wl_m&
+wl_main.obj : wl_m&
 ain.cpp .AUTODEPEND
- @C:
- cd c:\watcom\wolfDX
- *wpp386 wl_main.cpp -i=C:\watcom\h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=dos&
+
+
+ *wcc wl_main.cpp -w4 -e25 -j -zp1 -zq -od -d2 -0 -bt=dos&
  -mf
 
-c:\watcom\wolfDX\wl_menu.obj : c:\watcom\wolfDX\wl_menu.cpp .AUTODEPEND
- @C:
- cd c:\watcom\wolfDX
- *wpp386 wl_menu.cpp -i=C:\watcom\h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=dos&
+wl_menu.obj : wl_menu.cpp .AUTODEPEND
+
+
+ *wcc wl_menu.cpp -w4 -e25 -j -zp1 -zq -od -d2 -0 -bt=dos&
  -mf
 
-c:\watcom\wolfDX\wl_play.obj : c:\watcom\wolfDX\wl_play.cpp .AUTODEPEND
- @C:
- cd c:\watcom\wolfDX
- *wpp386 wl_play.cpp -i=C:\watcom\h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=dos&
+wl_play.obj : wl_play.cpp .AUTODEPEND
+
+
+ *wcc wl_play.cpp -w4 -e25 -j -zp1 -zq -od -d2 -0 -bt=dos&
  -mf
 
-c:\watcom\wolfDX\wl_state.obj : c:\watcom\wolfDX\wl_state.cpp .AUTODEPEND
- @C:
- cd c:\watcom\wolfDX
- *wpp386 wl_state.cpp -i=C:\watcom\h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=do&
+wl_state.obj : wl_state.cpp .AUTODEPEND
+
+
+ *wcc wl_state.cpp -w4 -e25 -j -zp1 -zq -od -d2 -0 -bt=do&
 s -mf
 
-c:\watcom\wolfDX\wl_text.obj : c:\watcom\wolfDX\wl_t&
+wl_text.obj : wl_t&
 ext.cpp .AUTODEPEND
- @C:
- cd c:\watcom\wolfDX
- *wpp386 wl_text.cpp -i=C:\watcom\h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=dos&
+
+
+ *wcc wl_text.cpp -w4 -e25 -j -zp1 -zq -od -d2 -0 -bt=dos&
  -mf
 
-c:\watcom\wolfDX\WolfDX.exe : c:\watcom\wolfDX\id_us&
-_a.obj c:\watcom\wolfDX\Gamepal3.obj c:\watcom\wolfDX&
-\id_ca.obj c:\watcom\wolfDX\id_in.obj c:\watcom\wolfDX\&
-id_pm.obj c:\watcom\wolfDX\id_sd.obj c:\watcom\wolfDX\&
-id_us_1.obj c:\watcom\wolfDX\id_vh.obj c:\watcom\wolfDX&
-\id_vl.obj c:\watcom\wolfDX\signon.obj c:\watcom\wolfDX&
-\wl_act1.obj c:\watcom\wolfDX\wl_act2.obj C:\watcom&
-\wolfDX\wl_agent.obj c:\watcom\wolfDX\wl_debug.obj C&
-:\watcom\wolfDX\wl_draw.obj c:\watcom\wolfDX\wl_game&
-.obj c:\watcom\wolfDX\wl_inter.obj c:\watcom\wolfDX\&
-wl_main.obj c:\watcom\wolfDX\wl_menu.obj c:\watcom\wolfDX&
-\wl_play.obj c:\watcom\wolfDX\wl_state.obj c:\watcom\wolf&
+WolfDX.exe : id_us&
+_a.obj Gamepal3.obj c:\watcom\wolfDX&
+\id_ca.obj id_in.obj &
+id_pm.obj id_sd.obj &
+id_us_1.obj id_vh.obj c:\watcom\wolfDX&
+\id_vl.obj signon.obj c:\watcom\wolfDX&
+\wl_act1.obj wl_act2.obj C:\watcom&
+\wolfDX\wl_agent.obj wl_debug.obj C&
+:\watcom\wolfDX\wl_draw.obj wl_game&
+.obj wl_inter.obj &
+wl_main.obj wl_menu.obj c:\watcom\wolfDX&
+\wl_play.obj wl_state.obj c:\watcom\wolf&
 DX\wl_text.obj .AUTODEPEND
- @C:
+
  cd C:\watcom\wolfDX
  @%write WolfDX.lk1 FIL id_us_a.obj,Gamepal3d.obj,id_ca.obj,id_in.obj,id_pm.&
 obj,id_sd.obj,id_us_1.obj,id_vh.obj,id_vl.obj,signon.obj,wl_act1.obj,wl_act2&
 .obj,wl_agent.obj,wl_debug.obj,wl_draw.obj,wl_game.obj,wl_inter.obj,wl_main.&
 obj,wl_menu.obj,wl_play.obj,wl_state.obj,wl_text.obj
- @%append WolfDX.lk1 
+ @%append WolfDX.lk1
  *wlink name WolfDX d all SYS dos4g op inc op m op maxe=25 op q op symf @Wol&
 fDX.lk1
  copy wolfdx.exe \watcom\wolf3d
