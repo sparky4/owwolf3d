@@ -24,7 +24,7 @@ EMS / XMS unmanaged routines
 =============================================================================
 */
 
-#include "ID_HEADS.H"
+#include "id_heads.h"
 #pragma hdrstop
 
 #pragma warn -pro
@@ -54,7 +54,7 @@ typedef struct mmblockstruct
 } mmblocktype;
 
 
-//#define GETNEWBLOCK {if(!(mmnew=mmfree))Quit("MM_GETNEWBLOCK: No free blocks!")\
+//#define GETNEWBLOCK {if(!(mmnew=mmfree))Quit("MM_GETNEWBLOCK: No free blocks!")
 //	;mmfree=mmfree->next;}
 
 #define GETNEWBLOCK {if(!mmfree)MML_ClearBlock();mmnew=mmfree;mmfree=mmfree->next;}
@@ -87,7 +87,7 @@ void		(* aftersort) (void);
 boolean		mmstarted;
 
 void far	*farheap;
-void		*nearheap;
+void near	*nearheap;
 
 mmblocktype	far mmblocks[MAXBLOCKS]
 			,far *mmhead,far *mmfree,far *mmrover,far *mmnew;
@@ -126,20 +126,22 @@ void 		MML_ClearBlock (void);
 =======================
 */
 
-boolean MML_CheckForXMS (void)
+boolean MML_CheckForXMS(void)
 {
+	boolean	errorflag=false;
+
 	numUMBs = 0;
 
-asm {
-	mov	ax,0x4300
-	int	0x2f				// query status of installed diver
-	cmp	al,0x80
-	je	good
+	__asm {
+		mov	ax,0x4300
+		int	0x2f				// query status of installed diver
+		cmp	al,0x80
+		je	good
+		mov	errorflag,1
+		good:
 	}
-
-	return false;
-good:
-	return true;
+	if(errorflag==true) return false;
+	else return true;
 }
 
 
@@ -155,36 +157,34 @@ good:
 
 void MML_SetupXMS (void)
 {
-	unsigned	base,size;
+	word	base,size;
 
-asm	{
-	mov	ax,0x4310
-	int	0x2f
-	mov	[WORD PTR XMSaddr],bx
-	mov	[WORD PTR XMSaddr+2],es		// function pointer to XMS driver
+	__asm {
+		mov	ax,0x4310
+		int	0x2f
+		mov	[WORD PTR XMSaddr],bx
+		mov	[WORD PTR XMSaddr+2],es		// function pointer to XMS driver
 	}
-
 getmemory:
-asm	{
-	mov	ah,XMS_ALLOCUMB
-	mov	dx,0xffff					// try for largest block possible
-	call	[DWORD PTR XMSaddr]
-	or	ax,ax
-	jnz	gotone
+	__asm {
+		mov	ah,XMS_ALLOCUMB
+		mov	dx,0xffff					// try for largest block possible
+		//mov     ax,dx						// Set available Kbytes.
+		call	[DWORD PTR XMSaddr]
+		or	ax,ax
+		jnz	gotone
 
-	cmp	bl,0xb0						// error: smaller UMB is available
-	jne	done;
+		cmp	bl,0xb0						// error: smaller UMB is available
+		jne	done;
 
-	mov	ah,XMS_ALLOCUMB
-	call	[DWORD PTR XMSaddr]		// DX holds largest available UMB
-	or	ax,ax
-	jz	done						// another error...
-	}
-
-gotone:
-asm	{
-	mov	[base],bx
-	mov	[size],dx
+		mov	ah,XMS_ALLOCUMB
+		call	[DWORD PTR XMSaddr]		// DX holds largest available UMB
+		or	ax,ax
+		jz	done						// another error...
+		gotone:
+		mov	[base],bx
+		mov	[size],dx
+		done:
 	}
 	MML_UseSpace (base,size);
 	mminfo.XMSmem += size*16;
@@ -193,7 +193,6 @@ asm	{
 	if (numUMBs < MAXUMBS)
 		goto getmemory;
 
-done:;
 }
 
 
@@ -214,9 +213,9 @@ void MML_ShutdownXMS (void)
 	{
 		base = UMBbase[i];
 
-asm	mov	ah,XMS_FREEUMB
-asm	mov	dx,[base]
-asm	call	[DWORD PTR XMSaddr]
+__asm	mov	ah,XMS_FREEUMB
+__asm	mov	dx,[base]
+__asm	call	[DWORD PTR XMSaddr]
 	}
 }
 
@@ -322,7 +321,7 @@ void MML_ClearBlock (void)
 =
 = MM_Startup
 =
-= Grabs all space from turbo with malloc/farmalloc
+= Grabs all space from turbo with malloc/_fmalloc
 = Allocates bufferseg misc buffer
 =
 ===================
@@ -367,8 +366,9 @@ void MM_Startup (void)
 //
 // get all available near conventional memory segments
 //
-	length=coreleft();
-	start = (void far *)(nearheap = malloc(length));
+	_nheapgrow();
+	length=(longword)_memavl();
+	start = (void far *)(nearheap = _nmalloc(length));
 
 	length -= 16-(FP_OFF(start)&15);
 	length -= SAVENEARHEAP;
@@ -380,8 +380,9 @@ void MM_Startup (void)
 //
 // get all available far conventional memory segments
 //
-	length=farcoreleft();
-	start = farheap = farmalloc(length);
+	_fheapgrow();
+	length=_FCORELEFT;
+	start = farheap = _fmalloc(length);
 	length -= 16-(FP_OFF(start)&15);
 	length -= SAVEFARHEAP;
 	seglength = length / 16;			// now in paragraphs
@@ -415,8 +416,8 @@ void MM_Shutdown (void)
   if (!mmstarted)
 	return;
 
-  farfree (farheap);
-  free (nearheap);
+  _ffree (farheap);
+  _nfree (nearheap);
 //  MML_ShutdownXMS ();
 }
 
@@ -684,7 +685,7 @@ void MM_SortMem (void)
 			playing += STARTADLIBSOUNDS;
 			break;
 		}
-		MM_SetLock(&(memptr)audiosegs[playing],true);
+		MM_SetLock((memptr)audiosegs[playing],true);
 	}
 
 
@@ -755,7 +756,7 @@ void MM_SortMem (void)
 		aftersort();
 
 	if (playing)
-		MM_SetLock(&(memptr)audiosegs[playing],false);
+		MM_SetLock((memptr)audiosegs[playing],false);
 }
 
 

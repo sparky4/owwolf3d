@@ -1,55 +1,57 @@
 // ID_GLOB.H
 
 
-#include <ALLOC.H>
-#include <CTYPE.H>
-#include <DOS.H>
-#include <ERRNO.H>
-#include <FCNTL.H>
-#include <IO.H>
-#include <MEM.H>
-#include <PROCESS.H>
-#include <STDIO.H>
-#include <STDLIB.H>
-#include <STRING.H>
-#include <SYS\STAT.H>
-#include <VALUES.H>
-#include <DIR.H>
+#include <malloc.h>
+#include <ctype.h>
+#include <dos.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <io.h>
+#include <mem.h>
+#include <process.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/stat.h>
+#include <limits.h> /* for LONG_MAX */
+//#include <values.h>
+//#include <dir.h>
 #define __ID_GLOB__
-#include "VERSION.H"
+#include "src/version.h"
+#include "src/type.h"
 
 //--------------------------------------------------------------------------
 
-extern	char		far signon;
+//extern	unsigned	char		far signon;
 
 #define	introscn	signon
 
 #ifdef JAPAN
 #ifdef JAPDEMO
-#include "FOREIGN\JAPAN\GFXV_WJ1.H"
+#include "foreign/japan/gfxv_wj1.h"
 #else
-#include "FOREIGN\JAPAN\GFXV_WJ6.H"
+#include "foreign/japan/gfxv_wj6.h"
 #endif
-#include "AUDIOWL6.H"
-#include "MAPSWL6.H"
+#include "audiowl6.h"
+#include "mapswl6.h"
 #else
 
 #ifndef SPEAR
 
-#include "GFXV_WL6.H"
-#include "AUDIOWL6.H"
-#include "MAPSWL6.H"
+#include "gfxv_wl6.h"
+#include "audiowl6.h"
+#include "mapswl6.h"
 
 #else
 
 #ifndef SPEARDEMO
-#include "GFXV_SOD.H"
-#include "AUDIOSOD.H"
-#include "MAPSSOD.H"
+#include "gfxv_sod.h"
+#include "audiosod.h"
+#include "mapssod.h"
 #else
-#include "GFXV_SDM.H"
-#include "AUDIOSDM.H"
-#include "MAPSSDM.H"
+#include "gfxv_sdm.h"
+#include "audiosdm.h"
+#include "mapssdm.h"
 #endif
 
 #endif
@@ -65,32 +67,17 @@ extern	char		far signon;
 //	v1.0d1
 //
 
-typedef	enum	{false,true}	boolean;
-typedef	unsigned	char		byte;
-typedef	unsigned	int			word;
-typedef	unsigned	long		longword;
-typedef	byte *					Ptr;
-
-typedef	struct
-		{
-			int	x,y;
-		} Point;
-typedef	struct
-		{
-			Point	ul,lr;
-		} Rect;
-
 #define	nil	((void *)0)
 
 
-#include "ID_MM.H"
-#include "ID_PM.H"
-#include "ID_CA.H"
-#include "ID_VL.H"
-#include "ID_VH.H"
-#include "ID_IN.H"
-#include "ID_SD.H"
-#include "ID_US.H"
+#include "src/id_mm.h"
+#include "src/id_pm.h"
+#include "src/id_ca.h"
+#include "src/id_vl.h"
+#include "src/id_vh.h"
+#include "src/id_in.h"
+#include "src/id_sd.h"
+#include "src/id_us.h"
 
 
 void	Quit (char *error);		// defined in user program
@@ -120,4 +107,4 @@ extern	unsigned	blockstarts[UPDATEWIDE*UPDATEHIGH];
 extern	byte		fontcolor,backcolor;
 
 #define SETFONTCOLOR(f,b) fontcolor=f;backcolor=b;
-
+extern byte far signon[];

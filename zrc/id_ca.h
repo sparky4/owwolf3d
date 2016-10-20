@@ -1,10 +1,12 @@
 // ID_CA.H
+#ifndef __ID_CA_H__
+#define __ID_CA_H__
 //===========================================================================
 
 #define NUMMAPS		60
 #define MAPPLANES	2
 
-#define UNCACHEGRCHUNK(chunk)	{MM_FreePtr(&grsegs[chunk]);grneeded[chunk]&=~ca_levelbit;}
+#define UNCACHEGRCHUNK(chunk)	{MM_FreePtr((memptr)grsegs[chunk]);grneeded[chunk]&=~ca_levelbit;}
 
 //===========================================================================
 
@@ -44,8 +46,8 @@ extern	char		extension[5],
 			aheadname[10],
 			afilename[10];
 
-extern long		_seg *grstarts;	// array of offsets in egagraph, -1 for sparse
-extern long		_seg *audiostarts;	// array of offsets in audio / audiot
+extern LSEG *grstarts;	// array of offsets in egagraph, -1 for sparse
+extern LSEG *audiostarts;	// array of offsets in audio / audiot
 //
 // hooks for custom cache dialogs
 //
@@ -99,3 +101,4 @@ void CA_CacheMap (int mapnum);
 void CA_CacheMarks (void);
 
 void CA_CacheScreen (int chunk);
+#endif

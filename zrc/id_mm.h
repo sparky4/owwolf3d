@@ -15,6 +15,7 @@
 //--------
 
 #define	EMS_INT			0x67
+#define	EMM_INT			0x21
 
 #define	EMS_STATUS		0x40
 #define	EMS_GETFRAME	0x41
@@ -28,7 +29,7 @@
 
 #define	XMS_INT			0x2f
 #define	XMS_CALL(v)		_AH = (v);\
-						asm call [DWORD PTR XMSDriver]
+						__asm call [DWORD PTR XMSDriver]
 
 #define	XMS_VERSION		0x00
 
@@ -55,7 +56,7 @@
 
 //==========================================================================
 
-typedef void _seg * memptr;
+//typedef void _seg * memptr;
 
 typedef struct
 {

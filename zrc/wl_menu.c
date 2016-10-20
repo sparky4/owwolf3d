@@ -10,7 +10,7 @@
 //
 // PRIVATE PROTOTYPES
 //
-void CP_ReadThis(void);
+int CP_ReadThis(void);
 
 #ifdef SPEAR
 #define STARTITEM	newgame
@@ -607,7 +607,7 @@ void DrawMainMenu(void)
 // READ THIS!
 //
 ////////////////////////////////////////////////////////////////////
-void CP_ReadThis(void)
+int CP_ReadThis(void)
 {
 	StartCPMusic(CORNER_MUS);
 	HelpScreens();
@@ -890,7 +890,7 @@ int CP_EndGame(void)
 // VIEW THE HIGH SCORES
 //
 ////////////////////////////////////////////////////////////////////
-void CP_ViewScores(void)
+int CP_ViewScores(void)
 {
 	fontnumber=0;
 
@@ -915,6 +915,7 @@ void CP_ViewScores(void)
 	CacheLump (BACKDROP_LUMP_START,BACKDROP_LUMP_END);
 	CacheLump (OPTIONS_LUMP_START,OPTIONS_LUMP_END);
 #endif
+	return 0;
 }
 
 
@@ -923,7 +924,7 @@ void CP_ViewScores(void)
 // START A NEW GAME
 //
 ////////////////////////////////////////////////////////////////////
-void CP_NewGame(void)
+int CP_NewGame(void)
 {
 	int which,episode;
 
@@ -943,7 +944,7 @@ firstpart:
 		{
 			case -1:
 				MenuFadeOut();
-				return;
+				return 0;
 
 			default:
 				if (!EpisodeSelect[which/2])
@@ -981,7 +982,7 @@ firstpart:
 		#endif
 		{
 			MenuFadeOut();
-			return;
+			return 0;
 		}
 
 	MenuFadeOut();
@@ -1015,7 +1016,7 @@ firstpart:
 		#else
 		UnCacheLump (NEWGAME_LUMP_START,NEWGAME_LUMP_END);
 		CacheLump (OPTIONS_LUMP_START,OPTIONS_LUMP_END);
-		return;
+		return 0;
 		#endif
 	}
 
@@ -1039,6 +1040,7 @@ firstpart:
 	UnCacheLump (NEWGAME_LUMP_START,NEWGAME_LUMP_END);
 	CacheLump (OPTIONS_LUMP_START,OPTIONS_LUMP_END);
 #endif
+	return 0;
 }
 
 
@@ -1132,7 +1134,7 @@ void DrawNewGameDiff(int w)
 // HANDLE SOUND MENU
 //
 ////////////////////////////////////////////////////////////////////
-void CP_Sound(void)
+int CP_Sound(void)
 {
 	int which,i;
 
@@ -1242,6 +1244,7 @@ void CP_Sound(void)
 	UnCacheLump (SOUND_LUMP_START,SOUND_LUMP_END);
 	CacheLump (OPTIONS_LUMP_START,OPTIONS_LUMP_END);
 #endif
+	return 0;
 }
 
 
@@ -1696,10 +1699,10 @@ int CalibrateJoystick(void)
 		jb=IN_JoyButtons();
 		if (Keyboard[sc_Escape])
 			return 0;
-		#ifndef SPEAR
-		if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("goobers"))
-			PicturePause();
-		#endif
+// // 		#ifndef SPEAR
+// // 		if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("goobers"))
+// // 			PicturePause();
+// // 		#endif
 
 	} while(!(jb&1));
 
@@ -1730,10 +1733,10 @@ int CalibrateJoystick(void)
 		jb=IN_JoyButtons();
 		if (Keyboard[sc_Escape])
 			return 0;
-		#ifndef SPEAR
-		if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("goobers"))
-			PicturePause();
-		#endif
+// // 		#ifndef SPEAR
+// // 		if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("goobers"))
+// // 			PicturePause();
+// // 		#endif
 	} while(!(jb&2));
 
 	IN_GetJoyAbs(joystickport,&xmax,&ymax);
@@ -1758,7 +1761,7 @@ int CalibrateJoystick(void)
 // DEFINE CONTROLS
 //
 ////////////////////////////////////////////////////////////////////
-void CP_Control(void)
+int CP_Control(void)
 {
 	#define CTL_SPC	70
 	enum {MOUSEENABLE,JOYENABLE,USEPORT2,PADENABLE,MOUSESENS,CUSTOMIZE};
@@ -1825,6 +1828,7 @@ void CP_Control(void)
 	UnCacheLump (CONTROL_LUMP_START,CONTROL_LUMP_END);
 	CacheLump (OPTIONS_LUMP_START,OPTIONS_LUMP_END);
 #endif
+	return 0;
 }
 
 
@@ -1881,7 +1885,7 @@ void DrawMouseSens(void)
 //
 // ADJUST MOUSE SENSITIVITY
 //
-void MouseSensitivity(void)
+int MouseSensitivity(void)
 {
 	ControlInfo ci;
 	int exit=0,oldMA;
@@ -1905,7 +1909,7 @@ void MouseSensitivity(void)
 					VWB_Bar(61+20*mouseadjustment,98,19,9,READHCOLOR);
 					VW_UpdateScreen();
 					SD_PlaySound(MOVEGUN1SND);
-					while(Keyboard[sc_LeftArrow]);
+					while(Keyboard[sc_LeftArrow]){}
 					WaitKeyUp();
 				}
 				break;
@@ -1921,18 +1925,18 @@ void MouseSensitivity(void)
 					VWB_Bar(61+20*mouseadjustment,98,19,9,READHCOLOR);
 					VW_UpdateScreen();
 					SD_PlaySound(MOVEGUN1SND);
-					while(Keyboard[sc_RightArrow]);
+					while(Keyboard[sc_RightArrow]){}
 					WaitKeyUp();
 				}
 				break;
 		}
 
-		#ifndef SPEAR
-		if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("goobers"))
-		#else
-		if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("debugmode"))
-		#endif
-			PicturePause();
+// // 		#ifndef SPEAR
+// // 		if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("goobers"))
+// // 		#else
+// // 		if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("debugmode"))
+// // 		#endif
+// // 			PicturePause();
 
 		if (ci.button0 || Keyboard[sc_Space] || Keyboard[sc_Enter])
 			exit=1;
@@ -1952,6 +1956,7 @@ void MouseSensitivity(void)
 
 	WaitKeyUp();
 	MenuFadeOut();
+	return 0;
 }
 
 
@@ -2047,7 +2052,7 @@ char mbarray[4][3]={"b0","b1","b2","b3"},
 	   order[4]={RUN,OPEN,FIRE,STRAFE};
 
 
-void CustomControls(void)
+int CustomControls(void)
 {
  int which;
 
@@ -2079,6 +2084,7 @@ void CustomControls(void)
 
 
  MenuFadeOut();
+ return 0;
 }
 
 
@@ -2733,7 +2739,7 @@ void DrawCustKeys(int hilight)
 // CHANGE SCREEN VIEWING SIZE
 //
 ////////////////////////////////////////////////////////////////////
-void CP_ChangeView(void)
+int CP_ChangeView(void)
 {
 	int exit=0,oldview,newview;
 	ControlInfo ci;
@@ -2774,12 +2780,12 @@ void CP_ChangeView(void)
 			break;
 		}
 
-		#ifndef SPEAR
-		if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("goobers"))
-		#else
-		if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("debugmode"))
-		#endif
-			PicturePause();
+// // 		#ifndef SPEAR
+// // 		if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("goobers"))
+// // 		#else
+// // 		if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("debugmode"))
+// // 		#endif
+// // 			PicturePause();
 
 		if (ci.button0 || Keyboard[sc_Enter])
 			exit=1;
@@ -2789,7 +2795,7 @@ void CP_ChangeView(void)
 			viewwidth=oldview*16;
 			SD_PlaySound(ESCPRESSEDSND);
 			MenuFadeOut();
-			return;
+			return 0;
 		}
 
 	} while(!exit);
@@ -2804,6 +2810,7 @@ void CP_ChangeView(void)
 
 	ShootSnd();
 	MenuFadeOut();
+	return 0;
 }
 
 
@@ -2841,7 +2848,7 @@ void DrawChangeView(int view)
 // QUIT THIS INFERNAL GAME!
 //
 ////////////////////////////////////////////////////////////////////
-void CP_Quit(void)
+int CP_Quit(void)
 {
 	int i;
 
@@ -2871,6 +2878,7 @@ void CP_Quit(void)
 	}
 
 	DrawMainMenu();
+	return 0;
 }
 
 
@@ -3028,56 +3036,68 @@ void DrawOutline(int x,int y,int w,int h,int color1,int color2)
 ////////////////////////////////////////////////////////////////////
 void SetupControlPanel(void)
 {
-	struct ffblk f;
-	char name[13];
-	int which,i;
+//      struct ffblk f;
+        struct _finddata_t f;
+        long handle;
+        char name[13];
+        int which;
 
 
-	//
-	// CACHE GRAPHICS & SOUNDS
-	//
-	CA_CacheGrChunk(STARTFONT+1);
+        //
+        // CACHE GRAPHICS & SOUNDS
+        //
+        CA_CacheGrChunk(STARTFONT+1);
 #ifndef SPEAR
-	CacheLump(CONTROLS_LUMP_START,CONTROLS_LUMP_END);
+        CacheLump(CONTROLS_LUMP_START,CONTROLS_LUMP_END);
 #else
-	CacheLump(BACKDROP_LUMP_START,BACKDROP_LUMP_END);
+        CacheLump(BACKDROP_LUMP_START,BACKDROP_LUMP_END);
 #endif
 
-	SETFONTCOLOR(TEXTCOLOR,BKGDCOLOR);
-	fontnumber=1;
-	WindowH=200;
+        SETFONTCOLOR(TEXTCOLOR,BKGDCOLOR);
+        fontnumber=1;
+        WindowH=200;
 
-	if (!ingame)
-		CA_LoadAllSounds();
-	else
-		MainMenu[savegame].active=1;
+        if (!ingame)
+                CA_LoadAllSounds();
+        else
+                MainMenu[savegame].active=1;
 
-	//
-	// SEE WHICH SAVE GAME FILES ARE AVAILABLE & READ STRING IN
-	//
-	strcpy(name,SaveName);
-	if (!findfirst(name,&f,0))
-		do
-		{
-			which=f.ff_name[7]-'0';
-			if (which<10)
-			{
-				int handle;
-				char temp[32];
+        //
+        // SEE WHICH SAVE GAME FILES ARE AVAILABLE & READ STRING IN
+        //
+        strcpy(name,SaveName);
+//      if (!findfirst(name,&f,0))
+        handle=_findfirst(name,&f);
+        if (handle!=-1)
+        {
+                long rc;
+                do
+                {
+//                      which=f.ff_name[7]-'0';
+                        which=f.name[7]-'0';
+                        if (which<10)
+                        {
+                                int handle;
+                                char temp[32];
 
-				SaveGamesAvail[which]=1;
-				handle=open(f.ff_name,O_BINARY);
-				read(handle,temp,32);
-				close(handle);
-				strcpy(&SaveGameNames[which][0],temp);
-			}
-		} while(!findnext(&f));
+                                SaveGamesAvail[which]=1;
+//                              handle=open(f.ff_name,O_BINARY);
+                                handle=open(f.name,O_BINARY);
+                                read(handle,temp,32);
+                                close(handle);
+                                strcpy(&SaveGameNames[which][0],temp);
+                        }
+                        rc=_findnext(handle,&f);
+                } while(rc!=-1);
+//              } while(!findnext(&f));
+                _findclose(handle);
+        }
 
-	//
-	// CENTER MOUSE
-	//
-	_CX=_DX=CENTER;
-	Mouse(4);
+        //
+        // CENTER MOUSE
+        //
+        _CX=_DX=CENTER;
+        Mouse(4);
 }
 
 
@@ -3175,12 +3195,12 @@ int HandleMenu(CP_iteminfo *item_i,CP_itemtype far *items,void (*routine)(int w)
 			//
 			// CHECK FOR SCREEN CAPTURE
 			//
-			#ifndef SPEAR
-			if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("goobers"))
-			#else
-			if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("debugmode"))
-			#endif
-				PicturePause();
+// // 			#ifndef SPEAR
+// // 			if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("goobers"))
+// // 			#else
+// // 			if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("debugmode"))
+// // 			#endif
+// // 				PicturePause();
 
 
 			if (key>='a')
@@ -3370,7 +3390,7 @@ void DrawHalfStep(int x,int y)
 	VW_UpdateScreen();
 	SD_PlaySound(MOVEGUN1SND);
 	TimeCount=0;
-	while(TimeCount<8);
+	while(TimeCount<8){}
 }
 
 
@@ -3623,10 +3643,10 @@ int Confirm(char far *string)
 			TimeCount=0;
 		}
 
-		#ifndef SPEAR
-		if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("goobers"))
-			PicturePause();
-		#endif
+// // 		#ifndef SPEAR
+// // 		if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("goobers"))
+// // 			PicturePause();
+// // 		#endif
 
 	#ifdef SPANISH
 	} while(!Keyboard[sc_S] && !Keyboard[sc_N] && !Keyboard[sc_Escape]);
@@ -3641,7 +3661,7 @@ int Confirm(char far *string)
 		ShootSnd();
 	}
 
-	while(Keyboard[sc_S] || Keyboard[sc_N] || Keyboard[sc_Escape]);
+	while(Keyboard[sc_S] || Keyboard[sc_N] || Keyboard[sc_Escape]){}
 
 	#else
 
@@ -3651,7 +3671,7 @@ int Confirm(char far *string)
 		ShootSnd();
 	}
 
-	while(Keyboard[sc_Y] || Keyboard[sc_N] || Keyboard[sc_Escape]);
+	while(Keyboard[sc_Y] || Keyboard[sc_N] || Keyboard[sc_Escape]){}
 	#endif
 
 	IN_ClearKeysDown();
@@ -3678,10 +3698,10 @@ int GetYorN(int x,int y,int pic)
 
 	do
 	{
-		#ifndef SPEAR
-		if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("goobers"))
-			PicturePause();
-		#endif
+// // 		#ifndef SPEAR
+// // 		if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("goobers"))
+// // 			PicturePause();
+// // 		#endif
 
 	#ifdef SPANISH
 	} while(!Keyboard[sc_S] && !Keyboard[sc_N] && !Keyboard[sc_Escape]);
@@ -3724,12 +3744,12 @@ int GetYorN(int x,int y,int pic)
 void Message(char far *string)
 {
 	int h=0,w=0,mw=0,i,x,y,time;
-	fontstruct _seg *font;
+	fontstruct /*_seg*/ *font;
 
 
 	CA_CacheGrChunk (STARTFONT+1);
 	fontnumber=1;
-	font=grsegs[STARTFONT+fontnumber];
+	font=(fontstruct *)grsegs[STARTFONT+fontnumber];
 	h=font->height;
 	for (i=0;i<_fstrlen(string);i++)
 		if (string[i]=='\n')
@@ -3781,7 +3801,7 @@ void StartCPMusic(int song)
 		mmerror = false;
 	else
 	{
-		MM_SetLock(&((memptr)audiosegs[STARTMUSIC + chunk]),true);
+		MM_SetLock(((memptr)audiosegs[STARTMUSIC + chunk]),true);
 		SD_StartMusic((MusicGroup far *)audiosegs[STARTMUSIC + chunk]);
 	}
 }
@@ -3881,106 +3901,138 @@ void ShootSnd(void)
 ///////////////////////////////////////////////////////////////////////////
 void CheckForEpisodes(void)
 {
-	struct ffblk f;
+//      struct ffblk f;
+        struct _finddata_t f;
+        long handle;
 
 //
 // JAPANESE VERSION
 //
 #ifdef JAPAN
 #ifdef JAPDEMO
-	if (!findfirst("*.WJ1",&f,FA_ARCH))
-	{
-		strcpy(extension,"WJ1");
+        handle=_findfirst("*.WJ1",&f);
+        if(handle!=-1)
+//      if (!findfirst("*.WJ1",&f,FA_ARCH))
+        {
+                strcpy(extension,"WJ1");
 #else
-	if (!findfirst("*.WJ6",&f,FA_ARCH))
-	{
-		strcpy(extension,"WJ6");
+        handle=_findfirst("*.WJ6",&f);
+        if(handle!=-1)
+//      if (!findfirst("*.WJ6",&f,FA_ARCH))
+        {
+                strcpy(extension,"WJ6");
 #endif
-		strcat(configname,extension);
-		strcat(SaveName,extension);
-		strcat(PageFileName,extension);
-		strcat(audioname,extension);
-		strcat(demoname,extension);
-		EpisodeSelect[1] =
-		EpisodeSelect[2] =
-		EpisodeSelect[3] =
-		EpisodeSelect[4] =
-		EpisodeSelect[5] = 1;
-	}
-	else
-		Quit("NO JAPANESE WOLFENSTEIN 3-D DATA FILES to be found!");
+                strcat(configname,extension);
+                strcat(SaveName,extension);
+                strcat(PageFileName,extension);
+                strcat(audioname,extension);
+                strcat(demoname,extension);
+                EpisodeSelect[1] =
+                EpisodeSelect[2] =
+                EpisodeSelect[3] =
+                EpisodeSelect[4] =
+                EpisodeSelect[5] = 1;
+        }
+        else
+                Quit("NO JAPANESE WOLFENSTEIN 3-D DATA FILES to be found!");
 #else
 
 //
 // ENGLISH
 //
-#ifndef UPLOAD
+#ifdef UPLOAD
+        handle=_findfirst("*.WL1",&f);
+        if(handle!=-1)
+//      if (!findfirst("*.WL1",&f,FA_ARCH))
+        {
+                strcpy(extension,"WL1");
+        }
+        else
+                Quit("NO WOLFENSTEIN 3-D DATA FILES to be found!");
+#else
 #ifndef SPEAR
-	if (!findfirst("*.WL6",&f,FA_ARCH))
-	{
-		strcpy(extension,"WL6");
-		NewEmenu[2].active =
-		NewEmenu[4].active =
-		NewEmenu[6].active =
-		NewEmenu[8].active =
-		NewEmenu[10].active =
-		EpisodeSelect[1] =
-		EpisodeSelect[2] =
-		EpisodeSelect[3] =
-		EpisodeSelect[4] =
-		EpisodeSelect[5] = 1;
-	}
-	else
-	if (!findfirst("*.WL3",&f,FA_ARCH))
-	{
-		strcpy(extension,"WL3");
-		NewEmenu[2].active =
-		NewEmenu[4].active =
-		EpisodeSelect[1] =
-		EpisodeSelect[2] = 1;
-	}
-	else
+        handle=_findfirst("*.WL6",&f);
+        if(handle!=-1)
+//      if (!findfirst("*.WL6",&f,FA_ARCH))
+        {
+                strcpy(extension,"WL6");
+                NewEmenu[2].active =
+                NewEmenu[4].active =
+                NewEmenu[6].active =
+                NewEmenu[8].active =
+                NewEmenu[10].active =
+                EpisodeSelect[1] =
+                EpisodeSelect[2] =
+                EpisodeSelect[3] =
+                EpisodeSelect[4] =
+                EpisodeSelect[5] = 1;
+        }
+        else
+        {
+                handle=_findfirst("*.WL3",&f);
+                if(handle!=-1)
+//              if (!findfirst("*.WL3",&f,FA_ARCH))
+                {
+                        strcpy(extension,"WL3");
+                        NewEmenu[2].active =
+                        NewEmenu[4].active =
+                        EpisodeSelect[1] =
+                        EpisodeSelect[2] = 1;
+                }
+                else
+                {
+                        handle=_findfirst("*.WL1",&f);
+                        if(handle!=-1)
+//                      if (!findfirst("*.WL1",&f,FA_ARCH))
+                        {
+                                strcpy(extension,"WL1");
+                        }
+                        else
+                                Quit("NO WOLFENSTEIN 3-D DATA FILES to be found!");
+                }
+        }
 #endif
 #endif
-
 
 
 #ifdef SPEAR
 #ifndef SPEARDEMO
-	if (!findfirst("*.SOD",&f,FA_ARCH))
-	{
-		strcpy(extension,"SOD");
-	}
-	else
-		Quit("NO SPEAR OF DESTINY DATA FILES TO BE FOUND!");
+        handle=_findfirst("*.SOD",&f);
+        if(handle!=-1)
+//      if (!findfirst("*.SOD",&f,FA_ARCH))
+        {
+                strcpy(extension,"SOD");
+        }
+        else
+                Quit("NO SPEAR OF DESTINY DATA FILES TO BE FOUND!");
 #else
-	if (!findfirst("*.SDM",&f,FA_ARCH))
-	{
-		strcpy(extension,"SDM");
-	}
-	else
-		Quit("NO SPEAR OF DESTINY DEMO DATA FILES TO BE FOUND!");
+        handle=_findfirst("*.SDM",&f);
+        if(handle!=-1)
+//      if (!findfirst("*.SDM",&f,FA_ARCH))
+        {
+                strcpy(extension,"SDM");
+        }
+        else
+                Quit("NO SPEAR OF DESTINY DEMO DATA FILES TO BE FOUND!");
 #endif
-
-#else
-	if (!findfirst("*.WL1",&f,FA_ARCH))
-	{
-		strcpy(extension,"WL1");
-	}
-	else
-		Quit("NO WOLFENSTEIN 3-D DATA FILES to be found!");
 #endif
+        if(handle!=-1) _findclose(handle);
 
-	strcat(configname,extension);
-	strcat(SaveName,extension);
-	strcat(PageFileName,extension);
-	strcat(audioname,extension);
-	strcat(demoname,extension);
+        strcat(configname,extension);
+        strcat(SaveName,extension);
+//      strcat(PageFileName,extension);
+        strcat(audioname,extension);
+        strcat(demoname,extension);
+
+#ifdef ABCAUS
+
 #ifndef SPEAR
 #ifndef GOODTIMES
-	strcat(helpfilename,extension);
+        strcat(helpfilename,extension);
 #endif
-	strcat(endfilename,extension);
+        strcat(endfilename,extension);
 #endif
+#endif
+
 #endif
 }
