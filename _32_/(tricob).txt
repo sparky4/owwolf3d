@@ -1,0 +1,9 @@
+                 "Wolfenstein 3-D: The Deluxe Edition"
+
+    Source code by Tricob (with badly-needed help from other wolfers)
+
+Okay, I *think* this is all the files you need to compile the Wolf4GW version of WolfDX.  The source code is missing a lot of features that exist in WolfDX now, so if you wish to make the source work with the two-level demo I hope to release, I'm afraid you've got your work cut out for you.  But feel free to ask questions about the source in the DHWs forums.  :-)
+
+Thanks for your interest in the WolfDX project.
+
+- "Tricob".

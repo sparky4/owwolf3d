@@ -1,9 +1,9 @@
-.386
-;.MODEL  flat
+IDEAL
+MODEL	MEDIUM,C
 
-;       Assembly portion of the User Mgr. This is just John Carmack's table
-;               driven pseudo-random number generator, and we put it in the User Mgr
-;               because we couldn't figure out where it should go
+;	Assembly portion of the User Mgr. This is just John Carmack's table
+;		driven pseudo-random number generator, and we put it in the User Mgr
+;		because we couldn't figure out where it should go
 
 
 ;============================================================================
@@ -12,9 +12,9 @@
 ;
 ;============================================================================
 
-.data
+	FARDATA
 
-rndindex        dd      ?
+rndindex	dw	?
 
 rndtable db    0,   8, 109, 220, 222, 241, 149, 107,  75, 248, 254, 140,  16,  66
 	db   74,  21, 211,  47,  80, 242, 154,  27, 205, 128, 161,  89,  77,  36
@@ -36,9 +36,11 @@ rndtable db    0,   8, 109, 220, 222, 241, 149, 107,  75, 248, 254, 140,  16,  6
 	db  197, 242,  98,  43,  39, 175, 254, 145, 190,  84, 118, 222, 187, 136
 	db  120, 163, 236, 249
 
-PUBLIC  rndtable
+PUBLIC	rndtable
 
-.code
+	CODESEG
+
+LastRnd		dw	?
 
 ;=================================================
 ;
@@ -48,27 +50,30 @@ PUBLIC  rndtable
 ;
 ;=================================================
 
-US_InitRndT_ proc near
-;randomize:dword is in eax
-;       uses    si,di
-	public  US_InitRndT_
+PROC	US_InitRndT randomize:word
+	uses	si,di
+	public	US_InitRndT
 
-	or      eax,eax
-	jne     @@timeit                ;if randomize is true, really random
+	mov	ax,SEG rndtable
+	mov	es,ax
 
-	mov     edx,0                   ;set to a definite value
-	jmp     @@setit
+	mov	ax,[randomize]
+	or	ax,ax
+	jne	@@timeit		;if randomize is true, really random
+
+	mov	dx,0			;set to a definite value
+	jmp	@@setit
 
 @@timeit:
-	mov     ah,2ch
-	int     21h                     ;GetSystemTime
-	and     edx,0ffh
+	mov	ah,2ch
+	int	21h			;GetSystemTime
+	and	dx,0ffh
 
 @@setit:
-	mov     [rndindex],edx
+	mov	[es:rndindex],dx
 	ret
 
-US_InitRndT_ endp
+ENDP
 
 ;=================================================
 ;
@@ -77,18 +82,20 @@ US_InitRndT_ endp
 ; Exit : AX = value
 ;
 ;=================================================
-US_RndT_ proc near
-	public  US_RndT_
+PROC	US_RndT
+	public	US_RndT
 
-	mov     ebx,[rndindex]
-	inc     ebx
-	and     ebx,0ffh
-	mov     [rndindex],ebx
-	xor     eax,eax
-	mov     al,[rndtable+ebx]
+	mov	ax,SEG rndtable
+	mov	es,ax
+	mov	bx,[es:rndindex]
+	inc	bx
+	and	bx,0ffh
+	mov	[es:rndindex],bx
+	mov	al,[es:rndtable+BX]
+	xor	ah,ah
 	ret
 
-US_RndT_ endp
+ENDP
 
 END
 

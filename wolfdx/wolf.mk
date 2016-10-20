@@ -1,3 +1,3 @@
-project : C:\watcom\wolfdx\Wolfdx.exe .SYMBOLIC
+project : wolfdx.exe .SYMBOLIC
 
-!include C:\watcom\wolfdx\Wolfdx.mk1
+!include wolfdx.mk1
