@@ -45,7 +45,7 @@ typedef	struct
 		} Rect;
 
 typedef void __based( void ) * memptr;	////old //----typedef void __based(__self) * memptr;
-#define _seg __segment
+//#define _seg __segment
 
 #define BSEG __segment
 //byte

@@ -62,7 +62,7 @@ MSEG	*mapheaderseg[NUMMAPS];
 //BSEG	*
 byte		*audiosegs;//[NUMSNDCHUNKS];
 //__segment	*
-byte	*grsegs;//[NUMCHUNKS];
+byte		*grsegs;//[NUMCHUNKS];
 
 byte		far	grneeded[NUMCHUNKS];
 byte		ca_levelbit,ca_levelnum;
