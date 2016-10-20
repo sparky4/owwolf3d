@@ -61,7 +61,7 @@ fixed           scale,maxslope;
 long            heightnumerator;
 int                     minheightdiv;
 
-
+unsigned char far signon[] = {0x00};
 void            Quit (char *error);
 
 boolean         startgame,loadedgame,virtualreality;
