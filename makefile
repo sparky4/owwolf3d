@@ -78,8 +78,8 @@ LIBFLAGS=$(WLIBQ) -b -n
 #
 # objects
 #
-TESTOBJS =
-INCREMENTOBJS = id_mm.$(OBJ) id_pm.$(OBJ) id_ca.$(OBJ) id_sd.$(OBJ) id_vl.$(OBJ) id_vh.$(OBJ) wl_scale.$(OBJ) id_in.$(OBJ)
+TESTOBJS = id_in.$(OBJ)
+INCREMENTOBJS = id_mm.$(OBJ) id_pm.$(OBJ) id_ca.$(OBJ) id_sd.$(OBJ) id_vl.$(OBJ) id_vh.$(OBJ) wl_scale.$(OBJ)
 WOLFOBJS = wl_inter.$(OBJ) gamepal3.$(OBJ) wl_act1.$(OBJ) wl_act2.$(OBJ) wl_agent.$(OBJ) wl_debug.$(OBJ) wl_draw.$(OBJ) wl_game.$(OBJ) wl_menu.$(OBJ) wl_play.$(OBJ) wl_state.$(OBJ) wl_text.$(OBJ) signon.$(OBJ) $(TESTOBJS) $(INCREMENTOBJS)
 
 #
