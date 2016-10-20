@@ -78,8 +78,8 @@ LIBFLAGS=$(WLIBQ) -b -n
 #
 # objects
 #
-TESTOBJS = id_mm.$(OBJ) id_pm.$(OBJ) id_ca.$(OBJ)
-WOLFOBJS = id_vl.$(OBJ) wl_inter.$(OBJ) gamepal3.$(OBJ) id_in.$(OBJ) id_sd.$(OBJ) id_us_1.$(OBJ) id_vh.$(OBJ) wl_act1.$(OBJ) wl_act2.$(OBJ) wl_agent.$(OBJ) wl_debug.$(OBJ) wl_draw.$(OBJ) wl_game.$(OBJ) wl_menu.$(OBJ) wl_play.$(OBJ) wl_state.$(OBJ) wl_text.$(OBJ) wl_scale.$(OBJ) signon.$(OBJ) $(TESTOBJS)
+TESTOBJS = id_mm.$(OBJ) id_pm.$(OBJ) id_ca.$(OBJ) id_in.$(OBJ) id_sd.$(OBJ) id_us_1.$(OBJ) id_vl.$(OBJ) id_vh.$(OBJ) wl_scale.$(OBJ)
+WOLFOBJS = wl_inter.$(OBJ) gamepal3.$(OBJ) wl_act1.$(OBJ) wl_act2.$(OBJ) wl_agent.$(OBJ) wl_debug.$(OBJ) wl_draw.$(OBJ) wl_game.$(OBJ) wl_menu.$(OBJ) wl_play.$(OBJ) wl_state.$(OBJ) wl_text.$(OBJ) signon.$(OBJ) $(TESTOBJS)
 
 #
 # libraries
@@ -116,10 +116,9 @@ WOLFOBJS = id_vl.$(OBJ) wl_inter.$(OBJ) gamepal3.$(OBJ) id_in.$(OBJ) id_sd.$(OBJ
 # List of executables to build
 #
 EXEC = &
-	test.exe &
 	wolf3d.exe
 
-all: $(EXEC)
+all: test.exe #$(EXEC)
 
 #
 # game executables
