@@ -4,8 +4,8 @@
 #include <malloc.h>
 #include <mem.h>
 #include <string.h>
-#include "src/id_head.h"
-#include "src/id_vl.h"
+#include "id_head.h"
+#include "id_vl.h"
 #pragma hdrstop
 
 //

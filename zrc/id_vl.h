@@ -4,7 +4,7 @@
 #ifndef __ID_VL_H__
 #define __ID_VL_H__
 #include <conio.h>
-#include "src/type.h"
+#include "type.h"
 
 #define MS_Quit	Quit
 

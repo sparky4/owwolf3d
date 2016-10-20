@@ -17,8 +17,8 @@
 //#include <values.h>
 //#include <dir.h>
 #define __ID_GLOB__
-#include "src/version.h"
-#include "src/type.h"
+#include "version.h"
+#include "type.h"
 
 //--------------------------------------------------------------------------
 
@@ -70,14 +70,14 @@
 #define	nil	((void *)0)
 
 
-#include "src/id_mm.h"
-#include "src/id_pm.h"
-#include "src/id_ca.h"
-#include "src/id_vl.h"
-#include "src/id_vh.h"
-#include "src/id_in.h"
-#include "src/id_sd.h"
-#include "src/id_us.h"
+#include "id_mm.h"
+#include "id_pm.h"
+#include "id_ca.h"
+#include "id_vl.h"
+#include "id_vh.h"
+#include "id_in.h"
+#include "id_sd.h"
+#include "id_us.h"
 
 
 void	Quit (char *error);		// defined in user program
@@ -97,7 +97,7 @@ void	Quit (char *error);		// defined in user program
 
 #define	UPDATETERMINATE	0x0301
 
-extern	unsigned	mapwidth,mapheight,tics;
+//extern	unsigned	mapwidth,mapheight,tics;
 extern	boolean		compatability;
 
 extern	byte		*updateptr;

@@ -1,1 +1,2 @@
-#include "src/id_tail.h"
+#include "id_tail.h"
+boolean		NoWait;

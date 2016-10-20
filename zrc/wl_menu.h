@@ -3,7 +3,7 @@
 //
 #ifndef __WL_MENU_H__
 #define __WL_MENU_H__
-#include "src/wl_def.h"
+#include "wl_def.h"
 
 #ifdef SPEAR
 

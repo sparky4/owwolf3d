@@ -1,7 +1,7 @@
 // WL_MAIN.C
 
 #include <conio.h>
-#include "src/wl_def.h"
+#include "src/id_tail.h"
 #pragma hdrstop
 
 
@@ -44,10 +44,10 @@ int	viewsize;
 unsigned char gamepal[768];
 boolean	compatability;
 byte		*updateptr;
-unsigned	uwidthtable[UPDATEHIGH];
-unsigned	wallheight[MAXVIEWWIDTH];
-unsigned	latchpics[NUMLATCHPICS];
-unsigned freelatch = FREESTART;
+//unsigned	uwidthtable[UPDATEHIGH];
+//unsigned	wallheight[MAXVIEWWIDTH];
+//unsigned	latchpics[NUMLATCHPICS];
+//unsigned freelatch = FREESTART;
 
 
 char            str[80],str2[20];
@@ -55,20 +55,20 @@ int				tedlevelnum;
 boolean         tedlevel;
 boolean         nospr;
 boolean         IsA386;
-int                     dirangle[9] = {0,ANGLES/8,2*ANGLES/8,3*ANGLES/8,4*ANGLES/8,
-	5*ANGLES/8,6*ANGLES/8,7*ANGLES/8,ANGLES};
+//int                     dirangle[9] = {0,ANGLES/8,2*ANGLES/8,3*ANGLES/8,4*ANGLES/8,
+//	5*ANGLES/8,6*ANGLES/8,7*ANGLES/8,ANGLES};
 
 //
 // proejection variables
 //
-fixed           focallength;
+//fixed           focallength;
 unsigned        screenofs;
 int             viewwidth;
 int             viewheight;
 int             centerx;
 int             shootdelta;                     // pixels away from centerx a target can be
-fixed           scale,maxslope;
-long            heightnumerator;
+//fixed           scale,maxslope;
+//long            heightnumerator;
 int                     minheightdiv;
 
 void            Quit (char *error);
@@ -246,7 +246,7 @@ char	configname[13]="CONFIG.";
 ========================
 */
 
-char    *JHParmStringsma[] = {"no386",nil};
+/*char    *JHParmStringsma[] = {"no386",nil};
 void Patch386 (void)
 {
 //extern void far jabhack2(void);
@@ -268,7 +268,7 @@ void Patch386 (void)
 	//}
 	//else
 		IsA386 = false;
-}
+}*/
 
 //===========================================================================
 
@@ -567,11 +567,11 @@ void ShutdownId (void)
 {
 //	US_Shutdown ();
 //	SD_Shutdown ();
-	PM_Shutdown ();
-	IN_Shutdown ();
+	//PM_Shutdown ();
+	//IN_Shutdown ();
 //	VW_Shutdown ();
-	CA_Shutdown ();
-	MM_Shutdown ();
+	//CA_Shutdown ();
+	//MM_Shutdown ();
 }
 
 
@@ -1161,20 +1161,20 @@ void InitGame (void)
 	else
 		virtualreality = false;*/
 
-	MM_Startup ();                  // so the signon screen can be freed
+//	MM_Startup ();                  // so the signon screen can be freed
 
 	//SignonScreen ();
 
 	////VW_Startup ();
-	//IN_Startup ();
-	PM_Startup ();
-	PM_UnlockMainMem ();
+//	IN_Startup ();
+//	PM_Startup ();
+//	PM_UnlockMainMem ();
 	//SD_Startup ();
-	CA_Startup ();
+//	CA_Startup ();
 	//US_Startup ();
 
 
-#ifndef SPEAR
+/*#ifndef SPEAR
 	if (mminfo.mainmem < 235000L)
 #else
 	if (mminfo.mainmem < 257000L && !MS_CheckParm("debugmode"))
@@ -1188,7 +1188,7 @@ void InitGame (void)
 		movedata ((unsigned)screen,7+7*160,0xb800,0,17*160);
 		//gotoxy (1,23);
 		exit(1);
-	}
+	}*/
 
 
 //
@@ -1235,8 +1235,8 @@ void InitGame (void)
 // load in and lock down some basic chunks
 //
 
-	CA_CacheGrChunk(STARTFONT);
-	MM_SetLock ((memptr)grsegs[STARTFONT],true);
+//	CA_CacheGrChunk(STARTFONT);
+//	MM_SetLock ((memptr)grsegs[STARTFONT],true);
 
 	/*LoadLatchMem ();
 	BuildTables ();          // trig tables
@@ -1284,7 +1284,7 @@ close(profilehandle);
 ==========================
 */
 
-boolean SetViewSize (unsigned width, unsigned height)
+/*boolean SetViewSize (unsigned width, unsigned height)
 {
 	viewwidth = width&~15;                  // must be divisable by 16
 	viewheight = height&~1;                 // must be even
@@ -1338,7 +1338,7 @@ void NewViewSize (int width)
 	viewsize = width;
 	SetViewSize (width*16,width*16*HEIGHTRATIO);
 	CA_DownLevel ();
-}
+}*/
 
 
 
@@ -1360,7 +1360,7 @@ void Quit (char *error)
 	if (virtualreality)
 		geninterrupt(0x61);
 
-	//ClearMemory ();
+	/*//ClearMemory ();
 	if (!*error)
 	{
 	 #ifndef JAPAN
@@ -1373,7 +1373,7 @@ void Quit (char *error)
 	{
 	 CA_CacheGrChunk (ERRORSCREEN);
 	 screen = (memptr)grsegs[ERRORSCREEN];
-	}
+	}*/
 
 	ShutdownId ();
 
@@ -1419,10 +1419,10 @@ static  char *ParmStringsmo[] = {"baby","easy","normal","hard",""};
 
 void    DemoLoop (void)
 {
-	static int LastDemo;
-	int     i,level;
-	long nsize;
-	memptr	nullblock;
+	//static int LastDemo;
+	//int     i,level;
+	//long nsize;
+	//memptr	nullblock;
 
 //
 // check for launch from ted
@@ -1460,7 +1460,7 @@ void    DemoLoop (void)
 
 //	nsize = (long)40*1024;
 //	MM_GetPtr(&nullblock,nsize);
-
+/*
 #ifndef DEMOTEST
 
 	#ifndef UPLOAD
@@ -1491,47 +1491,48 @@ void    DemoLoop (void)
 #endif
 
 #endif
-
+*/
+	printf("pee\n");
 	while (1)
 	{
+		//printf("p");
 		while (!NoWait)
 		{
 //
 // title page
 //
-			MM_SortMem ();
+			//printf("ee");
+	//		MM_SortMem ();
 #ifndef DEMOTEST
 
 #ifdef SPEAR
-			CA_CacheGrChunk (TITLEPALETTE);
+	//		CA_CacheGrChunk (TITLEPALETTE);
 
-			CA_CacheGrChunk (TITLE1PIC);
+	//		CA_CacheGrChunk (TITLE1PIC);
 //			VWB_DrawPic (0,0,TITLE1PIC);
-			UNCACHEGRCHUNK (TITLE1PIC);
+	//		UNCACHEGRCHUNK (TITLE1PIC);
 
-			CA_CacheGrChunk (TITLE2PIC);
+	//		CA_CacheGrChunk (TITLE2PIC);
 /*			VWB_DrawPic (0,80,TITLE2PIC);
 			UNCACHEGRCHUNK (TITLE2PIC);
 			VW_UpdateScreen ();
 			VL_FadeIn(0,255,grsegs[TITLEPALETTE],30);*/
 
-			UNCACHEGRCHUNK (TITLEPALETTE);
+	//		UNCACHEGRCHUNK (TITLEPALETTE);
 #else
-			CA_CacheScreen (TITLEPIC);
+	//		CA_CacheScreen (TITLEPIC);
 //			VW_UpdateScreen ();
 //			VW_FadeIn();
 #endif
-			if (IN_UserInput(TickBase*15))
-				break;
+	//		if (IN_UserInput(TickBase*15)) break;
 //			VW_FadeOut();
 //
 // credits page
 //
-			CA_CacheScreen (CREDITSPIC);
+	//		CA_CacheScreen (CREDITSPIC);
 //			VW_UpdateScreen();
 //			VW_FadeIn ();
-			if (IN_UserInput(TickBase*10))
-				break;
+	//		if (IN_UserInput(TickBase*10)) break;
 //			VW_FadeOut ();
 //
 // high scores
@@ -1540,8 +1541,7 @@ void    DemoLoop (void)
 //			VW_UpdateScreen ();
 //			VW_FadeIn ();
 
-			if (IN_UserInput(TickBase*10))
-				break;
+	//		if (IN_UserInput(TickBase*10)) break;
 #endif
 //
 // demo
@@ -1553,9 +1553,10 @@ void    DemoLoop (void)
 			PlayDemo (0);
 			#endif
 */
-			if (playstate == ex_abort)
-				break;
+//			if (playstate == ex_abort)
+//				break;
 //			StartCPMusic(INTROSONG);
+if(kbhit()) break;
 		}
 
 /*		VW_FadeOut ();
@@ -1568,9 +1569,10 @@ void    DemoLoop (void)
 			RecordDemo ();
 		else
 			US_ControlPanel (0);*/
-
+if(kbhit()) break;
 		if (startgame || loadedgame)
 		{
+			printf("wwww");
 /*			GameLoop ();
 			VW_FadeOut();
 			StartCPMusic(INTROSONG);*/
@@ -1594,7 +1596,7 @@ char    *nosprtxt[] = {"nospr",nil};
 
 void main (void)
 {
-	int     i;
+	//int     i;
 
 
 // #ifdef BETA
@@ -1614,13 +1616,12 @@ void main (void)
 
 	//CheckForEpisodes();
 
-	Patch386 ();
+	//Patch386 ();
 	printf("initgame	");
 	InitGame ();	printf("ok!\n");
 
 	printf("demoloop	");
 	DemoLoop();	printf("ok!\n");
 
-	Quit("Demo loop exited???");
+	//Quit("Demo loop exited???");
 }
-
