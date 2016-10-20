@@ -11,8 +11,8 @@
 
 #define GRMODE	VGAGR
 
-#include "src/version.h"
-#include "src/id_heads.h"
+#include "version.h"
+#include "id_heads.h"
 #ifndef __TYPE_H__
 typedef	struct
 		{

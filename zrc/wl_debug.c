@@ -1,7 +1,7 @@
 // WL_DEBUG.C
 
 #include <bios.h>
-#include "src/wl_def.h"
+#include "wl_def.h"
 
 /*
 =============================================================================
