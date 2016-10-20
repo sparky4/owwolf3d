@@ -1,7 +1,7 @@
 // WL_MAIN.C
 
 #include <conio.h>
-#include "wl_def.h"
+#include "src/wl_def.h"
 #pragma hdrstop
 
 
@@ -61,7 +61,6 @@ fixed           scale,maxslope;
 long            heightnumerator;
 int                     minheightdiv;
 
-unsigned char far signon[] = {0x00};
 void            Quit (char *error);
 
 boolean         startgame,loadedgame,virtualreality;
