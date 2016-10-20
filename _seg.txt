@@ -1,0 +1,112 @@
+zrc/contigsc.c:byte _seg	*endscalermemory;
+zrc/contigsc.c:		seg = FP_SEG(dest);
+zrc/contigsc.c:	seg = FP_SEG(dest);
+zrc/contigsc.c:	endscalermemory = (void _seg *)(seg+ofs/16);
+zrc/contigsc.c:	t_compshape	_seg *shape;
+zrc/contigsc.c:	*(((unsigned *)&linescale)+1)=FP_SEG(comptable);	// seg of far call
+zrc/contigsc.c:	t_compshape	_seg *shape;
+zrc/contigsc.c:	*(((unsigned *)&linescale)+1)=FP_SEG(comptable);	// seg of far call
+zrc/id_ca.c:byte 		_seg	*tinf;
+zrc/id_ca.c:unsigned	_seg	*mapsegs[MAPPLANES];
+zrc/id_ca.c:maptype		_seg	*mapheaderseg[NUMMAPS];
+zrc/id_ca.c:byte		_seg	*audiosegs[NUMSNDCHUNKS];
+zrc/id_ca.c:void		_seg	*grsegs[NUMCHUNKS];
+zrc/id_ca.c:long		_seg *grstarts;	// array of offsets in egagraph, -1 for sparse
+zrc/id_ca.c:long		_seg *audiostarts;	// array of offsets in audio / audiot
+zrc/id_ca.c:= CA_SegWrite
+zrc/id_ca.c:  sourceseg = FP_SEG(source);
+zrc/id_ca.c:  destseg = FP_SEG(dest);
+zrc/id_ca.c:  sourceseg = FP_SEG(source);
+zrc/id_ca.c:  destseg = FP_SEG(dest);
+zrc/id_ca.c:  endseg = FP_SEG(end);
+zrc/id_ca.c:	grstarts = (long _seg *)FP_SEG(&EGAhead);
+zrc/id_ca.c:	tinf = (byte _seg *)FP_SEG(&maphead);
+zrc/id_ca.c:		pos = ((mapfiletype	_seg *)tinf)->headeroffsets[i];
+zrc/id_ca.c:	audiostarts = (long _seg *)FP_SEG(&audiohead);
+zrc/id_ca.c:		((mapfiletype _seg *)tinf)->RLEWtag);
+zrc/id_ca.c:		((mapfiletype _seg *)tinf)->RLEWtag);
+zrc/id_ca.c:					source = (byte _seg *)bufferseg+(pos-bufferstart);
+zrc/id_ca.h:extern	byte 		_seg	*tinf;
+zrc/id_ca.h:extern	unsigned	_seg	*mapsegs[MAPPLANES];
+zrc/id_ca.h:extern	maptype		_seg	*mapheaderseg[NUMMAPS];
+zrc/id_ca.h:extern	byte		_seg	*audiosegs[NUMSNDCHUNKS];
+zrc/id_ca.h:extern	void		_seg	*grsegs[NUMCHUNKS];
+zrc/id_ca.h:extern long		_seg *grstarts;	// array of offsets in egagraph, -1 for sparse
+zrc/id_ca.h:extern long		_seg *audiostarts;	// array of offsets in audio / audiot
+zrc/id_in.c:		byte _seg	*DemoBuffer;
+zrc/id_in.h:extern	byte _seg	*DemoBuffer;
+zrc/id_mm.c:	segstart = FP_SEG(start)+(FP_OFF(start)+15)/16;
+zrc/id_mm.c:	segstart = FP_SEG(start)+(FP_OFF(start)+15)/16;
+zrc/id_mm.h:typedef void _seg * memptr;
+zrc/id_pm.c:					_seg *PMSegPages;
+zrc/id_pm.c:	void			_seg *buf;
+zrc/id_pm.c:		MM_FreePtr(&(void _seg *)PMSegPages);
+zrc/id_pm.c:		addr = (memptr)FP_SEG(checkaddr);
+zrc/id_sd.c:	word		*SoundTable;	// Really * _seg *SoundTable, but that don't work
+zrc/id_sd.c:		word			_seg *DigiList;
+zrc/id_sd.c:	datapage = FP_SEG(data) >> 12;
+zrc/id_sd.c:	dataofs = ((FP_SEG(data) & 0xfff) << 4) + FP_OFF(data);
+zrc/id_vh.c:pictabletype	_seg *pictable;
+zrc/id_vh.c:	byte		_seg *temp, far *dest, far *srcline;
+zrc/id_vh.c:	, fontstruct _seg *font)
+zrc/id_vh.c:	VWL_MeasureString(string,width,height,(fontstruct _seg *)grsegs[STARTFONT+fontnumber]);
+zrc/id_vh.c:	VWL_MeasureString(string,width,height,(fontstruct _seg *)grsegs[STARTFONTM+fontnumber]);
+zrc/id_vh.c:	src = (byte _seg *)grsegs[STARTTILE8];
+zrc/id_vh.c:	src = (byte _seg *)grsegs[STARTTILE16];
+zrc/id_vh.c:		src = (byte _seg *)grsegs[STARTTILE16+i];
+zrc/id_vh.h:extern	pictabletype	_seg *pictable;
+zrc/id_vh.h:extern	pictabletype	_seg *picmtable;
+zrc/id_vh.h:extern	spritetabletype _seg *spritetable;
+zrc/oldscale.c:t_compscale _seg *scaledirectory[MAXSCALEHEIGHT+1];
+zrc/oldscale.c:t_compscale 	_seg *work;
+zrc/oldscale.c:	_fmemcpy ((byte _seg *)(*finalspot),(byte _seg *)work,totalsize);
+zrc/oldscale.c:	t_compshape	_seg *shape;
+zrc/oldscale.c:	t_compscale _seg *comptable;
+zrc/oldscale.c:	t_compshape	_seg *shape;
+zrc/oldscale.c:	t_compscale _seg *comptable;
+zrc/rules.asi:Code_Seg@       MACRO           ;; Open a Code Segment
+zrc/rules.asi:Data_Seg@       MACRO           ;; Open a Data Segment  (initialized)
+zrc/rules.asi:    BSS_Seg@        MACRO       ;; Open a Data Segment  (un-initialized)
+zrc/rules.asi:FarData_Seg@    MACRO           ;; Open a FAR Data Segment
+zrc/rules.asi:FarBSS_Seg@     MACRO           ;; Open a FAR BSS Segment
+zrc/rules.asi:Const_Seg@      MACRO           ;; Open a CONST Segment
+zrc/rules.asi:Init_Seg@       MACRO           ;; Open a INIT Segment
+zrc/rules.asi:Exit_Seg@       MACRO           ;; Open a EXIT Segment
+zrc/rules.asi:CVT_Seg@        MACRO
+zrc/rules.asi:SCN_Seg@        MACRO
+zrc/rules.asi:Code_Seg@
+zrc/rules.asi:Data_Seg@
+zrc/rules.asi:BSS_Seg@
+zrc/rules.asi:Code_Seg@
+zrc/rules.asi:Data_Seg@
+zrc/type.h:typedef _seg short;
+zrc/type.h:#define BSEG __segment
+zrc/type.h://_seg
+zrc/type.h:#define USEG __segment
+zrc/type.h://_seg
+zrc/type.h://_seg
+zrc/type.h:#define VSEG __segment
+zrc/type.h://_seg
+zrc/type.h:#define LSEG __segment
+zrc/type.h://_seg
+zrc/type.h://#define PSEG __segment
+zrc/type.h://_seg
+zrc/type.h:#define SSEG __segment
+zrc/type.h://_seg
+zrc/wl_debug.c:	spritetype _seg	*block;
+zrc/wl_debug.c:extern	word	_seg *DigiList;
+zrc/wl_def.h:#define _seg
+zrc/wl_def.h:extern	t_compscale _seg *scaledirectory[MAXSCALEHEIGHT+1];
+zrc/wl_menu.c:	fontstruct _seg *font;
+zrc/wl_scale.c:t_compscale _seg *scaledirectory[MAXSCALEHEIGHT+1];
+zrc/wl_scale.c:t_compscale 	_seg *work;
+zrc/wl_scale.c:	_fmemcpy ((byte _seg *)(*finalspot),(byte _seg *)work,totalsize);
+zrc/wl_scale.c:	t_compshape	_seg *shape;
+zrc/wl_scale.c:	t_compscale _seg *comptable;
+zrc/wl_scale.c:	t_compshape	_seg *shape;
+zrc/wl_scale.c:	t_compscale _seg *comptable;
+zrc/wl_text.c:	text = (char _seg *)grsegs[artnum];
+zrc/wl_text.c:	text = (char _seg *)layout;
+zrc/wl_text.c:	text = (char _seg *)grsegs[artnum];
+zrc/wl_text.c:	text = (char _seg *)layout;
+zrc/wolf3d.c:	segstart = FP_SEG(&introscn);

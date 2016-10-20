@@ -4,6 +4,9 @@
 //
 ///////////////////////////////////////
 
+#ifndef __TED5_H__
+#define __TED5_H__
+
 //
 // Map Names
 //
@@ -71,3 +74,4 @@ typedef enum {
 		MAP4L10PATH_MAP,         // 60
 		LASTMAP
 	     } mapnames;
+#endif

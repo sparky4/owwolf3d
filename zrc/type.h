@@ -34,19 +34,18 @@ typedef	unsigned	char		byte;
 typedef	unsigned	int			word;
 typedef	unsigned	long		longword;
 typedef	byte *					Ptr;
-typedef long fixed;
 
-typedef struct
-                {
-                        int     x,y;
-                } Point;
-typedef struct
-                {
-                        Point   ul,lr;
-                } Rect;
+typedef	struct
+		{
+			int	x,y;
+		} Point;
+typedef	struct
+		{
+			Point	ul,lr;
+		} Rect;
 
 typedef void __based( void ) * memptr;	////old //----typedef void __based(__self) * memptr;
-#define _seg __segment
+typedef _seg short;
 
 #define BSEG __segment
 //byte
@@ -68,7 +67,7 @@ typedef void __based( void ) * memptr;	////old //----typedef void __based(__self
 #define SSEG __segment
 //spritetabletype
 //_seg
-#define	nil	((void *)0)
+
 
 #define _argv __argv
 #define _argc __argc

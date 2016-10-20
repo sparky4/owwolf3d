@@ -52,17 +52,13 @@ typedef struct
 =============================================================================
 */
 
-//BSEG	*
-memptr	tinf;
+byte 		_seg	*tinf;
 int			mapon;
 
-//USEG	*
-unsigned	*mapsegs[MAPPLANES];
-MSEG	*mapheaderseg[NUMMAPS];
-//BSEG	*
-byte		*audiosegs;//[NUMSNDCHUNKS];
-//__segment	*
-byte		*grsegs;//[NUMCHUNKS];
+unsigned	_seg	*mapsegs[MAPPLANES];
+maptype		_seg	*mapheaderseg[NUMMAPS];
+byte		_seg	*audiosegs[NUMSNDCHUNKS];
+void		_seg	*grsegs[NUMCHUNKS];
 
 byte		far	grneeded[NUMCHUNKS];
 byte		ca_levelbit,ca_levelnum;
