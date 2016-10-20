@@ -1,6 +1,10 @@
 // ID_VL.H
 
 // wolf compatability
+#ifndef __ID_VL_H__
+#define __ID_VL_H__
+#include <conio.h>
+#include "src/type.h"
 
 #define MS_Quit	Quit
 
@@ -98,23 +102,63 @@ extern	unsigned	bordercolor;
 // VGA hardware routines
 //
 
-#define VGAWRITEMODE(x) asm{\
-cli;\
-mov dx,GC_INDEX;\
-mov al,GC_MODE;\
-out dx,al;\
-inc dx;\
-in al,dx;\
-and al,252;\
-or al,x;\
-out dx,al;\
-sti;}
+inline void vgawritemode(byte x)
+{
+	__asm {
+		cli
+		mov dx,GC_INDEX
+		mov al,GC_MODE
+		out dx,al
+		inc dx
+		in al,dx
+		and al,252
+		or al,x
+		out dx,al
+		sti
+	}
+}
 
-#define VGAMAPMASK(x) asm{cli;mov dx,SC_INDEX;mov al,SC_MAPMASK;mov ah,x;out dx,ax;sti;}
-#define VGAREADMAP(x) asm{cli;mov dx,GC_INDEX;mov al,GC_READMAP;mov ah,x;out dx,ax;sti;}
 
+inline void vgamapmask(byte x)
+{
+	__asm {
+		cli
+		mov dx,SC_INDEX
+		mov al,SC_MAPMASK
+		mov ah,x
+		out dx,ax
+		sti
+	}
+}
 
-void VL_Startup (void);
+inline void vgareadmap(byte x)
+{
+	__asm {
+		cli
+		mov dx,GC_INDEX
+		mov al,GC_READMAP
+		mov ah,x
+		out dx,ax
+		sti
+	}
+}
+
+void VL_WaitVBL(int num);
+#pragma aux VL_WaitVBL = \
+		"mov	dx,03dah" \
+		"VBLActive:"\
+		"in al,dx"\
+		"test al,8"\
+		"jnz VBLActive"\
+		"noVBL:"\
+		"in al,dx"\
+		"test al,8"\
+		"jz noVBL"\
+		"loop VBLActive"\
+		parm [cx] \
+		modify exact [dx al cx]
+
+//void VL_Startup (void);
 void VL_Shutdown (void);
 
 void VL_SetVGAPlane (void);
@@ -128,7 +172,7 @@ void VL_SetSplitScreen (int linenum);
 
 void VL_WaitVBL (int vbls);
 void VL_CrtcStart (int crtc);
-void VL_SetScreen (int crtc, int pelpan);
+//void VL_SetScreen (unsigned int crtc, int pelpan);
 
 void VL_FillPalette (int red, int green, int blue);
 void VL_SetColor	(int color, int red, int green, int blue);
@@ -158,4 +202,20 @@ void VL_DrawPropString (char *str, unsigned tile8ptr, int printx, int printy);
 void VL_SizePropString (char *str, int *width, int *height, char far *font);
 
 void VL_TestPaletteSet (void);
+void VL_LatchToScreen (unsigned source, int width, int height, int x, int y);
 
+void SetScreen (unsigned int offset);
+#pragma aux SetScreen = \
+		"cli" \
+		"mov	dx,0x3d4" \
+		"mov	al,0x0c" \
+		"out	dx,al" \
+		"inc	dx" \
+		"mov	al,ah" \
+		"out	dx,al" \
+		"sti" \
+		parm [ax] \
+		modify exact [dx ax]
+
+#define VL_SetScreen(crtc,pan) SetScreen(crtc)
+#endif

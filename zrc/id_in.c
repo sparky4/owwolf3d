@@ -17,7 +17,7 @@
 //	DEBUG - there are more globals
 //
 
-#include "ID_HEADS.H"
+#include "src/id_heads.h"
 #pragma	hdrstop
 
 #define	KeyInt		9	// The keyboard ISR number
@@ -68,7 +68,7 @@ boolean			JoyPadPresent;
 		longword	MouseDownCount;
 
 		Demo		DemoMode = demo_Off;
-		byte _seg	*DemoBuffer;
+		byte		*DemoBuffer;
 		word		DemoOffset,DemoSize;
 
 /*
@@ -130,7 +130,7 @@ static	Direction	DirTable[] =		// Quick lookup for total direction
 static	void			(*INL_KeyHook)(void);
 static	void interrupt	(*OldKeyVect)(void);
 
-static	char			*ParmStrings[] = {"nojoys","nomouse",nil};
+static	char			*ParmStringsin[] = {"nojoys","nomouse",nil};
 
 //	Internal routines
 
@@ -139,7 +139,7 @@ static	char			*ParmStrings[] = {"nojoys","nomouse",nil};
 //	INL_KeyService() - Handles a keyboard interrupt (key up/down)
 //
 ///////////////////////////////////////////////////////////////////////////
-static void interrupt
+void interrupt
 INL_KeyService(void)
 {
 static	boolean	special;
@@ -147,11 +147,11 @@ static	boolean	special;
 				temp;
 		int		i;
 
-	k = inportb(0x60);	// Get the scan code
+	k = inp(0x60);	// Get the scan code
 
 	// Tell the XT keyboard controller to clear the key
-	outportb(0x61,(temp = inportb(0x61)) | 0x80);
-	outportb(0x61,temp);
+	outp(0x61,(temp = inp(0x61)) | 0x80);
+	outp(0x61,temp);
 
 	if (k == 0xe0)		// Special key prefix
 		special = true;
@@ -205,7 +205,7 @@ static	boolean	special;
 
 	if (INL_KeyHook && !special)
 		INL_KeyHook();
-	outportb(0x20,0x20);
+	outp(0x20,0x20);
 }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -257,60 +257,59 @@ IN_GetJoyAbs(word joy,word *xp,word *yp)
 	yb = 1 << ys;
 
 // Read the absolute joystick values
-asm		pushf				// Save some registers
-asm		push	si
-asm		push	di
-asm		cli					// Make sure an interrupt doesn't screw the timings
+	__asm {
+		pushf				// Save some registers
+		push	si
+		push	di
+		cli					// Make sure an interrupt doesn't screw the timings
 
 
-asm		mov		dx,0x201
-asm		in		al,dx
-asm		out		dx,al		// Clear the resistors
+		mov		dx,0x201
+		in		al,dx
+		out		dx,al		// Clear the resistors
 
-asm		mov		ah,[xb]		// Get masks into registers
-asm		mov		ch,[yb]
+		mov		ah,[xb]		// Get masks into registers
+		mov		ch,[yb]
 
-asm		xor		si,si		// Clear count registers
-asm		xor		di,di
-asm		xor		bh,bh		// Clear high byte of bx for later
+		xor		si,si		// Clear count registers
+		xor		di,di
+		xor		bh,bh		// Clear high byte of bx for later
 
-asm		push	bp			// Don't mess up stack frame
-asm		mov		bp,MaxJoyValue
+		push	bp			// Don't mess up stack frame
+		mov		bp,MaxJoyValue
+loo:
+		in		al,dx		// Get bits indicating whether all are finished
 
-loop:
-asm		in		al,dx		// Get bits indicating whether all are finished
+		dec		bp			// Check bounding register
+		jz		done		// We have a silly value - abort
 
-asm		dec		bp			// Check bounding register
-asm		jz		done		// We have a silly value - abort
+		mov		bl,al		// Duplicate the bits
+		and		bl,ah		// Mask off useless bits (in [xb])
+		add		si,bx		// Possibly increment count register
+		mov		cl,bl		// Save for testing later
 
-asm		mov		bl,al		// Duplicate the bits
-asm		and		bl,ah		// Mask off useless bits (in [xb])
-asm		add		si,bx		// Possibly increment count register
-asm		mov		cl,bl		// Save for testing later
+		mov		bl,al
+		and		bl,ch		// [yb]
+		add		di,bx
 
-asm		mov		bl,al
-asm		and		bl,ch		// [yb]
-asm		add		di,bx
-
-asm		add		cl,bl
-asm		jnz		loop 		// If both bits were 0, drop out
-
+		add		cl,bl
+		jnz		loo		// If both bits were 0, drop out
 done:
-asm     pop		bp
+		pop		bp
 
-asm		mov		cl,[xs]		// Get the number of bits to shift
-asm		shr		si,cl		//  and shift the count that many times
+		mov		cl,[xs]		// Get the number of bits to shift
+		shr		si,cl		//  and shift the count that many times
 
-asm		mov		cl,[ys]
-asm		shr		di,cl
+		mov		cl,[ys]
+		shr		di,cl
 
-asm		mov		[x],si		// Store the values into the variables
-asm		mov		[y],di
+		mov		[x],si		// Store the values into the variables
+		mov		[y],di
 
-asm		pop		di
-asm		pop		si
-asm		popf				// Restore the registers
-
+		pop		di
+		pop		si
+		popf				// Restore the registers
+	}
 	*xp = x;
 	*yp = y;
 }
@@ -391,7 +390,7 @@ INL_GetJoyButtons(word joy)
 {
 register	word	result;
 
-	result = inportb(0x201);	// Get all the joystick buttons
+	result = inp(0x201);	// Get all the joystick buttons
 	result >>= joy? 6 : 4;	// Shift into bits 0-1
 	result &= 3;				// Mask off the useless bits
 	result ^= 3;
@@ -415,7 +414,6 @@ IN_GetJoyButtonsDB(word joy)
 		result1 = INL_GetJoyButtons(joy);
 		lasttime = TimeCount;
 		while (TimeCount == lasttime)
-			;
 		result2 = INL_GetJoyButtons(joy);
 	} while (result1 != result2);
 	return(result1);
@@ -433,8 +431,8 @@ INL_StartKbd(void)
 
 	IN_ClearKeysDown();
 
-	OldKeyVect = getvect(KeyInt);
-	setvect(KeyInt,INL_KeyService);
+	OldKeyVect = _dos_getvect(KeyInt);
+	_dos_setvect(KeyInt,INL_KeyService);
 }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -445,9 +443,9 @@ INL_StartKbd(void)
 static void
 INL_ShutKbd(void)
 {
-	poke(0x40,0x17,peek(0x40,0x17) & 0xfaf0);	// Clear ctrl/alt/shift flags
+	pokeb(0x40,0x17,peekb(0x40,0x17) & 0xfaf0);	// Clear ctrl/alt/shift flags
 
-	setvect(KeyInt,OldKeyVect);
+	_dos_setvect(KeyInt,OldKeyVect);
 }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -459,7 +457,7 @@ static boolean
 INL_StartMouse(void)
 {
 #if 0
-	if (getvect(MouseInt))
+	if (_dos_getvect(MouseInt))
 	{
 		Mouse(MReset);
 		if (_AX == 0xffff)
@@ -471,7 +469,7 @@ INL_StartMouse(void)
  unsigned char far *vector;
 
 
- if ((vector=MK_FP(peek(0,0x33*4+2),peek(0,0x33*4)))==NULL)
+ if ((vector=MK_FP(peekb(0,0x33*4+2),peekb(0,0x33*4)))==NULL)
    return false;
 
  if (*vector == 207)
@@ -593,7 +591,7 @@ IN_Startup(void)
 	checkmouse = true;
 	for (i = 1;i < _argc;i++)
 	{
-		switch (US_CheckParm(_argv[i],ParmStrings))
+		switch (US_CheckParm(_argv[i],ParmStringsin))
 		{
 		case 0:
 			checkjoys = false;
@@ -980,7 +978,7 @@ byte	IN_JoyButtons (void)
 {
 	unsigned joybits;
 
-	joybits = inportb(0x201);	// Get all the joystick buttons
+	joybits = inp(0x201);	// Get all the joystick buttons
 	joybits >>= 4;				// only the high bits are useful
 	joybits ^= 15;				// return with 1=pressed
 

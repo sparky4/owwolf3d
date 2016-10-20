@@ -5,6 +5,8 @@
 //
 /////////////////////////////////////////////////
 
+#ifndef __MUSE_H__
+#define __MUSE_H__
 #define NUMSOUNDS		87
 #define NUMSNDCHUNKS		288
 
@@ -149,3 +151,4 @@ typedef enum {
 // Thanks for playing with MUSE!
 //
 /////////////////////////////////////////////////
+#endif

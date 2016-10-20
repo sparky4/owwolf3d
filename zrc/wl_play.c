@@ -1,6 +1,6 @@
 // WL_PLAY.C
 
-#include "WL_DEF.H"
+#include "wl_def.h"
 #pragma hdrstop
 
 
@@ -44,14 +44,14 @@ objtype		*actorat[MAPSIZE][MAPSIZE];
 //
 // replacing refresh manager
 //
-unsigned	mapwidth,mapheight,tics;
+//unsigned	mapwidth,mapheight,tics;
 boolean		compatability;
 byte		*updateptr;
 unsigned	mapwidthtable[64];
 unsigned	uwidthtable[UPDATEHIGH];
 unsigned	blockstarts[UPDATEWIDE*UPDATEHIGH];
-//uso: replace: byte            update[UPDATESIZE];
-//uso: is needed? byte    update[UPDATEHIGH][UPDATEWIDE];
+//byte		update[UPDATESIZE];
+unsigned tics;
 
 //
 // control info
@@ -463,8 +463,7 @@ void PollControls (void)
 //
 	if (demoplayback)
 	{
-		while (TimeCount<lasttimecount+DEMOTICS)
-		;
+		while (TimeCount<lasttimecount+DEMOTICS){}
 		TimeCount = lasttimecount + DEMOTICS;
 		lasttimecount += DEMOTICS;
 		tics = DEMOTICS;
@@ -474,8 +473,7 @@ void PollControls (void)
 //
 // take DEMOTICS or more tics, and modify Timecount to reflect time taken
 //
-		while (TimeCount<lasttimecount+DEMOTICS)
-		;
+		while (TimeCount<lasttimecount+DEMOTICS){}
 		TimeCount = lasttimecount + DEMOTICS;
 		lasttimecount += DEMOTICS;
 		tics = DEMOTICS;
@@ -826,7 +824,7 @@ void CheckKeys (void)
 		CA_CacheGrChunk (STARTFONT);
 		fontnumber=0;
 		SETFONTCOLOR(0,15);
-		DebugKeys();
+		////DebugKeys();
 		if (MousePresent)
 			Mouse(MDelta);	// Clear accumulated mouse movement
 		lasttimecount = TimeCount;
@@ -1005,8 +1003,8 @@ void StopMusic(void)
 	for (i = 0;i < LASTMUSIC;i++)
 		if (audiosegs[STARTMUSIC + i])
 		{
-			MM_SetPurge(&((memptr)audiosegs[STARTMUSIC + i]),3);
-			MM_SetLock(&((memptr)audiosegs[STARTMUSIC + i]),false);
+			MM_SetPurge(((memptr)audiosegs[STARTMUSIC + i]),3);
+			MM_SetLock(((memptr)audiosegs[STARTMUSIC + i]),false);
 		}
 }
 
@@ -1038,7 +1036,7 @@ void StartMusic(void)
 		mmerror = false;
 	else
 	{
-		MM_SetLock(&((memptr)audiosegs[STARTMUSIC + chunk]),true);
+		MM_SetLock(((memptr)audiosegs[STARTMUSIC + chunk]),true);
 		SD_StartMusic((MusicGroup far *)audiosegs[STARTMUSIC + chunk]);
 	}
 }
@@ -1066,7 +1064,7 @@ byte	far whiteshifts[NUMREDSHIFTS][768];
 int		damagecount,bonuscount;
 boolean	palshifted;
 
-extern 	byte	far	gamepal;
+extern 	byte	/*far*/	gamepal[768];
 
 /*
 =====================
@@ -1390,7 +1388,7 @@ void PlayLoop (void)
 	{
 		if (virtualreality)
 		{
-			helmetangle = peek (0x40,0xf0);
+			helmetangle = peekb(0x40,0xf0);
 			player->angle += helmetangle;
 			if (player->angle >= ANGLES)
 				player->angle -= ANGLES;

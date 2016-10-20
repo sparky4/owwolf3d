@@ -3,6 +3,8 @@
 //	Header file for Id Engine's Page Manager
 //
 
+#ifndef __ID_PM_H__
+#define __ID_PM_H__
 //	NOTE! PMPageSize must be an even divisor of EMSPageSize, and >= 1024
 #define	EMSPageSize		16384
 #define	EMSPageSizeSeg	(EMSPageSize >> 4)
@@ -81,3 +83,4 @@ extern	memptr	PM_GetPageAddress(int pagenum),
 				PM_GetPage(int pagenum);		// Use this one to cache page
 
 void PM_SetMainMemPurge(int level);
+#endif

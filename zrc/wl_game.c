@@ -1,6 +1,6 @@
 // WL_GAME.C
 
-#include "WL_DEF.H"
+#include "wl_def.h"
 #pragma hdrstop
 
 #ifdef MYPROFILE
@@ -650,11 +650,11 @@ void SetupGameLevel (void)
 	CA_CacheMap (gamestate.mapon+10*gamestate.episode);
 	mapon-=gamestate.episode*10;
 
-	mapwidth = mapheaderseg[mapon]->width;
+	/*mapwidth = (mapheaderseg[mapon]->width);
 	mapheight = mapheaderseg[mapon]->height;
 
 	if (mapwidth != 64 || mapheight != 64)
-		Quit ("Map not 64*64!");
+		Quit ("Map not 64*64!");*/
 
 
 //
@@ -670,14 +670,14 @@ void SetupGameLevel (void)
 			if (tile<AREATILE)
 			{
 			// solid wall
-				tilemap[x][y] = tile;
-				(unsigned)actorat[x][y] = tile;
+				tilemap[x][y] = (byte) tile;
+                                actorat[x][y] = (objtype *) tile;
 			}
 			else
 			{
 			// area floor
 				tilemap[x][y] = 0;
-				(unsigned)actorat[x][y] = 0;
+				actorat[x][y] = 0;
 			}
 		}
 
@@ -1054,8 +1054,8 @@ void PlayDemo (int demonumber)
 #endif
 
 	CA_CacheGrChunk(dems[demonumber]);
-	demoptr = grsegs[dems[demonumber]];
-	MM_SetLock (&grsegs[dems[demonumber]],true);
+	demoptr = (memptr)grsegs[dems[demonumber]];
+	MM_SetLock ((memptr)grsegs[dems[demonumber]],true);
 #else
 	demoname[4] = '0'+demonumber;
 	CA_LoadFile (demoname,&demobuffer);
@@ -1066,7 +1066,7 @@ void PlayDemo (int demonumber)
 	NewGame (1,0);
 	gamestate.mapon = *demoptr++;
 	gamestate.difficulty = gd_hard;
-	length = *((unsigned far *)demoptr)++;
+	length = *(/*(unsigned far *)*/demoptr)++;
 	demoptr++;
 	lastdemoptr = demoptr-4+length;
 
@@ -1249,7 +1249,6 @@ restartgame:
 	SETFONTCOLOR(0,15);
 	DrawPlayScreen ();
 	died = false;
-restart:
 	do
 	{
 		if (!loadedgame)
@@ -1281,7 +1280,9 @@ restart:
 		fizzlein = true;
 		DrawLevel ();
 
+#ifdef SPEAR
 startplayloop:
+#endif
 		PlayLoop ();
 
 #ifdef SPEAR
@@ -1481,4 +1482,3 @@ startplayloop:
 	} while (1);
 
 }
-

@@ -5,7 +5,7 @@
 #define MONTH	9
 #define DAY		30
 
-#include "src/id_heads.h"
+#include "id_heads.h"
 #include <math.h>
 //#include <values.h>
 
@@ -20,8 +20,6 @@
 #ifdef SPEAR
 #include "f_spear.h"
 #endif
-
-#define _seg
 
 /*
 =============================================================================
@@ -97,11 +95,12 @@
 
 
 #define PI	3.141592657
+#define M_PI PI
 
 #define GLOBAL1		(1l<<16)
 #define TILEGLOBAL  GLOBAL1
 #define PIXGLOBAL	(GLOBAL1/64)
-#define TILESHIFT		16l
+#define TILESHIFT		8//16l
 #define UNSIGNEDSHIFT	8
 
 #define ANGLES		360					// must be divisable by 4
@@ -124,6 +123,14 @@
 #define MAXVIEWWIDTH		320
 
 #define MAPSIZE		64					// maps are 64*64 max
+#define mapshift        6               // 2^mapshift = MAPSIZE
+#define maparea         4096            // MAPSIZE<<mapshift or MAPSIZE*MAPSIZE
+#define mapspotend      8191            // 64<<mapshift-1 or 64*MAPSIZE-1
+#define MAPPLANES       2
+
+#define mapheight MAPSIZE
+#define mapwidth MAPSIZE
+
 #define NORTH	0
 #define EAST	1
 #define SOUTH	2
@@ -826,7 +833,7 @@ void		ShutdownId (void);
 extern	boolean		ingame,fizzlein;
 extern	unsigned	latchpics[NUMLATCHPICS];
 extern	gametype	gamestate;
-extern	int			doornum;
+extern	int			doornum;//short?
 
 extern	char		demoname[13];
 
@@ -887,6 +894,7 @@ extern	objtype		*actorat[MAPSIZE][MAPSIZE];
 
 #define UPDATESIZE			(UPDATEWIDE*UPDATEHIGH)
 extern	byte		update[UPDATESIZE];
+//extern	byte	update[UPDATEHIGH][UPDATEWIDE];
 
 extern	boolean		singlestep,godmode,noclip;
 extern	int			extravbls;
@@ -904,6 +912,7 @@ extern	int			buttonjoy[4];
 extern	boolean		buttonheld[NUMBUTTONS];
 
 extern	int			viewsize;
+extern unsigned tics;
 
 //
 // curent user input
@@ -945,6 +954,7 @@ void LevelCompleted (void);
 void	CheckHighScore (long score,word other);
 void Victory (void);
 void ClearSplitVWB (void);
+void PG13 (void);
 
 
 /*
@@ -956,7 +966,7 @@ void ClearSplitVWB (void);
 */
 
 int DebugKeys (void);
-void PicturePause (void);
+////void PicturePause (void);
 
 
 /*
@@ -1080,8 +1090,11 @@ typedef struct
 // table data after dataofs[rightpix-leftpix+1]
 }	t_compshape;
 
+#define TSEG t_compscale
+//_seg
 
-extern	t_compscale _seg *scaledirectory[MAXSCALEHEIGHT+1];
+
+extern	TSEG *scaledirectory[MAXSCALEHEIGHT+1];
 extern	long			fullscalefarcall[MAXSCALEHEIGHT+1];
 
 extern	byte		bitmasks1[8][8];
@@ -1151,14 +1164,15 @@ extern	int			doornum;
 
 extern	unsigned	doorposition[MAXDOORS],pwallstate;
 
-extern	byte		far areaconnect[NUMAREAS][NUMAREAS];
+extern	byte		/*far*/ areaconnect[NUMAREAS][NUMAREAS];
 
 extern	boolean		areabyplayer[NUMAREAS];
 
-extern unsigned	pwallstate;
-extern unsigned	pwallpos;			// amount a pushable wall has been moved (0-63)
-extern unsigned	pwallx,pwally;
-extern int			pwalldir;
+extern word	pwallstate;
+extern word	pwallpos;			// amount a pushable wall has been moved (0-63)
+extern word	pwallx,pwally;
+extern byte			pwalldir;
+extern byte     pwalldir,pwalltile;
 
 
 void InitDoorList (void);
@@ -1265,6 +1279,9 @@ void SpawnGift (int tilex, int tiley);
 void SpawnFat (int tilex, int tiley);
 void SpawnFakeHitler (int tilex, int tiley);
 void SpawnHitler (int tilex, int tiley);
+void SpawnBJVictory (void);
+void A_DeathScream (objtype *ob);
+
 
 /*
 =============================================================================
