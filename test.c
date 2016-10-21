@@ -3,7 +3,7 @@
 #include <conio.h>
 #include "src/id_tail.h"
 #pragma hdrstop
-
+#define __TEST_EXE__
 
 /*
 =============================================================================
@@ -1494,7 +1494,7 @@ void    DemoLoop (void)
 
 #endif
 */
-	printf("\npee\n");
+	printf("\n	loop~\n");
 	while (1)
 	{
 		IN_ReadControl(0, &ci);
@@ -1584,7 +1584,10 @@ void    DemoLoop (void)
 			StartCPMusic(INTROSONG);*/
 		}
 	}
+	MM_Report_();
 	ShutdownId();
+	printf("test.exe\n");
+	printf("version %s\n", VERSION);
 }
 
 
@@ -1624,11 +1627,9 @@ void main (void)
 	//CheckForEpisodes();
 
 	//Patch386 ();
-	printf("initgame	");
-	InitGame ();	printf("ok!\n");
+	InitGame ();
 
-	printf("demoloop	");
-	DemoLoop();	printf("ok!\n");
+	DemoLoop();
 
 	//Quit("Demo loop exited???");
 }

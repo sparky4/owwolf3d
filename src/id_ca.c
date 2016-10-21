@@ -14,7 +14,7 @@ loaded into the data segment
 =============================================================================
 */
 
-#include "id_heads.h"
+#include "src/id_heads.h"
 #pragma hdrstop
 
 #pragma warn -pro
@@ -96,8 +96,8 @@ char extension[5],	// Need a string, not constant to change cache files
 
 void CA_CannotOpen(char *string);
 
-LSEG *grstarts;	// array of offsets in egagraph, -1 for sparse
-LSEG *audiostarts;	// array of offsets in audio / audiot
+long		_seg *grstarts;	// array of offsets in egagraph, -1 for sparse
+long		_seg *audiostarts;	// array of offsets in audio / audiot
 
 #ifdef GRHEADERLINKED
 huffnode	*grhuffman;
@@ -1076,9 +1076,9 @@ void CA_Startup (void)
 	profilehandle = open("PROFILE.TXT", O_CREAT | O_WRONLY | O_TEXT);
 #endif
 
-	CAL_SetupMapFile ();
-	CAL_SetupGrFile ();
-	CAL_SetupAudioFile ();
+	//++++CAL_SetupMapFile ();
+	//++++CAL_SetupGrFile ();
+	//++++CAL_SetupAudioFile ();
 
 	mapon = -1;
 	ca_levelbit = 1;
@@ -1105,9 +1105,9 @@ void CA_Shutdown (void)
 	close (profilehandle);
 #endif
 
-	close (maphandle);
-	close (grhandle);
-	close (audiohandle);
+	//++++close (maphandle);
+	//++++close (grhandle);
+	//++++close (audiohandle);
 }
 
 //===========================================================================

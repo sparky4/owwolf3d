@@ -64,7 +64,7 @@ UPXQ=-qqq
 #
 # compile flags
 #
-S_FLAGS=-sg -st -of+ -zu -zdf -zff -zgf -k32768#44000#50000
+S_FLAGS=-sg -st -of+ -zu -zdf -zff -zgf -k512#32768#44000#50000
 Z_FLAGS=-zk0 -zc -zp8 -zm
 O_FLAGS=-obmilr -oe=24 -out -oh -ei -onac -ol+ -ok##x
 T_FLAGS=-bt=dos -mh -0 -fpi87 -fo=.$(OBJ) -d1
@@ -78,8 +78,8 @@ LIBFLAGS=$(WLIBQ) -b -n
 #
 # objects
 #
-TESTOBJS = id_in.$(OBJ) id_mm.$(OBJ) id_pm.$(OBJ) id_ca.$(OBJ) id_sd.$(OBJ)
-INCREMENTOBJS = id_vl.$(OBJ) id_vh.$(OBJ) wl_scale.$(OBJ)
+TESTOBJS = id_tail.$(OBJ) id_in.$(OBJ) id_mm.$(OBJ) id_pm.$(OBJ) id_ca.$(OBJ) id_sd.$(OBJ)
+INCREMENTOBJS = id_vl.$(OBJ) id_vh.$(OBJ) wl_scale.$(OBJ) id_us_1.$(OBJ)
 WOLFOBJS = wl_inter.$(OBJ) gamepal3.$(OBJ) wl_act1.$(OBJ) wl_act2.$(OBJ) wl_agent.$(OBJ) wl_debug.$(OBJ) wl_draw.$(OBJ) wl_game.$(OBJ) wl_menu.$(OBJ) wl_play.$(OBJ) wl_state.$(OBJ) wl_text.$(OBJ) signon.$(OBJ) $(TESTOBJS) $(INCREMENTOBJS)
 
 #
@@ -129,7 +129,7 @@ wolf3d.exe:	wolf3d.$(OBJ) $(WOLFOBJS)
 #
 # Test Executables!
 #
-test.exe:	test.$(OBJ) $(TESTOBJS) id_tail.$(OBJ)
+test.exe:	test.$(OBJ) $(TESTOBJS) id_exter.$(OBJ)
 
 #
 # executable's objects
@@ -167,6 +167,7 @@ wl_state.$(OBJ):	$(SRC)/wl_state.c
 wl_text.$(OBJ):	$(SRC)/wl_text.c
 wl_scale.$(OBJ):	$(SRC)/wl_scale.c
 id_tail.$(OBJ):	$(SRC)/id_tail.c
+id_exter.$(OBJ):	$(SRC)/id_exter.c
 #id_vl_a.$(OBJ):	$(SRC)/id_vl_a.asm
 
 #

@@ -1,52 +1,42 @@
-#include "id_tail.h"
-boolean		NoWait;
-//longword			TimeCount;
+#include "src/id_tail.h"
 
-boolean	insetupscaling;
+//===========================================================================
 
-byte		far	palette1[256][3],far palette2[256][3];
-unsigned	bufferofs;
-unsigned	displayofs,pelpan;
+/*
+==================
+=
+= DebugMemory
+=
+==================
+*/
 
-pictabletype *pictable;
-
-///////////////////////////////////////////////////////////////////////////
-//
-//	US_CheckParm() - checks to see if a string matches one of a set of
-//		strings. The check is case insensitive. The routine returns the
-//		index of the string that matched, or -1 if no matches were found
-//
-///////////////////////////////////////////////////////////////////////////
-int
-US_CheckParm(char *parm,char **strings)
+void DebugMemory_(boolean q)
 {
-	char	cp,cs,
-			*p,*s;
-	int		i;
+	/*VW_FixRefreshBuffer ();
+	US_CenterWindow (16,7);
 
-	while (!isalpha(*parm))	// Skip non-alphas
-		parm++;
-
-	for (i = 0;*strings && **strings;i++)
-	{
-		for (s = *strings++,p = parm,cs = cp = 0;cs == cp;)
-		{
-			cs = *s++;
-			if (!cs)
-				return(i);
-			cp = *p++;
-
-			if (isupper(cs))
-				cs = tolower(cs);
-			if (isupper(cp))
-				cp = tolower(cp);
-		}
-	}
-	return(-1);
+	US_CPrint ("Memory Usage");
+	US_CPrint ("------------");
+	US_Print ("Total     :");
+	US_PrintUnsigned (mminfo.mainmem/1024);
+	US_Print ("k\nFree      :");
+	US_PrintUnsigned (MM_UnusedMemory()/1024);
+	US_Print ("k\nWith purge:");
+	US_PrintUnsigned (MM_TotalFree()/1024);
+	US_Print ("k\n");
+	VW_UpdateScreen();*/
+	if(q){
+	printf("========================================\n");
+	printf("		DebugMemory_\n");
+	printf("========================================\n");}
+	if(q) { printf("Memory Usage\n");
+	printf("------------\n"); }else printf("	%c%c", 0xD3, 0xC4);
+	printf("Total:	"); if(q) printf("	"); printf("%uk", mminfo.mainmem/1024);
+	if(q) printf("\n"); else printf("	");
+	printf("Free:	"); if(q) printf("	"); printf("%uk", MM_UnusedMemory()/1024);
+	if(q) printf("\n"); else printf("	");
+	printf("With purge:"); if(q) printf("	"); printf("%uk\n", MM_TotalFree()/1024);
+	if(q) printf("------------\n");
+	IN_Ack ();
+	if(q) MM_ShowMemory ();
 }
-
-void VL_Plot (int x, int y, int color){}
-void VL_Hlin (unsigned x, unsigned y, unsigned width, unsigned color){}
-void VL_Vlin (int x, int y, int height, int color){}
-void VL_FadeIn (int start, int end, byte far *palette, int steps){}
-int VW_MarkUpdateBlock (int x1, int y1, int x2, int y2){ return 0; }

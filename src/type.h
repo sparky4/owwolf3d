@@ -1,6 +1,7 @@
 #ifndef __TYPE_H__
 #define __TYPE_H__
 
+#define VERSION __DATE__ " " __TIME__
 #define _FCORELEFT 0x90000UL+16UL
 static union REGS CPURegs;
 
@@ -46,27 +47,6 @@ typedef	struct
 
 typedef void __based( void ) * memptr;	////old //----typedef void __based(__self) * memptr;
 #define _seg
-
-#define BSEG __segment
-//byte
-//_seg
-#define USEG __segment
-//unsigned
-//_seg
-#define MSEG maptype
-//_seg
-#define VSEG __segment
-//void
-//_seg
-#define LSEG long
-//long
-//_seg
-//#define PSEG __segment
-//pictabletype
-//_seg
-#define SSEG __segment
-//spritetabletype
-//_seg
 
 
 #define _argv __argv

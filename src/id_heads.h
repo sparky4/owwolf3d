@@ -28,30 +28,30 @@
 
 #ifdef JAPAN
 #ifdef JAPDEMO
-#include "foreign/japan/gfxv_wj1.h"
+#include "src/foreign/japan/gfxv_wj1.h"
 #else
-#include "foreign/japan/gfxv_wj6.h"
+#include "src/foreign/japan/gfxv_wj6.h"
 #endif
-#include "audiowl6.h"
-#include "mapswl6.h"
+#include "src/audiowl6.h"
+#include "src/mapswl6.h"
 #else
 
 #ifndef SPEAR
 
-#include "gfxv_wl6.h"
-#include "audiowl6.h"
-#include "mapswl6.h"
+#include "src/gfxv_wl6.h"
+#include "src/audiowl6.h"
+#include "src/mapswl6.h"
 
 #else
 
 #ifndef SPEARDEMO
-#include "gfxv_sod.h"
-#include "audiosod.h"
-#include "mapssod.h"
+#include "src/gfxv_sod.h"
+#include "src/audiosod.h"
+#include "src/mapssod.h"
 #else
-#include "gfxv_sdm.h"
-#include "audiosdm.h"
-#include "mapssdm.h"
+#include "src/gfxv_sdm.h"
+#include "src/audiosdm.h"
+#include "src/mapssdm.h"
 #endif
 
 #endif

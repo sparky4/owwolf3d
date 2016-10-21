@@ -1,6 +1,6 @@
 // WL_SCALE.C
 
-#include "wl_def.h"
+#include "src/wl_def.h"
 #pragma hdrstop
 
 #define OP_RETF	0xcb
