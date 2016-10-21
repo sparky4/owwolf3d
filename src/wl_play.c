@@ -28,25 +28,25 @@ exit_t		playstate;*/
 
 int			DebugOk;
 
-/*objtype 	objlist[MAXACTORS],*new,*obj,*player,*lastobj,
+objtype 	objlist[MAXACTORS],*new,*obj,*player,*lastobj,
 			*objfreelist,*killerobj;
 
-unsigned	farmapylookup[MAPSIZE];
+/*unsigned	farmapylookup[MAPSIZE];
 byte		*nearmapylookup[MAPSIZE];
 
 boolean		singlestep,godmode,noclip;
 int			extravbls;
 
 byte		tilemap[MAPSIZE][MAPSIZE];	// wall values only
-byte		spotvis[MAPSIZE][MAPSIZE];
+byte		spotvis[MAPSIZE][MAPSIZE];*/
 objtype		*actorat[MAPSIZE][MAPSIZE];
 
 //
 // replacing refresh manager
 //
-//unsigned	mapwidth,mapheight,tics;
+/*unsigned	mapwidth,mapheight,tics;
 boolean		compatability;
-//byte		*updateptr;
+byte		*updateptr;
 unsigned	mapwidthtable[64];
 unsigned	uwidthtable[UPDATEHIGH];
 unsigned	blockstarts[UPDATEWIDE*UPDATEHIGH];
