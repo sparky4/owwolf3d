@@ -46,8 +46,8 @@ extern	char		extension[5],
 			aheadname[10],
 			afilename[10];
 
-extern LSEG *grstarts;	// array of offsets in egagraph, -1 for sparse
-extern LSEG *audiostarts;	// array of offsets in audio / audiot
+extern long		_seg *grstarts;	// array of offsets in egagraph, -1 for sparse
+extern long		_seg *audiostarts;	// array of offsets in audio / audiot
 //
 // hooks for custom cache dialogs
 //

@@ -24,7 +24,8 @@ EMS / XMS unmanaged routines
 =============================================================================
 */
 
-#include "id_heads.h"
+#include "src/id_heads.h"
+#include "src/id_tail.h"
 #pragma hdrstop
 
 #pragma warn -pro
@@ -54,10 +55,9 @@ typedef struct mmblockstruct
 } mmblocktype;
 
 
-//#define GETNEWBLOCK {if(!(mmnew=mmfree))Quit("MM_GETNEWBLOCK: No free blocks!")
-//	;mmfree=mmfree->next;}
+#define GETNEWBLOCK {if(!(mmnew=mmfree))Quit("MM_GETNEWBLOCK: No free blocks!");mmfree=mmfree->next;}
 
-#define GETNEWBLOCK {if(!mmfree)MML_ClearBlock();mmnew=mmfree;mmfree=mmfree->next;}
+//#define GETNEWBLOCK {if(!mmfree)MML_ClearBlock();mmnew=mmfree;mmfree=mmfree->next;}
 
 #define FREEBLOCK(x) {*x->useptr=NULL;x->next=mmfree;mmfree=x;}
 
@@ -119,6 +119,63 @@ void 		MML_ClearBlock (void);
 /*
 ======================
 =
+= MML_CheckForEMS
+=
+= Routine from p36 of Extending DOS
+=
+=======================
+*/
+
+boolean MML_CheckForEMS(void)
+{
+	boolean emmcfems;
+	static char	emmname[] = "EMMXXXX0";	//fix by andrius4669
+	__asm {
+		mov	dx,OFFSET emmname	//fix by andrius4669
+		mov	ax,0x3d00
+		int	0x21		// try to open EMMXXXX0 device
+		jc	error
+
+		mov	bx,ax
+		mov	ax,0x4400
+
+		int	0x21		// get device info
+		jc	error
+
+		and	dx,0x80
+		jz	error
+
+		mov	ax,0x4407
+
+		int	0x21		// get status
+		jc	error
+		or	al,al
+		jz	error
+
+		mov	ah,0x3e
+		int	0x21		// close handle
+		jc	error
+		//
+		// EMS is good
+		//
+		mov     emmcfems,1
+		jmp End
+
+		error:
+		//
+		// EMS is bad
+		//
+		mov     emmcfems,0
+		End:
+	}
+	return(emmcfems);
+}
+
+//==========================================================================
+
+/*
+======================
+=
 = MML_CheckForXMS
 =
 = Check for XMM driver
@@ -128,9 +185,8 @@ void 		MML_ClearBlock (void);
 
 boolean MML_CheckForXMS(void)
 {
+	//numUMBs = 0;
 	boolean	errorflag=false;
-
-	numUMBs = 0;
 
 	__asm {
 		mov	ax,0x4300
@@ -142,81 +198,6 @@ boolean MML_CheckForXMS(void)
 	}
 	if(errorflag==true) return false;
 	else return true;
-}
-
-
-/*
-======================
-=
-= MML_SetupXMS
-=
-= Try to allocate all upper memory block
-=
-=======================
-*/
-
-void MML_SetupXMS (void)
-{
-	word	base,size;
-
-	__asm {
-		mov	ax,0x4310
-		int	0x2f
-		mov	[WORD PTR XMSaddr],bx
-		mov	[WORD PTR XMSaddr+2],es		// function pointer to XMS driver
-	}
-getmemory:
-	__asm {
-		mov	ah,XMS_ALLOCUMB
-		mov	dx,0xffff					// try for largest block possible
-		//mov     ax,dx						// Set available Kbytes.
-		call	[DWORD PTR XMSaddr]
-		or	ax,ax
-		jnz	gotone
-
-		cmp	bl,0xb0						// error: smaller UMB is available
-		jne	done;
-
-		mov	ah,XMS_ALLOCUMB
-		call	[DWORD PTR XMSaddr]		// DX holds largest available UMB
-		or	ax,ax
-		jz	done						// another error...
-		gotone:
-		mov	[base],bx
-		mov	[size],dx
-		done:
-	}
-	MML_UseSpace (base,size);
-	mminfo.XMSmem += size*16;
-	UMBbase[numUMBs] = base;
-	numUMBs++;
-	if (numUMBs < MAXUMBS)
-		goto getmemory;
-
-}
-
-
-/*
-======================
-=
-= MML_ShutdownXMS
-=
-======================
-*/
-
-void MML_ShutdownXMS (void)
-{
-	int	i;
-	unsigned	base;
-
-	for (i=0;i<numUMBs;i++)
-	{
-		base = UMBbase[i];
-
-__asm	mov	ah,XMS_FREEUMB
-__asm	mov	dx,[base]
-__asm	call	[DWORD PTR XMSaddr]
-	}
 }
 
 //==========================================================================
@@ -347,7 +328,7 @@ void MM_Startup (void)
 //
 	mmhead = NULL;
 	mmfree = &mmblocks[0];
-	for (i=0;i<MAXBLOCKS-1;i++)
+	for(i=0;i<MAXBLOCKS-1;i++)
 		mmblocks[i].next = &mmblocks[i+1];
 	mmblocks[i].next = NULL;
 
@@ -380,6 +361,7 @@ void MM_Startup (void)
 //
 // get all available far conventional memory segments
 //
+	//printf("_FARCORELEFT				%lu\n", _FCORELEFT);
 	_fheapgrow();
 	length=_FCORELEFT;
 	start = farheap = _fmalloc(length);
@@ -389,6 +371,8 @@ void MM_Startup (void)
 	segstart = FP_SEG(start)+(FP_OFF(start)+15)/16;
 	MML_UseSpace (segstart,seglength);
 	mminfo.farheap = length;
+	//printf("start=%Fp	segstart=%x	seglen=%lu	len=%lu\n", start, segstart, seglength, length);
+
 	mminfo.mainmem = mminfo.nearheap + mminfo.farheap;
 
 //
@@ -445,6 +429,13 @@ void MM_GetPtr (memptr *baseptr,unsigned long size)
 	GETNEWBLOCK;				// fill in start and next after a spot is found
 	mmnew->length = needed;
 	mmnew->useptr = baseptr;
+	if(mmnew->useptr==NULL){
+		printf("MM_GetPtr\n");
+		//%04x
+		printf("	baseptr=%Fp	", baseptr); printf("useptr=%Fp\n", mmnew->useptr);
+		printf("	*baseptr=%Fp	", *baseptr); printf("*useptr=%Fp\n", *(mmnew->useptr));
+		printf("	&baseptr=%Fp	", &baseptr); printf("&useptr=%Fp\n", &(mmnew->useptr));
+	exit(-5); }
 	mmnew->attributes = BASEATTRIBUTES;
 
 tryagain:
@@ -934,6 +925,41 @@ long MM_TotalFree (void)
 	}
 
 	return free*16l;
+}
+
+//==========================================================================
+
+/*
+=====================
+=
+= MM_Report
+=
+=====================
+*/
+
+void MM_Report_()
+{
+	printf("========================================\n");
+	printf("		MM_Report_\n");
+	printf("========================================\n");
+	if(MML_CheckForEMS())
+	{
+		printf("	%cLIMEMS	%u\n", 0xC9, EMSPresent);
+//		printf("	%c%ctotalEMSpages:	%u	", 0xC7, 0xC4, totalEMSpages); printf("freeEMSpages:	%u\n", freeEMSpages);
+//		printf("	%c%cEMSPageFrame:	%04x\n", 0xC7, 0xC4, EMSPageFrame);
+		printf("	%c%cEMSmem:	%lu\n", 0xD3, 0xC4, mminfo.EMSmem);
+	}
+	if(MML_CheckForXMS())
+	{
+		printf("	%cXMS	%u\n", 0xC9, XMSPresent);
+//		printf("	%c%cXMS v%x.%x available\n", 0xC7, 0xC4, XMSVer>>8,XMSVer&0x0F);
+//		printf("	%c%cXMSDriver:	%Fp\n", 0xC7, 0xC4, XMSDriver);
+//		printf("	%c%cXMSHandle:	%04x\n", 0xC7, 0xC4, XMSHandle);
+		printf("	%c%cXMSmem:	%lu\n", 0xD3, 0xC4, mminfo.XMSmem);
+	}
+//	printf("	%cConv.	%u\n", 0xC9, MainPresent);
+	DebugMemory_(0);
+	printf("nearheap:	%lu		", mminfo.nearheap); printf("farheap:	%lu\n", mminfo.farheap);
 }
 
 //==========================================================================

@@ -5,20 +5,20 @@
 #define MONTH	9
 #define DAY		30
 
-#include "id_heads.h"
+#include "src/id_heads.h"
 #include <math.h>
 //#include <values.h>
 
-#include "wl_menu.h"
+#include "src/wl_menu.h"
 
 #ifdef SPANISH
-#include "spanish.h"
+#include "src/spanish.h"
 #else
-#include "foreign.h"
+#include "src/foreign.h"
 #endif
 
 #ifdef SPEAR
-#include "f_spear.h"
+#include "src/f_spear.h"
 #endif
 
 /*

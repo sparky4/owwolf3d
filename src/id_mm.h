@@ -4,7 +4,9 @@
 
 #define __ID_CA__
 
-#define SAVENEARHEAP	0x400		// space to leave in data segment
+#define OUT_OF_MEM_MSG	"MM_GetPtr: Out of memory!\nYou were short :%lu bytes\n"
+
+#define SAVENEARHEAP	0x200		// space to leave in data segment
 #define SAVEFARHEAP		0			// space to leave in far heap
 
 #define	BUFFERSIZE		0x1000		// miscelanious, allways available buffer
@@ -93,5 +95,7 @@ long MM_TotalFree (void);
 void MM_BombOnError (boolean bomb);
 
 void MML_UseSpace (unsigned segstart, unsigned seglength);
+
+void MM_Report_();
 
 #endif
