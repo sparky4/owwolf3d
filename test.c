@@ -43,10 +43,6 @@
 int	viewsize;
 boolean	compatability;
 byte		*updateptr;
-//unsigned	uwidthtable[UPDATEHIGH];
-//unsigned	wallheight[MAXVIEWWIDTH];
-//unsigned	latchpics[NUMLATCHPICS];
-//unsigned freelatch = FREESTART;
 
 
 char            str[80],str2[20];
