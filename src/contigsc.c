@@ -14,13 +14,13 @@
 */
 
 t_compscale far *scaledirectory[MAXSCALEHEIGHT+1];
-long			fullscalefarcall[MAXSCALEHEIGHT+1];
+fixed			fullscalefarcall[MAXSCALEHEIGHT+1];
 
 int			maxscale,maxscaleshl2;
 
 byte far	*scalermemory;
 byte _seg	*endscalermemory;
-long		freescalermemory;
+fixed		freescalermemory;
 
 
 /*
