@@ -1,19 +1,6 @@
 src/16_mm.c: * You should have received a copy of the GNU General Public License along
 src/16_mm.c:	long	lowest,oldlowest;
 src/16_mm.h: * You should have received a copy of the GNU General Public License along
-src/contigsc.c:long SetupScaling (int maxscaleheight)
-src/contigsc.c:	long	size;
-src/contigsc.c:		fullscalefarcall[i] = (long)scaledirectory[i] + scaledirectory[i]->codeofs[0];
-src/contigsc.c:			fullscalefarcall[i+1] = (long)scaledirectory[i] + scaledirectory[i]->codeofs[0];
-src/contigsc.c:			fullscalefarcall[i+2] = (long)scaledirectory[i] + scaledirectory[i]->codeofs[0];
-src/contigsc.c:		fullscalefarcall[i] = (long)BadScale;
-src/contigsc.c:	long		fix,step;
-src/contigsc.c:	step = ((long)height<<16) / 64;
-src/contigsc.c:extern	long		linescale;
-src/contigsc.c:static	long		longtemp;
-src/contigsc.c:long		linescale;
-src/h_ldiv.asm:;|      H_LDIV.ASM -- long division routine                          |
-src/h_ldiv.asm:;               we use the 386's long divide instruction.
 src/id_ca.c://#define	GRFILEPOS(c) (*(long far *)(((byte far *)grstarts)+(c)*3)&0xffffff)
 src/id_ca.c:long GRFILEPOS(int c)
 src/id_ca.c:	long value;
@@ -137,13 +124,6 @@ src/id_us.h:				US_PrintUnsigned(longword n),
 src/id_us.h:				US_PrintSigned(long n),
 src/id_us.h:				US_CheckHighScore(long score,word other),
 src/id_vh.c:	long		rndval;
-src/oldscale.c:long			fullscalefarcall[MAXSCALEHEIGHT+1];
-src/oldscale.c:		fullscalefarcall[i] = (long)BadScale;
-src/oldscale.c:	long		fix,step;
-src/oldscale.c:	step = ((long)height<<16) / 64;
-src/oldscale.c:extern	long		linescale;
-src/oldscale.c:static	long		longtemp;
-src/oldscale.c:long		linescale;
 src/type.h:typedef	unsigned	long		longword;
 src/type.h:typedef long fixed;
 src/wl_act1.c:	long	position;
@@ -229,9 +209,6 @@ src/wl_def.h:void	CheckHighScore (long score,word other);
 src/wl_def.h:void	MoveObj (objtype *ob, long move);
 src/wl_def.h:void	GivePoints (long points);
 src/wl_def.h:void	Thrust (int angle, long speed);
-src/wl_dr_a.asm:; multiplies long [ystep] (possibly negative), by word [xpartial] (in BX)
-src/wl_dr_a.asm:; multiplies long [xstep] (possibly negative), by word [ypartial] (in BP)
-src/wl_dr_a.asm:; trace along this angle until we hit a wall
 src/wl_draw.c:long 	lasttimecount;
 src/wl_draw.c:long 	frameon;
 src/wl_draw.c:long		far finetangent[FINEANGLES/4];
@@ -305,8 +282,6 @@ src/wolf3d.c:	long            intang;
 src/wolf3d.c:		tang = (long)i*VIEWGLOBAL/viewwidth/facedist;
 src/wolf3d.c:	long nsize;
 src/wolf3d.c://	nsize = (long)40*1024;
-src/contigsc.c:fixed			fullscalefarcall[MAXSCALEHEIGHT+1];
-src/contigsc.c:fixed		freescalermemory;
 src/id_ca.c:	fixed		headeroffsets[100];
 src/id_ca.c:extern	fixed	far	CGAhead;
 src/id_ca.c:extern	fixed	far	EGAhead;
@@ -359,8 +334,6 @@ src/wl_def.h:extern	fixed		postsource;
 src/wl_def.h:fixed	FixedByFrac (fixed a, fixed b);
 src/wl_def.h:extern	fixed			fullscalefarcall[MAXSCALEHEIGHT+1];
 src/wl_def.h:extern	fixed		thrustspeed;
-src/wl_dr_a.asm:	rcr ax,1						; fixed point multiplication
-src/wl_dr_a.asm:	rcr ax,1						; fixed point multiplication
 src/wl_draw.c:fixed	tileglobal	= TILEGLOBAL;
 src/wl_draw.c:fixed	mindist		= MINDIST;
 src/wl_draw.c:fixed 		far sintable[ANGLES+ANGLES/4],far *costable = sintable+(ANGLES/4);
