@@ -38,7 +38,7 @@
 
 #define SIGN(x) 	((x)>0?1:-1)
 #define ABS(x) 		((int)(x)>0?(x):-(x))
-#define LABS(x) 	((long)(x)>0?(x):-(x))
+#define LABS(x) 	((fixed)(x)>0?(x):-(x))
 
 /*
 =============================================================================
@@ -667,7 +667,7 @@ typedef struct objstruct
 
 	byte		flags;				//	FL_SHOOTABLE, etc
 
-	long		distance;			// if negative, wait for that door to open
+	fixed		distance;			// if negative, wait for that door to open
 	dirtype		dir;
 
 	fixed 		x,y;
@@ -680,7 +680,7 @@ typedef struct objstruct
 
 	int 		angle;
 	int			hitpoints;
-	long		speed;
+	fixed		speed;
 
 	int			temp1,temp2,temp3;
 	struct		objstruct	*next,*prev;
@@ -727,7 +727,7 @@ typedef	struct
 {
 	int			difficulty;
 	int			mapon;
-	long		oldscore,score,nextextra;
+	fixed		oldscore,score,nextextra;
 	int			lives;
 	int			health;
 	int			ammo;
@@ -739,8 +739,8 @@ typedef	struct
 
 	int			episode,secretcount,treasurecount,killcount,
 				secrettotal,treasuretotal,killtotal;
-	long		TimeCount;
-	long		killx,killy;
+	fixed		TimeCount;
+	fixed		killx,killy;
 	boolean		victoryflag;		// set during victory animations
 } gametype;
 
@@ -793,14 +793,14 @@ extern	int		mouseadjustment;
 // math tables
 //
 extern	int			pixelangle[MAXVIEWWIDTH];
-extern	long		far finetangent[FINEANGLES/4];
+extern	fixed		far finetangent[FINEANGLES/4];
 extern	fixed 		far sintable[],far *costable;
 
 //
 // derived constants
 //
 extern	fixed 	scale,maxslope;
-extern	long	heightnumerator;
+extern	fixed	heightnumerator;
 extern	int		minheightdiv;
 
 extern	char	configname[13];
@@ -837,7 +837,7 @@ extern	int			doornum;//short?
 
 extern	char		demoname[13];
 
-extern	long		spearx,speary;
+extern	fixed		spearx,speary;
 extern	unsigned	spearangle;
 extern	boolean		spearflag;
 
@@ -858,7 +858,7 @@ void DrawAllPlayBorderSides (void);
 
 
 // JAB
-#define	PlaySoundLocTile(s,tx,ty)	PlaySoundLocGlobal(s,(((long)(tx) << TILESHIFT) + (1L << (TILESHIFT - 1))),(((long)ty << TILESHIFT) + (1L << (TILESHIFT - 1))))
+#define	PlaySoundLocTile(s,tx,ty)	PlaySoundLocGlobal(s,(((fixed)(tx) << TILESHIFT) + (1L << (TILESHIFT - 1))),(((fixed)ty << TILESHIFT) + (1L << (TILESHIFT - 1))))
 #define	PlaySoundLocActor(s,ob)		PlaySoundLocGlobal(s,(ob)->x,(ob)->y)
 void	PlaySoundLocGlobal(word s,fixed gx,fixed gy);
 void UpdateSoundLoc(void);
@@ -873,7 +873,7 @@ void UpdateSoundLoc(void);
 */
 
 #ifdef SPEAR
-extern	long		funnyticount;		// FOR FUNNY BJ FACE
+extern	fixed		funnyticount;		// FOR FUNNY BJ FACE
 #endif
 
 extern	exit_t		playstate;
@@ -980,8 +980,8 @@ int DebugKeys (void);
 extern	unsigned screenloc[3];
 extern	unsigned freelatch;
 
-extern	long 	lasttimecount;
-extern	long 	frameon;
+extern	fixed	lasttimecount;
+extern	fixed	frameon;
 extern	boolean	fizzlein;
 
 extern	unsigned	wallheight[MAXVIEWWIDTH];
@@ -994,14 +994,14 @@ extern	fixed	mindist;
 // math tables
 //
 extern	int			pixelangle[MAXVIEWWIDTH];
-extern	long		far finetangent[FINEANGLES/4];
+extern	fixed		far finetangent[FINEANGLES/4];
 extern	fixed 		far sintable[],far *costable;
 
 //
 // derived constants
 //
 extern	fixed 	scale;
-extern	long	heightnumerator,mindist;
+extern	fixed	heightnumerator,mindist;
 
 //
 // refresh variables
@@ -1010,7 +1010,7 @@ extern	fixed	viewx,viewy;			// the focal point
 extern	int		viewangle;
 extern	fixed	viewsin,viewcos;
 
-extern	long		postsource;
+extern	fixed		postsource;
 extern	unsigned	postx;
 extern	unsigned	postwidth;
 
@@ -1090,12 +1090,8 @@ typedef struct
 // table data after dataofs[rightpix-leftpix+1]
 }	t_compshape;
 
-#define TSEG t_compscale
-//_seg
-
-
-extern	TSEG *scaledirectory[MAXSCALEHEIGHT+1];
-extern	long			fullscalefarcall[MAXSCALEHEIGHT+1];
+extern	t_compscale _seg	*scaledirectory[MAXSCALEHEIGHT+1];
+extern	fixed			fullscalefarcall[MAXSCALEHEIGHT+1];
 
 extern	byte		bitmasks1[8][8];
 extern	byte		bitmasks2[8][8];
@@ -1125,7 +1121,7 @@ void SimpleScaleShape (int xcenter, int shapenum, unsigned height);
 // player state info
 //
 extern	boolean		running;
-extern	long		thrustspeed;
+extern	fixed		thrustspeed;
 extern	unsigned	plux,pluy;		// player coordinates scaled to unsigned
 
 extern	int			anglefrac;
