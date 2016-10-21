@@ -52,7 +52,7 @@ typedef struct
 =============================================================================
 */
 
-byte 		_seg	*tinf;
+/*byte 		_seg	*tinf;
 int			mapon;
 
 unsigned	_seg	*mapsegs[MAPPLANES];
@@ -65,7 +65,7 @@ byte		ca_levelbit,ca_levelnum;
 
 int			profilehandle,debughandle;
 
-char		audioname[13]="AUDIO.";
+char		audioname[13]="AUDIO.";*/
 
 /*
 =============================================================================

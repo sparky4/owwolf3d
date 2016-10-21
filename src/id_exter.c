@@ -2,7 +2,6 @@
 
 #ifndef	__ID_US__
 boolean		NoWait;
-//longword			TimeCount;
 ///////////////////////////////////////////////////////////////////////////
 //
 //	US_CheckParm() - checks to see if a string matches one of a set of
@@ -52,9 +51,4 @@ void VL_FadeIn (int start, int end, byte far *palette, int steps){}
 #ifndef __ID_VH_H__
 pictabletype *pictable;
 int VW_MarkUpdateBlock (int x1, int y1, int x2, int y2){ return 0; }
-#else
-unsigned	uwidthtable[UPDATEHIGH];
-unsigned	wallheight[MAXVIEWWIDTH];
-unsigned	latchpics[NUMLATCHPICS];
-unsigned freelatch = FREESTART;
 #endif

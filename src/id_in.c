@@ -50,14 +50,14 @@
 //
 // configuration variables
 //
-boolean			MousePresent;
+/*boolean			MousePresent;
 boolean			JoysPresent[MaxJoys];
-boolean			JoyPadPresent;
+boolean			JoyPadPresent;*/
 
 
 // 	Global variables
 		boolean		Keyboard[NumCodes];
-		boolean		Paused;
+		/*boolean		Paused;
 		char		LastASCII;
 		ScanCode	LastScan;
 
@@ -69,7 +69,7 @@ boolean			JoyPadPresent;
 
 		Demo		DemoMode = demo_Off;
 		byte		*DemoBuffer;
-		word		DemoOffset,DemoSize;
+		word		DemoOffset,DemoSize;*/
 
 /*
 =============================================================================

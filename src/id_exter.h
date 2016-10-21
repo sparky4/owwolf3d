@@ -9,7 +9,6 @@
 //typedef short fixed;
 #ifndef	__ID_US__
 extern	boolean		NoWait;
-extern longword			TimeCount;
 
 int US_CheckParm(char *parm,char **strings);
 #endif

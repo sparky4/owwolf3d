@@ -69,12 +69,12 @@ typedef struct mmblockstruct
 =============================================================================
 */
 
-mminfotype	mminfo;
+/*mminfotype	mminfo;
 memptr		bufferseg;
 boolean		mmerror;
 
 void		(* beforesort) (void);
-void		(* aftersort) (void);
+void		(* aftersort) (void);*/
 
 /*
 =============================================================================

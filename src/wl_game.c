@@ -25,13 +25,13 @@
 =============================================================================
 */
 
-boolean		ingame,fizzlein;
+/*boolean		ingame,fizzlein;
 unsigned	latchpics[NUMLATCHPICS];
 gametype	gamestate;
 
 long		spearx,speary;
 unsigned	spearangle;
-boolean		spearflag;
+boolean		spearflag;*/
 
 //
 // ELEVATOR BACK MAPS - REMEMBER (-1)!!

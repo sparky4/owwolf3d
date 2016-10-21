@@ -28,7 +28,7 @@
 =============================================================================
 */
 
-
+/*
 #ifdef DEBUGWALLS
 unsigned screenloc[3]= {0,0,0};
 #else
@@ -57,7 +57,7 @@ fixed 		far sintable[ANGLES+ANGLES/4],far *costable = sintable+(ANGLES/4);
 //
 fixed	viewx,viewy;			// the focal point
 int		viewangle;
-fixed	viewsin,viewcos;
+fixed	viewsin,viewcos;*/
 
 
 
