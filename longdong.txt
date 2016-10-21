@@ -1,92 +1,387 @@
-src/contigsc.c:
-long SetupScaling (int maxscaleheight)
-src/contigsc.c:unsigned	far *linecmds;
-long		linescale;
-src/id_ca.c:
-long		_seg *grstarts;	// array of offsets in egagraph, -1 for sparse
+src/16_mm.c: * You should have received a copy of the GNU General Public License along
+src/16_mm.c:	long	lowest,oldlowest;
+src/16_mm.h: * You should have received a copy of the GNU General Public License along
+src/contigsc.c:long SetupScaling (int maxscaleheight)
+src/contigsc.c:	long	size;
+src/contigsc.c:		fullscalefarcall[i] = (long)scaledirectory[i] + scaledirectory[i]->codeofs[0];
+src/contigsc.c:			fullscalefarcall[i+1] = (long)scaledirectory[i] + scaledirectory[i]->codeofs[0];
+src/contigsc.c:			fullscalefarcall[i+2] = (long)scaledirectory[i] + scaledirectory[i]->codeofs[0];
+src/contigsc.c:		fullscalefarcall[i] = (long)BadScale;
+src/contigsc.c:	long		fix,step;
+src/contigsc.c:	step = ((long)height<<16) / 64;
+src/contigsc.c:extern	long		linescale;
+src/contigsc.c:static	long		longtemp;
+src/contigsc.c:long		linescale;
+src/h_ldiv.asm:;|      H_LDIV.ASM -- long division routine                          |
+src/h_ldiv.asm:;               we use the 386's long divide instruction.
 src/id_ca.c://#define	GRFILEPOS(c) (*(long far *)(((byte far *)grstarts)+(c)*3)&0xffffff)
-long GRFILEPOS(int c)
-src/id_ca.c:
-long CA_RLEWCompress (unsigned huge *source, long length, unsigned huge *dest,
-src/id_ca.h:
-long CA_RLEWCompress (unsigned huge *source, long length, unsigned huge *dest,
-src/id_mm.c:
-long MM_UnusedMemory (void)
-src/id_mm.c:
-long MM_TotalFree (void)
-src/id_mm.h:
-long MM_UnusedMemory (void);
-src/id_us_1.c:
-long TimeIt(void);
-src/oldscale.c:t_compscale _seg *scaledirectory[MAXSCALEHEIGHT+1];
-long			fullscalefarcall[MAXSCALEHEIGHT+1];
-src/oldscale.c:unsigned	far *linecmds;
-long		linescale;
-src/wl_agent.c:boolean		running;
-long		thrustspeed;
-src/wl_agent.c:
-long	playerxmove,playerymove;
-src/wl_draw.c:
-long 	lasttimecount;
-src/wl_draw.c:int			pixelangle[MAXVIEWWIDTH];
-long		far finetangent[FINEANGLES/4];
-src/wl_draw.c:int		lastside;		// true for vertical
-long	lastintercept;
-src/wl_draw.c:int		xtilestep,ytilestep;
-long	xintercept,yintercept;
-src/wl_draw.c:
-long		postsource;
-src/wl_game.c:
-long		spearx,speary;
-src/wl_play.c:*/
-long funnyticount;
-src/wl_scale.c:t_compscale /*_seg*/ *scaledirectory[MAXSCALEHEIGHT+1];
-long			fullscalefarcall[MAXSCALEHEIGHT+1];
-src/wl_scale.c:unsigned	far *linecmds;
-long		linescale;
-src/wolf3d.c:fixed           scale,maxslope;
-long            heightnumerator;
-src/wolf3d.c:
-long DoChecksum(byte far *source,unsigned size,long checksum)
-src/contigsc.c:t_compscale far *scaledirectory[MAXSCALEHEIGHT+1];
-fixed			fullscalefarcall[MAXSCALEHEIGHT+1];
-src/contigsc.c:byte _seg	*endscalermemory;
-fixed		freescalermemory;
-src/id_ca.c:
-fixed		chunkcomplen,chunkexplen;
-src/id_tail.c:
-fixed	lasttimecount;
-src/id_tail.c:
-fixed	tileglobal	= TILEGLOBAL;
-src/id_tail.c:int			pixelangle[MAXVIEWWIDTH];
-fixed		far finetangent[FINEANGLES/4];
-src/id_tail.c://
-fixed	viewx,viewy;			// the focal point
-src/id_tail.c:int		viewangle;
-fixed	viewsin,viewcos;
-src/id_tail.c:
-fixed		spearx,speary;
-src/wl_def.h:
-fixed	FixedByFrac (fixed a, fixed b);
-src/wl_draw.c:
-fixed	tileglobal	= TILEGLOBAL;
+src/id_ca.c:long GRFILEPOS(int c)
+src/id_ca.c:	long value;
+src/id_ca.c:	value = *(long far *)(((byte far *)grstarts)+offset);
+src/id_ca.c:boolean CA_FarRead (int handle, byte far *dest, long length)
+src/id_ca.c:boolean CA_FarWrite (int handle, byte far *source, long length)
+src/id_ca.c:	long size;
+src/id_ca.c:boolean CA_WriteFile (char *filename, void far *ptr, long length)
+src/id_ca.c:	long size;
+src/id_ca.c:	long size;
+src/id_ca.c:  long length,huffnode *hufftable, boolean screenhack)
+src/id_ca.c:long CA_RLEWCompress (unsigned huge *source, long length, unsigned huge *dest,
+src/id_ca.c:  long complength;
+src/id_ca.c:void CA_RLEWexpand (unsigned huge *source, unsigned huge *dest,long length,
+src/id_ca.c:	grstarts = (long _seg *)FP_SEG(&EGAhead);
+src/id_ca.c:	long length,pos;
+src/id_ca.c:	long length;
+src/id_ca.c:	long	pos,compressed;
+src/id_ca.c:	long	expanded;
+src/id_ca.c:	expanded = *(long far *)source;
+src/id_ca.c:	long	expanded;
+src/id_ca.c:	// everything else has an explicit size longword
+src/id_ca.c:		expanded = *(long far *)source;
+src/id_ca.c:	long	pos,compressed;
+src/id_ca.c:	long	pos,compressed,expanded;
+src/id_ca.c:	expanded = *(long far *)source;
+src/id_ca.c:	long	pos,compressed;
+src/id_ca.c:	long	expanded;
+src/id_ca.c:	long	pos,endpos,nextpos,nextendpos,compressed;
+src/id_ca.c:	long	bufferstart,bufferend;	// file position of general buffer
+src/id_ca.h:	long		planestart[3];
+src/id_ca.h:extern long		_seg *grstarts;	// array of offsets in egagraph, -1 for sparse
+src/id_ca.h:extern long		_seg *audiostarts;	// array of offsets in audio / audiot
+src/id_ca.h:boolean CA_FarRead (int handle, byte far *dest, long length);
+src/id_ca.h:boolean CA_FarWrite (int handle, byte far *source, long length);
+src/id_ca.h:boolean CA_WriteFile (char *filename, void far *ptr, long length);
+src/id_ca.h:long CA_RLEWCompress (unsigned huge *source, long length, unsigned huge *dest,
+src/id_ca.h:void CA_RLEWexpand (unsigned huge *source, unsigned huge *dest,long length,
+src/id_exter.h:extern	boolean		IN_UserInput(longword delay);
+src/id_in.c:		longword	MouseDownCount;
+src/id_in.c:	longword	time;
+src/id_in.c:static	longword	lasttime;
+src/id_in.c:	longword	lasttime;
+src/id_in.c:boolean IN_UserInput(longword delay)
+src/id_in.c:	longword	lasttime;
+src/id_in.h:extern	boolean		IN_UserInput(longword delay);
+src/id_mm.c:	long		extra;
+src/id_mm.c:	unsigned 	long length;
+src/id_mm.c:	length=(longword)_memavl();
+src/id_mm.c:void MM_GetPtr (memptr *baseptr,unsigned long size)
+src/id_mm.c:	long	end,owner;
+src/id_mm.c:	long	lowest,oldlowest;
+src/id_mm.c:long MM_UnusedMemory (void)
+src/id_mm.c:long MM_TotalFree (void)
+src/id_mm.h:	long	nearheap,farheap,EMSmem,XMSmem,mainmem;
+src/id_mm.h:void MM_GetPtr (memptr *baseptr,unsigned long size);
+src/id_mm.h:long MM_UnusedMemory (void);
+src/id_mm.h:long MM_TotalFree (void);
+src/id_pm.c:	longword		XMSDriver;
+src/id_pm.c:	long			PMFrameCount;
+src/id_pm.c:	long	size;
+src/id_pm.c:	size = EMSAvail * (long)EMSPageSize;
+src/id_pm.c:	if (size - (EMSPageSize * 2) > (ChunksInFile * (long)PMPageSize))
+src/id_pm.c:		size = (ChunksInFile * (long)PMPageSize) + EMSPageSize;
+src/id_pm.c:	mminfo.EMSmem += EMSAvail * (long)EMSPageSize;
+src/id_pm.c:	longword	xoffset;
+src/id_pm.c:		longword	length;
+src/id_pm.c:		longword	source_offset;
+src/id_pm.c:		longword	target_offset;
+src/id_pm.c:	xoffset = (longword)xmspage * PMPageSize;
+src/id_pm.c:	copy.source_offset = toxms? (long)addr : xoffset;
+src/id_pm.c:	copy.target_offset = toxms? xoffset : (long)addr;
+src/id_pm.c:PML_ReadFromFile(byte far *buf,long offset,word length)
+src/id_pm.c:	long			size;
+src/id_pm.c:	longword		far *offsetptr;
+src/id_pm.c:	size = sizeof(longword) * ChunksInFile;
+src/id_pm.c:	offsetptr = (longword far *)buf;
+src/id_pm.c:		longword last = LONG_MAX;
+src/id_pm.c:	long			last;
+src/id_pm.c:	long			last;
+src/id_pm.c:				Quit("PM_Preload: Page too long");
+src/id_pm.h:			longword	offset;		// Offset of chunk into file
+src/id_pm.h:			longword	lastHit;	// Last frame number of hit
+src/id_pm.h:			longword	lastHit;		// Last frame number of hit
+src/id_sd.c:	longword	TimeCount;
+src/id_sd.c:		longword		TimerDivisor,TimerCount;
+src/id_sd.c:		long			LocalTime;
+src/id_sd.c:static	volatile longword		sbNextSegLen;
+src/id_sd.c:		volatile longword	ssLengthLeft;
+src/id_sd.c:		longword		alLengthLeft;
+src/id_sd.c:		longword		alTimeCount;
+src/id_sd.c:		long			sqHackTime;
+src/id_sd.c:static longword
+src/id_sd.c:SDL_SBPlaySeg(volatile byte huge *data,longword length)
+src/id_sd.c:	longword		dataofs,uselen;
+src/id_sd.c:	longword	used;
+src/id_sd.c:SDL_SBPlaySample(byte huge *data,longword len)
+src/id_sd.c:	longword	used;
+src/id_sd.c:	/*(long)*/ssSample = 0;
+src/id_sd.c:				/*(long)*/ssSample = 0;
+src/id_sd.c:SDL_SSPlaySample(byte huge *data,longword len)
+src/id_sd.c:	longword	lasttime;
+src/id_sd.c:SDL_PCPlaySample(byte huge *data,longword len)
+src/id_sd.c:	/*(long)*/pcSound = 0;
+src/id_sd.c:	/*(long)*/pcSound = 0;
+src/id_sd.c:	/*(long)*/alSound = 0;
+src/id_sd.c:			/*(long)*/alSound = 0;
+src/id_sd.c:				long temp;
+src/id_sd.h:			longword	length;
+src/id_sd.h:			longword	nextevent;
+src/id_sd.h:extern	longword	TimeCount;					// Global time in ticks
+src/id_tail.c:		/*long*/word	MouseDownCount;
+src/id_us_1.c:long TimeIt(void);
+src/id_us_1.c://	US_PrintUnsigned() - Prints an unsigned long
+src/id_us_1.c:US_PrintUnsigned(longword n)
+src/id_us_1.c://	US_PrintSigned() - Prints a signed long
+src/id_us_1.c:US_PrintSigned(long n)
+src/id_us_1.c:	longword	lasttime;
+src/id_us.h:			long	score;
+src/id_us.h:				US_PrintUnsigned(longword n),
+src/id_us.h:				US_PrintSigned(long n),
+src/id_us.h:				US_CheckHighScore(long score,word other),
+src/id_vh.c:	long		rndval;
+src/oldscale.c:long			fullscalefarcall[MAXSCALEHEIGHT+1];
+src/oldscale.c:		fullscalefarcall[i] = (long)BadScale;
+src/oldscale.c:	long		fix,step;
+src/oldscale.c:	step = ((long)height<<16) / 64;
+src/oldscale.c:extern	long		linescale;
+src/oldscale.c:static	long		longtemp;
+src/oldscale.c:long		linescale;
+src/type.h:typedef	unsigned	long		longword;
+src/type.h:typedef long fixed;
+src/wl_act1.c:	long	position;
+src/wl_act1.c:	long	position;
+src/wl_act1.c:		  static long ptimecount = 0;
+src/wl_act2.c:	long		deltax,deltay;
+src/wl_act2.c:	long	deltax,deltay;
+src/wl_act2.c:	long	speed;
+src/wl_act2.c:	speed = (long)ob->speed*tics;
+src/wl_act2.c:	long move;
+src/wl_act2.c:		ob->x = ((long)ob->tilex<<TILESHIFT)+TILEGLOBAL/2;
+src/wl_act2.c:		ob->y = ((long)ob->tiley<<TILESHIFT)+TILEGLOBAL/2;
+src/wl_act2.c:	long	deltax,deltay;
+src/wl_act2.c:	long	deltax,deltay;
+src/wl_act2.c:	long	deltax,deltay;
+src/wl_act2.c:	long	deltax,deltay;
+src/wl_act2.c:	long move;
+src/wl_act2.c:		ob->x = ((long)ob->tilex<<TILESHIFT)+TILEGLOBAL/2;
+src/wl_act2.c:		ob->y = ((long)ob->tiley<<TILESHIFT)+TILEGLOBAL/2;
+src/wl_act2.c:	long move;
+src/wl_act2.c:		ob->x = ((long)ob->tilex<<TILESHIFT)+TILEGLOBAL/2;
+src/wl_act2.c:		ob->y = ((long)ob->tiley<<TILESHIFT)+TILEGLOBAL/2;
+src/wl_act2.c:	long move;
+src/wl_act2.c:		ob->x = ((long)ob->tilex<<TILESHIFT)+TILEGLOBAL/2;
+src/wl_act2.c:		ob->y = ((long)ob->tiley<<TILESHIFT)+TILEGLOBAL/2;
+src/wl_act2.c:	long	deltax,deltay;
+src/wl_act2.c:	long move;
+src/wl_act2.c:		ob->x = ((long)ob->tilex<<TILESHIFT)+TILEGLOBAL/2;
+src/wl_act2.c:		ob->y = ((long)ob->tiley<<TILESHIFT)+TILEGLOBAL/2;
+src/wl_act2.c:	long move;
+src/wl_act2.c:		ob->x = ((long)ob->tilex<<TILESHIFT)+TILEGLOBAL/2;
+src/wl_act2.c:		ob->y = ((long)ob->tiley<<TILESHIFT)+TILEGLOBAL/2;
+src/wl_act2.c:	long move;
+src/wl_act2.c:		ob->x = ((long)ob->tilex<<TILESHIFT)+TILEGLOBAL/2;
+src/wl_act2.c:		ob->y = ((long)ob->tiley<<TILESHIFT)+TILEGLOBAL/2;
+src/wl_act2.c:	long 	move;
+src/wl_act2.c:	long	dx,dy;
+src/wl_act2.c:		ob->x = ((long)ob->tilex<<TILESHIFT)+TILEGLOBAL/2;
+src/wl_act2.c:		ob->y = ((long)ob->tiley<<TILESHIFT)+TILEGLOBAL/2;
+src/wl_act2.c:	long 	move;
+src/wl_act2.c:	long 	deltax,deltay,size;
+src/wl_act2.c:		ob->x = ((long)ob->tilex<<TILESHIFT)+TILEGLOBAL/2;
+src/wl_act2.c:		ob->y = ((long)ob->tiley<<TILESHIFT)+TILEGLOBAL/2;
+src/wl_act2.c:	long	dx,dy;
+src/wl_act2.c:	long 	move;
+src/wl_act2.c:		ob->x = ((long)ob->tilex<<TILESHIFT)+TILEGLOBAL/2;
+src/wl_act2.c:		ob->y = ((long)ob->tiley<<TILESHIFT)+TILEGLOBAL/2;
+src/wl_act2.c:	long 	move;
+src/wl_act2.c:	long	dx,dy;
+src/wl_act2.c:	long    xmove,ymove;
+src/wl_act2.c:	long	dist;
+src/wl_agent.c:long		thrustspeed;
+src/wl_agent.c:long	playerxmove,playerymove;
+src/wl_agent.c:void ClipMove (objtype *ob, long xmove, long ymove);
+src/wl_agent.c:	long	oldx,oldy;
+src/wl_agent.c:	long	speed;
+src/wl_agent.c:void	LatchNumber (int x, int y, int width, long number)
+src/wl_agent.c:void	GivePoints (long points)
+src/wl_agent.c:	long		deltax,deltay;
+src/wl_agent.c:void ClipMove (objtype *ob, long xmove, long ymove)
+src/wl_agent.c:	long	basex,basey;
+src/wl_agent.c:	ob->x < (((long)(mapwidth-1))<<TILESHIFT)
+src/wl_agent.c:	&& ob->y < (((long)(mapheight-1))<<TILESHIFT) )
+src/wl_agent.c:void Thrust (int angle, long speed)
+src/wl_agent.c:	long xmove,ymove;
+src/wl_agent.c:	long	slowmax;
+src/wl_agent.c:	player->x = ((long)tilex<<TILESHIFT)+TILEGLOBAL/2;
+src/wl_agent.c:	player->y = ((long)tiley<<TILESHIFT)+TILEGLOBAL/2;
+src/wl_agent.c:	long	dist;
+src/wl_agent.c:	long	viewdist;
+src/wl_agent.c:	long	desty;
+src/wl_agent.c:	desty = (((long)player->tiley-5)<<TILESHIFT)-0x3000;
+src/wl_debug.c:        long    mem;
+src/wl_debug.c:                unsigned long col;
+src/wl_debug.c:                        col=(((((unsigned long)wolfpal[i*3])<<10)+
+src/wl_debug.c:                             (((unsigned long)wolfpal[i*3+1])<<2))<<8)+
+src/wl_debug.c:                             (((unsigned long)wolfpal[i*3+2])<<2);
+src/wl_debug.c:        longword                l;
+src/wl_debug.c:                sprintf(buf,"0x%08X",(long) addr);
+src/wl_def.h://typedef long fixed;
+src/wl_def.h:void 		CalcProjection (long focal);
+src/wl_def.h:void	CheckHighScore (long score,word other);
+src/wl_def.h:void	MoveObj (objtype *ob, long move);
+src/wl_def.h:void	GivePoints (long points);
+src/wl_def.h:void	Thrust (int angle, long speed);
+src/wl_dr_a.asm:; multiplies long [ystep] (possibly negative), by word [xpartial] (in BX)
+src/wl_dr_a.asm:; multiplies long [xstep] (possibly negative), by word [ypartial] (in BP)
+src/wl_dr_a.asm:; trace along this angle until we hit a wall
+src/wl_draw.c:long 	lasttimecount;
+src/wl_draw.c:long 	frameon;
 src/wl_draw.c:long		far finetangent[FINEANGLES/4];
-fixed 		far sintable[ANGLES+ANGLES/4],far *costable = sintable+(ANGLES/4);
-src/wl_draw.c://
-fixed	viewx,viewy;			// the focal point
-src/wl_draw.c:int		viewangle;
-fixed	viewsin,viewcos;*/
-src/wl_draw.c:
-fixed	FixedByFrac (fixed a, fixed b);
-src/wl_draw.c:
-fixed FixedByFrac (fixed a, fixed b)
-src/wolf3d.c://
-fixed           focallength;
-src/wolf3d.c:int             shootdelta;                     // pixels away from centerx a target can be
-fixed           scale,maxslope;
-src/wolfhack.c:
-fixed	stepscale[MAXVIEWHEIGHT/2];
-src/wolfhack.c:
-fixed	psin, pcos;
-src/wolfhack.c:
-fixed FixedMul (fixed a, fixed b)
+src/wl_draw.c:long	lastintercept;
+src/wl_draw.c:long	xintercept,yintercept;
+src/wl_draw.c:long	xstep,ystep;
+src/wl_draw.c:	long	temp;
+src/wl_draw.c:	long	temp;
+src/wl_draw.c:	gx = ((long)tx<<TILESHIFT)+0x8000-viewx;
+src/wl_draw.c:	gy = ((long)ty<<TILESHIFT)+0x8000-viewy;
+src/wl_draw.c:	long	gx,gy;
+src/wl_draw.c:long		postsource;
+src/wl_draw.c:	long	newtime,oldtimecount;
+src/wl_draw.c:    long xstep,ystep;
+src/wl_draw.c:    longword xpartial,ypartial;
+src/wl_draw.c:            if((longword)yintercept>mapheight*65536-1 || (word)xtile>=mapwidth)
+src/wl_draw.c:                    long yintbuf=yintercept+(ystep>>1);
+src/wl_draw.c:	                        long yintbuf;
+src/wl_draw.c:										   if(pwalldir==di_south && (long)((word)yintercept)+ystep<(pwallposi<<10)
+src/wl_draw.c:													|| pwalldir==di_north && (long)((word)yintercept)+ystep>(pwallposi<<10))
+src/wl_draw.c:										   if(pwalldir==di_south && (long)((word)yintercept)+ystep>(pwallposi<<10)
+src/wl_draw.c:													|| pwalldir==di_north && (long)((word)yintercept)+ystep<(pwallposi<<10))
+src/wl_draw.c:            if((longword)xintercept>mapwidth*65536-1 || (word)ytile>=mapheight)
+src/wl_draw.c:                    long xintbuf=xintercept+(xstep>>1);
+src/wl_draw.c:	                        long xintbuf;
+src/wl_draw.c:										   if(pwalldir==di_east && (long)((word)xintercept)+xstep<(pwallposi<<10)
+src/wl_draw.c:													|| pwalldir==di_west && (long)((word)xintercept)+xstep>(pwallposi<<10))
+src/wl_draw.c:										   if(pwalldir==di_east && (long)((word)xintercept)+xstep>(pwallposi<<10)
+src/wl_draw.c:													|| pwalldir==di_west && (long)((word)xintercept)+xstep<(pwallposi<<10))
+src/wl_game.c:long		spearx,speary;
+src/wl_game.c:	long	length,level;
+src/wl_game.c:	long	dx,dy;
+src/wl_game.c:				long lasttimecount = TimeCount;
+src/wl_inter.c:	long	sec;
+src/wl_inter.c:	long bonus,timeleft=0;
+src/wl_inter.c:	   ltoa((long)i*PAR_AMOUNT,tempstr,10);
+src/wl_inter.c:	 bonus=(long)timeleft*PAR_AMOUNT+
+src/wl_inter.c:	w = ((long)w * current) / total;
+src/wl_inter.c:void	CheckHighScore (long score,word other)
+src/wl_menu.c:	long memory,emshere,xmshere;
+src/wl_menu.c:        long handle;
+src/wl_menu.c:                long rc;
+src/wl_menu.c:        long handle;
+src/wl_menu.h:                long time;
+src/wl_play.c:long funnyticount;
+src/wl_scale.c:long			fullscalefarcall[MAXSCALEHEIGHT+1];
+src/wl_scale.c:		fullscalefarcall[i] = (long)BadScale;
+src/wl_scale.c:	long		fix,step;
+src/wl_scale.c:	step = ((long)height<<16) / 64;
+src/wl_scale.c:extern	long		linescale;
+src/wl_scale.c:static	long		longtemp;
+src/wl_scale.c:long		linescale;
+src/wl_state.c:void	MoveObj (objtype *ob, long move);
+src/wl_state.c:	new->x = ((long)tilex<<TILESHIFT)+TILEGLOBAL/2;
+src/wl_state.c:	new->y = ((long)tiley<<TILESHIFT)+TILEGLOBAL/2;
+src/wl_state.c:void MoveObj (objtype *ob, long move)
+src/wl_state.c:	long	deltax,deltay;
+src/wl_state.c:	long	ltemp;
+src/wl_state.c:		ltemp = ((long)delta<<8)/deltafrac;
+src/wl_state.c:		yfrac = y1 + (((long)ystep*partial) >>8);
+src/wl_state.c:		ltemp = ((long)delta<<8)/deltafrac;
+src/wl_state.c:		xfrac = x1 + (((long)xstep*partial) >>8);
+src/wl_state.c:	long		deltax,deltay;
+src/wolf3d.c:long            heightnumerator;
+src/wolf3d.c:long DoChecksum(byte far *source,unsigned size,long checksum)
+src/wolf3d.c:	long avail,size,checksum;
+src/wolf3d.c:	avail = (long)dfree.avail_clusters *
+src/wolf3d.c:	long checksum,oldchecksum;
+src/wolf3d.c:void CalcProjection (long focal)
+src/wolf3d.c:	long            intang;
+src/wolf3d.c:		tang = (long)i*VIEWGLOBAL/viewwidth/facedist;
+src/wolf3d.c:	long nsize;
+src/wolf3d.c://	nsize = (long)40*1024;
+src/contigsc.c:fixed			fullscalefarcall[MAXSCALEHEIGHT+1];
+src/contigsc.c:fixed		freescalermemory;
+src/id_ca.c:	fixed		headeroffsets[100];
+src/id_ca.c:extern	fixed	far	CGAhead;
+src/id_ca.c:extern	fixed	far	EGAhead;
+src/id_ca.c:fixed		_seg *grstarts;	// array of offsets in egagraph, -1 for sparse
+src/id_ca.c:fixed		_seg *audiostarts;	// array of offsets in audio / audiot
+src/id_ca.c:fixed		chunkcomplen,chunkexplen;
+src/id_ca.c:	audiostarts = (fixed _seg *)FP_SEG(&audiohead);
+src/id_exter.h://typedef short fixed;
+src/id_tail.c:fixed	lasttimecount;
+src/id_tail.c:fixed	frameon;
+src/id_tail.c:fixed	tileglobal	= TILEGLOBAL;
+src/id_tail.c:fixed	mindist		= MINDIST;
+src/id_tail.c:fixed		far finetangent[FINEANGLES/4];
+src/id_tail.c:fixed 		far sintable[ANGLES+ANGLES/4],far *costable = sintable+(ANGLES/4);
+src/id_tail.c:fixed	viewx,viewy;			// the focal point
+src/id_tail.c:fixed	viewsin,viewcos;
+src/id_tail.c:fixed		spearx,speary;
+src/id_tail.c:void PlaySoundLocGlobal(word s,fixed gx,fixed gy){}
+src/type.h:typedef long fixed;
+src/wl_def.h:#define LABS(x) 	((fixed)(x)>0?(x):-(x))
+src/wl_def.h://typedef long fixed;
+src/wl_def.h:	fixed		distance;			// if negative, wait for that door to open
+src/wl_def.h:	fixed 		x,y;
+src/wl_def.h:	fixed		transx,transy;		// in global coord
+src/wl_def.h:	fixed		speed;
+src/wl_def.h:	fixed		oldscore,score,nextextra;
+src/wl_def.h:	fixed		TimeCount;
+src/wl_def.h:	fixed		killx,killy;
+src/wl_def.h:extern	fixed		focallength;
+src/wl_def.h:extern	fixed		far finetangent[FINEANGLES/4];
+src/wl_def.h:extern	fixed 		far sintable[],far *costable;
+src/wl_def.h:extern	fixed 	scale,maxslope;
+src/wl_def.h:extern	fixed	heightnumerator;
+src/wl_def.h:extern	fixed		spearx,speary;
+src/wl_def.h:#define	PlaySoundLocTile(s,tx,ty)	PlaySoundLocGlobal(s,(((fixed)(tx) << TILESHIFT) + (1L << (TILESHIFT - 1))),(((fixed)ty << TILESHIFT) + (1L << (TILESHIFT - 1))))
+src/wl_def.h:void	PlaySoundLocGlobal(word s,fixed gx,fixed gy);
+src/wl_def.h:extern	fixed		funnyticount;		// FOR FUNNY BJ FACE
+src/wl_def.h:extern	fixed	lasttimecount;
+src/wl_def.h:extern	fixed	frameon;
+src/wl_def.h:extern	fixed	tileglobal;
+src/wl_def.h:extern	fixed	focallength;
+src/wl_def.h:extern	fixed	mindist;
+src/wl_def.h:extern	fixed		far finetangent[FINEANGLES/4];
+src/wl_def.h:extern	fixed 		far sintable[],far *costable;
+src/wl_def.h:extern	fixed 	scale;
+src/wl_def.h:extern	fixed	heightnumerator,mindist;
+src/wl_def.h:extern	fixed	viewx,viewy;			// the focal point
+src/wl_def.h:extern	fixed	viewsin,viewcos;
+src/wl_def.h:extern	fixed		postsource;
+src/wl_def.h:fixed	FixedByFrac (fixed a, fixed b);
+src/wl_def.h:extern	fixed			fullscalefarcall[MAXSCALEHEIGHT+1];
+src/wl_def.h:extern	fixed		thrustspeed;
+src/wl_dr_a.asm:	rcr ax,1						; fixed point multiplication
+src/wl_dr_a.asm:	rcr ax,1						; fixed point multiplication
+src/wl_draw.c:fixed	tileglobal	= TILEGLOBAL;
+src/wl_draw.c:fixed	mindist		= MINDIST;
+src/wl_draw.c:fixed 		far sintable[ANGLES+ANGLES/4],far *costable = sintable+(ANGLES/4);
+src/wl_draw.c:fixed	viewx,viewy;			// the focal point
+src/wl_draw.c:fixed	viewsin,viewcos;*/
+src/wl_draw.c:fixed	FixedByFrac (fixed a, fixed b);
+src/wl_draw.c:= multiply a 16/16 bit, 2's complement fixed point number by a 16 bit
+src/wl_draw.c:fixed FixedByFrac (fixed a, fixed b)
+src/wl_draw.c:	fixed gx,gy,gxt,gyt,nx,ny;
+src/wl_draw.c:	fixed gx,gy,gxt,gyt,nx,ny;
+src/wl_draw.c:	fixed gxt,gyt,nx,ny;
+src/wl_game.c:	fixed	globalsoundx,globalsoundy;
+src/wl_game.c:SetSoundLoc(fixed gx,fixed gy)
+src/wl_game.c:	fixed	xt,yt;
+src/wl_game.c:void PlaySoundLocGlobal(word s,fixed gx,fixed gy)
+src/wolf3d.c:fixed           focallength;
+src/wolf3d.c:fixed           scale,maxslope;
+src/wolf3d.c:  fixed         value;
+src/wolfhack.c:fixed	stepscale[MAXVIEWHEIGHT/2];
+src/wolfhack.c:fixed	basedist[MAXVIEWHEIGHT/2];
+src/wolfhack.c:fixed	psin, pcos;
+src/wolfhack.c:fixed FixedMul (fixed a, fixed b)
+src/wolfhack.c:	fixed		length;
+src/wolfhack.c:	fixed		startxfrac, startyfrac;

@@ -488,7 +488,7 @@ enum	{
 =============================================================================
 */
 
-typedef long fixed;
+//typedef long fixed;
 
 typedef enum {
 	di_north,
