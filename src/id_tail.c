@@ -37,7 +37,7 @@ boolean			JoyPadPresent;
 		JoystickDef	JoyDefs[MaxJoys];
 		ControlType	Controls[MaxPlayers];
 
-		longword	MouseDownCount;
+		/*long*/word	MouseDownCount;
 
 		Demo		DemoMode = demo_Off;
 		byte		*DemoBuffer;
@@ -88,8 +88,8 @@ unsigned screenloc[3]= {PAGE1START,PAGE2START,PAGE3START};
 #endif
 unsigned freelatch = FREESTART;
 
-long 	lasttimecount;
-long 	frameon;
+fixed	lasttimecount;
+fixed	frameon;
 
 unsigned	wallheight[MAXVIEWWIDTH];
 
@@ -101,7 +101,7 @@ fixed	mindist		= MINDIST;
 // math tables
 //
 int			pixelangle[MAXVIEWWIDTH];
-long		far finetangent[FINEANGLES/4];
+fixed		far finetangent[FINEANGLES/4];
 fixed 		far sintable[ANGLES+ANGLES/4],far *costable = sintable+(ANGLES/4);
 
 //
@@ -117,7 +117,7 @@ boolean		ingame,fizzlein;
 unsigned	latchpics[NUMLATCHPICS];
 gametype	gamestate;
 
-long		spearx,speary;
+fixed		spearx,speary;
 unsigned	spearangle;
 boolean		spearflag;
 
