@@ -670,13 +670,13 @@ typedef struct objstruct
 	long		distance;			// if negative, wait for that door to open
 	dirtype		dir;
 
-	int/*fixed*/ 		x,y;
+	fixed 		x,y;
 	unsigned	tilex,tiley;
 	byte		areanumber;
 
 	int	 		viewx;
 	unsigned	viewheight;
-	int/*fixed*/		transx,transy;		// in global coord
+	fixed		transx,transy;		// in global coord
 
 	int 		angle;
 	int			hitpoints;

@@ -1,1 +1,1 @@
-grep -i "$1" src/*
+grep "$1" src/*
