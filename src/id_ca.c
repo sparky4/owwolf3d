@@ -20,7 +20,7 @@ loaded into the data segment
 #pragma warn -pro
 #pragma warn -use
 
-#define THREEBYTEGRSTARTS
+//#define THREEBYTEGRSTARTS
 
 /*
 =============================================================================
@@ -39,7 +39,7 @@ typedef struct
 typedef struct
 {
 	unsigned	RLEWtag;
-	long		headeroffsets[100];
+	fixed		headeroffsets[100];
 	byte		tileinfo[];
 } mapfiletype;
 
@@ -75,8 +75,8 @@ char		audioname[13]="AUDIO.";*/
 =============================================================================
 */
 
-extern	long	far	CGAhead;
-extern	long	far	EGAhead;
+extern	fixed	far	CGAhead;
+extern	fixed	far	EGAhead;
 extern	byte	CGAdict;
 extern	byte	EGAdict;
 extern	byte	far	maphead;
@@ -116,7 +116,7 @@ int			grhandle;		// handle to EGAGRAPH
 int			maphandle;		// handle to MAPTEMP / GAMEMAPS
 int			audiohandle;	// handle to AUDIOT / AUDIO
 
-long		chunkcomplen,chunkexplen;
+fixed		chunkcomplen,chunkexplen;
 
 SDMode		oldsoundmode;
 
