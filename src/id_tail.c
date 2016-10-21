@@ -1,6 +1,14 @@
 #include "id_tail.h"
 boolean		NoWait;
-longword			TimeCount;
+//longword			TimeCount;
+
+boolean	insetupscaling;
+
+byte		far	palette1[256][3],far palette2[256][3];
+unsigned	bufferofs;
+unsigned	displayofs,pelpan;
+
+pictabletype *pictable;
 
 ///////////////////////////////////////////////////////////////////////////
 //
@@ -36,3 +44,9 @@ US_CheckParm(char *parm,char **strings)
 	}
 	return(-1);
 }
+
+void VL_Plot (int x, int y, int color){}
+void VL_Hlin (unsigned x, unsigned y, unsigned width, unsigned color){}
+void VL_Vlin (int x, int y, int height, int color){}
+void VL_FadeIn (int start, int end, byte far *palette, int steps){}
+int VW_MarkUpdateBlock (int x1, int y1, int x2, int y2){ return 0; }

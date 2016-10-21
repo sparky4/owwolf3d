@@ -567,11 +567,11 @@ void ShutdownId (void)
 {
 //	US_Shutdown ();
 //	SD_Shutdown ();
-	//PM_Shutdown ();
+	PM_Shutdown ();
 	IN_Shutdown ();
 //	VW_Shutdown ();
-	//CA_Shutdown ();
-	//MM_Shutdown ();
+	CA_Shutdown ();
+	MM_Shutdown ();
 }
 
 
@@ -1161,16 +1161,16 @@ void InitGame (void)
 	else
 		virtualreality = false;*/
 
-//	MM_Startup ();                  // so the signon screen can be freed
+	MM_Startup ();                  // so the signon screen can be freed
 
 	//SignonScreen ();
 
 	////VW_Startup ();
 	IN_Startup ();
-//	PM_Startup ();
-//	PM_UnlockMainMem ();
+	PM_Startup ();
+	PM_UnlockMainMem ();
 	//SD_Startup ();
-//	CA_Startup ();
+	CA_Startup ();
 	//US_Startup ();
 
 
@@ -1285,9 +1285,9 @@ close(profilehandle);
 ==========================
 */
 
-/*boolean SetViewSize (unsigned width, unsigned height)
+boolean SetViewSize (unsigned width, unsigned height)
 {
-	viewwidth = width&~15;                  // must be divisable by 16
+/*	viewwidth = width&~15;                  // must be divisable by 16
 	viewheight = height&~1;                 // must be even
 	centerx = viewwidth/2-1;
 	shootdelta = viewwidth/10;
@@ -1312,11 +1312,11 @@ close(profilehandle);
 		return false;
 	}
 #endif
-	return true;
+*/	return true;
 }
 
 
-void ShowViewSize (int width)
+/*void ShowViewSize (int width)
 {
 	int     oldwidth,oldheight;
 
