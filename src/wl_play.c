@@ -22,13 +22,13 @@
 =============================================================================
 */
 
-boolean		madenoise;					// true when shooting or screaming
+/*boolean		madenoise;					// true when shooting or screaming
 
-exit_t		playstate;
+exit_t		playstate;*/
 
 int			DebugOk;
 
-objtype 	objlist[MAXACTORS],*new,*obj,*player,*lastobj,
+/*objtype 	objlist[MAXACTORS],*new,*obj,*player,*lastobj,
 			*objfreelist,*killerobj;
 
 unsigned	farmapylookup[MAPSIZE];
@@ -46,7 +46,7 @@ objtype		*actorat[MAPSIZE][MAPSIZE];
 //
 //unsigned	mapwidth,mapheight,tics;
 boolean		compatability;
-byte		*updateptr;
+//byte		*updateptr;
 unsigned	mapwidthtable[64];
 unsigned	uwidthtable[UPDATEHIGH];
 unsigned	blockstarts[UPDATEWIDE*UPDATEHIGH];
@@ -76,7 +76,7 @@ memptr		demobuffer;
 // curent user input
 //
 int			controlx,controly;		// range from -100 to 100 per tic
-boolean		buttonstate[NUMBUTTONS];
+boolean		buttonstate[NUMBUTTONS];*/
 
 
 

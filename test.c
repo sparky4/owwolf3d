@@ -40,11 +40,6 @@
 =============================================================================
 */
 
-int	viewsize;
-boolean	compatability;
-byte		*updateptr;
-
-
 char            str[80],str2[20];
 int				tedlevelnum;
 boolean         tedlevel;
