@@ -80,6 +80,7 @@ int	fontnumber;
 //===========================================================================
 //===========================================================================
 //wl_draw
+
 #ifdef DEBUGWALLS
 unsigned screenloc[3]= {0,0,0};
 #else
@@ -124,7 +125,7 @@ void PlaySoundLocGlobal(word s,fixed gx,fixed gy){}
 
 //===========================================================================
 //wl_play
-boolean		madenoise;					// true when shooting or screaming
+/*boolean		madenoise;					// true when shooting or screaming
 
 exit_t		playstate;
 
@@ -146,12 +147,12 @@ objtype		*actorat[MAPSIZE][MAPSIZE];
 //
 // replacing refresh manager
 //
-//unsigned	mapwidth,mapheight,tics;
+//unsigned	mapwidth,mapheight,tics;*/
 boolean		compatability;
 byte		*updateptr;
-unsigned	mapwidthtable[64];
+//unsigned	mapwidthtable[64];
 unsigned	uwidthtable[UPDATEHIGH];
-unsigned	blockstarts[UPDATEWIDE*UPDATEHIGH];
+/*unsigned	blockstarts[UPDATEWIDE*UPDATEHIGH];
 //byte		update[UPDATESIZE];
 unsigned tics;
 
@@ -165,9 +166,9 @@ int			buttonscan[NUMBUTTONS] =
 			{sc_Control,sc_Alt,sc_RShift,sc_Space,sc_1,sc_2,sc_3,sc_4};
 int			buttonmouse[4]={bt_attack,bt_strafe,bt_use,bt_nobutton};
 int			buttonjoy[4]={bt_attack,bt_strafe,bt_use,bt_run};
-
+*/
 int			viewsize;
-
+/*
 boolean		buttonheld[NUMBUTTONS];
 
 boolean		demorecord,demoplayback;
@@ -178,7 +179,7 @@ memptr		demobuffer;
 // curent user input
 //
 int			controlx,controly;		// range from -100 to 100 per tic
-boolean		buttonstate[NUMBUTTONS];
+boolean		buttonstate[NUMBUTTONS];*/
 
 //===========================================================================
 //===========================================================================
