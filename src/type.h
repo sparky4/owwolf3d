@@ -47,7 +47,7 @@ typedef	struct
 
 typedef void __based( void ) * memptr;	////old //----typedef void __based(__self) * memptr;
 #define _seg
-
+typedef long fixed;
 
 #define _argv __argv
 #define _argc __argc
