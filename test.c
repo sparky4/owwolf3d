@@ -41,7 +41,6 @@
 */
 
 int	viewsize;
-unsigned char gamepal[768];
 boolean	compatability;
 byte		*updateptr;
 //unsigned	uwidthtable[UPDATEHIGH];
