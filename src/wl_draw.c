@@ -1330,7 +1330,7 @@ void	FixOfs (void)
 void AsmRefresh()
 {
     long xstep,ystep;
-    longword xpartial,ypartial;
+    dword xpartial,ypartial;
 
 #ifdef DEBUGRAYTRACER
 	 static int logpressed=0;
@@ -1420,7 +1420,7 @@ void AsmRefresh()
             if(ytilestep==-1 && *((short *)&yintercept+1)<=ytile) goto horizentry;
             if(ytilestep==1 && *((short *)&yintercept+1)>=ytile) goto horizentry;
 vertentry:
-            if((longword)yintercept>mapheight*65536-1 || (word)xtile>=mapwidth)
+            if((dword)yintercept>mapheight*65536-1 || (word)xtile>=mapwidth)
             {
                 if(xtile<0) xintercept=0;
                 if(xtile>=mapwidth) xintercept=mapwidth<<TILESHIFT;
@@ -1611,7 +1611,7 @@ passvert:
             if(xtilestep==-1 && *((short *)&xintercept+1)<=xtile) goto vertentry;
             if(xtilestep==1 && *((short *)&xintercept+1)>=xtile) goto vertentry;
 horizentry:
-            if((longword)xintercept>mapwidth*65536-1 || (word)ytile>=mapheight)
+            if((dword)xintercept>mapwidth*65536-1 || (word)ytile>=mapheight)
             {
                 if(ytile<0) yintercept=0;
                 if(ytile>=mapheight) yintercept=mapheight<<TILESHIFT;

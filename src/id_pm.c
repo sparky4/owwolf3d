@@ -22,7 +22,7 @@
 //	XMS specific variables
 	boolean			XMSPresent;
 	word			XMSAvail,XMSPagesAvail,XMSHandle;
-	longword		XMSDriver;
+	dword		XMSDriver;
 	int				XMSProtectPage = -1;
 
 //	File specific variables
@@ -259,20 +259,20 @@ error:
 void
 PML_XMSCopy(boolean toxms,byte far *addr,word xmspage,word length)
 {
-	longword	xoffset;
+	dword	xoffset;
 	struct
 	{
-		longword	length;
+		dword	length;
 		word		source_handle;
-		longword	source_offset;
+		dword	source_offset;
 		word		target_handle;
-		longword	target_offset;
+		dword	target_offset;
 	} copy;
 
 	if (!addr)
 		Quit("PML_XMSCopy: zero address");
 
-	xoffset = (longword)xmspage * PMPageSize;
+	xoffset = (dword)xmspage * PMPageSize;
 
 	copy.length = (length + 1) & ~1;
 	copy.source_handle = toxms? 0 : XMSHandle;
@@ -503,7 +503,7 @@ PML_OpenPageFile(void)
 	int				i;
 	long			size;
 	memptr		buf;
-	longword		far *offsetptr;
+	dword		far *offsetptr;
 	word			far *lengthptr;
 	PageListStruct	far *page;
 
@@ -524,11 +524,11 @@ PML_OpenPageFile(void)
 	_fmemset(PMPages,0,sizeof(PageListStruct) * PMNumBlocks);
 
 	// Read in the chunk offsets
-	size = sizeof(longword) * ChunksInFile;
+	size = sizeof(dword) * ChunksInFile;
 	MM_GetPtr(&buf,size);
 	if (!CA_FarRead(PageFile,(byte far *)buf,size))
 		Quit("PML_OpenPageFile: Offset read failed");
-	offsetptr = (longword far *)buf;
+	offsetptr = (dword far *)buf;
 	for (i = 0,page = PMPages;i < ChunksInFile;i++,page++)
 		page->offset = *offsetptr++;
 	MM_FreePtr(&buf);
@@ -597,7 +597,7 @@ PML_GetEMSAddress(int page,PMLockType lock)
 	// If page isn't already mapped in, find LRU EMS frame, and use it
 	if (emspage == -1)
 	{
-		longword last = LONG_MAX;
+		dword last = LONG_MAX;
 		for (i = 0;i < EMSFrameCount;i++)
 		{
 			if (EMSList[i].lastHit < last)

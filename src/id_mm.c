@@ -348,7 +348,7 @@ void MM_Startup (void)
 // get all available near conventional memory segments
 //
 	_nheapgrow();
-	length=(longword)_memavl();
+	length=(dword)_memavl();
 	start = (void far *)(nearheap = _nmalloc(length));
 
 	length -= 16-(FP_OFF(start)&15);

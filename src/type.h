@@ -32,8 +32,9 @@ typedef union REGPACK	regs_t;
 
 typedef	enum	{false,true}	boolean;
 typedef	unsigned	char		byte;
-typedef	unsigned	int			word;
-typedef	unsigned	long		longword;
+typedef	unsigned	int		word;
+typedef	unsigned	long		dword;
+typedef	long				dong;
 typedef	byte *					Ptr;
 
 typedef	struct

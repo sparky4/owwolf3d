@@ -29,7 +29,7 @@
 
 
 
-//
+/*//
 // player state info
 //
 boolean		running;
@@ -40,7 +40,7 @@ unsigned	plux,pluy;			// player coordinates scaled to unsigned
 int			anglefrac;
 int			gotgatgun;	// JR
 
-objtype		*LastAttacker;
+objtype		*LastAttacker;*/
 
 /*
 =============================================================================

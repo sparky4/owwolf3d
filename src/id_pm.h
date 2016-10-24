@@ -36,7 +36,7 @@ typedef	enum
 
 typedef	struct
 		{
-			longword	offset;		// Offset of chunk into file
+			dword	offset;		// Offset of chunk into file
 			word		length;		// Length of the chunk
 
 			int			xmsPage;	// If in XMS, (xmsPage * PMPageSize) gives offset into XMS handle
@@ -45,13 +45,13 @@ typedef	struct
 			int			emsPage;	// If in EMS, logical page/offset into page
 			int			mainPage;	// If in Main, index into handle array
 
-			longword	lastHit;	// Last frame number of hit
+			dword	lastHit;	// Last frame number of hit
 		} PageListStruct;
 
 typedef	struct
 		{
 			int			baseEMSPage;	// Base EMS page for this phys frame
-			longword	lastHit;		// Last frame number of hit
+			dword	lastHit;		// Last frame number of hit
 		} EMSListStruct;
 
 extern	boolean			XMSPresent,EMSPresent;

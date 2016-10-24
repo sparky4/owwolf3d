@@ -69,7 +69,7 @@ pictabletype *pictable;
 int	px,py;
 byte	fontcolor,backcolor;
 int	fontnumber;
-//int bufferwidth,bufferheight;
+//____int bufferwidth,bufferheight;
 
 //===========================================================================
 //===========================================================================
@@ -78,6 +78,19 @@ int	fontnumber;
 //===========================================================================
 //===========================================================================
 //===========================================================================
+//wl_agent
+//
+// player state info
+//
+boolean		running;
+long		thrustspeed;
+
+unsigned	plux,pluy;			// player coordinates scaled to unsigned
+
+int			anglefrac;
+int			gotgatgun;	// JR
+
+objtype		*LastAttacker;
 //===========================================================================
 //wl_draw
 
