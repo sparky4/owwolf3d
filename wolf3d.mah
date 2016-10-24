@@ -1,12 +1,11 @@
 Open Watcom Linker Version 2.0 beta Oct 16 2016 17:21:51 (32-bit)
 Copyright (c) 2002-2016 The Open Watcom Contributors. All Rights Reserved.
 Portions Copyright (c) 1985-2002 Sybase, Inc. All Rights Reserved.
-Created on:       16/10/21 16:58:35
+Created on:       16/10/21 19:13:30
 Warning! W1027: file id_tail.obj(/dos/z/owwolf3d/src/id_tail.c): redefinition of PlaySoundLocGlobal_ ignored
 Executable Image: wolf3d.exe
 creating a DOS executable
-Warning! W1172: stack size is less than 512 bytes
-Error! E2020: size of group DGROUP exceeds 64k by 7024 bytes
+Error! E2020: size of group DGROUP exceeds 64k by 39792 bytes
 
 
                         +------------+
@@ -16,7 +15,7 @@ Error! E2020: size of group DGROUP exceeds 64k by 7024 bytes
 Group                           Address              Size
 =====                           =======              ====
 
-DGROUP                          4f09:0000            00011b70
+DGROUP                          4f09:0000            00019b70
 
 
 
@@ -616,7 +615,7 @@ DATA                   DATA           DGROUP         529a:0006       00000000
 _emu_init_start        EMU            DGROUP         529a:0006       00000000
 _emu_init_end          EMU            DGROUP         529a:0006       00000000
 _BSS                   BSS            DGROUP         529b:0000       0000e244
-STACK                  STACK          DGROUP         60c0:0000       00000000
+STACK                  STACK          DGROUP         60c0:0000       00008000
 
 
                         +----------------+
