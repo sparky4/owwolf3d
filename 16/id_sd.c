@@ -35,7 +35,7 @@
 #ifdef	_MUSE_      // Will be defined in ID_Types.h
 #include "ID_SD.h"
 #else
-#include "id_heads.h"
+#include "ID_HEADS.H"
 #endif
 #pragma	hdrstop
 #pragma	warn	-pia

@@ -11,7 +11,13 @@
 
 #define GRMODE	VGAGR
 
-#include "version.h"
+#include "VERSION.H"
+
+typedef	enum	{false,true}	boolean;
+typedef	unsigned	char		byte;
+typedef	unsigned	int			word;
+typedef	unsigned	long		longword;
+typedef	byte *					Ptr;
 
 typedef	struct
 		{

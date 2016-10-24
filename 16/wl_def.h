@@ -3,20 +3,20 @@
 #define MONTH	9
 #define DAY		30
 
-#include "id_heads.h"
-#include <math.h>
-//#include <values.h>
+#include "ID_HEADS.H"
+#include <MATH.H>
+#include <VALUES.H>
 
-#include "wl_menu.h"
+#include "WL_MENU.H"
 
 #ifdef SPANISH
-#include "spanish.h"
+#include "SPANISH.H"
 #else
-#include "foreign.h"
+#include "FOREIGN.H"
 #endif
 
 #ifdef SPEAR
-#include "f_spear.h"
+#include "F_SPEAR.H"
 #endif
 
 /*
@@ -1076,11 +1076,8 @@ typedef struct
 // table data after dataofs[rightpix-leftpix+1]
 }	t_compshape;
 
-#define TSEG t_compscale
-//_seg
 
-
-extern	TSEG *scaledirectory[MAXSCALEHEIGHT+1];
+extern	t_compscale _seg *scaledirectory[MAXSCALEHEIGHT+1];
 extern	long			fullscalefarcall[MAXSCALEHEIGHT+1];
 
 extern	byte		bitmasks1[8][8];

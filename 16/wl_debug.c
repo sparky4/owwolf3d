@@ -1,6 +1,6 @@
 // WL_DEBUG.C
 
-#include "wl_def.h"
+#include "WL_DEF.H"
 #pragma hdrstop
 #include <BIOS.H>
 

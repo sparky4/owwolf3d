@@ -1,6 +1,6 @@
 // WL_PLAY.C
 
-#include "wl_def.h"
+#include "WL_DEF.H"
 #pragma hdrstop
 
 
@@ -50,7 +50,8 @@ byte		*updateptr;
 unsigned	mapwidthtable[64];
 unsigned	uwidthtable[UPDATEHIGH];
 unsigned	blockstarts[UPDATEWIDE*UPDATEHIGH];
-byte		update[UPDATESIZE];
+//uso: replace: byte            update[UPDATESIZE];
+//uso: is needed? byte    update[UPDATEHIGH][UPDATEWIDE];
 
 //
 // control info
