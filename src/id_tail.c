@@ -121,8 +121,6 @@ fixed		spearx,speary;
 unsigned	spearangle;
 boolean		spearflag;
 
-void PlaySoundLocGlobal(word s,fixed gx,fixed gy){}
-
 //===========================================================================
 //wl_play
 boolean		madenoise;					// true when shooting or screaming
