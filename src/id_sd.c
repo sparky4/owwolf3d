@@ -74,7 +74,7 @@
 	SDMode		SoundMode;
 	SMMode		MusicMode;
 	SDSMode		DigiMode;
-	longword	TimeCount;
+	dword	TimeCount;
 	word		HackCount;
 	word		*SoundTable;	// Really * _seg *SoundTable, but that don't work
 	boolean		ssIsTandy;
@@ -84,7 +84,7 @@
 //	Internal variables
 static	boolean			SD_Started;
 		boolean			nextsoundpos;
-		longword		TimerDivisor,TimerCount;
+		dword		TimerDivisor,TimerCount;
 static	char			*ParmStringssd[] =
 						{
 							"noal",
@@ -125,7 +125,7 @@ static	byte					sbDMA = 1,
 								sba3Vals[] = {1,3,0,7};
 static	int						sbLocation = -1,sbInterrupt = 7,sbIntVec = 0xf,
 								sbIntVectors[] = {-1,-1,0xa,0xb,-1,0xd,-1,0xf,-1,-1,-1};
-static	volatile longword		sbNextSegLen;
+static	volatile dword		sbNextSegLen;
 static	volatile SampledSound	huge *sbSamples;
 static	void interrupt			(*sbOldIntHand)(void);
 static	byte					sbpOldFMMix,sbpOldVOCMix;
@@ -136,7 +136,7 @@ static	byte					sbpOldFMMix,sbpOldVOCMix;
 		word				ssControl,ssStatus,ssData;
 		byte				ssOn,ssOff;
 		volatile byte		far *ssSample;
-		volatile longword	ssLengthLeft;
+		volatile dword	ssLengthLeft;
 
 //	PC Sound variables
 		volatile byte	pcLastSample,far *pcSound;
@@ -147,8 +147,8 @@ static	byte					sbpOldFMMix,sbpOldVOCMix;
 		boolean			alNoCheck;
 		byte			far *alSound;
 		word			alBlock;
-		longword		alLengthLeft;
-		longword		alTimeCount;
+		dword		alLengthLeft;
+		dword		alTimeCount;
 		Instrument		alZeroInst;
 		boolean	 alNoIRQ;
 
@@ -539,11 +539,11 @@ __asm popf
 //	 controller, and tells the SB to start doing DMA requests for DAC
 //
 ///////////////////////////////////////////////////////////////////////////
-static longword
-SDL_SBPlaySeg(volatile byte huge *data,longword length)
+static dword
+SDL_SBPlaySeg(volatile byte huge *data,dword length)
 {
 	unsigned		datapage;
-	longword		dataofs,uselen;
+	dword		dataofs,uselen;
 
 	uselen = length;
 	datapage = FP_SEG(data) >> 12;
@@ -594,7 +594,7 @@ __asm popf
 void interrupt
 SDL_SBService(void)
 {
-	longword	used;
+	dword	used;
 
 	sbIn(sbDataAvail);	// Ack interrupt to SB
 
@@ -629,9 +629,9 @@ void
 #else
 static void
 #endif
-SDL_SBPlaySample(byte huge *data,longword len)
+SDL_SBPlaySample(byte huge *data,dword len)
 {
-	longword	used;
+	dword	used;
 
 	SDL_SBStopSample();
 
@@ -967,7 +967,7 @@ void
 #else
 static void
 #endif
-SDL_SSPlaySample(byte huge *data,longword len)
+SDL_SSPlaySample(byte huge *data,dword len)
 {
 	__asm {
 		pushf
@@ -1027,7 +1027,7 @@ static boolean
 SDL_CheckSS(void)
 {
 	boolean		present = false, chkdone=0;
-	longword	lasttime;
+	dword	lasttime;
 
 	// Turn the Sound Source on and wait awhile (4 ticks)
 	SDL_StartSS();
@@ -1102,7 +1102,7 @@ void
 #else
 static void
 #endif
-SDL_PCPlaySample(byte huge *data,longword len)
+SDL_PCPlaySample(byte huge *data,dword len)
 {
 	__asm {
 		pushf

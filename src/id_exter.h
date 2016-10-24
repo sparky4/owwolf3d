@@ -23,6 +23,6 @@ int VW_MarkUpdateBlock (int x1, int y1, int x2, int y2);
 #endif
 
 extern	void		IN_Startup(void),IN_Shutdown(void);
-extern	boolean		IN_UserInput(longword delay);
+extern	boolean		IN_UserInput(dword delay);
 
 #endif

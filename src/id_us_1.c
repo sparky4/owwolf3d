@@ -352,7 +352,7 @@ US_Print(char far *s)
 //
 ///////////////////////////////////////////////////////////////////////////
 void
-US_PrintUnsigned(longword n)
+US_PrintUnsigned(dword n)
 {
 	char	buffer[32];
 
@@ -614,7 +614,7 @@ US_LineInput(int x,int y,char *buf,char *def,boolean escok,
 				cursor,
 				w,h,
 				len,temp;
-	longword	lasttime;
+	dword	lasttime;
 
 	if (def)
 		strcpy(s,def);

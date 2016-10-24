@@ -28,7 +28,7 @@ typedef	enum	{
 				}	SDSMode;
 typedef	struct
 		{
-			longword	length;
+			dword	length;
 			word		priority;
 		} SoundCommon;
 
@@ -176,7 +176,7 @@ typedef	struct
 			Instrument	inst;
 			boolean		percussive;
 			word		far *seq;
-			longword	nextevent;
+			dword	nextevent;
 		} ActiveTrack;
 
 #define	sqmode_Normal		0
@@ -197,7 +197,7 @@ extern	SDSMode		DigiMode;
 extern	SMMode		MusicMode;
 extern	boolean		DigiPlaying;
 extern	int			DigiMap[];
-extern	longword	TimeCount;					// Global time in ticks
+extern	dword	TimeCount;					// Global time in ticks
 
 // Function prototypes
 extern	void	SD_Startup(void),

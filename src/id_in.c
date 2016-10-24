@@ -65,7 +65,7 @@ boolean			JoyPadPresent;*/
 		JoystickDef	JoyDefs[MaxJoys];
 		ControlType	Controls[MaxPlayers];
 
-		longword	MouseDownCount;
+		dword	MouseDownCount;
 
 		Demo		DemoMode = demo_Off;
 		byte		*DemoBuffer;
@@ -323,9 +323,9 @@ done:
 void INL_GetJoyDelta(word joy,int *dx,int *dy)
 {
 	word		x,y;
-	longword	time;
+	dword	time;
 	JoystickDef	*def;
-static	longword	lasttime;
+static	dword	lasttime;
 
 	IN_GetJoyAbs(joy,&x,&y);
 	def = JoyDefs + joy;
@@ -406,7 +406,7 @@ register	word	result;
 word
 IN_GetJoyButtonsDB(word joy)
 {
-	longword	lasttime;
+	dword	lasttime;
 	word		result1,result2;
 
 	do
@@ -930,9 +930,9 @@ void IN_Ack (void)
 //		button up.
 //
 ///////////////////////////////////////////////////////////////////////////
-boolean IN_UserInput(longword delay)
+boolean IN_UserInput(dword delay)
 {
-	longword	lasttime;
+	dword	lasttime;
 
 	lasttime = TimeCount;
 	IN_StartAck ();
