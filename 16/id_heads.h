@@ -1,24 +1,22 @@
 // ID_GLOB.H
 
 
-#include <malloc.h>
-#include <ctype.h>
-#include <dos.h>
-#include <errno.h>
-#include <fcntl.h>
-#include <io.h>
-#include <mem.h>
-#include <process.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/stat.h>
-#include <limits.h> /* for LONG_MAX */
-//#include <values.h>
-//#include <dir.h>
+#include <ALLOC.H>
+#include <CTYPE.H>
+#include <DOS.H>
+#include <ERRNO.H>
+#include <FCNTL.H>
+#include <IO.H>
+#include <MEM.H>
+#include <PROCESS.H>
+#include <STDIO.H>
+#include <STDLIB.H>
+#include <STRING.H>
+#include <SYS\STAT.H>
+#include <VALUES.H>
+#include <DIR.H>
 #define __ID_GLOB__
-#include "wolfsrc/version.h"
-#include "wolfsrc/type.h"
+#include "VERSION.H"
 
 //--------------------------------------------------------------------------
 
@@ -28,30 +26,30 @@ extern	char		far signon;
 
 #ifdef JAPAN
 #ifdef JAPDEMO
-#include "foreign/japan/gfxv_wj1.h"
+#include "FOREIGN\JAPAN\GFXV_WJ1.H"
 #else
-#include "foreign/japan/gfxv_wj6.h"
+#include "FOREIGN\JAPAN\GFXV_WJ6.H"
 #endif
-#include "audiowl6.h"
-#include "mapswl6.h"
+#include "AUDIOWL6.H"
+#include "MAPSWL6.H"
 #else
 
 #ifndef SPEAR
 
-#include "gfxv_wl6.h"
-#include "audiowl6.h"
-#include "mapswl6.h"
+#include "GFXV_WL6.H"
+#include "AUDIOWL6.H"
+#include "MAPSWL6.H"
 
 #else
 
 #ifndef SPEARDEMO
-#include "gfxv_sod.h"
-#include "audiosod.h"
-#include "mapssod.h"
+#include "GFXV_SOD.H"
+#include "AUDIOSOD.H"
+#include "MAPSSOD.H"
 #else
-#include "gfxv_sdm.h"
-#include "audiosdm.h"
-#include "mapssdm.h"
+#include "GFXV_SDM.H"
+#include "AUDIOSDM.H"
+#include "MAPSSDM.H"
 #endif
 
 #endif
@@ -67,17 +65,32 @@ extern	char		far signon;
 //	v1.0d1
 //
 
+typedef	enum	{false,true}	boolean;
+typedef	unsigned	char		byte;
+typedef	unsigned	int			word;
+typedef	unsigned	long		longword;
+typedef	byte *					Ptr;
+
+typedef	struct
+		{
+			int	x,y;
+		} Point;
+typedef	struct
+		{
+			Point	ul,lr;
+		} Rect;
+
 #define	nil	((void *)0)
 
 
-#include "wolfsrc/id_mm.h"
-#include "wolfsrc/id_pm.h"
-#include "wolfsrc/id_ca.h"
-#include "wolfsrc/id_vl.h"
-#include "wolfsrc/id_vh.h"
-#include "wolfsrc/id_in.h"
-#include "wolfsrc/id_sd.h"
-#include "wolfsrc/id_us.h"
+#include "ID_MM.H"
+#include "ID_PM.H"
+#include "ID_CA.H"
+#include "ID_VL.H"
+#include "ID_VH.H"
+#include "ID_IN.H"
+#include "ID_SD.H"
+#include "ID_US.H"
 
 
 void	Quit (char *error);		// defined in user program

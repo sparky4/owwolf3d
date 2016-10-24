@@ -194,6 +194,9 @@ extern char SaveGameNames[10][32],SaveName[13];
 
 enum {MOUSE,JOYSTICK,KEYBOARDBTNS,KEYBOARDMOVE};	// FOR INPUT TYPES
 
+#ifndef USO_FIX1
+extern
+#endif
 enum
 {
 	newgame,

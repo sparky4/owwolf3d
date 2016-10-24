@@ -1,6 +1,6 @@
 // ID_VH.C
 
-#include "id_heads.h"
+#include "ID_HEADS.H"
 
 #define	SCREENWIDTH		80
 #define CHARWIDTH		2
@@ -22,7 +22,7 @@ byte	update[UPDATEHIGH][UPDATEWIDE];
 
 //==========================================================================
 
-PSEG *pictable;
+pictabletype	_seg *pictable;
 
 
 int	px,py;

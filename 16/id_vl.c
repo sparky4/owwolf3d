@@ -1,11 +1,11 @@
 // ID_VL.C
 
 #include <dos.h>
-#include <malloc.h>
+#include <alloc.h>
 #include <mem.h>
 #include <string.h>
-#include "id_head.h"
-#include "id_vl.h"
+#include "ID_HEAD.H"
+#include "ID_VL.H"
 #pragma hdrstop
 
 //
@@ -33,7 +33,7 @@ byte		far	palette1[256][3],far palette2[256][3];
 
 int	 VL_VideoID (void);
 void VL_SetCRTC (int crtc);
-void VL_SetScreen (unsigned int crtc, int pelpan);
+void VL_SetScreen (int crtc, int pelpan);
 void VL_WaitVBL (int vbls);
 
 //===========================================================================
@@ -383,13 +383,13 @@ void VL_SetPalette (byte far *palette)
 	asm	lds	si,[palette]
 
 	asm	test	[ss:fastpalette],1
-	asm	jz	slowset
+	//asm	jz	slowset
 //
 // set palette fast for cards that can take it
 //
-	asm	mov	cx,768
-	asm	rep outsb
-	asm	jmp	done
+	//asm	mov	cx,768
+	//asm	rep outsb
+	//asm	jmp	done
 
 //
 // set palette slowly for some video cards
@@ -868,7 +868,8 @@ asm	shl	di,1
 asm	mov	di,[WORD PTR ylookup+di]
 asm	add	di,[bufferofs]
 asm	mov	ax,[x]
-asm	shr	ax,2
+asm	shr	ax,1
+asm	shr	ax,1
 asm	add	di,ax
 
 asm	mov	si,[source]

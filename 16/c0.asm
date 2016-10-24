@@ -145,7 +145,9 @@ ENDIF
 				pop		ax				; Get results of popping 0 into flags
 				popf					; Restore original flags
 				or		ax,ax
-				jns		@@Have286		; If no sign bit, have a 286
+				;begin 8086 hack
+				;jns		@@Have286		; If no sign bit, have a 286
+				jmp		@@Have286
 
 				mov     cx, lgth_no286MSG
 				mov     dx, offset DGROUP: no286MSG

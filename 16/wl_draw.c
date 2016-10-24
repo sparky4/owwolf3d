@@ -1,6 +1,6 @@
 // WL_DRAW.C
 
-#include "wl_def.h"
+#include "WL_DEF.H"
 #include <DOS.H>
 #pragma hdrstop
 
@@ -417,11 +417,19 @@ heightok:
 	//
 	asm	mov	bx,[postx]
 	asm	mov	di,bx
-	asm	shr	di,2						// X in bytes
+	asm	shr	di,1						// X in bytes
+	asm	shr	di,1
 	asm	add	di,[bufferofs]
 
 	asm	and	bx,3
-	asm	shl	bx,3						// bx = pixel*8+pixwidth
+	/* begin 8086 hack
+	asm	shl	bx,3
+	*/
+	asm push cx
+	asm mov cl,3
+	asm shl bx,cl
+	asm pop cx
+	/* end 8086 hack */
 	asm	add	bx,[postwidth]
 
 	asm	mov	al,BYTE PTR [mapmasks1-1+bx]	// -1 because no widths of 0
@@ -902,11 +910,16 @@ asm	out	dx,ax
 
 asm	mov	dx,40
 asm	mov	ax,[viewwidth]
-asm	shr	ax,3
+asm	shr	ax,1
+asm	shr	ax,1
+asm	shr	ax,1
 asm	sub	dx,ax					// dx = 40-viewwidth/8
 
 asm	mov	bx,[viewwidth]
-asm	shr	bx,4					// bl = viewwidth/16
+asm	shr	bx,1					// bl = viewwidth/16
+asm	shr	bx,1
+asm	shr	bx,1
+asm	shr	bx,1
 asm	mov	bh,BYTE PTR [viewheight]
 asm	shr	bh,1					// half height
 
@@ -980,11 +993,14 @@ asm	out	dx,ax
 
 asm	mov	dx,80
 asm	mov	ax,[viewwidth]
-asm	shr	ax,2
+asm	shr	ax,1
+asm	shr	ax,1
 asm	sub	dx,ax					// dx = 40-viewwidth/2
 
 asm	mov	bx,[viewwidth]
-asm	shr	bx,3					// bl = viewwidth/8
+asm	shr	bx,1					// bl = viewwidth/8
+asm	shr	bx,1
+asm	shr	bx,1
 asm	mov	bh,BYTE PTR [viewheight]
 asm	shr	bh,1					// half height
 

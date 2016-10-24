@@ -87,8 +87,13 @@ PUBLIC	_jabhack2
 	cdq
 	idiv [DWORD PTR bp+12]
 	mov	edx,eax
-	shr	edx,16
-
+	;begin 8086 hack
+	;shr	edx,16
+	push cx
+	mov cl,16
+	shr	edx,cl
+	pop cx
+	;end 8086 hack
 	pop	bp		;Restore BP
 	popf 		;Restore flags (from INT)
 	retf	8	;Return to original caller

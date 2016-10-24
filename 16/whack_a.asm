@@ -44,10 +44,22 @@ PUBLIC	MapRow
 	mov     bp,[mr_rowofs]
 	mov		cx,[mr_count]
 	mov		dx,[mr_ystep]
-	shl		edx,16
+	;begin 8086 hack
+	;shl		edx,16
+	push cx
+	mov		cl,16
+	shl		edx,cl
+	pop cx
+	;end 8086 hack
 	mov		dx,[mr_xstep]
 	mov		si,[mr_yfrac]
-	shl		esi,16
+	;begin 8086 hack
+	;shl		esi,16
+	push cx
+	mov		cl,16
+	shl		esi,cl
+	pop cx
+	;end 8086 hack
 	mov		si,[mr_xfrac]
 	mov		di,[mr_dest]
 	mov		ax,SEG planepics
