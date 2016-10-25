@@ -17,20 +17,11 @@
 //	DEBUG - there are more globals
 //
 
-#include "id_heads.h"
-#pragma	hdrstop
+#include <dos.h>
+#include <i86.h>
+#include "wl_def.h"
 
 #define	KeyInt		9	// The keyboard ISR number
-
-//
-// mouse constants
-//
-#define	MReset		0
-#define	MButtons	3
-#define	MDelta		11
-
-#define	MouseInt	0x33
-#define	Mouse(x)	_AX = x,geninterrupt(MouseInt)
 
 //
 // joystick constants
@@ -54,6 +45,8 @@ boolean			MousePresent;
 boolean			JoysPresent[MaxJoys];
 boolean			JoyPadPresent;
 
+union REGS regs;
+
 
 // 	Global variables
 		boolean		Keyboard[NumCodes];
@@ -68,7 +61,7 @@ boolean			JoyPadPresent;
 		longword	MouseDownCount;
 
 		Demo		DemoMode = demo_Off;
-		byte		*DemoBuffer;
+		byte 		*DemoBuffer;	// _seg
 		word		DemoOffset,DemoSize;
 
 /*
@@ -78,7 +71,7 @@ boolean			JoyPadPresent;
 
 =============================================================================
 */
-static	byte        far ASCIINames[] =		// Unshifted ASCII for scan codes
+static	byte        ASCIINames[] =		// Unshifted ASCII for scan codes
 					{
 //	 0   1   2   3   4   5   6   7   8   9   A   B   C   D   E   F
 	0  ,27 ,'1','2','3','4','5','6','7','8','9','0','-','=',8  ,9  ,	// 0
@@ -89,8 +82,8 @@ static	byte        far ASCIINames[] =		// Unshifted ASCII for scan codes
 	'2','3','0',127,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,	// 5
 	0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,	// 6
 	0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0		// 7
-					},
-					far ShiftNames[] =		// Shifted ASCII for scan codes
+					};
+static byte ShiftNames[] =		// Shifted ASCII for scan codes
 					{
 //	 0   1   2   3   4   5   6   7   8   9   A   B   C   D   E   F
 	0  ,27 ,'!','@','#','$','%','^','&','*','(',')','_','+',8  ,9  ,	// 0
@@ -101,8 +94,8 @@ static	byte        far ASCIINames[] =		// Unshifted ASCII for scan codes
 	'2','3','0',127,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,	// 5
 	0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,	// 6
 	0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0   	// 7
-					},
-					far SpecialNames[] =	// ASCII for 0xe0 prefixed codes
+					};
+static byte SpecialNames[] =	// ASCII for 0xe0 prefixed codes
 					{
 //	 0   1   2   3   4   5   6   7   8   9   A   B   C   D   E   F
 	0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,	// 0
@@ -127,10 +120,14 @@ static	Direction	DirTable[] =		// Quick lookup for total direction
 						dir_SouthWest,	dir_South,	dir_SouthEast
 					};
 
-static	void			(*INL_KeyHook)(void);
-static	void interrupt	(*OldKeyVect)(void);
+static	void (__interrupt *OldKeyVect)(void);
 
-static	char			*ParmStringsin[] = {"nojoys","nomouse",nil};
+static	char			*ParmStrings[] = {"nojoys","nomouse",0};
+
+boolean NumLockPanic=false;
+
+byte scanbuffer[16];
+int curscanoffs=0;
 
 //	Internal routines
 
@@ -139,24 +136,34 @@ static	char			*ParmStringsin[] = {"nojoys","nomouse",nil};
 //	INL_KeyService() - Handles a keyboard interrupt (key up/down)
 //
 ///////////////////////////////////////////////////////////////////////////
-void interrupt
+static void __interrupt
 INL_KeyService(void)
 {
-static	boolean	special;
-		byte	k,c,
-				temp;
-		int		i;
+	static	boolean	special;
+	static int pausecount=5;
+	byte	k,c;
+	byte temp;
 
 	k = inp(0x60);	// Get the scan code
+
+	curscanoffs=(curscanoffs+1)&15;
+	scanbuffer[curscanoffs]=k;
 
 	// Tell the XT keyboard controller to clear the key
 	outp(0x61,(temp = inp(0x61)) | 0x80);
 	outp(0x61,temp);
 
-	if (k == 0xe0)		// Special key prefix
+	if(pausecount<5)		// filter 0x1d 0x45 0xe1 0x9d 0xc5 after pause key's 0xe1
+		pausecount++;
+	else if (k == 0xe0)		// Special key prefix
 		special = true;
 	else if (k == 0xe1)	// Handle Pause key
+	{
 		Paused = true;
+		pausecount=0;
+		// set fake pause code (really is scrolllock) for IN_Ack to notice a key press
+		LastScan = 0x46;
+	}
 	else
 	{
 		if (k & 0x80)	// Break code
@@ -165,46 +172,49 @@ static	boolean	special;
 
 // DEBUG - handle special keys: ctl-alt-delete, print scrn
 
-			Keyboard[k] = false;
+			if(!special || k!=sc_LShift)
+				Keyboard[k] = false;
 		}
 		else			// Make code
 		{
-			LastCode = CurCode;
-			CurCode = LastScan = k;
-			Keyboard[k] = true;
-
-			if (special)
-				c = SpecialNames[k];
+			if(special && k==sc_LShift)
+				NumLockPanic = true;
 			else
 			{
-				if (k == sc_CapsLock)
-				{
-					CapsLock ^= true;
-					// DEBUG - make caps lock light work
-				}
+				LastCode = CurCode;
+				CurCode = LastScan = k;
+				Keyboard[k] = true;
 
-				if (Keyboard[sc_LShift] || Keyboard[sc_RShift])	// If shifted
-				{
-					c = ShiftNames[k];
-					if ((c >= 'A') && (c <= 'Z') && CapsLock)
-						c += 'a' - 'A';
-				}
+				if (special)
+					c = SpecialNames[k];
 				else
 				{
-					c = ASCIINames[k];
-					if ((c >= 'a') && (c <= 'z') && CapsLock)
-						c -= 'a' - 'A';
+					if (k == sc_CapsLock)
+					{
+						CapsLock ^= true;
+						// DEBUG - make caps lock light work
+					}
+	
+					if (Keyboard[sc_LShift] || Keyboard[sc_RShift])	// If shifted
+					{
+						c = ShiftNames[k];
+						if ((c >= 'A') && (c <= 'Z') && CapsLock)
+							c += 'a' - 'A';
+					}
+					else
+					{
+						c = ASCIINames[k];
+						if ((c >= 'a') && (c <= 'z') && CapsLock)
+							c -= 'a' - 'A';
+					}
 				}
+				if (c)
+					LastASCII = c;
 			}
-			if (c)
-				LastASCII = c;
 		}
-
 		special = false;
 	}
 
-	if (INL_KeyHook && !special)
-		INL_KeyHook();
 	outp(0x20,0x20);
 }
 
@@ -218,8 +228,8 @@ static void
 INL_GetMouseDelta(int *x,int *y)
 {
 	Mouse(MDelta);
-	*x = _CX;
-	*y = _DX;
+	*x = (short)_CX;
+	*y = (short)_DX;
 }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -257,59 +267,63 @@ IN_GetJoyAbs(word joy,word *xp,word *yp)
 	yb = 1 << ys;
 
 // Read the absolute joystick values
-	__asm {
-		pushf				// Save some registers
-		push	si
-		push	di
-		cli					// Make sure an interrupt doesn't screw the timings
+	_asm {
+//			pushf				// Save some registers
+			push		esi
+			push		edi
+			cli					// Make sure an interrupt doesn't screw the timings
 
 
-		mov		dx,0x201
-		in		al,dx
-		out		dx,al		// Clear the resistors
+			mov		dx,0x201
+			in			al,dx
+			out		dx,al		// Clear the resistors
 
-		mov		ah,[xb]		// Get masks into registers
-		mov		ch,[yb]
+			mov		ah,[xb]		// Get masks into registers
+			mov		ch,[yb]
 
-		xor		si,si		// Clear count registers
-		xor		di,di
-		xor		bh,bh		// Clear high byte of bx for later
+			xor		si,si		// Clear count registers
+			xor		di,di
+			xor		bh,bh		// Clear high byte of bx for later
 
-		push	bp			// Don't mess up stack frame
-		mov		bp,MaxJoyValue
-loo:
-		in		al,dx		// Get bits indicating whether all are finished
+			push		ebp			// Don't mess up stack frame
+			mov		bp,MaxJoyValue
+looplabel:
+			in		al,dx		// Get bits indicating whether all are finished
 
-		dec		bp			// Check bounding register
-		jz		done		// We have a silly value - abort
+			dec		bp			// Check bounding register
+			jz		done		// We have a silly value - abort
 
-		mov		bl,al		// Duplicate the bits
-		and		bl,ah		// Mask off useless bits (in [xb])
-		add		si,bx		// Possibly increment count register
-		mov		cl,bl		// Save for testing later
+			mov		bl,al		// Duplicate the bits
+			and		bl,ah		// Mask off useless bits (in [xb])
+			add		si,bx		// Possibly increment count register
+			mov		cl,bl		// Save for testing later
 
-		mov		bl,al
-		and		bl,ch		// [yb]
-		add		di,bx
+			mov		bl,al
+			and		bl,ch		// [yb]
+			add		di,bx
 
-		add		cl,bl
-		jnz		loo		// If both bits were 0, drop out
+			add		cl,bl
+			jnz		looplabel 		// If both bits were 0, drop out
+			dec bp
+
 done:
-		pop		bp
+			pop		ebp
 
-		mov		cl,[xs]		// Get the number of bits to shift
-		shr		si,cl		//  and shift the count that many times
+			mov		cl,[xs]		// Get the number of bits to shift
+			shr		si,cl		//  and shift the count that many times
 
-		mov		cl,[ys]
-		shr		di,cl
+			mov		cl,[ys]
+			shr		di,cl
 
-		mov		[x],si		// Store the values into the variables
-		mov		[y],di
+			mov		[x],si		// Store the values into the variables
+			mov		[y],di
 
-		pop		di
-		pop		si
-		popf				// Restore the registers
+			pop		edi
+			pop		esi
+//			popf				// Restore the registers
+			sti
 	}
+
 	*xp = x;
 	*yp = y;
 }
@@ -323,9 +337,8 @@ done:
 void INL_GetJoyDelta(word joy,int *dx,int *dy)
 {
 	word		x,y;
-	longword	time;
 	JoystickDef	*def;
-static	longword	lasttime;
+	static	longword	lasttime;
 
 	IN_GetJoyAbs(joy,&x,&y);
 	def = JoyDefs + joy;
@@ -388,7 +401,7 @@ static	longword	lasttime;
 static word
 INL_GetJoyButtons(word joy)
 {
-register	word	result;
+	register word	result;
 
 	result = inp(0x201);	// Get all the joystick buttons
 	result >>= joy? 6 : 4;	// Shift into bits 0-1
@@ -414,6 +427,7 @@ IN_GetJoyButtonsDB(word joy)
 		result1 = INL_GetJoyButtons(joy);
 		lasttime = TimeCount;
 		while (TimeCount == lasttime)
+			;
 		result2 = INL_GetJoyButtons(joy);
 	} while (result1 != result2);
 	return(result1);
@@ -427,8 +441,6 @@ IN_GetJoyButtonsDB(word joy)
 static void
 INL_StartKbd(void)
 {
-	INL_KeyHook = NULL;			// no key hook routine
-
 	IN_ClearKeysDown();
 
 	OldKeyVect = _dos_getvect(KeyInt);
@@ -443,7 +455,7 @@ INL_StartKbd(void)
 static void
 INL_ShutKbd(void)
 {
-	pokeb(0x40,0x17,peekb(0x40,0x17) & 0xfaf0);	// Clear ctrl/alt/shift flags
+	*(word *)0x0417=(*(word *)0x0417) & 0xfaf0;	// Clear ctrl/alt/shift flags
 
 	_dos_setvect(KeyInt,OldKeyVect);
 }
@@ -457,7 +469,7 @@ static boolean
 INL_StartMouse(void)
 {
 #if 0
-	if (_dos_getvect(MouseInt))
+	if (getvect(MouseInt))
 	{
 		Mouse(MReset);
 		if (_AX == 0xffff)
@@ -465,18 +477,16 @@ INL_StartMouse(void)
 	}
 	return(false);
 #endif
- union REGS regs;
- unsigned char far *vector;
+	unsigned char *vector;
 
+	if ((vector=(unsigned char *)(((long)*((word *)(0x33*4+2)))*16+(long)*((word *)(0x33*4))))==NULL)
+   	return false;
 
- if ((vector=MK_FP(peekb(0,0x33*4+2),peekb(0,0x33*4)))==NULL)
-   return false;
+	if (*vector == 207)
+   	return false;
 
- if (*vector == 207)
-   return false;
-
- Mouse(MReset);
- return true;
+	Mouse(MReset);
+	return true;
 }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -589,9 +599,9 @@ IN_Startup(void)
 
 	checkjoys = true;
 	checkmouse = true;
-	for (i = 1;i < _argc;i++)
+	for (i = 1;i < __argc;i++)
 	{
-		switch (US_CheckParm(_argv[i],ParmStringsin))
+		switch (US_CheckParm(__argv[i],ParmStrings))
 		{
 		case 0:
 			checkjoys = false;
@@ -653,26 +663,12 @@ IN_Shutdown(void)
 
 ///////////////////////////////////////////////////////////////////////////
 //
-//	IN_SetKeyHook() - Sets the routine that gets called by INL_KeyService()
-//			everytime a real make/break code gets hit
-//
-///////////////////////////////////////////////////////////////////////////
-void
-IN_SetKeyHook(void (*hook)())
-{
-	INL_KeyHook = hook;
-}
-
-///////////////////////////////////////////////////////////////////////////
-//
 //	IN_ClearKeysDown() - Clears the keyboard array
 //
 ///////////////////////////////////////////////////////////////////////////
 void
 IN_ClearKeysDown(void)
 {
-	int	i;
-
 	LastScan = sc_None;
 	LastASCII = key_None;
 	memset (Keyboard,0,sizeof(Keyboard));
@@ -688,13 +684,13 @@ IN_ClearKeysDown(void)
 void
 IN_ReadControl(int player,ControlInfo *info)
 {
-			boolean		realdelta;
-			byte		dbyte;
-			word		buttons;
-			int			dx,dy;
-			Motion		mx,my;
-			ControlType	type;
-register	KeyboardDef	*def;
+	boolean		realdelta;
+	byte		dbyte;
+	word		buttons;
+	int			dx,dy;
+	Motion		mx,my;
+	ControlType	type;
+	register KeyboardDef	*def;
 
 	dx = dy = 0;
 	mx = my = motion_None;
@@ -703,8 +699,8 @@ register	KeyboardDef	*def;
 	if (DemoMode == demo_Playback)
 	{
 		dbyte = DemoBuffer[DemoOffset + 1];
-		my = (dbyte & 3) - 1;
-		mx = ((dbyte >> 2) & 3) - 1;
+		my = (Motion) ((dbyte & 3) - 1);
+		mx = (Motion) (((dbyte >> 2) & 3) - 1);
 		buttons = (dbyte >> 4) & 3;
 
 		if (!(--DemoBuffer[DemoOffset]))
@@ -790,11 +786,7 @@ register	KeyboardDef	*def;
 		// Pack the control info into a byte
 		dbyte = (buttons << 4) | ((mx + 1) << 2) | (my + 1);
 
-		if
-		(
-			(DemoBuffer[DemoOffset + 1] == dbyte)
-		&&	(DemoBuffer[DemoOffset] < 255)
-		)
+		if	((DemoBuffer[DemoOffset + 1] == dbyte)	&&	(DemoBuffer[DemoOffset] < 255))
 			(DemoBuffer[DemoOffset])++;
 		else
 		{
@@ -834,7 +826,7 @@ IN_WaitForKey(void)
 {
 	ScanCode	result;
 
-	while (!(result = LastScan))
+	while ((result = LastScan)==0)
 		;
 	LastScan = 0;
 	return(result);
@@ -851,7 +843,7 @@ IN_WaitForASCII(void)
 {
 	char		result;
 
-	while (!(result = LastASCII))
+	while ((result = LastASCII)==0)
 		;
 	LastASCII = '\0';
 	return(result);
@@ -868,7 +860,7 @@ boolean	btnstate[8];
 
 void IN_StartAck(void)
 {
-	unsigned	i,buttons;
+	unsigned i,buttons;
 
 //
 // get initial state of everything
@@ -888,7 +880,7 @@ void IN_StartAck(void)
 
 boolean IN_CheckAck (void)
 {
-	unsigned	i,buttons;
+	unsigned i,buttons;
 
 //
 // see if something has been pressed
@@ -915,6 +907,9 @@ boolean IN_CheckAck (void)
 
 void IN_Ack (void)
 {
+	if(!IN_Started) { getch(); return; }
+	
+	
 	IN_StartAck ();
 
 	while (!IN_CheckAck ())
@@ -959,7 +954,7 @@ byte	IN_MouseButtons (void)
 	if (MousePresent)
 	{
 		Mouse(MButtons);
-		return _BX;
+		return (byte)_BX;
 	}
 	else
 		return 0;
@@ -982,7 +977,7 @@ byte	IN_JoyButtons (void)
 	joybits >>= 4;				// only the high bits are useful
 	joybits ^= 15;				// return with 1=pressed
 
-	return joybits;
+	return (byte)joybits;
 }
 
 

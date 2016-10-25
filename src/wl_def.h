@@ -783,7 +783,7 @@ extern	unsigned	viewangles;
 extern	unsigned	screenofs;
 extern	int		    viewwidth;
 extern	int			viewheight;
-extern	int			centerx;
+extern	short			centerx;
 extern	int			shootdelta;
 
 extern	int			dirangle[9];

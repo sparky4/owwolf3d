@@ -1,7 +1,8 @@
 // WL_DEBUG.C
 
-#include <bios.h>
-#include "wl_def.h"
+#include "WL_DEF.H"
+#pragma hdrstop
+#include <BIOS.H>
 
 /*
 =============================================================================
@@ -22,8 +23,6 @@
 =============================================================================
 */
 
-byte *vbuf=(byte *)0xa0000;
-
 #ifdef DEBUGKEYS
 
 int DebugKeys (void);
@@ -41,6 +40,10 @@ void SimpleScaleShape (int xcenter, int shapenum, unsigned height);
 
 =============================================================================
 */
+
+int     maporgx;
+int     maporgy;
+enum {mapview,tilemapview,actoratview,visview}  viewtype;
 
 void ViewMap (void);
 
@@ -158,7 +161,7 @@ void PictureGrabber (void)
                 byte bmpheads[54]={'B','M',0x8e,0x3f,0,0,0,0,0,0,0x36,4,0,0,
                     40,0,0,0,0x40,1,0,0,200,0,0,0,1,0,8,0,0,0,0,0,
                     0,0xfa,0,0,0xc4,0x0e,0,0,0xc4,0x0e,0,0,0,0,0,0,0,0,0,0};
-
+                     
                 for(i=0;i<1000;i++)
                 {
                         fname[7]=i%10+'0';
@@ -190,7 +193,7 @@ void PictureGrabber (void)
                              (((unsigned long)wolfpal[i*3+2])<<2);
                         write(file,&col,4);
                 }
-
+                
                 for(i=199;i>=0;i--)
                 {                                               // 64000 bytes image data
                         for(x=0;x<320;x++)
@@ -228,7 +231,7 @@ void BasicOverhead (void)
                 z = 128/MAPSIZE; // zoom scale
                 offx = 320/2;
                 offy = (160-MAPSIZE*z)/2;
-
+                
         #ifdef MAPBORDER
                 int temp = viewsize;
                 NewViewSize(16);
@@ -236,16 +239,16 @@ void BasicOverhead (void)
         #endif
 
                 // right side (raw)
-
+                        
                 for(x=0;x<MAPSIZE;x++)
                         for(y=0;y<MAPSIZE;y++)
                                 VWB_Bar(x*z+offx, y*z+offy,z,z,(unsigned)actorat[x][y]);
 
                 // left side (filtered)
-
+                
                 int tile, color;
                 offx -= 128;
-
+                
                 for(x=0;x<MAPSIZE;x++)
                         for(y=0;y<MAPSIZE;y++)
                         {
@@ -260,7 +263,7 @@ void BasicOverhead (void)
                                 else if (tile == 64) color = 158; // solid obj
                                 else if (tile < 128) color = 154;  // walls
                                 else if (tile < 256) color = 146;  // doors
-
+                                
                                 VWB_Bar(x*z+offx, y*z+offy,z,z,color);
                         }
 
@@ -270,7 +273,7 @@ void BasicOverhead (void)
 
                 VW_UpdateScreen();
                 IN_Ack();
-
+                
         #ifdef MAPBORDER
                 NewViewSize(temp);
                 DrawAllPlayBorder();
@@ -521,16 +524,16 @@ int DebugKeys (void)
                                         if (level > 56) level=31;
                                         else level -= 26;
                                 }
-
+                                        
                                 bordercol=level*4+3;
 
                                 if (bordercol == VIEWCOLOR)
                                         DrawAllStatusBorder(bordercol);
-
+                                
                                 DrawAllPlayBorder();
-
+                                        
                                 return 0;
-                        }
+                        }                            
                 }
                 return 1;
         }
@@ -550,7 +553,7 @@ int DebugKeys (void)
                 IN_Ack();
                 fpscounter ^= 1;
         /*      if (!fpscounter)
-                        DrawPlayScreen(); */
+                        DrawPlayScreen(); */                
                 return 1;
         }
         if (Keyboard[sc_E])             // E = quit level
@@ -579,7 +582,7 @@ int DebugKeys (void)
                 US_Print (" 3:");
                 if ((unsigned)actorat[player->tilex][player->tiley] < 256)
                         US_PrintUnsigned (spotvis[player->tilex][player->tiley]);
-                else
+                else              
                         US_PrintUnsigned (actorat[player->tilex][player->tiley]->flags);
                 VW_UpdateScreen();
                 IN_Ack();
@@ -643,12 +646,12 @@ int DebugKeys (void)
         else if (Keyboard[sc_L])                        // L = level ratios
         {
                 byte x,start,end=LRpack;
-
+                
                 if (end == 8)   // wolf3d
                 {
                         CenterWindow(17,10);
                         start = 0;
-                }
+                }                        
                 else            // sod
                 {
                         CenterWindow(17,12);
@@ -671,7 +674,7 @@ int DebugKeys (void)
                         US_Print("% ");
                         US_PrintUnsigned(LevelRatios[x].treasure);
                         US_Print("%\n");
-                }
+                }                        
                 VW_UpdateScreen();
                 IN_Ack();
                 if (end == 10 && gamestate.mapon > 9)
@@ -798,4 +801,126 @@ int DebugKeys (void)
 
         return 0;
 }
+
+
+#if 0
+/*
+===================
+=
+= OverheadRefresh
+=
+===================
+*/
+
+void OverheadRefresh (void)
+{
+        unsigned        x,y,endx,endy,sx,sy;
+        unsigned        tile;
+
+
+        endx = maporgx+VIEWTILEX;
+        endy = maporgy+VIEWTILEY;
+
+        for (y=maporgy;y<endy;y++)
+                for (x=maporgx;x<endx;x++)
+                {
+                        sx = (x-maporgx)*16;
+                        sy = (y-maporgy)*16;
+
+                        switch (viewtype)
+                        {
+#if 0
+                        case mapview:
+                                tile = *(mapsegs[0]+farmapylookup[y]+x);
+                                break;
+
+                        case tilemapview:
+                                tile = tilemap[x][y];
+                                break;
+
+                        case visview:
+                                tile = spotvis[x][y];
+                                break;
+#endif
+                        case actoratview:
+                                tile = (unsigned)actorat[x][y];
+                                break;
+                        }
+
+                        if (tile<MAXWALLTILES)
+                                LatchDrawTile(sx,sy,tile);
+                        else
+                        {
+                                LatchDrawChar(sx,sy,NUMBERCHARS+((tile&0xf000)>>12));
+                                LatchDrawChar(sx+8,sy,NUMBERCHARS+((tile&0x0f00)>>8));
+                                LatchDrawChar(sx,sy+8,NUMBERCHARS+((tile&0x00f0)>>4));
+                                LatchDrawChar(sx+8,sy+8,NUMBERCHARS+(tile&0x000f));
+                        }
+                }
+
+}
+#endif
+
+#if 0
+/*
+===================
+=
+= ViewMap
+=
+===================
+*/
+
+void ViewMap (void)
+{
+        boolean         button0held;
+
+        viewtype = actoratview;
+//      button0held = false;
+
+
+        maporgx = player->tilex - VIEWTILEX/2;
+        if (maporgx<0)
+                maporgx = 0;
+        if (maporgx>MAPSIZE-VIEWTILEX)
+                maporgx=MAPSIZE-VIEWTILEX;
+        maporgy = player->tiley - VIEWTILEY/2;
+        if (maporgy<0)
+                maporgy = 0;
+        if (maporgy>MAPSIZE-VIEWTILEY)
+                maporgy=MAPSIZE-VIEWTILEY;
+
+        do
+        {
+//
+// let user pan around
+//
+                PollControls ();
+                if (controlx < 0 && maporgx>0)
+                        maporgx--;
+                if (controlx > 0 && maporgx<mapwidth-VIEWTILEX)
+                        maporgx++;
+                if (controly < 0 && maporgy>0)
+                        maporgy--;
+                if (controly > 0 && maporgy<mapheight-VIEWTILEY)
+                        maporgy++;
+
+#if 0
+                if (c.button0 && !button0held)
+                {
+                        button0held = true;
+                        viewtype++;
+                        if (viewtype>visview)
+                                viewtype = mapview;
+                }
+                if (!c.button0)
+                        button0held = false;
+#endif
+
+                OverheadRefresh ();
+
+        } while (!Keyboard[sc_Escape]);
+
+        IN_ClearKeysDown ();
+}
+#endif
 #endif
