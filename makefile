@@ -64,7 +64,7 @@ UPXQ=-qqq
 #
 # compile flags
 #
-S_FLAGS=-sg -st -of+ -zu -zdf -zff -zgf -k32768#-zt40
+S_FLAGS=-sg -st -of+ -zu -zdf -zff -zgf -k32768 -zt40
 Z_FLAGS=-zk0 -zc -zp8 -zm
 O_FLAGS=-obmilr -oe=24 -out -oh -ei -onac -ol+ -ok##x
 T_FLAGS=-bt=dos -mh -0 -fpi87 -fo=.$(OBJ) -d2
@@ -119,7 +119,7 @@ WOLFOBJS = wl_inter.$(OBJ) wl_act1.$(OBJ) wl_act2.$(OBJ) wl_agent.$(OBJ) wl_debu
 EXEC = &
 	wolf3d.exe
 
-all: $(EXEC) test.exe
+all: tesuto.exe test.exe $(EXEC)
 
 #
 # game executables
@@ -130,12 +130,14 @@ wolf3d.exe:	wolf3d.$(OBJ) $(WOLFOBJS)
 # Test Executables!
 #
 test.exe:	test.$(OBJ) $(TESTOBJS) id_exter.$(OBJ)
+tesuto.exe:	tesuto.$(OBJ)
 
 #
 # executable's objects
 #
 wolf3d.$(OBJ):	$(SRC)/wolf3d.c
 test.$(OBJ):	test.c
+tesuto.$(OBJ):	tesuto.c
 
 #
 # non executable objects libraries
