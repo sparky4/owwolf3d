@@ -55,7 +55,7 @@ boolean         IsA386;
 unsigned        screenofs;
 int             viewwidth;
 int             viewheight;
-int             centerx;
+short             centerx;
 int             shootdelta;                     // pixels away from centerx a target can be
 //fixed           scale,maxslope;
 //long            heightnumerator;
