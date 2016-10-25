@@ -1,7 +1,7 @@
 Open Watcom Linker Version 2.0 beta Oct 25 2016 01:54:54 (32-bit)
 Copyright (c) 2002-2016 The Open Watcom Contributors. All Rights Reserved.
 Portions Copyright (c) 1985-2002 Sybase, Inc. All Rights Reserved.
-Created on:       16/10/25 11:15:38
+Created on:       16/10/25 11:22:02
 Executable Image: test.exe
 creating a DOS executable
 
@@ -13,7 +13,7 @@ creating a DOS executable
 Group                           Address              Size
 =====                           =======              ====
 
-DGROUP                          3003:0000            00008f80
+DGROUP                          3003:0000            00008f7f
 
 
 
@@ -332,7 +332,7 @@ DATA                   DATA           DGROUP         307f:0004       00000000
 _emu_init_start        EMU            DGROUP         307f:0004       00000000
 _emu_init_end          EMU            DGROUP         307f:0004       00000000
 _BSS                   BSS            DGROUP         3080:0000       000007a8
-STACK                  STACK          DGROUP         30fb:0000       00008000
+STACK                  STACK          DGROUP         30fb:0000       00007fff
 
 
                         +----------------+
@@ -1309,7 +1309,7 @@ Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(bfree.c)
                         |   Linker Statistics   |
                         +-----------------------+
 
-Stack size:  8000 (32768.)
-Memory size:  00038fb0 (233392.)
+Stack size:  7fff (32767.)
+Memory size:  00038faf (233391.)
 Entry point address: 0dfa:02e0
 Link time: 00:00.00

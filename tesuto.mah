@@ -1,7 +1,7 @@
 Open Watcom Linker Version 2.0 beta Oct 25 2016 01:54:54 (32-bit)
 Copyright (c) 2002-2016 The Open Watcom Contributors. All Rights Reserved.
 Portions Copyright (c) 1985-2002 Sybase, Inc. All Rights Reserved.
-Created on:       16/10/25 11:15:37
+Created on:       16/10/25 11:22:01
 Executable Image: tesuto.exe
 creating a DOS executable
 
@@ -13,7 +13,7 @@ creating a DOS executable
 Group                           Address              Size
 =====                           =======              ====
 
-DGROUP                          0366:0000            000083b0
+DGROUP                          0366:0000            000083af
 
 
 
@@ -42,7 +42,7 @@ YIE                    DATA           DGROUP         038f:0004       00000000
 STRINGS                DATA           DGROUP         038f:0004       00000000
 DATA                   DATA           DGROUP         038f:0004       00000000
 _BSS                   BSS            DGROUP         038f:0004       0000011a
-STACK                  STACK          DGROUP         03a1:0000       00008000
+STACK                  STACK          DGROUP         03a1:0000       00007fff
 
 
                         +----------------+
@@ -276,7 +276,7 @@ Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(error086.asm)
                         |   Linker Statistics   |
                         +-----------------------+
 
-Stack size:  8000 (32768.)
-Memory size:  ba10 (47632.)
+Stack size:  7fff (32767.)
+Memory size:  ba0f (47631.)
 Entry point address: 0000:00b2
 Link time: 00:00.00
