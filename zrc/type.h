@@ -1,6 +1,7 @@
 #ifndef __TYPE_H__
 #define __TYPE_H__
 
+#define VERSION __DATE__ " " __TIME__
 #define _FCORELEFT 0x90000UL+16UL
 static union REGS CPURegs;
 
@@ -31,8 +32,9 @@ typedef union REGPACK	regs_t;
 
 typedef	enum	{false,true}	boolean;
 typedef	unsigned	char		byte;
-typedef	unsigned	int			word;
-typedef	unsigned	long		longword;
+typedef	unsigned	int		word;
+typedef	unsigned	long		dword;
+typedef	long				dong;
 typedef	byte *					Ptr;
 
 typedef	struct
@@ -46,28 +48,7 @@ typedef	struct
 
 typedef void __based( void ) * memptr;	////old //----typedef void __based(__self) * memptr;
 #define _seg
-
-#define BSEG __segment
-//byte
-//_seg
-#define USEG __segment
-//unsigned
-//_seg
-#define MSEG maptype
-//_seg
-#define VSEG __segment
-//void
-//_seg
-#define LSEG long
-//long
-//_seg
-//#define PSEG __segment
-//pictabletype
-//_seg
-#define SSEG __segment
-//spritetabletype
-//_seg
-
+typedef long fixed;
 
 #define _argv __argv
 #define _argc __argc

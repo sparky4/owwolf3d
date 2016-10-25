@@ -1,0 +1,27 @@
+FOREIGN.H(110): Error! E1061: Expecting data or function declaration, but found ' '
+FOREIGN.H(110): Warning! W138: No newline at end of file
+audiowl6.h(14): Error! E1026: Invalid declarator
+audiowl6.h(14): Error! E1009: Expecting ';' but found 'typedef'
+id_vl.h(116): Error! E1156: Assembler error: 'Cannot use 386 register with current CPU setting'
+id_vl.h(116): Error! E1156: Assembler error: 'Cannot use 386 operand size with current CPU setting'
+id_vl.h(119): Error! E1156: Assembler error: 'Cannot use 386 register with current CPU setting'
+id_vl.h(126): Error! E1185: Invalid register name 'edx' in #pragma
+id_vl.h(133): Error! E1156: Assembler error: 'Cannot use 386 register with current CPU setting'
+id_vl.h(133): Error! E1156: Assembler error: 'Cannot use 386 operand size with current CPU setting'
+id_vl.h(143): Error! E1185: Invalid register name 'ecx' in #pragma
+id_vl.h(144): Error! E1185: Invalid register name 'edx' in #pragma
+id_vl.h(144): Error! E1185: Invalid register name 'ecx' in #pragma
+id_vl.h(148): Error! E1156: Assembler error: 'Cannot use 386 register with current CPU setting'
+id_vl.h(148): Error! E1156: Assembler error: 'Cannot use 386 operand size with current CPU setting'
+id_vl.h(153): Error! E1185: Invalid register name 'edx' in #pragma
+id_vl.h(167): Error! E1156: Assembler error: 'Cannot use 386 register with current CPU setting'
+id_vl.h(167): Error! E1156: Assembler error: 'Cannot use 386 operand size with current CPU setting'
+id_vl.h(172): Error! E1185: Invalid register name 'edx' in #pragma
+id_vl.h(190): Error! E1185: Invalid register name 'eax' in #pragma
+id_vl.h(244): Error! E1156: Assembler error: 'Cannot use 386 register with current CPU setting'
+id_vl.h(244): Error! E1156: Assembler error: 'Cannot use 386 operand size with current CPU setting'
+id_vl.h(247): Error! E1156: Assembler error: 'Cannot use 386 register with current CPU setting'
+id_vl.h(251): Error! E1185: Invalid register name 'eax' in #pragma
+id_vl.h(252): Error! E1185: Invalid register name 'edx' in #pragma
+wl_def.h(1383): Error! E1156: Assembler error: 'Cannot use 386 register with current CPU setting'
+wl_def.h(1384): Error! E1147: Too many errors: compilation aborted

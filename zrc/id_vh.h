@@ -1,7 +1,5 @@
 // ID_VH.H
 
-#ifndef __ID_VH_H__
-#define __ID_VH_H__
 
 #define WHITE			15			// graphics mode independant colors
 #define BLACK			0
@@ -58,9 +56,6 @@ extern	byte	fontcolor;
 extern	int	fontnumber;
 extern	int	px,py;
 
-extern byte *vbuf;
-
-
 //
 // Double buffer management routines
 //
@@ -76,6 +71,7 @@ int	 VW_MarkUpdateBlock (int x1, int y1, int x2, int y2);
 void VWB_DrawPropString	 (char *string);
 
 void VWB_DrawTile8 (int x, int y, int tile);
+void VWB_DrawTile8M (int x, int y, int tile);
 void VWB_DrawTile16 (int x, int y, int tile);
 void VWB_DrawTile16M (int x, int y, int tile);
 void VWB_DrawPic (int x, int y, int chunknum);
@@ -133,4 +129,4 @@ boolean 	FizzleFade (unsigned source, unsigned dest,
 #define NUMLATCHPICS	100
 extern	unsigned latchpics[NUMLATCHPICS];
 extern	unsigned freelatch;
-#endif
+

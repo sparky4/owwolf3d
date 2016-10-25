@@ -1,0 +1,21 @@
+id_ca.c(177): Error! E1011: Symbol 'false' has not been declared
+id_ca.c(185): Error! E1011: Symbol 'true' has not been declared
+id_ca.c(519): Error! E1011: Symbol 'false' has not been declared
+id_ca.c(552): Error! E1058: Cannot use typedef 'mapfiletype' as a variable
+id_ca.c(552): Error! E1080: Expression must be arithmetic
+id_ca.c(552): Error! E1014: Left operand must be an 'lvalue'
+id_ca.c(556): Error! E1033: Expression for '->' must be 'pointer to struct or union'
+id_ca.c(582): Error! E1033: Expression for '->' must be 'pointer to struct or union'
+id_ca.c(582): Error! E1009: Expecting ';' but found ']'
+id_ca.c(851): Error! E1011: Symbol 'false' has not been declared
+id_ca.c(952): Error! E1011: Symbol 'true' has not been declared
+id_in.c(123): Error! E1011: Symbol 'false' has not been declared
+id_in.c(123): Error! E1054: Expression must be constant
+id_in.c(155): Error! E1011: Symbol 'true' has not been declared
+id_in.c(462): Error! E1011: Symbol 'true' has not been declared
+id_in.c(543): Error! E1011: Symbol 'true' has not been declared
+id_in.c(573): Error! E1011: Symbol 'true' has not been declared
+id_in.c(707): Error! E1011: Symbol 'true' has not been declared
+id_in.c(784): Error! E1011: Symbol 'true' has not been declared
+id_in.c(796): Error! E1011: Symbol 'true' has not been declared
+id_in.c(844): Error! E1147: Too many errors: compilation aborted

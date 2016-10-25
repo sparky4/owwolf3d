@@ -5,20 +5,21 @@
 #define MONTH	9
 #define DAY		30
 
-#include "id_heads.h"
+//#include "src/id_heads.h"
+#include "src/type.h"
 #include <math.h>
 //#include <values.h>
 
-#include "wl_menu.h"
+#include "src/wl_menu.h"
 
 #ifdef SPANISH
-#include "spanish.h"
+#include "src/spanish.h"
 #else
-#include "foreign.h"
+#include "src/foreign.h"
 #endif
 
 #ifdef SPEAR
-#include "f_spear.h"
+#include "src/f_spear.h"
 #endif
 
 /*
@@ -30,7 +31,7 @@
 */
 
 
-#define COLORBORDER(color)		asm{mov	dx,STATUS_REGISTER_1;in al,dx;\
+#define COLORBORDER(color)		__asm{mov	dx,STATUS_REGISTER_1;in al,dx;\
 	mov dx,ATR_INDEX;mov al,ATR_OVERSCAN;out dx,al;mov al,color;out	dx,al;\
 	mov	al,32;out dx,al};
 
@@ -38,7 +39,7 @@
 
 #define SIGN(x) 	((x)>0?1:-1)
 #define ABS(x) 		((int)(x)>0?(x):-(x))
-#define LABS(x) 	((long)(x)>0?(x):-(x))
+#define LABS(x) 	((dong)(x)>0?(x):-(x))
 
 /*
 =============================================================================
@@ -488,7 +489,7 @@ enum	{
 =============================================================================
 */
 
-typedef long fixed;
+//typedef long fixed;
 
 typedef enum {
 	di_north,
@@ -667,20 +668,20 @@ typedef struct objstruct
 
 	byte		flags;				//	FL_SHOOTABLE, etc
 
-	long		distance;			// if negative, wait for that door to open
+	dong		distance;			// if negative, wait for that door to open
 	dirtype		dir;
 
-	fixed 		x,y;
+	dong 		x,y;
 	unsigned	tilex,tiley;
 	byte		areanumber;
 
 	int	 		viewx;
 	unsigned	viewheight;
-	fixed		transx,transy;		// in global coord
+	dong		transx,transy;		// in global coord
 
 	int 		angle;
 	int			hitpoints;
-	long		speed;
+	dong		speed;
 
 	int			temp1,temp2,temp3;
 	struct		objstruct	*next,*prev;
@@ -727,7 +728,7 @@ typedef	struct
 {
 	int			difficulty;
 	int			mapon;
-	long		oldscore,score,nextextra;
+	dong		oldscore,score,nextextra;
 	int			lives;
 	int			health;
 	int			ammo;
@@ -739,8 +740,8 @@ typedef	struct
 
 	int			episode,secretcount,treasurecount,killcount,
 				secrettotal,treasuretotal,killtotal;
-	long		TimeCount;
-	long		killx,killy;
+	dong		TimeCount;
+	dong		killx,killy;
 	boolean		victoryflag;		// set during victory animations
 } gametype;
 
@@ -777,12 +778,12 @@ extern	boolean		IsA386;
 
 extern	byte far	*scalermemory;
 
-extern	fixed		focallength;
+extern	dong		focallength;
 extern	unsigned	viewangles;
 extern	unsigned	screenofs;
 extern	int		    viewwidth;
 extern	int			viewheight;
-extern	int			centerx;
+extern	short			centerx;
 extern	int			shootdelta;
 
 extern	int			dirangle[9];
@@ -793,14 +794,14 @@ extern	int		mouseadjustment;
 // math tables
 //
 extern	int			pixelangle[MAXVIEWWIDTH];
-extern	long		far finetangent[FINEANGLES/4];
-extern	fixed 		far sintable[],far *costable;
+extern	fixed		far finetangent[FINEANGLES/4];
+extern	dong 		far sintable[],far *costable;
 
 //
 // derived constants
 //
-extern	fixed 	scale,maxslope;
-extern	long	heightnumerator;
+extern	dong 	scale,maxslope;
+extern	dong	heightnumerator;
 extern	int		minheightdiv;
 
 extern	char	configname[13];
@@ -837,7 +838,7 @@ extern	int			doornum;//short?
 
 extern	char		demoname[13];
 
-extern	long		spearx,speary;
+extern	dong		spearx,speary;
 extern	unsigned	spearangle;
 extern	boolean		spearflag;
 
@@ -858,9 +859,9 @@ void DrawAllPlayBorderSides (void);
 
 
 // JAB
-#define	PlaySoundLocTile(s,tx,ty)	PlaySoundLocGlobal(s,(((long)(tx) << TILESHIFT) + (1L << (TILESHIFT - 1))),(((long)ty << TILESHIFT) + (1L << (TILESHIFT - 1))))
+#define	PlaySoundLocTile(s,tx,ty)	PlaySoundLocGlobal(s,(((dong)(tx) << TILESHIFT) + (1L << (TILESHIFT - 1))),(((dong)ty << TILESHIFT) + (1L << (TILESHIFT - 1))))
 #define	PlaySoundLocActor(s,ob)		PlaySoundLocGlobal(s,(ob)->x,(ob)->y)
-void	PlaySoundLocGlobal(word s,fixed gx,fixed gy);
+void	PlaySoundLocGlobal(word s,dong gx,dong gy);
 void UpdateSoundLoc(void);
 
 
@@ -873,7 +874,7 @@ void UpdateSoundLoc(void);
 */
 
 #ifdef SPEAR
-extern	long		funnyticount;		// FOR FUNNY BJ FACE
+extern	dong		funnyticount;		// FOR FUNNY BJ FACE
 #endif
 
 extern	exit_t		playstate;
@@ -892,8 +893,8 @@ extern	byte		tilemap[MAPSIZE][MAPSIZE];	// wall values only
 extern	byte		spotvis[MAPSIZE][MAPSIZE];
 extern	objtype		*actorat[MAPSIZE][MAPSIZE];
 
-#define UPDATESIZE			(UPDATEWIDE*UPDATEHIGH)
-extern	byte		update[UPDATESIZE];
+//#define UPDATESIZE			(UPDATEWIDE*UPDATEHIGH)
+extern	byte		update[64*64];//[UPDATESIZE];
 //extern	byte	update[UPDATEHIGH][UPDATEWIDE];
 
 extern	boolean		singlestep,godmode,noclip;
@@ -980,37 +981,37 @@ int DebugKeys (void);
 extern	unsigned screenloc[3];
 extern	unsigned freelatch;
 
-extern	long 	lasttimecount;
-extern	long 	frameon;
+extern	dong	lasttimecount;
+extern	dong	frameon;
 extern	boolean	fizzlein;
 
 extern	unsigned	wallheight[MAXVIEWWIDTH];
 
-extern	fixed	tileglobal;
+extern	dong	tileglobal;
 extern	fixed	focallength;
-extern	fixed	mindist;
+extern	dong	mindist;
 
 //
 // math tables
 //
 extern	int			pixelangle[MAXVIEWWIDTH];
-extern	long		far finetangent[FINEANGLES/4];
+extern	fixed		far finetangent[FINEANGLES/4];
 extern	fixed 		far sintable[],far *costable;
 
 //
 // derived constants
 //
-extern	fixed 	scale;
-extern	long	heightnumerator,mindist;
+extern	dong 	scale;
+extern	dong	heightnumerator,mindist;
 
 //
 // refresh variables
 //
-extern	fixed	viewx,viewy;			// the focal point
+extern	dong	viewx,viewy;			// the focal point
 extern	int		viewangle;
-extern	fixed	viewsin,viewcos;
+extern	dong	viewsin,viewcos;
 
-extern	long		postsource;
+extern	dong		postsource;
 extern	unsigned	postx;
 extern	unsigned	postwidth;
 
@@ -1090,12 +1091,8 @@ typedef struct
 // table data after dataofs[rightpix-leftpix+1]
 }	t_compshape;
 
-#define TSEG t_compscale
-//_seg
-
-
-extern	TSEG *scaledirectory[MAXSCALEHEIGHT+1];
-extern	long			fullscalefarcall[MAXSCALEHEIGHT+1];
+extern	t_compscale /*_seg*/	*scaledirectory[MAXSCALEHEIGHT+1];
+extern	dong			fullscalefarcall[MAXSCALEHEIGHT+1];
 
 extern	byte		bitmasks1[8][8];
 extern	byte		bitmasks2[8][8];
@@ -1125,11 +1122,14 @@ void SimpleScaleShape (int xcenter, int shapenum, unsigned height);
 // player state info
 //
 extern	boolean		running;
-extern	long		thrustspeed;
+extern	dong		thrustspeed;
 extern	unsigned	plux,pluy;		// player coordinates scaled to unsigned
 
 extern	int			anglefrac;
 extern	int			facecount;
+extern	int			gotgatgun;	// JR
+
+extern	objtype		*LastAttacker;
 
 void	SpawnPlayer (int tilex, int tiley, int dir);
 void 	DrawFace (void);
