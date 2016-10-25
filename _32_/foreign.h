@@ -107,4 +107,3 @@
 #define STR_SAVECHT4	"play anyway...."
 
 #define	STR_SEEAGAIN	"Let's see that again!"
-
