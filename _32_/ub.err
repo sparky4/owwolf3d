@@ -1,0 +1,43 @@
+wl_def.h(65): Error! E125: col(24) invalid redefinition of the typedef name 'Point'
+wl_def.h(65): Note! N393: col(24) included from id_ca.cpp(17)
+wl_def.h(65): Note! N393: col(24) included from ub.cpp(3)
+wl_def.h(65): Note! N392: col(19) definition: 'Point'
+wl_def.h(69): Error! E125: col(23) invalid redefinition of the typedef name 'Rect'
+wl_def.h(69): Note! N392: col(19) definition: 'Rect'
+id_vh.h(24): Error! E125: col(18) invalid redefinition of the typedef name 'spritetabletype'
+id_vh.h(24): Note! N392: col(3) definition: 'spritetabletype'
+id_vh.h(32): Error! E125: col(13) invalid redefinition of the typedef name 'spritetype'
+id_vh.h(32): Note! N392: col(3) definition: 'spritetype'
+id_vh.h(37): Error! E125: col(15) invalid redefinition of the typedef name 'pictabletype'
+id_vh.h(37): Note! N392: col(3) definition: 'pictabletype'
+id_vh.h(45): Error! E125: col(13) invalid redefinition of the typedef name 'fontstruct'
+id_vh.h(45): Note! N392: col(3) definition: 'fontstruct'
+id_ca.h(18): Error! E125: col(10) invalid redefinition of the typedef name 'maptype'
+id_ca.h(18): Note! N392: col(3) definition: 'maptype'
+WL_MENU.H(99): Error! E125: col(30) invalid redefinition of the typedef name 'CP_iteminfo'
+WL_MENU.H(99): Note! N392: col(19) definition: 'CP_iteminfo'
+WL_MENU.H(105): Error! E125: col(30) invalid redefinition of the typedef name 'CP_itemtype'
+WL_MENU.H(105): Note! N392: col(19) definition: 'CP_itemtype'
+WL_MENU.H(109): Error! E125: col(30) invalid redefinition of the typedef name 'CustomCtrls'
+WL_MENU.H(109): Note! N392: col(19) definition: 'CustomCtrls'
+WL_MENU.H(206): Error! E042: col(12) symbol 'MOUSE' already defined
+WL_MENU.H(206): Note! N392: col(7) definition: '<enum> MOUSE'
+WL_MENU.H(206): Error! E042: col(21) symbol 'JOYSTICK' already defined
+WL_MENU.H(206): Note! N392: col(13) definition: '<enum> JOYSTICK'
+WL_MENU.H(206): Error! E042: col(34) symbol 'KEYBOARDBTNS' already defined
+WL_MENU.H(206): Note! N392: col(22) definition: '<enum> KEYBOARDBTNS'
+WL_MENU.H(206): Error! E042: col(47) symbol 'KEYBOARDMOVE' already defined
+WL_MENU.H(206): Note! N392: col(35) definition: '<enum> KEYBOARDMOVE'
+WL_MENU.H(210): Error! E125: col(16) invalid redefinition of the typedef name 'menuitems'
+WL_MENU.H(208): Note! N392: col(6) definition: 'menuitems'
+WL_MENU.H(210): Error! E042: col(16) symbol 'newgame' already defined
+WL_MENU.H(210): Note! N392: col(9) definition: 'menuitems newgame'
+WL_MENU.H(211): Error! E042: col(18) symbol 'soundmenu' already defined
+WL_MENU.H(211): Note! N392: col(9) definition: 'menuitems soundmenu'
+WL_MENU.H(212): Error! E042: col(16) symbol 'control' already defined
+WL_MENU.H(212): Note! N392: col(9) definition: 'menuitems control'
+WL_MENU.H(213): Error! E042: col(17) symbol 'loadgame' already defined
+WL_MENU.H(213): Note! N392: col(9) definition: 'menuitems loadgame'
+WL_MENU.H(214): Error! E042: col(17) symbol 'savegame' already defined
+WL_MENU.H(214): Note! N392: col(9) definition: 'menuitems savegame'
+WL_MENU.H(215): Error! E133: col(19) too many errors: compilation aborted
