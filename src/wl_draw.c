@@ -28,7 +28,7 @@
 =============================================================================
 */
 
-/*
+
 #ifdef DEBUGWALLS
 unsigned screenloc[3]= {0,0,0};
 #else
@@ -36,32 +36,32 @@ unsigned screenloc[3]= {PAGE1START,PAGE2START,PAGE3START};
 #endif
 unsigned freelatch = FREESTART;
 
-long 	lasttimecount;
-long 	frameon;
+long	__far	lasttimecount;
+long	__far	frameon;
 
 unsigned	wallheight[MAXVIEWWIDTH];
 
-fixed	tileglobal	= TILEGLOBAL;
-fixed	mindist		= MINDIST;
+fixed	__far	tileglobal	= TILEGLOBAL;
+fixed	__far	mindist		= MINDIST;
 
 
 //
 // math tables
 //
 int			pixelangle[MAXVIEWWIDTH];
-long		far finetangent[FINEANGLES/4];
-fixed 		far sintable[ANGLES+ANGLES/4],far *costable = sintable+(ANGLES/4);
+long	__far	finetangent[FINEANGLES/4];
+fixed 	__far	sintable[ANGLES+ANGLES/4],far *costable = sintable+(ANGLES/4);
 
 //
 // refresh variables
 //
-fixed	viewx,viewy;			// the focal point
+fixed	__far	viewx,viewy;			// the focal point
 int		viewangle;
-fixed	viewsin,viewcos;*/
+fixed	__far	viewsin,viewcos;
 
 
 
-fixed	FixedByFrac (fixed a, fixed b);
+fixed	__far	FixedByFrac (fixed a, fixed b);
 void	TransformActor (objtype *ob);
 void	BuildTables (void);
 void	ClearScreen (void);
@@ -77,7 +77,7 @@ void	ThreeDRefresh (void);
 // wall optimization variables
 //
 int		lastside;		// true for vertical
-long	lastintercept;
+long	__far	lastintercept;
 int		lasttilehit;
 
 
@@ -96,8 +96,8 @@ unsigned	pixx;
 
 int		xtile,ytile;
 int		xtilestep,ytilestep;
-long	xintercept,yintercept;
-long	xstep,ystep;
+long	__far	xintercept,yintercept;
+long	__far	xstep,ystep;
 word xspot,yspot;
 int texdelta;
 
@@ -140,7 +140,7 @@ void AsmRefresh (void);			// in WL_DR_A.ASM
 
 #pragma warn -rvl			// I stick the return value in with ASMs
 
-fixed FixedByFrac (fixed a, fixed b)
+fixed __far FixedByFrac (fixed a, fixed b)
 {
 	word pee;
 //
@@ -404,7 +404,7 @@ int	CalcHeight (void)
 ===================
 */
 
-long		postsource;
+dong	__far	postsource;
 unsigned	postx;
 unsigned	postwidth;
 
@@ -1248,9 +1248,10 @@ void DrawPlayerWeapon (void)
 		shapenum = weaponscale[gamestate.weapon]+gamestate.weaponframe;
 		SimpleScaleShape(viewwidth/2,shapenum,viewheight+1);
 	}
-
+#ifdef DEMO
 	if (demorecord || demoplayback)
 		SimpleScaleShape(viewwidth/2,SPR_DEMO,viewheight+1);
+#endif
 }
 
 

@@ -51,14 +51,14 @@ int                     dirangle[9] = {0,ANGLES/8,2*ANGLES/8,3*ANGLES/8,4*ANGLES
 //
 // proejection variables
 //
-fixed           focallength;
+fixed	__far	focallength;
 unsigned        screenofs;
 int             viewwidth;
 int             viewheight;
 short             centerx;
 int             shootdelta;                     // pixels away from centerx a target can be
-fixed           scale,maxslope;
-long            heightnumerator;
+fixed	__far	scale,maxslope;
+long	__far	heightnumerator;
 int                     minheightdiv;
 
 void            Quit (char *error);
@@ -1537,11 +1537,13 @@ void    DemoLoop (void)
 // demo
 //
 
+#ifdef DEMO
 			#ifndef SPEARDEMO
 			PlayDemo (LastDemo++%4);
 			#else
 			PlayDemo (0);
 			#endif
+#endif
 
 			if (playstate == ex_abort)
 				break;
@@ -1549,7 +1551,7 @@ void    DemoLoop (void)
 		}
 
 		VW_FadeOut ();
-
+#ifdef DEMO
 #ifndef SPEAR
 		if (Keyboard[sc_Tab] && MS_CheckParm("goobers"))
 #else
@@ -1557,6 +1559,7 @@ void    DemoLoop (void)
 #endif
 			RecordDemo ();
 		else
+#endif
 			US_ControlPanel (0);
 
 		if (startgame || loadedgame)

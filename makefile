@@ -64,7 +64,7 @@ UPXQ=-qqq
 #
 # compile flags
 #
-S_FLAGS=-sg -st -of+ -zu -zdf -zff -zgf# -k32767 -zt40#32767
+S_FLAGS=-sg -st -of+ -zu -zdf -zff -zgf -k32767# -zt40#32767
 Z_FLAGS=-zk0 -zc -zp8 -zm
 O_FLAGS=-obmilr -oe=24 -out -oh -ei -onac -ol+ -ok##x
 T_FLAGS=-bt=dos -mh -0 -fpi87 -fo=.$(OBJ) -d2
@@ -79,7 +79,11 @@ LIBFLAGS=$(WLIBQ) -b -n
 # objects
 #
 TESTOBJS = id_tail.$(OBJ) id_in.$(OBJ) id_mm.$(OBJ) id_pm.$(OBJ) id_ca.$(OBJ) id_sd.$(OBJ) gamepal3.$(OBJ) signon.$(OBJ) id_vl.$(OBJ) id_vh.$(OBJ) wl_scale.$(OBJ) id_us_1.$(OBJ) wl_debug.$(OBJ)
-WOLFOBJS = $(TESTOBJS) wl_act1.$(OBJ) wl_act2.$(OBJ) $(TESTOBJS) wl_inter.$(OBJ) wl_agent.$(OBJ) wl_draw.$(OBJ) wl_menu.$(OBJ) wl_state.$(OBJ) wl_text.$(OBJ) wl_game.$(OBJ)  wl_play.$(OBJ)
+WOLFOBJS = $(TESTOBJS) wl_inter.$(OBJ) wl_agent.$(OBJ) wl_draw.$(OBJ) wl_menu.$(OBJ) wl_state.$(OBJ) wl_text.$(OBJ) wl_game.$(OBJ) &
+wl_act1.$(OBJ) wl_act2.$(OBJ) wl_play.$(OBJ)
+####far it!
+
+####
 
 #
 # libraries
@@ -118,7 +122,7 @@ WOLFOBJS = $(TESTOBJS) wl_act1.$(OBJ) wl_act2.$(OBJ) $(TESTOBJS) wl_inter.$(OBJ)
 EXEC = &
 	wolf3d.exe
 
-all: test.exe $(EXEC)
+all: $(EXEC)#test.exe
 
 #
 # game executables

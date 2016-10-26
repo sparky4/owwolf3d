@@ -34,10 +34,10 @@
 
 
 //	Global variables
-/*		char		*abortprogram;
+		char		*abortprogram;
 		boolean		NoWait;
 		word		PrintX,PrintY;
-		word		WindowX,WindowY,WindowW,WindowH;*/
+		word		WindowX,WindowY,WindowW,WindowH;
 
 //	Internal variables
 #define	ConfigVersion	1

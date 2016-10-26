@@ -22,60 +22,59 @@
 =============================================================================
 */
 
-/*boolean		madenoise;					// true when shooting or screaming
+boolean	__far	madenoise;					// true when shooting or screaming
 
-exit_t		playstate;*/
+exit_t	__far	playstate;
 
-int			DebugOk;
+int		__far	DebugOk;
 
-//objtype 	objlist[MAXACTORS],*new,*obj,*player,*lastobj,*objfreelist,*killerobj;
+objtype 	__far	objlist[MAXACTORS],	*new,*obj,*player,*lastobj,*objfreelist,*killerobj;
 
-/*unsigned	farmapylookup[MAPSIZE];
-byte		*nearmapylookup[MAPSIZE];
+unsigned	__far	farmapylookup[MAPSIZE];
+byte		__far	*nearmapylookup[MAPSIZE];
 
-boolean		singlestep,godmode,noclip;
-int			extravbls;
+boolean	__far	singlestep,godmode,noclip;
+int		__far	extravbls;
 
-byte		tilemap[MAPSIZE][MAPSIZE];	// wall values only
-byte		spotvis[MAPSIZE][MAPSIZE];*/
-objtype		*actorat[MAPSIZE][MAPSIZE];
+byte		__far	tilemap[MAPSIZE][MAPSIZE];	// wall values only
+byte		__far	spotvis[MAPSIZE][MAPSIZE];
+objtype	__far	*actorat[MAPSIZE][MAPSIZE];
 
 //
 // replacing refresh manager
 //
-/*unsigned	mapwidth,mapheight,tics;
-boolean		compatability;
-byte		*updateptr;
-unsigned	mapwidthtable[64];
-unsigned	uwidthtable[UPDATEHIGH];
-unsigned	blockstarts[UPDATEWIDE*UPDATEHIGH];
+//unsigned	mapwidth,mapheight,tics;
+boolean	__far	compatability;
+byte		__far	*updateptr;
+unsigned	__far	uwidthtable[UPDATEHIGH];
+unsigned	__far	blockstarts[UPDATEWIDE*UPDATEHIGH];
 //byte		update[UPDATESIZE];
-unsigned tics;
+unsigned	__far	tics;
 
 //
 // control info
 //
-boolean		mouseenabled,joystickenabled,joypadenabled,joystickprogressive;
-int			joystickport;
-int			dirscan[4] = {sc_UpArrow,sc_RightArrow,sc_DownArrow,sc_LeftArrow};
-int			buttonscan[NUMBUTTONS] =
+boolean	__far	mouseenabled,joystickenabled,joypadenabled,joystickprogressive;
+int		__far	joystickport;
+int		__far	dirscan[4] = {sc_UpArrow,sc_RightArrow,sc_DownArrow,sc_LeftArrow};
+int		__far	buttonscan[NUMBUTTONS] =
 			{sc_Control,sc_Alt,sc_RShift,sc_Space,sc_1,sc_2,sc_3,sc_4};
-int			buttonmouse[4]={bt_attack,bt_strafe,bt_use,bt_nobutton};
-int			buttonjoy[4]={bt_attack,bt_strafe,bt_use,bt_run};
+int		__far	buttonmouse[4]={bt_attack,bt_strafe,bt_use,bt_nobutton};
+int		__far	buttonjoy[4]={bt_attack,bt_strafe,bt_use,bt_run};
 
-int			viewsize;
+int		__far	viewsize;
 
-boolean		buttonheld[NUMBUTTONS];
+boolean	__far	buttonheld[NUMBUTTONS];
 
-boolean		demorecord,demoplayback;
-char		far *demoptr, far *lastdemoptr;
-memptr		demobuffer;
+boolean	__far	demorecord,demoplayback;
+char		__far *demoptr, __far *lastdemoptr;
+memptr	__far	demobuffer;
 
 //
 // curent user input
 //
-int			controlx,controly;		// range from -100 to 100 per tic
-boolean		buttonstate[NUMBUTTONS];*/
+int		__far	controlx,controly;		// range from -100 to 100 per tic
+boolean	__far	buttonstate[NUMBUTTONS];
 
 
 
@@ -1360,7 +1359,7 @@ think:
 =
 ===================
 */
-long funnyticount;
+long	__far	funnyticount;
 
 
 void PlayLoop (void)

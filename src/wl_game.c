@@ -25,13 +25,13 @@
 =============================================================================
 */
 
-/*boolean		ingame,fizzlein;
+boolean	__far	ingame,fizzlein;
 unsigned	latchpics[NUMLATCHPICS];
-gametype	gamestate;
+gametype	__far	gamestate;
 
-long		spearx,speary;
+long	__far	spearx,speary;
 unsigned	spearangle;
-boolean		spearflag;*/
+boolean		spearflag;
 
 //
 // ELEVATOR BACK MAPS - REMEMBER (-1)!!
@@ -639,9 +639,11 @@ void SetupGameLevel (void)
 	 gamestate.treasurecount=0;
 	}
 
+#ifdef DEMO
 	if (demoplayback || demorecord)
 		US_InitRndT (false);
 	else
+#endif
 		US_InitRndT (true);
 
 //
@@ -908,7 +910,7 @@ void DrawPlayScreen (void)
 =
 ==================
 */
-
+#ifdef DEMO
 #define MAXDEMOSIZE	8192
 
 void StartDemoRecord (int levelnumber)
@@ -1098,7 +1100,7 @@ void PlayDemo (int demonumber)
 	VW_FadeOut ();
 	ClearMemory ();
 }
-
+#endif
 //==========================================================================
 
 /*
@@ -1318,10 +1320,10 @@ startplayloop:
 
 		StopMusic ();
 		ingame = false;
-
+#ifdef DEMO
 		if (demorecord && playstate != ex_warped)
 			FinishDemoRecord ();
-
+#endif
 		if (startgame || loadedgame)
 			goto restartgame;
 

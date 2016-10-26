@@ -12,14 +12,14 @@
 
 =============================================================================
 */
-/*
-t_compscale *scaledirectory[MAXSCALEHEIGHT+1];
+
+t_compscale __far *scaledirectory[MAXSCALEHEIGHT+1];
 //_seg
-long			fullscalefarcall[MAXSCALEHEIGHT+1];
+long		__far	fullscalefarcall[MAXSCALEHEIGHT+1];
 
 int			maxscale,maxscaleshl2;
 
-boolean	insetupscaling;*/
+boolean	insetupscaling;
 
 /*
 =============================================================================
@@ -29,7 +29,7 @@ boolean	insetupscaling;*/
 =============================================================================
 */
 
-t_compscale 	/*_seg*/ *work;
+t_compscale 	__far/*_seg*/ *work;
 unsigned BuildCompScale (int height, memptr *finalspot);
 
 int			stepbytwo;
