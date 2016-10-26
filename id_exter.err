@@ -1,0 +1,30 @@
+src/id_exter.h(31): Error! E1062: Inconsistent return type for function 'LoadTheGame'
+src/id_exter.h(31): Note! I2003: source conversion type is 'void'
+src/id_exter.h(31): Note! I2004: target conversion type is 'boolean'
+src/id_exter.h(31): Note! I2002: 'LoadTheGame' defined in: src/wl_def.h(819)
+src/id_exter.h(32): Error! E1062: Inconsistent return type for function 'SaveTheGame'
+src/id_exter.h(32): Note! I2003: source conversion type is 'void'
+src/id_exter.h(32): Note! I2004: target conversion type is 'boolean'
+src/id_exter.h(32): Note! I2002: 'SaveTheGame' defined in: src/wl_def.h(820)
+src/id_exter.c(57): Error! E1129: Type does not agree with previous definition of 'LoadTheGame'
+src/id_exter.c(57): Note! I2002: 'LoadTheGame' defined in: src/wl_def.h(819)
+src/id_exter.c(57): Error! E1009: Expecting ';' but found '{'
+src/id_exter.c(57): Error! E1061: Expecting data or function declaration, but found '{'
+src/id_exter.c(57): Error! E1026: Invalid declarator
+src/id_exter.c(57): Error! E1009: Expecting ';' but found '}'
+src/id_exter.c(57): Error! E1061: Expecting data or function declaration, but found '}'
+src/id_exter.c(58): Error! E1026: Invalid declarator
+src/id_exter.c(58): Error! E1009: Expecting ';' but found 'void'
+src/id_exter.c(58): Error! E1129: Type does not agree with previous definition of 'SaveTheGame'
+src/id_exter.c(58): Note! I2002: 'SaveTheGame' defined in: src/wl_def.h(820)
+src/id_exter.c(58): Error! E1009: Expecting ';' but found '{'
+src/id_exter.c(58): Error! E1061: Expecting data or function declaration, but found '{'
+src/id_exter.c(58): Error! E1026: Invalid declarator
+src/id_exter.c(58): Error! E1009: Expecting ';' but found '}'
+src/id_exter.c(58): Error! E1061: Expecting data or function declaration, but found '}'
+src/id_exter.c(59): Error! E1026: Invalid declarator
+src/id_exter.c(59): Error! E1009: Expecting ';' but found 'void'
+src/id_exter.c(59): Error! E1129: Type does not agree with previous definition of 'ShowViewSize'
+src/id_exter.c(59): Note! I2002: 'ShowViewSize' defined in: src/wl_def.h(821)
+src/id_exter.c(59): Error! E1009: Expecting ';' but found '{'
+src/id_exter.c(59): Error! E1147: Too many errors: compilation aborted
