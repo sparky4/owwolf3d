@@ -59,4 +59,8 @@ void 		NewViewSize (int width){}
 boolean 	LoadTheGame(int file,int x,int y){ return 0; }
 boolean		SaveTheGame(int file,int x,int y){ return 0; }
 void 		ShowViewSize (int width){}
+void PushWall (int checkx, int checky, int dir){}
+void OperateDoor (int door){}
+void InitAreas (void){}
+
 
