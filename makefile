@@ -78,8 +78,9 @@ LIBFLAGS=$(WLIBQ) -b -n
 #
 # objects
 #
-TESTOBJS = id_tail.$(OBJ) id_in.$(OBJ) id_mm.$(OBJ) id_pm.$(OBJ) id_ca.$(OBJ) id_sd.$(OBJ) gamepal3.$(OBJ) signon.$(OBJ) id_vl.$(OBJ) id_vh.$(OBJ) wl_scale.$(OBJ) id_us_1.$(OBJ) wl_debug.$(OBJ) wl_inter.$(OBJ)  wl_agent.$(OBJ) wl_draw.$(OBJ) wl_menu.$(OBJ) wl_play.$(OBJ) wl_state.$(OBJ) wl_text.$(OBJ) wl_game.$(OBJ)
-WOLFOBJS = wl_act1.$(OBJ) wl_act2.$(OBJ) $(TESTOBJS)
+TESTOBJS = id_tail.$(OBJ) id_in.$(OBJ) id_mm.$(OBJ) id_pm.$(OBJ) id_ca.$(OBJ) id_sd.$(OBJ) gamepal3.$(OBJ) signon.$(OBJ) id_vl.$(OBJ) id_vh.$(OBJ) wl_scale.$(OBJ) id_us_1.$(OBJ) wl_debug.$(OBJ)
+PEEOBJS= wl_act1.$(OBJ) wl_act2.$(OBJ) $(TESTOBJS) wl_inter.$(OBJ) wl_agent.$(OBJ) wl_draw.$(OBJ) wl_menu.$(OBJ) wl_state.$(OBJ) wl_text.$(OBJ) wl_game.$(OBJ)
+WOLFOBJS = $(TESTOBJS) $(PEEOBJS) wl_play.$(OBJ)
 
 #
 # libraries
@@ -129,7 +130,7 @@ wolf3d.exe:	wolf3d.$(OBJ) $(WOLFOBJS)
 # Test Executables!
 #
 test.exe:	test.$(OBJ) $(TESTOBJS) id_exter.$(OBJ)
-tesuto.exe:	tesuto.$(OBJ)
+tesuto.exe:	tesuto.$(OBJ) $(PEEOBJS)
 
 #
 # executable's objects
