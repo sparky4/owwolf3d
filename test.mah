@@ -1,52 +1,19 @@
 Open Watcom Linker Version 2.0 beta Oct 25 2016 01:54:54 (32-bit)
 Copyright (c) 2002-2016 The Open Watcom Contributors. All Rights Reserved.
 Portions Copyright (c) 1985-2002 Sybase, Inc. All Rights Reserved.
-Created on:       16/10/26 12:48:51
+Created on:       16/10/26 12:54:11
 Executable Image: test.exe
 creating a DOS executable
-Error! E2028: FixedByFrac_ is an undefined reference
-Error! E2028: SpawnPlayer_ is an undefined reference
-Error! E2028: SpawnStatic_ is an undefined reference
-Error! E2028: SpawnStand_ is an undefined reference
-Error! E2028: SpawnPatrol_ is an undefined reference
-Error! E2028: SpawnDeadGuard_ is an undefined reference
-Error! E2028: SpawnBoss_ is an undefined reference
-Error! E2028: SpawnGretel_ is an undefined reference
-Error! E2028: SpawnGift_ is an undefined reference
-Error! E2028: SpawnFat_ is an undefined reference
-Error! E2028: SpawnSchabbs_ is an undefined reference
-Error! E2028: SpawnFakeHitler_ is an undefined reference
-Error! E2028: SpawnHitler_ is an undefined reference
-Error! E2028: SpawnGhosts_ is an undefined reference
-Error! E2028: _actorat is an undefined reference
-Error! E2028: InitActorList_ is an undefined reference
-Error! E2028: InitDoorList_ is an undefined reference
-Error! E2028: InitStaticList_ is an undefined reference
-Error! E2028: SpawnDoor_ is an undefined reference
-Error! E2028: DrawFace_ is an undefined reference
-Error! E2028: DrawHealth_ is an undefined reference
-Error! E2028: DrawLives_ is an undefined reference
-Error! E2028: DrawLevel_ is an undefined reference
-Error! E2028: DrawAmmo_ is an undefined reference
-Error! E2028: DrawKeys_ is an undefined reference
-Error! E2028: DrawWeapon_ is an undefined reference
+Error! E2028: StartCPMusic_ is an undefined reference
+Error! E2028: CacheLump_ is an undefined reference
+Error! E2028: UnCacheLump_ is an undefined reference
+Error! E2028: EndText_ is an undefined reference
+Error! E2028: GivePoints_ is an undefined reference
 Error! E2028: DrawScore_ is an undefined reference
-Error! E2028: CenterWindow_ is an undefined reference
-Error! E2028: NewGame_ is an undefined reference
-Error! E2028: StartMusic_ is an undefined reference
-Error! E2028: PlayLoop_ is an undefined reference
-Error! E2028: StopMusic_ is an undefined reference
-Error! E2028: _killerobj is an undefined reference
-Error! E2028: _player is an undefined reference
-Error! E2028: ThreeDRefresh_ is an undefined reference
-Error! E2028: CalcTics_ is an undefined reference
-Error! E2028: FinishPaletteShifts_ is an undefined reference
-Error! E2028: PreloadGraphics_ is an undefined reference
-Error! E2028: LevelCompleted_ is an undefined reference
-Error! E2028: CheckHighScore_ is an undefined reference
-Error! E2028: _MainMenu is an undefined reference
-Error! E2028: CP_ViewScores_ is an undefined reference
-Error! E2028: Victory_ is an undefined reference
+Error! E2028: DrawPlayBorder_ is an undefined reference
+Error! E2028: DrawLevel_ is an undefined reference
+Error! E2028: ClearMScreen_ is an undefined reference
+Error! E2028: DrawStripes_ is an undefined reference
 
 
                         +------------+
@@ -56,7 +23,7 @@ Error! E2028: Victory_ is an undefined reference
 Group                           Address              Size
 =====                           =======              ====
 
-DGROUP                          2d66:0000            00006e30
+DGROUP                          2c6b:0000            00006e20
 
 
 
@@ -344,49 +311,43 @@ US_CheckParm_TEXT      CODE           AUTO           0000:db20       0000013d
 US_Shutdown_TEXT       CODE           AUTO           0000:dc60       00000022
 US_Startup_TEXT        CODE           AUTO           0000:dc90       0000013d
 USL_HardError_TEXT     CODE           AUTO           0000:ddd0       00000194
-wl_game_TEXT           CODE           AUTO           0000:df70       0000003a
-GameLoop_TEXT          CODE           AUTO           0000:dfb0       000003eb
-Died_TEXT              CODE           AUTO           0000:e3a0       000003f8
-PlayDemo_TEXT          CODE           AUTO           0000:e7a0       000001c5
-RecordDemo_TEXT        CODE           AUTO           0000:e970       0000017e
-FinishDemoRecord_TEXT  CODE           AUTO           0000:eaf0       000000f3
-StartDemoRecord_TEXT   CODE           AUTO           0000:ebf0       0000006e
-DrawPlayScreen_TEXT    CODE           AUTO           0000:ec60       000000ec
-DrawPlayBorder_TEXT    CODE           AUTO           0000:ed50       000000f3
-DrawAllPlayBorder_TEXT CODE           AUTO           0000:ee50       00000069
-DrawAllPlayBorderSides_TEXT CODE      AUTO           0000:eec0       0000006b
-DrawPlayBorderSides_TEXT CODE         AUTO           0000:ef30       000000b8
-SetupGameLevel_TEXT    CODE           AUTO           0000:eff0       000004bd
-ScanInfoPlane_TEXT     CODE           AUTO           0000:f4b0       00000523
-ClearMemory_TEXT       CODE           AUTO           0000:f9e0       00000025
-UpdateSoundLoc_TEXT    CODE           AUTO           0000:fa10       00000049
-PlaySoundLocGlobal_TEXT CODE          AUTO           0000:fa60       00000068
-SetSoundLoc_TEXT       CODE           AUTO           0000:fad0       00000166
-id_exter_TEXT          CODE           AUTO           0000:fc40       00000000
-_TEXT                  CODE           AUTO           0fc4:0000       00009723
-id_tail13_DATA         FAR_DATA       AUTO           1937:0000       000015ad
-id_in13_DATA           FAR_DATA       AUTO           1937:15b0       00000180
-id_mm13_DATA           FAR_DATA       AUTO           1937:1730       00002bc0
-signon13_DATA          FAR_DATA       AUTO           1d66:0000       0000fa00
-id_vl13_DATA           FAR_DATA       AUTO           2d06:0000       00000600
-FAR_DATA               FAR_DATA       AUTO           2d66:0000       00000000
-_NULL                  BEGDATA        DGROUP         2d66:0000       00000020
-_AFTERNULL             BEGDATA        DGROUP         2d68:0000       00000002
-CONST                  DATA           DGROUP         2d68:0002       00000050
-CONST2                 DATA           DGROUP         2d6d:0002       00000132
-_DATA                  DATA           DGROUP         2d81:0000       00000fcc
-XIB                    DATA           DGROUP         2e7d:000c       00000000
-XI                     DATA           DGROUP         2e7d:000c       0000003c
-XIE                    DATA           DGROUP         2e81:0008       00000000
-YIB                    DATA           DGROUP         2e81:0008       00000000
-YI                     DATA           DGROUP         2e81:0008       00000018
-YIE                    DATA           DGROUP         2e83:0000       00000000
-STRINGS                DATA           DGROUP         2e83:0000       00000000
-DATA                   DATA           DGROUP         2e83:0000       00000000
-_emu_init_start        EMU            DGROUP         2e83:0000       00000000
-_emu_init_end          EMU            DGROUP         2e83:0000       00000000
-_BSS                   BSS            DGROUP         2e83:0000       0000545a
-STACK                  STACK          DGROUP         33c9:0000       00000800
+wl_debug_TEXT          CODE           AUTO           0000:df70       00000000
+wl_inter_TEXT          CODE           AUTO           0000:df70       0000012f
+NonShareware_TEXT      CODE           AUTO           0000:e0a0       000000d4
+CheckHighScore_TEXT    CODE           AUTO           0000:e180       00000222
+DrawHighScores_TEXT    CODE           AUTO           0000:e3b0       0000025d
+PreloadGraphics_TEXT   CODE           AUTO           0000:e610       000000ad
+PreloadUpdate_TEXT     CODE           AUTO           0000:e6c0       000000b6
+LevelCompleted_TEXT    CODE           AUTO           0000:e780       00000b1d
+BJ_Breathe_TEXT        CODE           AUTO           0000:f2a0       0000006e
+Write_TEXT             CODE           AUTO           0000:f310       00000132
+PG13_TEXT              CODE           AUTO           0000:f450       000000bb
+Victory_TEXT           CODE           AUTO           0000:f510       000003d8
+ClearSplitVWB_TEXT     CODE           AUTO           0000:f8f0       0000004d
+_TEXT                  CODE           AUTO           0f94:0000       00008a7b
+id_tail13_DATA         FAR_DATA       AUTO           183c:0000       000015ad
+id_in13_DATA           FAR_DATA       AUTO           183c:15b0       00000180
+id_mm13_DATA           FAR_DATA       AUTO           183c:1730       00002bc0
+signon13_DATA          FAR_DATA       AUTO           1c6b:0000       0000fa00
+id_vl13_DATA           FAR_DATA       AUTO           2c0b:0000       00000600
+FAR_DATA               FAR_DATA       AUTO           2c6b:0000       00000000
+_NULL                  BEGDATA        DGROUP         2c6b:0000       00000020
+_AFTERNULL             BEGDATA        DGROUP         2c6d:0000       00000002
+CONST                  DATA           DGROUP         2c6d:0002       00000050
+CONST2                 DATA           DGROUP         2c72:0002       00000132
+_DATA                  DATA           DGROUP         2c86:0000       00000f6c
+XIB                    DATA           DGROUP         2d7c:000c       00000000
+XI                     DATA           DGROUP         2d7c:000c       00000036
+XIE                    DATA           DGROUP         2d80:0002       00000000
+YIB                    DATA           DGROUP         2d80:0002       00000000
+YI                     DATA           DGROUP         2d80:0002       00000018
+YIE                    DATA           DGROUP         2d81:000a       00000000
+STRINGS                DATA           DGROUP         2d81:000a       00000000
+DATA                   DATA           DGROUP         2d81:000a       00000000
+_emu_init_start        EMU            DGROUP         2d81:000a       00000000
+_emu_init_end          EMU            DGROUP         2d81:000a       00000000
+_BSS                   BSS            DGROUP         2d82:0000       000054b0
+STACK                  STACK          DGROUP         32cd:0000       00000800
 
 
                         +----------------+
@@ -400,22 +361,22 @@ Address        Symbol
 =======        ======
 
 Module: test.obj(/dos/z/owwolf3d/test.c)
-2d66:11d0      _str
-2d66:1220+     _str2
-2d66:1242+     _virtualreality
-2d66:1244      _viewheight
-2d66:1246+     _mouseadjustment
-2d66:1248      _startgame
-2d66:124a+     _minheightdiv
-2d66:124c+     _centerx
-2d66:124e+     _shootdelta
-2d66:1250+     _nospr
-2d66:1252+     _IsA386
-2d66:1254      _screenofs
-2d66:1256      _viewwidth
-2d66:1258      _tedlevelnum
-2d66:125a      _tedlevel
-2d66:01b0+     _configname
+2c6b:1170+     _str
+2c6b:11c0+     _str2
+2c6b:11e2+     _virtualreality
+2c6b:11e4      _viewheight
+2c6b:11e6+     _mouseadjustment
+2c6b:11e8+     _startgame
+2c6b:11ea+     _minheightdiv
+2c6b:11ec+     _centerx
+2c6b:11ee+     _shootdelta
+2c6b:11f0+     _nospr
+2c6b:11f2+     _IsA386
+2c6b:11f4+     _screenofs
+2c6b:11f6      _viewwidth
+2c6b:11f8      _tedlevelnum
+2c6b:11fa      _tedlevel
+2c6b:01b0+     _configname
 0000:0360+     DoChecksum_
 0000:0332      ShutdownId_
 0000:0290+     MS_CheckParm_
@@ -423,131 +384,131 @@ Module: test.obj(/dos/z/owwolf3d/test.c)
 0000:0230      SetViewSize_
 0000:0162      Quit_
 0000:0080+     DemoLoop_
-2d66:01d4+     _nosprtxt
-2d66:125c      _loadedgame
+2c6b:01d4+     _nosprtxt
+2c6b:11fc+     _loadedgame
 0000:0062      main_
 Module: id_tail.obj(/dos/z/owwolf3d/src/id_tail.c)
-2d66:1260+     _mapwidthtable
-2d66:12e0      _wallheight
-2d66:1560+     _buttonheld
-2d66:1570+     _buttonstate
-2d66:1580+     _spotvis
-2d66:2580+     _nearmapylookup
-2d66:2680      _tilemap
-2d66:3680+     _farmapylookup
-2d66:3700+     _pixelangle
-2d66:3980      _Controls
-2d66:3988      _JoyDefs
-2d66:39b8+     _blockstarts
-2d66:3bc0      _latchpics
-2d66:3c88      _mapsegs
-2d66:3c90      _mapheaderseg
-2d66:3d80      _audiosegs
-2d66:4200+     _LastAttacker
-2d66:4204+     _thrustspeed
-2d66:4208      _fullscalefarcall
-2d66:460c      _scaledirectory
-2d66:4a10      _viewsin
-2d66:4a14      _viewy
-2d66:4a18      _viewx
-2d66:4a1c      _viewcos
-2d66:4a20+     _lasttimecount
-2d66:4a24+     _frameon
-2d66:4a28      _demoptr
-2d66:4a2c      _lastdemoptr
-2d66:4a30+     _update
-2d66:4b34      _gamestate
-2d66:4b78+     _speary
-2d66:4b7c+     _spearx
-2d66:4b80      _JoysPresent
-2d66:4b84      _DemoBuffer
-2d66:4b88      _updateptr
-2d66:4b8c      _abortprogram
-2d66:4b90      _pictable
-2d66:4b94      _grsegs
-2d66:4de8      _tinf
-2d66:4dec      _beforesort
-2d66:4df0      _aftersort
-2d66:4df4      _mminfo
-2d66:4e08      _uwidthtable
-2d66:4e30+     _MouseDownCount
-2d66:4e32+     _JoyPadPresent
-2d66:4e34+     _gotgatgun
-2d66:4e36+     _anglefrac
-2d66:4e38+     _pluy
-2d66:4e3a+     _plux
-2d66:4e3c+     _running
-2d66:4e3e      _insetupscaling
-2d66:4e40      _maxscaleshl2
-2d66:4e42      _maxscale
-2d66:4e44+     _viewangle
-2d66:4e46      _demorecord
-2d66:4e48      _demoplayback
-2d66:4e4a+     _controly
-2d66:4e4c+     _controlx
-2d66:4e4e+     _joystickport
-2d66:4e50      _viewsize
-2d66:4e52      _demobuffer
-2d66:4e54+     _noclip
-2d66:4e56+     _godmode
-2d66:4e58+     _joystickprogressive
-2d66:4e5a+     _mouseenabled
-2d66:4e5c+     _joypadenabled
-2d66:4e5e+     _joystickenabled
-2d66:4e60+     _singlestep
-2d66:4e62+     _extravbls
-2d66:4e64      _playstate
-2d66:4e66+     _madenoise
-2d66:4e68+     _spearflag
-2d66:4e6a      _fizzlein
-2d66:4e6c+     _spearangle
-2d66:4e6e      _DemoSize
-2d66:4e70      _DemoOffset
-2d66:4e72      _MousePresent
-2d66:4e74      _Paused
-2d66:4e76      _compatability
-2d66:4e78      _tics
-2d66:4e7a      _NoWait
-2d66:4e7c      _WindowH
-2d66:4e7e      _WindowW
-2d66:4e80      _WindowY
-2d66:4e82      _WindowX
-2d66:4e84      _PrintY
-2d66:4e86      _PrintX
-2d66:4e88      _ingame
-2d66:4e8a      _fontnumber
-2d66:4e8c      _px
-2d66:4e8e      _py
-2d66:4e90      _mapon
-2d66:4e92+     _profilehandle
-2d66:4e94      _debughandle
-2d66:4e96      _mmerror
-2d66:4e98      _bufferseg
-2d66:4e9a      _LastASCII
-2d66:4e9b      _LastScan
-2d66:4e9c      _backcolor
-2d66:4e9d      _fontcolor
-2d66:01e0+     _audioname
-2d66:01ed      _KbdDefs
-2d66:01f8      _DemoMode
-2d66:01fa      _screenloc
-2d66:0200      _freelatch
-2d66:0204+     _tileglobal
-2d66:0208+     _mindist
-2d66:020c+     _costable
-2d66:0210+     _dirscan
-2d66:0218+     _buttonscan
-2d66:0228+     _buttonmouse
-2d66:0230+     _buttonjoy
-2d66:4e9e      _ca_levelnum
-2d66:4e9f      _ca_levelbit
-1937:0000+     _sintable
-1937:0708+     _finetangent
-1937:1518      _grneeded
+2c6b:1200+     _mapwidthtable
+2c6b:1280      _wallheight
+2c6b:1500+     _buttonheld
+2c6b:1510+     _buttonstate
+2c6b:1520+     _spotvis
+2c6b:2520+     _nearmapylookup
+2c6b:2620+     _tilemap
+2c6b:3620+     _farmapylookup
+2c6b:36a0+     _pixelangle
+2c6b:3920      _Controls
+2c6b:3928      _JoyDefs
+2c6b:3958+     _blockstarts
+2c6b:3b60      _latchpics
+2c6b:3c28      _mapsegs
+2c6b:3c30      _mapheaderseg
+2c6b:3d20      _audiosegs
+2c6b:41a0+     _LastAttacker
+2c6b:41a4+     _thrustspeed
+2c6b:41a8      _fullscalefarcall
+2c6b:45ac      _scaledirectory
+2c6b:49b0+     _viewsin
+2c6b:49b4+     _viewy
+2c6b:49b8+     _viewx
+2c6b:49bc+     _viewcos
+2c6b:49c0+     _lasttimecount
+2c6b:49c4+     _frameon
+2c6b:49c8+     _demoptr
+2c6b:49cc+     _lastdemoptr
+2c6b:49d0      _update
+2c6b:4ad4      _gamestate
+2c6b:4b18+     _speary
+2c6b:4b1c+     _spearx
+2c6b:4b20      _JoysPresent
+2c6b:4b24      _DemoBuffer
+2c6b:4b28      _updateptr
+2c6b:4b2c      _abortprogram
+2c6b:4b30      _pictable
+2c6b:4b34      _grsegs
+2c6b:4d88      _tinf
+2c6b:4d8c      _beforesort
+2c6b:4d90      _aftersort
+2c6b:4d94      _mminfo
+2c6b:4da8      _uwidthtable
+2c6b:4dd0+     _MouseDownCount
+2c6b:4dd2+     _JoyPadPresent
+2c6b:4dd4+     _gotgatgun
+2c6b:4dd6+     _anglefrac
+2c6b:4dd8+     _pluy
+2c6b:4dda+     _plux
+2c6b:4ddc+     _running
+2c6b:4dde      _insetupscaling
+2c6b:4de0      _maxscaleshl2
+2c6b:4de2      _maxscale
+2c6b:4de4+     _viewangle
+2c6b:4de6+     _demorecord
+2c6b:4de8+     _demoplayback
+2c6b:4dea+     _controly
+2c6b:4dec+     _controlx
+2c6b:4dee+     _joystickport
+2c6b:4df0      _viewsize
+2c6b:4df2+     _demobuffer
+2c6b:4df4+     _noclip
+2c6b:4df6+     _godmode
+2c6b:4df8+     _joystickprogressive
+2c6b:4dfa+     _mouseenabled
+2c6b:4dfc+     _joypadenabled
+2c6b:4dfe+     _joystickenabled
+2c6b:4e00+     _singlestep
+2c6b:4e02+     _extravbls
+2c6b:4e04+     _playstate
+2c6b:4e06+     _madenoise
+2c6b:4e08+     _spearflag
+2c6b:4e0a+     _fizzlein
+2c6b:4e0c+     _spearangle
+2c6b:4e0e      _DemoSize
+2c6b:4e10      _DemoOffset
+2c6b:4e12      _MousePresent
+2c6b:4e14      _Paused
+2c6b:4e16      _compatability
+2c6b:4e18+     _tics
+2c6b:4e1a      _NoWait
+2c6b:4e1c      _WindowH
+2c6b:4e1e      _WindowW
+2c6b:4e20      _WindowY
+2c6b:4e22      _WindowX
+2c6b:4e24      _PrintY
+2c6b:4e26      _PrintX
+2c6b:4e28+     _ingame
+2c6b:4e2a      _fontnumber
+2c6b:4e2c      _px
+2c6b:4e2e      _py
+2c6b:4e30      _mapon
+2c6b:4e32+     _profilehandle
+2c6b:4e34      _debughandle
+2c6b:4e36      _mmerror
+2c6b:4e38      _bufferseg
+2c6b:4e3a      _LastASCII
+2c6b:4e3b      _LastScan
+2c6b:4e3c      _backcolor
+2c6b:4e3d      _fontcolor
+2c6b:01e0+     _audioname
+2c6b:01ed      _KbdDefs
+2c6b:01f8      _DemoMode
+2c6b:01fa      _screenloc
+2c6b:0200      _freelatch
+2c6b:0204+     _tileglobal
+2c6b:0208+     _mindist
+2c6b:020c+     _costable
+2c6b:0210+     _dirscan
+2c6b:0218+     _buttonscan
+2c6b:0228+     _buttonmouse
+2c6b:0230+     _buttonjoy
+2c6b:4e3e      _ca_levelnum
+2c6b:4e3f      _ca_levelbit
+183c:0000+     _sintable
+183c:0708+     _finetangent
+183c:1518      _grneeded
 0000:0510      DebugMemory__
 Module: id_in.obj(/dos/z/owwolf3d/src/id_in.c)
-2d66:4ea0+     _btnstate
-2d66:4eb0      _Keyboard
+2c6b:4e40+     _btnstate
+2c6b:4e50      _Keyboard
 0000:1bc0+     INL_KeyService_
 0000:1a32+     IN_GetJoyAbs_
 0000:17b0+     INL_GetJoyDelta_
@@ -569,13 +530,13 @@ Module: id_in.obj(/dos/z/owwolf3d/src/id_in.c)
 0000:0750+     IN_MouseButtons_
 0000:0722+     IN_JoyButtons_
 Module: id_mm.obj(/dos/z/owwolf3d/src/id_mm.c)
-2d66:4fe0+     _mmhead
-2d66:4fe4+     _farheap
-2d66:4fe8+     _mmnew
-2d66:4fec+     _mmrover
-2d66:4ff0+     _mmfree
-2d66:4ff4+     _UMBbase
-2d66:5008+     _XMSaddr
+2c6b:4f80+     _mmhead
+2c6b:4f84+     _farheap
+2c6b:4f88+     _mmnew
+2c6b:4f8c+     _mmrover
+2c6b:4f90+     _mmfree
+2c6b:4f94+     _UMBbase
+2c6b:4fa8+     _XMSaddr
 0000:3160+     MML_CheckForEMS_
 0000:3112+     MML_CheckForXMS_
 0000:2fa0+     MML_UseSpace_
@@ -592,36 +553,36 @@ Module: id_mm.obj(/dos/z/owwolf3d/src/id_mm.c)
 0000:21c0      MM_UnusedMemory_
 0000:2152      MM_TotalFree_
 0000:2000      MM_Report__
-2d66:501a+     _nearheap
-2d66:501c+     _mmstarted
-2d66:501e+     _bombonerror
-2d66:5020+     _numUMBs
-1937:1730+     _mmblocks
+2c6b:4fba+     _nearheap
+2c6b:4fbc+     _mmstarted
+2c6b:4fbe+     _bombonerror
+2c6b:4fc0+     _numUMBs
+183c:1730+     _mmblocks
 0000:1fe2      MM_BombOnError_
 Module: id_pm.obj(/dos/z/owwolf3d/src/id_pm.c)
-2d66:5030+     _MainMemUsed
-2d66:50f8+     _EMSList
-2d66:5118+     _MainMemPages
-2d66:51e0+     _PMSegPages
-2d66:51e4+     _PMFrameCount
-2d66:51e8+     _XMSDriver
-2d66:51ec+     _PMPages
-2d66:51fe+     _MainPagesUsed
-2d66:5200+     _PMThrashing
-2d66:5202+     _XMSPagesUsed
-2d66:5204+     _EMSPagesUsed
-2d66:5206+     _PMNumBlocks
-2d66:5208+     _MainPresent
-2d66:520a+     _XMSAvail
-2d66:520c+     _XMSHandle
-2d66:520e+     _EMSVer
-2d66:5210+     _totalEMSpages
-2d66:5212+     _EMSAvail
-2d66:5214+     _EMSPageFrame
-2d66:5216+     _EMSPhysicalPage
-2d66:0280+     _XMSProtectPage
-2d66:0282+     _PageFileName
-2d66:0290+     _PageFile
+2c6b:4fd0+     _MainMemUsed
+2c6b:5098+     _EMSList
+2c6b:50b8+     _MainMemPages
+2c6b:5180+     _PMSegPages
+2c6b:5184+     _PMFrameCount
+2c6b:5188+     _XMSDriver
+2c6b:518c+     _PMPages
+2c6b:519e+     _MainPagesUsed
+2c6b:51a0+     _PMThrashing
+2c6b:51a2+     _XMSPagesUsed
+2c6b:51a4+     _EMSPagesUsed
+2c6b:51a6+     _PMNumBlocks
+2c6b:51a8+     _MainPresent
+2c6b:51aa+     _XMSAvail
+2c6b:51ac+     _XMSHandle
+2c6b:51ae+     _EMSVer
+2c6b:51b0+     _totalEMSpages
+2c6b:51b2+     _EMSAvail
+2c6b:51b4+     _EMSPageFrame
+2c6b:51b6+     _EMSPhysicalPage
+2c6b:0280+     _XMSProtectPage
+2c6b:0282+     _PageFileName
+2c6b:0290+     _PageFile
 0000:4e60+     PML_MapEMS_
 0000:4c62+     PML_StartupEMS_
 0000:4c00+     PML_ShutdownEMS_
@@ -646,37 +607,37 @@ Module: id_pm.obj(/dos/z/owwolf3d/src/id_pm.c)
 0000:3c82+     PML_LoadPage_
 0000:3b70      PM_GetPage_
 0000:3b12      PM_SetPageLock_
-0000:3890+     PM_Preload_
+0000:3890      PM_Preload_
 0000:37e2+     PM_NextFrame_
 0000:3750+     PM_Reset_
 0000:3662      PM_Startup_
-2d66:5218+     _MainPagesAvail
-2d66:521a+     _PMPanicMode
-2d66:521c+     _freeEMSpages
-2d66:521e+     _EMSHandle
-2d66:5220+     _PMStarted
-2d66:5222      _EMSPresent
-2d66:5224      _ChunksInFile
-2d66:5226      _PMSpriteStart
-2d66:5228+     _EMSPagesAvail
-2d66:522a+     _XMSPagesAvail
-2d66:522c      _PMSoundStart
-2d66:522e      _XMSPresent
+2c6b:51b8+     _MainPagesAvail
+2c6b:51ba+     _PMPanicMode
+2c6b:51bc+     _freeEMSpages
+2c6b:51be+     _EMSHandle
+2c6b:51c0+     _PMStarted
+2c6b:51c2      _EMSPresent
+2c6b:51c4      _ChunksInFile
+2c6b:51c6      _PMSpriteStart
+2c6b:51c8+     _EMSPagesAvail
+2c6b:51ca+     _XMSPagesAvail
+2c6b:51cc      _PMSoundStart
+2c6b:51ce      _XMSPresent
 0000:3630      PM_Shutdown_
 Module: id_ca.obj(/dos/z/owwolf3d/src/id_ca.c)
-2d66:5230+     _grhuffman
-2d66:562c+     _audiohuffman
-2d66:5a28+     _chunkexplen
-2d66:5a2c+     _chunkcomplen
-2d66:5a30+     _grstarts
-2d66:5a34+     _audiostarts
+2c6b:51d0+     _grhuffman
+2c6b:55cc+     _audiohuffman
+2c6b:59c8+     _chunkexplen
+2c6b:59cc+     _chunkcomplen
+2c6b:59d0+     _grstarts
+2c6b:59d4+     _audiostarts
 0000:6d40+     CA_OpenDebug_
 0000:6d22+     CA_CloseDebug_
 0000:6c30+     CAL_GetGrChunkLength_
 0000:6bb2      CA_FarRead_
 0000:6b30+     CA_FarWrite_
 0000:6ac2+     CA_ReadFile_
-0000:6a50      CA_WriteFile_
+0000:6a50+     CA_WriteFile_
 0000:69c2+     CA_LoadFile_
 0000:6900+     CAL_OptimizeNodes_
 0000:67e2+     CAL_HuffExpand_
@@ -689,11 +650,11 @@ Module: id_ca.obj(/dos/z/owwolf3d/src/id_ca.c)
 0000:5e90      CA_Startup_
 0000:5e72      CA_Shutdown_
 0000:5d30+     CA_CacheAudioChunk_
-0000:5c62      CA_LoadAllSounds_
+0000:5c62+     CA_LoadAllSounds_
 0000:5b80+     CAL_ExpandGrChunk_
 0000:59e2      CA_CacheGrChunk_
 0000:58a0+     CA_CacheScreen_
-0000:56b2      CA_CacheMap_
+0000:56b2+     CA_CacheMap_
 0000:5620+     CA_UpLevel_
 0000:55e2+     CA_DownLevel_
 0000:55a0+     CA_ClearMarks_
@@ -701,82 +662,82 @@ Module: id_ca.obj(/dos/z/owwolf3d/src/id_ca.c)
 0000:54e0+     CA_SetGrPurge_
 0000:5472+     CA_SetAllPurge_
 0000:5060+     CA_CacheMarks_
-2d66:02ae+     _gheadname
-2d66:02b8+     _gfilename
-2d66:02c2+     _gdictname
-2d66:02cc+     _mheadname
-2d66:02d6+     _mfilename
-2d66:02e0+     _aheadname
-2d66:02ea+     _afilename
-2d66:5a46+     _maphandle
-2d66:5a48+     _oldsoundmode
-2d66:5a4a+     _grhandle
-2d66:5a4c+     _audiohandle
-2d66:5a4e+     _extension
+2c6b:02ae+     _gheadname
+2c6b:02b8+     _gfilename
+2c6b:02c2+     _gdictname
+2c6b:02cc+     _mheadname
+2c6b:02d6+     _mfilename
+2c6b:02e0+     _aheadname
+2c6b:02ea+     _afilename
+2c6b:59e6+     _maphandle
+2c6b:59e8+     _oldsoundmode
+2c6b:59ea+     _grhandle
+2c6b:59ec+     _audiohandle
+2c6b:59ee+     _extension
 0000:4fb2+     CA_CannotOpen_
 Module: id_sd.obj(/dos/z/owwolf3d/src/id_sd.c)
-2d66:5bf0+     _alZeroInst
-2d66:5c00+     _sqHackTime
-2d66:5c04+     _sqHackPtr
-2d66:5c08+     _sqHack
-2d66:5c0c+     _alTimeCount
-2d66:5c10+     _ssSample
-2d66:5c14+     _alSound
-2d66:5c18+     _alLengthLeft
-2d66:5c1c+     _ssLengthLeft
-2d66:5c20+     _pcSound
-2d66:5c30+     _LocalTime
-2d66:5c34+     _DigiList
-2d66:5c3c+     _TimerCount
-2d66:5c44+     _SoundTable
-2d66:5c48+     _TimerDivisor
-2d66:5c4c+     _t0OldService
-2d66:5c50      _TimeCount
-2d66:5c54+     _pcSoundLookup
-2d66:5e52+     _DigiMap
-2d66:5f10+     _pcindicate
-2d66:5f12+     _sqHackLen
-2d66:5f16+     _sqHackSeqLen
-2d66:5f18+     _sqActive
-2d66:5f1c+     _alNoIRQ
-2d66:5f1e+     _pcLengthLeft
-2d66:5f20+     _alBlock
-2d66:5f22+     _alNoCheck
-2d66:5f24+     _ssNoCheck
-2d66:5f26+     _ssStatus
-2d66:5f28+     _ssActive
-2d66:5f2a+     _ssControl
-2d66:5f2c+     _ssData
-2d66:5f30+     _DigiLastStart
-2d66:5f32+     _DigiPage
-2d66:5f3a+     _DigiLastEnd
-2d66:5f3e+     _NumDigi
-2d66:5f40+     _TimerRate
-2d66:5f42+     _DigiLeft
-2d66:5f48+     _nextsoundpos
-2d66:5f4a+     _SoundNumber
-2d66:5f4c+     _ssIsTandy
-2d66:5f4e+     _NeedsDigitized
-2d66:5f50+     _DigiPriority
-2d66:5f52+     _LeftPosition
-2d66:5f54+     _SoundPriority
-2d66:5f56+     _RightPosition
-2d66:5f58+     _HackCount
-2d66:5f5a+     _DigiNumber
-2d66:5f5e+     _SBProPresent
-2d66:5f60+     _DigiPlaying
-2d66:5f62+     _SoundSourcePresent
-2d66:5f64      _SoundMode
-2d66:5f66+     _DigiMode
-2d66:5f68+     _NeedsMusic
-2d66:5f6a+     _SoundBlasterPresent
-2d66:5f6c+     _AdLibPresent
-2d66:5f6e      _SoundPositioned
-2d66:5f70+     _MusicMode
-2d66:5f72+     _ssOff
-2d66:5f73+     _pcLastSample
-2d66:5f74+     _ssOn
-2d66:0300+     _ssPort
+2c6b:5b90+     _alZeroInst
+2c6b:5ba0+     _sqHackTime
+2c6b:5ba4+     _sqHackPtr
+2c6b:5ba8+     _sqHack
+2c6b:5bac+     _alTimeCount
+2c6b:5bb0+     _ssSample
+2c6b:5bb4+     _alSound
+2c6b:5bb8+     _alLengthLeft
+2c6b:5bbc+     _ssLengthLeft
+2c6b:5bc0+     _pcSound
+2c6b:5bd0+     _LocalTime
+2c6b:5bd4+     _DigiList
+2c6b:5bdc+     _TimerCount
+2c6b:5be4+     _SoundTable
+2c6b:5be8+     _TimerDivisor
+2c6b:5bec+     _t0OldService
+2c6b:5bf0      _TimeCount
+2c6b:5bf4+     _pcSoundLookup
+2c6b:5df2+     _DigiMap
+2c6b:5eb0+     _pcindicate
+2c6b:5eb2+     _sqHackLen
+2c6b:5eb6+     _sqHackSeqLen
+2c6b:5eb8+     _sqActive
+2c6b:5ebc+     _alNoIRQ
+2c6b:5ebe+     _pcLengthLeft
+2c6b:5ec0+     _alBlock
+2c6b:5ec2+     _alNoCheck
+2c6b:5ec4+     _ssNoCheck
+2c6b:5ec6+     _ssStatus
+2c6b:5ec8+     _ssActive
+2c6b:5eca+     _ssControl
+2c6b:5ecc+     _ssData
+2c6b:5ed0+     _DigiLastStart
+2c6b:5ed2+     _DigiPage
+2c6b:5eda+     _DigiLastEnd
+2c6b:5ede+     _NumDigi
+2c6b:5ee0+     _TimerRate
+2c6b:5ee2+     _DigiLeft
+2c6b:5ee8+     _nextsoundpos
+2c6b:5eea+     _SoundNumber
+2c6b:5eec+     _ssIsTandy
+2c6b:5eee+     _NeedsDigitized
+2c6b:5ef0+     _DigiPriority
+2c6b:5ef2+     _LeftPosition
+2c6b:5ef4+     _SoundPriority
+2c6b:5ef6+     _RightPosition
+2c6b:5ef8+     _HackCount
+2c6b:5efa+     _DigiNumber
+2c6b:5efe+     _SBProPresent
+2c6b:5f00+     _DigiPlaying
+2c6b:5f02+     _SoundSourcePresent
+2c6b:5f04      _SoundMode
+2c6b:5f06+     _DigiMode
+2c6b:5f08+     _NeedsMusic
+2c6b:5f0a+     _SoundBlasterPresent
+2c6b:5f0c+     _AdLibPresent
+2c6b:5f0e+     _SoundPositioned
+2c6b:5f10+     _MusicMode
+2c6b:5f12+     _ssOff
+2c6b:5f13+     _pcLastSample
+2c6b:5f14+     _ssOn
+2c6b:0300+     _ssPort
 0000:9370+     SDL_t0ExtremeAsmService_
 0000:92d2+     __SDL_t0ExtremeAsmService_
 0000:92a0+     SDL_t0FastAsmService_
@@ -787,9 +748,9 @@ Module: id_sd.obj(/dos/z/owwolf3d/src/id_sd.c)
 0000:88b2+     SDL_SSService_
 0000:86a0+     SDL_LoadDigiSegment_
 0000:8622+     SDL_PlayDigiSegment_
-0000:8550      SD_StopDigitized_
+0000:8550+     SD_StopDigitized_
 0000:84a2+     SD_Poll_
-0000:8440      SD_SetPosition_
+0000:8440+     SD_SetPosition_
 0000:8322+     SD_PlayDigitized_
 0000:8290+     SDL_DigitizedDone_
 0000:8202+     SDL_DigitizedDoneInIRQ_
@@ -803,25 +764,25 @@ Module: id_sd.obj(/dos/z/owwolf3d/src/id_sd.c)
 0000:7560+     SD_Default_
 0000:74b2+     SD_Shutdown_
 0000:7480+     SD_SetUserHook_
-0000:7452      SD_PositionSound_
+0000:7452+     SD_PositionSound_
 0000:71f0      SD_PlaySound_
 0000:7182      SD_SoundPlaying_
 0000:7100      SD_StopSound_
-0000:70e2      SD_WaitSoundDone_
+0000:70e2+     SD_WaitSoundDone_
 0000:70c0+     SD_MusicOn_
 0000:7062+     SD_MusicOff_
 0000:6fe0+     SD_StartMusic_
 0000:6fb2+     SD_FadeOutMusic_
-2d66:0372+     _count_time
-2d66:0374+     _count_fx
-2d66:0376+     _extreme
+2c6b:0372+     _count_time
+2c6b:0374+     _count_fx
+2c6b:0376+     _extreme
 0000:6f90+     SD_MusicPlaying_
 Module: gamepal3.obj(/dos/z/owwolf3d/src/gamepal3.c)
-2d66:0378      _gamepal
+2c6b:0378      _gamepal
 Module: signon.obj(/dos/z/owwolf3d/src/signon.c)
-1d66:0000+     _signon
+1c6b:0000+     _signon
 Module: id_vl.obj(/dos/z/owwolf3d/src/id_vl.c)
-2d66:5f78      _ylookup
+2c6b:5f18      _ylookup
 0000:a7b0+     VL_Shutdown_
 0000:a772+     VL_SetVGAPlaneMode_
 0000:a740+     VL_SetTextMode_
@@ -849,19 +810,19 @@ Module: id_vl.obj(/dos/z/owwolf3d/src/id_vl.c)
 0000:99e0+     VL_ScreenToScreen_
 0000:9852+     VL_DrawTile8String_
 0000:9760+     VL_DrawLatch8String_
-2d66:0678      _screenseg
-2d66:067a+     _pixmasks
-2d66:067e+     _leftmasks
-2d66:0682+     _rightmasks
-2d66:6116+     _fastpalette
-2d66:6118      _linewidth
-2d66:611a+     _screenfaded
-2d66:611c+     _bordercolor
-2d66:611e+     _pelpan
-2d66:6120      _bufferofs
-2d66:6122      _displayofs
-2d06:0000+     _palette2
-2d06:0300+     _palette1
+2c6b:0678      _screenseg
+2c6b:067a+     _pixmasks
+2c6b:067e+     _leftmasks
+2c6b:0682+     _rightmasks
+2c6b:60b6+     _fastpalette
+2c6b:60b8      _linewidth
+2c6b:60ba+     _screenfaded
+2c6b:60bc+     _bordercolor
+2c6b:60be+     _pelpan
+2c6b:60c0      _bufferofs
+2c6b:60c2      _displayofs
+2c0b:0000+     _palette2
+2c0b:0300+     _palette1
 0000:9722+     VL_SizeTile8String_
 Module: id_vh.obj(/dos/z/owwolf3d/src/id_vh.c)
 0000:b410+     VW_DrawPropString_
@@ -876,42 +837,42 @@ Module: id_vh.obj(/dos/z/owwolf3d/src/id_vh.c)
 0000:ad72      VWB_DrawPic_
 0000:ad20      VWB_DrawPropString_
 0000:acd2      VWB_Bar_
-0000:ac90      VWB_Plot_
-0000:ac42      VWB_Hlin_
-0000:abf0      VWB_Vlin_
+0000:ac90+     VWB_Plot_
+0000:ac42+     VWB_Hlin_
+0000:abf0+     VWB_Vlin_
 0000:abd2      VH_UpdateScreen_
-0000:ab30+     LatchDrawPic_
+0000:ab30      LatchDrawPic_
 0000:a982+     LoadLatchMem_
-2d66:6132+     _bufferheight
-2d66:6134+     _bufferwidth
-0000:a810      FizzleFade_
+2c6b:60d2+     _bufferheight
+2c6b:60d4+     _bufferwidth
+0000:a810+     FizzleFade_
 Module: wl_scale.obj(/dos/z/owwolf3d/src/wl_scale.c)
-2d66:6144+     _linecmds
-2d66:6148+     _linescale
-2d66:614c+     _work
+2c6b:60e4+     _linecmds
+2c6b:60e8+     _linescale
+2c6b:60ec+     _work
 0000:ce20+     BadScale_
 0000:cb02+     SetupScaling_
 0000:c8f0+     BuildCompScale_
 0000:c792+     ScaleLine_
 0000:ba90+     ScaleShape_
-2d66:068e+     _mapmasks1
-2d66:06ae+     _mapmasks2
-2d66:06ce+     _mapmasks3
-2d66:06ee+     _wordmasks
-2d66:615e+     _maskword
-2d66:6160+     _slinewidth
-2d66:6162+     _slinex
-2d66:6164+     _stepbytwo
-2d66:6166+     _mask1
-2d66:6167+     _mask2
-2d66:6168+     _mask3
+2c6b:068e+     _mapmasks1
+2c6b:06ae+     _mapmasks2
+2c6b:06ce+     _mapmasks3
+2c6b:06ee+     _wordmasks
+2c6b:60fe+     _maskword
+2c6b:6100+     _slinewidth
+2c6b:6102+     _slinex
+2c6b:6104+     _stepbytwo
+2c6b:6106+     _mask1
+2c6b:6107+     _mask2
+2c6b:6108+     _mask3
 0000:b5e2+     SimpleScaleShape_
 Module: id_us_1.obj(/dos/z/owwolf3d/src/id_us_1.c)
-2d66:6170+     _Games
-2d66:0780+     _USL_MeasureString
-2d66:0784+     _USL_DrawString
-2d66:0788+     _Scores
-2d66:0964+     _rndindex
+2c6b:6110+     _Games
+2c6b:0780      _USL_MeasureString
+2c6b:0784+     _USL_DrawString
+2c6b:0788      _Scores
+2c6b:0964+     _rndindex
 0000:ddd0+     USL_HardError_
 0000:dc92+     US_Startup_
 0000:dc60+     US_Shutdown_
@@ -930,473 +891,439 @@ Module: id_us_1.obj(/dos/z/owwolf3d/src/id_us_1.c)
 0000:d562+     US_SaveWindow_
 0000:d4a0+     US_RestoreWindow_
 0000:cfa2      US_LineInput_
-0000:cf60      US_InitRndT_
-2d66:6288+     _CursorBad
-2d66:628a+     _CursorY
-2d66:628c+     _CursorX
-2d66:628e+     _Button1
-2d66:6290+     _Button0
+0000:cf60+     US_InitRndT_
+2c6b:6228+     _CursorBad
+2c6b:622a+     _CursorY
+2c6b:622c+     _CursorX
+2c6b:622e+     _Button1
+2c6b:6230+     _Button0
 0000:cf22+     US_RndT_
-Module: wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-2d66:62c0+     _globalsoundy
-2d66:62c4+     _globalsoundx
-0000:fad0+     SetSoundLoc_
-0000:fa62+     PlaySoundLocGlobal_
-0000:fa10+     UpdateSoundLoc_
-0000:f9e2+     ClearMemory_
-0000:f692+     ScanInfoPlane_
-0000:f008+     SetupGameLevel_
-0000:ef30+     DrawPlayBorderSides_
-0000:eec2+     DrawAllPlayBorderSides_
-0000:ee50+     DrawAllPlayBorder_
-0000:ed52+     DrawPlayBorder_
-0000:ec60+     DrawPlayScreen_
-0000:ebf2+     StartDemoRecord_
-0000:eaf0+     FinishDemoRecord_
-0000:e972+     RecordDemo_
-0000:e7a0+     PlayDemo_
-0000:e3b8+     Died_
-2d66:0a66+     _ElevatorBackTo
-2d66:0a72+     _righttable
-2d66:0c34+     _lefttable
-2d66:0df6+     _demoname
-2d66:62d6+     _rightchannel
-2d66:62d8+     _leftchannel
-0000:dfc2+     GameLoop_
+Module: wl_debug.obj(/dos/z/owwolf3d/src/wl_debug.c)
+2c6b:0a70+     _vbuf
+Module: wl_inter.obj(/dos/z/owwolf3d/src/wl_inter.c)
+2c6b:6270+     _LevelRatios
+0000:f8f0+     ClearSplitVWB_
+0000:f512+     Victory_
+0000:f450+     PG13_
+0000:f312+     Write_
+0000:f2a0+     BJ_Breathe_
+0000:e788+     LevelCompleted_
+0000:e6c0+     PreloadUpdate_
+0000:e612+     PreloadGraphics_
+0000:e3b0+     DrawHighScores_
+0000:e182+     CheckHighScore_
+0000:e0a0+     NonShareware_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(stk086.asm)
-0fc4:0005      __STK
-0fc4:0025*     __STKOVERFLOW_
+0f94:0005      __STK
+0f94:0025*     __STKOVERFLOW_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(argcv.c)
-2d66:62e8      __argv
-2d66:62ec      ___argv
-2d66:62f0      __argc
-2d66:62f2      ___argc
+2c6b:62de      __argv
+2c6b:62e2      ___argv
+2c6b:62e6      __argc
+2c6b:62e8      ___argc
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(pia.asm)
-0fc4:0049      __PIA
-0fc4:0042*     __PIS
+0f94:0049      __PIA
+0f94:0042*     __PIS
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(istable.c)
-2d66:0072      __IsTable
+2c6b:0072      __IsTable
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(fstricmp.c)
-0fc4:0060      _fstricmp_
+0f94:0060      _fstricmp_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(intx086.c)
-0fc4:009d+     int86x_
-0fc4:0220      int86_
+0f94:009d+     int86x_
+0f94:0220      int86_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(puts.c)
-0fc4:024d      puts_
+0f94:024d      puts_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(exit.c)
-0fc4:027d+     __null_int23_exit_
-0fc4:027e      exit_
-0fc4:0296*     _exit_
-2d66:0e0e+     ___int23_exit
-2d66:0e12      ___FPE_handler_exit
+0f94:027d+     __null_int23_exit_
+0f94:027e      exit_
+0f94:0296*     _exit_
+2c6b:0db2+     ___int23_exit
+2c6b:0db6      ___FPE_handler_exit
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(printf.c)
-0fc4:02b1      printf_
+0f94:02b1      printf_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(cstart)
-2d66:0000*     __nullarea
-2d66:0e16*     __ovlflag
-2d66:0e17*     __intno
-2d66:0e18*     __ovlvec
-0fc4:02e0      _cstart_
-0fc4:03b3*     _Not_Enough_Memory_
-0fc4:04e5      __exit_
-0fc4:0502      __do_exit_with_msg__
-0fc4:055b      __GETDS
+2c6b:0000*     __nullarea
+2c6b:0dba*     __ovlflag
+2c6b:0dbb*     __intno
+2c6b:0dbc*     __ovlvec
+0f94:02e0      _cstart_
+0f94:03b3*     _Not_Enough_Memory_
+0f94:04e5      __exit_
+0f94:0502      __do_exit_with_msg__
+0f94:055b      __GETDS
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(cmodel.asm)
-0fc4:0566      _big_code_
-0fc4:0566*     CodeModelMismatch
+0f94:0566      _big_code_
+0f94:0566*     CodeModelMismatch
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(i4d.asm)
-0fc4:0566      __I4D
-0fc4:05b5*     __U4D
+0f94:0566      __I4D
+0f94:05b5*     __U4D
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(i4m.asm)
-0fc4:063a      __I4M
-0fc4:063a      __U4M
+0f94:063a      __I4M
+0f94:063a      __U4M
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(d_getvec.c)
-0fc4:0652      _dos_getvect_
+0f94:0652      _dos_getvect_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(d_setvec.c)
-0fc4:065d      _dos_setvect_
+0f94:065d      _dos_setvect_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(heapgrow.c)
-0fc4:066a*     _heapgrow_
-0fc4:066a      _fheapgrow_
-0fc4:066b      _nheapgrow_
+0f94:066a*     _heapgrow_
+0f94:066a      _fheapgrow_
+0f94:066b      _nheapgrow_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(memavl.c)
-0fc4:06e0      _memavl_
+0f94:06e0      _memavl_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(nmalloc.c)
-0fc4:0725      _nmalloc_
-2d66:0e1c      ___nheapbeg
-2d66:0e1e      ___MiniHeapRover
-2d66:0e20      ___LargestSizeB4MiniHeapRover
+0f94:0725      _nmalloc_
+2c6b:0dc0      ___nheapbeg
+2c6b:0dc2      ___MiniHeapRover
+2c6b:0dc4      ___LargestSizeB4MiniHeapRover
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(fmalloc.c)
-0fc4:07fc      _fmalloc_
-0fc4:07fc      malloc_
-2d66:0e22+     ___fheap
-2d66:0e24      ___fheapRover
-2d66:0e26      ___LargestSizeB4Rover
+0f94:07fc      _fmalloc_
+0f94:07fc      malloc_
+2c6b:0dc6+     ___fheap
+2c6b:0dc8      ___fheapRover
+2c6b:0dca      ___LargestSizeB4Rover
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(ffree.c)
-0fc4:0971      _ffree_
-0fc4:0971      free_
+0f94:0971      _ffree_
+0f94:0971      free_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(nfree.c)
-0fc4:09de      _nfree_
-2d66:62f4+     ___MiniHeapFreeRover
+0f94:09de      _nfree_
+2c6b:62ea+     ___MiniHeapFreeRover
 Module: /dos/fdos/watcom2/lib286/math87h.lib(fchop87.asm)
-0fc4:0ada      __CHP
+0f94:0ada      __CHP
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(ptc.asm)
-0fc4:0b02      __PTC
+0f94:0b02      __PTC
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(fopen.c)
-0fc4:0b35+     __open_flags_
-0fc4:0dea+     _fsopen_
-0fc4:0e4e      fopen_
-0fc4:0f59*     freopen_
+0f94:0b35+     __open_flags_
+0f94:0dea+     _fsopen_
+0f94:0e4e      fopen_
+0f94:0f59*     freopen_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(fprintf.c)
-0fc4:0fc6      fprintf_
+0f94:0fc6      fprintf_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(fclose.c)
-0fc4:0ff5      __doclose_
-0fc4:1161      __shutdown_stream_
-0fc4:117b      fclose_
-2d66:62f6+     ___RmTmpFileFn
+0f94:0ff5      __doclose_
+0f94:1161      __shutdown_stream_
+0f94:117b      fclose_
+2c6b:62ec+     ___RmTmpFileFn
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(fltused.c)
-2d66:0e28      _fltused_
+2c6b:0dcc      _fltused_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(_8087086.asm)
-2d66:0e2a      __8087
-2d66:0e2b      __real87
-2d66:0e2c      __dos87emucall
-2d66:0e2e      __dos87real
+2c6b:0dce      __8087
+2c6b:0dcf      __real87
+2c6b:0dd0      __dos87emucall
+2c6b:0dd2      __dos87real
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(lseek.c)
-0fc4:11e6      lseek_
+0f94:11e6      lseek_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(open.c)
-0fc4:1438      open_
-0fc4:146f      sopen_
+0f94:1438      open_
+0f94:146f      sopen_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(read.c)
-0fc4:149c      read_
+0f94:149c      read_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(close.c)
-0fc4:15dc      close_
+0f94:15dc      close_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(unlnk.c)
-0fc4:15e1      unlink_
+0f94:15e1      unlink_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(filelen.c)
-0fc4:15f0      filelength_
+0f94:15f0      filelength_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(pts.asm)
-0fc4:164e      __PTS
+0f94:164e      __PTS
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(getenv.c)
-0fc4:167f      getenv_
+0f94:167f      getenv_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(toupper.c)
-0fc4:176a      toupper_
+0f94:176a      toupper_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(strtol.c)
-0fc4:1a64*     strtoul_
-0fc4:1a76      strtol_
+0f94:1a64*     strtoul_
+0f94:1a76      strtol_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(iob.c)
-2d66:0ebc      ___iob
-2d66:62fa      ___OpenStreams
-2d66:62fe      ___ClosedStreams
+2c6b:0e60      ___iob
+2c6b:62f0      ___OpenStreams
+2c6b:62f4      ___ClosedStreams
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(atoi.c)
-0fc4:1a7f      atoi_
+0f94:1a7f      atoi_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(tolower.c)
-0fc4:1b27      tolower_
+0f94:1b27      tolower_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(ltoa.c)
-0fc4:1b35      ultoa_
-0fc4:1bfd      ltoa_
-Module: /dos/fdos/watcom2/lib286/math87h.lib(atan87.asm)
-0fc4:1d6f*     atan_
-0fc4:1d7e*     atan2_
-0fc4:1c56*     IF@ATAN
-0fc4:1c56*     IF@DATAN
-0fc4:1cc4*     IF@ATAN2
-0fc4:1cc4      IF@DATAN2
+0f94:1b35      ultoa_
+0f94:1bfd      ltoa_
+Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(itoa.c)
+0f94:1c4b+     utoa_
+0f94:1cf3      itoa_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(xmsg.c)
-0fc4:1d91*     __exit_with_msg_
-0fc4:1d96      __fatal_runtime_error_
+0f94:1d3d*     __exit_with_msg_
+0f94:1d42      __fatal_runtime_error_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(crwdata)
-2d66:1024      __curbrk
-2d66:102c      __STACKLOW
-2d66:102e      __STACKTOP
-2d66:1030      __cbyte
-2d66:1032      __child
-2d66:1034      __no87
-2d66:1041      ___FPE_handler
-2d66:1026      __psp
-2d66:1035      __get_ovl_stack
-2d66:1039      __restore_ovl_stack
-2d66:103d      __close_ovl_file
-2d66:1045      __LpCmdLine
-2d66:1049      __LpPgmName
-2d66:1028      __osmajor
-2d66:1029      __osminor
-2d66:102a      __osmode
-2d66:102b      __HShift
+2c6b:0fc8      __curbrk
+2c6b:0fd0      __STACKLOW
+2c6b:0fd2      __STACKTOP
+2c6b:0fd4      __cbyte
+2c6b:0fd6      __child
+2c6b:0fd8      __no87
+2c6b:0fe5      ___FPE_handler
+2c6b:0fca      __psp
+2c6b:0fd9      __get_ovl_stack
+2c6b:0fdd      __restore_ovl_stack
+2c6b:0fe1      __close_ovl_file
+2c6b:0fe9      __LpCmdLine
+2c6b:0fed      __LpPgmName
+2c6b:0fcc      __osmajor
+2c6b:0fcd      __osminor
+2c6b:0fce      __osmode
+2c6b:0fcf      __HShift
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(initargv.c)
-0fc4:20de      __Init_Argv_
-0fc4:2140      __Fini_Argv_
+0f94:208a      __Init_Argv_
+0f94:20ec      __Fini_Argv_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(intr.c)
-0fc4:216a      intr_
+0f94:2116      intr_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(segread.c)
-0fc4:217e      segread_
+0f94:212a      segread_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(fputs.c)
-0fc4:21e4      fputs_
+0f94:2190      fputs_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(fputc.c)
-0fc4:2308      fputc_
+0f94:22b4      fputc_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(initrtns.c)
-0fc4:2518      __InitRtns
-0fc4:2518*     __FInitRtns
-0fc4:2573      __FiniRtns
-0fc4:2573*     __FFiniRtns
+0f94:24c4      __InitRtns
+0f94:24c4*     __FInitRtns
+0f94:251f      __FiniRtns
+0f94:251f*     __FFiniRtns
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(fprtf.c)
-0fc4:25f3      __fprtf_
+0f94:259f      __fprtf_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(cmain086.c)
-0fc4:2746      __CMain
+0f94:26f2      __CMain
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(uselfn.c)
-2d66:104e      ___uselfn
+2c6b:0ff2      ___uselfn
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(dosseg)
-0fc4:276c      __DOSseg__
+0f94:2718      __DOSseg__
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(grownear.c)
-0fc4:27f2      __LastFree_
-0fc4:286c      __ExpandDGROUP_
+0f94:279e      __LastFree_
+0f94:2818      __ExpandDGROUP_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(mem.c)
-0fc4:2980      __MemAllocator
-0fc4:2a4a      __MemFree
+0f94:2930      __MemAllocator
+0f94:29fa      __MemFree
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(nmemneed.c)
-0fc4:2bb6      __nmemneed_
+0f94:2b66      __nmemneed_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(growseg.c)
-0fc4:2bb9      __GrowSeg_
+0f94:2b69      __GrowSeg_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(allocseg.c)
-0fc4:2d2f      __AllocSeg_
+0f94:2cdf      __AllocSeg_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(fmemneed.c)
-0fc4:2e1e      __fmemneed_
+0f94:2dce      __fmemneed_
 Module: /dos/fdos/watcom2/lib286/noemu87.lib(emustub.asm)
 0000:0000*     FJSRQQ
 0000:0000*     FISRQQ
 0000:0000*     FIERQQ
 0000:0000      FIDRQQ
 0000:0000      FIWRQQ
-0000:0000      FJCRQQ
+0000:0000*     FJCRQQ
 0000:0000*     FJARQQ
-0000:0000      FICRQQ
+0000:0000*     FICRQQ
 0000:0000*     FIARQQ
-0fc4:2e22*     __init_87_emulator
+0f94:2dd2*     __init_87_emulator
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(comtflag.c)
-0fc4:2e22*     __set_commode_
-2d66:1050      __commode
+0f94:2dd2*     __set_commode_
+2c6b:0ff4      __commode
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(errno.c)
-0fc4:2e2e*     __get_errno_ptr_
-2d66:6306      _errno
+0f94:2dde*     __get_errno_ptr_
+2c6b:62fc      _errno
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(textmode.c)
-2d66:1052      __fmode
+2c6b:0ff6      __fmode
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(fseek.c)
-0fc4:2f53      fseek_
+0f94:2f03      fseek_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(chktty.c)
-0fc4:314b      __chktty_
+0f94:30fb      __chktty_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(freefp.c)
-0fc4:31aa      __freefp_
-0fc4:3233      __purgefp_
+0f94:315a      __freefp_
+0f94:31e3      __purgefp_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(allocfp.c)
-0fc4:3272      __allocfp_
+0f94:3222      __allocfp_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(__lseek.c)
-0fc4:341e      __lseek_
+0f94:33ce      __lseek_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(_clse.c)
-0fc4:3458      __close_
+0f94:3408      __close_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(flush.c)
-0fc4:348e      __flush_
+0f94:343e      __flush_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(setefg.c)
-0fc4:36d7      __setEFGfmt_
+0f94:3687      __setEFGfmt_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(chk8087.c)
-0fc4:370f*     _fpreset_
-0fc4:373a      __init_8087_
-0fc4:37b9      __chk8087_
+0f94:36bf*     _fpreset_
+0f94:36ea      __init_8087_
+0f94:3769      __chk8087_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(iomode.c)
-0fc4:3829      __GetIOMode_
-0fc4:385e      __SetIOMode_nogrow_
-2d66:1072      ___NFiles
-2d66:1074      ___init_mode
-2d66:109c      ___io_mode
+0f94:37d9      __GetIOMode_
+0f94:380e      __SetIOMode_nogrow_
+2c6b:1016      ___NFiles
+2c6b:1018      ___init_mode
+2c6b:1040      ___io_mode
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(opendos.c)
-0fc4:3893      _dos_open_
+0f94:3843      _dos_open_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(isatt.c)
-0fc4:38b9      isatty_
+0f94:3869      isatty_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(doserrno.c)
-0fc4:38d5*     __get_doserrno_ptr_
-2d66:6308      __doserrno
+0f94:3885*     __get_doserrno_ptr_
+2c6b:62fe      __doserrno
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(umaskval.c)
-2d66:10a0      ___umaskval
+2c6b:1044      ___umaskval
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(creatdos.c)
-0fc4:38dc      _dos_creat_
-0fc4:3900*     _dos_creatnew_
+0f94:388c      _dos_creat_
+0f94:38b0*     _dos_creatnew_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(stiomode.c)
-0fc4:3921+     __grow_iomode_
-0fc4:3a08+     __shrink_iomode_
-0fc4:3a49      __SetIOMode_
+0f94:38d1+     __grow_iomode_
+0f94:39b8+     __shrink_iomode_
+0f94:39f9      __SetIOMode_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(dosret.c)
-0fc4:3af0*     __dosretax
-0fc4:3af5*     __dosret0
-0fc4:3afc      __set_errno_dos_
-0fc4:3b64*     __set_errno_dos_reterr_
+0f94:3aa0*     __dosretax
+0f94:3aa5*     __dosret0
+0f94:3aac      __set_errno_dos_
+0f94:3b14*     __set_errno_dos_reterr_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(iomodtty.c)
-0fc4:3b6f      __ChkTTYIOMode_
-0fc4:3bdd*     __IOMode_
+0f94:3b1f      __ChkTTYIOMode_
+0f94:3b8d*     __IOMode_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(error086.asm)
-0fc4:3bee      __doserror_
-0fc4:3bfc      __doserror1_
+0f94:3b9e      __doserror_
+0f94:3bac      __doserror1_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(environ.c)
-2d66:630c      ___env_mask
-2d66:6310      _environ
-2d66:6314*     __wenviron
+2c6b:6302      ___env_mask
+2c6b:6306      _environ
+2c6b:630a*     __wenviron
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(mbterm.c)
-0fc4:3c08      _mbterm_
+0f94:3bb8      _mbterm_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(mbsnextc.c)
-0fc4:3c5b      _mbsnextc_
+0f94:3c0b      _mbsnextc_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(mbcupper.c)
-0fc4:3cb6      _mbctoupper_
+0f94:3c66      _mbctoupper_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(mbsinc.c)
-0fc4:3cd9      _mbsinc_
+0f94:3c89      _mbsinc_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(initfile.c)
-0fc4:3d2b      __InitFiles_
+0f94:3cdb      __InitFiles_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(ioexit.c)
-0fc4:3f6c*     fcloseall_
-0fc4:3f73      __full_io_exit_
+0f94:3f1c*     fcloseall_
+0f94:3f23      __full_io_exit_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(alphabet.c)
-0fc4:3f7d      ___Alphabet
-Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(chipvar)
-2d66:10b6      ___chipbug
-2d66:10b6      __chipbug
-Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(chipw16.asm)
-0fc4:3fb0      __fpatan_wrap
+0f94:3f2d      ___Alphabet
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(enterdb.c)
-0fc4:3fe1      __EnterWVIDEO_
-2d66:10ba+     ___WD_Present
+0f94:3f52      __EnterWVIDEO_
+2c6b:105a+     ___WD_Present
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(histsplt.c)
-2d66:6318      ___historical_splitparms
+2c6b:630e      ___historical_splitparms
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(___argc.c)
-2d66:631a      ____Argv
-2d66:631e      ____Argc
+2c6b:6310      ____Argv
+2c6b:6314      ____Argc
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(dointr)
-0fc4:4006      _DoINTR_
+0f94:3f76      _DoINTR_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(ioalloc.c)
-0fc4:437f      __ioalloc_
+0f94:42ef      __ioalloc_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(sgdef086)
-2d66:117c      __Start_XI
-2d66:11b8      __End_XI
-2d66:11b8      __Start_YI
-2d66:11d0      __End_YI
+2c6b:111c      __Start_XI
+2c6b:1152      __End_XI
+2c6b:1152      __Start_YI
+2c6b:116a      __End_YI
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(prtf.c)
-0fc4:450e      __prtf_
+0f94:447e      __prtf_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(amblksiz.c)
-2d66:10bc      __amblksiz
+2c6b:105c      __amblksiz
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(heapen.c)
-0fc4:5670*     _heapenable_
-2d66:10be      ___heap_enabled
+0f94:55e0*     _heapenable_
+2c6b:105e      ___heap_enabled
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(sbrk.c)
-0fc4:5681      __brk_
-0fc4:56e8*     sbrk_
+0f94:55f1      __brk_
+0f94:5658*     sbrk_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(tell.c)
-0fc4:56f8      tell_
+0f94:5668      tell_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(qwrit.c)
-0fc4:5709      __qwrite_
+0f94:5679      __qwrite_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(fsync.c)
-0fc4:5769      fsync_
+0f94:56d9      fsync_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(noefgfmt.c)
-2d66:10c0      ___EFG_printf
-2d66:10c4      ___EFG_scanf
+2c6b:1060      ___EFG_printf
+2c6b:1064      ___EFG_scanf
 Module: /dos/fdos/watcom2/lib286/math87h.lib(efgfmt.c)
-0fc4:577e      _EFG_Format_
+0f94:56ee      _EFG_Format_
 Module: /dos/fdos/watcom2/lib286/math87h.lib(cnvs2d.c)
-0fc4:5950      __cnvs2d_
+0f94:58c0      __cnvs2d_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(8087cw.c)
-2d66:10c8      __8087cw
+2c6b:1068      __8087cw
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(save8087.c)
-2d66:10ca      ___Save8087
-2d66:10ce      ___Rest8087
+2c6b:106a      ___Save8087
+2c6b:106e      ___Rest8087
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(grabfp87.c)
-0fc4:5970      __GrabFP87_
+0f94:58e0      __GrabFP87_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(ini87086.asm)
-0fc4:59a2*     __init_8087_emu
-0fc4:59a8      __x87id
+0f94:5912*     __init_8087_emu
+0f94:5918      __x87id
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(frealloc.c)
-0fc4:5a05*     _frealloc_
-0fc4:5a05      realloc_
+0f94:5975*     _frealloc_
+0f94:5975      realloc_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(setenvp.c)
-0fc4:5aff      __setenvp_
-0fc4:5c8b      __freeenvp_
+0f94:5a6f      __setenvp_
+0f94:5bfb      __freeenvp_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(mbisdbcs.c)
-2d66:10d2      ___IsDBCS
+2c6b:1072      ___IsDBCS
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(mbislead.c)
-0fc4:5ce9*     _ismbblead_
-2d66:6324      ___MBCSIsTable
+0f94:5c59*     _ismbblead_
+2c6b:631a      ___MBCSIsTable
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(mbinit.c)
-0fc4:5d43      __mbinit_
-2d66:10d4      ___MBCodePage
+0f94:5cb3      __mbinit_
+2c6b:1074      ___MBCodePage
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(mbdtoupp.c)
-0fc4:5e1e      _mbdtoupper_
-Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(chipbug.c)
-0fc4:5e34      __verify_pentium_fdiv_bug_
-Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(chipa16.asm)
-0fc4:6038      __fpatan_chk
+0f94:5d8e      _mbdtoupper_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(wctomb.c)
-0fc4:61fd      wctomb_
-Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(itoa.c)
-0fc4:6248+     utoa_
-0fc4:62f0      itoa_
+0f94:5d9c      wctomb_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(strupr.c)
-0fc4:633a      strupr_
+0f94:5de7      strupr_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(lltoa.c)
-0fc4:636f      ulltoa_
-0fc4:64ba*     lltoa_
+0f94:5e1c      ulltoa_
+0f94:5f67*     lltoa_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(filedos.c)
-0fc4:652b*     _dos_close_
-0fc4:6539      _dos_commit_
+0f94:5fd8*     _dos_close_
+0f94:5fe6      _dos_commit_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(rtcntrl.c)
-0fc4:6548*     _SetLD64bit_
-0fc4:6553*     _SetLD80bit_
-0fc4:655e      _LDisDouble_
+0f94:5ff5*     _SetLD64bit_
+0f94:6000*     _SetLD80bit_
+0f94:600b      _LDisDouble_
 Module: /dos/fdos/watcom2/lib286/math87h.lib(ldcvt.c)
-0fc4:66c3      _LDScale10x_
-0fc4:6f9b+     __cvtld_
-0fc4:7777      __LDcvt_
+0f94:6170      _LDScale10x_
+0f94:6a48+     __cvtld_
+0f94:7224      __LDcvt_
 Module: /dos/fdos/watcom2/lib286/math87h.lib(strtod.c)
-0fc4:7fb9+     __Strtold_
-0fc4:81f8      strtod_
+0f94:7a66+     __Strtold_
+0f94:7ca5      strtod_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(fpe87.asm)
-0fc4:839e      __Init_FPE_handler_
-0fc4:83d7      __Fini_FPE_handler_
-0fc4:840e*     __FPEHandler
+0f94:7e4c      __Init_FPE_handler_
+0f94:7e85      __Fini_FPE_handler_
+0f94:7ebc*     __FPEHandler
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(fmsize.c)
-0fc4:86a0*     _msize_
-0fc4:86bb      _fmsize_
+0f94:814e*     _msize_
+0f94:8169      _fmsize_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(nexpand.c)
-0fc4:86cc      _nexpand_
+0f94:817a      _nexpand_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(fexpand.c)
-0fc4:8720      _fexpand_
-0fc4:8720*     _expand_
+0f94:81ce      _fexpand_
+0f94:81ce*     _expand_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(clearenv.c)
-0fc4:8755      clearenv_
-Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(fdiv_patch)
-0fc4:8a0c      __fdiv_fpr
-0fc4:8eac*     __fdiv_chk
-0fc4:8ec0*     __fdiv_m32
-0fc4:8f07*     __fdiv_m64
-0fc4:8f4e*     __fdiv_m32r
-0fc4:8f95*     __fdiv_m64r
+0f94:8203      clearenv_
 Module: /dos/fdos/watcom2/lib286/math87h.lib(ldclass.c)
-0fc4:8fdc      __LDClass_
-0fc4:9062*     _FLClass_
+0f94:8334      __LDClass_
+0f94:83ba*     _FLClass_
 Module: /dos/fdos/watcom2/lib286/math87h.lib(bufld086.asm)
-0fc4:9076      __ZBuf2LD
+0f94:83ce      __ZBuf2LD
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(seterrno.c)
-0fc4:913e*     __set_EDOM_
-0fc4:914a      __set_ERANGE_
-0fc4:9156*     __set_EINVAL_
+0f94:8496*     __set_EDOM_
+0f94:84a2      __set_ERANGE_
+0f94:84ae*     __set_EINVAL_
 Module: /dos/fdos/watcom2/lib286/math87h.lib(inf_nan.c)
-2d66:0174*     ___f_infinity
-2d66:0178*     ___f_posqnan
-2d66:017c      ___d_infinity
-2d66:0184      ___d_posqnan
-2d66:018c*     ___ld_infinity
-2d66:0194*     ___ld_posqnan
+2c6b:0174*     ___f_infinity
+2c6b:0178*     ___f_posqnan
+2c6b:017c      ___d_infinity
+2c6b:0184      ___d_posqnan
+2c6b:018c*     ___ld_infinity
+2c6b:0194*     ___ld_posqnan
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(hugeval.c)
-2d66:019c      __HugeValue
+2c6b:019c      __HugeValue
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(fpeint.c)
-2d66:117a      ___FPE_int
+2c6b:111a      ___FPE_int
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(_expand.c)
-0fc4:9170      __HeapManager_expand_
+0f94:84c8      __HeapManager_expand_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(bexpand.c)
-0fc4:96a5      _bexpand_
+0f94:89fd      _bexpand_
 Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(bfree.c)
-0fc4:96fe      _bfree_
+0f94:8a56      _bfree_
 
 
                         +---------------------------+
@@ -1406,49 +1333,16 @@ Module: /dos/fdos/watcom2/lib286/dos/clibh.lib(bfree.c)
 Undefined Symbol                Referenced by
 ================                =============
 
-FixedByFrac_                    wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-SpawnPlayer_                    wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-SpawnStatic_                    wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-SpawnStand_                     wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-SpawnPatrol_                    wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-SpawnDeadGuard_                 wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-SpawnBoss_                      wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-SpawnGretel_                    wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-SpawnGift_                      wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-SpawnFat_                       wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-SpawnSchabbs_                   wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-SpawnFakeHitler_                wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-SpawnHitler_                    wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-SpawnGhosts_                    wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-_actorat                        wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-InitActorList_                  wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-InitDoorList_                   wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-InitStaticList_                 wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-SpawnDoor_                      wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-DrawFace_                       wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-DrawHealth_                     wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-DrawLives_                      wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-DrawLevel_                      wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-DrawAmmo_                       wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-DrawKeys_                       wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-DrawWeapon_                     wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-DrawScore_                      wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-CenterWindow_                   wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-NewGame_                        wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-StartMusic_                     wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-PlayLoop_                       wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-StopMusic_                      wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-_killerobj                      wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-_player                         wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-ThreeDRefresh_                  wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-CalcTics_                       wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-FinishPaletteShifts_            wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-PreloadGraphics_                wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-LevelCompleted_                 wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-CheckHighScore_                 wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-_MainMenu                       wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-CP_ViewScores_                  wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-Victory_                        wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
+StartCPMusic_                   wl_inter.obj(/dos/z/owwolf3d/src/wl_inter.c)
+CacheLump_                      wl_inter.obj(/dos/z/owwolf3d/src/wl_inter.c)
+UnCacheLump_                    wl_inter.obj(/dos/z/owwolf3d/src/wl_inter.c)
+EndText_                        wl_inter.obj(/dos/z/owwolf3d/src/wl_inter.c)
+GivePoints_                     wl_inter.obj(/dos/z/owwolf3d/src/wl_inter.c)
+DrawScore_                      wl_inter.obj(/dos/z/owwolf3d/src/wl_inter.c)
+DrawPlayBorder_                 wl_inter.obj(/dos/z/owwolf3d/src/wl_inter.c)
+DrawLevel_                      wl_inter.obj(/dos/z/owwolf3d/src/wl_inter.c)
+ClearMScreen_                   wl_inter.obj(/dos/z/owwolf3d/src/wl_inter.c)
+DrawStripes_                    wl_inter.obj(/dos/z/owwolf3d/src/wl_inter.c)
 
 
                         +--------------------+
