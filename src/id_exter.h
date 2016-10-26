@@ -37,5 +37,7 @@ void PushWall (int checkx, int checky, int dir);
 void OperateDoor (int door);
 void InitAreas (void);
 
+extern statetype s_grdstand, s_grdpath1, s_grdpath1s, s_grdpath2, s_grdpath3, s_grdpath3s, s_grdpath4, s_grdpain, s_grdpain1,s_grdgiveup, s_grdshoot1, s_grdshoot2, s_grdshoot3, s_grdshoot4, s_grdchase1, s_grdchase1s, s_grdchase2, s_grdchase3, s_grdchase3s, s_grdchase4, s_grddie1, s_grddie1d, s_grddie2, s_grddie3, s_grddie4;
+
 
 #endif
