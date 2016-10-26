@@ -53,9 +53,10 @@ pictabletype *pictable;
 int VW_MarkUpdateBlock (int x1, int y1, int x2, int y2){ return 0; }
 #endif
 void SpawnBJVictory (void){}
-void NewGame(){}
-void LoadTheGame{}
-void SaveTheGame{}
-void ShowViewSize{}
-void NewViewSize{}
+boolean		SetViewSize (unsigned width, unsigned height){ return 0; }
+void		NewGame (int difficulty,int episode){}
+void 		NewViewSize (int width){}
+boolean 	LoadTheGame(int file,int x,int y){ return 0; }
+boolean		SaveTheGame(int file,int x,int y){ return 0; }
+void 		ShowViewSize (int width){}
 
