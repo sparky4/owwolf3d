@@ -51,7 +51,7 @@ typedef struct mmblockstruct
 	unsigned	start,length;
 	unsigned	attributes;
 	memptr		*useptr;	// pointer to the segment start
-	struct mmblockstruct far *next;
+	struct mmblockstruct __far *next;
 } mmblocktype;
 
 
@@ -69,12 +69,12 @@ typedef struct mmblockstruct
 =============================================================================
 */
 
-/*mminfotype	mminfo;
+mminfotype	mminfo;
 memptr		bufferseg;
 boolean		mmerror;
 
 void		(* beforesort) (void);
-void		(* aftersort) (void);*/
+void		(* aftersort) (void);
 
 /*
 =============================================================================

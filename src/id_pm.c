@@ -39,9 +39,9 @@
 					EMSPagesUsed,
 					MainPagesUsed,
 					PMNumBlocks;
-	long			PMFrameCount;
-	PageListStruct	far *PMPages;
-	__segment *PMSegPages;
+	long		__far	PMFrameCount;
+	PageListStruct	__far *PMPages,
+	_seg *PMSegPages;
 
 static	char		*ParmStringspm[] = {"nomain","noems","noxms",nil};
 

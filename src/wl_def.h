@@ -728,7 +728,7 @@ typedef	struct
 {
 	int			difficulty;
 	int			mapon;
-	dong		oldscore,score,nextextra;
+	dong	__far	oldscore,score,nextextra;
 	int			lives;
 	int			health;
 	int			ammo;
@@ -740,8 +740,8 @@ typedef	struct
 
 	int			episode,secretcount,treasurecount,killcount,
 				secrettotal,treasuretotal,killtotal;
-	dong		TimeCount;
-	dong		killx,killy;
+	dong	__far	TimeCount;
+	dong	__far	killx,killy;
 	boolean		victoryflag;		// set during victory animations
 } gametype;
 
@@ -776,9 +776,9 @@ extern	boolean		tedlevel;
 extern	boolean		nospr;
 extern	boolean		IsA386;
 
-extern	byte far	*scalermemory;
+//extern	byte __far	*scalermemory;
 
-extern	dong		focallength;
+extern	dong	__far	focallength;
 extern	unsigned	viewangles;
 extern	unsigned	screenofs;
 extern	int		    viewwidth;
@@ -794,14 +794,14 @@ extern	int		mouseadjustment;
 // math tables
 //
 extern	int			pixelangle[MAXVIEWWIDTH];
-extern	fixed		far finetangent[FINEANGLES/4];
-extern	dong 		far sintable[],far *costable;
+extern	fixed		__far finetangent[FINEANGLES/4];
+extern	dong 		__far sintable[],far *costable;
 
 //
 // derived constants
 //
-extern	dong 	scale,maxslope;
-extern	dong	heightnumerator;
+extern	dong 	__far	scale,maxslope;
+extern	dong	__far	heightnumerator;
 extern	int		minheightdiv;
 
 extern	char	configname[13];
@@ -833,12 +833,12 @@ void		ShutdownId (void);
 
 extern	boolean		ingame,fizzlein;
 extern	unsigned	latchpics[NUMLATCHPICS];
-extern	gametype	gamestate;
+extern	gametype	__far	gamestate;
 extern	int			doornum;//short?
 
 extern	char		demoname[13];
 
-extern	dong		spearx,speary;
+extern	dong	__far	spearx,speary;
 extern	unsigned	spearangle;
 extern	boolean		spearflag;
 
@@ -851,8 +851,10 @@ void 	DrawPlayScreen (void);
 void 	FizzleOut (void);
 void 	GameLoop (void);
 void ClearMemory (void);
+#ifdef DEMO
 void PlayDemo (int demonumber);
 void RecordDemo (void);
+#endif
 void DrawAllPlayBorder (void);
 void	DrawHighScores(void);
 void DrawAllPlayBorderSides (void);
@@ -874,57 +876,58 @@ void UpdateSoundLoc(void);
 */
 
 #ifdef SPEAR
-extern	dong		funnyticount;		// FOR FUNNY BJ FACE
+extern	dong	__far	funnyticount;		// FOR FUNNY BJ FACE
 #endif
 
-extern	exit_t		playstate;
+extern	exit_t	__far	playstate;
 
-extern	boolean		madenoise;
+extern	boolean	__far	madenoise;
 
-extern	objtype 	objlist[MAXACTORS],*new,*obj,*player,*lastobj,
-					*objfreelist,*killerobj;
-extern	statobj_t	statobjlist[MAXSTATS],*laststatobj;
-extern	doorobj_t	doorobjlist[MAXDOORS],*lastdoorobj;
+extern	objtype 	__far	objlist[MAXACTORS];
+extern	objtype	__far	*new,*obj,*player,*lastobj,*objfreelist,*killerobj;
+extern	statobj_t	__far	statobjlist[MAXSTATS],*laststatobj;
+extern	doorobj_t	__far	doorobjlist[MAXDOORS],*lastdoorobj;
 
-extern	unsigned	farmapylookup[MAPSIZE];
-extern	byte		*nearmapylookup[MAPSIZE];
+extern	unsigned	__far	farmapylookup[MAPSIZE];
+extern	byte	__far	*nearmapylookup[MAPSIZE];
 
-extern	byte		tilemap[MAPSIZE][MAPSIZE];	// wall values only
-extern	byte		spotvis[MAPSIZE][MAPSIZE];
-extern	objtype		*actorat[MAPSIZE][MAPSIZE];
+extern	byte	__far	tilemap[MAPSIZE][MAPSIZE];	// wall values only
+extern	byte	__far	spotvis[MAPSIZE][MAPSIZE];
+extern	objtype	__far	*actorat[MAPSIZE][MAPSIZE];
 
 #define UPDATESIZE			(UPDATEWIDE*UPDATEHIGH)
-extern	byte		update[UPDATESIZE];
+extern	byte	__far	update[UPDATESIZE];
 //extern	byte	update[UPDATEHIGH][UPDATEWIDE];
 
-extern	boolean		singlestep,godmode,noclip;
-extern	int			extravbls;
+extern	boolean	__far	singlestep,godmode,noclip;
+extern	int		__far	extravbls;
 
 //
 // control info
 //
-extern	boolean		mouseenabled,joystickenabled,joypadenabled,joystickprogressive;
-extern	int			joystickport;
-extern	int			dirscan[4];
-extern	int			buttonscan[NUMBUTTONS];
-extern	int			buttonmouse[4];
-extern	int			buttonjoy[4];
+extern	boolean	__far	mouseenabled,joystickenabled,joypadenabled,joystickprogressive;
+extern	int		__far	joystickport;
+extern	int		__far	dirscan[4];
+extern	int		__far	buttonscan[NUMBUTTONS];
+extern	int		__far	buttonmouse[4];
+extern	int		__far	buttonjoy[4];
 
-extern	boolean		buttonheld[NUMBUTTONS];
+extern	boolean	__far	buttonheld[NUMBUTTONS];
 
-extern	int			viewsize;
-extern unsigned tics;
+extern	int		__far	viewsize;
+extern	unsigned	__far	tics;
 
 //
 // curent user input
 //
-extern	int			controlx,controly;		// range from -100 to 100
-extern	boolean		buttonstate[NUMBUTTONS];
+extern	int		__far	controlx,controly;		// range from -100 to 100
+extern	boolean	__far	buttonstate[NUMBUTTONS];
 
-extern	boolean		demorecord,demoplayback;
-extern	char		far *demoptr, far *lastdemoptr;
-extern	memptr		demobuffer;
-
+#ifdef DEMO
+extern	boolean	__far	demorecord,demoplayback;
+extern	char		__far *demoptr, __far *lastdemoptr;
+extern	memptr	__far	demobuffer;
+#endif
 
 
 void	InitRedShifts (void);
@@ -981,37 +984,35 @@ int DebugKeys (void);
 extern	unsigned screenloc[3];
 extern	unsigned freelatch;
 
-extern	dong	lasttimecount;
-extern	dong	frameon;
+extern	dong	__far	lasttimecount;
+extern	dong	__far	frameon;
 extern	boolean	fizzlein;
 
 extern	unsigned	wallheight[MAXVIEWWIDTH];
 
-extern	dong	tileglobal;
-extern	fixed	focallength;
-extern	dong	mindist;
+extern	dong	__far	tileglobal;
 
 //
 // math tables
 //
 extern	int			pixelangle[MAXVIEWWIDTH];
-extern	fixed		far finetangent[FINEANGLES/4];
-extern	fixed 		far sintable[],far *costable;
+extern	fixed	__far finetangent[FINEANGLES/4];
+extern	fixed	__far sintable[],far *costable;
 
 //
 // derived constants
 //
-extern	dong 	scale;
-extern	dong	heightnumerator,mindist;
+extern	dong 	__far	scale;
+extern	dong	__far	heightnumerator;
 
 //
 // refresh variables
 //
-extern	dong	viewx,viewy;			// the focal point
+extern	dong	__far	viewx,viewy;			// the focal point
 extern	int		viewangle;
-extern	dong	viewsin,viewcos;
+extern	dong	__far	viewsin,viewcos;
 
-extern	dong		postsource;
+extern	dong	__far	postsource;
 extern	unsigned	postx;
 extern	unsigned	postwidth;
 
@@ -1021,7 +1022,7 @@ extern	int		horizwall[],vertwall[];
 extern	unsigned	pwallpos;
 
 
-fixed	FixedByFrac (fixed a, fixed b);
+fixed	__far	FixedByFrac (fixed a, fixed b);
 void	TransformActor (objtype *ob);
 void	BuildTables (void);
 void	ClearScreen (void);
@@ -1091,8 +1092,8 @@ typedef struct
 // table data after dataofs[rightpix-leftpix+1]
 }	t_compshape;
 
-extern	t_compscale /*_seg*/	*scaledirectory[MAXSCALEHEIGHT+1];
-extern	dong			fullscalefarcall[MAXSCALEHEIGHT+1];
+extern	t_compscale __far /*_seg*/	*scaledirectory[MAXSCALEHEIGHT+1];
+extern	dong		__far	fullscalefarcall[MAXSCALEHEIGHT+1];
 
 extern	byte		bitmasks1[8][8];
 extern	byte		bitmasks2[8][8];
@@ -1122,14 +1123,14 @@ void SimpleScaleShape (int xcenter, int shapenum, unsigned height);
 // player state info
 //
 extern	boolean		running;
-extern	dong		thrustspeed;
+extern	dong	__far	thrustspeed;
 extern	unsigned	plux,pluy;		// player coordinates scaled to unsigned
 
 extern	int			anglefrac;
 extern	int			facecount;
 extern	int			gotgatgun;	// JR
 
-extern	objtype		*LastAttacker;
+extern	objtype	__far	*LastAttacker;
 
 void	SpawnPlayer (int tilex, int tiley, int dir);
 void 	DrawFace (void);

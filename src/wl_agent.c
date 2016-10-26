@@ -29,18 +29,18 @@
 
 
 
-/*//
+//
 // player state info
 //
 boolean		running;
-long		thrustspeed;
+long	__far	thrustspeed;
 
 unsigned	plux,pluy;			// player coordinates scaled to unsigned
 
 int			anglefrac;
 int			gotgatgun;	// JR
 
-objtype		*LastAttacker;*/
+objtype	__far	*LastAttacker;
 
 /*
 =============================================================================
@@ -54,11 +54,11 @@ objtype		*LastAttacker;*/
 void	T_Player (objtype *ob);
 void	T_Attack (objtype *ob);
 
-statetype s_player = {false,0,0,T_Player,NULL,NULL};
-statetype s_attack = {false,0,0,T_Attack,NULL,NULL};
+statetype __far s_player = {false,0,0,T_Player,NULL,NULL};
+statetype __far s_attack = {false,0,0,T_Attack,NULL,NULL};
 
 
-long	playerxmove,playerymove;
+long	__far	playerxmove,playerymove;
 
 struct atkinf
 {

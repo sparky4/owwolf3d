@@ -3926,7 +3926,9 @@ void CheckForEpisodes(void)
                 strcat(SaveName,extension);
                 strcat(PageFileName,extension);
                 strcat(audioname,extension);
+#ifdef DEMO
                 strcat(demoname,extension);
+#endif
                 EpisodeSelect[1] =
                 EpisodeSelect[2] =
                 EpisodeSelect[3] =
@@ -4022,7 +4024,9 @@ void CheckForEpisodes(void)
         strcat(SaveName,extension);
 //      strcat(PageFileName,extension);
         strcat(audioname,extension);
+#ifdef DEMO
         strcat(demoname,extension);
+#endif
 
 #ifdef ABCAUS
 

@@ -25,7 +25,7 @@ unsigned	bordercolor;
 
 boolean		fastpalette;				// if true, use outsb to set
 
-byte		far	palette1[256][3],far palette2[256][3];
+byte		__far	palette1[256][3],__far palette2[256][3];
 
 //===========================================================================
 

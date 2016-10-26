@@ -19,8 +19,8 @@
 //#define UNCACHEGRCHUNK(chunk)	{MM_FreePtr(&grsegs[chunk]);grneeded[chunk]&=~ca_levelbit;}
 
 //byte	update[UPDATEHIGH][UPDATEWIDE];
-/*#define UPDATESIZE			(UPDATEWIDE*UPDATEHIGH)
-byte		update[UPDATESIZE];
+#define UPDATESIZE			(UPDATEWIDE*UPDATEHIGH)
+byte	__far	update[UPDATESIZE];
 
 //==========================================================================
 
@@ -29,7 +29,7 @@ pictabletype *pictable;
 
 int	px,py;
 byte	fontcolor,backcolor;
-int	fontnumber;*/
+int	fontnumber;
 int bufferwidth,bufferheight;
 
 
