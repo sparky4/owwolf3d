@@ -27,10 +27,11 @@ extern	boolean		IN_UserInput(dword delay);
 
 
 extern void SpawnBJVictory (void);
-void NewGame(),
-LoadTheGame(),
-SaveTheGame(),
-ShowViewSize(),
-NewViewSize();
+boolean		SetViewSize (unsigned width, unsigned height);
+void		NewGame (int difficulty,int episode);
+void 		NewViewSize (int width);
+boolean 	LoadTheGame(int file,int x,int y);
+boolean		SaveTheGame(int file,int x,int y);
+void 		ShowViewSize (int width);
 
 #endif
