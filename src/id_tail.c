@@ -192,6 +192,15 @@ int			controlx,controly;		// range from -100 to 100 per tic
 boolean		buttonstate[NUMBUTTONS];
 
 //===========================================================================
+//wl_scale
+t_compscale *scaledirectory[MAXSCALEHEIGHT+1];
+//_seg
+long			fullscalefarcall[MAXSCALEHEIGHT+1];
+
+int			maxscale,maxscaleshl2;
+
+boolean	insetupscaling;
+
 //===========================================================================
 //===========================================================================
 /*

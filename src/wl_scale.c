@@ -12,13 +12,14 @@
 
 =============================================================================
 */
-
-t_compscale /*_seg*/ *scaledirectory[MAXSCALEHEIGHT+1];
+/*
+t_compscale *scaledirectory[MAXSCALEHEIGHT+1];
+//_seg
 long			fullscalefarcall[MAXSCALEHEIGHT+1];
 
 int			maxscale,maxscaleshl2;
 
-boolean	insetupscaling;
+boolean	insetupscaling;*/
 
 /*
 =============================================================================
