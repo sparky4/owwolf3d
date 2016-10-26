@@ -52,3 +52,10 @@ void VL_FadeIn (int start, int end, byte far *palette, int steps){}
 pictabletype *pictable;
 int VW_MarkUpdateBlock (int x1, int y1, int x2, int y2){ return 0; }
 #endif
+void SpawnBJVictory (void){}
+void NewGame(){}
+void LoadTheGame{}
+void SaveTheGame{}
+void ShowViewSize{}
+void NewViewSize{}
+

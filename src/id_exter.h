@@ -25,4 +25,12 @@ int VW_MarkUpdateBlock (int x1, int y1, int x2, int y2);
 extern	void		IN_Startup(void),IN_Shutdown(void);
 extern	boolean		IN_UserInput(dword delay);
 
+
+extern void SpawnBJVictory (void);
+void NewGame(),
+LoadTheGame(),
+SaveTheGame(),
+ShowViewSize(),
+NewViewSize();
+
 #endif
