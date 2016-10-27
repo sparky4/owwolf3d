@@ -12,7 +12,7 @@
 */
 
 
-statobj_t	statobjlist[MAXSTATS],*laststatobj;
+statobj_t	__far	statobjlist[MAXSTATS],*laststatobj;
 
 
 struct

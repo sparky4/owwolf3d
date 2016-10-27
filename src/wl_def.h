@@ -1160,20 +1160,20 @@ void	Thrust (int angle, long speed);
 =============================================================================
 */
 
-extern	doorobj_t	doorobjlist[MAXDOORS],*lastdoorobj;
-extern	int			doornum;
+extern	doorobj_t	__far	doorobjlist[MAXDOORS],*lastdoorobj;
+extern	int		__far	doornum;
 
-extern	unsigned	doorposition[MAXDOORS],pwallstate;
+extern	unsigned	__far	doorposition[MAXDOORS],pwallstate;
 
-extern	byte		/*far*/ areaconnect[NUMAREAS][NUMAREAS];
+extern	byte		__far areaconnect[NUMAREAS][NUMAREAS];
 
-extern	boolean		areabyplayer[NUMAREAS];
+extern	boolean	__far	areabyplayer[NUMAREAS];
 
-extern word	pwallstate;
-extern word	pwallpos;			// amount a pushable wall has been moved (0-63)
-extern word	pwallx,pwally;
-extern byte			pwalldir;
-extern byte     pwalldir,pwalltile;
+extern word	__far	pwallstate;
+extern word	__far	pwallpos;			// amount a pushable wall has been moved (0-63)
+extern word	__far	pwallx,pwally;
+extern byte		__far	pwalldir;
+extern byte		__far	pwalldir,pwalltile;
 
 
 void InitDoorList (void);
@@ -1198,66 +1198,66 @@ void InitAreas (void);
 
 #define s_nakedbody s_static10
 
-extern	statetype s_grddie1;
-extern	statetype s_dogdie1;
-extern	statetype s_ofcdie1;
-extern	statetype s_mutdie1;
-extern	statetype s_ssdie1;
-extern	statetype s_bossdie1;
-extern	statetype s_schabbdie1;
-extern	statetype s_fakedie1;
-extern	statetype s_mechadie1;
-extern	statetype s_hitlerdie1;
-extern	statetype s_greteldie1;
-extern	statetype s_giftdie1;
-extern	statetype s_fatdie1;
+extern	statetype __far s_grddie1;
+extern	statetype __far s_dogdie1;
+extern	statetype __far s_ofcdie1;
+extern	statetype __far s_mutdie1;
+extern	statetype __far s_ssdie1;
+extern	statetype __far s_bossdie1;
+extern	statetype __far s_schabbdie1;
+extern	statetype __far s_fakedie1;
+extern	statetype __far s_mechadie1;
+extern	statetype __far s_hitlerdie1;
+extern	statetype __far s_greteldie1;
+extern	statetype __far s_giftdie1;
+extern	statetype __far s_fatdie1;
 
-extern	statetype s_spectredie1;
-extern	statetype s_angeldie1;
-extern	statetype s_transdie0;
-extern	statetype s_uberdie0;
-extern	statetype s_willdie1;
-extern	statetype s_deathdie1;
+extern	statetype __far s_spectredie1;
+extern	statetype __far s_angeldie1;
+extern	statetype __far s_transdie0;
+extern	statetype __far s_uberdie0;
+extern	statetype __far s_willdie1;
+extern	statetype __far s_deathdie1;
 
 
-extern	statetype s_grdchase1;
-extern	statetype s_dogchase1;
-extern	statetype s_ofcchase1;
-extern	statetype s_sschase1;
-extern	statetype s_mutchase1;
-extern	statetype s_bosschase1;
-extern	statetype s_schabbchase1;
-extern	statetype s_fakechase1;
-extern	statetype s_mechachase1;
-extern	statetype s_gretelchase1;
-extern	statetype s_giftchase1;
-extern	statetype s_fatchase1;
+extern	statetype __far s_grdchase1;
+extern	statetype __far s_dogchase1;
+extern	statetype __far s_ofcchase1;
+extern	statetype __far s_sschase1;
+extern	statetype __far s_mutchase1;
+extern	statetype __far s_bosschase1;
+extern	statetype __far s_schabbchase1;
+extern	statetype __far s_fakechase1;
+extern	statetype __far s_mechachase1;
+extern	statetype __far s_gretelchase1;
+extern	statetype __far s_giftchase1;
+extern	statetype __far s_fatchase1;
 
-extern	statetype s_spectrechase1;
-extern	statetype s_angelchase1;
-extern	statetype s_transchase1;
-extern	statetype s_uberchase1;
-extern	statetype s_willchase1;
-extern	statetype s_deathchase1;
+extern	statetype __far s_spectrechase1;
+extern	statetype __far s_angelchase1;
+extern	statetype __far s_transchase1;
+extern	statetype __far s_uberchase1;
+extern	statetype __far s_willchase1;
+extern	statetype __far s_deathchase1;
 
-extern	statetype s_blinkychase1;
-extern	statetype s_hitlerchase1;
+extern	statetype __far s_blinkychase1;
+extern	statetype __far s_hitlerchase1;
 
-extern	statetype s_grdpain;
-extern	statetype s_grdpain1;
-extern	statetype s_ofcpain;
-extern	statetype s_ofcpain1;
-extern	statetype s_sspain;
-extern	statetype s_sspain1;
-extern	statetype s_mutpain;
-extern	statetype s_mutpain1;
+extern	statetype __far s_grdpain;
+extern	statetype __far s_grdpain1;
+extern	statetype __far s_ofcpain;
+extern	statetype __far s_ofcpain1;
+extern	statetype __far s_sspain;
+extern	statetype __far s_sspain1;
+extern	statetype __far s_mutpain;
+extern	statetype __far s_mutpain1;
 
-extern	statetype s_deathcam;
+extern	statetype __far s_deathcam;
 
-extern	statetype s_schabbdeathcam2;
-extern	statetype s_hitlerdeathcam2;
-extern	statetype s_giftdeathcam2;
-extern	statetype s_fatdeathcam2;
+extern	statetype __far s_schabbdeathcam2;
+extern	statetype __far s_hitlerdeathcam2;
+extern	statetype __far s_giftdeathcam2;
+extern	statetype __far s_fatdeathcam2;
 
 void SpawnStand (enemy_t which, int tilex, int tiley, int dir);
 void SpawnPatrol (enemy_t which, int tilex, int tiley, int dir);
