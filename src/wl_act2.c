@@ -36,7 +36,7 @@
 */
 
 
-dirtype dirtable[9] = {northwest,north,northeast,west,nodir,east,
+dirtype __far dirtable[9] = {northwest,north,northeast,west,nodir,east,
 	southwest,south,southeast};
 
 int	__far	starthitpoints[4][NUMENEMIES] =

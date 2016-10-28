@@ -50,7 +50,7 @@ fixed	__far	mindist		= MINDIST;
 //
 int			pixelangle[MAXVIEWWIDTH];
 long	__far	finetangent[FINEANGLES/4];
-fixed 	__far	sintable[ANGLES+ANGLES/4],far *costable = sintable+(ANGLES/4);
+fixed 	__far	sintable[ANGLES+ANGLES/4], __far *costable = sintable+(ANGLES/4);
 
 //
 // refresh variables
@@ -404,7 +404,7 @@ int	CalcHeight (void)
 ===================
 */
 
-dong	__far	postsource;
+long	__far	postsource;
 unsigned	postx;
 unsigned	postwidth;
 

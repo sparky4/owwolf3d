@@ -34,7 +34,7 @@ typedef	enum	{false,true}	boolean;
 typedef	unsigned	char		byte;
 typedef	unsigned	int		word;
 typedef	unsigned	long		dword;
-typedef	long				dong;
+//typedef	long				dong;
 typedef	byte *					Ptr;
 
 typedef	struct

@@ -98,7 +98,7 @@ void	PlayLoop (void);
 */
 
 
-objtype dummyobj;
+objtype __far dummyobj;
 
 //
 // LIST OF SONGS FOR EACH VERSION

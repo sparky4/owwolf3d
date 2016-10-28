@@ -39,7 +39,7 @@
 
 #define SIGN(x) 	((x)>0?1:-1)
 #define ABS(x) 		((int)(x)>0?(x):-(x))
-#define LABS(x) 	((dong)(x)>0?(x):-(x))
+#define LABS(x) 	((long)(x)>0?(x):-(x))
 
 /*
 =============================================================================
@@ -662,28 +662,28 @@ typedef struct doorstruct
 typedef struct objstruct
 {
 	activetype	active;
-	int			ticcount;
+	short		ticcount;
 	classtype	obclass;
 	statetype	*state;
 
 	byte		flags;				//	FL_SHOOTABLE, etc
 
-	dong		distance;			// if negative, wait for that door to open
+	long	__huge	distance;			// if negative, wait for that door to open
 	dirtype		dir;
 
-	dong 		x,y;
+	fixed		x,y;
 	unsigned	tilex,tiley;
 	byte		areanumber;
 
-	int	 		viewx;
+	short	 		viewx;
 	unsigned	viewheight;
-	dong		transx,transy;		// in global coord
+	fixed		transx,transy;		// in global coord
 
-	int 		angle;
-	int			hitpoints;
-	dong		speed;
+	short 		angle;
+	short			hitpoints;
+	long		speed;
 
-	int			temp1,temp2,temp3;
+	short			temp1,temp2,temp3;
 	struct		objstruct	*next,*prev;
 } objtype;
 
@@ -726,22 +726,22 @@ typedef enum	{
 
 typedef	struct
 {
-	int			difficulty;
-	int			mapon;
-	dong	__far	oldscore,score,nextextra;
-	int			lives;
-	int			health;
-	int			ammo;
-	int			keys;
+	short			difficulty;
+	short			mapon;
+	long	__far	oldscore,score,nextextra;
+	short			lives;
+	short			health;
+	short			ammo;
+	short			keys;
 	weapontype		bestweapon,weapon,chosenweapon;
 
-	int			faceframe;
-	int			attackframe,attackcount,weaponframe;
+	short			faceframe;
+	short			attackframe,attackcount,weaponframe;
 
-	int			episode,secretcount,treasurecount,killcount,
+	short			episode,secretcount,treasurecount,killcount,
 				secrettotal,treasuretotal,killtotal;
-	dong	__far	TimeCount;
-	dong	__far	killx,killy;
+	long	__far	TimeCount;
+	long	__far	killx,killy;
 	boolean		victoryflag;		// set during victory animations
 } gametype;
 
@@ -778,7 +778,7 @@ extern	boolean		IsA386;
 
 //extern	byte __far	*scalermemory;
 
-extern	dong	__far	focallength;
+extern	fixed	__far	focallength;
 extern	unsigned	viewangles;
 extern	unsigned	screenofs;
 extern	int		    viewwidth;
@@ -794,14 +794,12 @@ extern	int		mouseadjustment;
 // math tables
 //
 extern	int			pixelangle[MAXVIEWWIDTH];
-extern	fixed		__far finetangent[FINEANGLES/4];
-extern	dong 		__far sintable[],far *costable;
 
 //
 // derived constants
 //
-extern	dong 	__far	scale,maxslope;
-extern	dong	__far	heightnumerator;
+extern	long 	__far	scale,maxslope;
+extern	fixed	__far	heightnumerator;
 extern	int		minheightdiv;
 
 extern	char	configname[13];
@@ -838,7 +836,7 @@ extern	int			doornum;//short?
 
 extern	char		demoname[13];
 
-extern	dong	__far	spearx,speary;
+extern	long	__far	spearx,speary;
 extern	unsigned	spearangle;
 extern	boolean		spearflag;
 
@@ -861,9 +859,9 @@ void DrawAllPlayBorderSides (void);
 
 
 // JAB
-#define	PlaySoundLocTile(s,tx,ty)	PlaySoundLocGlobal(s,(((dong)(tx) << TILESHIFT) + (1L << (TILESHIFT - 1))),(((dong)ty << TILESHIFT) + (1L << (TILESHIFT - 1))))
+#define	PlaySoundLocTile(s,tx,ty)	PlaySoundLocGlobal(s,(((long)(tx) << TILESHIFT) + (1L << (TILESHIFT - 1))),(((long)ty << TILESHIFT) + (1L << (TILESHIFT - 1))))
 #define	PlaySoundLocActor(s,ob)		PlaySoundLocGlobal(s,(ob)->x,(ob)->y)
-void	PlaySoundLocGlobal(word s,dong gx,dong gy);
+void	PlaySoundLocGlobal(word s,long gx,long gy);
 void UpdateSoundLoc(void);
 
 
@@ -876,7 +874,7 @@ void UpdateSoundLoc(void);
 */
 
 #ifdef SPEAR
-extern	dong	__far	funnyticount;		// FOR FUNNY BJ FACE
+extern	long	__far	funnyticount;		// FOR FUNNY BJ FACE
 #endif
 
 extern	exit_t	__far	playstate;
@@ -984,35 +982,35 @@ int DebugKeys (void);
 extern	unsigned screenloc[3];
 extern	unsigned freelatch;
 
-extern	dong	__far	lasttimecount;
-extern	dong	__far	frameon;
+extern	long	__far	lasttimecount;
+extern	long	__far	frameon;
 extern	boolean	fizzlein;
 
 extern	unsigned	wallheight[MAXVIEWWIDTH];
 
-extern	dong	__far	tileglobal;
+extern	long	__far	tileglobal;
 
 //
 // math tables
 //
 extern	int			pixelangle[MAXVIEWWIDTH];
-extern	fixed	__far finetangent[FINEANGLES/4];
-extern	fixed	__far sintable[],far *costable;
+extern	long	__far finetangent[FINEANGLES/4];
+extern	fixed	__far sintable[], __far *costable;
 
 //
 // derived constants
 //
-extern	dong 	__far	scale;
-extern	dong	__far	heightnumerator;
+extern	long 	__far	scale;
+extern	long	__far	heightnumerator;
 
 //
 // refresh variables
 //
-extern	dong	__far	viewx,viewy;			// the focal point
+extern	long	__far	viewx,viewy;			// the focal point
 extern	int		viewangle;
-extern	dong	__far	viewsin,viewcos;
+extern	long	__far	viewsin,viewcos;
 
-extern	dong	__far	postsource;
+extern	long	__far	postsource;
 extern	unsigned	postx;
 extern	unsigned	postwidth;
 
@@ -1093,7 +1091,7 @@ typedef struct
 }	t_compshape;
 
 extern	t_compscale __far /*_seg*/	*scaledirectory[MAXSCALEHEIGHT+1];
-extern	dong		__far	fullscalefarcall[MAXSCALEHEIGHT+1];
+extern	long		__far	fullscalefarcall[MAXSCALEHEIGHT+1];
 
 extern	byte		bitmasks1[8][8];
 extern	byte		bitmasks2[8][8];
@@ -1123,7 +1121,7 @@ void SimpleScaleShape (int xcenter, int shapenum, unsigned height);
 // player state info
 //
 extern	boolean		running;
-extern	dong	__far	thrustspeed;
+extern	long	__far	thrustspeed;
 extern	unsigned	plux,pluy;		// player coordinates scaled to unsigned
 
 extern	int			anglefrac;
