@@ -1,7 +1,7 @@
 Open Watcom Linker Version 2.0 beta Oct 11 2016 22:37:14 (64-bit)
 Copyright (c) 2002-2016 The Open Watcom Contributors. All Rights Reserved.
 Portions Copyright (c) 1985-2002 Sybase, Inc. All Rights Reserved.
-Created on:       16/10/30 14:32:49
+Created on:       16/10/30 14:36:34
 Executable Image: wolf3d.exe
 creating a DOS executable
 
@@ -2424,4 +2424,4 @@ Module: /dos/fdos/watcom2/lib286/dos/clibl.lib(bfree.c)
 Stack size:  7fff (32767.)
 Memory size:  0005bcbf (375999.)
 Entry point address: 1fdd:3026
-Link time: 00:00.58
+Link time: 00:00.62
