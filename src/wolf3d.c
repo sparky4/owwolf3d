@@ -643,10 +643,11 @@ void CalcProjection (long focal)
 	long            intang;
 	float   angle;
 	double  tang;
-	double  planedist;
-	double  globinhalf;
+	//double  planedist;
+	//double  globinhalf;
 	int             halfview;
-	double  halfangle,facedist;
+	double  //halfangle,
+	facedist;
 
 
 	focallength = focal;
@@ -1409,9 +1410,11 @@ static  char *ParmStringsmo[] = {"baby","easy","normal","hard",""};
 
 void    DemoLoop (void)
 {
+#ifdef DEMO
 	static int LastDemo;
+#endif
 	int     i,level;
-	long nsize;
+	//long nsize;
 	memptr	nullblock;
 
 //

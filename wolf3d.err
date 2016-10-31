@@ -1,9 +1,4 @@
 src/wolf3d.c(445): Warning! W202: Symbol 'ob' has been defined, but not referenced
-src/wolf3d.c(647): Warning! W202: Symbol 'globinhalf' has been defined, but not referenced
-src/wolf3d.c(646): Warning! W202: Symbol 'planedist' has been defined, but not referenced
-src/wolf3d.c(649): Warning! W202: Symbol 'halfangle' has been defined, but not referenced
-src/wolf3d.c(1347): Warning! W202: Symbol 'finscreen' has been defined, but not referenced
-src/wolf3d.c(1414): Warning! W202: Symbol 'nsize' has been defined, but not referenced
-src/wolf3d.c(1412): Warning! W202: Symbol 'LastDemo' has been defined, but not referenced
-src/wolf3d.c(1415): Warning! W202: Symbol 'nullblock' has been defined, but not referenced
-src/wolf3d.c(1590): Warning! W202: Symbol 'i' has been defined, but not referenced
+src/wolf3d.c(1348): Warning! W202: Symbol 'finscreen' has been defined, but not referenced
+src/wolf3d.c(1418): Warning! W202: Symbol 'nullblock' has been defined, but not referenced
+src/wolf3d.c(1593): Warning! W202: Symbol 'i' has been defined, but not referenced
