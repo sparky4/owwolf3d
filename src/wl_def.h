@@ -881,8 +881,7 @@ extern	exit_t	__far	playstate;
 
 extern	boolean	__far	madenoise;
 
-extern	objtype 	__far	objlist[MAXACTORS];
-extern	objtype	__far	*new,*obj,*player,*lastobj,*objfreelist,*killerobj;
+extern	objtype 	__far	objlist[MAXACTORS], *new,*obj,*player,*lastobj,*objfreelist,*killerobj;
 extern	statobj_t	__far	statobjlist[MAXSTATS],*laststatobj;
 extern	doorobj_t	__far	doorobjlist[MAXDOORS],*lastdoorobj;
 
