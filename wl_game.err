@@ -11,4 +11,3 @@ src/wl_game.c(1242): Warning! W202: Symbol 'i' has been defined, but not referen
 src/wl_game.c(1242): Warning! W202: Symbol 'xl' has been defined, but not referenced
 src/wl_game.c(1242): Warning! W202: Symbol 'xh' has been defined, but not referenced
 src/wl_game.c(1243): Warning! W202: Symbol 'num' has been defined, but not referenced
-src/type.h(6): Warning! W202: Symbol 'CPURegs' has been defined, but not referenced

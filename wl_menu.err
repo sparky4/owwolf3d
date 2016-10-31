@@ -1,13 +1,13 @@
-src/wl_menu.c(334): Warning! W202: Symbol 'start' has been defined, but not referenced
-src/wl_menu.c(334): Warning! W202: Symbol 'i' has been defined, but not referenced
-src/wl_menu.c(1139): Warning! W202: Symbol 'i' has been defined, but not referenced
-src/wl_menu.c(1768): Warning! W202: Symbol 'i' has been defined, but not referenced
-src/wl_menu.c(2291): Warning! W400: Array subscript is of type plain char
-src/wl_menu.c(2697): Warning! W400: Array subscript is of type plain char
-src/wl_menu.c(2908): Warning! W202: Symbol 'num' has been defined, but not referenced
-src/wl_menu.c(3614): Warning! W202: Symbol 'i' has been defined, but not referenced
-src/wl_menu.c(3614): Warning! W202: Symbol 'time' has been defined, but not referenced
-src/wl_menu.c(3763): Warning! W400: Array subscript is of type plain char
-src/wl_menu.c(3746): Warning! W202: Symbol 'y' has been defined, but not referenced
-src/wl_menu.c(3746): Warning! W202: Symbol 'x' has been defined, but not referenced
-src/wl_menu.c(3746): Warning! W202: Symbol 'time' has been defined, but not referenced
+src/wl_menu.c(342): Warning! W202: Symbol 'start' has been defined, but not referenced
+src/wl_menu.c(342): Warning! W202: Symbol 'i' has been defined, but not referenced
+src/wl_menu.c(1147): Warning! W202: Symbol 'i' has been defined, but not referenced
+src/wl_menu.c(1776): Warning! W202: Symbol 'i' has been defined, but not referenced
+src/wl_menu.c(2299): Warning! W400: Array subscript is of type plain char
+src/wl_menu.c(2705): Warning! W400: Array subscript is of type plain char
+src/wl_menu.c(2916): Warning! W202: Symbol 'num' has been defined, but not referenced
+src/wl_menu.c(3622): Warning! W202: Symbol 'i' has been defined, but not referenced
+src/wl_menu.c(3622): Warning! W202: Symbol 'time' has been defined, but not referenced
+src/wl_menu.c(3771): Warning! W400: Array subscript is of type plain char
+src/wl_menu.c(3754): Warning! W202: Symbol 'y' has been defined, but not referenced
+src/wl_menu.c(3754): Warning! W202: Symbol 'x' has been defined, but not referenced
+src/wl_menu.c(3754): Warning! W202: Symbol 'time' has been defined, but not referenced

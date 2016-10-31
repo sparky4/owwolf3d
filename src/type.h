@@ -3,6 +3,7 @@
 
 #define VERSION __DATE__ " " __TIME__
 #define _FCORELEFT 0x90000UL+16UL
+/*
 static union REGS CPURegs;
 
 #define _AX CPURegs.x.ax
@@ -23,6 +24,7 @@ static union REGS CPURegs;
 #define _DL CPURegs.h.dl
 
 #define geninterrupt(n) int86(n,&CPURegs,&CPURegs);
+*/
 #define peekb(segm,ofs) (*(byte far*)MK_FP((segm),(ofs)))
 #define peekw(segm,ofs) (*(word far*)MK_FP((segm),(ofs)))
 #define pokeb(segm,ofs,value) (peekb((segm),(ofs)) = (byte)(value))

@@ -27,6 +27,14 @@ boolean		fastpalette;				// if true, use outsb to set
 
 byte		__far	palette1[256][3],__far palette2[256][3];
 
+static union REGS CPURegs;
+
+#define _AH CPURegs.h.ah
+#define _AL CPURegs.h.al
+#define _BH CPURegs.h.bh
+
+#define geninterrupt(n) int86(n,&CPURegs,&CPURegs);
+
 //===========================================================================
 
 // asm

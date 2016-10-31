@@ -45,6 +45,22 @@
 
 static	char		*ParmStringspm[] = {"nomain","noems","noxms",nil};
 
+static union REGS CPURegs;
+
+#define _AX CPURegs.x.ax
+#define _BX CPURegs.x.bx
+//#define _CX CPURegs.x.cx
+#define _DX CPURegs.x.dx
+
+#define _SI CPURegs.x.si
+
+#define _AH CPURegs.h.ah
+#define _AL CPURegs.h.al
+#define _BH CPURegs.h.bh
+#define _BL CPURegs.h.bl
+
+#define geninterrupt(n) int86(n,&CPURegs,&CPURegs);
+
 /////////////////////////////////////////////////////////////////////////////
 //
 //	EMS Management code
@@ -84,7 +100,7 @@ PML_StartupEMS(void)
 	int		i;
 	long	size;
 	static char	emmname[] = "EMMXXXX0";	//fix by andrius4669
-	byte	err, str[64];
+	byte	err=0;//, str[64];
 	boolean errorflag=false;
 
 	EMSPresent = false;			// Assume that we'll fail
@@ -434,7 +450,7 @@ PM_CheckMainMem(void)
 void
 PML_StartupMainMem(void)
 {
-	int		i,n;
+	int		i;//,n;
 	memptr	*p;
 
 	MainPagesAvail = 0;
@@ -963,12 +979,12 @@ PM_SetPageLock(int pagenum,PMLockType lock)
 void
 PM_Preload(boolean (*update)(word current,word total))
 {
-	int				i,j,
+	int				i,//j,
 					page,oogypage;
 	word			current,total,
-					totalnonxms,totalxms,
+					//totalnonxms,totalxms,
 					mainfree,maintotal,
-					emsfree,emstotal,
+					//emsfree,emstotal,
 					xmsfree,xmstotal;
 	memptr			addr;
 	PageListStruct	far *p;

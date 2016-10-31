@@ -1,4 +1,4 @@
-src/wl_text.c(354): Warning! W202: Symbol 'i' has been defined, but not referenced
-src/wl_text.c(633): Warning! W202: Symbol 'temp' has been defined, but not referenced
-src/wl_text.c(749): Warning! W202: Symbol 'layout' has been defined, but not referenced
-src/wl_text.c(802): Warning! W202: Symbol 'layout' has been defined, but not referenced
+src/wl_text.c(358): Warning! W202: Symbol 'i' has been defined, but not referenced
+src/wl_text.c(637): Warning! W202: Symbol 'temp' has been defined, but not referenced
+src/wl_text.c(753): Warning! W202: Symbol 'layout' has been defined, but not referenced
+src/wl_text.c(806): Warning! W202: Symbol 'layout' has been defined, but not referenced

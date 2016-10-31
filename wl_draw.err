@@ -11,4 +11,3 @@ src/wl_draw.c(1115): Warning! W202: Symbol 'j' has been defined, but not referen
 src/wl_draw.c(1118): Warning! W202: Symbol 'shapenum' has been defined, but not referenced
 src/wl_draw.c(1280): Warning! W202: Symbol 'oldtimecount' has been defined, but not referenced
 src/wl_draw.c(1861): Warning! W202: Symbol 'tracedir' has been defined, but not referenced
-src/type.h(6): Warning! W202: Symbol 'CPURegs' has been defined, but not referenced

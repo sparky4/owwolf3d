@@ -95,6 +95,12 @@ long TimeIt(void);
     value [dx] \
     modify exact [ax cx dx];
 
+static union REGS CPURegs;
+
+#define _DI CPURegs.x.di
+
+#define geninterrupt(n) int86(n,&CPURegs,&CPURegs);
+
 //	Internal routines
 
 //	Public routines
