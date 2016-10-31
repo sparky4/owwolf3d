@@ -1,4 +1,0 @@
-src/wolf3d.c(445): Warning! W202: Symbol 'ob' has been defined, but not referenced
-src/wolf3d.c(1348): Warning! W202: Symbol 'finscreen' has been defined, but not referenced
-src/wolf3d.c(1418): Warning! W202: Symbol 'nullblock' has been defined, but not referenced
-src/wolf3d.c(1593): Warning! W202: Symbol 'i' has been defined, but not referenced

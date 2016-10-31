@@ -1,5 +1,1 @@
-src/wl_act1.c(352): Warning! W202: Symbol 'areanumber' has been defined, but not referenced
-src/wl_act1.c(619): Warning! W202: Symbol 'move' has been defined, but not referenced
-src/wl_act1.c(786): Warning! W202: Symbol 'ppressed' has been defined, but not referenced
-src/wl_act1.c(787): Warning! W202: Symbol 'ptimecount' has been defined, but not referenced
 src/type.h(6): Warning! W202: Symbol 'CPURegs' has been defined, but not referenced
