@@ -1,0 +1,13 @@
+src/wl_scale.c(64): Warning! W202: Symbol 'dest' has been defined, but not referenced
+src/wl_scale.c(63): Warning! W202: Symbol 'y' has been defined, but not referenced
+src/wl_scale.c(63): Warning! W202: Symbol 'x' has been defined, but not referenced
+src/wl_scale.c(160): Warning! W202: Symbol 'totalscaled' has been defined, but not referenced
+src/wl_scale.c(158): Warning! W202: Symbol 'i' has been defined, but not referenced
+src/wl_scale.c(437): Warning! W202: Symbol 't' has been defined, but not referenced
+src/wl_scale.c(436): Warning! W202: Symbol 'tempx' has been defined, but not referenced
+src/wl_scale.c(643): Warning! W202: Symbol 'rightvis' has been defined, but not referenced
+src/wl_scale.c(643): Warning! W202: Symbol 'leftvis' has been defined, but not referenced
+src/wl_scale.c(641): Warning! W202: Symbol 't' has been defined, but not referenced
+src/wl_scale.c(640): Warning! W202: Symbol 'tempx' has been defined, but not referenced
+src/type.h(6): Warning! W202: Symbol 'CPURegs' has been defined, but not referenced
+src/wl_scale.c(430): Warning! W202: Symbol 'longtemp' has been defined, but not referenced

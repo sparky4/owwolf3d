@@ -1,0 +1,6 @@
+src/wl_state.c(477): Warning! W202: Symbol 'i' has been defined, but not referenced
+src/wl_state.c(589): Warning! W202: Symbol 'turnaround' has been defined, but not referenced
+src/wl_state.c(589): Warning! W202: Symbol 'olddir' has been defined, but not referenced
+src/wl_state.c(587): Warning! W202: Symbol 'i' has been defined, but not referenced
+src/wl_state.c(1042): Warning! W202: Symbol 'temp' has been defined, but not referenced
+src/type.h(6): Warning! W202: Symbol 'CPURegs' has been defined, but not referenced

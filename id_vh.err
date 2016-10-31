@@ -1,0 +1,8 @@
+src/id_vh.c(45): Warning! W202: Symbol 'i' has been defined, but not referenced
+src/id_vh.c(102): Warning! W202: Symbol 'i' has been defined, but not referenced
+src/id_vh.c(178): Warning! W200: 'temp' has been referenced but never assigned a value
+src/id_vh.c(404): Warning! W202: Symbol 'p' has been defined, but not referenced
+src/id_vh.c(404): Warning! W202: Symbol 'm' has been defined, but not referenced
+src/id_vh.c(404): Warning! W202: Symbol 'j' has been defined, but not referenced
+src/id_vh.c(483): Warning! W200: 'x' has been referenced but never assigned a value
+src/type.h(6): Warning! W202: Symbol 'CPURegs' has been defined, but not referenced
