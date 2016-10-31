@@ -1,4 +1,0 @@
-src/id_ca.c(215): Warning! W200: 'flag' has been referenced but never assigned a value
-src/id_ca.c(262): Warning! W200: 'flag' has been referenced but never assigned a value
-src/id_ca.c(339): Warning! W202: Symbol 'size' has been defined, but not referenced
-src/type.h(6): Warning! W202: Symbol 'CPURegs' has been defined, but not referenced

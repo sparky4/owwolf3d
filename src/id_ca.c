@@ -212,7 +212,7 @@ void CAL_GetGrChunkLength (int chunk)
 
 boolean CA_FarRead (int handle, byte far *dest, long length)
 {
-	boolean flag;
+	boolean flag=0;
 
 	if (length>0xffffl)
 		Quit ("CA_FarRead doesn't support 64K reads yet!");
@@ -256,7 +256,7 @@ End:
 
 boolean CA_FarWrite (int handle, byte far *source, long length)
 {
-	boolean flag;
+	boolean flag=0;
 
 	if (length>0xffffl)
 		Quit ("CA_FarWrite doesn't support 64K reads yet!");
@@ -330,7 +330,7 @@ boolean CA_ReadFile (char *filename, memptr *ptr)
 boolean CA_WriteFile (char *filename, void far *ptr, long length)
 {
 	int handle;
-	long size;
+	//long size;
 
 	handle = open(filename,O_CREAT | O_BINARY | O_WRONLY,
 				S_IREAD | S_IWRITE | S_IFREG);

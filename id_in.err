@@ -1,4 +1,0 @@
-src/id_in.c(148): Warning! W202: Symbol 'i' has been defined, but not referenced
-src/id_in.c(326): Warning! W202: Symbol 'time' has been defined, but not referenced
-src/id_in.c(468): Warning! W202: Symbol 'regs' has been defined, but not referenced
-src/id_in.c(674): Warning! W202: Symbol 'i' has been defined, but not referenced

@@ -1,4 +1,0 @@
-src/wl_play.c(615): Warning! W202: Symbol 'temp' has been defined, but not referenced
-src/wl_play.c(613): Warning! W202: Symbol 'i' has been defined, but not referenced
-src/wl_play.c(950): Warning! W202: Symbol 'spotat' has been defined, but not referenced
-src/wl_play.c(1367): Warning! W202: Symbol 'give' has been defined, but not referenced

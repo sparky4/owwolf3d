@@ -323,6 +323,14 @@ static byte
 	"Down","Left","Right",""
 					};
 
+static union REGS CPURegs;
+
+#define _AX CPURegs.x.ax
+#define _BX CPURegs.x.bx
+#define _CX CPURegs.x.cx
+#define _DX CPURegs.x.dx
+
+#define geninterrupt(n) int86(n,&CPURegs,&CPURegs);
 
 ////////////////////////////////////////////////////////////////////
 //

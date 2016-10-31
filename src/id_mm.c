@@ -128,7 +128,7 @@ void 		MML_ClearBlock (void);
 
 boolean MML_CheckForEMS(void)
 {
-	boolean emmcfems;
+	boolean emmcfems=0;
 	static char	emmname[] = "EMMXXXX0";	//fix by andrius4669
 	__asm {
 		mov	dx,OFFSET emmname	//fix by andrius4669
@@ -277,7 +277,7 @@ void MML_UseSpace (unsigned segstart, unsigned seglength)
 
 void MML_ClearBlock (void)
 {
-	mmblocktype far *scan,far *last;
+	mmblocktype far *scan;//,far *last;
 
 	scan = mmhead->next;
 
@@ -308,14 +308,14 @@ void MML_ClearBlock (void)
 ===================
 */
 
-static	char *ParmStrings[] = {"noems","noxms",""};
+//static	char *ParmStrings[] = {"noems","noxms",""};
 
 void MM_Startup (void)
 {
 	int i;
 	unsigned 	long length;
 	void far 	*start;
-	unsigned 	segstart,seglength,endfree;
+	unsigned 	segstart,seglength;//,endfree;
 
 	if (mmstarted)
 		MM_Shutdown ();
@@ -765,8 +765,8 @@ void MM_ShowMemory (void)
 {
 	mmblocktype far *scan;
 	unsigned color,temp,x,y;
-	long	end,owner;
-	char    scratch[80],str[10];
+	long	end;//,owner;
+	//char    scratch[80],str[10];
 
 	temp = bufferofs;
 	bufferofs = displayofs;

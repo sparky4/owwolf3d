@@ -1,8 +1,0 @@
-src/id_pm.c(87): Warning! W202: Symbol 'str' has been defined, but not referenced
-src/id_pm.c(87): Warning! W200: 'err' has been referenced but never assigned a value
-src/id_pm.c(439): Warning! W202: Symbol 'n' has been defined, but not referenced
-src/id_pm.c(971): Warning! W202: Symbol 'totalxms' has been defined, but not referenced
-src/id_pm.c(973): Warning! W202: Symbol 'emsfree' has been defined, but not referenced
-src/id_pm.c(971): Warning! W202: Symbol 'totalnonxms' has been defined, but not referenced
-src/id_pm.c(968): Warning! W202: Symbol 'j' has been defined, but not referenced
-src/id_pm.c(973): Warning! W202: Symbol 'emstotal' has been defined, but not referenced

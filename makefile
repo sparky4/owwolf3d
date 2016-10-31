@@ -206,7 +206,7 @@ comq: .symbolic
 	@*upx -9 $(UPXQ) $(EXEC)
 
 vomitchan: .symbolic
-	@$(DUMP) *.err
+	@if exist *.err  $(DUMP) *.err
 
 ##
 ##	External library management~ ^^

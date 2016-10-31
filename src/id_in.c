@@ -132,6 +132,15 @@ static	void interrupt	(*OldKeyVect)(void);
 
 static	char			*ParmStringsin[] = {"nojoys","nomouse",nil};
 
+static union REGS CPURegs;
+
+#define _AX CPURegs.x.ax
+#define _BX CPURegs.x.bx
+#define _CX CPURegs.x.cx
+#define _DX CPURegs.x.dx
+
+#define geninterrupt(n) int86(n,&CPURegs,&CPURegs);
+
 //	Internal routines
 
 ///////////////////////////////////////////////////////////////////////////
@@ -145,7 +154,7 @@ INL_KeyService(void)
 static	boolean	special;
 		byte	k,c,
 				temp;
-		int		i;
+		//int		i;
 
 	k = inp(0x60);	// Get the scan code
 
@@ -323,7 +332,7 @@ done:
 void INL_GetJoyDelta(word joy,int *dx,int *dy)
 {
 	word		x,y;
-	dword	time;
+	//dword	time;
 	JoystickDef	*def;
 static	dword	lasttime;
 
@@ -465,7 +474,7 @@ INL_StartMouse(void)
 	}
 	return(false);
 #endif
- union REGS regs;
+// union REGS regs;
  unsigned char far *vector;
 
 
@@ -671,7 +680,7 @@ IN_SetKeyHook(void (*hook)())
 void
 IN_ClearKeysDown(void)
 {
-	int	i;
+	//int	i;
 
 	LastScan = sc_None;
 	LastASCII = key_None;

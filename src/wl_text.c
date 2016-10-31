@@ -57,6 +57,10 @@ unsigned	rowon;
 int			picx,picy,picnum,picdelay;
 boolean		layoutdone;
 
+static union REGS CPURegs;
+
+#define _AX CPURegs.x.ax
+#define geninterrupt(n) int86(n,&CPURegs,&CPURegs);
 //===========================================================================
 
 #ifndef JAPAN

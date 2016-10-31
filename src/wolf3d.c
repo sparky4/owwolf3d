@@ -77,6 +77,10 @@ char	configname[13]="CONFIG.";
 =============================================================================
 */
 
+static union REGS CPURegs;
+
+#define geninterrupt(n) int86(n,&CPURegs,&CPURegs);
+
 
 /*
 ====================

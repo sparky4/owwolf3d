@@ -232,6 +232,15 @@ int songs[]=
 #endif
 };
 
+static union REGS CPURegs;
+
+#define _AX CPURegs.x.ax
+#define _BX CPURegs.x.bx
+#define _CX CPURegs.x.cx
+#define _DX CPURegs.x.dx
+
+#define geninterrupt(n) int86(n,&CPURegs,&CPURegs);
+
 
 /*
 =============================================================================
@@ -610,9 +619,9 @@ void	CenterWindow(word w,word h)
 
 void CheckKeys (void)
 {
-	int		i;
+	//int		i;
 	byte	scan;
-	unsigned	temp;
+	//unsigned	temp;
 
 
 	if (screenfaded || demoplayback)	// don't do anything with a faded screen
@@ -947,7 +956,7 @@ void GetNewActor (void)
 
 void RemoveObj (objtype *gone)
 {
-	objtype **spotat;
+	//objtype **spotat;
 
 	if (gone == player)
 		Quit ("RemoveObj: Tried to remove the player!");
@@ -1364,7 +1373,7 @@ long	__far	funnyticount;
 
 void PlayLoop (void)
 {
-	int		give;
+	//int		give;
 	int	helmetangle;
 
 	playstate = TimeCount = lasttimecount = 0;

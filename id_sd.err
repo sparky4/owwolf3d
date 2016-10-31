@@ -1,5 +1,4 @@
 src/id_sd.c(912): Warning! W202: Symbol 'gotit' has been defined, but not referenced
-src/type.h(6): Warning! W202: Symbol 'CPURegs' has been defined, but not referenced
 src/id_sd.c(129): Warning! W202: Symbol 'sbSamples' has been defined, but not referenced
 src/id_sd.c(159): Warning! W202: Symbol 'pcarriers' has been defined, but not referenced
 src/id_sd.c(160): Warning! W202: Symbol 'pmodifiers' has been defined, but not referenced
