@@ -442,7 +442,7 @@ boolean SaveTheGame(int file,int x,int y)
 boolean LoadTheGame(int file,int x,int y)
 {
 	long checksum,oldchecksum;
-	objtype *ob,nullobj;
+	objtype /**ob,*/nullobj;
 
 
 	checksum = 0;
@@ -1345,7 +1345,7 @@ void NewViewSize (int width)
 
 void Quit (char *error)
 {
-	unsigned        finscreen;
+//	unsigned        finscreen;
 	memptr	screen;
 
 	if (virtualreality)
@@ -1415,7 +1415,7 @@ void    DemoLoop (void)
 #endif
 	int     i,level;
 	//long nsize;
-	memptr	nullblock;
+	//memptr	nullblock;
 
 //
 // check for launch from ted
@@ -1590,7 +1590,7 @@ char    *nosprtxt[] = {"nospr",nil};
 
 void main (void)
 {
-	int     i;
+	//int     i;
 
 
 #ifdef BETA

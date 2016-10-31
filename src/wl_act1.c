@@ -349,7 +349,7 @@ void InitDoorList (void)
 
 void SpawnDoor (int tilex, int tiley, boolean vertical, int lock)
 {
-	int	areanumber;
+	//int	areanumber;
 	unsigned	far *map;
 
 	if (doornum==64)
@@ -616,7 +616,7 @@ void DoorOpening (int door)
 
 void DoorClosing (int door)
 {
-	int		area1,area2,move;
+	int		area1,area2;//,move;
 	unsigned	far	*map;
 	long	position;
 	int		tilex,tiley;
@@ -783,8 +783,8 @@ void MovePWalls (void)
 {
 	int	oldblock,oldtile;
 	int	dx, dy;
-		  static int ppressed = 0;
-		  static long ptimecount = 0;
+//		  static int ppressed = 0;
+//		  static long ptimecount = 0;
 
 	if (!pwallstate)
 		return;
