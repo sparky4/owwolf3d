@@ -35,6 +35,7 @@ typedef union REGPACK	regs_t;
 typedef	enum	{false,true}	boolean;
 typedef	unsigned	char		byte;
 typedef	unsigned	int		word;
+typedef	signed	short		sword;
 typedef	unsigned	long		dword;
 typedef	byte *					Ptr;
 
