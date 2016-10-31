@@ -28,7 +28,7 @@ exit_t	__far	playstate;
 
 int		__far	DebugOk;
 
-objtype 	__far	objlist[MAXACTORS],	*new,*obj,*player,*lastobj,*objfreelist,*killerobj;
+objtype 	__far	objlist[MAXACTORS], *new,*obj,*player,*lastobj,*objfreelist,*killerobj;
 
 unsigned	__far	farmapylookup[MAPSIZE];
 byte		__far	*nearmapylookup[MAPSIZE];
