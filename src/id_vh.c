@@ -42,8 +42,8 @@ void	VWL_UpdateScreenBlocks (void);
 void VW_DrawPropString (char far *string)
 {
 	fontstruct	far	*font;
-	int		width,step,height,i;
-	byte	far *source, far *dest, far *origdest;
+	int		width,step,height;//,i;
+	byte	__far *source, far *dest, far *origdest;
 	byte	ch,mask;
 
 	font = (fontstruct far *)grsegs[STARTFONT+fontnumber];
@@ -98,9 +98,9 @@ bufferwidth = ((dest+1)-origdest)*4;
 
 void VW_DrawColorPropString (char far *string)
 {
-	fontstruct	far	*font;
-	int		width,step,height,i;
-	byte	far *source, far *dest, far *origdest;
+	fontstruct	__far	*font;
+	int		width,step,height;//,i;
+	byte	__far *source, far *dest, far *origdest;
 	byte	ch,mask;
 
 	font = (fontstruct far *)grsegs[STARTFONT+fontnumber];
@@ -174,8 +174,9 @@ bufferwidth = ((dest+1)-origdest)*4;
 void VL_MungePic (byte far *source, unsigned width, unsigned height)
 {
 	unsigned	x,y,plane,size,pwidth;
-	byte		/*_seg */*temp, far *dest, far *srcline;
+	byte		/*_seg */ *temp=0, __far *dest, __far *srcline;
 
+	temp=0;
 	size = width*height;
 
 	if (width&3)
@@ -400,8 +401,8 @@ void LatchDrawPic (unsigned x, unsigned y, unsigned picnum)
 
 void LoadLatchMem (void)
 {
-	int	i,j,p,m,width,height,start,end;
-	byte	far *src;
+	int	i,width,height,start,end;//j,p,m,
+	byte	__far *src;
 	unsigned	destoff;
 
 //
@@ -479,7 +480,7 @@ boolean FizzleFade (unsigned source, unsigned dest,
 	int			pixperframe;
 	unsigned	drawofs,pagedelta;
 	byte 		mask,maskb[8] = {1,2,4,8};
-	unsigned	x,y,p,frame;
+	unsigned	x=0,y,p,frame;
 	long		rndval;
 
 	pagedelta = dest-source;

@@ -28,7 +28,7 @@ typedef	enum	{
 				}	SDSMode;
 typedef	struct
 		{
-			dword	length;
+			dword	__far	length;
 			word		priority;
 		} SoundCommon;
 
@@ -166,19 +166,19 @@ typedef	struct
 					offsets[1];
 		} MusicGroup;
 #endif
-
+/*
 typedef	struct
 		{
-			/* This part needs to be set up by the user */
-			word        mood,far *moods[sqMaxMoods];
+			// This part needs to be set up by the user
+			word        mood, __far *moods[sqMaxMoods];
 
-			/* The rest is set up by the code */
+			// The rest is set up by the code
 			Instrument	inst;
 			boolean		percussive;
-			word		far *seq;
+			word		__far *seq;
 			dword	nextevent;
 		} ActiveTrack;
-
+*/
 #define	sqmode_Normal		0
 #define	sqmode_FadeIn		1
 #define	sqmode_FadeOut		2
@@ -197,7 +197,7 @@ extern	SDSMode		DigiMode;
 extern	SMMode		MusicMode;
 extern	boolean		DigiPlaying;
 extern	int			DigiMap[];
-extern	dword	TimeCount;					// Global time in ticks
+extern	dword	__far	TimeCount;					// Global time in ticks
 
 // Function prototypes
 extern	void	SD_Startup(void),

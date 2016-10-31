@@ -73,7 +73,7 @@ struct atkinf
 };
 
 
-int	strafeangle[9] = {0,90,180,270,45,135,225,315,0};
+int	__far	strafeangle[9] = {0,90,180,270,45,135,225,315,0};
 
 void DrawWeapon (void);
 void GiveWeapon (int weapon);
@@ -116,7 +116,7 @@ void ClipMove (objtype *ob, long xmove, long ymove);
 
 void CheckWeaponChange (void)
 {
-	int	i,buttons;
+	int	i;//,buttons;
 
 	if (!gamestate.ammo)		// must use knife with no ammo
 		return;
@@ -148,10 +148,10 @@ void CheckWeaponChange (void)
 
 void ControlMovement (objtype *ob)
 {
-	long	oldx,oldy;
-	int		angle,maxxmove;
+	long	__far	oldx,oldy;
+	int		angle;//,maxxmove;
 	int		angleunits;
-	long	speed;
+	//long	speed;
 
 	thrustspeed = 0;
 
@@ -927,8 +927,8 @@ void VictoryTile (void)
 
 void Thrust (int angle, long speed)
 {
-	long xmove,ymove;
-	long	slowmax;
+	long __far xmove,ymove;
+	//long	slowmax;
 	unsigned	offset;
 
 
@@ -1007,7 +1007,7 @@ void Cmd_Fire (void)
 
 void Cmd_Use (void)
 {
-	objtype 	*check;
+	//objtype 	*check;
 	int			checkx,checky,doornum,dir;
 	boolean		elevatorok;
 

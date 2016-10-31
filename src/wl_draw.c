@@ -61,7 +61,6 @@ fixed	__far	viewsin,viewcos;
 
 
 
-fixed	__far	FixedByFrac (fixed a, fixed b);
 void	TransformActor (objtype *ob);
 void	BuildTables (void);
 void	ClearScreen (void);
@@ -140,9 +139,9 @@ void AsmRefresh (void);			// in WL_DR_A.ASM
 
 #pragma warn -rvl			// I stick the return value in with ASMs
 
-fixed __far FixedByFrac (fixed a, fixed b)
+word FixedByFrac (word a, word b)
 {
-	word pee;
+	word pee=0;
 //
 // setup
 //
@@ -214,9 +213,9 @@ ansok:;
 //
 void TransformActor (objtype *ob)
 {
-	int ratio;
+	//int ratio=0;
 	fixed gx,gy,gxt,gyt,nx,ny;
-	long	temp;
+	long	__far	temp=0;
 
 //
 // translate point to view centered coordinates
@@ -292,9 +291,9 @@ void TransformActor (objtype *ob)
 
 boolean TransformTile (int tx, int ty, int *dispx, int *dispheight)
 {
-	int ratio;
+	//int ratio=0;
 	fixed gx,gy,gxt,gyt,nx,ny;
-	long	temp;
+	long	__far	temp=0;
 
 //
 // translate point to view centered coordinates
@@ -366,10 +365,10 @@ boolean TransformTile (int tx, int ty, int *dispx, int *dispheight)
 
 int	CalcHeight (void)
 {
-	int	transheight;
-	int ratio;
-	fixed gxt,gyt,nx,ny;
-	long	gx,gy;
+	//int	transheight;
+	//int ratio=0;
+	fixed __far gxt,gyt,nx;//,ny;
+	long __far gx,gy;
 
 	gx = xintercept-viewx;
 	gxt = FixedByFrac(gx,viewcos);
@@ -1103,10 +1102,10 @@ visobj_t	vislist[MAXVISABLE],*visptr,*visstep,*farthest;
 
 void DrawScaleds (void)
 {
-	int 		i,j,least,numvisable,height;
-	memptr		shape;
+	int 		i,least,numvisable,height;//j,
+	//memptr		shape;
 	byte		*tilespot,*visspot;
-	int			shapenum;
+	//int			shapenum;
 	unsigned	spotloc;
 
 	statobj_t	*statptr;
@@ -1268,7 +1267,7 @@ void DrawPlayerWeapon (void)
 
 void CalcTics (void)
 {
-	long	newtime,oldtimecount;
+	long	newtime;//,oldtimecount;
 
 //
 // calculate tics since last refresh for adaptive timing
@@ -1849,7 +1848,7 @@ void WallRefresh (void)
 
 void	ThreeDRefresh (void)
 {
-	int tracedir;
+	//int tracedir;
 
 // this wouldn't need to be done except for my debugger/video wierdness
 	outp(SC_INDEX,SC_MAPMASK);

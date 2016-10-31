@@ -337,7 +337,7 @@ void Write(int x,int y,char *string)
 	L_UPIC,L_VPIC,L_WPIC,L_XPIC,L_YPIC,L_ZPIC};
 
  int i,ox,nx,ny;
- char ch;
+ int ch;
 
 
  ox=nx=x*8;
@@ -1030,10 +1030,11 @@ void PreloadGraphics(void)
 void	DrawHighScores(void)
 {
 	char		buffer[16],*str,buffer1[5];
-	byte		temp,temp1,temp2,temp3;
-	word		i,j,
-				w,h,
-				x,y;
+	//byte		temp,temp1,temp2,temp3;
+	word		i,//j,
+				w,h//,
+				//x,y
+				;
 	HighScore	*s;
 
 

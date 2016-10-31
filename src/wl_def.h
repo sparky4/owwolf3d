@@ -740,7 +740,7 @@ typedef	struct
 
 	short			episode,secretcount,treasurecount,killcount,
 				secrettotal,treasuretotal,killtotal;
-	long	__far	TimeCount;
+	dword	__far	TimeCount;
 	long	__far	killx,killy;
 	boolean		victoryflag;		// set during victory animations
 } gametype;
@@ -1019,7 +1019,8 @@ extern	int		horizwall[],vertwall[];
 extern	unsigned	pwallpos;
 
 
-fixed	__far	FixedByFrac (fixed a, fixed b);
+//fixed	__far	FixedByFrac (fixed a, fixed b);
+word	FixedByFrac (word a, word b);
 void	TransformActor (objtype *ob);
 void	BuildTables (void);
 void	ClearScreen (void);

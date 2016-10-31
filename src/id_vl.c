@@ -385,7 +385,7 @@ void VL_GetColor	(int color, int *red, int *green, int *blue)
 
 void VL_SetPalette (byte far *palette)
 {
-	int	i;
+	//int	i;
 
 //	outp (PEL_WRITE_ADR,0);
 //	for (i=0;i<768;i++)
@@ -841,8 +841,8 @@ void VL_MemToScreen (byte far *source, int width, int height, int x, int y)
 
 void VL_MaskedToScreen (byte far *source, int width, int height, int x, int y)
 {
-	byte    far *screen,far *dest,mask;
-	byte	far *maskptr;
+	byte    __far *screen,far *dest,mask;
+	//byte	far *maskptr;
 	int		plane;
 
 	width>>=2;
@@ -1019,7 +1019,7 @@ void VL_DrawTile8String (char *str, char far *tile8ptr, int printx, int printy)
 
 void VL_DrawLatch8String (char *str, unsigned tile8ptr, int printx, int printy)
 {
-	int		i;
+	//int		i;
 	unsigned	src,dest;
 
 	dest = bufferofs+ylookup[printy]+(printx>>2);
