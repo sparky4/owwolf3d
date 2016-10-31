@@ -24,7 +24,7 @@ int CP_ReadThis(void);
 #endif
 #endif
 
-char far endStrings[9][80]=
+char __far endStrings[9][80]=
 {
 #ifndef SPEAR
 	{"Dost thou wish to\nleave with such hasty\nabandon?"},
@@ -59,7 +59,7 @@ CP_iteminfo
 	NewItems={NM_X,NM_Y,4,2,24};
 
 #pragma warn -sus
-CP_itemtype far
+CP_itemtype __far
 MainMenu[]=
 {
 #ifdef JAPAN
@@ -100,7 +100,7 @@ MainMenu[]=
 #endif
 },
 
-far SndMenu[]=
+__far SndMenu[]=
 {
 #ifdef JAPAN
 	{1,"",0},
@@ -131,7 +131,7 @@ far SndMenu[]=
 #endif
 },
 
-far CtlMenu[]=
+__far CtlMenu[]=
 {
 #ifdef JAPAN
 	{0,"",0},
@@ -153,7 +153,7 @@ far CtlMenu[]=
 #pragma warn +sus
 
 #ifndef SPEAR
-far NewEmenu[]=
+__far NewEmenu[]=
 {
 #ifdef JAPAN
 #ifdef JAPDEMO
@@ -226,7 +226,7 @@ far NewEmenu[]=
 #endif
 
 
-far NewMenu[]=
+__far NewMenu[]=
 {
 #ifdef JAPAN
 	{1,"",0},
@@ -241,7 +241,7 @@ far NewMenu[]=
 #endif
 },
 
-far LSMenu[]=
+__far LSMenu[]=
 {
 	{1,"",0},
 	{1,"",0},
@@ -255,7 +255,7 @@ far LSMenu[]=
 	{1,"",0}
 },
 
-far CusMenu[]=
+__far CusMenu[]=
 {
 	{1,"",0},
 	{0,"",0},
@@ -270,7 +270,7 @@ far CusMenu[]=
 ;
 
 
-int color_hlite[]={
+int __far color_hlite[]={
    DEACTIVE,
    HIGHLIGHT,
    READHCOLOR,
@@ -284,7 +284,7 @@ int color_hlite[]={
    0x6b
    };
 
-int EpisodeSelect[6]={1};
+int __far EpisodeSelect[6]={1};
 
 
 int SaveGamesAvail[10],StartGame,SoundStatus=1,pickquick;
@@ -296,7 +296,7 @@ char SaveGameNames[10][32],SaveName[13]="SAVEGAM?.";
 // INPUT MANAGER SCANCODE TABLES
 //
 ////////////////////////////////////////////////////////////////////
-static byte
+static byte __far
 					*ScanNames[] =		// Scan code names with single chars
 					{
 	"?","?","1","2","3","4","5","6","7","8","9","0","-","+","?","?",
@@ -308,14 +308,14 @@ static byte
 	"?","?","?","?","?","?","?","?","?","?","?","?","?","?","?","?",
 	"?","?","?","?","?","?","?","?","?","?","?","?","?","?","?","?"
 					},	// DEBUG - consolidate these
-					far ExtScanCodes[] =	// Scan codes with >1 char names
+					__far ExtScanCodes[] =	// Scan codes with >1 char names
 					{
 	1,0xe,0xf,0x1d,0x2a,0x39,0x3a,0x3b,0x3c,0x3d,0x3e,
 	0x3f,0x40,0x41,0x42,0x43,0x44,0x57,0x59,0x46,0x1c,0x36,
 	0x37,0x38,0x47,0x49,0x4f,0x51,0x52,0x53,0x45,0x48,
 	0x50,0x4b,0x4d,0x00
 					},
-					*ExtScanNames[] =	// Names corresponding to ExtScanCodes
+					__far *ExtScanNames[] =	// Names corresponding to ExtScanCodes
 					{
 	"Esc","BkSp","Tab","Ctrl","LShft","Space","CapsLk","F1","F2","F3","F4",
 	"F5","F6","F7","F8","F9","F10","F11","F12","ScrlLk","Enter","RShft",
@@ -3827,7 +3827,7 @@ void FreeMusic (void)
 //		specified scan code
 //
 ///////////////////////////////////////////////////////////////////////////
-byte *
+byte __far *
 IN_GetScanName(ScanCode scan)
 {
 	byte		**p;

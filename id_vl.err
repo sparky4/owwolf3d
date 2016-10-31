@@ -1,3 +1,0 @@
-src/id_vl.c(389): Warning! W202: Symbol 'i' has been defined, but not referenced
-src/id_vl.c(848): Warning! W202: Symbol 'maskptr' has been defined, but not referenced
-src/id_vl.c(1028): Warning! W202: Symbol 'i' has been defined, but not referenced

@@ -74,7 +74,7 @@
 	SDMode		SoundMode;
 	SMMode		MusicMode;
 	SDSMode		DigiMode;
-	dword	TimeCount;
+	dword	__far	TimeCount;
 	word		HackCount;
 	word		*SoundTable;	// Really * _seg *SoundTable, but that don't work
 	boolean		ssIsTandy;
@@ -126,7 +126,7 @@ static	byte					sbDMA = 1,
 static	int						sbLocation = -1,sbInterrupt = 7,sbIntVec = 0xf,
 								sbIntVectors[] = {-1,-1,0xa,0xb,-1,0xd,-1,0xf,-1,-1,-1};
 static	volatile dword		sbNextSegLen;
-static	volatile SampledSound	huge *sbSamples;
+//static	volatile SampledSound	huge *sbSamples;
 static	void interrupt			(*sbOldIntHand)(void);
 static	byte					sbpOldFMMix,sbpOldVOCMix;
 
@@ -153,20 +153,19 @@ static	byte					sbpOldFMMix,sbpOldVOCMix;
 		boolean	 alNoIRQ;
 
 // This table maps channel numbers to carrier and modulator op cells
-static	byte			carriers[9] =  { 3, 4, 5,11,12,13,19,20,21},
-						modifiers[9] = { 0, 1, 2, 8, 9,10,16,17,18},
+static	byte	__far		carriers[9] =  { 3, 4, 5,11,12,13,19,20,21},
+						modifiers[9] = { 0, 1, 2, 8, 9,10,16,17,18};//,
 // This table maps percussive voice numbers to op cells
-						pcarriers[5] = {19,0xff,0xff,0xff,0xff},
-						pmodifiers[5] = {16,17,18,20,21};
+						//pcarriers[5] = {19,0xff,0xff,0xff,0xff},
+						//pmodifiers[5] = {16,17,18,20,21};
 
 //	Sequencer variables
 		boolean			sqActive;
 static	word			alFXReg;
-static	ActiveTrack		*tracks[sqMaxTracks],
-						mytracks[sqMaxTracks];
-static	word			sqMode,sqFadeStep;
-		word			far *sqHack,far *sqHackPtr,sqHackLen,sqHackSeqLen;
-		long			sqHackTime;
+//static	ActiveTrack		*tracks[sqMaxTracks], mytracks[sqMaxTracks];
+//static	word			sqMode,sqFadeStep;
+		word			__far *sqHack,far *sqHackPtr,sqHackLen,sqHackSeqLen;
+		long	__far		sqHackTime;
 
 //	Internal routines
 		void			SDL_DigitizedDone(void);
@@ -909,7 +908,7 @@ __asm popf
 void
 SDL_SSService(void)
 {
-	boolean	gotit;
+	//boolean	gotit;
 	boolean doneflag=false;
 	byte	v;
 
