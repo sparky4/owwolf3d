@@ -1,0 +1,9 @@
+src/wl_inter.c(382): Warning! W400: Array subscript is of type plain char
+src/wl_inter.c(1033): Warning! W202: Symbol 'temp3' has been defined, but not referenced
+src/wl_inter.c(1033): Warning! W202: Symbol 'temp2' has been defined, but not referenced
+src/wl_inter.c(1033): Warning! W202: Symbol 'temp1' has been defined, but not referenced
+src/wl_inter.c(1033): Warning! W202: Symbol 'temp' has been defined, but not referenced
+src/wl_inter.c(1036): Warning! W202: Symbol 'y' has been defined, but not referenced
+src/wl_inter.c(1036): Warning! W202: Symbol 'x' has been defined, but not referenced
+src/wl_inter.c(1034): Warning! W202: Symbol 'j' has been defined, but not referenced
+src/type.h(6): Warning! W202: Symbol 'CPURegs' has been defined, but not referenced

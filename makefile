@@ -67,7 +67,7 @@ UPXQ=-qqq
 S_FLAGS=-sg -st -of+ -zu -zdf -zff -zgf -zt=84 -k52768
 Z_FLAGS=-zk0 -zc -zp8 -zm
 O_FLAGS=-obmilr -oe=24 -out -oh -ei -onac -ol+ -ok##x
-T_FLAGS=-bt=dos -ml -0 -fpi87 -fo=.$(OBJ) -d2
+T_FLAGS=-bt=dos -ml -0 -fpi87 -fo=.$(OBJ) -wx -d2
 
 CPPFLAGS=-DTARGET_MSDOS=16 -DMSDOS=1
 AFLAGS=$(WCLQ) $(T_FLAGS)

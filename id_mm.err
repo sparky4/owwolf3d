@@ -1,0 +1,8 @@
+src/id_mm.c(173): Warning! W200: 'emmcfems' has been referenced but never assigned a value
+src/id_mm.c(283): Warning! W202: Symbol 'last' has been defined, but not referenced
+src/id_mm.c(321): Warning! W202: Symbol 'endfree' has been defined, but not referenced
+src/id_mm.c(772): Warning! W202: Symbol 'scratch' has been defined, but not referenced
+src/id_mm.c(771): Warning! W202: Symbol 'owner' has been defined, but not referenced
+src/id_mm.c(772): Warning! W202: Symbol 'str' has been defined, but not referenced
+src/type.h(6): Warning! W202: Symbol 'CPURegs' has been defined, but not referenced
+src/id_mm.c(314): Warning! W202: Symbol 'ParmStrings' has been defined, but not referenced

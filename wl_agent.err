@@ -1,0 +1,6 @@
+src/wl_agent.c(119): Warning! W202: Symbol 'buttons' has been defined, but not referenced
+src/wl_agent.c(154): Warning! W202: Symbol 'speed' has been defined, but not referenced
+src/wl_agent.c(152): Warning! W202: Symbol 'maxxmove' has been defined, but not referenced
+src/wl_agent.c(931): Warning! W202: Symbol 'slowmax' has been defined, but not referenced
+src/wl_agent.c(1010): Warning! W202: Symbol 'check' has been defined, but not referenced
+src/type.h(6): Warning! W202: Symbol 'CPURegs' has been defined, but not referenced
