@@ -50,8 +50,7 @@ byte		*updateptr;
 unsigned	mapwidthtable[64];
 unsigned	uwidthtable[UPDATEHIGH];
 unsigned	blockstarts[UPDATEWIDE*UPDATEHIGH];
-//uso: replace: byte            update[UPDATESIZE];
-//uso: is needed? byte    update[UPDATEHIGH][UPDATEWIDE];
+byte		update[UPDATESIZE];
 
 //
 // control info
