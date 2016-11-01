@@ -12,9 +12,15 @@
 #include <STDIO.H>
 #include <STDLIB.H>
 #include <STRING.H>
-#include <SYS\STAT.H>
+#include <SYS/STAT.H>
+#ifdef __BORLANDC__
 #include <VALUES.H>
 #include <DIR.H>
+#endif
+#ifdef __WATCOMC__
+#include <limits.h> /* for LONG_MAX */
+#include "type.h"
+#endif
 #define __ID_GLOB__
 #include "VERSION.H"
 
