@@ -1,37 +1,29 @@
-src/id_ca.c(530): Error! E1011: Symbol 'bit1short' has not been declared
-src/id_ca.c(533): Error! E1011: Symbol 'newbyteshort' has not been declared
-src/id_ca.c(534): Error! E1011: Symbol 'sourceupshort' has not been declared
-src/id_ca.c(539): Error! E1011: Symbol 'sourceupshort' has not been declared
-src/id_ca.c(548): Error! E1011: Symbol 'storebyteshort' has not been declared
-src/id_ca.c(550): Error! E1011: Symbol 'expandshort' has not been declared
-src/id_ca.c(558): Error! E1011: Symbol 'expandshort' has not been declared
-src/id_ca.c(565): Error! E1011: Symbol 'notscreen' has not been declared
-src/id_ca.c(570): Error! E1011: Symbol 'notscreen' has not been declared
-src/id_ca.c(576): Error! E1011: Symbol 'expandshort' has not been declared
-src/id_ca.c(602): Error! E1011: Symbol 'bit1' has not been declared
-src/id_ca.c(604): Error! E1011: Symbol 'gotcode' has not been declared
-src/id_ca.c(610): Error! E1011: Symbol 'sourceup' has not been declared
-src/id_ca.c(613): Error! E1011: Symbol 'sinorm' has not been declared
-src/id_ca.c(623): Error! E1011: Symbol 'storebyte' has not been declared
-src/id_ca.c(625): Error! E1011: Symbol 'expand' has not been declared
-src/id_ca.c(633): Error! E1011: Symbol 'dinorm' has not been declared
-src/id_ca.c(642): Error! E1011: Symbol 'expand' has not been declared
-src/id_ca.c(644): Error! E1011: Symbol 'expand' has not been declared
-src/id_ca.c(651): Warning! W118: Label 'dinorm' has been defined but not referenced
-src/id_ca.c(651): Warning! W118: Label 'storebyte' has been defined but not referenced
-src/id_ca.c(651): Warning! W118: Label 'sourceup' has been defined but not referenced
-src/id_ca.c(651): Warning! W118: Label 'sinorm' has been defined but not referenced
-src/id_ca.c(651): Warning! W118: Label 'gotcode' has been defined but not referenced
-src/id_ca.c(651): Warning! W118: Label 'bit1' has been defined but not referenced
-src/id_ca.c(651): Warning! W118: Label 'expand' has been defined but not referenced
-src/id_ca.c(651): Warning! W118: Label 'notscreen' has been defined but not referenced
-src/id_ca.c(651): Warning! W118: Label 'storebyteshort' has been defined but not referenced
-src/id_ca.c(651): Warning! W118: Label 'sourceupshort' has been defined but not referenced
-src/id_ca.c(651): Warning! W118: Label 'newbyteshort' has been defined but not referenced
-src/id_ca.c(651): Warning! W118: Label 'bit1short' has been defined but not referenced
-src/id_ca.c(651): Warning! W118: Label 'expandshort' has been defined but not referenced
-src/id_ca.c(686): Warning! W120: lvalue cast is not standard C
-src/id_ca.c(692): Warning! W120: lvalue cast is not standard C
-src/id_ca.c(704): Warning! W120: lvalue cast is not standard C
-src/id_ca.c(852): Error! E1011: Symbol 'repeat' has not been declared
-src/id_ca.c(854): Error! E1147: Too many errors: compilation aborted
+src/id_ca.c(756): Warning! W120: lvalue cast is not standard C
+src/id_ca.c(762): Warning! W120: lvalue cast is not standard C
+src/id_ca.c(774): Warning! W120: lvalue cast is not standard C
+src/id_ca.c(922): Error! E1011: Symbol 'repeat' has not been declared
+src/id_ca.c(924): Error! E1011: Symbol 'next' has not been declared
+src/id_ca.c(935): Error! E1011: Symbol 'sinorm' has not been declared
+src/id_ca.c(951): Error! E1011: Symbol 'dinorm' has not been declared
+src/id_ca.c(968): Error! E1011: Symbol 'expand' has not been declared
+src/id_ca.c(971): Error! E1011: Symbol 'expand' has not been declared
+src/id_ca.c(976): Warning! W118: Label 'dinorm' has been defined but not referenced
+src/id_ca.c(976): Warning! W118: Label 'sinorm' has been defined but not referenced
+src/id_ca.c(976): Warning! W118: Label 'next' has been defined but not referenced
+src/id_ca.c(976): Warning! W118: Label 'repeat' has been defined but not referenced
+src/id_ca.c(976): Warning! W118: Label 'expand' has been defined but not referenced
+src/id_ca.c(1029): Warning! W120: lvalue cast is not standard C
+src/id_ca.c(1059): Warning! W120: lvalue cast is not standard C
+src/id_ca.c(1097): Warning! W120: lvalue cast is not standard C
+src/id_ca.c(1134): Warning! W120: lvalue cast is not standard C
+src/id_ca.c(1135): Warning! W120: lvalue cast is not standard C
+src/id_ca.c(1145): Warning! W120: lvalue cast is not standard C
+src/id_ca.c(1146): Warning! W120: lvalue cast is not standard C
+src/id_ca.c(1180): Warning! W120: lvalue cast is not standard C
+src/id_ca.c(1281): Warning! W120: lvalue cast is not standard C
+src/id_ca.c(1296): Warning! W120: lvalue cast is not standard C
+src/id_ca.c(1362): Warning! W120: lvalue cast is not standard C
+src/id_ca.c(1588): Warning! W120: lvalue cast is not standard C
+src/id_ca.c(1651): Warning! W120: lvalue cast is not standard C
+src/id_ca.c(1742): Warning! W120: lvalue cast is not standard C
+src/id_ca.c(1767): Warning! W120: lvalue cast is not standard C

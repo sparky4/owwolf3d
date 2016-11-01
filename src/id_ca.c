@@ -506,67 +506,97 @@ asm	out	dx,ax
 // expand less than 64k of data
 //--------------------------
 
-asm mov	bx,[headptr]
+	__asm {
+		mov	bx,[headptr]
 
-asm	mov	si,[sourceoff]
-asm	mov	di,[destoff]
-asm	mov	es,[destseg]
-asm	mov	ds,[sourceseg]
-asm	mov	ax,[endoff]
+		mov	si,[sourceoff]
+		mov	di,[destoff]
+		mov	es,[destseg]
+		mov	ds,[sourceseg]
+		mov	ax,[endoff]
 
-asm	mov	ch,[si]				// load first byte
-asm	inc	si
-asm	mov	cl,1
-
+		mov	ch,[si]				// load first byte
+		inc	si
+		mov	cl,1
+#ifdef __BORLANDC__
+	}
+#endif
 expandshort:
-asm	test	ch,cl			// bit set?
-asm	jnz	bit1short
-asm	mov	dx,[ss:bx]			// take bit0 path from node
-asm	shl	cl,1				// advance to next bit position
-asm	jc	newbyteshort
-asm	jnc	sourceupshort
-
+#ifdef __BORLANDC__
+	__asm {
+#endif
+		test	ch,cl			// bit set?
+		jnz	bit1short
+		mov	dx,[ss:bx]			// take bit0 path from node
+		shl	cl,1				// advance to next bit position
+		jc	newbyteshort
+		jnc	sourceupshort
+#ifdef __BORLANDC__
+	}
+#endif
 bit1short:
-asm	mov	dx,[ss:bx+2]		// take bit1 path
-asm	shl	cl,1				// advance to next bit position
-asm	jnc	sourceupshort
-
+#ifdef __BORLANDC__
+	__asm {
+#endif
+		mov	dx,[ss:bx+2]		// take bit1 path
+		shl	cl,1				// advance to next bit position
+		jnc	sourceupshort
+#ifdef __BORLANDC__
+	}
+#endif
 newbyteshort:
-asm	mov	ch,[si]				// load next byte
-asm	inc	si
-asm	mov	cl,1				// back to first bit
-
+#ifdef __BORLANDC__
+	__asm {
+#endif
+		mov	ch,[si]				// load next byte
+		inc	si
+		mov	cl,1				// back to first bit
+#ifdef __BORLANDC__
+	}
+#endif
 sourceupshort:
-asm	or	dh,dh				// if dx<256 its a byte, else move node
-asm	jz	storebyteshort
-asm	mov	bx,dx				// next node = (huffnode *)code
-asm	jmp	expandshort
-
+#ifdef __BORLANDC__
+	__asm {
+#endif
+		or	dh,dh				// if dx<256 its a byte, else move node
+		jz	storebyteshort
+		mov	bx,dx				// next node = (huffnode *)code
+		jmp	expandshort
+#ifdef __BORLANDC__
+	}
+#endif
 storebyteshort:
-asm	mov	[es:di],dl
-asm	inc	di					// write a decopmpressed byte out
-asm	mov	bx,[headptr]		// back to the head node for next bit
+#ifdef __BORLANDC__
+	__asm {
+#endif
+		mov	[es:di],dl
+		inc	di					// write a decopmpressed byte out
+		mov	bx,[headptr]		// back to the head node for next bit
 
-asm	cmp	di,ax				// done?
-asm	jne	expandshort
-
+		cmp	di,ax				// done?
+		jne	expandshort
 //
 // perform screenhack if needed
 //
-asm	test	[screenhack],1
-asm	jz	notscreen
-asm	shl	[mapmask],1
-asm	mov	ah,[mapmask]
-asm	cmp	ah,16
-asm	je	notscreen			// all four planes done
-asm	mov	dx,SC_INDEX
-asm	mov	al,SC_MAPMASK
-asm	out	dx,ax
-asm	mov	di,[destoff]
-asm	mov	ax,[endoff]
-asm	jmp	expandshort
-
-notscreen:;
+		test	[screenhack],1
+		jz	notscreen
+		shl	[mapmask],1
+		mov	ah,[mapmask]
+		cmp	ah,16
+		je	notscreen			// all four planes done
+		mov	dx,SC_INDEX
+		mov	al,SC_MAPMASK
+		out	dx,ax
+		mov	di,[destoff]
+		mov	ax,[endoff]
+		jmp	expandshort
+#ifdef __BORLANDC__
+	}
+#endif
+notscreen:
+#ifdef __WATCOMC__
+	}
+#endif
 	}
 	else
 	{
@@ -577,65 +607,105 @@ notscreen:;
 
   length--;
 
-asm mov	bx,[headptr]
-asm	mov	cl,1
+	__asm {
+		mov	bx,[headptr]
+		mov	cl,1
 
-asm	mov	si,[sourceoff]
-asm	mov	di,[destoff]
-asm	mov	es,[destseg]
-asm	mov	ds,[sourceseg]
+		mov	si,[sourceoff]
+		mov	di,[destoff]
+		mov	es,[destseg]
+		mov	ds,[sourceseg]
 
-asm	lodsb			// load first byte
-
+		lodsb			// load first byte
+#ifdef __BORLANDC__
+	}
+#endif
 expand:
-asm	test	al,cl		// bit set?
-asm	jnz	bit1
-asm	mov	dx,[ss:bx]	// take bit0 path from node
-asm	jmp	gotcode
+#ifdef __BORLANDC__
+	__asm {
+#endif
+		test	al,cl		// bit set?
+		jnz	bit1
+		mov	dx,[ss:bx]	// take bit0 path from node
+		jmp	gotcode
+#ifdef __BORLANDC__
+	}
+#endif
 bit1:
-asm	mov	dx,[ss:bx+2]	// take bit1 path
-
+#ifdef __BORLANDC__
+	__asm {
+#endif
+		mov	dx,[ss:bx+2]	// take bit1 path
+#ifdef __BORLANDC__
+	}
+#endif
 gotcode:
-asm	shl	cl,1		// advance to next bit position
-asm	jnc	sourceup
-asm	lodsb
-asm	cmp	si,0x10		// normalize ds:si
-asm  	jb	sinorm
-asm	mov	cx,ds
-asm	inc	cx
-asm	mov	ds,cx
-asm	xor	si,si
+#ifdef __BORLANDC__
+	__asm {
+#endif
+		shl	cl,1		// advance to next bit position
+		jnc	sourceup
+		lodsb
+		cmp	si,0x10		// normalize ds:si
+		jb	sinorm
+		mov	cx,ds
+		inc	cx
+		mov	ds,cx
+		xor	si,si
+#ifdef __BORLANDC__
+	}
+#endif
 sinorm:
-asm	mov	cl,1		// back to first bit
-
+#ifdef __BORLANDC__
+	__asm {
+#endif
+		mov	cl,1		// back to first bit
+#ifdef __BORLANDC__
+	}
+#endif
 sourceup:
-asm	or	dh,dh		// if dx<256 its a byte, else move node
-asm	jz	storebyte
-asm	mov	bx,dx		// next node = (huffnode *)code
-asm	jmp	expand
-
+#ifdef __BORLANDC__
+	__asm {
+#endif
+		or	dh,dh		// if dx<256 its a byte, else move node
+		jz	storebyte
+		mov	bx,dx		// next node = (huffnode *)code
+		jmp	expand
+#ifdef __BORLANDC__
+	}
+#endif
 storebyte:
-asm	mov	[es:di],dl
-asm	inc	di		// write a decopmpressed byte out
-asm	mov	bx,[headptr]	// back to the head node for next bit
+#ifdef __BORLANDC__
+	__asm {
+#endif
+		mov	[es:di],dl
+		inc	di		// write a decopmpressed byte out
+		mov	bx,[headptr]	// back to the head node for next bit
 
-asm	cmp	di,0x10		// normalize es:di
-asm  	jb	dinorm
-asm	mov	dx,es
-asm	inc	dx
-asm	mov	es,dx
-asm	xor	di,di
+		cmp	di,0x10		// normalize es:di
+		jb	dinorm
+		mov	dx,es
+		inc	dx
+		mov	es,dx
+		xor	di,di
+#ifdef __BORLANDC__
+	}
+#endif
 dinorm:
-
-asm	sub	[WORD PTR ss:length],1
-asm	jnc	expand
-asm  	dec	[WORD PTR ss:length+2]
-asm	jns	expand		// when length = ffff ffff, done
-
+#ifdef __BORLANDC__
+	__asm {
+#endif
+		sub	[WORD PTR ss:length],1
+		jnc	expand
+		dec	[WORD PTR ss:length+2]
+		jns	expand		// when length = ffff ffff, done
+	}
 	}
 
-asm	mov	ax,ss
-asm	mov	ds,ax
+	__asm {
+		mov	ax,ss
+		mov	ds,ax
+	}
 
 }
 
