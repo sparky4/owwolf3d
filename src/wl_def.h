@@ -948,6 +948,7 @@ void LevelCompleted (void);
 void	CheckHighScore (long score,word other);
 void Victory (void);
 void ClearSplitVWB (void);
+void PG13(void);
 
 
 /*

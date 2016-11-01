@@ -1,0 +1,4 @@
+src/id_pm.c(530): Warning! W120: lvalue cast is not standard C
+src/id_pm.c(531): Warning! W120: lvalue cast is not standard C
+src/id_pm.c(566): Warning! W120: lvalue cast is not standard C
+src/id_pm.c(567): Warning! W120: lvalue cast is not standard C

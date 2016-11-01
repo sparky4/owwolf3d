@@ -74,7 +74,7 @@ extern	char		far signon;
 typedef	enum	{false,true}	boolean;
 typedef	unsigned	char		byte;
 typedef	unsigned	int			word;
-typedef	unsigned	long		longword;
+typedef	unsigned	long		longword;	typedef longword dword;
 typedef	byte *					Ptr;
 
 typedef	struct

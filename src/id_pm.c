@@ -76,67 +76,91 @@ asm	int	EMS_INT
 //			to the maximum we need)
 //
 
-	char	EMMDriverName[9] = "EMMXXXX0";
+	//char	EMMDriverName[9] = "EMMXXXX0";
 
 boolean
 PML_StartupEMS(void)
 {
 	int		i;
 	long	size;
+	static char	emmname[] = "EMMXXXX0";	//fix by andrius4669
 
 	EMSPresent = false;			// Assume that we'll fail
 	EMSAvail = 0;
 
-	_DX = (word)EMMDriverName;
-	_AX = 0x3d00;
-	geninterrupt(0x21);			// try to open EMMXXXX0 device
-asm	jnc	gothandle
-	goto error;
+__asm {
+		mov	dx,OFFSET emmname	//fix by andrius4669
+		mov	ax,0x3d00
+		int	EMM_INT		// try to open EMMXXXX0 device
+		jc	error1
 
-gothandle:
-	_BX = _AX;
-	_AX = 0x4400;
-	geninterrupt(0x21);			// get device info
-asm	jnc	gotinfo;
-	goto error;
+		mov	bx,ax
+		mov	ax,0x4400
 
-gotinfo:
-asm	and	dx,0x80
-	if (!_DX)
-		goto error;
+		int	EMM_INT		// get device info
+		jc	error1
 
-	_AX = 0x4407;
-	geninterrupt(0x21);			// get status
-asm	jc	error
-	if (!_AL)
-		goto error;
+		and	dx,0x80
+		jz	error1
 
-	_AH = 0x3e;
-	geninterrupt(0x21);			// close handle
+		mov	ax,0x4407
 
-	_AH = EMS_STATUS;
-	geninterrupt(EMS_INT);
-	if (_AH)
-		goto error;				// make sure EMS hardware is present
+		int	EMM_INT		// get status
+		jc	error1
+		or	al,al
+		jz	error1
 
-	_AH = EMS_VERSION;
-	geninterrupt(EMS_INT);
-	if (_AH || (_AL < 0x32))	// only work on EMS 3.2 or greater (silly, but...)
-		goto error;
+		mov	ah,0x3e
+		int	EMM_INT		// close handle
+		jc	error1
 
-	_AH = EMS_GETFRAME;
-	geninterrupt(EMS_INT);
-	if (_AH)
-		goto error;				// find the page frame address
-	EMSPageFrame = _BX;
+		mov	ah,EMS_STATUS
+		int	EMS_INT
+		jc	error1			// make sure EMS hardware is present
 
-	_AH = EMS_GETPAGES;
-	geninterrupt(EMS_INT);
-	if (_AH)
-		goto error;
-	if (_BX < 2)
-		goto error;         	// Require at least 2 pages (32k)
-	EMSAvail = _BX;
+		mov	ah,EMS_VERSION
+		int	EMS_INT			// only work on EMS 3.2 or greater (silly, but...)
+		or	ah,ah
+		jnz	error1
+//		mov	[EMSVer],ax		//	set EMSVer
+		cmp	al,0x32			// only work on ems 3.2 or greater
+		jb	error1
+
+		mov	ah,EMS_GETFRAME
+		int	EMS_INT			// find the page frame address
+		or	ah,ah
+		jnz	error1
+		mov	[EMSPageFrame],bx
+
+		mov	ah,EMS_GETPAGES
+		int	EMS_INT			// find out how much EMS is there
+		or	ah,ah
+		jnz	error1
+		or	bx,bx
+		jz	noEMS			// no EMS at all to allocate
+		cmp	bx,2
+		jl	noEMS			// Require at least 2 pages (32k)
+
+		mov	[EMSAvail],bx
+		jmp End1
+#ifdef __BORLANDC__
+	}
+#endif
+	error1:
+#ifdef __BORLANDC__
+	__asm {
+#endif
+//;		mov	err,ah
+//;		mov	errorflag,1
+		jmp End1
+#ifdef __BORLANDC__
+	}
+#endif
+noEMS:
+End1:
+#ifdef __WATCOMC__
+	}
+#endif
 
 	// Don't hog all available EMS
 	size = EMSAvail * (long)EMSPageSize;

@@ -54,8 +54,8 @@ typedef struct mmblockstruct
 } mmblocktype;
 
 
-//#define GETNEWBLOCK {if(!(mmnew=mmfree))Quit("MM_GETNEWBLOCK: No free blocks!")\
-//	;mmfree=mmfree->next;}
+/*#define GETNEWBLOCK {if(!(mmnew=mmfree))Quit("MM_GETNEWBLOCK: No free blocks!")\
+//	;mmfree=mmfree->next;}*/
 
 #define GETNEWBLOCK {if(!mmfree)MML_ClearBlock();mmnew=mmfree;mmfree=mmfree->next;}
 
@@ -115,7 +115,7 @@ void		MML_UseSpace (unsigned segstart, unsigned seglength);
 void 		MML_ClearBlock (void);
 
 //==========================================================================
-
+#ifdef USEOLDMM
 /*
 ======================
 =
@@ -219,7 +219,7 @@ asm	mov	dx,[base]
 asm	call	[DWORD PTR XMSaddr]
 	}
 }
-
+#endif
 //==========================================================================
 
 /*
