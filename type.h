@@ -27,17 +27,19 @@ static union REGS CPURegs;
 #define geninterrupt(n) int86(n,&CPURegs,&CPURegs);
 
 #define peekb(segm,ofs) (*(byte far*)MK_FP((segm),(ofs)))
-#define peekw(segm,ofs) (*(word far*)MK_FP((segm),(ofs)))
+#define peek(segm,ofs) (*(word far*)MK_FP((segm),(ofs)))
 #define pokeb(segm,ofs,value) (peekb((segm),(ofs)) = (byte)(value))
-#define pokew(segm,ofs,value) (peekw((segm),(ofs)) = (word)(value))
+#define poke(segm,ofs,value) (peek((segm),(ofs)) = (word)(value))
 
 #define inportb(port)         inp(port)
-#define inportw(port)         inpw(port)
+#define inport(port)         inpw(port)
 #define outportb(port, val)   outp(port, val)
-#define outportw(port, val)   outpw(port, val)
+#define outport(port, val)   outpw(port, val)
+
 #define asm __asm
 #define getvect _dos_getvect
 #define setvect _dos_setvect
+
 
 #define ffblk        find_t
 #define ff_name      name
@@ -56,7 +58,7 @@ static union REGS CPURegs;
 
 typedef union REGPACK	regs_t;
 
-typedef	enum	{false,true}	boolean;
+/*typedef	enum	{false,true}	boolean;
 typedef	unsigned	char		byte;
 typedef	unsigned	int		word;
 typedef	signed	short		sword;
@@ -70,7 +72,7 @@ typedef	struct
 typedef	struct
 		{
 			Point	ul,lr;
-		} Rect;
+		} Rect;*/
 
 typedef void __based( void ) * memptr;	////old //----typedef void __based(__self) * memptr;
 #define _seg __based( void )

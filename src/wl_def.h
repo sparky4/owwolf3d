@@ -5,7 +5,14 @@
 
 #include "ID_HEADS.H"
 #include <MATH.H>
+
+#ifdef __BORLANDC__
 #include <VALUES.H>
+#endif
+#ifdef __WATCOMC__
+#include <limits.h> /* for LONG_MAX */
+#include "type.h"
+#endif
 
 #include "WL_MENU.H"
 
