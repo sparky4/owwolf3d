@@ -4,9 +4,7 @@
 
 #define __ID_CA__
 
-#define OUT_OF_MEM_MSG	"MM_GetPtr: Out of memory!\nYou were short :%lu bytes\n"
-
-#define SAVENEARHEAP	0x200		// space to leave in data segment
+#define SAVENEARHEAP	0x400		// space to leave in data segment
 #define SAVEFARHEAP		0			// space to leave in far heap
 
 #define	BUFFERSIZE		0x1000		// miscelanious, allways available buffer
@@ -17,7 +15,6 @@
 //--------
 
 #define	EMS_INT			0x67
-#define	EMM_INT			0x21
 
 #define	EMS_STATUS		0x40
 #define	EMS_GETFRAME	0x41
@@ -31,7 +28,7 @@
 
 #define	XMS_INT			0x2f
 #define	XMS_CALL(v)		_AH = (v);\
-						__asm call [DWORD PTR XMSDriver]
+						asm call [DWORD PTR XMSDriver]
 
 #define	XMS_VERSION		0x00
 
@@ -95,7 +92,5 @@ long MM_TotalFree (void);
 void MM_BombOnError (boolean bomb);
 
 void MML_UseSpace (unsigned segstart, unsigned seglength);
-
-void MM_Report_();
 
 #endif

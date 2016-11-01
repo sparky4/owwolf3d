@@ -11,9 +11,14 @@
 
 #define GRMODE	VGAGR
 
-#include "src/version.h"
-#include "src/id_heads.h"
-#ifndef __TYPE_H__
+#include "VERSION.H"
+
+typedef	enum	{false,true}	boolean;
+typedef	unsigned	char		byte;
+typedef	unsigned	int			word;
+typedef	unsigned	long		longword;
+typedef	byte *					Ptr;
+
 typedef	struct
 		{
 			int	x,y;
@@ -23,7 +28,7 @@ typedef	struct
 		{
 			Point	ul,lr;
 		} Rect;
-#endif
+
 
 void	Quit (char *error);		// defined in user program
 

@@ -1,10 +1,10 @@
 // WL_GAME.C
 
-#include "src/wl_def.h"
+#include "WL_DEF.H"
 #pragma hdrstop
 
 #ifdef MYPROFILE
-#include <time.h>
+#include <TIME.H>
 #endif
 
 
@@ -25,11 +25,11 @@
 =============================================================================
 */
 
-boolean	__far	ingame,fizzlein;
+boolean		ingame,fizzlein;
 unsigned	latchpics[NUMLATCHPICS];
-gametype	__far	gamestate;
+gametype	gamestate;
 
-long	__far	spearx,speary;
+long		spearx,speary;
 unsigned	spearangle;
 boolean		spearflag;
 
@@ -639,11 +639,9 @@ void SetupGameLevel (void)
 	 gamestate.treasurecount=0;
 	}
 
-#ifdef DEMO
 	if (demoplayback || demorecord)
 		US_InitRndT (false);
 	else
-#endif
 		US_InitRndT (true);
 
 //
@@ -652,11 +650,11 @@ void SetupGameLevel (void)
 	CA_CacheMap (gamestate.mapon+10*gamestate.episode);
 	mapon-=gamestate.episode*10;
 
-	/*mapwidth = (mapheaderseg[mapon]->width);
+	mapwidth = mapheaderseg[mapon]->width;
 	mapheight = mapheaderseg[mapon]->height;
 
 	if (mapwidth != 64 || mapheight != 64)
-		Quit ("Map not 64*64!");*/
+		Quit ("Map not 64*64!");
 
 
 //
@@ -672,14 +670,14 @@ void SetupGameLevel (void)
 			if (tile<AREATILE)
 			{
 			// solid wall
-				tilemap[x][y] = (byte) tile;
-                                actorat[x][y] = (objtype *) tile;
+				tilemap[x][y] = tile;
+				(unsigned)actorat[x][y] = tile;
 			}
 			else
 			{
 			// area floor
 				tilemap[x][y] = 0;
-				actorat[x][y] = 0;
+				(unsigned)actorat[x][y] = 0;
 			}
 		}
 
@@ -910,7 +908,7 @@ void DrawPlayScreen (void)
 =
 ==================
 */
-#ifdef DEMO
+
 #define MAXDEMOSIZE	8192
 
 void StartDemoRecord (int levelnumber)
@@ -1056,8 +1054,8 @@ void PlayDemo (int demonumber)
 #endif
 
 	CA_CacheGrChunk(dems[demonumber]);
-	demoptr = (memptr)grsegs[dems[demonumber]];
-	MM_SetLock ((memptr)grsegs[dems[demonumber]],true);
+	demoptr = grsegs[dems[demonumber]];
+	MM_SetLock (&grsegs[dems[demonumber]],true);
 #else
 	demoname[4] = '0'+demonumber;
 	CA_LoadFile (demoname,&demobuffer);
@@ -1068,7 +1066,7 @@ void PlayDemo (int demonumber)
 	NewGame (1,0);
 	gamestate.mapon = *demoptr++;
 	gamestate.difficulty = gd_hard;
-	length = *(/*(unsigned far *)*/demoptr)++;
+	length = *((unsigned far *)demoptr)++;
 	demoptr++;
 	lastdemoptr = demoptr-4+length;
 
@@ -1100,7 +1098,7 @@ void PlayDemo (int demonumber)
 	VW_FadeOut ();
 	ClearMemory ();
 }
-#endif
+
 //==========================================================================
 
 /*
@@ -1251,6 +1249,7 @@ restartgame:
 	SETFONTCOLOR(0,15);
 	DrawPlayScreen ();
 	died = false;
+restart:
 	do
 	{
 		if (!loadedgame)
@@ -1282,9 +1281,7 @@ restartgame:
 		fizzlein = true;
 		DrawLevel ();
 
-#ifdef SPEAR
 startplayloop:
-#endif
 		PlayLoop ();
 
 #ifdef SPEAR
@@ -1320,10 +1317,10 @@ startplayloop:
 
 		StopMusic ();
 		ingame = false;
-#ifdef DEMO
+
 		if (demorecord && playstate != ex_warped)
 			FinishDemoRecord ();
-#endif
+
 		if (startgame || loadedgame)
 			goto restartgame;
 
@@ -1484,3 +1481,4 @@ startplayloop:
 	} while (1);
 
 }
+

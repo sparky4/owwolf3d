@@ -3,8 +3,6 @@
 //	Header file for Id Engine's Page Manager
 //
 
-#ifndef __ID_PM_H__
-#define __ID_PM_H__
 //	NOTE! PMPageSize must be an even divisor of EMSPageSize, and >= 1024
 #define	EMSPageSize		16384
 #define	EMSPageSizeSeg	(EMSPageSize >> 4)
@@ -36,7 +34,7 @@ typedef	enum
 
 typedef	struct
 		{
-			dword	offset;		// Offset of chunk into file
+			longword	offset;		// Offset of chunk into file
 			word		length;		// Length of the chunk
 
 			int			xmsPage;	// If in XMS, (xmsPage * PMPageSize) gives offset into XMS handle
@@ -45,13 +43,13 @@ typedef	struct
 			int			emsPage;	// If in EMS, logical page/offset into page
 			int			mainPage;	// If in Main, index into handle array
 
-			dword	lastHit;	// Last frame number of hit
+			longword	lastHit;	// Last frame number of hit
 		} PageListStruct;
 
 typedef	struct
 		{
 			int			baseEMSPage;	// Base EMS page for this phys frame
-			dword	lastHit;		// Last frame number of hit
+			longword	lastHit;		// Last frame number of hit
 		} EMSListStruct;
 
 extern	boolean			XMSPresent,EMSPresent;
@@ -83,4 +81,3 @@ extern	memptr	PM_GetPageAddress(int pagenum),
 				PM_GetPage(int pagenum);		// Use this one to cache page
 
 void PM_SetMainMemPurge(int level);
-#endif

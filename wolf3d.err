@@ -1,0 +1,2 @@
+src/wolf3d.c(1180): Warning! W131: No prototype found for function 'gotoxy'
+src/wolf3d.c(1382): Warning! W131: No prototype found for function 'clrscr'

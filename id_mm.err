@@ -1,0 +1,15 @@
+src/id_mm.c(57): Warning! W123: '//' style comment continues on next line
+src/id_mm.c(138): Error! E1011: Symbol 'good' has not been declared
+src/id_mm.c(143): Warning! W118: Label 'good' has been defined but not referenced
+src/id_mm.c(182): Error! E1011: Symbol 'gotone' has not been declared
+src/id_mm.c(197): Warning! W118: Label 'done' has been defined but not referenced
+src/id_mm.c(197): Warning! W118: Label 'gotone' has been defined but not referenced
+src/id_mm.c(370): Warning! W131: No prototype found for function 'coreleft'
+src/id_mm.c(383): Warning! W131: No prototype found for function 'farcoreleft'
+src/id_mm.c(384): Warning! W131: No prototype found for function 'farmalloc'
+src/id_mm.c(384): Warning! W102: Type mismatch (warning)
+src/id_mm.c(384): Note! I2003: source conversion type is 'int'
+src/id_mm.c(384): Note! I2004: target conversion type is 'void __far *'
+src/id_mm.c(418): Warning! W131: No prototype found for function 'farfree'
+src/id_mm.c(687): Warning! W120: lvalue cast is not standard C
+src/id_mm.c(758): Warning! W120: lvalue cast is not standard C

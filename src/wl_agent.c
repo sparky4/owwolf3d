@@ -1,6 +1,6 @@
 // WL_AGENT.C
 
-#include "src/wl_def.h"
+#include "WL_DEF.H"
 #pragma hdrstop
 
 
@@ -33,14 +33,14 @@
 // player state info
 //
 boolean		running;
-long	__far	thrustspeed;
+long		thrustspeed;
 
 unsigned	plux,pluy;			// player coordinates scaled to unsigned
 
 int			anglefrac;
 int			gotgatgun;	// JR
 
-objtype	__far	*LastAttacker;
+objtype		*LastAttacker;
 
 /*
 =============================================================================
@@ -54,11 +54,11 @@ objtype	__far	*LastAttacker;
 void	T_Player (objtype *ob);
 void	T_Attack (objtype *ob);
 
-statetype __far s_player = {false,0,0,T_Player,NULL,NULL};
-statetype __far s_attack = {false,0,0,T_Attack,NULL,NULL};
+statetype s_player = {false,0,0,T_Player,NULL,NULL};
+statetype s_attack = {false,0,0,T_Attack,NULL,NULL};
 
 
-long	__far	playerxmove,playerymove;
+long	playerxmove,playerymove;
 
 struct atkinf
 {
@@ -73,7 +73,7 @@ struct atkinf
 };
 
 
-int	__far	strafeangle[9] = {0,90,180,270,45,135,225,315,0};
+int	strafeangle[9] = {0,90,180,270,45,135,225,315,0};
 
 void DrawWeapon (void);
 void GiveWeapon (int weapon);
@@ -116,7 +116,7 @@ void ClipMove (objtype *ob, long xmove, long ymove);
 
 void CheckWeaponChange (void)
 {
-	int	i;//,buttons;
+	int	i,buttons;
 
 	if (!gamestate.ammo)		// must use knife with no ammo
 		return;
@@ -148,10 +148,10 @@ void CheckWeaponChange (void)
 
 void ControlMovement (objtype *ob)
 {
-	long	__far	oldx,oldy;
-	int		angle;//,maxxmove;
+	long	oldx,oldy;
+	int		angle,maxxmove;
 	int		angleunits;
-	//long	speed;
+	long	speed;
 
 	thrustspeed = 0;
 
@@ -927,8 +927,8 @@ void VictoryTile (void)
 
 void Thrust (int angle, long speed)
 {
-	long __far xmove,ymove;
-	//long	slowmax;
+	long xmove,ymove;
+	long	slowmax;
 	unsigned	offset;
 
 
@@ -1007,7 +1007,7 @@ void Cmd_Fire (void)
 
 void Cmd_Use (void)
 {
-	//objtype 	*check;
+	objtype 	*check;
 	int			checkx,checky,doornum,dir;
 	boolean		elevatorok;
 

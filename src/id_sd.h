@@ -28,7 +28,7 @@ typedef	enum	{
 				}	SDSMode;
 typedef	struct
 		{
-			dword	__far	length;
+			longword	length;
 			word		priority;
 		} SoundCommon;
 
@@ -166,19 +166,19 @@ typedef	struct
 					offsets[1];
 		} MusicGroup;
 #endif
-/*
+
 typedef	struct
 		{
-			// This part needs to be set up by the user
-			word        mood, __far *moods[sqMaxMoods];
+			/* This part needs to be set up by the user */
+			word        mood,far *moods[sqMaxMoods];
 
-			// The rest is set up by the code
+			/* The rest is set up by the code */
 			Instrument	inst;
 			boolean		percussive;
-			word		__far *seq;
-			dword	nextevent;
+			word		far *seq;
+			longword	nextevent;
 		} ActiveTrack;
-*/
+
 #define	sqmode_Normal		0
 #define	sqmode_FadeIn		1
 #define	sqmode_FadeOut		2
@@ -197,7 +197,7 @@ extern	SDSMode		DigiMode;
 extern	SMMode		MusicMode;
 extern	boolean		DigiPlaying;
 extern	int			DigiMap[];
-extern	dword	__far	TimeCount;					// Global time in ticks
+extern	longword	TimeCount;					// Global time in ticks
 
 // Function prototypes
 extern	void	SD_Startup(void),
@@ -211,9 +211,9 @@ extern	void	SD_SetPosition(int leftvol,int rightvol),
 				SD_WaitSoundDone(void),
 
 				SD_StartMusic(MusicGroup far *music),
-				SD_MusicOn(void);
-extern	int		SD_MusicOff(void);
-extern	void	SD_FadeOutMusic(void),
+				SD_MusicOn(void),
+				SD_MusicOff(void),
+				SD_FadeOutMusic(void),
 
 				SD_SetUserHook(void (*hook)(void));
 extern	boolean	SD_MusicPlaying(void),
@@ -232,9 +232,6 @@ extern	void	SDL_PCPlaySound(PCSound far *sound),
 				SDL_ALPlaySound(AdLibSound far *sound),
 				SDL_ALStopSound(void);
 #endif
-
-void alOutInIRQ(byte n,byte b);
-void SDL_DigitizedDoneInIRQ(void);
 
 #endif
 

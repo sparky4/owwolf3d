@@ -17,7 +17,7 @@
 //	DEBUG - there are more globals
 //
 
-#include "src/id_heads.h"
+#include "ID_HEADS.H"
 #pragma	hdrstop
 
 #define	KeyInt		9	// The keyboard ISR number
@@ -65,10 +65,10 @@ boolean			JoyPadPresent;
 		JoystickDef	JoyDefs[MaxJoys];
 		ControlType	Controls[MaxPlayers];
 
-		dword	MouseDownCount;
+		longword	MouseDownCount;
 
 		Demo		DemoMode = demo_Off;
-		byte		*DemoBuffer;
+		byte _seg	*DemoBuffer;
 		word		DemoOffset,DemoSize;
 
 /*
@@ -78,7 +78,7 @@ boolean			JoyPadPresent;
 
 =============================================================================
 */
-static	byte        __far ASCIINames[] =		// Unshifted ASCII for scan codes
+static	byte        far ASCIINames[] =		// Unshifted ASCII for scan codes
 					{
 //	 0   1   2   3   4   5   6   7   8   9   A   B   C   D   E   F
 	0  ,27 ,'1','2','3','4','5','6','7','8','9','0','-','=',8  ,9  ,	// 0
@@ -90,7 +90,7 @@ static	byte        __far ASCIINames[] =		// Unshifted ASCII for scan codes
 	0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,	// 6
 	0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0		// 7
 					},
-					__far ShiftNames[] =		// Shifted ASCII for scan codes
+					far ShiftNames[] =		// Shifted ASCII for scan codes
 					{
 //	 0   1   2   3   4   5   6   7   8   9   A   B   C   D   E   F
 	0  ,27 ,'!','@','#','$','%','^','&','*','(',')','_','+',8  ,9  ,	// 0
@@ -102,7 +102,7 @@ static	byte        __far ASCIINames[] =		// Unshifted ASCII for scan codes
 	0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,	// 6
 	0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0   	// 7
 					},
-					__far SpecialNames[] =	// ASCII for 0xe0 prefexed codes
+					far SpecialNames[] =	// ASCII for 0xe0 prefixed codes
 					{
 //	 0   1   2   3   4   5   6   7   8   9   A   B   C   D   E   F
 	0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,	// 0
@@ -130,16 +130,7 @@ static	Direction	DirTable[] =		// Quick lookup for total direction
 static	void			(*INL_KeyHook)(void);
 static	void interrupt	(*OldKeyVect)(void);
 
-static	char			*ParmStringsin[] = {"nojoys","nomouse",nil};
-
-static union REGS CPURegs;
-
-#define _AX CPURegs.x.ax
-#define _BX CPURegs.x.bx
-#define _CX CPURegs.x.cx
-#define _DX CPURegs.x.dx
-
-#define geninterrupt(n) int86(n,&CPURegs,&CPURegs);
+static	char			*ParmStrings[] = {"nojoys","nomouse",nil};
 
 //	Internal routines
 
@@ -148,19 +139,19 @@ static union REGS CPURegs;
 //	INL_KeyService() - Handles a keyboard interrupt (key up/down)
 //
 ///////////////////////////////////////////////////////////////////////////
-void interrupt
+static void interrupt
 INL_KeyService(void)
 {
 static	boolean	special;
 		byte	k,c,
 				temp;
-		//int		i;
+		int		i;
 
-	k = inp(0x60);	// Get the scan code
+	k = inportb(0x60);	// Get the scan code
 
 	// Tell the XT keyboard controller to clear the key
-	outp(0x61,(temp = inp(0x61)) | 0x80);
-	outp(0x61,temp);
+	outportb(0x61,(temp = inportb(0x61)) | 0x80);
+	outportb(0x61,temp);
 
 	if (k == 0xe0)		// Special key prefix
 		special = true;
@@ -214,7 +205,7 @@ static	boolean	special;
 
 	if (INL_KeyHook && !special)
 		INL_KeyHook();
-	outp(0x20,0x20);
+	outportb(0x20,0x20);
 }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -319,6 +310,7 @@ done:
 		pop		si
 		popf				// Restore the registers
 	}
+
 	*xp = x;
 	*yp = y;
 }
@@ -332,9 +324,9 @@ done:
 void INL_GetJoyDelta(word joy,int *dx,int *dy)
 {
 	word		x,y;
-	//dword	time;
+	longword	time;
 	JoystickDef	*def;
-static	dword	lasttime;
+static	longword	lasttime;
 
 	IN_GetJoyAbs(joy,&x,&y);
 	def = JoyDefs + joy;
@@ -399,7 +391,7 @@ INL_GetJoyButtons(word joy)
 {
 register	word	result;
 
-	result = inp(0x201);	// Get all the joystick buttons
+	result = inportb(0x201);	// Get all the joystick buttons
 	result >>= joy? 6 : 4;	// Shift into bits 0-1
 	result &= 3;				// Mask off the useless bits
 	result ^= 3;
@@ -415,7 +407,7 @@ register	word	result;
 word
 IN_GetJoyButtonsDB(word joy)
 {
-	dword	lasttime;
+	longword	lasttime;
 	word		result1,result2;
 
 	do
@@ -423,6 +415,7 @@ IN_GetJoyButtonsDB(word joy)
 		result1 = INL_GetJoyButtons(joy);
 		lasttime = TimeCount;
 		while (TimeCount == lasttime)
+			;
 		result2 = INL_GetJoyButtons(joy);
 	} while (result1 != result2);
 	return(result1);
@@ -440,8 +433,8 @@ INL_StartKbd(void)
 
 	IN_ClearKeysDown();
 
-	OldKeyVect = _dos_getvect(KeyInt);
-	_dos_setvect(KeyInt,INL_KeyService);
+	OldKeyVect = getvect(KeyInt);
+	setvect(KeyInt,INL_KeyService);
 }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -452,9 +445,9 @@ INL_StartKbd(void)
 static void
 INL_ShutKbd(void)
 {
-	pokeb(0x40,0x17,peekb(0x40,0x17) & 0xfaf0);	// Clear ctrl/alt/shift flags
+	poke(0x40,0x17,peek(0x40,0x17) & 0xfaf0);	// Clear ctrl/alt/shift flags
 
-	_dos_setvect(KeyInt,OldKeyVect);
+	setvect(KeyInt,OldKeyVect);
 }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -466,7 +459,7 @@ static boolean
 INL_StartMouse(void)
 {
 #if 0
-	if (_dos_getvect(MouseInt))
+	if (getvect(MouseInt))
 	{
 		Mouse(MReset);
 		if (_AX == 0xffff)
@@ -474,11 +467,11 @@ INL_StartMouse(void)
 	}
 	return(false);
 #endif
-// union REGS regs;
+ union REGS regs;
  unsigned char far *vector;
 
 
- if ((vector=MK_FP(peekb(0,0x33*4+2),peekb(0,0x33*4)))==NULL)
+ if ((vector=MK_FP(peek(0,0x33*4+2),peek(0,0x33*4)))==NULL)
    return false;
 
  if (*vector == 207)
@@ -600,7 +593,7 @@ IN_Startup(void)
 	checkmouse = true;
 	for (i = 1;i < _argc;i++)
 	{
-		switch (US_CheckParm(_argv[i],ParmStringsin))
+		switch (US_CheckParm(_argv[i],ParmStrings))
 		{
 		case 0:
 			checkjoys = false;
@@ -680,7 +673,7 @@ IN_SetKeyHook(void (*hook)())
 void
 IN_ClearKeysDown(void)
 {
-	//int	i;
+	int	i;
 
 	LastScan = sc_None;
 	LastASCII = key_None;
@@ -939,9 +932,9 @@ void IN_Ack (void)
 //		button up.
 //
 ///////////////////////////////////////////////////////////////////////////
-boolean IN_UserInput(dword delay)
+boolean IN_UserInput(longword delay)
 {
-	dword	lasttime;
+	longword	lasttime;
 
 	lasttime = TimeCount;
 	IN_StartAck ();
@@ -987,7 +980,7 @@ byte	IN_JoyButtons (void)
 {
 	unsigned joybits;
 
-	joybits = inp(0x201);	// Get all the joystick buttons
+	joybits = inportb(0x201);	// Get all the joystick buttons
 	joybits >>= 4;				// only the high bits are useful
 	joybits ^= 15;				// return with 1=pressed
 

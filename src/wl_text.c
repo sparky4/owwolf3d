@@ -1,6 +1,6 @@
 // WL_TEXT.C
 
-#include "src/wl_def.h"
+#include "WL_DEF.H"
 #pragma	hdrstop
 
 /*
@@ -57,10 +57,6 @@ unsigned	rowon;
 int			picx,picy,picnum,picdelay;
 boolean		layoutdone;
 
-static union REGS CPURegs;
-
-#define _AX CPURegs.x.ax
-#define geninterrupt(n) int86(n,&CPURegs,&CPURegs);
 //===========================================================================
 
 #ifndef JAPAN
@@ -169,7 +165,8 @@ void	TimedPicCommand (void)
 // wait for time
 //
 	TimeCount = 0;
-	while (TimeCount < picdelay){}
+	while (TimeCount < picdelay)
+	;
 
 //
 // draw pic
@@ -680,7 +677,8 @@ void ShowArticle (char far *article)
 		}
 
 		LastScan = 0;
-		while (!LastScan){}
+		while (!LastScan)
+		;
 
 		switch (LastScan)
 		{
@@ -713,10 +711,10 @@ void ShowArticle (char far *article)
 			break;
 		}
 
-// // 		#ifndef SPEAR
-// // 		if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("goobers"))
-// // 			PicturePause();
-// // 		#endif
+		#ifndef SPEAR
+		if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("goobers"))
+			PicturePause();
+		#endif
 
 	} while (LastScan != sc_Escape);
 
@@ -769,18 +767,18 @@ void HelpScreens (void)
 #ifdef ARTSEXTERN
 	artnum = helpextern;
 	CA_CacheGrChunk (artnum);
-	text = (char /*_seg*/ *)grsegs[artnum];
-	MM_SetLock ((memptr)grsegs[artnum], true);
+	text = (char _seg *)grsegs[artnum];
+	MM_SetLock (&grsegs[artnum], true);
 #else
 	CA_LoadFile (helpfilename,&layout);
-	text = (char /*_seg*/ *)layout;
+	text = (char _seg *)layout;
 	MM_SetLock (&layout, true);
 #endif
 
 	ShowArticle (text);
 
 #ifdef ARTSEXTERN
-	MM_FreePtr ((memptr)grsegs[artnum]);
+	MM_FreePtr (&grsegs[artnum]);
 #else
 	MM_FreePtr (&layout);
 #endif
@@ -830,19 +828,19 @@ void EndText (void)
 #ifdef ARTSEXTERN
 	artnum = endextern+gamestate.episode;
 	CA_CacheGrChunk (artnum);
-	text = (char /*_seg*/ *)grsegs[artnum];
-	MM_SetLock ((memptr)grsegs[artnum], true);
+	text = (char _seg *)grsegs[artnum];
+	MM_SetLock (&grsegs[artnum], true);
 #else
 	endfilename[6] = '1'+gamestate.episode;
 	CA_LoadFile (endfilename,&layout);
-	text = (char /*_seg*/ *)layout;
+	text = (char _seg *)layout;
 	MM_SetLock (&layout, true);
 #endif
 
 	ShowArticle (text);
 
 #ifdef ARTSEXTERN
-	MM_FreePtr ((memptr)grsegs[artnum]);
+	MM_FreePtr (&grsegs[artnum]);
 #else
 	MM_FreePtr (&layout);
 #endif
