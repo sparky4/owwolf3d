@@ -1,6 +1,11 @@
 #ifndef __TYPE_H__
 #define __TYPE_H__
+/*
+ * open watcom definitions for wolf3d
+ * by sparky4
+ */
 #include <conio.h>
+#include <graph.h>
 
 #define VERSION __DATE__ " " __TIME__
 #define _FCORELEFT 0x90000UL+16UL
@@ -40,6 +45,33 @@ static union REGS CPURegs;
 #define getvect _dos_getvect
 #define setvect _dos_setvect
 
+#define farmalloc _fmalloc
+#define farfree _ffree
+inline unsigned long farcoreleft()
+{
+	_fheapgrow();
+	return _FCORELEFT;
+}
+inline unsigned long coreleft()
+{
+	_nheapgrow();
+	return _memavl();//(dword)GetFreeSize();
+}
+
+
+//from http://www.verycomputer.com/3_65d875cc818b54ec_1.htm
+void clrscr(void);
+#pragma aux cls= \
+  " mov ah, 0fh " \
+  " int 10h " \
+  " xor ah, ah " \
+  " int 10h " ;
+//from http://stackoverflow.com/questions/18425748/gotoxy-function-using-printf-s-position
+inline void gotoxy(int x,int y)
+{
+	printf("\x1B[%d;%df", y, x);
+	fflush(stdout);  // @jxh
+}
 
 #define ffblk        find_t
 #define ff_name      name
@@ -51,10 +83,12 @@ static union REGS CPURegs;
 #define findfirst(name, dta, attrib)   _dos_findfirst(name, attrib, dta)
 #define findnext(dta)                  _dos_findnext(dta)
 
-#define random()     rand()
-#define srandom(n)   srand(n)
+//#define random()     rand()
+//#define srandom(n)   srand(n)
 
-#define _dos_ds      _default_ds()
+//#define _dos_ds      _default_ds()
+
+#define MAXLONG LONG_MAX
 
 typedef union REGPACK	regs_t;
 
