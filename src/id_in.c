@@ -257,59 +257,59 @@ IN_GetJoyAbs(word joy,word *xp,word *yp)
 	yb = 1 << ys;
 
 // Read the absolute joystick values
-	__asm {
-		pushf				// Save some registers
-		push	si
-		push	di
-		cli					// Make sure an interrupt doesn't screw the timings
+asm		pushf				// Save some registers
+asm		push	si
+asm		push	di
+asm		cli					// Make sure an interrupt doesn't screw the timings
 
 
-		mov		dx,0x201
-		in		al,dx
-		out		dx,al		// Clear the resistors
+asm		mov		dx,0x201
+asm		in		al,dx
+asm		out		dx,al		// Clear the resistors
 
-		mov		ah,[xb]		// Get masks into registers
-		mov		ch,[yb]
+asm		mov		ah,[xb]		// Get masks into registers
+asm		mov		ch,[yb]
 
-		xor		si,si		// Clear count registers
-		xor		di,di
-		xor		bh,bh		// Clear high byte of bx for later
+asm		xor		si,si		// Clear count registers
+asm		xor		di,di
+asm		xor		bh,bh		// Clear high byte of bx for later
 
-		push	bp			// Don't mess up stack frame
-		mov		bp,MaxJoyValue
-loo:
-		in		al,dx		// Get bits indicating whether all are finished
+asm		push	bp			// Don't mess up stack frame
+asm		mov		bp,MaxJoyValue
 
-		dec		bp			// Check bounding register
-		jz		done		// We have a silly value - abort
+loop:
+asm		in		al,dx		// Get bits indicating whether all are finished
 
-		mov		bl,al		// Duplicate the bits
-		and		bl,ah		// Mask off useless bits (in [xb])
-		add		si,bx		// Possibly increment count register
-		mov		cl,bl		// Save for testing later
+asm		dec		bp			// Check bounding register
+asm		jz		done		// We have a silly value - abort
 
-		mov		bl,al
-		and		bl,ch		// [yb]
-		add		di,bx
+asm		mov		bl,al		// Duplicate the bits
+asm		and		bl,ah		// Mask off useless bits (in [xb])
+asm		add		si,bx		// Possibly increment count register
+asm		mov		cl,bl		// Save for testing later
 
-		add		cl,bl
-		jnz		loo		// If both bits were 0, drop out
+asm		mov		bl,al
+asm		and		bl,ch		// [yb]
+asm		add		di,bx
+
+asm		add		cl,bl
+asm		jnz		loop 		// If both bits were 0, drop out
+
 done:
-		pop		bp
+asm     pop		bp
 
-		mov		cl,[xs]		// Get the number of bits to shift
-		shr		si,cl		//  and shift the count that many times
+asm		mov		cl,[xs]		// Get the number of bits to shift
+asm		shr		si,cl		//  and shift the count that many times
 
-		mov		cl,[ys]
-		shr		di,cl
+asm		mov		cl,[ys]
+asm		shr		di,cl
 
-		mov		[x],si		// Store the values into the variables
-		mov		[y],di
+asm		mov		[x],si		// Store the values into the variables
+asm		mov		[y],di
 
-		pop		di
-		pop		si
-		popf				// Restore the registers
-	}
+asm		pop		di
+asm		pop		si
+asm		popf				// Restore the registers
 
 	*xp = x;
 	*yp = y;

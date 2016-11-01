@@ -14,11 +14,15 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <limits.h> /* for LONG_MAX */
-//#include <values.h>
-//#include <dir.h>
+#ifdef __BORLANDC__
+#include <values.h>
+#include <dir.h>
+#endif
 #define __ID_GLOB__
-#include "src/version.h"
+#include "version.h"
+#ifdef __WATCOMC__
 #include "src/type.h"
+#endif
 
 //--------------------------------------------------------------------------
 
@@ -67,20 +71,22 @@ extern	char		far signon;
 //	v1.0d1
 //
 
-// typedef	enum	{false,true}	boolean;
-// typedef	unsigned	char		byte;
-// typedef	unsigned	int			word;
-// typedef	unsigned	long		longword;
-// typedef	byte *					Ptr;
-//
-// typedef	struct
-// 		{
-// 			int	x,y;
-// 		} Point;
-// typedef	struct
-// 		{
-// 			Point	ul,lr;
-// 		} Rect;
+#ifdef __BORLANDC__
+typedef	enum	{false,true}	boolean;
+typedef	unsigned	char		byte;
+typedef	unsigned	int			word;
+typedef	unsigned	long		longword;
+typedef	byte *					Ptr;
+
+typedef	struct
+		{
+			int	x,y;
+		} Point;
+typedef	struct
+		{
+			Point	ul,lr;
+		} Rect;
+#endif
 
 #define	nil	((void *)0)
 
