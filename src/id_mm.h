@@ -54,9 +54,9 @@
 #define	XMS_FREEUMB		0x11
 
 //==========================================================================
-
-//typedef void _seg * memptr;
-
+//#ifdef __BORLANDC__
+typedef void _seg * memptr;
+//#endif
 typedef struct
 {
 	long	nearheap,farheap,EMSmem,XMSmem,mainmem;
