@@ -181,6 +181,7 @@ clean: .symbolic
 !ifdef __LINUX__
 	@rm *.LIB
 	@rm *.EXE
+	@if exist src/obj/*.EXE	mv src/obj/*.EXE bcwolf.exe
 !endif
 	@if exist *.obj $(REMOVECOMMAND) *.obj
 	@if exist *.OBJ $(REMOVECOMMAND) *.OBJ

@@ -2,7 +2,7 @@
 ;	ID_SD_A.ASM
 ;	Id Sound Manager assembly stuff
 
-	.8086
+	.286C
 	IDEAL
 	MODEL	MEDIUM,C
 	JUMPS
@@ -225,15 +225,7 @@ extreme		dw	?
 	MACRO	COMMONEND
 @@fullexit:
 	pop	es
-	;popa
-	pop di
-	pop si
-	pop bp
-	pop [oldsp]
-	pop bx
-	pop dx
-	pop cx
-	pop ax
+	popa
 
 @@nosave:
 	mov	ax,[TimerDivisor]
@@ -295,19 +287,7 @@ extreme		dw	?
 
 	push ds
 	push es
-	;pusha
-	jmp @@skipme
-	oldsp dw ?
-@@skipme:
-	mov [oldsp], sp
-	push ax
-	push cx
-	push dx
-	push bx
-	push [oldsp]
-	push bp
-	push si
-	push di
+	pusha
 
 	mov	ds,[cs:MyDS]
 
@@ -342,15 +322,7 @@ extreme		dw	?
 	call SDL_DigitizedDone
 
 @@donereg:
-	;popa
-	pop di
-	pop si
-	pop bp
-	pop [oldsp]
-	pop bx
-	pop dx
-	pop cx
-	pop ax
+	popa
 	pop	es
 	pop	ds
 
@@ -394,16 +366,7 @@ extreme		dw	?
 	jz	@@nosave
 
 @@dofull:
-	;pusha
-	mov [oldsp], sp
-	push ax
-	push cx
-	push dx
-	push bx
-	push [oldsp]
-	push bp
-	push si
-	push di
+	pusha
 	push es
 
 	cmp	[count_fx],5
@@ -551,16 +514,7 @@ extreme		dw	?
 	jz	@@nosave
 
 @@dofull:
-	;pusha
-	mov [oldsp], sp
-	push ax
-	push cx
-	push dx
-	push bx
-	push [oldsp]
-	push bp
-	push si
-	push di
+	pusha
 	push es
 
 	DOFX

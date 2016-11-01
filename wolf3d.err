@@ -1,2 +1,31 @@
-src/wolf3d.c(1180): Warning! W131: No prototype found for function 'gotoxy'
-src/wolf3d.c(1382): Warning! W131: No prototype found for function 'clrscr'
+src/ID_HEADS.H(4): Error! E1055: Unable to open 'ALLOC.H'
+src/ID_HEADS.H(15): Error! E1055: Unable to open 'SYS\STAT.H'
+src/ID_HEADS.H(16): Error! E1055: Unable to open 'VALUES.H'
+src/ID_HEADS.H(17): Error! E1055: Unable to open 'DIR.H'
+src/VERSION.H(10): Error! E1061: Expecting data or function declaration, but found ' '
+src/VERSION.H(10): Warning! W138: No newline at end of file
+src/ID_HEADS.H(23): Error! E1026: Invalid declarator
+src/ID_HEADS.H(23): Error! E1009: Expecting ';' but found 'extern'
+src/ID_MM.H(58): Error! E1009: Expecting ',' but found '*'
+src/ID_MM.H(96): Warning! W138: No newline at end of file
+src/ID_CA.H(23): Error! E1009: Expecting ',' but found '*'
+src/ID_CA.H(23): Error! E1034: Symbol '_seg' already defined
+src/ID_CA.H(23): Note! I2002: '_seg' defined in: src/ID_MM.H(58)
+src/ID_CA.H(23): Error! E1129: Type does not agree with previous definition of '_seg'
+src/ID_CA.H(23): Note! I2002: '_seg' defined in: src/ID_MM.H(58)
+src/ID_CA.H(26): Error! E1009: Expecting ',' but found '*'
+src/ID_CA.H(26): Error! E1034: Symbol '_seg' already defined
+src/ID_CA.H(26): Note! I2002: '_seg' defined in: src/ID_MM.H(58)
+src/ID_CA.H(26): Error! E1129: Type does not agree with previous definition of '_seg'
+src/ID_CA.H(26): Note! I2002: '_seg' defined in: src/ID_MM.H(58)
+src/ID_CA.H(27): Error! E1009: Expecting ',' but found '*'
+src/ID_CA.H(27): Error! E1034: Symbol '_seg' already defined
+src/ID_CA.H(27): Note! I2002: '_seg' defined in: src/ID_MM.H(58)
+src/ID_CA.H(27): Error! E1129: Type does not agree with previous definition of '_seg'
+src/ID_CA.H(27): Note! I2002: '_seg' defined in: src/ID_MM.H(58)
+src/ID_CA.H(28): Error! E1009: Expecting ',' but found '*'
+src/ID_CA.H(28): Error! E1034: Symbol '_seg' already defined
+src/ID_CA.H(28): Note! I2002: '_seg' defined in: src/ID_MM.H(58)
+src/ID_CA.H(28): Error! E1129: Type does not agree with previous definition of '_seg'
+src/ID_CA.H(28): Note! I2002: '_seg' defined in: src/ID_MM.H(58)
+src/ID_CA.H(29): Error! E1147: Too many errors: compilation aborted

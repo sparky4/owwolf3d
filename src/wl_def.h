@@ -5,7 +5,7 @@
 
 #include "ID_HEADS.H"
 #include <MATH.H>
-//#include <VALUES.H>
+#include <VALUES.H>
 
 #include "WL_MENU.H"
 
@@ -941,7 +941,7 @@ void LevelCompleted (void);
 void	CheckHighScore (long score,word other);
 void Victory (void);
 void ClearSplitVWB (void);
-void PG13(void);
+
 
 /*
 =============================================================================

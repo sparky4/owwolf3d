@@ -1,28 +1,22 @@
 // ID_GLOB.H
 
 
-#include <malloc.h>
-#include <ctype.h>
-#include <dos.h>
-#include <errno.h>
-#include <fcntl.h>
-#include <io.h>
-#include <mem.h>
-#include <process.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/stat.h>
-#include <limits.h> /* for LONG_MAX */
-#ifdef __BORLANDC__
-#include <values.h>
-#include <dir.h>
-#endif
+#include <ALLOC.H>
+#include <CTYPE.H>
+#include <DOS.H>
+#include <ERRNO.H>
+#include <FCNTL.H>
+#include <IO.H>
+#include <MEM.H>
+#include <PROCESS.H>
+#include <STDIO.H>
+#include <STDLIB.H>
+#include <STRING.H>
+#include <SYS\STAT.H>
+#include <VALUES.H>
+#include <DIR.H>
 #define __ID_GLOB__
-#include "version.h"
-#ifdef __WATCOMC__
-#include "src/type.h"
-#endif
+#include "VERSION.H"
 
 //--------------------------------------------------------------------------
 
@@ -71,7 +65,6 @@ extern	char		far signon;
 //	v1.0d1
 //
 
-#ifdef __BORLANDC__
 typedef	enum	{false,true}	boolean;
 typedef	unsigned	char		byte;
 typedef	unsigned	int			word;
@@ -86,7 +79,6 @@ typedef	struct
 		{
 			Point	ul,lr;
 		} Rect;
-#endif
 
 #define	nil	((void *)0)
 
