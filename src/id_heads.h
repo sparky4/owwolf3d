@@ -1,7 +1,7 @@
 // ID_GLOB.H
 
 
-#include <ALLOC.H>
+#include <MALLOC.H>
 #include <CTYPE.H>
 #include <DOS.H>
 #include <ERRNO.H>
