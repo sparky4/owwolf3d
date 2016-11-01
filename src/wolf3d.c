@@ -29,7 +29,7 @@
 #define FOCALLENGTH     (0x5700l)               // in global coordinates
 #define VIEWGLOBAL      0x10000                 // globals visable flush to wall
 
-#define VIEWWIDTH_       256                     // size of view window
+#define VIEWWIDTH       256                     // size of view window
 #define VIEWHEIGHT      144
 
 /*
@@ -51,15 +51,16 @@ int                     dirangle[9] = {0,ANGLES/8,2*ANGLES/8,3*ANGLES/8,4*ANGLES
 //
 // proejection variables
 //
-fixed	__far	focallength;
+fixed           focallength;
 unsigned        screenofs;
 int             viewwidth;
 int             viewheight;
-short             centerx;
+int             centerx;
 int             shootdelta;                     // pixels away from centerx a target can be
-fixed	__far	scale,maxslope;
-long	__far	heightnumerator;
+fixed           scale,maxslope;
+long            heightnumerator;
 int                     minheightdiv;
+
 
 void            Quit (char *error);
 
@@ -76,10 +77,6 @@ char	configname[13]="CONFIG.";
 
 =============================================================================
 */
-
-static union REGS CPURegs;
-
-#define geninterrupt(n) int86(n,&CPURegs,&CPURegs);
 
 
 /*
@@ -240,27 +237,27 @@ void WriteConfig(void)
 ========================
 */
 
-char    *JHParmStringsma[] = {"no386",nil};
+char    *JHParmStrings[] = {"no386",nil};
 void Patch386 (void)
 {
-//extern void far jabhack2(void);
-//extern int far  CheckIs386(void);
+extern void far jabhack2(void);
+extern int far  CheckIs386(void);
 
 	int     i;
 
 	for (i = 1;i < _argc;i++)
-		if (US_CheckParm(_argv[i],JHParmStringsma) == 0)
+		if (US_CheckParm(_argv[i],JHParmStrings) == 0)
 		{
 			IsA386 = false;
 			return;
 		}
 
-	//if (CheckIs386())
-	//{
-	//	IsA386 = true;
-	//	jabhack2();
-	//}
-	//else
+	if (CheckIs386())
+	{
+		IsA386 = true;
+		jabhack2();
+	}
+	else
 		IsA386 = false;
 }
 
@@ -446,7 +443,7 @@ boolean SaveTheGame(int file,int x,int y)
 boolean LoadTheGame(int file,int x,int y)
 {
 	long checksum,oldchecksum;
-	objtype /**ob,*/nullobj;
+	objtype *ob,nullobj;
 
 
 	checksum = 0;
@@ -647,11 +644,10 @@ void CalcProjection (long focal)
 	long            intang;
 	float   angle;
 	double  tang;
-	//double  planedist;
-	//double  globinhalf;
+	double  planedist;
+	double  globinhalf;
 	int             halfview;
-	double  //halfangle,
-	facedist;
+	double  halfangle,facedist;
 
 
 	focallength = focal;
@@ -1160,7 +1156,7 @@ void InitGame (void)
 
 	SignonScreen ();
 
-	////VW_Startup ();
+	VW_Startup ();
 	IN_Startup ();
 	PM_Startup ();
 	PM_UnlockMainMem ();
@@ -1178,10 +1174,10 @@ void InitGame (void)
 		memptr screen;
 
 		CA_CacheGrChunk (ERRORSCREEN);
-		screen = (memptr)grsegs[ERRORSCREEN];
+		screen = grsegs[ERRORSCREEN];
 		ShutdownId();
 		movedata ((unsigned)screen,7+7*160,0xb800,0,17*160);
-		//gotoxy (1,23);
+		gotoxy (1,23);
 		exit(1);
 	}
 
@@ -1231,7 +1227,7 @@ void InitGame (void)
 //
 
 	CA_CacheGrChunk(STARTFONT);
-	MM_SetLock ((memptr)grsegs[STARTFONT],true);
+	MM_SetLock (&grsegs[STARTFONT],true);
 
 	LoadLatchMem ();
 	BuildTables ();          // trig tables
@@ -1349,7 +1345,7 @@ void NewViewSize (int width)
 
 void Quit (char *error)
 {
-//	unsigned        finscreen;
+	unsigned        finscreen;
 	memptr	screen;
 
 	if (virtualreality)
@@ -1360,14 +1356,14 @@ void Quit (char *error)
 	{
 	 #ifndef JAPAN
 	 CA_CacheGrChunk (ORDERSCREEN);
-	 screen = (memptr)grsegs[ORDERSCREEN];
+	 screen = grsegs[ORDERSCREEN];
 	 #endif
 	 WriteConfig ();
 	}
 	else
 	{
 	 CA_CacheGrChunk (ERRORSCREEN);
-	 screen = (memptr)grsegs[ERRORSCREEN];
+	 screen = grsegs[ERRORSCREEN];
 	}
 
 	ShutdownId ();
@@ -1375,18 +1371,18 @@ void Quit (char *error)
 	if (error && *error)
 	{
 	  movedata ((unsigned)screen,7,0xb800,0,7*160);
-	  //gotoxy (10,4);
+	  gotoxy (10,4);
 	  puts(error);
-	  //gotoxy (1,8);
+	  gotoxy (1,8);
 	  exit(1);
 	}
 	else
 	if (!error || !(*error))
 	{
-		//clrscr();
+		clrscr();
 		#ifndef JAPAN
 		movedata ((unsigned)screen,7,0xb800,0,4000);
-		//gotoxy(1,24);
+		gotoxy(1,24);
 		#endif
 //asm	mov	bh,0
 //asm	mov	dh,23	// row
@@ -1410,16 +1406,14 @@ void Quit (char *error)
 =====================
 */
 
-static  char *ParmStringsmo[] = {"baby","easy","normal","hard",""};
+static  char *ParmStrings[] = {"baby","easy","normal","hard",""};
 
 void    DemoLoop (void)
 {
-#ifdef DEMO
 	static int LastDemo;
-#endif
 	int     i,level;
-	//long nsize;
-	//memptr	nullblock;
+	long nsize;
+	memptr	nullblock;
 
 //
 // check for launch from ted
@@ -1431,7 +1425,7 @@ void    DemoLoop (void)
 
 		for (i = 1;i < _argc;i++)
 		{
-			if ( (level = US_CheckParm(_argv[i],ParmStringsmo)) != -1)
+			if ( (level = US_CheckParm(_argv[i],ParmStrings)) != -1)
 			{
 			 gamestate.difficulty=level;
 			 break;
@@ -1544,13 +1538,11 @@ void    DemoLoop (void)
 // demo
 //
 
-#ifdef DEMO
 			#ifndef SPEARDEMO
 			PlayDemo (LastDemo++%4);
 			#else
 			PlayDemo (0);
 			#endif
-#endif
 
 			if (playstate == ex_abort)
 				break;
@@ -1558,7 +1550,7 @@ void    DemoLoop (void)
 		}
 
 		VW_FadeOut ();
-#ifdef DEMO
+
 #ifndef SPEAR
 		if (Keyboard[sc_Tab] && MS_CheckParm("goobers"))
 #else
@@ -1566,7 +1558,6 @@ void    DemoLoop (void)
 #endif
 			RecordDemo ();
 		else
-#endif
 			US_ControlPanel (0);
 
 		if (startgame || loadedgame)
@@ -1594,7 +1585,7 @@ char    *nosprtxt[] = {"nospr",nil};
 
 void main (void)
 {
-	//int     i;
+	int     i;
 
 
 #ifdef BETA

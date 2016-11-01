@@ -4,13 +4,13 @@
 // by John Romero (C) 1992 Id Software, Inc.
 //
 ////////////////////////////////////////////////////////////////////
-#include "src/wl_def.h"
+#include "wl_def.h"
 #pragma hdrstop
 
 //
 // PRIVATE PROTOTYPES
 //
-int CP_ReadThis(void);
+void CP_ReadThis(void);
 
 #ifdef SPEAR
 #define STARTITEM	newgame
@@ -24,7 +24,7 @@ int CP_ReadThis(void);
 #endif
 #endif
 
-char __far endStrings[9][80]=
+char far endStrings[9][80]=
 {
 #ifndef SPEAR
 	{"Dost thou wish to\nleave with such hasty\nabandon?"},
@@ -59,7 +59,7 @@ CP_iteminfo
 	NewItems={NM_X,NM_Y,4,2,24};
 
 #pragma warn -sus
-CP_itemtype __far
+CP_itemtype far
 MainMenu[]=
 {
 #ifdef JAPAN
@@ -100,7 +100,7 @@ MainMenu[]=
 #endif
 },
 
-__far SndMenu[]=
+far SndMenu[]=
 {
 #ifdef JAPAN
 	{1,"",0},
@@ -131,7 +131,7 @@ __far SndMenu[]=
 #endif
 },
 
-__far CtlMenu[]=
+far CtlMenu[]=
 {
 #ifdef JAPAN
 	{0,"",0},
@@ -153,7 +153,7 @@ __far CtlMenu[]=
 #pragma warn +sus
 
 #ifndef SPEAR
-__far NewEmenu[]=
+far NewEmenu[]=
 {
 #ifdef JAPAN
 #ifdef JAPDEMO
@@ -226,7 +226,7 @@ __far NewEmenu[]=
 #endif
 
 
-__far NewMenu[]=
+far NewMenu[]=
 {
 #ifdef JAPAN
 	{1,"",0},
@@ -241,7 +241,7 @@ __far NewMenu[]=
 #endif
 },
 
-__far LSMenu[]=
+far LSMenu[]=
 {
 	{1,"",0},
 	{1,"",0},
@@ -255,7 +255,7 @@ __far LSMenu[]=
 	{1,"",0}
 },
 
-__far CusMenu[]=
+far CusMenu[]=
 {
 	{1,"",0},
 	{0,"",0},
@@ -270,7 +270,7 @@ __far CusMenu[]=
 ;
 
 
-int __far color_hlite[]={
+int color_hlite[]={
    DEACTIVE,
    HIGHLIGHT,
    READHCOLOR,
@@ -284,7 +284,7 @@ int __far color_hlite[]={
    0x6b
    };
 
-int __far EpisodeSelect[6]={1};
+int EpisodeSelect[6]={1};
 
 
 int SaveGamesAvail[10],StartGame,SoundStatus=1,pickquick;
@@ -296,7 +296,7 @@ char SaveGameNames[10][32],SaveName[13]="SAVEGAM?.";
 // INPUT MANAGER SCANCODE TABLES
 //
 ////////////////////////////////////////////////////////////////////
-static byte __far
+static byte
 					*ScanNames[] =		// Scan code names with single chars
 					{
 	"?","?","1","2","3","4","5","6","7","8","9","0","-","+","?","?",
@@ -308,14 +308,14 @@ static byte __far
 	"?","?","?","?","?","?","?","?","?","?","?","?","?","?","?","?",
 	"?","?","?","?","?","?","?","?","?","?","?","?","?","?","?","?"
 					},	// DEBUG - consolidate these
-					__far ExtScanCodes[] =	// Scan codes with >1 char names
+					far ExtScanCodes[] =	// Scan codes with >1 char names
 					{
 	1,0xe,0xf,0x1d,0x2a,0x39,0x3a,0x3b,0x3c,0x3d,0x3e,
 	0x3f,0x40,0x41,0x42,0x43,0x44,0x57,0x59,0x46,0x1c,0x36,
 	0x37,0x38,0x47,0x49,0x4f,0x51,0x52,0x53,0x45,0x48,
 	0x50,0x4b,0x4d,0x00
 					},
-					__far *ExtScanNames[] =	// Names corresponding to ExtScanCodes
+					*ExtScanNames[] =	// Names corresponding to ExtScanCodes
 					{
 	"Esc","BkSp","Tab","Ctrl","LShft","Space","CapsLk","F1","F2","F3","F4",
 	"F5","F6","F7","F8","F9","F10","F11","F12","ScrlLk","Enter","RShft",
@@ -323,14 +323,6 @@ static byte __far
 	"Down","Left","Right",""
 					};
 
-static union REGS CPURegs;
-
-#define _AX CPURegs.x.ax
-#define _BX CPURegs.x.bx
-#define _CX CPURegs.x.cx
-#define _DX CPURegs.x.dx
-
-#define geninterrupt(n) int86(n,&CPURegs,&CPURegs);
 
 ////////////////////////////////////////////////////////////////////
 //
@@ -615,7 +607,7 @@ void DrawMainMenu(void)
 // READ THIS!
 //
 ////////////////////////////////////////////////////////////////////
-int CP_ReadThis(void)
+void CP_ReadThis(void)
 {
 	StartCPMusic(CORNER_MUS);
 	HelpScreens();
@@ -898,7 +890,7 @@ int CP_EndGame(void)
 // VIEW THE HIGH SCORES
 //
 ////////////////////////////////////////////////////////////////////
-int CP_ViewScores(void)
+void CP_ViewScores(void)
 {
 	fontnumber=0;
 
@@ -923,7 +915,6 @@ int CP_ViewScores(void)
 	CacheLump (BACKDROP_LUMP_START,BACKDROP_LUMP_END);
 	CacheLump (OPTIONS_LUMP_START,OPTIONS_LUMP_END);
 #endif
-	return 0;
 }
 
 
@@ -932,7 +923,7 @@ int CP_ViewScores(void)
 // START A NEW GAME
 //
 ////////////////////////////////////////////////////////////////////
-int CP_NewGame(void)
+void CP_NewGame(void)
 {
 	int which,episode;
 
@@ -952,7 +943,7 @@ firstpart:
 		{
 			case -1:
 				MenuFadeOut();
-				return 0;
+				return;
 
 			default:
 				if (!EpisodeSelect[which/2])
@@ -990,7 +981,7 @@ firstpart:
 		#endif
 		{
 			MenuFadeOut();
-			return 0;
+			return;
 		}
 
 	MenuFadeOut();
@@ -1024,7 +1015,7 @@ firstpart:
 		#else
 		UnCacheLump (NEWGAME_LUMP_START,NEWGAME_LUMP_END);
 		CacheLump (OPTIONS_LUMP_START,OPTIONS_LUMP_END);
-		return 0;
+		return;
 		#endif
 	}
 
@@ -1048,7 +1039,6 @@ firstpart:
 	UnCacheLump (NEWGAME_LUMP_START,NEWGAME_LUMP_END);
 	CacheLump (OPTIONS_LUMP_START,OPTIONS_LUMP_END);
 #endif
-	return 0;
 }
 
 
@@ -1142,7 +1132,7 @@ void DrawNewGameDiff(int w)
 // HANDLE SOUND MENU
 //
 ////////////////////////////////////////////////////////////////////
-int CP_Sound(void)
+void CP_Sound(void)
 {
 	int which,i;
 
@@ -1252,7 +1242,6 @@ int CP_Sound(void)
 	UnCacheLump (SOUND_LUMP_START,SOUND_LUMP_END);
 	CacheLump (OPTIONS_LUMP_START,OPTIONS_LUMP_END);
 #endif
-	return 0;
 }
 
 
@@ -1707,10 +1696,10 @@ int CalibrateJoystick(void)
 		jb=IN_JoyButtons();
 		if (Keyboard[sc_Escape])
 			return 0;
-// // 		#ifndef SPEAR
-// // 		if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("goobers"))
-// // 			PicturePause();
-// // 		#endif
+		#ifndef SPEAR
+		if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("goobers"))
+			PicturePause();
+		#endif
 
 	} while(!(jb&1));
 
@@ -1741,10 +1730,10 @@ int CalibrateJoystick(void)
 		jb=IN_JoyButtons();
 		if (Keyboard[sc_Escape])
 			return 0;
-// // 		#ifndef SPEAR
-// // 		if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("goobers"))
-// // 			PicturePause();
-// // 		#endif
+		#ifndef SPEAR
+		if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("goobers"))
+			PicturePause();
+		#endif
 	} while(!(jb&2));
 
 	IN_GetJoyAbs(joystickport,&xmax,&ymax);
@@ -1769,7 +1758,7 @@ int CalibrateJoystick(void)
 // DEFINE CONTROLS
 //
 ////////////////////////////////////////////////////////////////////
-int CP_Control(void)
+void CP_Control(void)
 {
 	#define CTL_SPC	70
 	enum {MOUSEENABLE,JOYENABLE,USEPORT2,PADENABLE,MOUSESENS,CUSTOMIZE};
@@ -1836,7 +1825,6 @@ int CP_Control(void)
 	UnCacheLump (CONTROL_LUMP_START,CONTROL_LUMP_END);
 	CacheLump (OPTIONS_LUMP_START,OPTIONS_LUMP_END);
 #endif
-	return 0;
 }
 
 
@@ -1893,7 +1881,7 @@ void DrawMouseSens(void)
 //
 // ADJUST MOUSE SENSITIVITY
 //
-int MouseSensitivity(void)
+void MouseSensitivity(void)
 {
 	ControlInfo ci;
 	int exit=0,oldMA;
@@ -1917,7 +1905,7 @@ int MouseSensitivity(void)
 					VWB_Bar(61+20*mouseadjustment,98,19,9,READHCOLOR);
 					VW_UpdateScreen();
 					SD_PlaySound(MOVEGUN1SND);
-					while(Keyboard[sc_LeftArrow]){}
+					while(Keyboard[sc_LeftArrow]);
 					WaitKeyUp();
 				}
 				break;
@@ -1933,18 +1921,18 @@ int MouseSensitivity(void)
 					VWB_Bar(61+20*mouseadjustment,98,19,9,READHCOLOR);
 					VW_UpdateScreen();
 					SD_PlaySound(MOVEGUN1SND);
-					while(Keyboard[sc_RightArrow]){}
+					while(Keyboard[sc_RightArrow]);
 					WaitKeyUp();
 				}
 				break;
 		}
 
-// // 		#ifndef SPEAR
-// // 		if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("goobers"))
-// // 		#else
-// // 		if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("debugmode"))
-// // 		#endif
-// // 			PicturePause();
+		#ifndef SPEAR
+		if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("goobers"))
+		#else
+		if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("debugmode"))
+		#endif
+			PicturePause();
 
 		if (ci.button0 || Keyboard[sc_Space] || Keyboard[sc_Enter])
 			exit=1;
@@ -1964,7 +1952,6 @@ int MouseSensitivity(void)
 
 	WaitKeyUp();
 	MenuFadeOut();
-	return 0;
 }
 
 
@@ -2060,7 +2047,7 @@ char mbarray[4][3]={"b0","b1","b2","b3"},
 	   order[4]={RUN,OPEN,FIRE,STRAFE};
 
 
-int CustomControls(void)
+void CustomControls(void)
 {
  int which;
 
@@ -2092,7 +2079,6 @@ int CustomControls(void)
 
 
  MenuFadeOut();
- return 0;
 }
 
 
@@ -2747,7 +2733,7 @@ void DrawCustKeys(int hilight)
 // CHANGE SCREEN VIEWING SIZE
 //
 ////////////////////////////////////////////////////////////////////
-int CP_ChangeView(void)
+void CP_ChangeView(void)
 {
 	int exit=0,oldview,newview;
 	ControlInfo ci;
@@ -2788,12 +2774,12 @@ int CP_ChangeView(void)
 			break;
 		}
 
-// // 		#ifndef SPEAR
-// // 		if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("goobers"))
-// // 		#else
-// // 		if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("debugmode"))
-// // 		#endif
-// // 			PicturePause();
+		#ifndef SPEAR
+		if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("goobers"))
+		#else
+		if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("debugmode"))
+		#endif
+			PicturePause();
 
 		if (ci.button0 || Keyboard[sc_Enter])
 			exit=1;
@@ -2803,7 +2789,7 @@ int CP_ChangeView(void)
 			viewwidth=oldview*16;
 			SD_PlaySound(ESCPRESSEDSND);
 			MenuFadeOut();
-			return 0;
+			return;
 		}
 
 	} while(!exit);
@@ -2818,7 +2804,6 @@ int CP_ChangeView(void)
 
 	ShootSnd();
 	MenuFadeOut();
-	return 0;
 }
 
 
@@ -2856,7 +2841,7 @@ void DrawChangeView(int view)
 // QUIT THIS INFERNAL GAME!
 //
 ////////////////////////////////////////////////////////////////////
-int CP_Quit(void)
+void CP_Quit(void)
 {
 	int i;
 
@@ -2886,7 +2871,6 @@ int CP_Quit(void)
 	}
 
 	DrawMainMenu();
-	return 0;
 }
 
 
@@ -3044,68 +3028,56 @@ void DrawOutline(int x,int y,int w,int h,int color1,int color2)
 ////////////////////////////////////////////////////////////////////
 void SetupControlPanel(void)
 {
-//      struct ffblk f;
-        struct _finddata_t f;
-        long handle;
-        char name[13];
-        int which;
+	struct ffblk f;
+	char name[13];
+	int which,i;
 
 
-        //
-        // CACHE GRAPHICS & SOUNDS
-        //
-        CA_CacheGrChunk(STARTFONT+1);
+	//
+	// CACHE GRAPHICS & SOUNDS
+	//
+	CA_CacheGrChunk(STARTFONT+1);
 #ifndef SPEAR
-        CacheLump(CONTROLS_LUMP_START,CONTROLS_LUMP_END);
+	CacheLump(CONTROLS_LUMP_START,CONTROLS_LUMP_END);
 #else
-        CacheLump(BACKDROP_LUMP_START,BACKDROP_LUMP_END);
+	CacheLump(BACKDROP_LUMP_START,BACKDROP_LUMP_END);
 #endif
 
-        SETFONTCOLOR(TEXTCOLOR,BKGDCOLOR);
-        fontnumber=1;
-        WindowH=200;
+	SETFONTCOLOR(TEXTCOLOR,BKGDCOLOR);
+	fontnumber=1;
+	WindowH=200;
 
-        if (!ingame)
-                CA_LoadAllSounds();
-        else
-                MainMenu[savegame].active=1;
+	if (!ingame)
+		CA_LoadAllSounds();
+	else
+		MainMenu[savegame].active=1;
 
-        //
-        // SEE WHICH SAVE GAME FILES ARE AVAILABLE & READ STRING IN
-        //
-        strcpy(name,SaveName);
-//      if (!findfirst(name,&f,0))
-        handle=_findfirst(name,&f);
-        if (handle!=-1)
-        {
-                long rc;
-                do
-                {
-//                      which=f.ff_name[7]-'0';
-                        which=f.name[7]-'0';
-                        if (which<10)
-                        {
-                                int handle;
-                                char temp[32];
+	//
+	// SEE WHICH SAVE GAME FILES ARE AVAILABLE & READ STRING IN
+	//
+	strcpy(name,SaveName);
+	if (!findfirst(name,&f,0))
+		do
+		{
+			which=f.ff_name[7]-'0';
+			if (which<10)
+			{
+				int handle;
+				char temp[32];
 
-                                SaveGamesAvail[which]=1;
-//                              handle=open(f.ff_name,O_BINARY);
-                                handle=open(f.name,O_BINARY);
-                                read(handle,temp,32);
-                                close(handle);
-                                strcpy(&SaveGameNames[which][0],temp);
-                        }
-                        rc=_findnext(handle,&f);
-                } while(rc!=-1);
-//              } while(!findnext(&f));
-                _findclose(handle);
-        }
+				SaveGamesAvail[which]=1;
+				handle=open(f.ff_name,O_BINARY);
+				read(handle,temp,32);
+				close(handle);
+				strcpy(&SaveGameNames[which][0],temp);
+			}
+		} while(!findnext(&f));
 
-        //
-        // CENTER MOUSE
-        //
-        _CX=_DX=CENTER;
-        Mouse(4);
+	//
+	// CENTER MOUSE
+	//
+	_CX=_DX=CENTER;
+	Mouse(4);
 }
 
 
@@ -3203,12 +3175,12 @@ int HandleMenu(CP_iteminfo *item_i,CP_itemtype far *items,void (*routine)(int w)
 			//
 			// CHECK FOR SCREEN CAPTURE
 			//
-// // 			#ifndef SPEAR
-// // 			if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("goobers"))
-// // 			#else
-// // 			if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("debugmode"))
-// // 			#endif
-// // 				PicturePause();
+			#ifndef SPEAR
+			if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("goobers"))
+			#else
+			if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("debugmode"))
+			#endif
+				PicturePause();
 
 
 			if (key>='a')
@@ -3398,7 +3370,7 @@ void DrawHalfStep(int x,int y)
 	VW_UpdateScreen();
 	SD_PlaySound(MOVEGUN1SND);
 	TimeCount=0;
-	while(TimeCount<8){}
+	while(TimeCount<8);
 }
 
 
@@ -3651,10 +3623,10 @@ int Confirm(char far *string)
 			TimeCount=0;
 		}
 
-// // 		#ifndef SPEAR
-// // 		if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("goobers"))
-// // 			PicturePause();
-// // 		#endif
+		#ifndef SPEAR
+		if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("goobers"))
+			PicturePause();
+		#endif
 
 	#ifdef SPANISH
 	} while(!Keyboard[sc_S] && !Keyboard[sc_N] && !Keyboard[sc_Escape]);
@@ -3669,7 +3641,7 @@ int Confirm(char far *string)
 		ShootSnd();
 	}
 
-	while(Keyboard[sc_S] || Keyboard[sc_N] || Keyboard[sc_Escape]){}
+	while(Keyboard[sc_S] || Keyboard[sc_N] || Keyboard[sc_Escape]);
 
 	#else
 
@@ -3679,7 +3651,7 @@ int Confirm(char far *string)
 		ShootSnd();
 	}
 
-	while(Keyboard[sc_Y] || Keyboard[sc_N] || Keyboard[sc_Escape]){}
+	while(Keyboard[sc_Y] || Keyboard[sc_N] || Keyboard[sc_Escape]);
 	#endif
 
 	IN_ClearKeysDown();
@@ -3706,10 +3678,10 @@ int GetYorN(int x,int y,int pic)
 
 	do
 	{
-// // 		#ifndef SPEAR
-// // 		if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("goobers"))
-// // 			PicturePause();
-// // 		#endif
+		#ifndef SPEAR
+		if (Keyboard[sc_Tab] && Keyboard[sc_P] && MS_CheckParm("goobers"))
+			PicturePause();
+		#endif
 
 	#ifdef SPANISH
 	} while(!Keyboard[sc_S] && !Keyboard[sc_N] && !Keyboard[sc_Escape]);
@@ -3752,12 +3724,12 @@ int GetYorN(int x,int y,int pic)
 void Message(char far *string)
 {
 	int h=0,w=0,mw=0,i,x,y,time;
-	fontstruct /*_seg*/ *font;
+	fontstruct _seg *font;
 
 
 	CA_CacheGrChunk (STARTFONT+1);
 	fontnumber=1;
-	font=(fontstruct *)grsegs[STARTFONT+fontnumber];
+	font=grsegs[STARTFONT+fontnumber];
 	h=font->height;
 	for (i=0;i<_fstrlen(string);i++)
 		if (string[i]=='\n')
@@ -3809,7 +3781,7 @@ void StartCPMusic(int song)
 		mmerror = false;
 	else
 	{
-		MM_SetLock(((memptr)audiosegs[STARTMUSIC + chunk]),true);
+		MM_SetLock(&((memptr)audiosegs[STARTMUSIC + chunk]),true);
 		SD_StartMusic((MusicGroup far *)audiosegs[STARTMUSIC + chunk]);
 	}
 }
@@ -3827,7 +3799,7 @@ void FreeMusic (void)
 //		specified scan code
 //
 ///////////////////////////////////////////////////////////////////////////
-byte __far *
+byte *
 IN_GetScanName(ScanCode scan)
 {
 	byte		**p;
@@ -3909,142 +3881,106 @@ void ShootSnd(void)
 ///////////////////////////////////////////////////////////////////////////
 void CheckForEpisodes(void)
 {
-//      struct ffblk f;
-        struct _finddata_t f;
-        long handle;
+	struct ffblk f;
 
 //
 // JAPANESE VERSION
 //
 #ifdef JAPAN
 #ifdef JAPDEMO
-        handle=_findfirst("*.WJ1",&f);
-        if(handle!=-1)
-//      if (!findfirst("*.WJ1",&f,FA_ARCH))
-        {
-                strcpy(extension,"WJ1");
+	if (!findfirst("*.WJ1",&f,FA_ARCH))
+	{
+		strcpy(extension,"WJ1");
 #else
-        handle=_findfirst("*.WJ6",&f);
-        if(handle!=-1)
-//      if (!findfirst("*.WJ6",&f,FA_ARCH))
-        {
-                strcpy(extension,"WJ6");
+	if (!findfirst("*.WJ6",&f,FA_ARCH))
+	{
+		strcpy(extension,"WJ6");
 #endif
-                strcat(configname,extension);
-                strcat(SaveName,extension);
-                strcat(PageFileName,extension);
-                strcat(audioname,extension);
-#ifdef DEMO
-                strcat(demoname,extension);
-#endif
-                EpisodeSelect[1] =
-                EpisodeSelect[2] =
-                EpisodeSelect[3] =
-                EpisodeSelect[4] =
-                EpisodeSelect[5] = 1;
-        }
-        else
-                Quit("NO JAPANESE WOLFENSTEIN 3-D DATA FILES to be found!");
+		strcat(configname,extension);
+		strcat(SaveName,extension);
+		strcat(PageFileName,extension);
+		strcat(audioname,extension);
+		strcat(demoname,extension);
+		EpisodeSelect[1] =
+		EpisodeSelect[2] =
+		EpisodeSelect[3] =
+		EpisodeSelect[4] =
+		EpisodeSelect[5] = 1;
+	}
+	else
+		Quit("NO JAPANESE WOLFENSTEIN 3-D DATA FILES to be found!");
 #else
 
 //
 // ENGLISH
 //
-#ifdef UPLOAD
-        handle=_findfirst("*.WL1",&f);
-        if(handle!=-1)
-//      if (!findfirst("*.WL1",&f,FA_ARCH))
-        {
-                strcpy(extension,"WL1");
-        }
-        else
-                Quit("NO WOLFENSTEIN 3-D DATA FILES to be found!");
-#else
+#ifndef UPLOAD
 #ifndef SPEAR
-        handle=_findfirst("*.WL6",&f);
-        if(handle!=-1)
-//      if (!findfirst("*.WL6",&f,FA_ARCH))
-        {
-                strcpy(extension,"WL6");
-                NewEmenu[2].active =
-                NewEmenu[4].active =
-                NewEmenu[6].active =
-                NewEmenu[8].active =
-                NewEmenu[10].active =
-                EpisodeSelect[1] =
-                EpisodeSelect[2] =
-                EpisodeSelect[3] =
-                EpisodeSelect[4] =
-                EpisodeSelect[5] = 1;
-        }
-        else
-        {
-                handle=_findfirst("*.WL3",&f);
-                if(handle!=-1)
-//              if (!findfirst("*.WL3",&f,FA_ARCH))
-                {
-                        strcpy(extension,"WL3");
-                        NewEmenu[2].active =
-                        NewEmenu[4].active =
-                        EpisodeSelect[1] =
-                        EpisodeSelect[2] = 1;
-                }
-                else
-                {
-                        handle=_findfirst("*.WL1",&f);
-                        if(handle!=-1)
-//                      if (!findfirst("*.WL1",&f,FA_ARCH))
-                        {
-                                strcpy(extension,"WL1");
-                        }
-                        else
-                                Quit("NO WOLFENSTEIN 3-D DATA FILES to be found!");
-                }
-        }
+	if (!findfirst("*.WL6",&f,FA_ARCH))
+	{
+		strcpy(extension,"WL6");
+		NewEmenu[2].active =
+		NewEmenu[4].active =
+		NewEmenu[6].active =
+		NewEmenu[8].active =
+		NewEmenu[10].active =
+		EpisodeSelect[1] =
+		EpisodeSelect[2] =
+		EpisodeSelect[3] =
+		EpisodeSelect[4] =
+		EpisodeSelect[5] = 1;
+	}
+	else
+	if (!findfirst("*.WL3",&f,FA_ARCH))
+	{
+		strcpy(extension,"WL3");
+		NewEmenu[2].active =
+		NewEmenu[4].active =
+		EpisodeSelect[1] =
+		EpisodeSelect[2] = 1;
+	}
+	else
 #endif
 #endif
+
 
 
 #ifdef SPEAR
 #ifndef SPEARDEMO
-        handle=_findfirst("*.SOD",&f);
-        if(handle!=-1)
-//      if (!findfirst("*.SOD",&f,FA_ARCH))
-        {
-                strcpy(extension,"SOD");
-        }
-        else
-                Quit("NO SPEAR OF DESTINY DATA FILES TO BE FOUND!");
+	if (!findfirst("*.SOD",&f,FA_ARCH))
+	{
+		strcpy(extension,"SOD");
+	}
+	else
+		Quit("NO SPEAR OF DESTINY DATA FILES TO BE FOUND!");
 #else
-        handle=_findfirst("*.SDM",&f);
-        if(handle!=-1)
-//      if (!findfirst("*.SDM",&f,FA_ARCH))
-        {
-                strcpy(extension,"SDM");
-        }
-        else
-                Quit("NO SPEAR OF DESTINY DEMO DATA FILES TO BE FOUND!");
-#endif
-#endif
-        if(handle!=-1) _findclose(handle);
-
-        strcat(configname,extension);
-        strcat(SaveName,extension);
-//      strcat(PageFileName,extension);
-        strcat(audioname,extension);
-#ifdef DEMO
-        strcat(demoname,extension);
+	if (!findfirst("*.SDM",&f,FA_ARCH))
+	{
+		strcpy(extension,"SDM");
+	}
+	else
+		Quit("NO SPEAR OF DESTINY DEMO DATA FILES TO BE FOUND!");
 #endif
 
-#ifdef ABCAUS
+#else
+	if (!findfirst("*.WL1",&f,FA_ARCH))
+	{
+		strcpy(extension,"WL1");
+	}
+	else
+		Quit("NO WOLFENSTEIN 3-D DATA FILES to be found!");
+#endif
 
+	strcat(configname,extension);
+	strcat(SaveName,extension);
+	strcat(PageFileName,extension);
+	strcat(audioname,extension);
+	strcat(demoname,extension);
 #ifndef SPEAR
 #ifndef GOODTIMES
-        strcat(helpfilename,extension);
+	strcat(helpfilename,extension);
 #endif
-        strcat(endfilename,extension);
+	strcat(endfilename,extension);
 #endif
-#endif
-
 #endif
 }

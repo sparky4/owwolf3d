@@ -1,6 +1,6 @@
 // ID_VH.C
 
-#include "src/id_heads.h"
+#include "ID_HEADS.H"
 
 #define	SCREENWIDTH		80
 #define CHARWIDTH		2
@@ -16,15 +16,13 @@
 
 #define PIXTOBLOCK		4		// 16 pixels to an update block
 
-//#define UNCACHEGRCHUNK(chunk)	{MM_FreePtr(&grsegs[chunk]);grneeded[chunk]&=~ca_levelbit;}
+#define UNCACHEGRCHUNK(chunk)	{MM_FreePtr(&grsegs[chunk]);grneeded[chunk]&=~ca_levelbit;}
 
-//byte	update[UPDATEHIGH][UPDATEWIDE];
-#define UPDATESIZE			(UPDATEWIDE*UPDATEHIGH)
-byte	__far	update[UPDATESIZE];
+byte	update[UPDATEHIGH][UPDATEWIDE];
 
 //==========================================================================
 
-pictabletype *pictable;
+pictabletype	_seg *pictable;
 
 
 int	px,py;
@@ -42,8 +40,8 @@ void	VWL_UpdateScreenBlocks (void);
 void VW_DrawPropString (char far *string)
 {
 	fontstruct	far	*font;
-	int		width,step,height;//,i;
-	byte	__far *source, far *dest, far *origdest;
+	int		width,step,height,i;
+	byte	far *source, far *dest, far *origdest;
 	byte	ch,mask;
 
 	font = (fontstruct far *)grsegs[STARTFONT+fontnumber];
@@ -58,29 +56,28 @@ void VW_DrawPropString (char far *string)
 		source = ((byte far *)font)+font->location[ch];
 		while (width--)
 		{
-			//VGAMAPMASK(mask);
-			vgamapmask(mask);
-			__asm {
-		mov	ah,[BYTE PTR fontcolor]
-		mov	bx,[step]
-		mov	cx,[height]
-		mov	dx,[linewidth]
-		lds	si,[source]
-		les	di,[dest]
+			VGAMAPMASK(mask);
+
+asm	mov	ah,[BYTE PTR fontcolor]
+asm	mov	bx,[step]
+asm	mov	cx,[height]
+asm	mov	dx,[linewidth]
+asm	lds	si,[source]
+asm	les	di,[dest]
 
 vertloop:
-		mov	al,[si]
-		or	al,al
-		je	next
-		mov	[es:di],ah			// draw color
+asm	mov	al,[si]
+asm	or	al,al
+asm	je	next
+asm	mov	[es:di],ah			// draw color
 
 next:
-		add	si,bx
-		add	di,dx
-		loop	vertloop
-		mov	ax,ss
-		mov	ds,ax
-			}
+asm	add	si,bx
+asm	add	di,dx
+asm	loop	vertloop
+asm	mov	ax,ss
+asm	mov	ds,ax
+
 			source++;
 			px++;
 			mask <<= 1;
@@ -98,9 +95,9 @@ bufferwidth = ((dest+1)-origdest)*4;
 
 void VW_DrawColorPropString (char far *string)
 {
-	fontstruct	__far	*font;
-	int		width,step,height;//,i;
-	byte	__far *source, far *dest, far *origdest;
+	fontstruct	far	*font;
+	int		width,step,height,i;
+	byte	far *source, far *dest, far *origdest;
 	byte	ch,mask;
 
 	font = (fontstruct far *)grsegs[STARTFONT+fontnumber];
@@ -115,36 +112,35 @@ void VW_DrawColorPropString (char far *string)
 		source = ((byte far *)font)+font->location[ch];
 		while (width--)
 		{
-			//VGAMAPMASK(mask);
-			vgamapmask(mask);
-			__asm {
-		mov	ah,[BYTE PTR fontcolor]
-		mov	bx,[step]
-		mov	cx,[height]
-		mov	dx,[linewidth]
-		lds	si,[source]
-		les	di,[dest]
+			VGAMAPMASK(mask);
+
+asm	mov	ah,[BYTE PTR fontcolor]
+asm	mov	bx,[step]
+asm	mov	cx,[height]
+asm	mov	dx,[linewidth]
+asm	lds	si,[source]
+asm	les	di,[dest]
 
 vertloop:
-		mov	al,[si]
-		or	al,al
-		je	next
-		mov	[es:di],ah			// draw color
+asm	mov	al,[si]
+asm	or	al,al
+asm	je	next
+asm	mov	[es:di],ah			// draw color
 
 next:
-		add	si,bx
-		add	di,dx
+asm	add	si,bx
+asm	add	di,dx
 
-		rcr cx,1				// inc font color
-		jc  cont
-		inc ah
+asm rcr cx,1				// inc font color
+asm jc  cont
+asm	inc ah
 
 cont:
-		rcl cx,1
-		loop	vertloop
-		mov	ax,ss
-		mov	ds,ax
-			}
+asm rcl cx,1
+asm	loop	vertloop
+asm	mov	ax,ss
+asm	mov	ds,ax
+
 			source++;
 			px++;
 			mask <<= 1;
@@ -174,9 +170,8 @@ bufferwidth = ((dest+1)-origdest)*4;
 void VL_MungePic (byte far *source, unsigned width, unsigned height)
 {
 	unsigned	x,y,plane,size,pwidth;
-	byte		/*_seg */ *temp=0, __far *dest, __far *srcline;
+	byte		_seg *temp, far *dest, far *srcline;
 
-	temp=0;
 	size = width*height;
 
 	if (width&3)
@@ -185,7 +180,7 @@ void VL_MungePic (byte far *source, unsigned width, unsigned height)
 //
 // copy the pic to a temp buffer
 //
-	MM_GetPtr ((memptr)temp,size);
+	MM_GetPtr (&(memptr)temp,size);
 	_fmemcpy (temp,source,size);
 
 //
@@ -205,25 +200,25 @@ void VL_MungePic (byte far *source, unsigned width, unsigned height)
 		}
 	}
 
-	MM_FreePtr ((memptr)temp);
+	MM_FreePtr (&(memptr)temp);
 }
 
 void VWL_MeasureString (char far *string, word *width, word *height
-	, fontstruct /*_seg*/ *font)
+	, fontstruct _seg *font)
 {
 	*height = font->height;
 	for (*width = 0;*string;string++)
 		*width += font->width[*((byte far *)string)];	// proportional width
 }
 
-void	VW_MeasurePropString (char /*far*/ *string, word *width, word *height)
+void	VW_MeasurePropString (char far *string, word *width, word *height)
 {
-	VWL_MeasureString(string,width,height,(fontstruct /*_seg*/ *)grsegs[STARTFONT+fontnumber]);
+	VWL_MeasureString(string,width,height,(fontstruct _seg *)grsegs[STARTFONT+fontnumber]);
 }
 
-void	VW_MeasureMPropString  (char /*far*/ *string, word *width, word *height)
+void	VW_MeasureMPropString  (char far *string, word *width, word *height)
 {
-	VWL_MeasureString(string,width,height,(fontstruct /*_seg*/ *)grsegs[STARTFONTM+fontnumber]);
+	VWL_MeasureString(string,width,height,(fontstruct _seg *)grsegs[STARTFONTM+fontnumber]);
 }
 
 
@@ -317,12 +312,12 @@ void VWB_DrawPic (int x, int y, int chunknum)
 	height = pictable[picnum].height;
 
 	if (VW_MarkUpdateBlock (x,y,x+width-1,y+height-1))
-		VL_MemToScreen ((memptr)grsegs[chunknum],width,height,x,y);
+		VL_MemToScreen (grsegs[chunknum],width,height,x,y);
 }
 
 
 
-void VWB_DrawPropString	 (char /*far*/ *string)
+void VWB_DrawPropString	 (char far *string)
 {
 	int x;
 	x=px;
@@ -401,8 +396,8 @@ void LatchDrawPic (unsigned x, unsigned y, unsigned picnum)
 
 void LoadLatchMem (void)
 {
-	int	i,width,height,start,end;//j,p,m,
-	byte	__far *src;
+	int	i,j,p,m,width,height,start,end;
+	byte	far *src;
 	unsigned	destoff;
 
 //
@@ -410,7 +405,7 @@ void LoadLatchMem (void)
 //
 	latchpics[0] = freelatch;
 	CA_CacheGrChunk (STARTTILE8);
-	src = (byte /*_seg*/ *)grsegs[STARTTILE8];
+	src = (byte _seg *)grsegs[STARTTILE8];
 	destoff = freelatch;
 
 	for (i=0;i<NUMTILE8;i++)
@@ -425,13 +420,13 @@ void LoadLatchMem (void)
 //
 // tile 16s
 //
-	src = (byte /*_seg*/ *)grsegs[STARTTILE16];
+	src = (byte _seg *)grsegs[STARTTILE16];
 	latchpics[1] = destoff;
 
 	for (i=0;i<NUMTILE16;i++)
 	{
 		CA_CacheGrChunk (STARTTILE16+i);
-		src = (byte /*_seg*/ *)grsegs[STARTTILE16+i];
+		src = (byte _seg *)grsegs[STARTTILE16+i];
 		VL_MemToLatch (src,16,16,destoff);
 		destoff+=64;
 		if (src)
@@ -451,13 +446,12 @@ void LoadLatchMem (void)
 		CA_CacheGrChunk (i);
 		width = pictable[i-STARTPICS].width;
 		height = pictable[i-STARTPICS].height;
-		VL_MemToLatch ((memptr)grsegs[i],width,height,destoff);
+		VL_MemToLatch (grsegs[i],width,height,destoff);
 		destoff += width/4 *height;
 		UNCACHEGRCHUNK(i);
 	}
 
-	//EGAMAPMASK(15);
-	vgamapmask(15);
+	EGAMAPMASK(15);
 }
 
 //==========================================================================
@@ -480,7 +474,7 @@ boolean FizzleFade (unsigned source, unsigned dest,
 	int			pixperframe;
 	unsigned	drawofs,pagedelta;
 	byte 		mask,maskb[8] = {1,2,4,8};
-	unsigned	x=0,y,p,frame;
+	unsigned	x,y,p,frame;
 	long		rndval;
 
 	pagedelta = dest-source;
@@ -496,35 +490,34 @@ boolean FizzleFade (unsigned source, unsigned dest,
 		if (abortable && IN_CheckAck () )
 			return true;
 
-			__asm mov	es,[screenseg]
+		asm	mov	es,[screenseg]
 
 		for (p=0;p<pixperframe;p++)
 		{
 			//
 			// seperate random value into x/y pair
 			//
-			__asm {
-					mov	ax,[WORD PTR rndval]
-					mov	dx,[WORD PTR rndval+2]
-					mov	bx,ax
-					dec	bl
-					mov	[BYTE PTR y],bl			// low 8 bits - 1 = y xoordinate
-					mov	bx,ax
-					mov	cx,dx
-					mov	[BYTE PTR x],ah			// next 9 bits = x xoordinate
-					mov	[BYTE PTR x+1],dl
+			asm	mov	ax,[WORD PTR rndval]
+			asm	mov	dx,[WORD PTR rndval+2]
+			asm	mov	bx,ax
+			asm	dec	bl
+			asm	mov	[BYTE PTR y],bl			// low 8 bits - 1 = y xoordinate
+			asm	mov	bx,ax
+			asm	mov	cx,dx
+			asm	mov	[BYTE PTR x],ah			// next 9 bits = x xoordinate
+			asm	mov	[BYTE PTR x+1],dl
 			//
 			// advance to next random element
 			//
-					shr	dx,1
-					rcr	ax,1
-					jnc	noxor
-					xor	dx,0x0001
-					xor	ax,0x2000
+			asm	shr	dx,1
+			asm	rcr	ax,1
+			asm	jnc	noxor
+			asm	xor	dx,0x0001
+			asm	xor	ax,0x2000
 noxor:
-					mov	[WORD PTR rndval],ax
-					mov	[WORD PTR rndval+2],dx
-			}
+			asm	mov	[WORD PTR rndval],ax
+			asm	mov	[WORD PTR rndval+2],dx
+
 			if (x>width || y>height)
 				continue;
 			drawofs = source+ylookup[y] + (x>>2);
@@ -533,24 +526,21 @@ noxor:
 			// copy one pixel
 			//
 			mask = x&3;
-			//VGAREADMAP(mask);
-			vgareadmap(mask);
+			VGAREADMAP(mask);
 			mask = maskb[mask];
-			//VGAMAPMASK(mask);
-			vgamapmask(mask);
-			__asm {
-					mov	di,[drawofs]
-					mov	al,[es:di]
-					add	di,[pagedelta]
-					mov	[es:di],al
-			}
+			VGAMAPMASK(mask);
+
+			asm	mov	di,[drawofs]
+			asm	mov	al,[es:di]
+			asm add	di,[pagedelta]
+			asm	mov	[es:di],al
 
 			if (rndval == 1)		// entire sequence has been completed
 				return false;
 		}
 		frame++;
 		while (TimeCount<frame)		// don't go too fast
-		{}
+		;
 	} while (1);
 
 

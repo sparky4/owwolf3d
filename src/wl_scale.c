@@ -1,6 +1,6 @@
 // WL_SCALE.C
 
-#include "src/wl_def.h"
+#include "WL_DEF.H"
 #pragma hdrstop
 
 #define OP_RETF	0xcb
@@ -13,9 +13,8 @@
 =============================================================================
 */
 
-t_compscale __far *scaledirectory[MAXSCALEHEIGHT+1];
-//_seg
-long		__far	fullscalefarcall[MAXSCALEHEIGHT+1];
+t_compscale _seg *scaledirectory[MAXSCALEHEIGHT+1];
+long			fullscalefarcall[MAXSCALEHEIGHT+1];
 
 int			maxscale,maxscaleshl2;
 
@@ -29,7 +28,7 @@ boolean	insetupscaling;
 =============================================================================
 */
 
-t_compscale 	__far/*_seg*/ *work;
+t_compscale 	_seg *work;
 unsigned BuildCompScale (int height, memptr *finalspot);
 
 int			stepbytwo;
@@ -76,7 +75,7 @@ void SetupScaling (int maxscaleheight)
 	for (i=1;i<MAXSCALEHEIGHT;i++)
 	{
 		if (scaledirectory[i])
-			MM_FreePtr ((memptr)scaledirectory[i]);
+			MM_FreePtr (&(memptr)scaledirectory[i]);
 		if (i>=stepbytwo)
 			i += 2;
 	}
@@ -88,15 +87,15 @@ void SetupScaling (int maxscaleheight)
 // build the compiled scalers
 //
 	stepbytwo = viewheight/2;	// save space by double stepping
-	MM_GetPtr ((memptr)work,20000);
+	MM_GetPtr (&(memptr)work,20000);
 
 	for (i=1;i<=maxscaleheight;i++)
 	{
-		BuildCompScale (i*2,(memptr)scaledirectory[i]);
+		BuildCompScale (i*2,&(memptr)scaledirectory[i]);
 		if (i>=stepbytwo)
 			i+= 2;
 	}
-	MM_FreePtr ((memptr)work);
+	MM_FreePtr (&(memptr)work);
 
 //
 // compact memory and lock down scalers
@@ -104,7 +103,7 @@ void SetupScaling (int maxscaleheight)
 	MM_SortMem ();
 	for (i=1;i<=maxscaleheight;i++)
 	{
-		MM_SetLock ((memptr)scaledirectory[i],true);
+		MM_SetLock (&(memptr)scaledirectory[i],true);
 		fullscalefarcall[i] = (unsigned)scaledirectory[i];
 		fullscalefarcall[i] <<=16;
 		fullscalefarcall[i] += scaledirectory[i]->codeofs[0];
@@ -211,8 +210,7 @@ unsigned BuildCompScale (int height, memptr *finalspot)
 			*code++ = 0x26;
 			*code++ = 0x88;
 			*code++ = 0x85;
-			//*((unsigned far *)
-			*(code)++ = startpix*SCREENBWIDE;
+			*((unsigned far *)code)++ = startpix*SCREENBWIDE;
 		}
 
 	}
@@ -224,7 +222,7 @@ unsigned BuildCompScale (int height, memptr *finalspot)
 
 	totalsize = FP_OFF(code);
 	MM_GetPtr (finalspot,totalsize);
-	_fmemcpy ((byte /*_seg*/ *)(*finalspot),(byte /*_seg*/ *)work,totalsize);
+	_fmemcpy ((byte _seg *)(*finalspot),(byte _seg *)work,totalsize);
 
 	return totalsize;
 }
@@ -250,153 +248,156 @@ byte	mask1,mask2,mask3;
 
 void near ScaleLine (void)
 {
-	__asm {
-		mov	cx,WORD PTR [linescale+2]
-		mov	es,cx						// segment of scaler
+asm	mov	cx,WORD PTR [linescale+2]
+asm	mov	es,cx						// segment of scaler
 
-		mov bp,WORD PTR [linecmds]
-		mov	dx,SC_INDEX+1				// to set SC_MAPMASK
+asm	mov bp,WORD PTR [linecmds]
+asm	mov	dx,SC_INDEX+1				// to set SC_MAPMASK
 
-		mov	bx,[slinex]
-		mov	di,bx
-		shr	di,1						// X in bytes
-		shr	di,1						// X in bytes
-		add	di,[bufferofs]
-		and	bx,3
-		shl	bx,1
-		shl	bx,1
-		shl	bx,1
-		add	bx,[slinewidth]				// bx = (pixel*8+pixwidth)
-		mov	al,BYTE ptr [mapmasks3-1+bx]	// -1 because pixwidth of 1 is first
-		mov	ds,WORD PTR [linecmds+2]
-		or	al,al
-		jz	notthreebyte				// scale across three bytes
-		jmp	threebyte
+asm	mov	bx,[slinex]
+asm	mov	di,bx
+asm	shr	di,1						// X in bytes
+asm	shr	di,1
+asm	add	di,[bufferofs]
+asm	and	bx,3
+/* begin 8086 hack
+asm	shl	bx,3
+*/
+asm push cx
+asm mov cl,3
+asm shl bx,cl
+asm pop cx
+/* end 8086 hack */
+asm	add	bx,[slinewidth]				// bx = (pixel*8+pixwidth)
+asm	mov	al,BYTE [mapmasks3-1+bx]	// -1 because pixwidth of 1 is first
+asm	mov	ds,WORD PTR [linecmds+2]
+asm	or	al,al
+asm	jz	notthreebyte				// scale across three bytes
+asm	jmp	threebyte
 notthreebyte:
-		mov	al,BYTE PTR ss:[mapmasks2-1+bx]	// -1 because pixwidth of 1 is first
-		or	al,al
-		jnz	twobyte						// scale across two bytes
+asm	mov	al,BYTE PTR ss:[mapmasks2-1+bx]	// -1 because pixwidth of 1 is first
+asm	or	al,al
+asm	jnz	twobyte						// scale across two bytes
 
 //
 // one byte scaling
 //
-		mov	al,BYTE PTR ss:[mapmasks1-1+bx]	// -1 because pixwidth of 1 is first
-		out	dx,al						// set map mask register
+asm	mov	al,BYTE PTR ss:[mapmasks1-1+bx]	// -1 because pixwidth of 1 is first
+asm	out	dx,al						// set map mask register
 
 scalesingle:
 
-		mov	bx,[ds:bp]					// table location of rtl to patch
-		or	bx,bx
-		jz	linedone					// 0 signals end of segment list
-		mov	bx,[es:bx]
-		mov	dl,[es:bx]					// save old value
-		mov	BYTE PTR es:[bx],OP_RETF	// patch a RETF in
-		mov	si,[ds:bp+4]				// table location of entry spot
-		mov	ax,[es:si]
-		mov	WORD PTR ss:[linescale],ax	// call here to start scaling
-		mov	si,[ds:bp+2]				// corrected top of shape for this segment
-		add	bp,6						// next segment list
+asm	mov	bx,[ds:bp]					// table location of rtl to patch
+asm	or	bx,bx
+asm	jz	linedone					// 0 signals end of segment list
+asm	mov	bx,[es:bx]
+asm	mov	dl,[es:bx]					// save old value
+asm	mov	BYTE PTR es:[bx],OP_RETF	// patch a RETF in
+asm	mov	si,[ds:bp+4]				// table location of entry spot
+asm	mov	ax,[es:si]
+asm	mov	WORD PTR ss:[linescale],ax	// call here to start scaling
+asm	mov	si,[ds:bp+2]				// corrected top of shape for this segment
+asm	add	bp,6						// next segment list
 
-		mov	ax,SCREENSEG
-		mov	es,ax
-		call ss:[linescale]				// scale the segment of pixels
+asm	mov	ax,SCREENSEG
+asm	mov	es,ax
+asm	call ss:[linescale]				// scale the segment of pixels
 
-		mov	es,cx						// segment of scaler
-		mov	BYTE PTR es:[bx],dl			// unpatch the RETF
-		jmp	scalesingle					// do the next segment
+asm	mov	es,cx						// segment of scaler
+asm	mov	BYTE PTR es:[bx],dl			// unpatch the RETF
+asm	jmp	scalesingle					// do the next segment
 
 
 //
 // done
 //
 linedone:
-		mov	ax,ss
-		mov	ds,ax
-		jmp end
+asm	mov	ax,ss
+asm	mov	ds,ax
+return;
 
 //
 // two byte scaling
 //
 twobyte:
-		mov	ss:[mask2],al
-		mov	al,BYTE PTR ss:[mapmasks1-1+bx]	// -1 because pixwidth of 1 is first
-		mov	ss:[mask1],al
+asm	mov	ss:[mask2],al
+asm	mov	al,BYTE PTR ss:[mapmasks1-1+bx]	// -1 because pixwidth of 1 is first
+asm	mov	ss:[mask1],al
 
 scaledouble:
 
-		mov	bx,[ds:bp]					// table location of rtl to patch
-		or	bx,bx
-		jz	linedone					// 0 signals end of segment list
-		mov	bx,[es:bx]
-		mov	cl,[es:bx]					// save old value
-		mov	BYTE PTR es:[bx],OP_RETF	// patch a RETF in
-		mov	si,[ds:bp+4]				// table location of entry spot
-		mov	ax,[es:si]
-		mov	WORD PTR ss:[linescale],ax	// call here to start scaling
-		mov	si,[ds:bp+2]				// corrected top of shape for this segment
-		add	bp,6						// next segment list
+asm	mov	bx,[ds:bp]					// table location of rtl to patch
+asm	or	bx,bx
+asm	jz	linedone					// 0 signals end of segment list
+asm	mov	bx,[es:bx]
+asm	mov	cl,[es:bx]					// save old value
+asm	mov	BYTE PTR es:[bx],OP_RETF	// patch a RETF in
+asm	mov	si,[ds:bp+4]				// table location of entry spot
+asm	mov	ax,[es:si]
+asm	mov	WORD PTR ss:[linescale],ax	// call here to start scaling
+asm	mov	si,[ds:bp+2]				// corrected top of shape for this segment
+asm	add	bp,6						// next segment list
 
-		mov	ax,SCREENSEG
-		mov	es,ax
-		mov	al,ss:[mask1]
-		out	dx,al						// set map mask register
-		call ss:[linescale]				// scale the segment of pixels
-		inc	di
-		mov	al,ss:[mask2]
-		out	dx,al						// set map mask register
-		call ss:[linescale]				// scale the segment of pixels
-		dec	di
+asm	mov	ax,SCREENSEG
+asm	mov	es,ax
+asm	mov	al,ss:[mask1]
+asm	out	dx,al						// set map mask register
+asm	call ss:[linescale]				// scale the segment of pixels
+asm	inc	di
+asm	mov	al,ss:[mask2]
+asm	out	dx,al						// set map mask register
+asm	call ss:[linescale]				// scale the segment of pixels
+asm	dec	di
 
-		mov	es,WORD PTR ss:[linescale+2] // segment of scaler
-		mov	BYTE PTR es:[bx],cl			// unpatch the RETF
-		jmp	scaledouble					// do the next segment
+asm	mov	es,WORD PTR ss:[linescale+2] // segment of scaler
+asm	mov	BYTE PTR es:[bx],cl			// unpatch the RETF
+asm	jmp	scaledouble					// do the next segment
 
 
 //
 // three byte scaling
 //
 threebyte:
-		mov	ss:[mask3],al
-		mov	al,BYTE PTR ss:[mapmasks2-1+bx]	// -1 because pixwidth of 1 is first
-		mov	ss:[mask2],al
-		mov	al,BYTE PTR ss:[mapmasks1-1+bx]	// -1 because pixwidth of 1 is first
-		mov	ss:[mask1],al
+asm	mov	ss:[mask3],al
+asm	mov	al,BYTE PTR ss:[mapmasks2-1+bx]	// -1 because pixwidth of 1 is first
+asm	mov	ss:[mask2],al
+asm	mov	al,BYTE PTR ss:[mapmasks1-1+bx]	// -1 because pixwidth of 1 is first
+asm	mov	ss:[mask1],al
 
 scaletriple:
 
-		mov	bx,[ds:bp]					// table location of rtl to patch
-		or	bx,bx
-		jz	linedone					// 0 signals end of segment list
-		mov	bx,[es:bx]
-		mov	cl,[es:bx]					// save old value
-		mov	BYTE PTR es:[bx],OP_RETF	// patch a RETF in
-		mov	si,[ds:bp+4]				// table location of entry spot
-		mov	ax,[es:si]
-		mov	WORD PTR ss:[linescale],ax	// call here to start scaling
-		mov	si,[ds:bp+2]				// corrected top of shape for this segment
-		add	bp,6						// next segment list
+asm	mov	bx,[ds:bp]					// table location of rtl to patch
+asm	or	bx,bx
+asm	jz	linedone					// 0 signals end of segment list
+asm	mov	bx,[es:bx]
+asm	mov	cl,[es:bx]					// save old value
+asm	mov	BYTE PTR es:[bx],OP_RETF	// patch a RETF in
+asm	mov	si,[ds:bp+4]				// table location of entry spot
+asm	mov	ax,[es:si]
+asm	mov	WORD PTR ss:[linescale],ax	// call here to start scaling
+asm	mov	si,[ds:bp+2]				// corrected top of shape for this segment
+asm	add	bp,6						// next segment list
 
-		mov	ax,SCREENSEG
-		mov	es,ax
-		mov	al,ss:[mask1]
-		out	dx,al						// set map mask register
-		call ss:[linescale]				// scale the segment of pixels
-		inc	di
-		mov	al,ss:[mask2]
-		out	dx,al						// set map mask register
-		call ss:[linescale]				// scale the segment of pixels
-		inc	di
-		mov	al,ss:[mask3]
-		out	dx,al						// set map mask register
-		call ss:[linescale]				// scale the segment of pixels
-		dec	di
-		dec	di
+asm	mov	ax,SCREENSEG
+asm	mov	es,ax
+asm	mov	al,ss:[mask1]
+asm	out	dx,al						// set map mask register
+asm	call ss:[linescale]				// scale the segment of pixels
+asm	inc	di
+asm	mov	al,ss:[mask2]
+asm	out	dx,al						// set map mask register
+asm	call ss:[linescale]				// scale the segment of pixels
+asm	inc	di
+asm	mov	al,ss:[mask3]
+asm	out	dx,al						// set map mask register
+asm	call ss:[linescale]				// scale the segment of pixels
+asm	dec	di
+asm	dec	di
 
-		mov	es,WORD PTR ss:[linescale+2] // segment of scaler
-		mov	BYTE PTR es:[bx],cl			// unpatch the RETF
-		jmp	scaletriple					// do the next segment
-		end:
-	}
+asm	mov	es,WORD PTR ss:[linescale+2] // segment of scaler
+asm	mov	BYTE PTR es:[bx],cl			// unpatch the RETF
+asm	jmp	scaletriple					// do the next segment
+
 
 }
 
@@ -427,8 +428,8 @@ static	long		longtemp;
 
 void ScaleShape (int xcenter, int shapenum, unsigned height)
 {
-	t_compshape	/*_seg*/ *shape;
-	t_compscale /*_seg*/ *comptable;
+	t_compshape	_seg *shape;
+	t_compscale _seg *comptable;
 	unsigned	scale,srcx,stopx,tempx;
 	int			t;
 	unsigned	far *cmdptr;
@@ -455,7 +456,7 @@ void ScaleShape (int xcenter, int shapenum, unsigned height)
 
 	while ( --srcx >=stopx && slinex>0)
 	{
-		linecmds = (unsigned *)(*cmdptr--);
+		(unsigned)linecmds = *cmdptr--;
 		if ( !(slinewidth = comptable->width[srcx]) )
 			continue;
 
@@ -538,7 +539,7 @@ void ScaleShape (int xcenter, int shapenum, unsigned height)
 
 	while ( ++srcx <= stopx && (slinex+=slinewidth)<viewwidth)
 	{
-		linecmds = (unsigned *)(*cmdptr++);
+		(unsigned)linecmds = *cmdptr++;
 		if ( !(slinewidth = comptable->width[srcx]) )
 			continue;
 
@@ -631,8 +632,8 @@ void ScaleShape (int xcenter, int shapenum, unsigned height)
 
 void SimpleScaleShape (int xcenter, int shapenum, unsigned height)
 {
-	t_compshape	/*_seg*/ *shape;
-	t_compscale /*_seg*/ *comptable;
+	t_compshape	_seg *shape;
+	t_compscale _seg *comptable;
 	unsigned	scale,srcx,stopx,tempx;
 	int			t;
 	unsigned	far *cmdptr;
@@ -657,7 +658,7 @@ void SimpleScaleShape (int xcenter, int shapenum, unsigned height)
 
 	while ( --srcx >=stopx )
 	{
-		linecmds = (unsigned *)(*cmdptr--);
+		(unsigned)linecmds = *cmdptr--;
 		if ( !(slinewidth = comptable->width[srcx]) )
 			continue;
 
@@ -685,7 +686,7 @@ void SimpleScaleShape (int xcenter, int shapenum, unsigned height)
 
 	while ( ++srcx <= stopx )
 	{
-		linecmds = (unsigned *)(*cmdptr++);
+		(unsigned)linecmds = *cmdptr++;
 		if ( !(slinewidth = comptable->width[srcx]) )
 			continue;
 

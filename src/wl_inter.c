@@ -1,6 +1,6 @@
 // WL_INTER.C
 
-#include "src/wl_def.h"
+#include "WL_DEF.H"
 #pragma hdrstop
 
 
@@ -274,10 +274,10 @@ void Victory (void)
 
 	IN_Ack();
 
-////	#ifndef SPEAR
-////	if (Keyboard[sc_P] && MS_CheckParm("goobers"))
-////	/	PicturePause();
-////	#endif
+	#ifndef SPEAR
+	if (Keyboard[sc_P] && MS_CheckParm("goobers"))
+		PicturePause();
+	#endif
 
 	VW_FadeOut ();
 
@@ -337,7 +337,7 @@ void Write(int x,int y,char *string)
 	L_UPIC,L_VPIC,L_WPIC,L_XPIC,L_YPIC,L_ZPIC};
 
  int i,ox,nx,ny;
- int ch;
+ char ch;
 
 
  ox=nx=x*8;
@@ -937,10 +937,10 @@ void LevelCompleted (void)
 	}
 #endif
 
-////	#ifndef SPEAR
-////	if (Keyboard[sc_P] && MS_CheckParm("goobers"))
-////		PicturePause();
-////	#endif
+	#ifndef SPEAR
+	if (Keyboard[sc_P] && MS_CheckParm("goobers"))
+		PicturePause();
+	#endif
 
 	VW_FadeOut ();
 	temp = bufferofs;
@@ -1030,11 +1030,10 @@ void PreloadGraphics(void)
 void	DrawHighScores(void)
 {
 	char		buffer[16],*str,buffer1[5];
-	//byte		temp,temp1,temp2,temp3;
-	word		i,//j,
-				w,h//,
-				//x,y
-				;
+	byte		temp,temp1,temp2,temp3;
+	word		i,j,
+				w,h,
+				x,y;
 	HighScore	*s;
 
 
@@ -1102,7 +1101,7 @@ void	DrawHighScores(void)
 		ultoa(s->completed,buffer,10);
 #ifndef SPEAR
 		for (str = buffer;*str;str++)
-			*str = *str + (129 - '0');	// Used f!xed-width numbers (129...)
+			*str = *str + (129 - '0');	// Used fixed-width numbers (129...)
 		USL_MeasureString(buffer,&w,&h);
 		PrintX = (22 * 8)-w;
 #else
@@ -1133,7 +1132,7 @@ void	DrawHighScores(void)
 		ultoa(s->score,buffer,10);
 #ifndef SPEAR
 		for (str = buffer;*str;str++)
-			*str = *str + (129 - '0');	// Used f!xed-width numbers (129...)
+			*str = *str + (129 - '0');	// Used fixed-width numbers (129...)
 		USL_MeasureString(buffer,&w,&h);
 		PrintX = (34 * 8) - 8 - w;
 #else

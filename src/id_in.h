@@ -8,8 +8,6 @@
 #ifndef	__ID_IN__
 #define	__ID_IN__
 
-#include "src/id_heads.h"
-
 #ifdef	__DEBUG__
 #define	__DEBUG_InputMgr__
 #endif
@@ -166,7 +164,7 @@ extern	JoystickDef	JoyDefs[];
 extern	ControlType	Controls[MaxPlayers];
 
 extern	Demo		DemoMode;
-extern	byte		*DemoBuffer;
+extern	byte _seg	*DemoBuffer;
 extern	word		DemoOffset,DemoSize;
 
 // Function prototypes
@@ -187,7 +185,7 @@ extern	void		IN_Startup(void),IN_Shutdown(void),
 								word miny,word maxy),
 					IN_StopDemo(void),IN_FreeDemoBuffer(void),
 					IN_Ack(void),IN_AckBack(void);
-extern	boolean		IN_UserInput(dword delay);
+extern	boolean		IN_UserInput(longword delay);
 extern	char		IN_WaitForASCII(void);
 extern	ScanCode	IN_WaitForKey(void);
 extern	word		IN_GetJoyButtonsDB(word joy);

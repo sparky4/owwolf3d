@@ -22,36 +22,36 @@
 
 //--------------------------------------------------------------------------
 
-//extern	unsigned	char		far signon;
+extern	char		far signon;
 
 #define	introscn	signon
 
 #ifdef JAPAN
 #ifdef JAPDEMO
-#include "src/foreign/japan/gfxv_wj1.h"
+#include "FOREIGN\JAPAN\GFXV_WJ1.H"
 #else
-#include "src/foreign/japan/gfxv_wj6.h"
+#include "FOREIGN\JAPAN\GFXV_WJ6.H"
 #endif
-#include "src/audiowl6.h"
-#include "src/mapswl6.h"
+#include "AUDIOWL6.H"
+#include "MAPSWL6.H"
 #else
 
 #ifndef SPEAR
 
-#include "src/gfxv_wl6.h"
-#include "src/audiowl6.h"
-#include "src/mapswl6.h"
+#include "GFXV_WL6.H"
+#include "AUDIOWL6.H"
+#include "MAPSWL6.H"
 
 #else
 
 #ifndef SPEARDEMO
-#include "src/gfxv_sod.h"
-#include "src/audiosod.h"
-#include "src/mapssod.h"
+#include "GFXV_SOD.H"
+#include "AUDIOSOD.H"
+#include "MAPSSOD.H"
 #else
-#include "src/gfxv_sdm.h"
-#include "src/audiosdm.h"
-#include "src/mapssdm.h"
+#include "GFXV_SDM.H"
+#include "AUDIOSDM.H"
+#include "MAPSSDM.H"
 #endif
 
 #endif
@@ -67,17 +67,32 @@
 //	v1.0d1
 //
 
+// typedef	enum	{false,true}	boolean;
+// typedef	unsigned	char		byte;
+// typedef	unsigned	int			word;
+// typedef	unsigned	long		longword;
+// typedef	byte *					Ptr;
+//
+// typedef	struct
+// 		{
+// 			int	x,y;
+// 		} Point;
+// typedef	struct
+// 		{
+// 			Point	ul,lr;
+// 		} Rect;
+
 #define	nil	((void *)0)
 
 
-#include "src/id_mm.h"
-#include "src/id_pm.h"
-#include "src/id_ca.h"
-#include "src/id_vl.h"
-#include "src/id_vh.h"
-#include "src/id_in.h"
-#include "src/id_sd.h"
-#include "src/id_us.h"
+#include "ID_MM.H"
+#include "ID_PM.H"
+#include "ID_CA.H"
+#include "ID_VL.H"
+#include "ID_VH.H"
+#include "ID_IN.H"
+#include "ID_SD.H"
+#include "ID_US.H"
 
 
 void	Quit (char *error);		// defined in user program
@@ -107,4 +122,4 @@ extern	unsigned	blockstarts[UPDATEWIDE*UPDATEHIGH];
 extern	byte		fontcolor,backcolor;
 
 #define SETFONTCOLOR(f,b) fontcolor=f;backcolor=b;
-extern byte far signon[];
+

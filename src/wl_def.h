@@ -1,25 +1,22 @@
 //#define BETA
-#ifndef __WL_DEF_H__
-#define __WL_DEF_H__
 #define YEAR	1992
 #define MONTH	9
 #define DAY		30
 
-#include "src/id_heads.h"
-#include "src/type.h"
-#include <math.h>
-//#include <values.h>
+#include "ID_HEADS.H"
+#include <MATH.H>
+//#include <VALUES.H>
 
-#include "src/wl_menu.h"
+#include "WL_MENU.H"
 
 #ifdef SPANISH
-#include "src/spanish.h"
+#include "SPANISH.H"
 #else
-#include "src/foreign.h"
+#include "FOREIGN.H"
 #endif
 
 #ifdef SPEAR
-#include "src/f_spear.h"
+#include "F_SPEAR.H"
 #endif
 
 /*
@@ -31,7 +28,7 @@
 */
 
 
-#define COLORBORDER(color)		__asm{mov	dx,STATUS_REGISTER_1;in al,dx;\
+#define COLORBORDER(color)		asm{mov	dx,STATUS_REGISTER_1;in al,dx;\
 	mov dx,ATR_INDEX;mov al,ATR_OVERSCAN;out dx,al;mov al,color;out	dx,al;\
 	mov	al,32;out dx,al};
 
@@ -96,12 +93,11 @@
 
 
 #define PI	3.141592657
-#define M_PI PI
 
 #define GLOBAL1		(1l<<16)
 #define TILEGLOBAL  GLOBAL1
 #define PIXGLOBAL	(GLOBAL1/64)
-#define TILESHIFT		8//16l
+#define TILESHIFT		16l
 #define UNSIGNEDSHIFT	8
 
 #define ANGLES		360					// must be divisable by 4
@@ -124,14 +120,6 @@
 #define MAXVIEWWIDTH		320
 
 #define MAPSIZE		64					// maps are 64*64 max
-#define mapshift        6               // 2^mapshift = MAPSIZE
-#define maparea         4096            // MAPSIZE<<mapshift or MAPSIZE*MAPSIZE
-#define mapspotend      8191            // 64<<mapshift-1 or 64*MAPSIZE-1
-#define MAPPLANES       2
-
-#define mapheight MAPSIZE
-#define mapwidth MAPSIZE
-
 #define NORTH	0
 #define EAST	1
 #define SOUTH	2
@@ -489,7 +477,7 @@ enum	{
 =============================================================================
 */
 
-//typedef long fixed;
+typedef long fixed;
 
 typedef enum {
 	di_north,
@@ -662,28 +650,28 @@ typedef struct doorstruct
 typedef struct objstruct
 {
 	activetype	active;
-	short		ticcount;
+	int			ticcount;
 	classtype	obclass;
 	statetype	*state;
 
 	byte		flags;				//	FL_SHOOTABLE, etc
 
-	long	__huge	distance;			// if negative, wait for that door to open
+	long		distance;			// if negative, wait for that door to open
 	dirtype		dir;
 
-	fixed		x,y;
+	fixed 		x,y;
 	unsigned	tilex,tiley;
 	byte		areanumber;
 
-	short	 		viewx;
+	int	 		viewx;
 	unsigned	viewheight;
 	fixed		transx,transy;		// in global coord
 
-	short 		angle;
-	short			hitpoints;
+	int 		angle;
+	int			hitpoints;
 	long		speed;
 
-	short			temp1,temp2,temp3;
+	int			temp1,temp2,temp3;
 	struct		objstruct	*next,*prev;
 } objtype;
 
@@ -726,22 +714,22 @@ typedef enum	{
 
 typedef	struct
 {
-	short			difficulty;
-	short			mapon;
-	long	__far	oldscore,score,nextextra;
-	short			lives;
-	short			health;
-	short			ammo;
-	short			keys;
+	int			difficulty;
+	int			mapon;
+	long		oldscore,score,nextextra;
+	int			lives;
+	int			health;
+	int			ammo;
+	int			keys;
 	weapontype		bestweapon,weapon,chosenweapon;
 
-	short			faceframe;
-	short			attackframe,attackcount,weaponframe;
+	int			faceframe;
+	int			attackframe,attackcount,weaponframe;
 
-	short			episode,secretcount,treasurecount,killcount,
+	int			episode,secretcount,treasurecount,killcount,
 				secrettotal,treasuretotal,killtotal;
-	dword	__far	TimeCount;
-	long	__far	killx,killy;
+	long		TimeCount;
+	long		killx,killy;
 	boolean		victoryflag;		// set during victory animations
 } gametype;
 
@@ -776,14 +764,14 @@ extern	boolean		tedlevel;
 extern	boolean		nospr;
 extern	boolean		IsA386;
 
-//extern	byte __far	*scalermemory;
+extern	byte far	*scalermemory;
 
-extern	fixed	__far	focallength;
+extern	fixed		focallength;
 extern	unsigned	viewangles;
 extern	unsigned	screenofs;
 extern	int		    viewwidth;
 extern	int			viewheight;
-extern	short			centerx;
+extern	int			centerx;
 extern	int			shootdelta;
 
 extern	int			dirangle[9];
@@ -794,12 +782,14 @@ extern	int		mouseadjustment;
 // math tables
 //
 extern	int			pixelangle[MAXVIEWWIDTH];
+extern	long		far finetangent[FINEANGLES/4];
+extern	fixed 		far sintable[],far *costable;
 
 //
 // derived constants
 //
-extern	long 	__far	scale,maxslope;
-extern	fixed	__far	heightnumerator;
+extern	fixed 	scale,maxslope;
+extern	long	heightnumerator;
 extern	int		minheightdiv;
 
 extern	char	configname[13];
@@ -831,12 +821,12 @@ void		ShutdownId (void);
 
 extern	boolean		ingame,fizzlein;
 extern	unsigned	latchpics[NUMLATCHPICS];
-extern	gametype	__far	gamestate;
-extern	int			doornum;//short?
+extern	gametype	gamestate;
+extern	int			doornum;
 
 extern	char		demoname[13];
 
-extern	long	__far	spearx,speary;
+extern	long		spearx,speary;
 extern	unsigned	spearangle;
 extern	boolean		spearflag;
 
@@ -849,10 +839,8 @@ void 	DrawPlayScreen (void);
 void 	FizzleOut (void);
 void 	GameLoop (void);
 void ClearMemory (void);
-#ifdef DEMO
 void PlayDemo (int demonumber);
 void RecordDemo (void);
-#endif
 void DrawAllPlayBorder (void);
 void	DrawHighScores(void);
 void DrawAllPlayBorderSides (void);
@@ -861,7 +849,7 @@ void DrawAllPlayBorderSides (void);
 // JAB
 #define	PlaySoundLocTile(s,tx,ty)	PlaySoundLocGlobal(s,(((long)(tx) << TILESHIFT) + (1L << (TILESHIFT - 1))),(((long)ty << TILESHIFT) + (1L << (TILESHIFT - 1))))
 #define	PlaySoundLocActor(s,ob)		PlaySoundLocGlobal(s,(ob)->x,(ob)->y)
-void	PlaySoundLocGlobal(word s,long gx,long gy);
+void	PlaySoundLocGlobal(word s,fixed gx,fixed gy);
 void UpdateSoundLoc(void);
 
 
@@ -874,57 +862,55 @@ void UpdateSoundLoc(void);
 */
 
 #ifdef SPEAR
-extern	long	__far	funnyticount;		// FOR FUNNY BJ FACE
+extern	long		funnyticount;		// FOR FUNNY BJ FACE
 #endif
 
-extern	exit_t	__far	playstate;
+extern	exit_t		playstate;
 
-extern	boolean	__far	madenoise;
+extern	boolean		madenoise;
 
-extern	objtype 	__far	objlist[MAXACTORS], *new,*obj,*player,*lastobj,*objfreelist,*killerobj;
-extern	statobj_t	__far	statobjlist[MAXSTATS],*laststatobj;
-extern	doorobj_t	__far	doorobjlist[MAXDOORS],*lastdoorobj;
+extern	objtype 	objlist[MAXACTORS],*new,*obj,*player,*lastobj,
+					*objfreelist,*killerobj;
+extern	statobj_t	statobjlist[MAXSTATS],*laststatobj;
+extern	doorobj_t	doorobjlist[MAXDOORS],*lastdoorobj;
 
-extern	unsigned	__far	farmapylookup[MAPSIZE];
-extern	byte	__far	*nearmapylookup[MAPSIZE];
+extern	unsigned	farmapylookup[MAPSIZE];
+extern	byte		*nearmapylookup[MAPSIZE];
 
-extern	byte	__far	tilemap[MAPSIZE][MAPSIZE];	// wall values only
-extern	byte	__far	spotvis[MAPSIZE][MAPSIZE];
-extern	objtype	__far	*actorat[MAPSIZE][MAPSIZE];
+extern	byte		tilemap[MAPSIZE][MAPSIZE];	// wall values only
+extern	byte		spotvis[MAPSIZE][MAPSIZE];
+extern	objtype		*actorat[MAPSIZE][MAPSIZE];
 
 #define UPDATESIZE			(UPDATEWIDE*UPDATEHIGH)
-extern	byte	__far	update[UPDATESIZE];
-//extern	byte	update[UPDATEHIGH][UPDATEWIDE];
+extern	byte		update[UPDATESIZE];
 
-extern	boolean	__far	singlestep,godmode,noclip;
-extern	int		__far	extravbls;
+extern	boolean		singlestep,godmode,noclip;
+extern	int			extravbls;
 
 //
 // control info
 //
-extern	boolean	__far	mouseenabled,joystickenabled,joypadenabled,joystickprogressive;
-extern	int		__far	joystickport;
-extern	int		__far	dirscan[4];
-extern	int		__far	buttonscan[NUMBUTTONS];
-extern	int		__far	buttonmouse[4];
-extern	int		__far	buttonjoy[4];
+extern	boolean		mouseenabled,joystickenabled,joypadenabled,joystickprogressive;
+extern	int			joystickport;
+extern	int			dirscan[4];
+extern	int			buttonscan[NUMBUTTONS];
+extern	int			buttonmouse[4];
+extern	int			buttonjoy[4];
 
-extern	boolean	__far	buttonheld[NUMBUTTONS];
+extern	boolean		buttonheld[NUMBUTTONS];
 
-extern	int		__far	viewsize;
-extern	unsigned	__far	tics;
+extern	int			viewsize;
 
 //
 // curent user input
 //
-extern	int		__far	controlx,controly;		// range from -100 to 100
-extern	boolean	__far	buttonstate[NUMBUTTONS];
+extern	int			controlx,controly;		// range from -100 to 100
+extern	boolean		buttonstate[NUMBUTTONS];
 
-#ifdef DEMO
-extern	boolean	__far	demorecord,demoplayback;
-extern	char		__far *demoptr, __far *lastdemoptr;
-extern	memptr	__far	demobuffer;
-#endif
+extern	boolean		demorecord,demoplayback;
+extern	char		far *demoptr, far *lastdemoptr;
+extern	memptr		demobuffer;
+
 
 
 void	InitRedShifts (void);
@@ -955,8 +941,7 @@ void LevelCompleted (void);
 void	CheckHighScore (long score,word other);
 void Victory (void);
 void ClearSplitVWB (void);
-void PG13 (void);
-
+void PG13(void);
 
 /*
 =============================================================================
@@ -967,7 +952,7 @@ void PG13 (void);
 */
 
 int DebugKeys (void);
-////void PicturePause (void);
+void PicturePause (void);
 
 
 /*
@@ -981,35 +966,37 @@ int DebugKeys (void);
 extern	unsigned screenloc[3];
 extern	unsigned freelatch;
 
-extern	long	__far	lasttimecount;
-extern	long	__far	frameon;
+extern	long 	lasttimecount;
+extern	long 	frameon;
 extern	boolean	fizzlein;
 
 extern	unsigned	wallheight[MAXVIEWWIDTH];
 
-extern	long	__far	tileglobal;
+extern	fixed	tileglobal;
+extern	fixed	focallength;
+extern	fixed	mindist;
 
 //
 // math tables
 //
 extern	int			pixelangle[MAXVIEWWIDTH];
-extern	long	__far finetangent[FINEANGLES/4];
-extern	fixed	__far sintable[], __far *costable;
+extern	long		far finetangent[FINEANGLES/4];
+extern	fixed 		far sintable[],far *costable;
 
 //
 // derived constants
 //
-extern	long 	__far	scale;
-extern	long	__far	heightnumerator;
+extern	fixed 	scale;
+extern	long	heightnumerator,mindist;
 
 //
 // refresh variables
 //
-extern	long	__far	viewx,viewy;			// the focal point
+extern	fixed	viewx,viewy;			// the focal point
 extern	int		viewangle;
-extern	long	__far	viewsin,viewcos;
+extern	fixed	viewsin,viewcos;
 
-extern	long	__far	postsource;
+extern	long		postsource;
 extern	unsigned	postx;
 extern	unsigned	postwidth;
 
@@ -1019,8 +1006,7 @@ extern	int		horizwall[],vertwall[];
 extern	unsigned	pwallpos;
 
 
-//fixed	__far	FixedByFrac (fixed a, fixed b);
-word	FixedByFrac (word a, word b);
+fixed	FixedByFrac (fixed a, fixed b);
 void	TransformActor (objtype *ob);
 void	BuildTables (void);
 void	ClearScreen (void);
@@ -1090,8 +1076,9 @@ typedef struct
 // table data after dataofs[rightpix-leftpix+1]
 }	t_compshape;
 
-extern	t_compscale __far /*_seg*/	*scaledirectory[MAXSCALEHEIGHT+1];
-extern	long		__far	fullscalefarcall[MAXSCALEHEIGHT+1];
+
+extern	t_compscale _seg *scaledirectory[MAXSCALEHEIGHT+1];
+extern	long			fullscalefarcall[MAXSCALEHEIGHT+1];
 
 extern	byte		bitmasks1[8][8];
 extern	byte		bitmasks2[8][8];
@@ -1121,14 +1108,11 @@ void SimpleScaleShape (int xcenter, int shapenum, unsigned height);
 // player state info
 //
 extern	boolean		running;
-extern	long	__far	thrustspeed;
+extern	long		thrustspeed;
 extern	unsigned	plux,pluy;		// player coordinates scaled to unsigned
 
 extern	int			anglefrac;
 extern	int			facecount;
-extern	int			gotgatgun;	// JR
-
-extern	objtype	__far	*LastAttacker;
 
 void	SpawnPlayer (int tilex, int tiley, int dir);
 void 	DrawFace (void);
@@ -1158,20 +1142,19 @@ void	Thrust (int angle, long speed);
 =============================================================================
 */
 
-extern	doorobj_t	__far	doorobjlist[MAXDOORS],*lastdoorobj;
-extern	int		__far	doornum;
+extern	doorobj_t	doorobjlist[MAXDOORS],*lastdoorobj;
+extern	int			doornum;
 
-extern	unsigned	__far	doorposition[MAXDOORS],pwallstate;
+extern	unsigned	doorposition[MAXDOORS],pwallstate;
 
-extern	byte		__far areaconnect[NUMAREAS][NUMAREAS];
+extern	byte		far areaconnect[NUMAREAS][NUMAREAS];
 
-extern	boolean	__far	areabyplayer[NUMAREAS];
+extern	boolean		areabyplayer[NUMAREAS];
 
-extern word	__far	pwallstate;
-extern word	__far	pwallpos;			// amount a pushable wall has been moved (0-63)
-extern word	__far	pwallx,pwally;
-extern byte		__far	pwalldir;
-extern byte		__far	pwalldir,pwalltile;
+extern unsigned	pwallstate;
+extern unsigned	pwallpos;			// amount a pushable wall has been moved (0-63)
+extern unsigned	pwallx,pwally;
+extern int			pwalldir;
 
 
 void InitDoorList (void);
@@ -1196,66 +1179,66 @@ void InitAreas (void);
 
 #define s_nakedbody s_static10
 
-extern	statetype __far s_grddie1;
-extern	statetype __far s_dogdie1;
-extern	statetype __far s_ofcdie1;
-extern	statetype __far s_mutdie1;
-extern	statetype __far s_ssdie1;
-extern	statetype __far s_bossdie1;
-extern	statetype __far s_schabbdie1;
-extern	statetype __far s_fakedie1;
-extern	statetype __far s_mechadie1;
-extern	statetype __far s_hitlerdie1;
-extern	statetype __far s_greteldie1;
-extern	statetype __far s_giftdie1;
-extern	statetype __far s_fatdie1;
+extern	statetype s_grddie1;
+extern	statetype s_dogdie1;
+extern	statetype s_ofcdie1;
+extern	statetype s_mutdie1;
+extern	statetype s_ssdie1;
+extern	statetype s_bossdie1;
+extern	statetype s_schabbdie1;
+extern	statetype s_fakedie1;
+extern	statetype s_mechadie1;
+extern	statetype s_hitlerdie1;
+extern	statetype s_greteldie1;
+extern	statetype s_giftdie1;
+extern	statetype s_fatdie1;
 
-extern	statetype __far s_spectredie1;
-extern	statetype __far s_angeldie1;
-extern	statetype __far s_transdie0;
-extern	statetype __far s_uberdie0;
-extern	statetype __far s_willdie1;
-extern	statetype __far s_deathdie1;
+extern	statetype s_spectredie1;
+extern	statetype s_angeldie1;
+extern	statetype s_transdie0;
+extern	statetype s_uberdie0;
+extern	statetype s_willdie1;
+extern	statetype s_deathdie1;
 
 
-extern	statetype __far s_grdchase1;
-extern	statetype __far s_dogchase1;
-extern	statetype __far s_ofcchase1;
-extern	statetype __far s_sschase1;
-extern	statetype __far s_mutchase1;
-extern	statetype __far s_bosschase1;
-extern	statetype __far s_schabbchase1;
-extern	statetype __far s_fakechase1;
-extern	statetype __far s_mechachase1;
-extern	statetype __far s_gretelchase1;
-extern	statetype __far s_giftchase1;
-extern	statetype __far s_fatchase1;
+extern	statetype s_grdchase1;
+extern	statetype s_dogchase1;
+extern	statetype s_ofcchase1;
+extern	statetype s_sschase1;
+extern	statetype s_mutchase1;
+extern	statetype s_bosschase1;
+extern	statetype s_schabbchase1;
+extern	statetype s_fakechase1;
+extern	statetype s_mechachase1;
+extern	statetype s_gretelchase1;
+extern	statetype s_giftchase1;
+extern	statetype s_fatchase1;
 
-extern	statetype __far s_spectrechase1;
-extern	statetype __far s_angelchase1;
-extern	statetype __far s_transchase1;
-extern	statetype __far s_uberchase1;
-extern	statetype __far s_willchase1;
-extern	statetype __far s_deathchase1;
+extern	statetype s_spectrechase1;
+extern	statetype s_angelchase1;
+extern	statetype s_transchase1;
+extern	statetype s_uberchase1;
+extern	statetype s_willchase1;
+extern	statetype s_deathchase1;
 
-extern	statetype __far s_blinkychase1;
-extern	statetype __far s_hitlerchase1;
+extern	statetype s_blinkychase1;
+extern	statetype s_hitlerchase1;
 
-extern	statetype __far s_grdpain;
-extern	statetype __far s_grdpain1;
-extern	statetype __far s_ofcpain;
-extern	statetype __far s_ofcpain1;
-extern	statetype __far s_sspain;
-extern	statetype __far s_sspain1;
-extern	statetype __far s_mutpain;
-extern	statetype __far s_mutpain1;
+extern	statetype s_grdpain;
+extern	statetype s_grdpain1;
+extern	statetype s_ofcpain;
+extern	statetype s_ofcpain1;
+extern	statetype s_sspain;
+extern	statetype s_sspain1;
+extern	statetype s_mutpain;
+extern	statetype s_mutpain1;
 
-extern	statetype __far s_deathcam;
+extern	statetype s_deathcam;
 
-extern	statetype __far s_schabbdeathcam2;
-extern	statetype __far s_hitlerdeathcam2;
-extern	statetype __far s_giftdeathcam2;
-extern	statetype __far s_fatdeathcam2;
+extern	statetype s_schabbdeathcam2;
+extern	statetype s_hitlerdeathcam2;
+extern	statetype s_giftdeathcam2;
+extern	statetype s_fatdeathcam2;
 
 void SpawnStand (enemy_t which, int tilex, int tiley, int dir);
 void SpawnPatrol (enemy_t which, int tilex, int tiley, int dir);
@@ -1278,9 +1261,6 @@ void SpawnGift (int tilex, int tiley);
 void SpawnFat (int tilex, int tiley);
 void SpawnFakeHitler (int tilex, int tiley);
 void SpawnHitler (int tilex, int tiley);
-void SpawnBJVictory (void);
-void A_DeathScream (objtype *ob);
-
 
 /*
 =============================================================================
@@ -1294,4 +1274,3 @@ extern	char	helpfilename[],endfilename[];
 
 extern	void	HelpScreens(void);
 extern	void	EndText(void);
-#endif

@@ -1,6 +1,6 @@
 // WL_PLAY.C
 
-#include "src/wl_def.h"
+#include "WL_DEF.H"
 #pragma hdrstop
 
 
@@ -22,59 +22,61 @@
 =============================================================================
 */
 
-boolean	__far	madenoise;					// true when shooting or screaming
+boolean		madenoise;					// true when shooting or screaming
 
-exit_t	__far	playstate;
+exit_t		playstate;
 
-int		__far	DebugOk;
+int			DebugOk;
 
-objtype 	__far	objlist[MAXACTORS], *new,*obj,*player,*lastobj,*objfreelist,*killerobj;
+objtype 	objlist[MAXACTORS],*new,*obj,*player,*lastobj,
+			*objfreelist,*killerobj;
 
-unsigned	__far	farmapylookup[MAPSIZE];
-byte		__far	*nearmapylookup[MAPSIZE];
+unsigned	farmapylookup[MAPSIZE];
+byte		*nearmapylookup[MAPSIZE];
 
-boolean	__far	singlestep,godmode,noclip;
-int		__far	extravbls;
+boolean		singlestep,godmode,noclip;
+int			extravbls;
 
-byte		__far	tilemap[MAPSIZE][MAPSIZE];	// wall values only
-byte		__far	spotvis[MAPSIZE][MAPSIZE];
-objtype	__far	*actorat[MAPSIZE][MAPSIZE];
+byte		tilemap[MAPSIZE][MAPSIZE];	// wall values only
+byte		spotvis[MAPSIZE][MAPSIZE];
+objtype		*actorat[MAPSIZE][MAPSIZE];
 
 //
 // replacing refresh manager
 //
-//unsigned	mapwidth,mapheight,tics;
-boolean	__far	compatability;
-byte		__far	*updateptr;
-unsigned	__far	uwidthtable[UPDATEHIGH];
-unsigned	__far	blockstarts[UPDATEWIDE*UPDATEHIGH];
-//byte		update[UPDATESIZE];
-unsigned	__far	tics;
+unsigned	mapwidth,mapheight,tics;
+boolean		compatability;
+byte		*updateptr;
+unsigned	mapwidthtable[64];
+unsigned	uwidthtable[UPDATEHIGH];
+unsigned	blockstarts[UPDATEWIDE*UPDATEHIGH];
+//uso: replace: byte            update[UPDATESIZE];
+//uso: is needed? byte    update[UPDATEHIGH][UPDATEWIDE];
 
 //
 // control info
 //
-boolean	__far	mouseenabled,joystickenabled,joypadenabled,joystickprogressive;
-int		__far	joystickport;
-int		__far	dirscan[4] = {sc_UpArrow,sc_RightArrow,sc_DownArrow,sc_LeftArrow};
-int		__far	buttonscan[NUMBUTTONS] =
+boolean		mouseenabled,joystickenabled,joypadenabled,joystickprogressive;
+int			joystickport;
+int			dirscan[4] = {sc_UpArrow,sc_RightArrow,sc_DownArrow,sc_LeftArrow};
+int			buttonscan[NUMBUTTONS] =
 			{sc_Control,sc_Alt,sc_RShift,sc_Space,sc_1,sc_2,sc_3,sc_4};
-int		__far	buttonmouse[4]={bt_attack,bt_strafe,bt_use,bt_nobutton};
-int		__far	buttonjoy[4]={bt_attack,bt_strafe,bt_use,bt_run};
+int			buttonmouse[4]={bt_attack,bt_strafe,bt_use,bt_nobutton};
+int			buttonjoy[4]={bt_attack,bt_strafe,bt_use,bt_run};
 
-int		__far	viewsize;
+int			viewsize;
 
-boolean	__far	buttonheld[NUMBUTTONS];
+boolean		buttonheld[NUMBUTTONS];
 
-boolean	__far	demorecord,demoplayback;
-char		__far *demoptr, __far *lastdemoptr;
-memptr	__far	demobuffer;
+boolean		demorecord,demoplayback;
+char		far *demoptr, far *lastdemoptr;
+memptr		demobuffer;
 
 //
 // curent user input
 //
-int		__far	controlx,controly;		// range from -100 to 100 per tic
-boolean	__far	buttonstate[NUMBUTTONS];
+int			controlx,controly;		// range from -100 to 100 per tic
+boolean		buttonstate[NUMBUTTONS];
 
 
 
@@ -98,7 +100,7 @@ void	PlayLoop (void);
 */
 
 
-objtype __far dummyobj;
+objtype dummyobj;
 
 //
 // LIST OF SONGS FOR EACH VERSION
@@ -231,15 +233,6 @@ int songs[]=
 
 #endif
 };
-
-static union REGS CPURegs;
-
-#define _AX CPURegs.x.ax
-#define _BX CPURegs.x.bx
-#define _CX CPURegs.x.cx
-#define _DX CPURegs.x.dx
-
-#define geninterrupt(n) int86(n,&CPURegs,&CPURegs);
 
 
 /*
@@ -470,7 +463,8 @@ void PollControls (void)
 //
 	if (demoplayback)
 	{
-		while (TimeCount<lasttimecount+DEMOTICS){}
+		while (TimeCount<lasttimecount+DEMOTICS)
+		;
 		TimeCount = lasttimecount + DEMOTICS;
 		lasttimecount += DEMOTICS;
 		tics = DEMOTICS;
@@ -480,7 +474,8 @@ void PollControls (void)
 //
 // take DEMOTICS or more tics, and modify Timecount to reflect time taken
 //
-		while (TimeCount<lasttimecount+DEMOTICS){}
+		while (TimeCount<lasttimecount+DEMOTICS)
+		;
 		TimeCount = lasttimecount + DEMOTICS;
 		lasttimecount += DEMOTICS;
 		tics = DEMOTICS;
@@ -619,9 +614,9 @@ void	CenterWindow(word w,word h)
 
 void CheckKeys (void)
 {
-	//int		i;
+	int		i;
 	byte	scan;
-	//unsigned	temp;
+	unsigned	temp;
 
 
 	if (screenfaded || demoplayback)	// don't do anything with a faded screen
@@ -831,7 +826,7 @@ void CheckKeys (void)
 		CA_CacheGrChunk (STARTFONT);
 		fontnumber=0;
 		SETFONTCOLOR(0,15);
-		////DebugKeys();
+		DebugKeys();
 		if (MousePresent)
 			Mouse(MDelta);	// Clear accumulated mouse movement
 		lasttimecount = TimeCount;
@@ -956,7 +951,7 @@ void GetNewActor (void)
 
 void RemoveObj (objtype *gone)
 {
-	//objtype **spotat;
+	objtype **spotat;
 
 	if (gone == player)
 		Quit ("RemoveObj: Tried to remove the player!");
@@ -1010,8 +1005,8 @@ void StopMusic(void)
 	for (i = 0;i < LASTMUSIC;i++)
 		if (audiosegs[STARTMUSIC + i])
 		{
-			MM_SetPurge(((memptr)audiosegs[STARTMUSIC + i]),3);
-			MM_SetLock(((memptr)audiosegs[STARTMUSIC + i]),false);
+			MM_SetPurge(&((memptr)audiosegs[STARTMUSIC + i]),3);
+			MM_SetLock(&((memptr)audiosegs[STARTMUSIC + i]),false);
 		}
 }
 
@@ -1043,7 +1038,7 @@ void StartMusic(void)
 		mmerror = false;
 	else
 	{
-		MM_SetLock(((memptr)audiosegs[STARTMUSIC + chunk]),true);
+		MM_SetLock(&((memptr)audiosegs[STARTMUSIC + chunk]),true);
 		SD_StartMusic((MusicGroup far *)audiosegs[STARTMUSIC + chunk]);
 	}
 }
@@ -1071,7 +1066,7 @@ byte	far whiteshifts[NUMREDSHIFTS][768];
 int		damagecount,bonuscount;
 boolean	palshifted;
 
-extern 	byte	/*far*/	gamepal[768];
+extern 	byte	far	gamepal;
 
 /*
 =====================
@@ -1368,12 +1363,12 @@ think:
 =
 ===================
 */
-long	__far	funnyticount;
+long funnyticount;
 
 
 void PlayLoop (void)
 {
-	//int		give;
+	int		give;
 	int	helmetangle;
 
 	playstate = TimeCount = lasttimecount = 0;
@@ -1395,7 +1390,7 @@ void PlayLoop (void)
 	{
 		if (virtualreality)
 		{
-			helmetangle = peekb(0x40,0xf0);
+			helmetangle = peek (0x40,0xf0);
 			player->angle += helmetangle;
 			if (player->angle >= ANGLES)
 				player->angle -= ANGLES;

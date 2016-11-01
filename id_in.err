@@ -1,0 +1,4 @@
+src/id_in.c(418): Warning! W111: Meaningless use of an expression
+src/id_in.c(448): Warning! W131: No prototype found for function 'poke'
+src/id_in.c(448): Warning! W131: No prototype found for function 'peek'
+src/id_in.c(991): Warning! W119: Address of static function 'INL_KeyService' has been taken

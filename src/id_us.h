@@ -75,8 +75,8 @@ extern	boolean		Button0,Button1,
 					CursorBad;
 extern	int			CursorX,CursorY;
 
-extern	void		(*USL_MeasureString)(char /*far*/ *,word *,word *),
-					(*USL_DrawString)(char /*far*/ *);
+extern	void		(*USL_MeasureString)(char far *,word *,word *),
+					(*USL_DrawString)(char far *);
 
 extern	boolean		(*USL_SaveGame)(int),(*USL_LoadGame)(int);
 extern	void		(*USL_ResetGame)(void);
@@ -100,13 +100,13 @@ extern	void	US_Startup(void),
 				US_SaveWindow(WindowRec *win),
 				US_RestoreWindow(WindowRec *win),
 				US_ClearWindow(void),
-				US_SetPrintRoutines(void (*measure)(char /*far*/ *,word *,word *),
-									void (*print)(char /*far*/ *)),
+				US_SetPrintRoutines(void (*measure)(char far *,word *,word *),
+									void (*print)(char far *)),
 				US_PrintCentered(char far *s),
 				US_CPrint(char far *s),
 				US_CPrintLine(char far *s),
 				US_Print(char far *s),
-				US_PrintUnsigned(dword n),
+				US_PrintUnsigned(longword n),
 				US_PrintSigned(long n),
 				US_StartCursor(void),
 				US_ShutCursor(void),
@@ -120,7 +120,4 @@ extern	int		US_CheckParm(char *parm,char **strings),
 
 		void	USL_PrintInCenter(char far *s,Rect r);
 		char 	*USL_GiveSaveName(word game);
-
-void            US_InitRndT(boolean randomize);
-int             US_RndT();
 #endif
