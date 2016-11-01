@@ -212,27 +212,51 @@ void CAL_GetGrChunkLength (int chunk)
 
 boolean CA_FarRead (int handle, byte far *dest, long length)
 {
+	boolean flag=false;
 	if (length>0xffffl)
 		Quit ("CA_FarRead doesn't support 64K reads yet!");
 
-asm		push	ds
-asm		mov	bx,[handle]
-asm		mov	cx,[WORD PTR length]
-asm		mov	dx,[WORD PTR dest]
-asm		mov	ds,[WORD PTR dest+2]
-asm		mov	ah,0x3f				// READ w/handle
-asm		int	21h
-asm		pop	ds
-asm		jnc	good
-	errno = _AX;
-	return	false;
+	__asm {
+		push	ds
+		mov	bx,[handle]
+		mov	cx,[WORD PTR length]
+		mov	dx,[WORD PTR dest]
+		mov	ds,[WORD PTR dest+2]
+		mov	ah,0x3f				// READ w/handle
+		int	21h
+		pop	ds
+		jnc	good
+		mov	errno,ax
+		mov	flag,0
+		jmp End
+#ifdef __BORLANDC__
+	}
+#endif
 good:
-asm		cmp	ax,[WORD PTR length]
-asm		je	done
-	errno = EINVFMT;			// user manager knows this is bad read
-	return	false;
+#ifdef __BORLANDC__
+	__asm {
+#endif
+		cmp	ax,[WORD PTR length]
+		je	done
+//		errno = EINVFMT;			// user manager knows this is bad read
+		mov	flag,0
+		jmp End
+#ifdef __BORLANDC__
+	}
+#endif
 done:
-	return	true;
+#ifdef __BORLANDC__
+	__asm {
+#endif
+		mov	flag,1
+#ifdef __BORLANDC__
+	}
+#endif
+End:
+#ifdef __WATCOMC__
+	}
+#endif
+	return flag;
 }
 
 
@@ -248,28 +272,51 @@ done:
 
 boolean CA_FarWrite (int handle, byte far *source, long length)
 {
+	boolean flag=false;
 	if (length>0xffffl)
 		Quit ("CA_FarWrite doesn't support 64K reads yet!");
 
-asm		push	ds
-asm		mov	bx,[handle]
-asm		mov	cx,[WORD PTR length]
-asm		mov	dx,[WORD PTR source]
-asm		mov	ds,[WORD PTR source+2]
-asm		mov	ah,0x40			// WRITE w/handle
-asm		int	21h
-asm		pop	ds
-asm		jnc	good
-	errno = _AX;
-	return	false;
+	__asm {
+		push	ds
+		mov	bx,[handle]
+		mov	cx,[WORD PTR length]
+		mov	dx,[WORD PTR source]
+		mov	ds,[WORD PTR source+2]
+		mov	ah,0x40			// WRITE w/handle
+		int	21h
+		pop	ds
+		jnc	good
+		mov	errno,ax
+		mov flag,0
+		jmp End
+#ifdef __BORLANDC__
+	}
+#endif
 good:
-asm		cmp	ax,[WORD PTR length]
-asm		je	done
-	errno = ENOMEM;				// user manager knows this is bad write
-	return	false;
-
+#ifdef __BORLANDC__
+	__asm {
+#endif
+		cmp	ax,[WORD PTR length]
+		je	done
+//		errno = ENOMEM;				// user manager knows this is bad write
+		mov	flag,0
+		jmp End
+#ifdef __BORLANDC__
+	}
+#endif
 done:
-	return	true;
+#ifdef __BORLANDC__
+	__asm {
+#endif
+		mov	flag,1
+#ifdef __BORLANDC__
+	}
+#endif
+End:
+#ifdef __WATCOMC__
+	}
+#endif
+	return flag;
 }
 
 
