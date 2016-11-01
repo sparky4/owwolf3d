@@ -1,25 +1,37 @@
-src/id_ca.c(226): Error! E1011: Symbol 'good' has not been declared
-src/id_ca.c(231): Error! E1011: Symbol 'done' has not been declared
-src/id_ca.c(232): Error! E1011: Symbol 'EINVFMT' has not been declared
-src/id_ca.c(236): Warning! W118: Label 'done' has been defined but not referenced
-src/id_ca.c(236): Warning! W118: Label 'good' has been defined but not referenced
-src/id_ca.c(262): Error! E1011: Symbol 'good' has not been declared
-src/id_ca.c(267): Error! E1011: Symbol 'done' has not been declared
-src/id_ca.c(273): Warning! W118: Label 'done' has been defined but not referenced
-src/id_ca.c(273): Warning! W118: Label 'good' has been defined but not referenced
-src/id_ca.c(477): Error! E1011: Symbol 'bit1short' has not been declared
-src/id_ca.c(480): Error! E1011: Symbol 'newbyteshort' has not been declared
-src/id_ca.c(481): Error! E1011: Symbol 'sourceupshort' has not been declared
-src/id_ca.c(486): Error! E1011: Symbol 'sourceupshort' has not been declared
-src/id_ca.c(495): Error! E1011: Symbol 'storebyteshort' has not been declared
-src/id_ca.c(497): Error! E1011: Symbol 'expandshort' has not been declared
-src/id_ca.c(505): Error! E1011: Symbol 'expandshort' has not been declared
-src/id_ca.c(512): Error! E1011: Symbol 'notscreen' has not been declared
-src/id_ca.c(517): Error! E1011: Symbol 'notscreen' has not been declared
-src/id_ca.c(523): Error! E1011: Symbol 'expandshort' has not been declared
-src/id_ca.c(549): Error! E1011: Symbol 'bit1' has not been declared
-src/id_ca.c(551): Error! E1011: Symbol 'gotcode' has not been declared
-src/id_ca.c(557): Error! E1011: Symbol 'sourceup' has not been declared
-src/id_ca.c(560): Error! E1011: Symbol 'sinorm' has not been declared
-src/id_ca.c(570): Error! E1011: Symbol 'storebyte' has not been declared
-src/id_ca.c(572): Error! E1147: Too many errors: compilation aborted
+src/id_ca.c(530): Error! E1011: Symbol 'bit1short' has not been declared
+src/id_ca.c(533): Error! E1011: Symbol 'newbyteshort' has not been declared
+src/id_ca.c(534): Error! E1011: Symbol 'sourceupshort' has not been declared
+src/id_ca.c(539): Error! E1011: Symbol 'sourceupshort' has not been declared
+src/id_ca.c(548): Error! E1011: Symbol 'storebyteshort' has not been declared
+src/id_ca.c(550): Error! E1011: Symbol 'expandshort' has not been declared
+src/id_ca.c(558): Error! E1011: Symbol 'expandshort' has not been declared
+src/id_ca.c(565): Error! E1011: Symbol 'notscreen' has not been declared
+src/id_ca.c(570): Error! E1011: Symbol 'notscreen' has not been declared
+src/id_ca.c(576): Error! E1011: Symbol 'expandshort' has not been declared
+src/id_ca.c(602): Error! E1011: Symbol 'bit1' has not been declared
+src/id_ca.c(604): Error! E1011: Symbol 'gotcode' has not been declared
+src/id_ca.c(610): Error! E1011: Symbol 'sourceup' has not been declared
+src/id_ca.c(613): Error! E1011: Symbol 'sinorm' has not been declared
+src/id_ca.c(623): Error! E1011: Symbol 'storebyte' has not been declared
+src/id_ca.c(625): Error! E1011: Symbol 'expand' has not been declared
+src/id_ca.c(633): Error! E1011: Symbol 'dinorm' has not been declared
+src/id_ca.c(642): Error! E1011: Symbol 'expand' has not been declared
+src/id_ca.c(644): Error! E1011: Symbol 'expand' has not been declared
+src/id_ca.c(651): Warning! W118: Label 'dinorm' has been defined but not referenced
+src/id_ca.c(651): Warning! W118: Label 'storebyte' has been defined but not referenced
+src/id_ca.c(651): Warning! W118: Label 'sourceup' has been defined but not referenced
+src/id_ca.c(651): Warning! W118: Label 'sinorm' has been defined but not referenced
+src/id_ca.c(651): Warning! W118: Label 'gotcode' has been defined but not referenced
+src/id_ca.c(651): Warning! W118: Label 'bit1' has been defined but not referenced
+src/id_ca.c(651): Warning! W118: Label 'expand' has been defined but not referenced
+src/id_ca.c(651): Warning! W118: Label 'notscreen' has been defined but not referenced
+src/id_ca.c(651): Warning! W118: Label 'storebyteshort' has been defined but not referenced
+src/id_ca.c(651): Warning! W118: Label 'sourceupshort' has been defined but not referenced
+src/id_ca.c(651): Warning! W118: Label 'newbyteshort' has been defined but not referenced
+src/id_ca.c(651): Warning! W118: Label 'bit1short' has been defined but not referenced
+src/id_ca.c(651): Warning! W118: Label 'expandshort' has been defined but not referenced
+src/id_ca.c(686): Warning! W120: lvalue cast is not standard C
+src/id_ca.c(692): Warning! W120: lvalue cast is not standard C
+src/id_ca.c(704): Warning! W120: lvalue cast is not standard C
+src/id_ca.c(852): Error! E1011: Symbol 'repeat' has not been declared
+src/id_ca.c(854): Error! E1147: Too many errors: compilation aborted

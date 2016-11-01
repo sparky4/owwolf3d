@@ -89,6 +89,7 @@ inline void gotoxy(int x,int y)
 //#define _dos_ds      _default_ds()
 
 #define MAXLONG LONG_MAX
+#define EINVFMT EMFILE
 
 typedef union REGPACK	regs_t;
 
