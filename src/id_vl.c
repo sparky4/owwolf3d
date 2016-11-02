@@ -1,11 +1,14 @@
 // ID_VL.C
 
 #include <dos.h>
-#include <alloc.h>
+#include <malloc.h>
 #include <mem.h>
 #include <string.h>
-#include "ID_HEAD.H"
-#include "ID_VL.H"
+#include "id_head.h"
+#include "id_vl.h"
+#ifdef __WATCOMC__
+#include "type.h"
+#endif
 #pragma hdrstop
 
 //
@@ -1075,8 +1078,33 @@ void VL_SizeTile8String (char *str, int *width, int *height)
 	*width = 8*strlen(str);
 }
 
+void VGAMAPMASK(byte x)
+{
+	__asm{
+		cli
+		mov dx,SC_INDEX
+		mov al,SC_MAPMASK
+		mov ah,x
+		out dx,ax
+		sti
+	}
+}
 
-
+void VGAWRITEMODE(byte x)
+{
+	__asm{
+		cli
+		mov dx,GC_INDEX
+		mov al,GC_MODE
+		out dx,al
+		inc dx
+		in al,dx
+		and al,252
+		or al,x
+		out dx,al
+		sti
+	}
+}
 
 
 

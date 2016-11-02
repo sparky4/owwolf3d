@@ -899,60 +899,87 @@ void CA_RLEWexpand (unsigned huge *source, unsigned huge *dest,long length,
 // NOTE: A repeat count that produces 0xfff0 bytes can blow this!
 //
 
-asm	mov	bx,rlewtag
-asm	mov	si,sourceoff
-asm	mov	di,destoff
-asm	mov	es,destseg
-asm	mov	ds,sourceseg
-
+	__asm {
+		mov	bx,rlewtag
+		mov	si,sourceoff
+		mov	di,destoff
+		mov	es,destseg
+		mov	ds,sourceseg
+#ifdef __BORLANDC__
+	}
+#endif
 expand:
-asm	lodsw
-asm	cmp	ax,bx
-asm	je	repeat
-asm	stosw
-asm	jmp	next
-
+#ifdef __BORLANDC__
+	__asm {
+#endif
+		lodsw
+		cmp	ax,bx
+		je	repeat
+		stosw
+		jmp	next
+#ifdef __BORLANDC__
+	}
+#endif
 repeat:
-asm	lodsw
-asm	mov	cx,ax		// repeat count
-asm	lodsw			// repeat value
-asm	rep stosw
-
+#ifdef __BORLANDC__
+	__asm {
+#endif
+		lodsw
+		mov	cx,ax		// repeat count
+		lodsw			// repeat value
+		rep stosw
+#ifdef __BORLANDC__
+	}
+#endif
 next:
-
-asm	cmp	si,0x10		// normalize ds:si
-asm  	jb	sinorm
-asm	mov	ax,si
-asm	shr	ax,1
-asm	shr	ax,1
-asm	shr	ax,1
-asm	shr	ax,1
-asm	mov	dx,ds
-asm	add	dx,ax
-asm	mov	ds,dx
-asm	and	si,0xf
+#ifdef __BORLANDC__
+	__asm {
+#endif
+		cmp	si,0x10		// normalize ds:si
+		jb	sinorm
+		mov	ax,si
+		shr	ax,1
+		shr	ax,1
+		shr	ax,1
+		shr	ax,1
+		mov	dx,ds
+		add	dx,ax
+		mov	ds,dx
+		and	si,0xf
+#ifdef __BORLANDC__
+	}
+#endif
 sinorm:
-asm	cmp	di,0x10		// normalize es:di
-asm  	jb	dinorm
-asm	mov	ax,di
-asm	shr	ax,1
-asm	shr	ax,1
-asm	shr	ax,1
-asm	shr	ax,1
-asm	mov	dx,es
-asm	add	dx,ax
-asm	mov	es,dx
-asm	and	di,0xf
+#ifdef __BORLANDC__
+	__asm {
+#endif
+		cmp	di,0x10		// normalize es:di
+		jb	dinorm
+		mov	ax,di
+		shr	ax,1
+		shr	ax,1
+		shr	ax,1
+		shr	ax,1
+		mov	dx,es
+		add	dx,ax
+		mov	es,dx
+		and	di,0xf
+#ifdef __BORLANDC__
+	}
+#endif
 dinorm:
+#ifdef __BORLANDC__
+	__asm {
+#endif
+		cmp     di,ss:endoff
+		jne	expand
+		mov	ax,es
+		cmp	ax,ss:endseg
+		jb	expand
 
-asm	cmp     di,ss:endoff
-asm	jne	expand
-asm	mov	ax,es
-asm	cmp	ax,ss:endseg
-asm	jb	expand
-
-asm	mov	ax,ss
-asm	mov	ds,ax
+		mov	ax,ss
+		mov	ds,ax
+	}
 
 }
 

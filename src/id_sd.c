@@ -342,7 +342,7 @@ asm	popf
 //	SDL_SBService() - Services the SoundBlaster DMA interrupt
 //
 ///////////////////////////////////////////////////////////////////////////
-static void interrupt
+/*static */void interrupt
 SDL_SBService(void)
 {
 	longword	used;
@@ -466,9 +466,15 @@ asm	in	al, dx
 	sbOut(sbReset,false);		// Turn off sb DSP reset
 asm	mov	dx,0x388				// Wait >100usec
 asm	mov	cx,100
+#ifdef __WATCOMC__
+	__asm {
+#endif
 usecloop:
 asm	in	al,dx
 asm	loop usecloop
+#ifdef __WATCOMC__
+	}
+#endif
 
 	for (i = 0;i < 100;i++)
 	{
@@ -652,41 +658,63 @@ asm	popf
 static void
 SDL_SSService(void)
 {
-	boolean	gotit;
+	//boolean	gotit;
+	boolean doneflag=false;
 	byte	v;
 
 	while (ssSample)
 	{
-	asm	mov		dx,[ssStatus]	// Check to see if FIFO is currently empty
-	asm	in		al,dx
-	asm	test	al,0x40
-	asm	jnz		done			// Nope - don't push any more data out
-
-		v = *ssSample++;
-		if (!(--ssLengthLeft))
-		{
-			(long)ssSample = 0;
-			SDL_DigitizedDone();
-		}
-
-	asm	mov		dx,[ssData]		// Pump the value out
-	asm	mov		al,[v]
-	asm	out		dx,al
-
-	asm	mov		dx,[ssControl]	// Pulse printer select
-	asm	mov		al,[ssOff]
-	asm	out		dx,al
-	asm	push	ax
-	asm	pop		ax
-	asm	mov		al,[ssOn]
-	asm	out		dx,al
-
-	asm	push	ax				// Delay a short while
-	asm	pop		ax
-	asm	push	ax
-	asm	pop		ax
+	__asm {
+		mov		dx,[ssStatus]	// Check to see if FIFO is currently empty
+		in		al,dx
+		test	al,0x40
+		jnz		done			// Nope - don't push any more data out
+		jmp end
+#ifdef __BORLANDC__
 	}
+#endif
+		done:
+#ifdef __BORLANDC__
+	__asm {
+#endif
+		mov	doneflag,1
+#ifdef __BORLANDC__
+	}
+#endif
+		end:
+#ifdef __WATCOMC__
+	}
+#endif
+		if(!doneflag)
+		{
+			v = *ssSample++;
+			if (!(--ssLengthLeft))
+			{
+				(long)ssSample = 0;
+				SDL_DigitizedDone();
+			}
+
+			__asm {
+				mov		dx,[ssData]		// Pump the value out
+				mov		al,[v]
+				out		dx,al
+
+				mov		dx,[ssControl]	// Pulse printer select
+				mov		al,[ssOff]
+				out		dx,al
+				push	ax
+				pop		ax
+				mov		al,[ssOn]
+				out		dx,al
+
+				push	ax				// Delay a short while
+				pop		ax
+				push	ax
+				pop		ax
 done:;
+			}
+		}
+	}
 }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -756,7 +784,7 @@ SDL_ShutSS(void)
 static boolean
 SDL_CheckSS(void)
 {
-	boolean		present = false;
+	boolean		present = false, chkdone=0;
 	longword	lasttime;
 
 	// Turn the Sound Source on and wait awhile (4 ticks)
@@ -764,42 +792,65 @@ SDL_CheckSS(void)
 
 	lasttime = TimeCount;
 	while (TimeCount < lasttime + 4)
-		;
+	{}
 
-asm	mov		dx,[ssStatus]	// Check to see if FIFO is currently empty
-asm	in		al,dx
-asm	test	al,0x40
-asm	jnz		checkdone		// Nope - Sound Source not here
+	__asm {
+		mov		dx,[ssStatus]	// Check to see if FIFO is currently empty
+		in		al,dx
+		test	al,0x40
+		jnz		checkdone		// Nope - Sound Source not here
 
-asm	mov		cx,32			// Force FIFO overflow (FIFO is 16 bytes)
+		mov		cx,32			// Force FIFO overflow (FIFO is 16 bytes)
+#ifdef __BORLANDC__
+	}
+#endif
 outloop:
-asm	mov		dx,[ssData]		// Pump a neutral value out
-asm	mov		al,0x80
-asm	out		dx,al
+#ifdef __BORLANDC__
+	__asm {
+#endif
+		mov		dx,[ssData]		// Pump a neutral value out
+		mov		al,0x80
+		out		dx,al
 
-asm	mov		dx,[ssControl]	// Pulse printer select
-asm	mov		al,[ssOff]
-asm	out		dx,al
-asm	push	ax
-asm	pop		ax
-asm	mov		al,[ssOn]
-asm	out		dx,al
+		mov		dx,[ssControl]	// Pulse printer select
+		mov		al,[ssOff]
+		out		dx,al
+		push	ax
+		pop		ax
+		mov		al,[ssOn]
+		out		dx,al
 
-asm	push	ax				// Delay a short while before we do this again
-asm	pop		ax
-asm	push	ax
-asm	pop		ax
+		push	ax				// Delay a short while before we do this again
+		pop		ax
+		push	ax
+		pop		ax
 
-asm	loop	outloop
+		loop	outloop
 
-asm	mov		dx,[ssStatus]	// Is FIFO overflowed now?
-asm	in		al,dx
-asm	test	al,0x40
-asm	jz		checkdone		// Nope, still not - Sound Source not here
-
-	present = true;			// Yes - it's here!
-
+		mov		dx,[ssStatus]	// Is FIFO overflowed now?
+		in		al,dx
+		test	al,0x40
+		jz		checkdone		// Nope, still not - Sound Source not here
+		jmp end
+#ifdef __BORLANDC__
+	}
+#endif
 checkdone:
+#ifdef __BORLANDC__
+	__asm {
+#endif
+		mov	chkdone,1
+#ifdef __BORLANDC__
+	}
+#endif
+		end:
+#ifdef __WATCOMC__
+	}
+#endif
+
+	if(!chkdone) present = true;			// Yes - it's here!
+
+//checkdone:
 	SDL_ShutSS();
 	return(present);
 }
@@ -1595,11 +1646,19 @@ SDL_DetectAdLib(void)
 #if 0
 	SDL_Delay(TimerDelay100);
 #else
-asm	mov	dx,0x388
-asm	mov	cx,100
+	__asm {
+		mov	dx,0x388
+		mov	cx,100
+#ifdef __BORLANDC__
+	}
+#endif
 usecloop:
-asm	in	al,dx
-asm	loop usecloop
+#ifdef __BORLANDC__
+	__asm {
+#endif
+	in	al,dx
+	loop usecloop
+	}
 #endif
 
 	status2 = readstat();
