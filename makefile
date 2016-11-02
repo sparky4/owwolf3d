@@ -65,8 +65,8 @@ UPXQ=-qqq
 # compile flags
 #
 #S_FLAGS=-sg -st -of+ -zu -zdf -zff -zgf -k52768# -zt=84
-Z_FLAGS=-zk0 -zc -zp8 -zm -zu
-O_FLAGS=-obmilr -oe=24 -out -oh -ei -onac -ol+ -okf+##x
+Z_FLAGS=-zk0 -zc -zp8 -zm
+O_FLAGS=-obmilr -oe=24 -out -oh -ei -onac -ol+ -okf+
 T_FLAGS=-bt=dos -mm -0 -fpi87 -fo=.$(OBJ)
 
 CPPFLAGS=-DTARGET_MSDOS=16 -DMSDOS=1
@@ -78,7 +78,7 @@ LIBFLAGS=$(WLIBQ) -b -n
 #
 # objects
 #
-TESTOBJS = id_in.$(OBJ) id_mm.$(OBJ) id_pm.$(OBJ) id_ca.$(OBJ) id_sd.$(OBJ) gamepal3.$(OBJ) signon.$(OBJ) id_vl.$(OBJ) id_vh.$(OBJ) wl_scale.$(OBJ) id_us_1.$(OBJ) wl_debug.$(OBJ)
+TESTOBJS = id_in.$(OBJ) id_mm.$(OBJ) id_pm.$(OBJ) id_ca.$(OBJ) id_sd.$(OBJ) gamepal.$(OBJ) signon.$(OBJ) id_vl.$(OBJ) id_vh.$(OBJ) wl_scale.$(OBJ) id_us_1.$(OBJ) wl_debug.$(OBJ)
 WOLFOBJS = $(TESTOBJS) wl_inter.$(OBJ) wl_agent.$(OBJ) wl_draw.$(OBJ) wl_menu.$(OBJ) wl_state.$(OBJ) wl_text.$(OBJ) wl_game.$(OBJ) &
 wl_act1.$(OBJ) wl_act2.$(OBJ) wl_play.$(OBJ)
 #id_tail.$(OBJ)
@@ -154,7 +154,7 @@ id_vl.$(OBJ):	$(SRC)/id_vl.c
 wl_inter.$(OBJ):	$(SRC)/wl_inter.c
 wl_menu.$(OBJ):	$(SRC)/wl_menu.c
 signon.$(OBJ):	$(SRC)/signon.c
-gamepal3.$(OBJ):	$(SRC)/gamepal3.c
+gamepal.$(OBJ):	$(SRC)/gamepal.c
 id_in.$(OBJ):	$(SRC)/id_in.c
 id_sd.$(OBJ):	$(SRC)/id_sd.c
 id_us_1.$(OBJ):	$(SRC)/id_us_1.c

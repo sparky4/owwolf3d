@@ -1,83 +1,18 @@
 src/id_ca.c(756): Warning! W120: lvalue cast is not standard C
 src/id_ca.c(762): Warning! W120: lvalue cast is not standard C
 src/id_ca.c(774): Warning! W120: lvalue cast is not standard C
-src/id_ca.c(922): Error! E1011: Symbol 'repeat' has not been declared
-src/id_ca.c(924): Error! E1011: Symbol 'next' has not been declared
-src/id_ca.c(935): Error! E1011: Symbol 'sinorm' has not been declared
-src/id_ca.c(951): Error! E1011: Symbol 'dinorm' has not been declared
-src/id_ca.c(968): Error! E1011: Symbol 'expand' has not been declared
-src/id_ca.c(971): Error! E1011: Symbol 'expand' has not been declared
-src/id_ca.c(976): Warning! W118: Label 'dinorm' has been defined but not referenced
-src/id_ca.c(976): Warning! W118: Label 'sinorm' has been defined but not referenced
-src/id_ca.c(976): Warning! W118: Label 'next' has been defined but not referenced
-src/id_ca.c(976): Warning! W118: Label 'repeat' has been defined but not referenced
-src/id_ca.c(976): Warning! W118: Label 'expand' has been defined but not referenced
-src/id_ca.c(1029): Warning! W120: lvalue cast is not standard C
-src/id_ca.c(1059): Warning! W120: lvalue cast is not standard C
-src/id_ca.c(1061): Warning! W112: Parameter 1: Pointer truncated
-src/id_ca.c(1061): Note! I2003: source conversion type is 'void __based(void) *__far *'
-src/id_ca.c(1061): Note! I2004: target conversion type is 'void __based(void) **'
-src/id_ca.c(1064): Warning! W112: Parameter 1: Pointer truncated
-src/id_ca.c(1064): Note! I2003: source conversion type is 'void __based(void) *__far *'
-src/id_ca.c(1064): Note! I2004: target conversion type is 'void __based(void) **'
-src/id_ca.c(1064): Note! I2002: 'MM_FreePtr' defined in: src/ID_MM.H(82)
-src/id_ca.c(1097): Warning! W120: lvalue cast is not standard C
-src/id_ca.c(1134): Warning! W120: lvalue cast is not standard C
-src/id_ca.c(1135): Warning! W120: lvalue cast is not standard C
-src/id_ca.c(1145): Warning! W120: lvalue cast is not standard C
-src/id_ca.c(1146): Warning! W120: lvalue cast is not standard C
-src/id_ca.c(1180): Warning! W120: lvalue cast is not standard C
-src/id_ca.c(1281): Warning! W120: lvalue cast is not standard C
-src/id_ca.c(1296): Warning! W120: lvalue cast is not standard C
-src/id_ca.c(1362): Warning! W120: lvalue cast is not standard C
-src/id_ca.c(1491): Warning! W112: Parameter 1: Pointer truncated
-src/id_ca.c(1491): Note! I2003: source conversion type is 'void __based(void) *__far *'
-src/id_ca.c(1491): Note! I2004: target conversion type is 'void __based(void) **'
-src/id_ca.c(1492): Warning! W112: Parameter 1: Pointer truncated
-src/id_ca.c(1492): Note! I2003: source conversion type is 'void __based(void) *__far *'
-src/id_ca.c(1492): Note! I2004: target conversion type is 'void __based(void) **'
-src/id_ca.c(1500): Warning! W112: Parameter 1: Pointer truncated
-src/id_ca.c(1500): Note! I2003: source conversion type is 'void __based(void) *__far *'
-src/id_ca.c(1500): Note! I2004: target conversion type is 'void __based(void) **'
-src/id_ca.c(1500): Note! I2002: 'MM_FreePtr' defined in: src/ID_MM.H(82)
-src/id_ca.c(1535): Warning! W112: Parameter 1: Pointer truncated
-src/id_ca.c(1535): Note! I2003: source conversion type is 'void __based(void) *__far *'
-src/id_ca.c(1535): Note! I2004: target conversion type is 'void __based(void) **'
-src/id_ca.c(1536): Warning! W112: Parameter 1: Pointer truncated
-src/id_ca.c(1536): Note! I2003: source conversion type is 'void __based(void) *__far *'
-src/id_ca.c(1536): Note! I2004: target conversion type is 'void __based(void) **'
-src/id_ca.c(1549): Warning! W112: Parameter 1: Pointer truncated
-src/id_ca.c(1549): Note! I2003: source conversion type is 'void __based(void) *__far *'
-src/id_ca.c(1549): Note! I2004: target conversion type is 'void __based(void) **'
-src/id_ca.c(1549): Note! I2002: 'MM_FreePtr' defined in: src/ID_MM.H(82)
-src/id_ca.c(1588): Warning! W120: lvalue cast is not standard C
-src/id_ca.c(1595): Warning! W112: Parameter 1: Pointer truncated
-src/id_ca.c(1595): Note! I2003: source conversion type is 'void __based(void) *__far *'
-src/id_ca.c(1595): Note! I2004: target conversion type is 'void __based(void) **'
-src/id_ca.c(1596): Warning! W112: Parameter 1: Pointer truncated
-src/id_ca.c(1596): Note! I2003: source conversion type is 'void __based(void) *__far *'
-src/id_ca.c(1596): Note! I2004: target conversion type is 'void __based(void) **'
-src/id_ca.c(1610): Warning! W112: Parameter 1: Pointer truncated
-src/id_ca.c(1610): Note! I2003: source conversion type is 'void __based(void) *__far *'
-src/id_ca.c(1610): Note! I2004: target conversion type is 'void __based(void) **'
-src/id_ca.c(1614): Warning! W112: Parameter 1: Pointer truncated
-src/id_ca.c(1614): Note! I2003: source conversion type is 'void __based(void) *__far *'
-src/id_ca.c(1614): Note! I2004: target conversion type is 'void __based(void) **'
-src/id_ca.c(1614): Note! I2002: 'MM_FreePtr' defined in: src/ID_MM.H(82)
-src/id_ca.c(1625): Warning! W112: Parameter 1: Pointer truncated
-src/id_ca.c(1625): Note! I2003: source conversion type is 'void __based(void) *__far *'
-src/id_ca.c(1625): Note! I2004: target conversion type is 'void __based(void) **'
-src/id_ca.c(1625): Note! I2002: 'MM_FreePtr' defined in: src/ID_MM.H(82)
-src/id_ca.c(1651): Warning! W120: lvalue cast is not standard C
-src/id_ca.c(1742): Warning! W120: lvalue cast is not standard C
-src/id_ca.c(1767): Warning! W120: lvalue cast is not standard C
-src/id_ca.c(1877): Warning! W112: Parameter 1: Pointer truncated
-src/id_ca.c(1877): Note! I2003: source conversion type is 'void __based(void) *__far *'
-src/id_ca.c(1877): Note! I2004: target conversion type is 'void __based(void) **'
-src/id_ca.c(1880): Warning! W112: Parameter 1: Pointer truncated
-src/id_ca.c(1880): Note! I2003: source conversion type is 'void __based(void) *__far *'
-src/id_ca.c(1880): Note! I2004: target conversion type is 'void __based(void) **'
-src/id_ca.c(1891): Warning! W112: Parameter 1: Pointer truncated
-src/id_ca.c(1891): Note! I2003: source conversion type is 'void __based(void) *__far *'
-src/id_ca.c(1891): Note! I2004: target conversion type is 'void __based(void) **'
-src/id_ca.c(1891): Note! I2002: 'MM_FreePtr' defined in: src/ID_MM.H(82)
+src/id_ca.c(1056): Warning! W120: lvalue cast is not standard C
+src/id_ca.c(1086): Warning! W120: lvalue cast is not standard C
+src/id_ca.c(1124): Warning! W120: lvalue cast is not standard C
+src/id_ca.c(1161): Warning! W120: lvalue cast is not standard C
+src/id_ca.c(1162): Warning! W120: lvalue cast is not standard C
+src/id_ca.c(1172): Warning! W120: lvalue cast is not standard C
+src/id_ca.c(1173): Warning! W120: lvalue cast is not standard C
+src/id_ca.c(1207): Warning! W120: lvalue cast is not standard C
+src/id_ca.c(1308): Warning! W120: lvalue cast is not standard C
+src/id_ca.c(1323): Warning! W120: lvalue cast is not standard C
+src/id_ca.c(1389): Warning! W120: lvalue cast is not standard C
+src/id_ca.c(1615): Warning! W120: lvalue cast is not standard C
+src/id_ca.c(1678): Warning! W120: lvalue cast is not standard C
+src/id_ca.c(1769): Warning! W120: lvalue cast is not standard C
+src/id_ca.c(1794): Warning! W120: lvalue cast is not standard C

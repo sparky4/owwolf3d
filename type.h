@@ -5,6 +5,8 @@
  * by sparky4
  */
 #include <conio.h>
+#include <stdio.h>
+#include <stdlib.h>	//for argc and argv
 #include <graph.h>
 
 #define VERSION __DATE__ " " __TIME__
@@ -47,6 +49,7 @@ static union REGS CPURegs;
 
 #define farmalloc _fmalloc
 #define farfree _ffree
+
 inline unsigned long farcoreleft()
 {
 	_fheapgrow();
