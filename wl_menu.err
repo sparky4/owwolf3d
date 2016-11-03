@@ -1,0 +1,36 @@
+src/wl_menu.c(78): Error! E1010: Type mismatch
+src/wl_menu.c(78): Note! I2003: source conversion type is 'void (*)(void )'
+src/wl_menu.c(78): Note! I2004: target conversion type is 'void (*)(int __p1)'
+src/wl_menu.c(79): Error! E1010: Type mismatch
+src/wl_menu.c(79): Note! I2003: source conversion type is 'void (*)(void )'
+src/wl_menu.c(79): Note! I2004: target conversion type is 'void (*)(int __p1)'
+src/wl_menu.c(80): Error! E1010: Type mismatch
+src/wl_menu.c(80): Note! I2003: source conversion type is 'void (*)(void )'
+src/wl_menu.c(80): Note! I2004: target conversion type is 'void (*)(int __p1)'
+src/wl_menu.c(81): Error! E1010: Type mismatch
+src/wl_menu.c(81): Note! I2003: source conversion type is 'int (*)(int __p1)'
+src/wl_menu.c(81): Note! I2004: target conversion type is 'void (*)(int __p1)'
+src/wl_menu.c(82): Error! E1010: Type mismatch
+src/wl_menu.c(82): Note! I2003: source conversion type is 'int (*)(int __p1)'
+src/wl_menu.c(82): Note! I2004: target conversion type is 'void (*)(int __p1)'
+src/wl_menu.c(83): Error! E1010: Type mismatch
+src/wl_menu.c(83): Note! I2003: source conversion type is 'void (*)(void )'
+src/wl_menu.c(83): Note! I2004: target conversion type is 'void (*)(int __p1)'
+src/wl_menu.c(97): Error! E1010: Type mismatch
+src/wl_menu.c(97): Note! I2003: source conversion type is 'void (*)(void )'
+src/wl_menu.c(97): Note! I2004: target conversion type is 'void (*)(int __p1)'
+src/wl_menu.c(148): Error! E1010: Type mismatch
+src/wl_menu.c(148): Note! I2003: source conversion type is 'void (*)(void )'
+src/wl_menu.c(148): Note! I2004: target conversion type is 'void (*)(int __p1)'
+src/wl_menu.c(149): Error! E1010: Type mismatch
+src/wl_menu.c(149): Note! I2003: source conversion type is 'void (*)(void )'
+src/wl_menu.c(149): Note! I2004: target conversion type is 'void (*)(int __p1)'
+src/wl_menu.c(878): Error! E1010: Type mismatch
+src/wl_menu.c(878): Note! I2003: source conversion type is 'void (*)(void )'
+src/wl_menu.c(878): Note! I2004: target conversion type is 'void (*)(int __p1)'
+src/wl_menu.c(1908): Warning! W111: Meaningless use of an expression
+src/wl_menu.c(1924): Warning! W111: Meaningless use of an expression
+src/wl_menu.c(3373): Warning! W111: Meaningless use of an expression
+src/wl_menu.c(3654): Warning! W111: Meaningless use of an expression
+src/wl_menu.c(3784): Warning! W120: lvalue cast is not standard C
+src/wl_menu.c(3919): Error! E1011: Symbol 'FA_ARCH' has not been declared

@@ -112,6 +112,7 @@ int		horizwall[MAXWALLTILES],vertwall[MAXWALLTILES];
 
 
 void AsmRefresh (void);			// in WL_DR_A.ASM
+boolean chsw=0;
 
 /*
 ============================================================================
@@ -138,46 +139,73 @@ void AsmRefresh (void);			// in WL_DR_A.ASM
 
 #pragma warn -rvl			// I stick the return value in with ASMs
 
-fixed FixedByFrac (fixed a, fixed b)
+fixed FixedByFrac(fixed a, fixed b)
 {
+//#ifdef __WATCOMC__
+	fixed pee;//,c,d;
+//#endif
 //
 // setup
 //
-asm	mov	si,[WORD PTR b+2]	// sign of result = sign of fraction
+	__asm {
+		mov	si,[WORD PTR b+2]	// sign of result = sign of fraction
 
-asm	mov	ax,[WORD PTR a]
-asm	mov	cx,[WORD PTR a+2]
+		mov	ax,[WORD PTR a]
+		mov	cx,[WORD PTR a+2]
 
-asm	or	cx,cx
-asm	jns	aok:				// negative?
-asm	neg	cx
-asm	neg	ax
-asm	sbb	cx,0
-asm	xor	si,0x8000			// toggle sign of result
+		or	cx,cx
+		jns	aok				// negative?
+		neg	cx
+		neg	ax
+		sbb	cx,0
+		xor	si,0x8000			// toggle sign of result
+#ifdef __BORLANDC__
+	}
+#endif
 aok:
+#ifdef __BORLANDC__
+	__asm {
+#endif
 
 //
 // multiply  cx:ax by bx
 //
-asm	mov	bx,[WORD PTR b]
-asm	mul	bx					// fraction*fraction
-asm	mov	di,dx				// di is low word of result
-asm	mov	ax,cx				//
-asm	mul	bx					// units*fraction
-asm add	ax,di
-asm	adc	dx,0
+		mov	bx,[WORD PTR b]
+		mul	bx					// fraction*fraction
+		mov	di,dx				// di is low word of result
+		mov	ax,cx				//
+		mul	bx					// units*fraction
+		add	ax,di
+		adc	dx,0
 
 //
 // put result dx:ax in 2's complement
 //
-asm	test	si,0x8000		// is the result negative?
-asm	jz	ansok:
-asm	neg	dx
-asm	neg	ax
-asm	sbb	dx,0
-
+		test	si,0x8000		// is the result negative?
+		jz	ansok
+		neg	dx
+		neg	ax
+		sbb	dx,0
+#ifdef __BORLANDC__
+	}
+#endif
 ansok:;
 
+//#ifdef __WATCOMC__
+#ifdef __BORLANDC__
+	__asm {
+#endif
+		mov	[WORD PTR pee],ax
+		mov	[WORD PTR pee+2],dx
+//		mov	[word ptr c],ax
+//		mov	[word ptr d],dx
+	}
+//	printf("FixedByFrac_()\n");
+//	printf("	ax=%ld\n", c);
+//	printf("	dx=%ld\n", d);
+//	printf("	pee=%ld\n", pee);
+	return pee;
+//#endif
 }
 
 #pragma warn +rvl
@@ -356,12 +384,14 @@ boolean TransformTile (int tx, int ty, int *dispx, int *dispheight)
 
 #pragma warn -rvl			// I stick the return value in with ASMs
 
-int	CalcHeight (void)
+unsigned CalcHeight (void)
 {
-	int	transheight;
-	int ratio;
-	fixed gxt,gyt,nx,ny;
+	unsigned pee;
+	//unsigned	transheight;
+	//unsigned ratio;
+	fixed gxt,gyt,nx;//,ny;
 	long	gx,gy;
+	unsigned a,b,c,d;
 
 	gx = xintercept-viewx;
 	gxt = FixedByFrac(gx,viewcos);
@@ -379,7 +409,76 @@ int	CalcHeight (void)
 
 	asm	mov	ax,[WORD PTR heightnumerator]
 	asm	mov	dx,[WORD PTR heightnumerator+2]
-	asm	idiv	[WORD PTR nx+1]			// nx>>8
+	asm	div	[WORD PTR nx+1]			// nx>>8
+	if(chsw)
+	{
+	__asm {
+		mov	ax,[WORD PTR heightnumerator]
+		mov	dx,[WORD PTR heightnumerator+2]
+		div	[WORD PTR d+1]			// nx>>8
+		mov	a,ax
+		mov	b,dx
+		//mov	[byte ptr b],al
+	}
+	pee=(heightnumerator/(nx>>8));
+	printf("CalcHeight()\n");
+	printf("heightnumerator\n%ld	", heightnumerator);
+	printf("%u	", heightnumerator);
+	printf("%u	", heightnumerator>>8);
+	printf("%u\n", heightnumerator/heightnumerator>>8);
+	printf("a	%u\n", a);
+	printf("b	%u\n", b);
+	printf("d	%u\n", d);
+	printf("d	%u\n", d>>10);
+	printf("ax	%u\n", _AX);
+	printf("al	%u\n", _AL);
+	printf("	nx	%u\n", nx>>16);//*((&nx)+1));
+	printf("pee	%u\n", pee);
+	printf("gxt	gyt	nx	gx	gy\n");
+	printf("%ld	%ld	%ld	%ld	%ld\n", gxt, gyt, nx, gx, gy);
+	printf("%u	%u	%u	%u	%u\n", gxt, gyt, nx, gx, gy);
+	//printf("	nx=%lu\n", nx);
+	}/*
+	__asm {
+	mov	ax,[word ptr xintercept]
+	sub	ax,[word ptr viewx]
+	imul	[word ptr viewcos]
+	shr	ax,1
+	shr	ax,1
+	shr	dx,1
+	shr	dx,1
+	mov	di,ax
+	mov	ax,[word ptr yintercept]
+	sub	ax,[word ptr viewy]
+	imul	[word ptr viewsin]
+	shr	ax,1
+	shr	ax,1
+	shr	dx,1
+	shr	dx,1
+	sub	di,ax
+	cmp	di,1024
+	jge	dontclip
+	mov	di,1024
+#ifdef __BORLANDC__
+	}
+#endif
+dontclip:
+#ifdef __BORLANDC__
+	__asm {
+#endif
+	xor	dx,dx
+	sar	di,1
+	sar	di,1
+	sar	di,1
+	sar	di,1
+	sar	di,1
+	sar	di,1
+	mov	ax,[word ptr heightnumerator]
+	sar	ax,1
+	div	di
+	mov	pee,ax
+	}*/
+	//return pee;
 }
 
 
@@ -399,70 +498,82 @@ unsigned	postwidth;
 
 void	near ScalePost (void)		// VGA version
 {
-	asm	mov	ax,SCREENSEG
-	asm	mov	es,ax
+	__asm {
+			mov	ax,SCREENSEG
+			mov	es,ax
 
-	asm	mov	bx,[postx]
-	asm	shl	bx,1
-	asm	mov	bp,WORD PTR [wallheight+bx]		// fractional height (low 3 bits frac)
-	asm	and	bp,0xfff8				// bp = heightscaler*4
-	asm	shr	bp,1
-	asm	cmp	bp,[maxscaleshl2]
-	asm	jle	heightok
-	asm	mov	bp,[maxscaleshl2]
+			mov	bx,[postx]
+			shl	bx,1
+			mov	bp,WORD PTR [wallheight+bx]		// fractional height (low 3 bits frac)
+			and	bp,0xfff8				// bp = heightscaler*4
+			shr	bp,1
+			cmp	bp,[maxscaleshl2]
+			jle	heightok
+			mov	bp,[maxscaleshl2]
+#ifdef __BORLANDC__
+	}
+#endif
 heightok:
-	asm	add	bp,OFFSET fullscalefarcall
+#ifdef __BORLANDC__
+	__asm {
+#endif
+			add	bp,OFFSET fullscalefarcall
 	//
 	// scale a byte wide strip of wall
 	//
-	asm	mov	bx,[postx]
-	asm	mov	di,bx
-	asm	shr	di,1						// X in bytes
-	asm	shr	di,1
-	asm	add	di,[bufferofs]
+			mov	bx,[postx]
+			mov	di,bx
+			shr	di,1						// X in bytes
+			shr	di,1
+			add	di,[bufferofs]
 
-	asm	and	bx,3
+			and	bx,3
 	/* begin 8086 hack
-	asm	shl	bx,3
+			shl	bx,3
 	*/
-	asm push cx
-	asm mov cl,3
-	asm shl bx,cl
-	asm pop cx
+			push cx
+			mov cl,3
+			shl bx,cl
+			pop cx
 	/* end 8086 hack */
-	asm	add	bx,[postwidth]
+			add	bx,[postwidth]
 
-	asm	mov	al,BYTE PTR [mapmasks1-1+bx]	// -1 because no widths of 0
-	asm	mov	dx,SC_INDEX+1
-	asm	out	dx,al						// set bit mask register
-	asm	lds	si,DWORD PTR [postsource]
-	asm	call DWORD PTR [bp]				// scale the line of pixels
+			mov	al,BYTE PTR [mapmasks1-1+bx]	// -1 because no widths of 0
+			mov	dx,SC_INDEX+1
+			out	dx,al						// set bit mask register
+			lds	si,DWORD PTR [postsource]
+			call DWORD PTR [bp]				// scale the line of pixels
 
-	asm	mov	al,BYTE PTR [ss:mapmasks2-1+bx]   // -1 because no widths of 0
-	asm	or	al,al
-	asm	jz	nomore
+			mov	al,BYTE PTR [ss:mapmasks2-1+bx]   // -1 because no widths of 0
+			or	al,al
+			jz	nomore
 
 	//
 	// draw a second byte for vertical strips that cross two bytes
 	//
-	asm	inc	di
-	asm	out	dx,al						// set bit mask register
-	asm	call DWORD PTR [bp]				// scale the line of pixels
+			inc	di
+			out	dx,al						// set bit mask register
+			call DWORD PTR [bp]				// scale the line of pixels
 
-	asm	mov	al,BYTE PTR [ss:mapmasks3-1+bx]	// -1 because no widths of 0
-	asm	or	al,al
-	asm	jz	nomore
+			mov	al,BYTE PTR [ss:mapmasks3-1+bx]	// -1 because no widths of 0
+			or	al,al
+			jz	nomore
 	//
 	// draw a third byte for vertical strips that cross three bytes
 	//
-	asm	inc	di
-	asm	out	dx,al						// set bit mask register
-	asm	call DWORD PTR [bp]				// scale the line of pixels
-
-
+			inc	di
+			out	dx,al						// set bit mask register
+			call DWORD PTR [bp]				// scale the line of pixels
+#ifdef __BORLANDC__
+	}
+#endif
 nomore:
-	asm	mov	ax,ss
-	asm	mov	ds,ax
+#ifdef __BORLANDC__
+	__asm {
+#endif
+			mov	ax,ss
+			mov	ds,ax
+	}
 }
 
 void  FarScalePost (void)				// just so other files can call
@@ -987,44 +1098,56 @@ void VGAClearScreen (void)
   //
   // clear the screen
   //
-asm	mov	dx,SC_INDEX
-asm	mov	ax,SC_MAPMASK+15*256	// write through all planes
-asm	out	dx,ax
+	__asm {
+		mov	dx,SC_INDEX
+		mov	ax,SC_MAPMASK+15*256	// write through all planes
+		out	dx,ax
 
-asm	mov	dx,80
-asm	mov	ax,[viewwidth]
-asm	shr	ax,1
-asm	shr	ax,1
-asm	sub	dx,ax					// dx = 40-viewwidth/2
+		mov	dx,80
+		mov	ax,[viewwidth]
+		shr	ax,1
+		shr	ax,1
+		sub	dx,ax					// dx = 40-viewwidth/2
 
-asm	mov	bx,[viewwidth]
-asm	shr	bx,1					// bl = viewwidth/8
-asm	shr	bx,1
-asm	shr	bx,1
-asm	mov	bh,BYTE PTR [viewheight]
-asm	shr	bh,1					// half height
+		mov	bx,[viewwidth]
+		shr	bx,1					// bl = viewwidth/8
+		shr	bx,1
+		shr	bx,1
+		mov	bh,BYTE PTR [viewheight]
+		shr	bh,1					// half height
 
-asm	mov	es,[screenseg]
-asm	mov	di,[bufferofs]
-asm	mov	ax,[ceiling]
-
+		mov	es,[screenseg]
+		mov	di,[bufferofs]
+		mov	ax,[ceiling]
+#ifdef __BORLANDC__
+	}
+#endif
 toploop:
-asm	mov	cl,bl
-asm	rep	stosw
-asm	add	di,dx
-asm	dec	bh
-asm	jnz	toploop
+#ifdef __BORLANDC__
+	__asm {
+#endif
+		mov	cl,bl
+		rep	stosw
+		add	di,dx
+		dec	bh
+		jnz	toploop
 
-asm	mov	bh,BYTE PTR [viewheight]
-asm	shr	bh,1					// half height
-asm	mov	ax,0x1919
-
+		mov	bh,BYTE PTR [viewheight]
+		shr	bh,1					// half height
+		mov	ax,0x1919
+#ifdef __BORLANDC__
+	}
+#endif
 bottomloop:
-asm	mov	cl,bl
-asm	rep	stosw
-asm	add	di,dx
-asm	dec	bh
-asm	jnz	bottomloop
+#ifdef __BORLANDC__
+	__asm {
+#endif
+		mov	cl,bl
+		rep	stosw
+		add	di,dx
+		dec	bh
+		jnz	bottomloop
+	}
 }
 
 //==========================================================================

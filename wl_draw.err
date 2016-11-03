@@ -1,27 +1,13 @@
-src/wl_draw.c(152): Error! E1156: Assembler error: 'Operand is expected'
-src/wl_draw.c(174): Error! E1156: Assembler error: 'Operand is expected'
-src/wl_draw.c(181): Warning! W107: Missing return value for function 'FixedByFrac'
-src/wl_draw.c(181): Warning! W118: Label 'ansok' has been defined but not referenced
-src/wl_draw.c(181): Warning! W118: Label 'aok' has been defined but not referenced
-src/wl_draw.c(383): Warning! W107: Missing return value for function 'CalcHeight'
-src/wl_draw.c(411): Error! E1011: Symbol 'heightok' has not been declared
-src/wl_draw.c(443): Error! E1011: Symbol 'nomore' has not been declared
-src/wl_draw.c(454): Error! E1011: Symbol 'nomore' has not been declared
-src/wl_draw.c(466): Warning! W118: Label 'nomore' has been defined but not referenced
-src/wl_draw.c(466): Warning! W118: Label 'heightok' has been defined but not referenced
-src/wl_draw.c(511): Warning! W120: lvalue cast is not standard C
-src/wl_draw.c(541): Warning! W120: lvalue cast is not standard C
-src/wl_draw.c(583): Warning! W120: lvalue cast is not standard C
-src/wl_draw.c(613): Warning! W120: lvalue cast is not standard C
-src/wl_draw.c(650): Warning! W120: lvalue cast is not standard C
-src/wl_draw.c(682): Warning! W120: lvalue cast is not standard C
-src/wl_draw.c(718): Warning! W120: lvalue cast is not standard C
-src/wl_draw.c(750): Warning! W120: lvalue cast is not standard C
-src/wl_draw.c(797): Warning! W120: lvalue cast is not standard C
-src/wl_draw.c(815): Warning! W120: lvalue cast is not standard C
+src/wl_draw.c(482): Warning! W107: Missing return value for function 'CalcHeight'
+src/wl_draw.c(622): Warning! W120: lvalue cast is not standard C
+src/wl_draw.c(652): Warning! W120: lvalue cast is not standard C
+src/wl_draw.c(694): Warning! W120: lvalue cast is not standard C
+src/wl_draw.c(724): Warning! W120: lvalue cast is not standard C
+src/wl_draw.c(761): Warning! W120: lvalue cast is not standard C
+src/wl_draw.c(793): Warning! W120: lvalue cast is not standard C
+src/wl_draw.c(829): Warning! W120: lvalue cast is not standard C
 src/wl_draw.c(861): Warning! W120: lvalue cast is not standard C
-src/wl_draw.c(879): Warning! W120: lvalue cast is not standard C
-src/wl_draw.c(1016): Error! E1011: Symbol 'toploop' has not been declared
-src/wl_draw.c(1027): Error! E1011: Symbol 'bottomloop' has not been declared
-src/wl_draw.c(1028): Warning! W118: Label 'bottomloop' has been defined but not referenced
-src/wl_draw.c(1028): Warning! W118: Label 'toploop' has been defined but not referenced
+src/wl_draw.c(908): Warning! W120: lvalue cast is not standard C
+src/wl_draw.c(926): Warning! W120: lvalue cast is not standard C
+src/wl_draw.c(972): Warning! W120: lvalue cast is not standard C
+src/wl_draw.c(990): Warning! W120: lvalue cast is not standard C
