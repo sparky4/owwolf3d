@@ -1384,6 +1384,8 @@ void Quit (char *error)
 		movedata ((unsigned)screen,7,0xb800,0,4000);
 		gotoxy(1,24);
 		#endif
+		chsw=1;
+		printf("ch	%u\n", CalcHeight());
 		printf("compiled on "); printf(__DATE__ "  " __TIME__ "\n");
 //asm	mov	bh,0
 //asm	mov	dh,23	// row

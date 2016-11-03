@@ -182,7 +182,6 @@ clean: .symbolic
 	@rm *.LIB
 	@rm *.EXE
 	@if exist src/obj/*.EXE	mv src/obj/*.EXE bcwolf.exe
-	@if exist src/obj/*.OBJ	$(REMOVECOMMAND) src/obj/*.OBJ
 !endif
 	@if exist *.obj $(REMOVECOMMAND) *.obj
 	@if exist *.OBJ $(REMOVECOMMAND) *.OBJ
@@ -196,6 +195,11 @@ clean: .symbolic
 	@if exist *.MAH $(REMOVECOMMAND) *.MAH
 	@if exist *.err $(REMOVECOMMAND) *.err
 
+bomb: .symbolic
+!ifdef __LINUX__
+	@if exist src/obj/*.OBJ	$(REMOVECOMMAND) src/obj/*.OBJ
+!endif
+
 backupconfig: .symbolic
 	@$(COPYCOMMAND) .git$(DIRSEP)config git_con.fig
 	#@$(COPYCOMMAND) .gitmodules git_modu.les
@@ -208,7 +212,7 @@ comq: .symbolic
 	@*upx -9 $(UPXQ) $(EXEC)
 
 vomitchan: .symbolic
-	@if exist *.err  $(DUMP) *.err
+	@if exist *.err $(DUMP) *.err
 
 ##
 ##	External library management~ ^^
