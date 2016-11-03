@@ -890,7 +890,7 @@ int CP_EndGame(void)
 // VIEW THE HIGH SCORES
 //
 ////////////////////////////////////////////////////////////////////
-void CP_ViewScores(void)
+int CP_ViewScores()
 {
 	fontnumber=0;
 
@@ -915,6 +915,7 @@ void CP_ViewScores(void)
 	CacheLump (BACKDROP_LUMP_START,BACKDROP_LUMP_END);
 	CacheLump (OPTIONS_LUMP_START,OPTIONS_LUMP_END);
 #endif
+	return 0;
 }
 
 
@@ -923,7 +924,7 @@ void CP_ViewScores(void)
 // START A NEW GAME
 //
 ////////////////////////////////////////////////////////////////////
-void CP_NewGame(void)
+int CP_NewGame(void)
 {
 	int which,episode;
 
@@ -943,7 +944,7 @@ firstpart:
 		{
 			case -1:
 				MenuFadeOut();
-				return;
+				return -1;
 
 			default:
 				if (!EpisodeSelect[which/2])
@@ -981,7 +982,7 @@ firstpart:
 		#endif
 		{
 			MenuFadeOut();
-			return;
+			return 0;
 		}
 
 	MenuFadeOut();
@@ -1000,7 +1001,7 @@ firstpart:
 			MenuFadeOut();
 			UnCacheLump (NEWGAME_LUMP_START,NEWGAME_LUMP_END);
 			CacheLump (OPTIONS_LUMP_START,OPTIONS_LUMP_END);
-			return;
+			return 0;
 		}
 
 #endif
@@ -1015,7 +1016,7 @@ firstpart:
 		#else
 		UnCacheLump (NEWGAME_LUMP_START,NEWGAME_LUMP_END);
 		CacheLump (OPTIONS_LUMP_START,OPTIONS_LUMP_END);
-		return;
+		return 0;
 		#endif
 	}
 
@@ -1039,6 +1040,7 @@ firstpart:
 	UnCacheLump (NEWGAME_LUMP_START,NEWGAME_LUMP_END);
 	CacheLump (OPTIONS_LUMP_START,OPTIONS_LUMP_END);
 #endif
+	return 0;
 }
 
 
@@ -1132,7 +1134,7 @@ void DrawNewGameDiff(int w)
 // HANDLE SOUND MENU
 //
 ////////////////////////////////////////////////////////////////////
-void CP_Sound(void)
+int CP_Sound(void)
 {
 	int which,i;
 
@@ -1242,6 +1244,7 @@ void CP_Sound(void)
 	UnCacheLump (SOUND_LUMP_START,SOUND_LUMP_END);
 	CacheLump (OPTIONS_LUMP_START,OPTIONS_LUMP_END);
 #endif
+	return 0;
 }
 
 
@@ -1758,7 +1761,7 @@ int CalibrateJoystick(void)
 // DEFINE CONTROLS
 //
 ////////////////////////////////////////////////////////////////////
-void CP_Control(void)
+int CP_Control()
 {
 	#define CTL_SPC	70
 	enum {MOUSEENABLE,JOYENABLE,USEPORT2,PADENABLE,MOUSESENS,CUSTOMIZE};
@@ -1825,6 +1828,7 @@ void CP_Control(void)
 	UnCacheLump (CONTROL_LUMP_START,CONTROL_LUMP_END);
 	CacheLump (OPTIONS_LUMP_START,OPTIONS_LUMP_END);
 #endif
+	return 0;
 }
 
 
@@ -1881,7 +1885,7 @@ void DrawMouseSens(void)
 //
 // ADJUST MOUSE SENSITIVITY
 //
-void MouseSensitivity(void)
+int MouseSensitivity()
 {
 	ControlInfo ci;
 	int exit=0,oldMA;
@@ -1905,7 +1909,7 @@ void MouseSensitivity(void)
 					VWB_Bar(61+20*mouseadjustment,98,19,9,READHCOLOR);
 					VW_UpdateScreen();
 					SD_PlaySound(MOVEGUN1SND);
-					while(Keyboard[sc_LeftArrow]);
+					while(Keyboard[sc_LeftArrow]){}
 					WaitKeyUp();
 				}
 				break;
@@ -1921,7 +1925,7 @@ void MouseSensitivity(void)
 					VWB_Bar(61+20*mouseadjustment,98,19,9,READHCOLOR);
 					VW_UpdateScreen();
 					SD_PlaySound(MOVEGUN1SND);
-					while(Keyboard[sc_RightArrow]);
+					while(Keyboard[sc_RightArrow]){}
 					WaitKeyUp();
 				}
 				break;
@@ -1952,6 +1956,7 @@ void MouseSensitivity(void)
 
 	WaitKeyUp();
 	MenuFadeOut();
+	return 0;
 }
 
 
@@ -2047,7 +2052,7 @@ char mbarray[4][3]={"b0","b1","b2","b3"},
 	   order[4]={RUN,OPEN,FIRE,STRAFE};
 
 
-void CustomControls(void)
+int CustomControls()
 {
  int which;
 
@@ -2079,6 +2084,7 @@ void CustomControls(void)
 
 
  MenuFadeOut();
+	return 0;
 }
 
 
@@ -2733,7 +2739,7 @@ void DrawCustKeys(int hilight)
 // CHANGE SCREEN VIEWING SIZE
 //
 ////////////////////////////////////////////////////////////////////
-void CP_ChangeView(void)
+int CP_ChangeView()
 {
 	int exit=0,oldview,newview;
 	ControlInfo ci;
@@ -2789,7 +2795,7 @@ void CP_ChangeView(void)
 			viewwidth=oldview*16;
 			SD_PlaySound(ESCPRESSEDSND);
 			MenuFadeOut();
-			return;
+			return 0;
 		}
 
 	} while(!exit);
@@ -2804,6 +2810,7 @@ void CP_ChangeView(void)
 
 	ShootSnd();
 	MenuFadeOut();
+	return 0;
 }
 
 
@@ -3882,17 +3889,22 @@ void ShootSnd(void)
 void CheckForEpisodes(void)
 {
 	struct ffblk f;
+	long handle;
 
 //
 // JAPANESE VERSION
 //
 #ifdef JAPAN
 #ifdef JAPDEMO
-	if (!findfirst("*.WJ1",&f,FA_ARCH))
+	handle=findfirst("*.WJ1",&f);
+	if(handle!=-1)
+//      if (!findfirst("*.WJ1",&f,FA_ARCH))
 	{
 		strcpy(extension,"WJ1");
 #else
-	if (!findfirst("*.WJ6",&f,FA_ARCH))
+	handle=findfirst("*.WJ6",&f);
+	if(handle!=-1)
+//      if (!findfirst("*.WJ6",&f,FA_ARCH))
 	{
 		strcpy(extension,"WJ6");
 #endif
@@ -3900,7 +3912,9 @@ void CheckForEpisodes(void)
 		strcat(SaveName,extension);
 		strcat(PageFileName,extension);
 		strcat(audioname,extension);
+#ifdef DEMO
 		strcat(demoname,extension);
+#endif
 		EpisodeSelect[1] =
 		EpisodeSelect[2] =
 		EpisodeSelect[3] =
@@ -3914,9 +3928,20 @@ void CheckForEpisodes(void)
 //
 // ENGLISH
 //
-#ifndef UPLOAD
+#ifdef UPLOAD
+	handle=findfirst("*.WL1",&f);
+	if(handle!=-1)
+//      if (!findfirst("*.WL1",&f,FA_ARCH))
+	{
+		strcpy(extension,"WL1");
+	}
+	else
+		Quit("NO WOLFENSTEIN 3-D DATA FILES to be found!");
+#else
 #ifndef SPEAR
-	if (!findfirst("*.WL6",&f,FA_ARCH))
+	handle=findfirst("*.WL6",&f,FA_ARCH);
+	if(handle!=-1)
+//      if (!findfirst("*.WL6",&f,FA_ARCH))
 	{
 		strcpy(extension,"WL6");
 		NewEmenu[2].active =
@@ -3931,56 +3956,73 @@ void CheckForEpisodes(void)
 		EpisodeSelect[5] = 1;
 	}
 	else
-	if (!findfirst("*.WL3",&f,FA_ARCH))
 	{
-		strcpy(extension,"WL3");
-		NewEmenu[2].active =
-		NewEmenu[4].active =
-		EpisodeSelect[1] =
-		EpisodeSelect[2] = 1;
+		handle=findfirst("*.WL3",&f,FA_ARCH);
+		if(handle!=-1)
+//	      if (!findfirst("*.WL3",&f,FA_ARCH))
+		{
+			strcpy(extension,"WL3");
+			NewEmenu[2].active =
+			NewEmenu[4].active =
+			EpisodeSelect[1] =
+			EpisodeSelect[2] = 1;
+		}
+		else
+		{
+			handle=findfirst("*.WL1",&f,FA_ARCH);
+			if(handle!=-1)
+//		      if (!findfirst("*.WL1",&f,FA_ARCH))
+			{
+				strcpy(extension,"WL1");
+			}
+			else
+				Quit("NO WOLFENSTEIN 3-D DATA FILES to be found!");
+		}
 	}
-	else
 #endif
 #endif
-
 
 
 #ifdef SPEAR
 #ifndef SPEARDEMO
-	if (!findfirst("*.SOD",&f,FA_ARCH))
+	handle=findfirst("*.SOD",&f);
+	if(handle!=-1)
+//      if (!findfirst("*.SOD",&f,FA_ARCH))
 	{
 		strcpy(extension,"SOD");
 	}
 	else
 		Quit("NO SPEAR OF DESTINY DATA FILES TO BE FOUND!");
 #else
-	if (!findfirst("*.SDM",&f,FA_ARCH))
+	handle=findfirst("*.SDM",&f);
+	if(handle!=-1)
+//      if (!findfirst("*.SDM",&f,FA_ARCH))
 	{
 		strcpy(extension,"SDM");
 	}
 	else
 		Quit("NO SPEAR OF DESTINY DEMO DATA FILES TO BE FOUND!");
 #endif
-
-#else
-	if (!findfirst("*.WL1",&f,FA_ARCH))
-	{
-		strcpy(extension,"WL1");
-	}
-	else
-		Quit("NO WOLFENSTEIN 3-D DATA FILES to be found!");
 #endif
+	if(handle!=-1) close(handle);
 
 	strcat(configname,extension);
 	strcat(SaveName,extension);
-	strcat(PageFileName,extension);
+//      strcat(PageFileName,extension);
 	strcat(audioname,extension);
+#ifdef DEMO
 	strcat(demoname,extension);
+#endif
+
+#ifdef ABCAUS
+
 #ifndef SPEAR
 #ifndef GOODTIMES
 	strcat(helpfilename,extension);
 #endif
 	strcat(endfilename,extension);
 #endif
+#endif
+
 #endif
 }

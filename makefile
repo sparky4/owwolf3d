@@ -214,6 +214,9 @@ comq: .symbolic
 vomitchan: .symbolic
 	@if exist *.err $(DUMP) *.err
 
+pukechan: .symbolic
+	@if exist *.err $(DUMP) *.err | grep 'Error'
+
 ##
 ##	External library management~ ^^
 ##
