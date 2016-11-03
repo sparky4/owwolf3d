@@ -1909,7 +1909,7 @@ int MouseSensitivity()
 					VWB_Bar(61+20*mouseadjustment,98,19,9,READHCOLOR);
 					VW_UpdateScreen();
 					SD_PlaySound(MOVEGUN1SND);
-					while(Keyboard[sc_LeftArrow]){}
+					while(Keyboard[sc_LeftArrow]);
 					WaitKeyUp();
 				}
 				break;
@@ -1925,7 +1925,7 @@ int MouseSensitivity()
 					VWB_Bar(61+20*mouseadjustment,98,19,9,READHCOLOR);
 					VW_UpdateScreen();
 					SD_PlaySound(MOVEGUN1SND);
-					while(Keyboard[sc_RightArrow]){}
+					while(Keyboard[sc_RightArrow]);
 					WaitKeyUp();
 				}
 				break;
@@ -3889,22 +3889,17 @@ void ShootSnd(void)
 void CheckForEpisodes(void)
 {
 	struct ffblk f;
-	long handle;
 
 //
 // JAPANESE VERSION
 //
 #ifdef JAPAN
 #ifdef JAPDEMO
-	handle=findfirst("*.WJ1",&f);
-	if(handle!=-1)
-//      if (!findfirst("*.WJ1",&f,FA_ARCH))
+	if (!findfirst("*.WJ1",&f,FA_ARCH))
 	{
 		strcpy(extension,"WJ1");
 #else
-	handle=findfirst("*.WJ6",&f);
-	if(handle!=-1)
-//      if (!findfirst("*.WJ6",&f,FA_ARCH))
+	if (!findfirst("*.WJ6",&f,FA_ARCH))
 	{
 		strcpy(extension,"WJ6");
 #endif
@@ -3912,9 +3907,7 @@ void CheckForEpisodes(void)
 		strcat(SaveName,extension);
 		strcat(PageFileName,extension);
 		strcat(audioname,extension);
-#ifdef DEMO
 		strcat(demoname,extension);
-#endif
 		EpisodeSelect[1] =
 		EpisodeSelect[2] =
 		EpisodeSelect[3] =
@@ -3928,20 +3921,9 @@ void CheckForEpisodes(void)
 //
 // ENGLISH
 //
-#ifdef UPLOAD
-	handle=findfirst("*.WL1",&f);
-	if(handle!=-1)
-//      if (!findfirst("*.WL1",&f,FA_ARCH))
-	{
-		strcpy(extension,"WL1");
-	}
-	else
-		Quit("NO WOLFENSTEIN 3-D DATA FILES to be found!");
-#else
+#ifndef UPLOAD
 #ifndef SPEAR
-	handle=findfirst("*.WL6",&f,FA_ARCH);
-	if(handle!=-1)
-//      if (!findfirst("*.WL6",&f,FA_ARCH))
+	if (!findfirst("*.WL6",&f,FA_ARCH))
 	{
 		strcpy(extension,"WL6");
 		NewEmenu[2].active =
@@ -3956,73 +3938,56 @@ void CheckForEpisodes(void)
 		EpisodeSelect[5] = 1;
 	}
 	else
+	if (!findfirst("*.WL3",&f,FA_ARCH))
 	{
-		handle=findfirst("*.WL3",&f,FA_ARCH);
-		if(handle!=-1)
-//	      if (!findfirst("*.WL3",&f,FA_ARCH))
-		{
-			strcpy(extension,"WL3");
-			NewEmenu[2].active =
-			NewEmenu[4].active =
-			EpisodeSelect[1] =
-			EpisodeSelect[2] = 1;
-		}
-		else
-		{
-			handle=findfirst("*.WL1",&f,FA_ARCH);
-			if(handle!=-1)
-//		      if (!findfirst("*.WL1",&f,FA_ARCH))
-			{
-				strcpy(extension,"WL1");
-			}
-			else
-				Quit("NO WOLFENSTEIN 3-D DATA FILES to be found!");
-		}
+		strcpy(extension,"WL3");
+		NewEmenu[2].active =
+		NewEmenu[4].active =
+		EpisodeSelect[1] =
+		EpisodeSelect[2] = 1;
 	}
+	else
 #endif
 #endif
+
 
 
 #ifdef SPEAR
 #ifndef SPEARDEMO
-	handle=findfirst("*.SOD",&f);
-	if(handle!=-1)
-//      if (!findfirst("*.SOD",&f,FA_ARCH))
+	if (!findfirst("*.SOD",&f,FA_ARCH))
 	{
 		strcpy(extension,"SOD");
 	}
 	else
 		Quit("NO SPEAR OF DESTINY DATA FILES TO BE FOUND!");
 #else
-	handle=findfirst("*.SDM",&f);
-	if(handle!=-1)
-//      if (!findfirst("*.SDM",&f,FA_ARCH))
+	if (!findfirst("*.SDM",&f,FA_ARCH))
 	{
 		strcpy(extension,"SDM");
 	}
 	else
 		Quit("NO SPEAR OF DESTINY DEMO DATA FILES TO BE FOUND!");
 #endif
+
+#else
+	if (!findfirst("*.WL1",&f,FA_ARCH))
+	{
+		strcpy(extension,"WL1");
+	}
+	else
+		Quit("NO WOLFENSTEIN 3-D DATA FILES to be found!");
 #endif
-	if(handle!=-1) close(handle);
 
 	strcat(configname,extension);
 	strcat(SaveName,extension);
-//      strcat(PageFileName,extension);
+	strcat(PageFileName,extension);
 	strcat(audioname,extension);
-#ifdef DEMO
 	strcat(demoname,extension);
-#endif
-
-#ifdef ABCAUS
-
 #ifndef SPEAR
 #ifndef GOODTIMES
 	strcat(helpfilename,extension);
 #endif
 	strcat(endfilename,extension);
 #endif
-#endif
-
 #endif
 }

@@ -8,7 +8,6 @@
 #include <stdio.h>
 #include <stdlib.h>	//for argc and argv
 #include <graph.h>
-#include <io.h>
 
 #define VERSION __DATE__ " " __TIME__
 #define _FCORELEFT 0x90000UL+16UL
@@ -77,15 +76,15 @@ inline void gotoxy(int x,int y)
 	fflush(stdout);  // @jxh
 }
 
-#define ffblk _find_t
- #define ff_name      name
-// #define ff_attrib    attrib
-// #define ff_fsize     size
-// #define ff_ftime     wr_time
-// #define ff_fdate     wr_date
+#define ffblk        find_t
+#define ff_name      name
+#define ff_attrib    attrib
+#define ff_fsize     size
+#define ff_ftime     wr_time
+#define ff_fdate     wr_date
 
-#define findfirst	_dos_findfirst//_dos_findfirst(name, attrib, dta)
-#define findnext	_dos_findnext//_dos_findnext(dta)
+#define findfirst(name, dta, attrib)   _dos_findfirst(name, attrib, dta)
+#define findnext(dta)                  _dos_findnext(dta)
 
 //#define random()     rand()
 //#define srandom(n)   srand(n)
@@ -116,7 +115,6 @@ typedef	struct
 typedef void __based( void ) * memptr;	////old //----typedef void __based(__self) * memptr;
 #define _seg __based( void )
 typedef long fixed;
-
 
 #define _argv __argv
 #define _argc __argc
