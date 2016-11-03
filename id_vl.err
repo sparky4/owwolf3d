@@ -1,7 +1,0 @@
-src/id_vl.c(82): Warning! W131: No prototype found for function 'US_CheckParm'
-src/id_vl.c(409): Error! E1011: Symbol 'setloop' has not been declared
-src/id_vl.c(415): Warning! W118: Label 'done' has been defined but not referenced
-src/id_vl.c(415): Warning! W118: Label 'setloop' has been defined but not referenced
-src/id_vl.c(415): Warning! W118: Label 'slowset' has been defined but not referenced
-src/id_vl.c(892): Error! E1011: Symbol 'drawline' has not been declared
-src/id_vl.c(898): Warning! W118: Label 'drawline' has been defined but not referenced

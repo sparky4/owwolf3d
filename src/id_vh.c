@@ -57,26 +57,37 @@ void VW_DrawPropString (char far *string)
 		while (width--)
 		{
 			VGAMAPMASK(mask);
-
-asm	mov	ah,[BYTE PTR fontcolor]
-asm	mov	bx,[step]
-asm	mov	cx,[height]
-asm	mov	dx,[linewidth]
-asm	lds	si,[source]
-asm	les	di,[dest]
-
+			__asm {
+				mov	ah,[BYTE PTR fontcolor]
+				mov	bx,[step]
+				mov	cx,[height]
+				mov	dx,[linewidth]
+				lds	si,[source]
+				les	di,[dest]
+#ifdef __BORLANDC__
+			}
+#endif
 vertloop:
-asm	mov	al,[si]
-asm	or	al,al
-asm	je	next
-asm	mov	[es:di],ah			// draw color
-
+#ifdef __BORLANDC__
+			__asm {
+#endif
+				mov	al,[si]
+				or	al,al
+				je	next
+				mov	[es:di],ah			// draw color
+#ifdef __BORLANDC__
+			}
+#endif
 next:
-asm	add	si,bx
-asm	add	di,dx
-asm	loop	vertloop
-asm	mov	ax,ss
-asm	mov	ds,ax
+#ifdef __BORLANDC__
+			__asm {
+#endif
+				add	si,bx
+				add	di,dx
+				loop	vertloop
+				mov	ax,ss
+				mov	ds,ax
+			}
 
 			source++;
 			px++;
@@ -114,32 +125,49 @@ void VW_DrawColorPropString (char far *string)
 		{
 			VGAMAPMASK(mask);
 
-asm	mov	ah,[BYTE PTR fontcolor]
-asm	mov	bx,[step]
-asm	mov	cx,[height]
-asm	mov	dx,[linewidth]
-asm	lds	si,[source]
-asm	les	di,[dest]
-
+			__asm {
+				mov	ah,[BYTE PTR fontcolor]
+				mov	bx,[step]
+				mov	cx,[height]
+				mov	dx,[linewidth]
+				lds	si,[source]
+				les	di,[dest]
+#ifdef __BORLANDC__
+			}
+#endif
 vertloop:
-asm	mov	al,[si]
-asm	or	al,al
-asm	je	next
-asm	mov	[es:di],ah			// draw color
-
+#ifdef __BORLANDC__
+			__asm {
+#endif
+				mov	al,[si]
+				or	al,al
+				je	next
+				mov	[es:di],ah			// draw color
+#ifdef __BORLANDC__
+			}
+#endif
 next:
-asm	add	si,bx
-asm	add	di,dx
+#ifdef __BORLANDC__
+			__asm {
+#endif
+				add	si,bx
+				add	di,dx
 
-asm rcr cx,1				// inc font color
-asm jc  cont
-asm	inc ah
-
+				rcr cx,1				// inc font color
+				jc  cont
+				inc ah
+#ifdef __BORLANDC__
+			}
+#endif
 cont:
-asm rcl cx,1
-asm	loop	vertloop
-asm	mov	ax,ss
-asm	mov	ds,ax
+#ifdef __BORLANDC__
+			__asm {
+#endif
+				rcl cx,1
+				loop	vertloop
+				mov	ax,ss
+				mov	ds,ax
+			}
 
 			source++;
 			px++;
@@ -287,6 +315,57 @@ int VW_MarkUpdateBlock (int x1, int y1, int x2, int y2)
 
 	return 1;
 }
+
+/*
+=============================================================================
+
+				Double buffer management routines
+
+=============================================================================
+*/
+
+// void VH_UpdateScreen()
+// {
+// 	int i,x,y,offs;
+// 	byte *updateptr=(byte *) update;
+// 	VGAMAPMASK(15);
+// 	VGAWRITEMODE(1);
+//
+// //
+// // copy a tile
+// //
+// 	__asm {
+// 		mov	ax,SCREENSEG
+// 		mov	ds,ax
+// 	}
+// 	for(y=0;y<UPDATEHIGH;y++)
+// 	{
+// 		for(x=0;x<UPDATEWIDE;x++,updateptr++)
+// 		{
+// 			if(*updateptr)
+// 			{
+// 				*updateptr=0;
+// 				offs=y*16*SCREENWIDTH+x*TILEWIDTH;
+// 				for(i=0;i<16;i++,offs+=linewidth)
+// 				{
+// 						__asm {
+// 	mov	al,[si]
+// 	mov	[di],al
+// 	mov	al,[si+1]
+// 	mov	[di+1],al
+// 	mov	al,[si+2]
+// 	mov	[di+2],al
+// 	mov	al,[si+3]
+// 	mov	[di+3],al
+// 	add	si,dx
+// 	add	di,dx
+// 						}
+// 				}
+// 			}
+// 		}
+// 	}
+// 	VGAWRITEMODE(0);
+// }
 
 void VWB_DrawTile8 (int x, int y, int tile)
 {
@@ -490,34 +569,41 @@ boolean FizzleFade (unsigned source, unsigned dest,
 		if (abortable && IN_CheckAck () )
 			return true;
 
-		asm	mov	es,[screenseg]
+		__asm mov	es,[screenseg]
 
 		for (p=0;p<pixperframe;p++)
 		{
 			//
 			// seperate random value into x/y pair
 			//
-			asm	mov	ax,[WORD PTR rndval]
-			asm	mov	dx,[WORD PTR rndval+2]
-			asm	mov	bx,ax
-			asm	dec	bl
-			asm	mov	[BYTE PTR y],bl			// low 8 bits - 1 = y xoordinate
-			asm	mov	bx,ax
-			asm	mov	cx,dx
-			asm	mov	[BYTE PTR x],ah			// next 9 bits = x xoordinate
-			asm	mov	[BYTE PTR x+1],dl
+			__asm {
+				mov	ax,[WORD PTR rndval]
+				mov	dx,[WORD PTR rndval+2]
+				mov	bx,ax
+				dec	bl
+				mov	[BYTE PTR y],bl			// low 8 bits - 1 = y xoordinate
+				mov	bx,ax
+				mov	cx,dx
+				mov	[BYTE PTR x],ah			// next 9 bits = x xoordinate
+				mov	[BYTE PTR x+1],dl
 			//
 			// advance to next random element
 			//
-			asm	shr	dx,1
-			asm	rcr	ax,1
-			asm	jnc	noxor
-			asm	xor	dx,0x0001
-			asm	xor	ax,0x2000
+				shr	dx,1
+				rcr	ax,1
+				jnc	noxor
+				xor	dx,0x0001
+				xor	ax,0x2000
+#ifdef __BORLANDC__
+			}
+#endif
 noxor:
-			asm	mov	[WORD PTR rndval],ax
-			asm	mov	[WORD PTR rndval+2],dx
-
+#ifdef __BORLANDC__
+			__asm {
+#endif
+				mov	[WORD PTR rndval],ax
+				mov	[WORD PTR rndval+2],dx
+			}
 			if (x>width || y>height)
 				continue;
 			drawofs = source+ylookup[y] + (x>>2);
@@ -529,19 +615,18 @@ noxor:
 			VGAREADMAP(mask);
 			mask = maskb[mask];
 			VGAMAPMASK(mask);
-
-			asm	mov	di,[drawofs]
-			asm	mov	al,[es:di]
-			asm add	di,[pagedelta]
-			asm	mov	[es:di],al
+			__asm {
+				mov	di,[drawofs]
+				mov	al,[es:di]
+				add	di,[pagedelta]
+				mov	[es:di],al
+			}
 
 			if (rndval == 1)		// entire sequence has been completed
 				return false;
 		}
 		frame++;
 		while (TimeCount<frame)		// don't go too fast
-		;
+		{}
 	} while (1);
-
-
 }

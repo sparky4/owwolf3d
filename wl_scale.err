@@ -1,0 +1,27 @@
+src/wl_scale.c(78): Warning! W120: lvalue cast is not standard C
+src/wl_scale.c(90): Warning! W120: lvalue cast is not standard C
+src/wl_scale.c(94): Warning! W120: lvalue cast is not standard C
+src/wl_scale.c(98): Warning! W120: lvalue cast is not standard C
+src/wl_scale.c(106): Warning! W120: lvalue cast is not standard C
+src/wl_scale.c(213): Warning! W120: lvalue cast is not standard C
+src/wl_scale.c(272): Error! E1156: Assembler error: 'Missing 'PTR' operator'
+src/wl_scale.c(275): Error! E1011: Symbol 'notthreebyte' has not been declared
+src/wl_scale.c(276): Error! E1011: Symbol 'threebyte' has not been declared
+src/wl_scale.c(280): Error! E1011: Symbol 'twobyte' has not been declared
+src/wl_scale.c(292): Error! E1011: Symbol 'linedone' has not been declared
+src/wl_scale.c(308): Error! E1011: Symbol 'scalesingle' has not been declared
+src/wl_scale.c(331): Error! E1011: Symbol 'linedone' has not been declared
+src/wl_scale.c(354): Error! E1011: Symbol 'scaledouble' has not been declared
+src/wl_scale.c(371): Error! E1011: Symbol 'linedone' has not been declared
+src/wl_scale.c(399): Error! E1011: Symbol 'scaletriple' has not been declared
+src/wl_scale.c(402): Warning! W118: Label 'scaletriple' has been defined but not referenced
+src/wl_scale.c(402): Warning! W118: Label 'threebyte' has been defined but not referenced
+src/wl_scale.c(402): Warning! W118: Label 'scaledouble' has been defined but not referenced
+src/wl_scale.c(402): Warning! W118: Label 'twobyte' has been defined but not referenced
+src/wl_scale.c(402): Warning! W118: Label 'linedone' has been defined but not referenced
+src/wl_scale.c(402): Warning! W118: Label 'scalesingle' has been defined but not referenced
+src/wl_scale.c(402): Warning! W118: Label 'notthreebyte' has been defined but not referenced
+src/wl_scale.c(459): Warning! W120: lvalue cast is not standard C
+src/wl_scale.c(542): Warning! W120: lvalue cast is not standard C
+src/wl_scale.c(661): Warning! W120: lvalue cast is not standard C
+src/wl_scale.c(689): Warning! W120: lvalue cast is not standard C
