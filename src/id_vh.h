@@ -115,6 +115,7 @@ void	VW_MeasurePropString (char far *string, word *width, word *height);
 #define EGAWRITEMODE(x)	VGAWRITEMODE(x)
 
 //#define VW_MemToScreen	VL_MemToLatch
+extern void VL_LatchToScreen (unsigned source, int width, int height, int x, int y);
 
 #define MS_Quit			Quit
 

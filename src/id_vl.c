@@ -6,6 +6,7 @@
 #include <string.h>
 #include "id_head.h"
 #include "id_vl.h"
+#include "id_us.h"
 #ifdef __WATCOMC__
 #include "type.h"
 #endif
@@ -379,39 +380,57 @@ void VL_SetPalette (byte far *palette)
 //	for (i=0;i<768;i++)
 //		outportb(PEL_DATA,*palette++);
 
-	asm	mov	dx,PEL_WRITE_ADR
-	asm	mov	al,0
-	asm	out	dx,al
-	asm	mov	dx,PEL_DATA
-	asm	lds	si,[palette]
+	__asm {
+		mov	dx,PEL_WRITE_ADR
+		mov	al,0
+		out	dx,al
+		mov	dx,PEL_DATA
+		lds	si,[palette]
 
-	asm	test	[ss:fastpalette],1
-	//asm	jz	slowset
+		test	[ss:fastpalette],1
+		jz	slowset
 //
 // set palette fast for cards that can take it
 //
-	//asm	mov	cx,768
-	//asm	rep outsb
-	//asm	jmp	done
+		//mov	cx,768
+		//rep outsb
+		//jmp	done
 
 //
 // set palette slowly for some video cards
 //
+#ifdef __BORLANDC__
+	}
+#endif
 slowset:
-	asm	mov	cx,256
+#ifdef __BORLANDC__
+	__asm {
+#endif
+		mov	cx,256
+#ifdef __BORLANDC__
+	}
+#endif
 setloop:
-	asm	lodsb
-	asm	out	dx,al
-	asm	lodsb
-	asm	out	dx,al
-	asm	lodsb
-	asm	out	dx,al
-	asm	loop	setloop
-
+#ifdef __BORLANDC__
+	__asm {
+#endif
+		lodsb
+		out	dx,al
+		lodsb
+		out	dx,al
+		lodsb
+		out	dx,al
+		loop	setloop
+#ifdef __BORLANDC__
+	}
+#endif
 done:
-	asm	mov	ax,ss
-	asm	mov	ds,ax
-
+#ifdef __BORLANDC__
+	__asm {
+#endif
+		mov	ax,ss
+			mov	ds,ax
+	}
 }
 
 
@@ -866,33 +885,40 @@ void VL_LatchToScreen (unsigned source, int width, int height, int x, int y)
 	VGAWRITEMODE(1);
 	VGAMAPMASK(15);
 
-asm	mov	di,[y]				// dest = bufferofs+ylookup[y]+(x>>2)
-asm	shl	di,1
-asm	mov	di,[WORD PTR ylookup+di]
-asm	add	di,[bufferofs]
-asm	mov	ax,[x]
-asm	shr	ax,1
-asm	shr	ax,1
-asm	add	di,ax
+	__asm {
+		mov	di,[y]				// dest = bufferofs+ylookup[y]+(x>>2)
+		shl	di,1
+		mov	di,[WORD PTR ylookup+di]
+		add	di,[bufferofs]
+		mov	ax,[x]
+		shr	ax,1
+		shr	ax,1
+		add	di,ax
 
-asm	mov	si,[source]
-asm	mov	ax,[width]
-asm	mov	bx,[linewidth]
-asm	sub	bx,ax
-asm	mov	dx,[height]
-asm	mov	cx,SCREENSEG
-asm	mov	ds,cx
-asm	mov	es,cx
-
+		mov	si,[source]
+		mov	ax,[width]
+		mov	bx,[linewidth]
+		sub	bx,ax
+		mov	dx,[height]
+		mov	cx,SCREENSEG
+		mov	ds,cx
+		mov	es,cx
+#ifdef __BORLANDC__
+	}
+#endif
 drawline:
-asm	mov	cx,ax
-asm	rep movsb
-asm	add	di,bx
-asm	dec	dx
-asm	jnz	drawline
+#ifdef __BORLANDC__
+	__asm {
+#endif
+		mov	cx,ax
+		rep movsb
+		add	di,bx
+		dec	dx
+		jnz	drawline
 
-asm	mov	ax,ss
-asm	mov	ds,ax
+		mov	ax,ss
+		mov	ds,ax
+	}
 
 	VGAWRITEMODE(0);
 }
@@ -1106,7 +1132,18 @@ void VGAWRITEMODE(byte x)
 	}
 }
 
+void VGAREADMAP(byte x)
+{
+	__asm{
+		cli
+		mov dx,GC_INDEX
+		mov al,GC_READMAP
+		mov ah,x
+		out dx,ax
+		sti
+	}
 
+}
 
 
 

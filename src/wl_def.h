@@ -754,6 +754,8 @@ typedef	enum	{
 	ex_secretlevel
 } exit_t;
 
+extern byte *vbuf;
+extern byte *vdisp;
 
 /*
 =============================================================================

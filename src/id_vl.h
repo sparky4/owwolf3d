@@ -102,7 +102,8 @@ extern	unsigned	bordercolor;
 void VGAWRITEMODE(byte x);
 
 ////#define VGAMAPMASK(x) asm{cli;mov dx,SC_INDEX;mov al,SC_MAPMASK;mov ah,x;out dx,ax;sti;}
-#define VGAREADMAP(x) asm{cli;mov dx,GC_INDEX;mov al,GC_READMAP;mov ah,x;out dx,ax;sti;}
+//#define VGAREADMAP(x) asm{cli;mov dx,GC_INDEX;mov al,GC_READMAP;mov ah,x;out dx,ax;sti;}
+void VGAREADMAP(byte x);
 void VGAMAPMASK(byte x);
 
 void VL_Startup (void);
