@@ -182,6 +182,7 @@ clean: .symbolic
 	@rm *.LIB
 	@rm *.EXE
 	@if exist src/obj/*.EXE	mv src/obj/*.EXE bcwolf.exe
+	@if exist src/obj/*.OBJ	$(REMOVECOMMAND) src/obj/*.OBJ
 !endif
 	@if exist *.obj $(REMOVECOMMAND) *.obj
 	@if exist *.OBJ $(REMOVECOMMAND) *.OBJ
