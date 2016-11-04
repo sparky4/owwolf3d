@@ -1,12 +1,25 @@
-		boolean		alNoIRQ;
+#include "id_sd_a.h"
 
-void alOutInIRQ(byte n,byte b);
-void SDL_DigitizedDoneInIRQ(void);
+boolean		alNoIRQ;
 
 int count_time=0;
 int count_fx=0;
 int extreme=0;
 volatile boolean pcindicate;
+volatile boolean MyDS;
+
+static  boolean                 DigiMissed,DigiLastSegment;
+static  memptr                  DigiNextAddr;
+static  word                    DigiNextLen;
+
+void SDL_SetDS()
+{
+	__asm {
+		mov	ax,ds
+		mov	[cs:MyDS],ds
+		ret
+	}
+}
 
 void SDL_turnOnPCSpeaker(word timerval)
 {
@@ -132,13 +145,13 @@ void SDL_DoFast()
 
 	if(ssSample)
 	{
-		if(!(inportb(ssStatus)&0x40))
+		if(!(inp(ssStatus)&0x40))
 		{
-			outportb(ssData,*ssSample++);
-			outportb(ssControl,ssOff);
+			outp(ssData,*ssSample++);
+			outp(ssControl,ssOff);
 			__asm push ax
 			__asm pop ax
-			outportb(ssControl,ssOn);
+			outp(ssControl,ssOn);
 			__asm push ax
 			__asm pop ax
 			ssLengthLeft--;
@@ -158,12 +171,12 @@ void SDL_DoFast()
 	}
 	else
 	{
-		outportb(0x20,0x20);
+		outp(0x20,0x20);
 	}
 }
 
 // Timer 0 ISR for 7000Hz interrupts
-void __interrupt SDL_t0ExtremeAsmService(void)
+void interrupt SDL_t0ExtremeAsmService(void)
 {
 	if(pcindicate)
 	{
@@ -186,11 +199,11 @@ void __interrupt SDL_t0ExtremeAsmService(void)
 		SDL_DoFast();
 	}
 	else
-		outportb(0x20,0x20);
+		outp(0x20,0x20);
 }
 
 // Timer 0 ISR for 7000Hz interrupts
-void interrupt __SDL_t0ExtremeAsmService(void)
+void interrupt __SDL_t0ExtremeAsmService()
 {
 	if(pcindicate)
 	{
@@ -213,17 +226,17 @@ void interrupt __SDL_t0ExtremeAsmService(void)
 		SDL_DoFast();
 	}
 	else
-		outportb(0x20,0x20);
+		outp(0x20,0x20);
 }
 
 // Timer 0 ISR for 700Hz interrupts
-void interrupt SDL_t0FastAsmService(void)
+void interrupt SDL_t0FastAsmService()
 {
 	SDL_DoFast();
 }
 
 // Timer 0 ISR for 140Hz interrupts
-void __interrupt SDL_t0SlowAsmService(void)
+void interrupt SDL_t0SlowAsmService()
 {
 	count_time++;
 	if(count_time>=2)
@@ -241,10 +254,104 @@ void __interrupt SDL_t0SlowAsmService(void)
 		t0OldService();
 	}
 	else
-		outportb(0x20,0x20);
+		outp(0x20,0x20);
 }
 
 void SDL_IndicatePC(boolean ind)
 {
 	pcindicate=ind;
+}
+
+void
+SDL_DigitizedDoneInIRQ(void)
+{
+	if (DigiNextAddr)
+	{
+		SDL_PlayDigiSegment(DigiNextAddr,DigiNextLen/*,true*/);
+		DigiNextAddr = nil;
+		DigiMissed = false;
+	}
+	else
+	{
+		if (DigiLastSegment)
+		{
+			DigiPlaying = false;
+			DigiLastSegment = false;
+			if ((DigiMode == sds_PC) && (SoundMode == sdm_PC))
+			{
+				SDL_SoundFinished();
+			}
+			else
+			{
+				DigiNumber = (soundnames) 0;
+				DigiPriority = 0;
+			}
+			SoundPositioned = false;
+		}
+		else
+			DigiMissed = true;
+	}
+}
+
+// Inside an interrupt handler interrupts should already be disabled
+// so don't disable them again and cause V86 exceptions which cost
+// aprox. 300 processor tics!
+
+//static
+void alOutInIRQ(byte n,byte b)
+{
+	__asm {
+		mov     dx,0x388
+		mov     al,[n]
+		out     dx,al
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		inc     dx
+		mov     al,[b]
+		out     dx,al
+
+		dec     dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+		in      al,dx
+	}
 }
