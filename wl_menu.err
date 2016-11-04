@@ -3,4 +3,3 @@ src/wl_menu.c(1928): Warning! W111: Meaningless use of an expression
 src/wl_menu.c(3380): Warning! W111: Meaningless use of an expression
 src/wl_menu.c(3661): Warning! W111: Meaningless use of an expression
 src/wl_menu.c(3791): Warning! W120: lvalue cast is not standard C
-src/wl_menu.c(3926): Error! E1011: Symbol 'FA_ARCH' has not been declared
