@@ -86,13 +86,11 @@ inline void gotoxy(int x,int y)
 #define findfirst(name, dta, attrib)   _dos_findfirst(name, attrib, dta)
 #define findnext(dta)                  _dos_findnext(dta)
 
-//#define random()     rand()
-//#define srandom(n)   srand(n)
-
-//#define _dos_ds      _default_ds()
-
 #define MAXLONG LONG_MAX
 #define EINVFMT EMFILE
+#define FA_ARCH	0x20
+#define PI	3.141592657
+#define M_PI PI
 
 typedef union REGPACK	regs_t;
 

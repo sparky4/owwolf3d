@@ -1,0 +1,5 @@
+src/wl_game.c(674): Warning! W120: lvalue cast is not standard C
+src/wl_game.c(680): Warning! W120: lvalue cast is not standard C
+src/wl_game.c(1069): Warning! W120: lvalue cast is not standard C
+src/wl_game.c(1483): Warning! W118: Label 'startplayloop' has been defined but not referenced
+src/wl_game.c(1483): Warning! W118: Label 'restart' has been defined but not referenced

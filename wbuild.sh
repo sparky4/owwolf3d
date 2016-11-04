@@ -5,4 +5,3 @@ rm *.obj
 wmake -h clean
 wmake -h
 #wmake -h vomitchan
-wmake -h pukechan
