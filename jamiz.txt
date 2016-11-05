@@ -1,0 +1,35 @@
+fsck.fat 3.0.27 (2014-11-12)
+Checking we can access the last sector of the filesystem
+Boot sector contents:
+System ID "MSDOS5.0"
+Media byte 0xf8 (hard disk)
+       512 bytes per logical sector
+      4096 bytes per cluster
+         8 reserved sectors
+First FAT starts at byte 4096 (sector 8)
+         2 FATs, 12 bit entries
+      4096 bytes per FAT (= 8 sectors)
+Root directory starts at byte 12288 (sector 24)
+       512 root directory entries
+Data area starts at byte 28672 (sector 56)
+      2553 data clusters (10457088 bytes)
+63 sectors/track, 255 heads
+3906938880 hidden sectors
+     20480 sectors total
+Checking file /FAT16
+Checking file /._.Trashes (~1.TRA)
+Checking file /.Trashes (TRASHE~1)
+Checking file /._Halloween-Hero-1-A.jpeg (_HALLO~1.JPE)
+Checking file /Halloween-Hero-1-A.jpeg (HALLOW~1.JPE)
+Checking file /.Trashes/.
+Checking file /.Trashes/..
+Checking file /.Trashes/501
+Checking file /.Trashes/._501 (_50~1)
+Checking file /.Trashes/501/.
+Checking file /.Trashes/501/..
+Checking file /.Trashes/501/cat copy.jpg (CATCOP~1.JPG)
+Checking file /.Trashes/501/._cat copy.jpg (_CATCO~1.JPG)
+Checking file /.Trashes/501/CAT.JPG
+Checking file /.Trashes/501/._cat.jpg (_CA~1.JPG)
+Reclaiming unconnected clusters.
+/dev/sdb: 11 files, 102/2553 clusters
