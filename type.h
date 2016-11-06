@@ -64,7 +64,7 @@ inline unsigned long coreleft()
 
 //from http://www.verycomputer.com/3_65d875cc818b54ec_1.htm
 void clrscr(void);
-#pragma aux cls= \
+#pragma aux clrscr= \
   " mov ah, 0fh " \
   " int 10h " \
   " xor ah, ah " \

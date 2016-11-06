@@ -2,6 +2,9 @@
 
 #include <conio.h>
 #include "WL_DEF.H"
+#ifdef __WATCOMC__
+#include "type.h"
+#endif
 #pragma hdrstop
 
 
@@ -44,7 +47,7 @@ char            str[80],str2[20];
 int				tedlevelnum;
 boolean         tedlevel;
 boolean         nospr;
-boolean         IsA386;
+//----boolean         IsA386;
 int                     dirangle[9] = {0,ANGLES/8,2*ANGLES/8,3*ANGLES/8,4*ANGLES/8,
 	5*ANGLES/8,6*ANGLES/8,7*ANGLES/8,ANGLES};
 
@@ -237,7 +240,7 @@ void WriteConfig(void)
 ========================
 */
 
-char    *JHParmStrings[] = {"no386",nil};
+/*char    *JHParmStrings[] = {"no386",nil};
 void Patch386 (void)
 {
 extern void far jabhack2(void);
@@ -259,7 +262,7 @@ extern int far  CheckIs386(void);
 	}
 	else
 		IsA386 = false;
-}
+}*///----
 
 //===========================================================================
 
@@ -1608,7 +1611,7 @@ void main (void)
 
 	CheckForEpisodes();
 
-	Patch386 ();
+	//----Patch386 ();
 
 	InitGame ();
 
