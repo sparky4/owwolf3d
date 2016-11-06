@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>	//for argc and argv
 #include <graph.h>
+#include <malloc.h>
 
 #define VERSION __DATE__ " " __TIME__
 #define _FCORELEFT 0x90000UL+16UL

@@ -4,6 +4,7 @@
 #include "WL_DEF.H"
 #ifdef __WATCOMC__
 #include "type.h"
+#include "wolfass.h"
 #endif
 #pragma hdrstop
 

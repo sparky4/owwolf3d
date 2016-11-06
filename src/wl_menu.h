@@ -194,6 +194,8 @@ extern char SaveGameNames[10][32],SaveName[13];
 
 enum {MOUSE,JOYSTICK,KEYBOARDBTNS,KEYBOARDMOVE};	// FOR INPUT TYPES
 
+#ifndef __WL_MENU_H__
+#define __WL_MENU_H__
 enum
 {
 	newgame,
@@ -213,6 +215,7 @@ enum
 	backtodemo,
 	quit
 } menuitems;
+#endif
 
 //
 // WL_INTER
@@ -227,5 +230,3 @@ extern LRstruct LevelRatios[];
 void Write (int x,int y,char *string);
 void NonShareware(void);
 int GetYorN(int x,int y,int pic);
-
-
