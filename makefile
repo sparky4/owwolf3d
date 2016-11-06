@@ -79,11 +79,9 @@ LIBFLAGS=$(WLIBQ) -b -n
 # objects
 #
 TESTOBJS = id_in.$(OBJ) id_mm.$(OBJ) id_pm.$(OBJ) id_ca.$(OBJ) id_sd.$(OBJ) gamepal.$(OBJ) signon.$(OBJ) id_vl.$(OBJ) id_vh.$(OBJ) wl_scale.$(OBJ) id_us_1.$(OBJ) wl_debug.$(OBJ)
-WOLFOBJS = $(TESTOBJS) wl_inter.$(OBJ) wl_agent.$(OBJ) wl_draw.$(OBJ) wl_menu.$(OBJ) wl_state.$(OBJ) wl_text.$(OBJ) wl_game.$(OBJ) &
-wl_act1.$(OBJ) wl_act2.$(OBJ) wl_play.$(OBJ)
-#id_tail.$(OBJ)
-
-####
+WOLFOBJS = $(TESTOBJS) wl_inter.$(OBJ) wl_agent.$(OBJ) wl_draw.$(OBJ) wl_menu.$(OBJ) wl_state.$(OBJ) wl_text.$(OBJ) wl_game.$(OBJ) wl_act1.$(OBJ) wl_act2.$(OBJ) wl_play.$(OBJ) &
+wolfass.lib#$(OBJ)
+#id_us_a.$(OBJ) id_sd_a.$(OBJ) id_sd_a.$(OBJ)
 
 #
 # libraries
@@ -94,7 +92,7 @@ wl_act1.$(OBJ) wl_act2.$(OBJ) wl_play.$(OBJ)
 #
 .c : $(SRC)
 
-.asm : $(SRC)
+#.asm : $(SRC)
 
 #.lib : .;$(DOSLIB_CPU)/dos86h;$(DOSLIB_DOS)/dos86h;$(DOSLIB_VGA)/dos86h;$(DOSLIB_8250)/dos86h
 
@@ -144,6 +142,9 @@ test.$(OBJ):	test.c
 # non executable objects libraries
 #
 
+wolfass.lib: .symbolic
+	@if exist src/WOLFASS.LIB	cp src/WOLFASS.LIB ./wolfass.lib
+
 #gfx.lib: $(GFXLIBOBJS)
 #	*wlib $(LIBFLAGS) $(extra_$^&_lib_opts) $@ $<
 
@@ -157,7 +158,9 @@ signon.$(OBJ):	$(SRC)/signon.c
 gamepal.$(OBJ):	$(SRC)/gamepal.c
 id_in.$(OBJ):	$(SRC)/id_in.c
 id_sd.$(OBJ):	$(SRC)/id_sd.c
+id_sd_a.$(OBJ):	$(SRC)/id_sd_a.c
 id_us_1.$(OBJ):	$(SRC)/id_us_1.c
+id_us_a.$(OBJ):	$(SRC)/id_us_a.c
 id_vh.$(OBJ):	$(SRC)/id_vh.c
 wl_act1.$(OBJ):	$(SRC)/wl_act1.c
 wl_act2.$(OBJ):	$(SRC)/wl_act2.c
@@ -169,7 +172,7 @@ wl_play.$(OBJ):	$(SRC)/wl_play.c
 wl_state.$(OBJ):	$(SRC)/wl_state.c
 wl_text.$(OBJ):	$(SRC)/wl_text.c
 wl_scale.$(OBJ):	$(SRC)/wl_scale.c
-#id_tail.$(OBJ):	$(SRC)/id_tail.c
+wolfass..$(OBJ):	$(SRC)/wolfass..c
 #id_exter.$(OBJ):	$(SRC)/id_exter.c
 #id_vl_a.$(OBJ):	$(SRC)/id_vl_a.asm
 
@@ -182,6 +185,7 @@ clean: .symbolic
 	@rm *.LIB
 	@rm *.EXE
 	@if exist src/obj/*.EXE	mv src/obj/*.EXE bcwolf.exe
+	####@if exist src/obj/*_A.OBJ	cp src/obj/*_A.OBJ src/
 !endif
 	@if exist *.obj $(REMOVECOMMAND) *.obj
 	@if exist *.OBJ $(REMOVECOMMAND) *.OBJ

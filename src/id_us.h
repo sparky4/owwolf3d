@@ -12,6 +12,10 @@
 #define	__DEBUG_UserMgr__
 #endif
 
+#ifdef __WATCOMC__
+#include "id_us_a.h"
+#endif
+
 //#define	HELPTEXTLINKED
 
 #define	MaxX	320

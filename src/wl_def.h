@@ -14,7 +14,7 @@
 #include "type.h"
 #endif
 
-#include "WL_MENU.H"
+#include "wl_menu.h"
 
 #ifdef SPANISH
 #include "SPANISH.H"
@@ -127,6 +127,11 @@
 #define MAXVIEWWIDTH		320
 
 #define MAPSIZE		64					// maps are 64*64 max
+#define mapshift        6               // 2^mapshift = MAPSIZE
+#define maparea         4096            // MAPSIZE<<mapshift or MAPSIZE*MAPSIZE
+#define mapspotend      8191            // 64<<mapshift-1 or 64*MAPSIZE-1
+#define MAPPLANES       2
+
 #define NORTH	0
 #define EAST	1
 #define SOUTH	2

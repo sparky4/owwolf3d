@@ -1067,6 +1067,11 @@ asm	out	dx,al
 #endif
 //==========================================================================
 
+#define HitHorizBorder HitHorizWall
+#define HitVertBorder HitVertWall
+
+//==========================================================================
+
 unsigned vgaCeiling[]=
 {
 #ifndef SPEAR
@@ -1424,8 +1429,492 @@ void	FixOfs (void)
 
 
 //==========================================================================
+#ifdef __WATCOMC__
+word xspot,yspot;
+int texdelta;
+int pwalldir,pwalltile;
+//#define DEBUGRAYTRACER
 
+#ifdef DEBUGRAYTRACER
+#define MARKPIX(y,col) VGAMAPMASK(1<<(pixx&3)); \
+	vbuf[(pixx>>2)+(y)*80]=(col);
+#else
+#define MARKPIX(y,col)
+#endif
 
+void AsmRefresh()
+{
+    long xstep,ystep;
+    dword xpartial,ypartial;
+
+#ifdef DEBUGRAYTRACER
+	 static int logpressed=0;
+	 int dolog=0;
+    FILE *log=NULL;
+#endif
+
+    for(pixx=0;pixx<viewwidth;pixx++)
+    {
+        short angl=midangle+pixelangle[pixx];
+        if(angl<0) angl+=FINEANGLES;
+        if(angl>=3600) angl-=FINEANGLES;
+        if(angl<900)
+        {
+            xtilestep=1;
+            ytilestep=-1;
+            xstep=finetangent[900-1-angl];
+            ystep=-finetangent[angl];
+            xpartial=xpartialup;
+            ypartial=ypartialdown;
+        }
+        else if(angl<1800)
+        {
+            xtilestep=-1;
+            ytilestep=-1;
+            xstep=-finetangent[angl-900];
+            ystep=-finetangent[1800-1-angl];
+            xpartial=xpartialdown;
+            ypartial=ypartialdown;
+        }
+        else if(angl<2700)
+        {
+            xtilestep=-1;
+            ytilestep=1;
+            xstep=-finetangent[2700-1-angl];
+            ystep=finetangent[angl-1800];
+            xpartial=xpartialdown;
+            ypartial=ypartialup;
+        }
+        else if(angl<3600)
+        {
+            xtilestep=1;
+            ytilestep=1;
+            xstep=finetangent[angl-2700];
+            ystep=finetangent[3600-1-angl];
+            xpartial=xpartialup;
+            ypartial=ypartialup;
+        }
+        yintercept=FixedByFrac(ystep,xpartial)+viewy;
+        xtile=focaltx+xtilestep;
+        xspot=(xtile<<mapshift)+*((word *)&yintercept+1);
+        xintercept=FixedByFrac(xstep,ypartial)+viewx;
+        ytile=focalty+ytilestep;
+        yspot=(*((word *)&xintercept+1)<<mapshift)+ytile;
+		  texdelta=0;
+
+        if(xintercept<0) xintercept=0;
+        if(xintercept>mapwidth*65536-1) xintercept=mapwidth*65536-1;
+        if(yintercept<0) yintercept=0;
+        if(yintercept>mapheight*65536-1) yintercept=mapheight*65536-1;
+
+#ifdef DEBUGRAYTRACER
+		  if(pixx==93)
+		  {
+			  VGAMAPMASK(1<<(pixx&3));
+			  vbuf[(pixx>>2)+80]=14;
+			  if(logpressed)
+			  {
+				  if(!Keyboard[sc_L]) logpressed=0;
+			  }
+			  else
+			  {
+				  if(Keyboard[sc_L])
+				  {
+					  logpressed=1;
+					  dolog=1;
+					  log=fopen("draw93.txt","wt");
+					  if(!log) return;
+					  fprintf(log,"player->x=%.8X  player->y=%.8X  player->angle=%i  pixx=%i\nxintercept=%.8X  xtile=%.4X  xtilestep=%i  xstep=%.8X\nyintercept=%.8X  ytile=%.4X  ytilestep=%i  ystep=%.8X\n",player->x,player->y,player->angle,pixx,xintercept,xtile,xtilestep,xstep,yintercept,ytile,ytilestep,ystep);
+				  }
+			  }
+		  }
+#endif
+
+        do
+        {
+            if(ytilestep==-1 && *((short *)&yintercept+1)<=ytile) goto horizentry;
+            if(ytilestep==1 && *((short *)&yintercept+1)>=ytile) goto horizentry;
+vertentry:
+            if((dword)yintercept>mapheight*65536-1 || (word)xtile>=mapwidth)
+            {
+                if(xtile<0) xintercept=0;
+                if(xtile>=mapwidth) xintercept=mapwidth<<TILESHIFT;
+                if(yintercept<0) yintercept=0;
+                if(yintercept>=(mapheight<<TILESHIFT)) yintercept=mapheight<<TILESHIFT;
+                yspot=0xffff;
+                HitHorizBorder();
+                break;
+            }
+            if(xspot>mapspotend) break;
+            tilehit=*((byte *)tilemap+xspot);
+            if(tilehit)
+            {
+                if(tilehit&0x80)
+                {
+                    long yintbuf=yintercept+(ystep>>1);
+                    if(*((word *)&yintbuf+1)!=*((word *)&yintercept+1))
+                        goto passvert;
+                    if((word)yintbuf<doorposition[tilehit&0x7f])
+                        goto passvert;
+                    yintercept=yintbuf;
+                    xintercept=(xtile<<TILESHIFT)|0x8000;
+                    HitVertDoor();
+                }
+                else
+                {
+                    if(tilehit==64)
+                    {
+							  	if(pwalldir==di_west || pwalldir==di_east)
+								{
+	                        long yintbuf;
+									int pwallposnorm;
+									int pwallposinv;
+									if(pwalldir==di_west)
+									{
+										pwallposnorm = 63-pwallpos;
+										pwallposinv = pwallpos;
+									}
+									else
+									{
+										pwallposnorm = pwallpos;
+										pwallposinv = 63-pwallpos;
+									}
+									if(pwalldir == di_east && xtile==pwallx && *((word *)&yintercept+1)==pwally
+										|| pwalldir == di_west && !(xtile==pwallx && *((word *)&yintercept+1)==pwally))
+									{
+										yintbuf=yintercept+((ystep*pwallposnorm)>>6);
+	   	                     if(*((word *)&yintbuf+1)!=*((word *)&yintercept+1))
+   	   	                     goto passvert;
+
+									   MARKPIX(4,2);
+
+         		               xintercept=(xtile<<TILESHIFT)+TILEGLOBAL-(pwallposinv<<10);
+      	      	            yintercept=yintbuf;
+										tilehit=pwalltile;
+#ifdef DEBUGRAYTRACER
+									   if(dolog) fprintf(log,"Pushwall hit 1: HitVertWall:\n  xintercept=%.8X  xtile=%.4X\n  yintercept=%.8X  ytile=%.4X\n  pwallpos=%i\n",xintercept,xtile,yintercept,ytile,pwallpos);
+#endif
+	               	         HitVertWall();
+									}
+									else
+									{
+										yintbuf=yintercept+((ystep*pwallposinv)>>6);
+	   	                     if(*((word *)&yintbuf+1)!=*((word *)&yintercept+1))
+   	   	                     goto passvert;
+
+									   MARKPIX(4,1);
+
+         		               xintercept=(xtile<<TILESHIFT)-(pwallposinv<<10);
+      	      	            yintercept=yintbuf;
+										tilehit=pwalltile;
+#ifdef DEBUGRAYTRACER
+									   if(dolog) fprintf(log,"Pushwall hit 2: HitVertWall:\n  xintercept=%.8X  xtile=%.4X\n  yintercept=%.8X  ytile=%.4X\n  pwallpos=%i\n",xintercept,xtile,yintercept,ytile,pwallpos);
+#endif
+	               	         HitVertWall();
+									}
+								}
+								else
+								{
+									int pwallposi = pwallpos;
+									if(pwalldir==di_north) pwallposi = 63-pwallpos;
+									if(pwalldir==di_south && (word)yintercept<(pwallposi<<10)
+											|| pwalldir==di_north && (word)yintercept>(pwallposi<<10))
+									{
+										if(*((word *)&yintercept+1)==pwally && xtile==pwallx)
+										{
+										   if(pwalldir==di_south && (long)((word)yintercept)+ystep<(pwallposi<<10)
+													|| pwalldir==di_north && (long)((word)yintercept)+ystep>(pwallposi<<10))
+											   goto passvert;
+
+										   MARKPIX(5,15);
+
+#ifdef DEBUGRAYTRACER
+									      if(dolog) fprintf(log,"Pushwall hit 3: HitHorizWall old values:\n  xintercept=%.8X  xtile=%.4X\n  yintercept=%.8X  ytile=%.4X\n  pwallpos=%.4X",xintercept,xtile,yintercept,ytile,pwallpos);
+#endif
+											if(pwalldir==di_south)
+											   yintercept=(yintercept&0xffff0000)+(pwallposi<<10);
+											else
+											   yintercept=(yintercept&0xffff0000)-TILEGLOBAL+(pwallposi<<10);
+     		      	               xintercept=xintercept-((xstep*(63-pwallpos))>>6);
+											tilehit=pwalltile;
+#ifdef DEBUGRAYTRACER
+									      if(dolog) fprintf(log,"Pushwall hit 3: HitHorizWall:\n  xintercept=%.8X  xtile=%.4X\n  yintercept=%.8X  ytile=%.4X\n  pwallpos=%.4X\n",xintercept,xtile,yintercept,ytile,pwallpos);
+#endif
+	               	            HitHorizWall();
+										}
+										else
+										{
+										   MARKPIX(3,11);
+
+									      texdelta = -(pwallposi<<10);
+											xintercept=xtile<<TILESHIFT;
+											tilehit=pwalltile;
+#ifdef DEBUGRAYTRACER
+									      if(dolog) fprintf(log,"Pushwall hit 4: HitVertWall:\n  xintercept=%.8X  xtile=%.4X\n  yintercept=%.8X  ytile=%.4X\n  pwallpos=%.4X\n",xintercept,xtile,yintercept,ytile,pwallpos);
+#endif
+											HitVertWall();
+										}
+									}
+									else
+									{
+										if(*((word *)&yintercept+1)==pwally && xtile==pwallx)
+										{
+										   MARKPIX(3,12);
+
+									      texdelta = -(pwallposi<<10);
+											xintercept=xtile<<TILESHIFT;
+											tilehit=pwalltile;
+#ifdef DEBUGRAYTRACER
+										   if(dolog) fprintf(log,"Pushwall hit 5: HitVertWall:\n  xintercept=%.8X  xtile=%.4X\n  yintercept=%.8X  ytile=%.4X\n  pwallpos=%.4X\n",xintercept,xtile,yintercept,ytile,pwallpos);
+#endif
+											HitVertWall();
+										}
+										else
+										{
+										   if(pwalldir==di_south && (long)((word)yintercept)+ystep>(pwallposi<<10)
+													|| pwalldir==di_north && (long)((word)yintercept)+ystep<(pwallposi<<10))
+											   goto passvert;
+
+										   MARKPIX(3,3);
+
+											if(pwalldir==di_south)
+											   yintercept=(yintercept&0xffff0000)-((63-pwallpos)<<10);
+											else
+											   yintercept=(yintercept&0xffff0000)+((63-pwallpos)<<10);
+     		      	               xintercept=xintercept-((xstep*pwallpos)>>6);
+											tilehit=pwalltile;
+#ifdef DEBUGRAYTRACER
+										   if(dolog) fprintf(log,"Pushwall hit 6: HitHorizWall:\n  xintercept=%.8X  xtile=%.4X\n  yintercept=%.8X  ytile=%.4X\n  pwallpos=%.4X\n",xintercept,xtile,yintercept,ytile,pwallpos);
+#endif
+	               	            HitHorizWall();
+										}
+									}
+								}
+                    }
+                    else
+                    {
+                        xintercept=xtile<<TILESHIFT;
+#ifdef DEBUGRAYTRACER
+							   if(dolog) fprintf(log,"HitVertWall:\n  xintercept=%.8X  xtile=%.4X\n  yintercept=%.8X  ytile=%.4X\n",xintercept,xtile,yintercept,ytile);
+#endif
+                        HitVertWall();
+                    }
+                }
+                break;
+            }
+passvert:
+            *((byte *)spotvis+xspot)=1;
+            xtile+=xtilestep;
+            yintercept+=ystep;
+            xspot=(xtile<<mapshift)+*((word *)&yintercept+1);
+#ifdef DEBUGRAYTRACER
+			   if(dolog) fprintf(log,"passvert:\n  xintercept=%.8X  xtile=%.4X\n  yintercept=%.8X  ytile=%.4X\n",xintercept,xtile,yintercept,ytile);
+#endif
+        }
+        while(1);
+#ifdef DEBUGRAYTRACER
+		  if(dolog)
+		  {
+			  fclose(log);
+			  dolog=0;
+			  log=NULL;
+		  }
+#endif
+        continue;
+        do
+        {
+            if(xtilestep==-1 && *((short *)&xintercept+1)<=xtile) goto vertentry;
+            if(xtilestep==1 && *((short *)&xintercept+1)>=xtile) goto vertentry;
+horizentry:
+            if((dword)xintercept>mapwidth*65536-1 || (word)ytile>=mapheight)
+            {
+                if(ytile<0) yintercept=0;
+                if(ytile>=mapheight) yintercept=mapheight<<TILESHIFT;
+                if(xintercept<0) xintercept=0;
+                if(xintercept>=(mapwidth<<TILESHIFT)) xintercept=mapwidth<<TILESHIFT;
+                xspot=0xffff;
+                HitVertBorder();
+                break;
+            }
+            if(yspot>mapspotend) break;
+            tilehit=*((byte *)tilemap+yspot);
+            if(tilehit)
+            {
+                if(tilehit&0x80)
+                {
+                    long xintbuf=xintercept+(xstep>>1);
+                    if(*((word *)&xintbuf+1)!=*((word *)&xintercept+1))
+                        goto passhoriz;
+                    if((word)xintbuf<doorposition[tilehit&0x7f])
+                        goto passhoriz;
+                    xintercept=xintbuf;
+                    yintercept=(ytile<<TILESHIFT)+0x8000;
+                    HitHorizDoor();
+                }
+                else
+                {
+                    if(tilehit==64)
+                    {
+							   if(pwalldir==di_north || pwalldir==di_south)
+								{
+	                        long xintbuf;
+									int pwallposnorm;
+									int pwallposinv;
+									if(pwalldir==di_north)
+									{
+										pwallposnorm = 63-pwallpos;
+										pwallposinv = pwallpos;
+									}
+									else
+									{
+										pwallposnorm = pwallpos;
+										pwallposinv = 63-pwallpos;
+									}
+									if(pwalldir == di_south && ytile==pwally && *((word *)&xintercept+1)==pwallx
+										|| pwalldir == di_north && !(ytile==pwally && *((word *)&xintercept+1)==pwallx))
+									{
+										xintbuf=xintercept+((xstep*pwallposnorm)>>6);
+	   	                     if(*((word *)&xintbuf+1)!=*((word *)&xintercept+1))
+   	   	                     goto passhoriz;
+
+									   MARKPIX(4,2);
+
+         		               yintercept=(ytile<<TILESHIFT)+TILEGLOBAL-(pwallposinv<<10);
+      	      	            xintercept=xintbuf;
+										tilehit=pwalltile;
+#ifdef DEBUGRAYTRACER
+									   if(dolog) fprintf(log,"Pushwall hit 7: HitHorizWall:\n  xintercept=%.8X  xtile=%.4X\n  yintercept=%.8X  ytile=%.4X\n  pwallpos=%i\n",xintercept,xtile,yintercept,ytile,pwallpos);
+#endif
+	               	         HitHorizWall();
+									}
+									else
+									{
+										xintbuf=xintercept+((xstep*pwallposinv)>>6);
+	   	                     if(*((word *)&xintbuf+1)!=*((word *)&xintercept+1))
+   	   	                     goto passhoriz;
+
+									   MARKPIX(4,1);
+
+         		               yintercept=(ytile<<TILESHIFT)-(pwallposinv<<10);
+      	      	            xintercept=xintbuf;
+										tilehit=pwalltile;
+#ifdef DEBUGRAYTRACER
+									   if(dolog) fprintf(log,"Pushwall hit 8: HitHorizWall:\n  xintercept=%.8X  xtile=%.4X\n  yintercept=%.8X  ytile=%.4X\n  pwallpos=%i\n",xintercept,xtile,yintercept,ytile,pwallpos);
+#endif
+	               	         HitHorizWall();
+									}
+								}
+								else
+								{
+									int pwallposi = pwallpos;
+									if(pwalldir==di_west) pwallposi = 63-pwallpos;
+									if(pwalldir==di_east && (word)xintercept<(pwallposi<<10)
+											|| pwalldir==di_west && (word)xintercept>(pwallposi<<10))
+									{
+										if(*((word *)&xintercept+1)==pwallx && ytile==pwally)
+										{
+										   if(pwalldir==di_east && (long)((word)xintercept)+xstep<(pwallposi<<10)
+													|| pwalldir==di_west && (long)((word)xintercept)+xstep>(pwallposi<<10))
+											   goto passhoriz;
+
+										   MARKPIX(3,15);
+
+#ifdef DEBUGRAYTRACER
+									      if(dolog) fprintf(log,"Pushwall hit 9: HitVertWall old values:\n  xintercept=%.8X  xtile=%.4X\n  yintercept=%.8X  ytile=%.4X\n  pwallpos=%.4X",xintercept,xtile,yintercept,ytile,pwallpos);
+#endif
+
+											if(pwalldir==di_east)
+											   xintercept=(xintercept&0xffff0000)+(pwallposi<<10);
+											else
+											   xintercept=(xintercept&0xffff0000)-TILEGLOBAL+(pwallposi<<10);
+     		      	               yintercept=yintercept-((ystep*(63-pwallpos))>>6);
+											tilehit=pwalltile;
+#ifdef DEBUGRAYTRACER
+									      if(dolog) fprintf(log,"Pushwall hit 9: HitVertWall:\n  xintercept=%.8X  xtile=%.4X\n  yintercept=%.8X  ytile=%.4X\n  pwallpos=%.4X\n",xintercept,xtile,yintercept,ytile,pwallpos);
+#endif
+	               	            HitVertWall();
+										}
+										else
+										{
+										   MARKPIX(3,11);
+
+									      texdelta = -(pwallposi<<10);
+											yintercept=ytile<<TILESHIFT;
+											tilehit=pwalltile;
+#ifdef DEBUGRAYTRACER
+										   if(dolog) fprintf(log,"Pushwall hit 10: HitHorizWall:\n  xintercept=%.8X  xtile=%.4X\n  yintercept=%.8X  ytile=%.4X\n  pwallpos=%.4X\n",xintercept,xtile,yintercept,ytile,pwallpos);
+#endif
+											HitHorizWall();
+										}
+									}
+									else
+									{
+										if(*((word *)&xintercept+1)==pwallx && ytile==pwally)
+										{
+										   MARKPIX(3,12);
+
+									      texdelta = -(pwallposi<<10);
+											yintercept=ytile<<TILESHIFT;
+											tilehit=pwalltile;
+#ifdef DEBUGRAYTRACER
+										   if(dolog) fprintf(log,"Pushwall hit 11: HitHorizWall:\n  xintercept=%.8X  xtile=%.4X\n  yintercept=%.8X  ytile=%.4X\n  pwallpos=%.4X\n",xintercept,xtile,yintercept,ytile,pwallpos);
+#endif
+											HitHorizWall();
+										}
+										else
+										{
+										   if(pwalldir==di_east && (long)((word)xintercept)+xstep>(pwallposi<<10)
+													|| pwalldir==di_west && (long)((word)xintercept)+xstep<(pwallposi<<10))
+											   goto passhoriz;
+
+										   MARKPIX(3,3);
+
+											if(pwalldir==di_east)
+											   xintercept=(xintercept&0xffff0000)-((63-pwallpos)<<10);
+											else
+											   xintercept=(xintercept&0xffff0000)+((63-pwallpos)<<10);
+     		      	               yintercept=yintercept-((ystep*pwallpos)>>6);
+											tilehit=pwalltile;
+#ifdef DEBUGRAYTRACER
+										   if(dolog) fprintf(log,"Pushwall hit 12: HitVertWall:\n  xintercept=%.8X  xtile=%.4X\n  yintercept=%.8X  ytile=%.4X\n  pwallpos=%.4X\n",xintercept,xtile,yintercept,ytile,pwallpos);
+#endif
+	               	            HitVertWall();
+										}
+									}
+								}
+                    }
+                    else
+                    {
+                        yintercept=ytile<<TILESHIFT;
+#ifdef DEBUGRAYTRACER
+							   if(dolog) fprintf(log,"HitHorizWall:\n  xintercept=%.8X  xtile=%.4X\n  yintercept=%.8X  ytile=%.4X\n",xintercept,xtile,yintercept,ytile);
+#endif
+                        HitHorizWall();
+                    }
+                }
+                break;
+            }
+passhoriz:
+            *((byte *)spotvis+yspot)=1;
+            ytile+=ytilestep;
+            xintercept+=xstep;
+            yspot=(*((word *)&xintercept+1)<<mapshift)+ytile;
+#ifdef DEBUGRAYTRACER
+			   if(dolog) fprintf(log,"passhoriz:\n  xintercept=%.8X  xtile=%.4X\n  yintercept=%.8X  ytile=%.4X\n",xintercept,xtile,yintercept,ytile);
+#endif
+        }
+        while(1);
+#ifdef DEBUGRAYTRACER
+		  if(dolog)
+		  {
+			  fclose(log);
+			  dolog=0;
+			  log=NULL;
+		  }
+#endif
+    }
+}
+#endif
 /*
 ====================
 =

@@ -1,5 +1,5 @@
-src/id_sd.c(648): Warning! W120: lvalue cast is not standard C
-src/id_sd.c(693): Warning! W120: lvalue cast is not standard C
-src/id_sd.c(909): Warning! W120: lvalue cast is not standard C
-src/id_sd.c(957): Warning! W120: lvalue cast is not standard C
-src/id_sd.c(1445): Warning! W120: lvalue cast is not standard C
+src/id_sd.c(653): Warning! W120: lvalue cast is not standard C
+src/id_sd.c(698): Warning! W120: lvalue cast is not standard C
+src/id_sd.c(914): Warning! W120: lvalue cast is not standard C
+src/id_sd.c(962): Warning! W120: lvalue cast is not standard C
+src/id_sd.c(1450): Warning! W120: lvalue cast is not standard C

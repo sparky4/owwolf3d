@@ -173,7 +173,7 @@ US_Startup(void)
 	if (US_Started)
 		return;
 
-	harderr(USL_HardError);	// Install the fatal error handler
+	////harderr(USL_HardError);	// Install the fatal error handler
 
 	US_InitRndT(true);		// Initialize the random number generator
 
@@ -753,3 +753,6 @@ US_LineInput(int x,int y,char *buf,char *def,boolean escok,
 	IN_ClearKeysDown();
 	return(result);
 }
+#ifdef __WATCOMC__
+
+#endif

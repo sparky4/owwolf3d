@@ -37,6 +37,11 @@
 #else
 #include "ID_HEADS.H"
 #endif
+
+#ifdef __WATCOMC__
+#include "wolfass.h"
+#endif
+
 #pragma	hdrstop
 #pragma	warn	-pia
 
