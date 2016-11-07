@@ -1,6 +1,7 @@
 #include "id_heads.h"
 #include "type.h"
 #include "id_vl.h"
+#include "wolfass.h"
 typedef unsigned char byte;
 extern void VGAMAPMASK(byte x);
 extern void VGAWRITEMODE(byte x);
@@ -11,6 +12,13 @@ extern byte	update[UPDATEHIGH][UPDATEWIDE];
 //SDL_IndicatePC
 //SDL_SetDS
 boolean		alNoIRQ;
+
+extern volatile byte	pcLastSample,far *pcSound;
+extern longword		pcLengthLeft;
+extern word			pcSoundLookup[255];
+extern byte			far *alSound;
+extern soundnames		SoundNumber,DigiNumber;
+extern word			SoundPriority,DigiPriority;
 
 int count_time=0;
 int count_fx=0;
@@ -302,13 +310,13 @@ void interrupt __SDL_t0ExtremeAsmService()
 }
 
 // Timer 0 ISR for 700Hz interrupts
-void interrupt SDL_t0FastAsmService()
+void interrupt SDL_t0FastAsmService(void)
 {
 	SDL_DoFast();
 }
 
 // Timer 0 ISR for 140Hz interrupts
-void interrupt SDL_t0SlowAsmService()
+void interrupt SDL_t0SlowAsmService(void)
 {
 	count_time++;
 	if(count_time>=2)
@@ -443,14 +451,14 @@ void US_InitRndT(boolean randomize)
 
 		mov	ax,[randomize]
 		or	ax,ax
-		jne	@@timeit		;if randomize is true, really random
+		jne	@@timeit		//if randomize is true, really random
 
-		mov	dx,0			;set to a definite value
+		mov	dx,0			//set to a definite value
 		jmp	@@setit
 
 	@@timeit:
 		mov	ah,2ch
-		int	21h			;GetSystemTime
+		int	21h			//GetSystemTime
 		and	dx,0ffh
 
 	@@setit:
@@ -473,3 +481,9 @@ int US_RndT()
     rndindex = (rndindex+1)&0xff;
     return rndtable[rndindex];
 }
+
+	/*void US_InitRndT(int randomize);
+	#pragma aux US_InitRndT parm [AX] modify exact [ax cx edx]
+
+	int US_RndT();
+	#pragma aux US_RndT value [EAX] modify exact [eax ebx]*/

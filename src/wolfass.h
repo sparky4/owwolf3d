@@ -30,9 +30,9 @@ void SDL_DigitizedDoneInIRQ(void);
 void SDL_turnOnPCSpeaker(word timerval);
 void SDL_DigitizedDoneInIRQ(void);
 
-void interrupt	SDL_t0ExtremeAsmService(void),
-			SDL_t0FastAsmService(void),
-			SDL_t0SlowAsmService(void);
+void interrupt	SDL_t0ExtremeAsmService(void);
+void interrupt	SDL_t0FastAsmService(void);
+void interrupt	SDL_t0SlowAsmService(void);
 int	VL_VideoID (void),
 	US_RndT(void);
 void	VL_SetScreen (unsigned int crtc, int pelpan),

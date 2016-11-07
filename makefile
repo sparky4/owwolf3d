@@ -80,7 +80,7 @@ LIBFLAGS=$(WLIBQ) -b -n
 #
 TESTOBJS = id_in.$(OBJ) id_mm.$(OBJ) id_pm.$(OBJ) id_ca.$(OBJ) id_sd.$(OBJ) gamepal.$(OBJ) signon.$(OBJ) id_vl.$(OBJ) id_vh.$(OBJ) wl_scale.$(OBJ) id_us_1.$(OBJ) wl_debug.$(OBJ)
 WOLFOBJS = $(TESTOBJS) wl_inter.$(OBJ) wl_agent.$(OBJ) wl_draw.$(OBJ) wl_menu.$(OBJ) wl_state.$(OBJ) wl_text.$(OBJ) wl_game.$(OBJ) wl_act1.$(OBJ) wl_act2.$(OBJ) wl_play.$(OBJ) &
-wolfass.lib#$(OBJ)
+wolfass.$(OBJ)#lib
 #id_us_a.$(OBJ) id_sd_a.$(OBJ) id_sd_a.$(OBJ)
 
 #
