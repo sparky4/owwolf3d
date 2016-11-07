@@ -1,7 +1,7 @@
 Open Watcom Linker Version 2.0 beta Oct 30 2016 15:04:21 (32-bit)
 Copyright (c) 2002-2016 The Open Watcom Contributors. All Rights Reserved.
 Portions Copyright (c) 1985-2002 Sybase, Inc. All Rights Reserved.
-Created on:       16/11/07 12:44:36
+Created on:       16/11/07 12:49:20
 Warning! W1027: file wl_scale.obj(/dos/z/owwolf3d/src/wl_scale.c): redefinition of _menuitems ignored
 Warning! W1027: file wl_debug.obj(/dos/z/owwolf3d/src/wl_debug.c): redefinition of _menuitems ignored
 Warning! W1027: file wl_inter.obj(/dos/z/owwolf3d/src/wl_inter.c): redefinition of _menuitems ignored
@@ -2432,4 +2432,4 @@ Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(bfree.c)
 Stack size:  0800 (2048.)
 Memory size:  0004ac60 (306272.)
 Entry point address: 1cfe:0bd8
-Link time: 00:00.00
+Link time: 00:00.10

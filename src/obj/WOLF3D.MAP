@@ -30,10 +30,10 @@
  1CCFCH 1D0EDH 003F2H ID_SD_A_TEXT       CODE
  1D0EEH 1D132H 00045H ID_US_A_TEXT       CODE
  1D133H 1DD25H 00BF3H ID_US_1_TEXT       CODE
- 1DD26H 1E8CDH 00BA8H ID_VL_TEXT         CODE
- 1E8CEH 1F1F1H 00924H ID_VH_TEXT         CODE
- 1F1F2H 1F485H 00294H ID_VL_A_TEXT       CODE
- 1F486H 1F67BH 001F6H ID_VH_A_TEXT       CODE
+ 1DD26H 1E91FH 00BFAH ID_VL_TEXT         CODE
+ 1E920H 1F243H 00924H ID_VH_TEXT         CODE
+ 1F244H 1F487H 00244H ID_VL_A_TEXT       CODE
+ 1F488H 1F67DH 001F6H ID_VH_A_TEXT       CODE
  1F680H 21DF6H 02777H EMU_PROG           CODE
  21E00H 223C7H 005C8H E87_PROG           CODE
  223D0H 223D0H 00000H _FARDATA           FAR_DATA
@@ -234,10 +234,10 @@ Detailed map of segments
  1CCF:000C 03F2 C=CODE   S=ID_SD_A_TEXT   G=(none)  M=ID_SD_A.ASM ACBP=48
  1D0E:000E 0045 C=CODE   S=ID_US_A_TEXT   G=(none)  M=ID_US_A.ASM ACBP=48
  1D13:0003 0BF3 C=CODE   S=ID_US_1_TEXT   G=(none)  M=ID_US_1.C  ACBP=28
- 1DD2:0006 0BA8 C=CODE   S=ID_VL_TEXT     G=(none)  M=ID_VL.C    ACBP=28
- 1E8C:000E 0924 C=CODE   S=ID_VH_TEXT     G=(none)  M=ID_VH.C    ACBP=28
- 1F1F:0002 0294 C=CODE   S=ID_VL_A_TEXT   G=(none)  M=ID_VL_A.ASM ACBP=48
- 1F48:0006 01F6 C=CODE   S=ID_VH_A_TEXT   G=(none)  M=ID_VH_A.ASM ACBP=48
+ 1DD2:0006 0BFA C=CODE   S=ID_VL_TEXT     G=(none)  M=ID_VL.C    ACBP=28
+ 1E92:0000 0924 C=CODE   S=ID_VH_TEXT     G=(none)  M=ID_VH.C    ACBP=28
+ 1F24:0004 0244 C=CODE   S=ID_VL_A_TEXT   G=(none)  M=ID_VL_A.ASM ACBP=48
+ 1F48:0008 01F6 C=CODE   S=ID_VH_A_TEXT   G=(none)  M=ID_VH_A.ASM ACBP=48
  1F68:0000 0000 C=CODE   S=EMU_PROG       G=(none)  M=FPINIT     ACBP=68
  1F68:0000 2777 C=CODE   S=EMU_PROG       G=(none)  M=EMU086     ACBP=68
  21E0:0000 0000 C=CODE   S=E87_PROG       G=(none)  M=FPINIT     ACBP=68
@@ -891,7 +891,7 @@ Detailed map of segments
  0439:0004 idle  _FixedMul
  0F64:0FC9       _FixOfs
  06B5:265E idle  _FixupCustom
- 1E8C:07E6       _FizzleFade
+ 1E92:07D8       _FizzleFade
  3B98:A06A       _fizzlein
  0000:33CC       _flushall
  3B98:963E       _focallength
@@ -1016,7 +1016,7 @@ Detailed map of segments
  3B98:86DE       _laststatobj
  3B98:D774       _lasttilehit
  3B98:9C8E       _lasttimecount
- 1E8C:066C       _LatchDrawPic
+ 1E92:065E       _LatchDrawPic
  12D8:02B3 idle  _LatchNumber
  3B98:A074       _latchpics
  3B98:9C30       _layoutdone
@@ -1031,7 +1031,7 @@ Detailed map of segments
  3B98:DB89       _linescale
  3B98:ED49       _linewidth
  3B98:9927       _loadedgame
- 1E8C:06C9       _LoadLatchMem
+ 1E92:06BB       _LoadLatchMem
  0473:086D       _LoadTheGame
  3B98:EA81       _LocalTime
  0000:15E8       _lseek
@@ -1825,10 +1825,10 @@ Detailed map of segments
  3B98:514E       _vertwall
  3B98:16BA idle  _vgaCeiling
  0F64:0BC7 idle  _VGAClearScreen
- 1DD2:0B79       _VGAMAPMASK
- 1DD2:0B9E       _VGAREADMAP
- 1DD2:0B89 idle  _VGAWRITEMODE
- 1F48:0006       _VH_UpdateScreen
+ 1DD2:0BCB       _VGAMAPMASK
+ 1DD2:0BF0       _VGAREADMAP
+ 1DD2:0BDB idle  _VGAWRITEMODE
+ 1F48:0008       _VH_UpdateScreen
  0AEF:0036       _Victory
  12D8:0FFB idle  _VictorySpin
  12D8:0AE8 idle  _VictoryTile
@@ -1851,8 +1851,8 @@ Detailed map of segments
  1DD2:009E idle  _VL_ClearVideo
  1DD2:04D1       _VL_ColorBorder
  1DD2:00C8 idle  _VL_DePlaneVGA
- 1DD2:0AA5 idle  _VL_DrawLatch8String
- 1DD2:0977 idle  _VL_DrawTile8String
+ 1DD2:0AF7 idle  _VL_DrawLatch8String
+ 1DD2:09C9 idle  _VL_DrawTile8String
  1DD2:0388       _VL_FadeIn
  1DD2:025B       _VL_FadeOut
  1DD2:01A4 idle  _VL_FillPalette
@@ -1863,40 +1863,40 @@ Detailed map of segments
  1DD2:0883 idle  _VL_MaskedToScreen
  1DD2:078B       _VL_MemToLatch
  1DD2:07E5       _VL_MemToScreen
- 1E8C:0246       _VL_MungePic
+ 1E92:0238       _VL_MungePic
  1DD2:04E5       _VL_Plot
- 1F1F:00AA       _VL_ScreenToScreen
+ 1DD2:0977       _VL_ScreenToScreen
  1DD2:01C9 idle  _VL_SetColor
- 1F1F:0019 idle  _VL_SetCRTC
+ 1F24:001B idle  _VL_SetCRTC
  1DD2:0120 idle  _VL_SetLineWidth
  1DD2:020F       _VL_SetPalette
- 1F1F:003D       _VL_SetScreen
+ 1F24:003F       _VL_SetScreen
  1DD2:0155 idle  _VL_SetSplitScreen
  1DD2:0094 idle  _VL_SetTextMode
  1DD2:006E       _VL_SetVGAPlaneMode
  1DD2:0064       _VL_Shutdown
- 1DD2:0B4F idle  _VL_SizeTile8String
+ 1DD2:0BA1 idle  _VL_SizeTile8String
  1DD2:0006       _VL_Startup
  1DD2:046D       _VL_TestPaletteSet
- 1F1F:012A       _VL_VideoID
+ 1F24:00DC       _VL_VideoID
  1DD2:0612       _VL_Vlin
- 1F1F:0002       _VL_WaitVBL
+ 1F24:0004       _VL_WaitVBL
  0000:3F78 idle  _vsprintf
- 1E8C:0593       _VWB_Bar
- 1E8C:04EB       _VWB_DrawPic
- 1E8C:055A       _VWB_DrawPropString
- 1E8C:045C       _VWB_DrawTile8
- 1E8C:04A4 idle  _VWB_DrawTile8M
- 1E8C:05FA       _VWB_Hlin
- 1E8C:05CF       _VWB_Plot
- 1E8C:062E       _VWB_Vlin
- 1E8C:030A idle  _VWL_MeasureString
- 1E8C:0126 idle  _VW_DrawColorPropString
- 1E8C:000E idle  _VW_DrawPropString
- 1E8C:038E       _VW_MarkUpdateBlock
- 1E8C:036C idle  _VW_MeasureMPropString
- 1E8C:034A       _VW_MeasurePropString
- 1E8C:0662       _VW_UpdateScreen
+ 1E92:0585       _VWB_Bar
+ 1E92:04DD       _VWB_DrawPic
+ 1E92:054C       _VWB_DrawPropString
+ 1E92:044E       _VWB_DrawTile8
+ 1E92:0496 idle  _VWB_DrawTile8M
+ 1E92:05EC       _VWB_Hlin
+ 1E92:05C1       _VWB_Plot
+ 1E92:0620       _VWB_Vlin
+ 1E92:02FC idle  _VWL_MeasureString
+ 1E92:0118 idle  _VW_DrawColorPropString
+ 1E92:0000 idle  _VW_DrawPropString
+ 1E92:0380       _VW_MarkUpdateBlock
+ 1E92:035E idle  _VW_MeasureMPropString
+ 1E92:033C       _VW_MeasurePropString
+ 1E92:0654       _VW_UpdateScreen
  06B5:3C2F idle  _WaitKeyUp
  3B98:4DEE       _wallheight
  0F64:0FEC idle  _WallRefresh
@@ -2755,37 +2755,37 @@ Detailed map of segments
  1DD2:07E5       _VL_MemToScreen
  1DD2:0883 idle  _VL_MaskedToScreen
  1DD2:0914       _VL_LatchToScreen
- 1DD2:0977 idle  _VL_DrawTile8String
- 1DD2:0AA5 idle  _VL_DrawLatch8String
- 1DD2:0B4F idle  _VL_SizeTile8String
- 1DD2:0B79       _VGAMAPMASK
- 1DD2:0B89 idle  _VGAWRITEMODE
- 1DD2:0B9E       _VGAREADMAP
- 1E8C:000E idle  _VW_DrawPropString
- 1E8C:0126 idle  _VW_DrawColorPropString
- 1E8C:0246       _VL_MungePic
- 1E8C:030A idle  _VWL_MeasureString
- 1E8C:034A       _VW_MeasurePropString
- 1E8C:036C idle  _VW_MeasureMPropString
- 1E8C:038E       _VW_MarkUpdateBlock
- 1E8C:045C       _VWB_DrawTile8
- 1E8C:04A4 idle  _VWB_DrawTile8M
- 1E8C:04EB       _VWB_DrawPic
- 1E8C:055A       _VWB_DrawPropString
- 1E8C:0593       _VWB_Bar
- 1E8C:05CF       _VWB_Plot
- 1E8C:05FA       _VWB_Hlin
- 1E8C:062E       _VWB_Vlin
- 1E8C:0662       _VW_UpdateScreen
- 1E8C:066C       _LatchDrawPic
- 1E8C:06C9       _LoadLatchMem
- 1E8C:07E6       _FizzleFade
- 1F1F:0002       _VL_WaitVBL
- 1F1F:0019 idle  _VL_SetCRTC
- 1F1F:003D       _VL_SetScreen
- 1F1F:00AA       _VL_ScreenToScreen
- 1F1F:012A       _VL_VideoID
- 1F48:0006       _VH_UpdateScreen
+ 1DD2:0977       _VL_ScreenToScreen
+ 1DD2:09C9 idle  _VL_DrawTile8String
+ 1DD2:0AF7 idle  _VL_DrawLatch8String
+ 1DD2:0BA1 idle  _VL_SizeTile8String
+ 1DD2:0BCB       _VGAMAPMASK
+ 1DD2:0BDB idle  _VGAWRITEMODE
+ 1DD2:0BF0       _VGAREADMAP
+ 1E92:0000 idle  _VW_DrawPropString
+ 1E92:0118 idle  _VW_DrawColorPropString
+ 1E92:0238       _VL_MungePic
+ 1E92:02FC idle  _VWL_MeasureString
+ 1E92:033C       _VW_MeasurePropString
+ 1E92:035E idle  _VW_MeasureMPropString
+ 1E92:0380       _VW_MarkUpdateBlock
+ 1E92:044E       _VWB_DrawTile8
+ 1E92:0496 idle  _VWB_DrawTile8M
+ 1E92:04DD       _VWB_DrawPic
+ 1E92:054C       _VWB_DrawPropString
+ 1E92:0585       _VWB_Bar
+ 1E92:05C1       _VWB_Plot
+ 1E92:05EC       _VWB_Hlin
+ 1E92:0620       _VWB_Vlin
+ 1E92:0654       _VW_UpdateScreen
+ 1E92:065E       _LatchDrawPic
+ 1E92:06BB       _LoadLatchMem
+ 1E92:07D8       _FizzleFade
+ 1F24:0004       _VL_WaitVBL
+ 1F24:001B idle  _VL_SetCRTC
+ 1F24:003F       _VL_SetScreen
+ 1F24:00DC       _VL_VideoID
+ 1F48:0008       _VH_UpdateScreen
  1F68:2152       e086_Entry
  1F68:26E0       e086_Shortcut
  21E0:0306       e087_Entry
