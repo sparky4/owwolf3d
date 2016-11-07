@@ -85,20 +85,29 @@ void VL_WaitVBL(int num)
 	}
 }
 
-//void SetScreen (unsigned int offset)
 void	VL_SetScreen (unsigned int crtc, int pelpan)
 {
-	__asm {
-		cli
-//		mov	ax,[word ptr offset]
-		mov	dx,0x3d4
-		mov	al,0x0c
-		out	dx,al
-		inc	dx
-		mov	al,ah
-		out	dx,al
-		sti
-	}
+//	__asm {
+	//printf("VL_SetScreen\n");
+asm	cli
+	//printf(".");
+asm	mov	ax,crtc//[word ptr crtc]
+	printf(".");
+asm	mov	dx,0x3d4
+	//printf(".");
+asm	mov	al,0x0c
+	//printf(".");
+asm	out	dx,al
+	//printf(".");
+asm	inc	dx
+	//printf(".");
+asm	mov	al,ah
+	//printf(".");
+asm	out	dx,al
+	//printf(".");
+asm	sti
+	//printf("ok\n");
+//	}
 }
 
 /*

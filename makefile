@@ -64,7 +64,9 @@ UPXQ=-qqq
 #
 # compile flags
 #
-#S_FLAGS=-sg -st -of+ -zu -zdf -zff -zgf -k52768# -zt=84
+S_FLAGS= -s
+#-sg -st -of+ -zdf -zff -zgf# -k16768# -zt=84
+# -zu
 Z_FLAGS=-zk0 -zc -zp8 -zm
 O_FLAGS=-obmilr -oe=24 -out -oh -ei -onac -ol+ -okf+
 T_FLAGS=-bt=dos -mm -0 -fpi87 -fo=.$(OBJ)

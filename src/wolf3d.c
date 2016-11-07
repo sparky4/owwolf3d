@@ -738,10 +738,12 @@ void SignonScreen (void)                        // VGA version
 
 	if (!virtualreality)
 	{
-printf("wwww");
-getch();
 		VW_SetScreen(0x8000,0);
+#ifndef __WATCOMC__
 		VL_MungePic (&introscn,320,200);
+#else
+		printf("VL_MungePic breaks\n");
+#endif
 		VL_MemToScreen (&introscn,320,200,0,0);
 		VW_SetScreen(0,0);
 	}
@@ -1161,7 +1163,13 @@ void InitGame (void)
 	MM_Startup ();                  // so the signon screen can be freed
 
 	SignonScreen ();
-
+#ifdef __WATCOMC__
+	getch();
+	VL_SetTextMode ();
+	printf("\nVW_Startup breaks. i do not know how to fix this.\n");
+	MM_Shutdown ();
+	exit(1);
+#endif
 	VW_Startup ();
 	IN_Startup ();
 	PM_Startup ();
@@ -1169,6 +1177,7 @@ void InitGame (void)
 	SD_Startup ();
 	CA_Startup ();
 	US_Startup ();
+
 
 #ifndef SPEAR
 	if (mminfo.mainmem < 235000L)
