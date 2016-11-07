@@ -738,6 +738,8 @@ void SignonScreen (void)                        // VGA version
 
 	if (!virtualreality)
 	{
+printf("wwww");
+getch();
 		VW_SetScreen(0x8000,0);
 		VL_MungePic (&introscn,320,200);
 		VL_MemToScreen (&introscn,320,200,0,0);
@@ -1159,9 +1161,8 @@ void InitGame (void)
 	MM_Startup ();                  // so the signon screen can be freed
 
 	SignonScreen ();
-#ifndef __WATCOMC__
+
 	VW_Startup ();
-#endif
 	IN_Startup ();
 	PM_Startup ();
 	PM_UnlockMainMem ();
@@ -1609,9 +1610,9 @@ void main (void)
 	 exit(1);
 	}
 #endif
-
+#ifndef __WATCOMC__
 	CheckForEpisodes();
-
+#endif
 	//----Patch386 ();
 
 	InitGame ();
