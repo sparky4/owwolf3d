@@ -111,8 +111,8 @@ typedef	struct
 			Point	ul,lr;
 		} Rect;*/
 
-typedef void __based( void ) * memptr;	////old //----typedef void __based(__self) * memptr;
-#define _seg __based(__self)
+//typedef void __based( void ) * memptr;	////old //----typedef void __based(__self) * memptr;
+#define _seg __based( void )
 typedef long fixed;
 
 #define _argv __argv
