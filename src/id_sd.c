@@ -66,9 +66,9 @@
 //	Imports from ID_SD_A.ASM
 extern	void			SDL_SetDS(void),
 						SDL_IndicatePC(boolean on);
-extern	void interrupt	SDL_t0ExtremeAsmService(void),
-						SDL_t0FastAsmService(void),
-						SDL_t0SlowAsmService(void);
+extern	void interrupt	SDL_t0ExtremeAsmService(void);
+extern	void interrupt	SDL_t0FastAsmService(void);
+extern	void interrupt	SDL_t0SlowAsmService(void);
 
 //	Global variables
 	boolean		SoundSourcePresent,
