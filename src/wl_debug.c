@@ -147,7 +147,7 @@ void PicturePause (void)
 
 	LastScan = 0;
 	while (!LastScan)
-	;
+	{}
 	if (LastScan != sc_Enter)
 	{
 		VW_ColorBorder (0);
@@ -196,7 +196,7 @@ void PicturePause (void)
 	IN_Shutdown ();
 
 	VW_WaitVBL(70);
-	bioskey(0);
+	//----bioskey(0);
 	VW_WaitVBL(70);
 	Quit (NULL);
 }

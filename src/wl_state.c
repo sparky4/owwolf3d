@@ -51,6 +51,7 @@ void	DamageActor (objtype *ob, unsigned damage);
 boolean CheckLine (objtype *ob);
 void FirstSighting (objtype *ob);
 boolean	CheckSight (objtype *ob);
+extern	void A_DeathScream (objtype *ob);
 
 /*
 =============================================================================

@@ -43,6 +43,25 @@ void SetupGameLevel (void);
 void DrawPlayScreen (void);
 void LoadLatchMem (void);
 void GameLoop (void);
+extern enum
+{
+	newgame,
+	soundmenu,
+	control,
+	loadgame,
+	savegame,
+	changeview,
+
+#ifndef GOODTIMES
+#ifndef SPEAR
+	readthis,
+#endif
+#endif
+
+	viewscores,
+	backtodemo,
+	quit
+} menuitems;
 
 /*
 =============================================================================
