@@ -42,3 +42,15 @@ void	VL_SetScreen (unsigned int crtc, int pelpan),
 	VH_UpdateScreen(),
 	US_InitRndT(boolean randomize),
 	VL_ScreenToScreen (unsigned source, unsigned dest,int width, int height);
+
+/*#pragma aux VL_SetScreen = \
+		"cli" \
+		"mov	dx,0x3d4" \
+		"mov	al,0x0c" \
+		"out	dx,al" \
+		"inc	dx" \
+		"mov	al,ah" \
+		"out	dx,al" \
+		"sti" \
+		parm [ax] \
+		modify exact [dx ax]*/
