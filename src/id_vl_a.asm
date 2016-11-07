@@ -234,59 +234,59 @@ ENDP
 ;
 ;============================================================================
 
-PROC	VL_ScreenToScreen	source:WORD, dest:WORD, wide:WORD, height:WORD
-PUBLIC	VL_ScreenToScreen
-USES	SI,DI
-
-	pushf
-	cli
-
-	mov	dx,SC_INDEX
-	mov	ax,SC_MAPMASK+15*256
-	out	dx,ax
-	mov	dx,GC_INDEX
-	mov	al,GC_MODE
-	out	dx,al
-	inc	dx
-	in	al,dx
-	and	al,NOT 3
-	or	al,1
-	out	dx,al
-
-	popf
-
-	mov	bx,[linewidth]
-	sub	bx,[wide]
-
-	mov	ax,SCREENSEG
-	mov	es,ax
-	mov	ds,ax
-
-	mov	si,[source]
-	mov	di,[dest]				;start at same place in all planes
-	mov	dx,[height]				;scan lines to draw
-	mov	ax,[wide]
-
-@@lineloop:
-	mov	cx,ax
-	rep	movsb
-	add	si,bx
-	add	di,bx
-
-	dec	dx
-	jnz	@@lineloop
-
-	mov	dx,GC_INDEX+1
-	in	al,dx
-	and	al,NOT 3
-	out	dx,al
-
-	mov	ax,ss
-	mov	ds,ax					;restore turbo's data segment
-
-	ret
-
-ENDP
+; PROC	VL_ScreenToScreen	source:WORD, dest:WORD, wide:WORD, height:WORD
+; PUBLIC	VL_ScreenToScreen
+; USES	SI,DI
+;
+; 	pushf
+; 	cli
+;
+; 	mov	dx,SC_INDEX
+; 	mov	ax,SC_MAPMASK+15*256
+; 	out	dx,ax
+; 	mov	dx,GC_INDEX
+; 	mov	al,GC_MODE
+; 	out	dx,al
+; 	inc	dx
+; 	in	al,dx
+; 	and	al,NOT 3
+; 	or	al,1
+; 	out	dx,al
+;
+; 	popf
+;
+; 	mov	bx,[linewidth]
+; 	sub	bx,[wide]
+;
+; 	mov	ax,SCREENSEG
+; 	mov	es,ax
+; 	mov	ds,ax
+;
+; 	mov	si,[source]
+; 	mov	di,[dest]				;start at same place in all planes
+; 	mov	dx,[height]				;scan lines to draw
+; 	mov	ax,[wide]
+;
+; @@lineloop:
+; 	mov	cx,ax
+; 	rep	movsb
+; 	add	si,bx
+; 	add	di,bx
+;
+; 	dec	dx
+; 	jnz	@@lineloop
+;
+; 	mov	dx,GC_INDEX+1
+; 	in	al,dx
+; 	and	al,NOT 3
+; 	out	dx,al
+;
+; 	mov	ax,ss
+; 	mov	ds,ax					;restore turbo's data segment
+;
+; 	ret
+;
+; ENDP
 
 
 ;===========================================================================
