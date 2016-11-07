@@ -194,9 +194,7 @@ extern char SaveGameNames[10][32],SaveName[13];
 
 enum {MOUSE,JOYSTICK,KEYBOARDBTNS,KEYBOARDMOVE};	// FOR INPUT TYPES
 
-#ifndef __WL_MENU_H__
-#define __WL_MENU_H__
-enum
+/*enum
 {
 	newgame,
 	soundmenu,
@@ -215,8 +213,7 @@ enum
 	backtodemo,
 	quit
 } menuitems;
-#endif
-
+*/
 //
 // WL_INTER
 //

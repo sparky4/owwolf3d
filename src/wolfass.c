@@ -11,6 +11,14 @@ extern byte	update[UPDATEHIGH][UPDATEWIDE];
 //SDL_t0SlowAsmService
 //SDL_IndicatePC
 //SDL_SetDS
+
+//
+// SC_INDEX is expected to stay at SC_MAPMASK for proper operation
+//
+
+byte *vbuf=(byte *)0xa0000;
+byte *vdisp=(byte *)0xa0000;
+
 boolean		alNoIRQ;
 
 extern volatile byte	pcLastSample,far *pcSound;
@@ -107,7 +115,7 @@ void VH_UpdateScreen()
 	byte *updateptr=(byte *) update;
 	VGAMAPMASK(15);
 	VGAWRITEMODE(1);
-//
+
 //
 // copy a tile
 //
@@ -125,7 +133,7 @@ void VH_UpdateScreen()
 				offs=y*16*SCREENWIDTH+x*TILEWIDTH;
 				for(i=0;i<16;i++,offs+=linewidth)
 				{
-						__asm {
+/*						__asm {
 	mov	al,[si]
 	mov	[di],al
 	mov	al,[si+1]
@@ -136,7 +144,11 @@ void VH_UpdateScreen()
 	mov	[di+3],al
 	add	si,dx
 	add	di,dx
-						}
+						}*/
+					*(vdisp+offs)=*(vbuf+offs);
+					*(vdisp+offs+1)=*(vbuf+offs+1);
+					*(vdisp+offs+2)=*(vbuf+offs+2);
+					*(vdisp+offs+3)=*(vbuf+offs+3);
 				}
 			}
 		}

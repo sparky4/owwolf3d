@@ -1431,8 +1431,8 @@ void	FixOfs (void)
 //==========================================================================
 #ifdef __WATCOMC__
 word xspot,yspot;
-int texdelta;
-int pwalldir,pwalltile;
+int texdelta, pwalltile;
+extern int pwalldir;
 //#define DEBUGRAYTRACER
 
 #ifdef DEBUGRAYTRACER

@@ -7,6 +7,26 @@
 #include "wl_def.h"
 #pragma hdrstop
 
+enum
+{
+	newgame,
+	soundmenu,
+	control,
+	loadgame,
+	savegame,
+	changeview,
+
+#ifndef GOODTIMES
+#ifndef SPEAR
+	readthis,
+#endif
+#endif
+
+	viewscores,
+	backtodemo,
+	quit
+} menuitems;
+
 //
 // PRIVATE PROTOTYPES
 //
@@ -1909,7 +1929,7 @@ int MouseSensitivity()
 					VWB_Bar(61+20*mouseadjustment,98,19,9,READHCOLOR);
 					VW_UpdateScreen();
 					SD_PlaySound(MOVEGUN1SND);
-					while(Keyboard[sc_LeftArrow]);
+					while(Keyboard[sc_LeftArrow]){}
 					WaitKeyUp();
 				}
 				break;
@@ -1925,7 +1945,7 @@ int MouseSensitivity()
 					VWB_Bar(61+20*mouseadjustment,98,19,9,READHCOLOR);
 					VW_UpdateScreen();
 					SD_PlaySound(MOVEGUN1SND);
-					while(Keyboard[sc_RightArrow]);
+					while(Keyboard[sc_RightArrow]){}
 					WaitKeyUp();
 				}
 				break;
@@ -3377,7 +3397,7 @@ void DrawHalfStep(int x,int y)
 	VW_UpdateScreen();
 	SD_PlaySound(MOVEGUN1SND);
 	TimeCount=0;
-	while(TimeCount<8);
+	while(TimeCount<8){}
 }
 
 
@@ -3648,7 +3668,7 @@ int Confirm(char far *string)
 		ShootSnd();
 	}
 
-	while(Keyboard[sc_S] || Keyboard[sc_N] || Keyboard[sc_Escape]);
+	while(Keyboard[sc_S] || Keyboard[sc_N] || Keyboard[sc_Escape]){}
 
 	#else
 
@@ -3658,7 +3678,7 @@ int Confirm(char far *string)
 		ShootSnd();
 	}
 
-	while(Keyboard[sc_Y] || Keyboard[sc_N] || Keyboard[sc_Escape]);
+	while(Keyboard[sc_Y] || Keyboard[sc_N] || Keyboard[sc_Escape]){}
 	#endif
 
 	IN_ClearKeysDown();

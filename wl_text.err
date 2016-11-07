@@ -1,3 +1,1 @@
-src/wl_text.c(169): Warning! W111: Meaningless use of an expression
-src/wl_text.c(681): Warning! W111: Meaningless use of an expression
 src/wl_text.c(790): Warning! W131: No prototype found for function 'FreeMusic'

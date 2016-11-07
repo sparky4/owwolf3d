@@ -1,5 +1,3 @@
-src/wl_play.c(466): Warning! W111: Meaningless use of an expression
-src/wl_play.c(477): Warning! W111: Meaningless use of an expression
 src/wl_play.c(1007): Warning! W120: lvalue cast is not standard C
 src/wl_play.c(1008): Warning! W120: lvalue cast is not standard C
 src/wl_play.c(1040): Warning! W120: lvalue cast is not standard C

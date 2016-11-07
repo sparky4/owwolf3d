@@ -1159,15 +1159,15 @@ void InitGame (void)
 	MM_Startup ();                  // so the signon screen can be freed
 
 	SignonScreen ();
-
+#ifndef __WATCOMC__
 	VW_Startup ();
+#endif
 	IN_Startup ();
 	PM_Startup ();
 	PM_UnlockMainMem ();
 	SD_Startup ();
 	CA_Startup ();
 	US_Startup ();
-
 
 #ifndef SPEAR
 	if (mminfo.mainmem < 235000L)
