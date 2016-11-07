@@ -926,7 +926,7 @@ drawline:
 
 //===========================================================================
 
-#if 0
+#ifdef __WATCOMC__
 
 /*
 =================
@@ -940,27 +940,33 @@ void VL_ScreenToScreen (unsigned source, unsigned dest,int width, int height)
 {
 	VGAWRITEMODE(1);
 	VGAMAPMASK(15);
-
-asm	mov	si,[source]
-asm	mov	di,[dest]
-asm	mov	ax,[width]
-asm	mov	bx,[linewidth]
-asm	sub	bx,ax
-asm	mov	dx,[height]
-asm	mov	cx,SCREENSEG
-asm	mov	ds,cx
-asm	mov	es,cx
-
+	__asm {
+		mov	si,[source]
+		mov	di,[dest]
+		mov	ax,[width]
+		mov	bx,[linewidth]
+		sub	bx,ax
+		mov	dx,[height]
+		mov	cx,SCREENSEG
+		mov	ds,cx
+		mov	es,cx
+#ifdef __BORLANDC__
+	}
+#endif
 drawline:
-asm	mov	cx,ax
-asm	rep movsb
-asm	add	si,bx
-asm	add	di,bx
-asm	dec	dx
-asm	jnz	drawline
+#ifdef __BORLANDC__
+	__asm {
+#endif
+		mov	cx,ax
+		rep movsb
+		add	si,bx
+		add	di,bx
+		dec	dx
+		jnz	drawline
 
-asm	mov	ax,ss
-asm	mov	ds,ax
+		mov	ax,ss
+		mov	ds,ax
+		}
 
 	VGAWRITEMODE(0);
 }

@@ -316,57 +316,6 @@ int VW_MarkUpdateBlock (int x1, int y1, int x2, int y2)
 	return 1;
 }
 
-/*
-=============================================================================
-
-				Double buffer management routines
-
-=============================================================================
-*/
-
-// void VH_UpdateScreen()
-// {
-// 	int i,x,y,offs;
-// 	byte *updateptr=(byte *) update;
-// 	VGAMAPMASK(15);
-// 	VGAWRITEMODE(1);
-//
-// //
-// // copy a tile
-// //
-// 	__asm {
-// 		mov	ax,SCREENSEG
-// 		mov	ds,ax
-// 	}
-// 	for(y=0;y<UPDATEHIGH;y++)
-// 	{
-// 		for(x=0;x<UPDATEWIDE;x++,updateptr++)
-// 		{
-// 			if(*updateptr)
-// 			{
-// 				*updateptr=0;
-// 				offs=y*16*SCREENWIDTH+x*TILEWIDTH;
-// 				for(i=0;i<16;i++,offs+=linewidth)
-// 				{
-// 						__asm {
-// 	mov	al,[si]
-// 	mov	[di],al
-// 	mov	al,[si+1]
-// 	mov	[di+1],al
-// 	mov	al,[si+2]
-// 	mov	[di+2],al
-// 	mov	al,[si+3]
-// 	mov	[di+3],al
-// 	add	si,dx
-// 	add	di,dx
-// 						}
-// 				}
-// 			}
-// 		}
-// 	}
-// 	VGAWRITEMODE(0);
-// }
-
 void VWB_DrawTile8 (int x, int y, int tile)
 {
 	if (VW_MarkUpdateBlock (x,y,x+7,y+7))
