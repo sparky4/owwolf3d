@@ -1,7 +1,7 @@
 VL_MungePic====================================
-4db7:fc7c	&(memptr)temp
-4db7:fc7c	(memptr)temp
-fc8b:4db7	&temp
+4db6:fc7c	&(memptr)temp
+4db6:fc7c	(memptr)temp
+fc8b:4db6	&temp
 02ef:096e	temp
 ===============================================
 VL_MungePic breaks
