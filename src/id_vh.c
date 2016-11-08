@@ -209,8 +209,12 @@ void VL_MungePic (byte far *source, unsigned width, unsigned height)
 // copy the pic to a temp buffer
 //
 	MM_GetPtr (&(memptr)temp,size);
+	printf("VL_MungePic");
+	printf("====================================\n");
+	printf("%Fp\n%Fp\n%Fp\n", &(memptr)temp, (memptr)temp, temp);
+	printf("=============================================\n");
 #ifdef __WATCOMC__
-	//return;
+	return;
 #endif
 	_fmemcpy (temp,source,size);
 

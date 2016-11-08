@@ -1,3 +1,4 @@
 src/id_vh.c(211): Warning! W120: lvalue cast is not standard C
-src/id_vh.c(234): Warning! W120: lvalue cast is not standard C
-src/id_vh.c(386): Warning! W131: No prototype found for function 'VH_UpdateScreen'
+src/id_vh.c(214): Warning! W120: lvalue cast is not standard C
+src/id_vh.c(238): Warning! W120: lvalue cast is not standard C
+src/id_vh.c(390): Warning! W131: No prototype found for function 'VH_UpdateScreen'
