@@ -377,7 +377,7 @@ void LoadLatchMem (void)
 
 /*
 ===================
-=
+=                                               
 = FizzleFade
 =
 = returns true if aborted

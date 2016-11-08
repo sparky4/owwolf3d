@@ -123,7 +123,7 @@ wolfass.$(OBJ)#lib
 EXEC = &
 	wolf3d.exe
 
-all: $(EXEC)#test.exe
+all: $(EXEC) sega.exe#test.exe
 
 #
 # game executables
@@ -140,6 +140,7 @@ test.exe:	test.$(OBJ) $(TESTOBJS)
 #
 wolf3d.$(OBJ):	$(SRC)/wolf3d.c
 test.$(OBJ):	test.c
+sega.$(OBJ):	sega.c
 
 #
 # non executable objects libraries

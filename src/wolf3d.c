@@ -738,22 +738,22 @@ void SignonScreen (void)                        // VGA version
 
 	if (!virtualreality)
 	{
-		VW_SetScreen(0x8000,0);
-#ifndef __WATCOMC__
-		VL_MungePic (&introscn,320,200);
-#else
+		VW_SetScreen(0x8000);//,0);
+//#ifndef __WATCOMC__
+		VL_MungePic (&signon,320,200);
+//#else
 		printf("VL_MungePic breaks\n");
-#endif
-		VL_MemToScreen (&introscn,320,200,0,0);
-		VW_SetScreen(0,0);
+//#endif
+		VL_MemToScreen (&signon,320,200,0,0);
+		VW_SetScreen(0);//,0);
 	}
 
 //
 // reclaim the memory from the linked in signon screen
 //
-	segstart = FP_SEG(&introscn);
+	segstart = FP_SEG(&signon);
 	seglength = 64000/16;
-	if (FP_OFF(&introscn))
+	if (FP_OFF(&signon))
 	{
 		segstart++;
 		seglength--;

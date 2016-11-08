@@ -37,7 +37,7 @@ byte		far	palette1[256][3],far palette2[256][3];
 
 int	 VL_VideoID (void);
 void VL_SetCRTC (int crtc);
-void VL_SetScreen (unsigned int crtc, int pelpan);
+void VL_SetScreen (unsigned int crtc);//, int pelpan);
 void VL_WaitVBL (int vbls);
 
 //===========================================================================
@@ -1150,6 +1150,19 @@ void VGAREADMAP(byte x)
 
 }
 
-
+void	VL_SetScreen (unsigned int crtc)//, int pelpan)
+{
+	__asm {
+		cli
+		mov	ax,crtc//[word ptr crtc]
+		mov	dx,0x3d4
+		mov	al,0x0c
+		out	dx,al
+		inc	dx
+		mov	al,ah
+		out	dx,al
+		sti
+	}
+}
 
 
