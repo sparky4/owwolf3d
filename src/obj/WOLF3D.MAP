@@ -31,7 +31,7 @@
  1D0C6H 1D10AH 00045H ID_US_A_TEXT       CODE
  1D10BH 1DCFDH 00BF3H ID_US_1_TEXT       CODE
  1DCFEH 1E90BH 00C0EH ID_VL_TEXT         CODE
- 1E90CH 1F22EH 00923H ID_VH_TEXT         CODE
+ 1E90CH 1F22FH 00924H ID_VH_TEXT         CODE
  1F230H 1F406H 001D7H ID_VL_A_TEXT       CODE
  1F408H 1F5FDH 001F6H ID_VH_A_TEXT       CODE
  1F600H 21D76H 02777H EMU_PROG           CODE
@@ -234,7 +234,7 @@ Detailed map of segments
  1D0C:0006 0045 C=CODE   S=ID_US_A_TEXT   G=(none)  M=ID_US_A.ASM ACBP=48
  1D10:000B 0BF3 C=CODE   S=ID_US_1_TEXT   G=(none)  M=ID_US_1.C  ACBP=28
  1DCF:000E 0C0E C=CODE   S=ID_VL_TEXT     G=(none)  M=ID_VL.C    ACBP=28
- 1E90:000C 0923 C=CODE   S=ID_VH_TEXT     G=(none)  M=ID_VH.C    ACBP=28
+ 1E90:000C 0924 C=CODE   S=ID_VH_TEXT     G=(none)  M=ID_VH.C    ACBP=28
  1F23:0000 01D7 C=CODE   S=ID_VL_A_TEXT   G=(none)  M=ID_VL_A.ASM ACBP=48
  1F40:0008 01F6 C=CODE   S=ID_VH_A_TEXT   G=(none)  M=ID_VH_A.ASM ACBP=48
  1F60:0000 0000 C=CODE   S=EMU_PROG       G=(none)  M=FPINIT     ACBP=68
@@ -887,7 +887,7 @@ Detailed map of segments
  0437:0000 idle  _FixedMul
  0F61:0FD1       _FixOfs
  06B3:2662 idle  _FixupCustom
- 1E90:07E3       _FizzleFade
+ 1E90:07E4       _FizzleFade
  3B90:A07A       _fizzlein
  0000:33A7       _flushall
  3B90:964C       _focallength
@@ -1012,7 +1012,7 @@ Detailed map of segments
  3B90:86EC       _laststatobj
  3B90:D784       _lasttilehit
  3B90:9C9E       _lasttimecount
- 1E90:0669       _LatchDrawPic
+ 1E90:066A       _LatchDrawPic
  12D5:02BB idle  _LatchNumber
  3B90:A084       _latchpics
  3B90:9C3E       _layoutdone
@@ -1027,7 +1027,7 @@ Detailed map of segments
  3B90:DB99       _linescale
  3B90:ED59       _linewidth
  3B90:9935       _loadedgame
- 1E90:06C6       _LoadLatchMem
+ 1E90:06C7       _LoadLatchMem
  0471:0869       _LoadTheGame
  3B90:EA91       _LocalTime
  0000:15E8       _lseek
@@ -1878,21 +1878,21 @@ Detailed map of segments
  1DCF:061A       _VL_Vlin
  1F23:0000       _VL_WaitVBL
  0000:3F53 idle  _vsprintf
- 1E90:0590       _VWB_Bar
- 1E90:04E8       _VWB_DrawPic
- 1E90:0557       _VWB_DrawPropString
- 1E90:0459       _VWB_DrawTile8
- 1E90:04A1 idle  _VWB_DrawTile8M
- 1E90:05F7       _VWB_Hlin
- 1E90:05CC       _VWB_Plot
- 1E90:062B       _VWB_Vlin
- 1E90:0307 idle  _VWL_MeasureString
+ 1E90:0591       _VWB_Bar
+ 1E90:04E9       _VWB_DrawPic
+ 1E90:0558       _VWB_DrawPropString
+ 1E90:045A       _VWB_DrawTile8
+ 1E90:04A2 idle  _VWB_DrawTile8M
+ 1E90:05F8       _VWB_Hlin
+ 1E90:05CD       _VWB_Plot
+ 1E90:062C       _VWB_Vlin
+ 1E90:0308 idle  _VWL_MeasureString
  1E90:0124 idle  _VW_DrawColorPropString
  1E90:000C idle  _VW_DrawPropString
- 1E90:038B       _VW_MarkUpdateBlock
- 1E90:0369 idle  _VW_MeasureMPropString
- 1E90:0347       _VW_MeasurePropString
- 1E90:065F       _VW_UpdateScreen
+ 1E90:038C       _VW_MarkUpdateBlock
+ 1E90:036A idle  _VW_MeasureMPropString
+ 1E90:0348       _VW_MeasurePropString
+ 1E90:0660       _VW_UpdateScreen
  06B3:3C33 idle  _WaitKeyUp
  3B90:4DFE       _wallheight
  0F61:0FF4 idle  _WallRefresh
@@ -2761,22 +2761,22 @@ Detailed map of segments
  1E90:000C idle  _VW_DrawPropString
  1E90:0124 idle  _VW_DrawColorPropString
  1E90:0244       _VL_MungePic
- 1E90:0307 idle  _VWL_MeasureString
- 1E90:0347       _VW_MeasurePropString
- 1E90:0369 idle  _VW_MeasureMPropString
- 1E90:038B       _VW_MarkUpdateBlock
- 1E90:0459       _VWB_DrawTile8
- 1E90:04A1 idle  _VWB_DrawTile8M
- 1E90:04E8       _VWB_DrawPic
- 1E90:0557       _VWB_DrawPropString
- 1E90:0590       _VWB_Bar
- 1E90:05CC       _VWB_Plot
- 1E90:05F7       _VWB_Hlin
- 1E90:062B       _VWB_Vlin
- 1E90:065F       _VW_UpdateScreen
- 1E90:0669       _LatchDrawPic
- 1E90:06C6       _LoadLatchMem
- 1E90:07E3       _FizzleFade
+ 1E90:0308 idle  _VWL_MeasureString
+ 1E90:0348       _VW_MeasurePropString
+ 1E90:036A idle  _VW_MeasureMPropString
+ 1E90:038C       _VW_MarkUpdateBlock
+ 1E90:045A       _VWB_DrawTile8
+ 1E90:04A2 idle  _VWB_DrawTile8M
+ 1E90:04E9       _VWB_DrawPic
+ 1E90:0558       _VWB_DrawPropString
+ 1E90:0591       _VWB_Bar
+ 1E90:05CD       _VWB_Plot
+ 1E90:05F8       _VWB_Hlin
+ 1E90:062C       _VWB_Vlin
+ 1E90:0660       _VW_UpdateScreen
+ 1E90:066A       _LatchDrawPic
+ 1E90:06C7       _LoadLatchMem
+ 1E90:07E4       _FizzleFade
  1F23:0000       _VL_WaitVBL
  1F23:0017 idle  _VL_SetCRTC
  1F23:006B       _VL_VideoID

@@ -14,7 +14,7 @@
         Wolf3d Shareware v1.4                     - define UPLOAD
         Wolf3d Full v1.4 Apogee (with ReadThis)   - define none
         Spear of Destiny Full                     - define SPEAR (and GOODTIMES for no FormGen quiz)
-       
+
         Spear Demo, Wolf3d Full v1.1 and Shareware v1.0-1.1    - can be added by the user
 */
 
@@ -34,7 +34,7 @@
 #include <mem.h>
 
 #include "FOREIGN.H"
-        
+
 #ifndef SPEAR
         #include "audiowl6.h"
 #ifdef UPLOAD
@@ -1405,14 +1405,14 @@ byte my_inp(int port);
 
 #define inp(a) my_inp(a)
 
-extern "C"
-{
-        void US_InitRndT(int randomize);
+//extern "C"
+//{
+        void US_InitRndT(char randomize);
         #pragma aux US_InitRndT parm [EAX] modify exact [ax cx edx]
 
         int US_RndT();
         #pragma aux US_RndT value [EAX] modify exact [eax ebx]
-}
+//}
 
 
 extern byte fontcolor,backcolor;

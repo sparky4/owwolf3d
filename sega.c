@@ -36,6 +36,7 @@ void main()
 	//printf("%Fp:	%d\n", x, value);
 	x = (int _seg *)0x40;
 	value = *(x + 20);
+	printf("%Fp:	*x\n", *x);
 	printf("%Fp:	%d\n", x, value);
 	printf("0x40:0x28\n");
 }

@@ -1,92 +1,59 @@
 // ID_VH.C
 
-#include "ID_HEADS.H"
+#include "wl_def.h"
 
-#define	SCREENWIDTH		80
-#define CHARWIDTH		2
-#define TILEWIDTH		4
-#define GRPLANES		4
-#define BYTEPIXELS		4
+#define SCREENWIDTH             80
+#define CHARWIDTH               2
+#define TILEWIDTH               4
+#define GRPLANES                4
+#define BYTEPIXELS              4
 
-#define SCREENXMASK		(~3)
-#define SCREENXPLUS		(3)
-#define SCREENXDIV		(4)
+#define SCREENXMASK             (~3)
+#define SCREENXPLUS             (3)
+#define SCREENXDIV              (4)
 
-#define VIEWWIDTH		80
+#define VIEWWIDTH               80
 
-#define PIXTOBLOCK		4		// 16 pixels to an update block
+#define PIXTOBLOCK              4               // 16 pixels to an update block
 
-#define UNCACHEGRCHUNK(chunk)	{MM_FreePtr(&grsegs[chunk]);grneeded[chunk]&=~ca_levelbit;}
-
-byte	update[UPDATEHIGH][UPDATEWIDE];
+byte    update[UPDATEHIGH][UPDATEWIDE];
 
 //==========================================================================
 
-pictabletype	_seg *pictable;
+pictabletype    *pictable;
 
-
-int	px,py;
-byte	fontcolor,backcolor;
-int	fontnumber;
+int     px,py;
+byte    fontcolor,backcolor;
+int     fontnumber;
 int bufferwidth,bufferheight;
 
-
 //==========================================================================
 
-void	VWL_UpdateScreenBlocks (void);
-
-//==========================================================================
-
-void VW_DrawPropString (char far *string)
+void VW_DrawPropString (char *string)
 {
-	fontstruct	far	*font;
-	int		width,step,height,i;
-	byte	far *source, far *dest, far *origdest;
-	byte	ch,mask;
+	fontstruct *font;
+	int             width,step,height;
+	byte    *source, *dest, *origdest;
+	byte    ch,mask;
 
-	font = (fontstruct far *)grsegs[STARTFONT+fontnumber];
+	font = (fontstruct *)grsegs[STARTFONT+fontnumber];
 	height = bufferheight = font->height;
-	dest = origdest = MK_FP(SCREENSEG,bufferofs+ylookup[py]+(px>>2));
+	dest = origdest = vbuf+py*80+(px>>2);
 	mask = 1<<(px&3);
 
 
 	while ((ch = *string++)!=0)
 	{
 		width = step = font->width[ch];
-		source = ((byte far *)font)+font->location[ch];
+		source = ((byte *)font)+font->location[ch];
 		while (width--)
 		{
 			VGAMAPMASK(mask);
-			__asm {
-				mov	ah,[BYTE PTR fontcolor]
-				mov	bx,[step]
-				mov	cx,[height]
-				mov	dx,[linewidth]
-				lds	si,[source]
-				les	di,[dest]
-#ifdef __BORLANDC__
-			}
-#endif
-vertloop:
-#ifdef __BORLANDC__
-			__asm {
-#endif
-				mov	al,[si]
-				or	al,al
-				je	next
-				mov	[es:di],ah			// draw color
-#ifdef __BORLANDC__
-			}
-#endif
-next:
-#ifdef __BORLANDC__
-			__asm {
-#endif
-				add	si,bx
-				add	di,dx
-				loop	vertloop
-				mov	ax,ss
-				mov	ds,ax
+
+			for(int i=0;i<height;i++)
+			{
+				if(source[i*step])
+					dest[i*linewidth]=fontcolor;
 			}
 
 			source++;
@@ -99,93 +66,9 @@ next:
 			}
 		}
 	}
-bufferheight = height;
-bufferwidth = ((dest+1)-origdest)*4;
+	bufferheight = height;
+	bufferwidth = ((dest+1)-origdest)*4;
 }
-
-
-void VW_DrawColorPropString (char far *string)
-{
-	fontstruct	far	*font;
-	int		width,step,height,i;
-	byte	far *source, far *dest, far *origdest;
-	byte	ch,mask;
-
-	font = (fontstruct far *)grsegs[STARTFONT+fontnumber];
-	height = bufferheight = font->height;
-	dest = origdest = MK_FP(SCREENSEG,bufferofs+ylookup[py]+(px>>2));
-	mask = 1<<(px&3);
-
-
-	while ((ch = *string++)!=0)
-	{
-		width = step = font->width[ch];
-		source = ((byte far *)font)+font->location[ch];
-		while (width--)
-		{
-			VGAMAPMASK(mask);
-
-			__asm {
-				mov	ah,[BYTE PTR fontcolor]
-				mov	bx,[step]
-				mov	cx,[height]
-				mov	dx,[linewidth]
-				lds	si,[source]
-				les	di,[dest]
-#ifdef __BORLANDC__
-			}
-#endif
-vertloop:
-#ifdef __BORLANDC__
-			__asm {
-#endif
-				mov	al,[si]
-				or	al,al
-				je	next
-				mov	[es:di],ah			// draw color
-#ifdef __BORLANDC__
-			}
-#endif
-next:
-#ifdef __BORLANDC__
-			__asm {
-#endif
-				add	si,bx
-				add	di,dx
-
-				rcr cx,1				// inc font color
-				jc  cont
-				inc ah
-#ifdef __BORLANDC__
-			}
-#endif
-cont:
-#ifdef __BORLANDC__
-			__asm {
-#endif
-				rcl cx,1
-				loop	vertloop
-				mov	ax,ss
-				mov	ds,ax
-			}
-
-			source++;
-			px++;
-			mask <<= 1;
-			if (mask == 16)
-			{
-				mask = 1;
-				dest++;
-			}
-		}
-	}
-bufferheight = height;
-bufferwidth = ((dest+1)-origdest)*4;
-}
-
-
-//==========================================================================
-
 
 /*
 =================
@@ -195,24 +78,21 @@ bufferwidth = ((dest+1)-origdest)*4;
 =================
 */
 
-void VL_MungePic (byte far *source, unsigned width, unsigned height)
+void VL_MungePic (byte *source, unsigned width, unsigned height)
 {
-	unsigned	x,y,plane,size,pwidth;
-	byte		far *dest, far *srcline, _seg *temp;
+	unsigned x,y,plane,size,pwidth;
+	byte *temp, *dest, *srcline;
 
 	size = width*height;
 
 	if (width&3)
-		MS_Quit ("VL_MungePic: Not divisable by 4!");
+		Quit ("VL_MungePic: Not divisable by 4!");
 
 //
 // copy the pic to a temp buffer
 //
-	MM_GetPtr (&(memptr)temp,size);
-#ifdef __WATCOMC__
-	//return;
-#endif
-	_fmemcpy (temp,source,size);
+	temp=(byte *) malloc(size);
+	memcpy (temp,source,size);
 
 //
 // munge it back into the original buffer
@@ -231,28 +111,20 @@ void VL_MungePic (byte far *source, unsigned width, unsigned height)
 		}
 	}
 
-	MM_FreePtr (&(memptr)temp);
+	free(temp);
 }
 
-void VWL_MeasureString (char far *string, word *width, word *height
-	, fontstruct _seg *font)
+void VWL_MeasureString (char *string, word *width, word *height, fontstruct *font)
 {
 	*height = font->height;
 	for (*width = 0;*string;string++)
-		*width += font->width[*((byte far *)string)];	// proportional width
+		*width += font->width[*((byte *)string)];       // proportional width
 }
 
-void	VW_MeasurePropString (char far *string, word *width, word *height)
+void    VW_MeasurePropString (char *string, word *width, word *height)
 {
-	VWL_MeasureString(string,width,height,(fontstruct _seg *)grsegs[STARTFONT+fontnumber]);
+	VWL_MeasureString(string,width,height,(fontstruct *)grsegs[STARTFONT+fontnumber]);
 }
-
-void	VW_MeasureMPropString  (char far *string, word *width, word *height)
-{
-	VWL_MeasureString(string,width,height,(fontstruct _seg *)grsegs[STARTFONTM+fontnumber]);
-}
-
-
 
 /*
 =============================================================================
@@ -262,6 +134,31 @@ void	VW_MeasureMPropString  (char far *string, word *width, word *height)
 =============================================================================
 */
 
+void VH_UpdateScreen()
+{
+	VGAMAPMASK(15);
+	VGAWRITEMODE(1);
+	byte *updateptr=(byte *) update;
+	for(int y=0;y<UPDATEHIGH;y++)
+	{
+		for(int x=0;x<UPDATEWIDE;x++,updateptr++)
+		{
+			if(*updateptr)
+			{
+				*updateptr=0;
+				int offs=y*16*SCREENWIDTH+x*TILEWIDTH;
+				for(int i=0;i<16;i++,offs+=linewidth)
+				{
+					*(vdisp+offs)=*(vbuf+offs);
+					*(vdisp+offs+1)=*(vbuf+offs+1);
+					*(vdisp+offs+2)=*(vbuf+offs+2);
+					*(vdisp+offs+3)=*(vbuf+offs+3);
+				}
+			}
+		}
+	}
+	VGAWRITEMODE(0);
+}
 
 /*
 =======================
@@ -276,7 +173,7 @@ void	VW_MeasureMPropString  (char far *string, word *width, word *height)
 
 int VW_MarkUpdateBlock (int x1, int y1, int x2, int y2)
 {
-	int	x,y,xt1,yt1,xt2,yt2,nextline;
+	int     x,y,xt1,yt1,xt2,yt2,nextline;
 	byte *mark;
 
 	xt1 = x1>>PIXTOBLOCK;
@@ -305,13 +202,13 @@ int VW_MarkUpdateBlock (int x1, int y1, int x2, int y2)
 	else if (yt2>=UPDATEHIGH)
 		yt2 = UPDATEHIGH-1;
 
-	mark = updateptr + uwidthtable[yt1] + xt1;
+	mark = (byte *) update + yt1*UPDATEWIDE + xt1;
 	nextline = UPDATEWIDE - (xt2-xt1) - 1;
 
 	for (y=yt1;y<=yt2;y++)
 	{
 		for (x=xt1;x<=xt2;x++)
-			*mark++ = 1;			// this tile will need to be updated
+			*mark++ = 1;                    // this tile will need to be updated
 
 		mark += nextline;
 	}
@@ -328,13 +225,12 @@ void VWB_DrawTile8 (int x, int y, int tile)
 void VWB_DrawTile8M (int x, int y, int tile)
 {
 	if (VW_MarkUpdateBlock (x,y,x+7,y+7))
-		VL_MemToScreen (((byte far *)grsegs[STARTTILE8M])+tile*64,8,8,x,y);
+		VL_MemToScreen (((byte *)grsegs[STARTTILE8M])+tile*64,8,8,x,y);
 }
-
 
 void VWB_DrawPic (int x, int y, int chunknum)
 {
-	int	picnum = chunknum - STARTPICS;
+	int     picnum = chunknum - STARTPICS;
 	unsigned width,height;
 
 	x &= ~7;
@@ -346,16 +242,13 @@ void VWB_DrawPic (int x, int y, int chunknum)
 		VL_MemToScreen (grsegs[chunknum],width,height,x,y);
 }
 
-
-
-void VWB_DrawPropString	 (char far *string)
+void VWB_DrawPropString  (char *string)
 {
 	int x;
 	x=px;
 	VW_DrawPropString (string);
 	VW_MarkUpdateBlock(x,py,px-1,py+bufferheight-1);
 }
-
 
 void VWB_Bar (int x, int y, int width, int height, int color)
 {
@@ -379,11 +272,6 @@ void VWB_Vlin (int y1, int y2, int x, int color)
 {
 	if (VW_MarkUpdateBlock (x,y1,x,y2))
 		VW_Vlin(y1,y2,x,color);
-}
-
-void VW_UpdateScreen (void)
-{
-	VH_UpdateScreen ();
 }
 
 
@@ -427,16 +315,16 @@ void LatchDrawPic (unsigned x, unsigned y, unsigned picnum)
 
 void LoadLatchMem (void)
 {
-	int	i,j,p,m,width,height,start,end;
-	byte	far *src;
-	unsigned	destoff;
+	int     i,width,height,start,end;
+	byte    *src;
+	unsigned destoff;
 
 //
 // tile 8s
 //
 	latchpics[0] = freelatch;
 	CA_CacheGrChunk (STARTTILE8);
-	src = (byte _seg *)grsegs[STARTTILE8];
+	src = grsegs[STARTTILE8];
 	destoff = freelatch;
 
 	for (i=0;i<NUMTILE8;i++)
@@ -447,7 +335,7 @@ void LoadLatchMem (void)
 	}
 	UNCACHEGRCHUNK (STARTTILE8);
 
-#if 0	// ran out of latch space!
+#if 0   // ran out of latch space!
 //
 // tile 16s
 //
@@ -489,7 +377,7 @@ void LoadLatchMem (void)
 
 /*
 ===================
-=
+=                                               
 = FizzleFade
 =
 = returns true if aborted
@@ -497,88 +385,77 @@ void LoadLatchMem (void)
 ===================
 */
 
-extern	ControlInfo	c;
 
-boolean FizzleFade (unsigned source, unsigned dest,
-	unsigned width,unsigned height, unsigned frames, boolean abortable)
+boolean FizzleFade (unsigned source, unsigned dest,     unsigned width,
+		unsigned height, unsigned frames, boolean abortable)
 {
-	int			pixperframe;
-	unsigned	drawofs,pagedelta;
-	byte 		mask,maskb[8] = {1,2,4,8};
-	unsigned	x,y,p,frame;
-	long		rndval;
+	int                     pixperframe;
+	unsigned drawofs,pagedelta;
+	byte            mask;
+	unsigned x,y,p,frame;
+	long            rndval;
 
 	pagedelta = dest-source;
 	rndval = 1;
+	x = 0;
 	y = 0;
 	pixperframe = 64000/frames;
 
 	IN_StartAck ();
 
 	TimeCount=frame=0;
-	do	// while (1)
+	do
 	{
 		if (abortable && IN_CheckAck () )
 			return true;
-
-		__asm mov	es,[screenseg]
 
 		for (p=0;p<pixperframe;p++)
 		{
 			//
 			// seperate random value into x/y pair
 			//
-			__asm {
-				mov	ax,[WORD PTR rndval]
-				mov	dx,[WORD PTR rndval+2]
-				mov	bx,ax
-				dec	bl
-				mov	[BYTE PTR y],bl			// low 8 bits - 1 = y xoordinate
-				mov	bx,ax
-				mov	cx,dx
-				mov	[BYTE PTR x],ah			// next 9 bits = x xoordinate
-				mov	[BYTE PTR x+1],dl
+			/****
+			_asm {
+					mov     ax,[WORD PTR rndval]
+					mov     dx,[WORD PTR rndval+2]
+					mov     ebx,eax
+					dec     bl
+					mov     [BYTE PTR y],bl                 // low 8 bits - 1 = y xoordinate
+					mov     ebx,eax
+					mov     ecx,edx
+					mov     [BYTE PTR x],ah                 // next 9 bits = x xoordinate
+					mov     [BYTE PTR x+1],dl
 			//
 			// advance to next random element
 			//
-				shr	dx,1
-				rcr	ax,1
-				jnc	noxor
-				xor	dx,0x0001
-				xor	ax,0x2000
-#ifdef __BORLANDC__
-			}
-#endif
+					shr     dx,1
+					rcr     ax,1
+					jnc     noxor
+					xor     edx,0x0001
+					xor     eax,0x2000
 noxor:
-#ifdef __BORLANDC__
-			__asm {
-#endif
-				mov	[WORD PTR rndval],ax
-				mov	[WORD PTR rndval+2],dx
+					mov     [WORD PTR rndval],ax
+					mov     [WORD PTR rndval+2],dx
 			}
+    ***/
 			if (x>width || y>height)
 				continue;
-			drawofs = source+ylookup[y] + (x>>2);
+			drawofs = source + y*80 + (x>>2);
 
 			//
 			// copy one pixel
 			//
-			mask = x&3;
+			mask = (byte) x&3;
 			VGAREADMAP(mask);
-			mask = maskb[mask];
-			VGAMAPMASK(mask);
-			__asm {
-				mov	di,[drawofs]
-				mov	al,[es:di]
-				add	di,[pagedelta]
-				mov	[es:di],al
-			}
+			VGAMAPMASK(1<<mask);
 
-			if (rndval == 1)		// entire sequence has been completed
+			*(byte *)(0xa0000+drawofs+pagedelta)=*(byte *)(0xa0000+drawofs);
+
+			if (rndval == 1)                // entire sequence has been completed
 				return false;
 		}
 		frame++;
-		while (TimeCount<frame)		// don't go too fast
-		{}
+		while (TimeCount<frame)         // don't go too fast
+		;
 	} while (1);
 }
