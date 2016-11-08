@@ -117,4 +117,5 @@ typedef long fixed;
 
 #define _argv __argv
 #define _argc __argc
+#define BAKAPEEQUIT 	getch(); VL_SetTextMode (); printf("\n_fmemcpy() and VW_Startup breaks. I do not know how to fix this.\n"); MM_Shutdown (); exit(1);
 #endif
