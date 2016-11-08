@@ -1,6 +1,7 @@
 #include <stdio.h>
 #ifdef __WATCOMC__
 //#include "type.h"
+//#define _seg __segment// __based( void )
 #define _seg __based( void )
 #endif
 
@@ -27,16 +28,32 @@
     You can find a more detailed description of _seg in the Borland C++
     Programmer's Guide, Chapter 9.
 */
+/*
+	__segment screen;
+	char __based( void ) * scrptr;
+
+	screen = 0xB800;
+	scrptr = 0;
+	printf( "Top left character is '%c'.\n", *(screen:>scrptr) );
+*/
+//_seg *x;
 
 void main()
 {
 	int _seg *x;
+#ifdef __WATCOMC__
+	__segment y;
+#endif
 	int value;
 
 	//printf("%Fp:	%d\n", x, value);
 	x = (int _seg *)0x40;
 	value = *(x + 20);
-	printf("%Fp:	*x\n", *x);
-	printf("%Fp:	%d\n", x, value);
+#ifdef __WATCOMC__
+	//printf("%Fp:	*y\n", *y);
+	printf("%Fp:	y\n", &y);
+#endif
+	printf("%Fp:	*x\n", *(x));
+	printf("%Fp:	x =%d\n", x, value);
 	printf("0x40:0x28\n");
 }
