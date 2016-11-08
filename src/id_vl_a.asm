@@ -118,107 +118,107 @@ ENDP
 ;
 ;==============
 
-PROC	VL_SetScreen  crtc:WORD, pel:WORD
-PUBLIC	VL_SetScreen
-
-
-	mov	cx,[timecount]		; if timecount goes up by two, the retrace
-	add	cx,2				; period was missed (an interrupt covered it)
-
-	mov	dx,STATUS_REGISTER_1
-
+; PROC	VL_SetScreen  crtc:WORD, pel:WORD
+; PUBLIC	VL_SetScreen
 ;
-; wait for a display signal to make sure the raster isn't in the middle
-; of a sync
 ;
-@@waitdisplay:
-	in	al,dx
-	test	al,1	;1 = display is disabled (HBL / VBL)
-	jnz	@@waitdisplay
-
-
-@@loop:
-	sti
-	jmp	$+2
-	cli
-
-	cmp	[timecount],cx		; will only happen if an interrupt is
-	jae	@@setcrtc			; straddling the entire retrace period
-
+; 	mov	cx,[timecount]		; if timecount goes up by two, the retrace
+; 	add	cx,2				; period was missed (an interrupt covered it)
 ;
-; when several succesive display not enableds occur,
-; the bottom of the screen has been hit
+; 	mov	dx,STATUS_REGISTER_1
 ;
-
-	in	al,dx
-	test	al,8
-	jnz	@@waitdisplay
-	test	al,1
-	jz	@@loop
-
-	in	al,dx
-	test	al,8
-	jnz	@@waitdisplay
-	test	al,1
-	jz	@@loop
-
-	in	al,dx
-	test	al,8
-	jnz	@@waitdisplay
-	test	al,1
-	jz	@@loop
-
-	in	al,dx
-	test	al,8
-	jnz	@@waitdisplay
-	test	al,1
-	jz	@@loop
-
-	in	al,dx
-	test	al,8
-	jnz	@@waitdisplay
-	test	al,1
-	jz	@@loop
-
-
-@@setcrtc:
-
-
+; ;
+; ; wait for a display signal to make sure the raster isn't in the middle
+; ; of a sync
+; ;
+; @@waitdisplay:
+; 	in	al,dx
+; 	test	al,1	;1 = display is disabled (HBL / VBL)
+; 	jnz	@@waitdisplay
 ;
-; set CRTC start
 ;
-; for some reason, my XT's EGA card doesn't like word outs to the CRTC
-; index...
+; @@loop:
+; 	sti
+; 	jmp	$+2
+; 	cli
 ;
-	mov	cx,[crtc]
-	mov	dx,CRTC_INDEX
-	mov	al,0ch		;start address high register
-	out	dx,al
-	inc	dx
-	mov	al,ch
-	out	dx,al
-	dec	dx
-	mov	al,0dh		;start address low register
-	out	dx,al
-	mov	al,cl
-	inc	dx
-	out	dx,al
-
+; 	cmp	[timecount],cx		; will only happen if an interrupt is
+; 	jae	@@setcrtc			; straddling the entire retrace period
 ;
-; set horizontal panning
+; ;
+; ; when several succesive display not enableds occur,
+; ; the bottom of the screen has been hit
+; ;
 ;
-	mov	dx,ATR_INDEX
-	mov	al,ATR_PELPAN or 20h
-	out	dx,al
-	jmp	$+2
-	mov	al,[BYTE pel]		;pel pan value
-	out	dx,al
-
-	sti
-
-	ret
-
-ENDP
+; 	in	al,dx
+; 	test	al,8
+; 	jnz	@@waitdisplay
+; 	test	al,1
+; 	jz	@@loop
+;
+; 	in	al,dx
+; 	test	al,8
+; 	jnz	@@waitdisplay
+; 	test	al,1
+; 	jz	@@loop
+;
+; 	in	al,dx
+; 	test	al,8
+; 	jnz	@@waitdisplay
+; 	test	al,1
+; 	jz	@@loop
+;
+; 	in	al,dx
+; 	test	al,8
+; 	jnz	@@waitdisplay
+; 	test	al,1
+; 	jz	@@loop
+;
+; 	in	al,dx
+; 	test	al,8
+; 	jnz	@@waitdisplay
+; 	test	al,1
+; 	jz	@@loop
+;
+;
+; @@setcrtc:
+;
+;
+; ;
+; ; set CRTC start
+; ;
+; ; for some reason, my XT's EGA card doesn't like word outs to the CRTC
+; ; index...
+; ;
+; 	mov	cx,[crtc]
+; 	mov	dx,CRTC_INDEX
+; 	mov	al,0ch		;start address high register
+; 	out	dx,al
+; 	inc	dx
+; 	mov	al,ch
+; 	out	dx,al
+; 	dec	dx
+; 	mov	al,0dh		;start address low register
+; 	out	dx,al
+; 	mov	al,cl
+; 	inc	dx
+; 	out	dx,al
+;
+; ;
+; ; set horizontal panning
+; ;
+; 	mov	dx,ATR_INDEX
+; 	mov	al,ATR_PELPAN or 20h
+; 	out	dx,al
+; 	jmp	$+2
+; 	mov	al,[BYTE pel]		;pel pan value
+; 	out	dx,al
+;
+; 	sti
+;
+; 	ret
+;
+; ENDP
 
 
 ;===========================================================================

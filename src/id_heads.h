@@ -28,7 +28,7 @@
 
 extern	char		far signon;
 
-#define	introscn	signon
+//#define	introscn	signon
 
 #ifdef JAPAN
 #ifdef JAPDEMO

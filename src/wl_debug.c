@@ -155,7 +155,7 @@ void PicturePause (void)
 	}
 
 	VW_ColorBorder (1);
-	VW_SetScreen (0,0);
+	VW_SetScreen (0);//,0);
 //
 // vga stuff...
 //
