@@ -1,11 +1,101 @@
-WOLFOBJS = gamepal3.o id_ca.o id_in.o id_pm.o id_sd.o id_us_1.o id_vh.o id_vl.o signon.o wl_act1.o wl_act2.o wl_agent.o wl_debug.o wl_draw.o wl_game.o wl_inter.o wolfdx.o wl_menu.o wl_play.o wl_state.o wl_text.o
-#id_us_a.o
+#
+#	Open Watcom Wolfenstein 3D makefile
+#
+#
+# Possible optimizations for 8088 class processors
+#
+# -oa   Relax alias checking
+# -ob   Try to generate straight line code
+# -oe - expand user functions inline (-oe=20 is default, adds lots of code)
+# -oh   Enable repeated optimizations
+# -oi   generate certain lib funcs inline
+# -oi+  Set max inline depth (C++ only, use -oi for C)
+# -ok   Flowing of register save into function flow graph
+# -ol   loop optimizations
+# -ol+  loop optimizations plus unrolling
+# -or   Reorder for pipelined (486+ procs); not sure if good to use
+# -os   Favor space over time
+# -ot   Favor time over space
+# -ei   Allocate an "int" for all enum types
+# -zp2  Allow compiler to add padding to structs
+# -zpw  Use with above; make sure you are warning free!
+# -0    8088/8086 class code generation
+# -s    disable stack overflow checking
+
+# -zk0u	translate kanji to unicode... wwww
+# -zk0	kanji support~
+# -zkl		current codepage
+
+#192x144
+#wwww will add these
+!ifdef __LINUX__
+#!ifdef UNIX
+to_os_path=\=/
+REMOVECOMMAND=rm -f
+COPYCOMMAND=cp -f
+DIRSEP=/
+OBJ=obj
+DUMP=cat
+!else		#DOS ^^
+to_os_path=/=\
+REMOVECOMMAND=del
+COPYCOMMAND=copy /y
+DIRSEP=\
+OBJ=obj
+DUMP=type
+!endif
+
+TARGET_OS = dos
+
+BUILD_ROOT=$+$(%__CWD__)$-
+#DATADIR=data$(DIRSEP)
+
+
+SRC=
+
+
+#
+# quiet flags
+#
+WLIBQ=-q
+WCLQ=-q
+UPXQ=-qqq
+
+#
+# compile flags
+#
+S_FLAGS= -s
+#-sg -st -of+ -zdf -zff -zgf# -k16768# -zt=84
+# -zu
+Z_FLAGS=-zk0 -zc -zp8 -zm
+O_FLAGS=-obmilr -oe=24 -out -oh -ei -onac -ol+ -okf+
+T_FLAGS=-bt=dos -fpi87 -fo=.$(OBJ)
+#### -d2
+
+CPPFLAGS=-DTARGET_MSDOS=16 -DMSDOS=1
+AFLAGS=$(WCLQ) $(T_FLAGS)
+CFLAGS=$(WCLQ) $(T_FLAGS) -wo $(O_FLAGS) $(S_FLAGS) $(Z_FLAGS)
+LFLAGS=$(WCLQ) -l=dos -fm=$^&.txt $(S_FLAGS)
+LIBFLAGS=$(WLIBQ) -b -n
+
+#
+# objects
+#
+WOLFOBJS = id_in.$(OBJ) id_mm.$(OBJ) id_pm.$(OBJ) id_ca.$(OBJ) id_sd.$(OBJ) gamepal.$(OBJ) signon.$(OBJ) id_vl.$(OBJ) id_vh.$(OBJ) wl_scale.$(OBJ) id_us_1.$(OBJ) wl_debug.$(OBJ) wl_inter.$(OBJ) wl_agent.$(OBJ) wl_draw.$(OBJ) wl_menu.$(OBJ) wl_state.$(OBJ) wl_text.$(OBJ) wl_game.$(OBJ) wl_act1.$(OBJ) wl_act2.$(OBJ) wl_play.$(OBJ)
+#&
+#wolfass.$(OBJ)#lib
+#id_us_a.$(OBJ) id_sd_a.$(OBJ) id_sd_a.$(OBJ)
+
+#
+# libraries
+#
+
 #
 #	Files locations
 #
-.c : .
+.c : $(SRC)
 
-.asm : .
+#.asm : $(SRC)
 
 #.lib : .;$(DOSLIB_CPU)/dos86h;$(DOSLIB_DOS)/dos86h;$(DOSLIB_VGA)/dos86h;$(DOSLIB_8250)/dos86h
 
@@ -15,39 +105,125 @@ WOLFOBJS = gamepal3.o id_ca.o id_in.o id_pm.o id_sd.o id_us_1.o id_vh.o id_vl.o 
 #	Default make rules
 #
 .c.obj:
-	*wcc  -w4 -e25 -j -zp1 -zq -od -d2 -0 -bt=dos -mh $(extra_$^&_obj_opts) -c $[@
+	*wcl386 $(CPPFLAGS) $(CFLAGS) $(extra_$^&_obj_opts) -c $[@
 
 .asm.obj:
-	*wasm -zcm=tasm -mh -0 -w4 -e25 -zq $(extra_$^&_obj_opts) -c $[@
+	*wcl386 $(AFLAGS) $(extra_$^&_obj_opts) -c $[@
 
-id_us_a.o: id_us_a.asm# .AUTODEPEND
+#CFLAGS is neccessary here
+.obj.exe :
+	*wcl386 $(LFLAGS) $(extra_$^&_exe_opts)-fe=$@ $<
 
-gamepal3.o: gamepal3.c# .AUTODEPEND
-id_ca.o: id_ca.c# .AUTODEPEND
-id_in.o: id_in.c# .AUTODEPEND
-id_pm.o: id_pm.c# .AUTODEPEND
-id_sd.o: id_sd.c# .AUTODEPEND
-id_us_1.o: id_us_1.c# .AUTODEPEND
-id_vh.o: id_vh.c# .AUTODEPEND
-id_vl.o: id_vl.c# .AUTODEPEND
-signon.o: signon.c# .AUTODEPEND
-wl_act1.o: wl_act1.c# .AUTODEPEND
-wl_act2.o: wl_act2.c# .AUTODEPEND
-wl_agent.o: wl_agent.c# .AUTODEPEND
-wl_debug.o: wl_debug.c# .AUTODEPEND
-wl_draw.o: wl_draw.c# .AUTODEPEND
-wl_game.o: wl_game.c# .AUTODEPEND
-wl_inter.o: wl_inter.c# .AUTODEPEND
-wolfdx.o: wolfdx.c# .AUTODEPEND
-wl_menu.o: wl_menu.c# .AUTODEPEND
-wl_play.o: wl_play.c# .AUTODEPEND
-wl_state.o: wl_state.c# .AUTODEPEND
-wl_text.o: wl_text.c# .AUTODEPEND
+.obj.lib :
+	*wlib $(LIBFLAGS) $(extra_$^&_lib_opts) $@ $<
 
-all: wolfdx.exe
-wolfdx.exe: $(WOLFOBJS)
-	@%write wolfdx.lk1 FIL id_us_a.o,gamepal3d.o,id_ca.o,id_in.o,id_pm.o,id_sd.o,id_us_1.o,id_vh.o,id_vl.o,signon.o,wl_act1.o,wl_act2.o,wl_agent.o,wl_debug.o,wl_draw.o,wl_game.o,wl_inter.o,wl_main.o,wl_menu.o,wl_play.o,wl_state.o,wl_text.o
-	@%append wolf.lk1
-	*wlink name wolfdx d all SYS dos4g op inc op m op maxe=25 op q op symf
-	@wolfdx.lk1
+#
+# List of executables to build
+#
+EXEC = &
+	wolfdx.exe
 
+all: $(EXEC)
+
+#
+# game executables
+#
+wolfdx.exe:	wolfdx.$(OBJ) $(WOLFOBJS)
+
+#
+# Test Executables!
+#
+
+#
+# executable's objects
+#
+wolfdx.$(OBJ):	wolfdx.c
+
+#
+# non executable objects libraries
+#
+
+wolfass.lib: .symbolic
+	@if exist src/WOLFASS.LIB	cp src/WOLFASS.LIB ./wolfass.lib
+
+#gfx.lib: $(GFXLIBOBJS)
+#	*wlib $(LIBFLAGS) $(extra_$^&_lib_opts) $@ $<
+
+id_pm.$(OBJ):	id_pm.c
+id_mm.$(OBJ):	id_mm.c
+id_ca.$(OBJ):	id_ca.c
+id_vl.$(OBJ):	id_vl.c
+wl_inter.$(OBJ):	wl_inter.c
+wl_menu.$(OBJ):	wl_menu.c
+signon.$(OBJ):	signon.c
+gamepal.$(OBJ):	gamepal.c
+id_in.$(OBJ):	id_in.c
+id_sd.$(OBJ):	id_sd.c
+id_sd_a.$(OBJ):	id_sd_a.c
+id_us_1.$(OBJ):	id_us_1.c
+id_us_a.$(OBJ):	id_us_a.c
+id_vh.$(OBJ):	id_vh.c
+wl_act1.$(OBJ):	wl_act1.c
+wl_act2.$(OBJ):	wl_act2.c
+wl_agent.$(OBJ):	wl_agent.c
+wl_debug.$(OBJ):	wl_debug.c
+wl_draw.$(OBJ):	wl_draw.c
+wl_game.$(OBJ):	wl_game.c
+wl_play.$(OBJ):	wl_play.c
+wl_state.$(OBJ):	wl_state.c
+wl_text.$(OBJ):	wl_text.c
+wl_scale.$(OBJ):	wl_scale.c
+wolfass..$(OBJ):	wolfass..c
+#id_exter.$(OBJ):	id_exter.c
+#id_vl_a.$(OBJ):	id_vl_a.asm
+
+#
+#other~
+#
+clean: .symbolic
+	@for %f in ($(EXEC)) do @if exist %f $(REMOVECOMMAND) %f
+!ifdef __LINUX__
+	@rm *.LIB
+	@rm *.EXE
+	##@if exist src/obj/*.EXE	mv src/obj/*.EXE bcwolf.exe
+	####@if exist src/obj/*_A.OBJ	cp src/obj/*_A.OBJ src/
+!endif
+	@if exist *.obj $(REMOVECOMMAND) *.obj
+	@if exist *.OBJ $(REMOVECOMMAND) *.OBJ
+	@if exist *.LIB $(REMOVECOMMAND) *.LIB
+	@if exist *.lnk $(REMOVECOMMAND) *.lnk
+	@if exist *.LNK $(REMOVECOMMAND) *.LNK
+	@if exist *.smp $(REMOVECOMMAND) *.smp
+	@if exist *.SMP $(REMOVECOMMAND) *.SMP
+	@if exist *.hed $(REMOVECOMMAND) *.hed
+	@if exist *.mah $(REMOVECOMMAND) *.mah
+	@if exist *.MAH $(REMOVECOMMAND) *.MAH
+	@if exist *.err $(REMOVECOMMAND) *.err
+
+bomb: .symbolic
+!ifdef __LINUX__
+	@if exist src/obj/*.OBJ	$(REMOVECOMMAND) src/obj/*.OBJ
+!endif
+
+backupconfig: .symbolic
+	@$(COPYCOMMAND) .git$(DIRSEP)config git_con.fig
+	#@$(COPYCOMMAND) .gitmodules git_modu.les
+	@$(COPYCOMMAND) .gitignore git_igno.re
+
+comp: .symbolic
+	@*upx -9 $(EXEC)
+
+comq: .symbolic
+	@*upx -9 $(UPXQ) $(EXEC)
+
+vomitchan: .symbolic
+	@if exist *.err $(DUMP) *.err
+
+##
+##	External library management~ ^^
+##
+#git submodule add <repo>
+initlibs: .symbolic
+	@cp git_con.fig .git/config
+	@cp git_modu.les .gitmodules
+	@cp git_igno.re .gitignore

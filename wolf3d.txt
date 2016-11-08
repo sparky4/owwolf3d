@@ -1,7 +1,7 @@
 Open Watcom Linker Version 2.0 beta Oct 30 2016 15:04:21 (32-bit)
 Copyright (c) 2002-2016 The Open Watcom Contributors. All Rights Reserved.
 Portions Copyright (c) 1985-2002 Sybase, Inc. All Rights Reserved.
-Created on:       16/11/08 10:25:44
+Created on:       16/11/08 11:09:07
 Executable Image: wolf3d.exe
 creating a DOS executable
 
@@ -13,7 +13,7 @@ creating a DOS executable
 Group                           Address              Size
 =====                           =======              ====
 
-DGROUP                          39ce:0000            0000fc20
+DGROUP                          39d6:0000            0000fc20
 
 
 
@@ -61,7 +61,7 @@ IN_StartAck_TEXT       CODE           AUTO           0000:1910       0000007d
 IN_WaitForASCII_TEXT   CODE           AUTO           0000:1990       0000001b
 IN_WaitForKey_TEXT     CODE           AUTO           0000:19b0       00000019
 IN_SetControlType_TEXT CODE           AUTO           0000:19d0       00000016
-IN_ReadControl_TEXT    CODE           AUTO           0000:19f0       0000030e
+IN_ReadControl_TEXT    CODE           AUTO           0000:19f0       00000309
 IN_ClearKeysDown_TEXT  CODE           AUTO           0000:1d00       0000002c
 IN_SetKeyHook_TEXT     CODE           AUTO           0000:1d30       00000010
 IN_Shutdown_TEXT       CODE           AUTO           0000:1d40       0000004d
@@ -136,12 +136,12 @@ CA_ClearAllMarks_TEXT  CODE           AUTO           0000:4810       00000031
 CA_ClearMarks_TEXT     CODE           AUTO           0000:4850       00000031
 CA_DownLevel_TEXT      CODE           AUTO           0000:4890       00000027
 CA_UpLevel_TEXT        CODE           AUTO           0000:48c0       00000049
-CA_CacheMap_TEXT       CODE           AUTO           0000:4910       00000115
+CA_CacheMap_TEXT       CODE           AUTO           0000:4910       0000011e
 CA_CacheScreen_TEXT    CODE           AUTO           0000:4a30       000000b9
 CA_CacheGrChunk_TEXT   CODE           AUTO           0000:4af0       00000101
 CAL_ExpandGrChunk_TEXT CODE           AUTO           0000:4c00       00000099
 CA_LoadAllSounds_TEXT  CODE           AUTO           0000:4ca0       00000082
-CA_CacheAudioChunk_TEXT CODE          AUTO           0000:4d30       0000009a
+CA_CacheAudioChunk_TEXT CODE          AUTO           0000:4d30       0000009c
 CA_Shutdown_TEXT       CODE           AUTO           0000:4dd0       00000021
 CA_Startup_TEXT        CODE           AUTO           0000:4e00       0000002a
 CAL_SetupAudioFile_TEXT CODE          AUTO           0000:4e30       00000128
@@ -192,444 +192,444 @@ alOut_TEXT             CODE           AUTO           0000:6730       00000058
 SDL_SetupDigi_TEXT     CODE           AUTO           0000:6790       000000dc
 SD_SetDigiDevice_TEXT  CODE           AUTO           0000:6870       00000073
 SDL_DigitizedDone_TEXT CODE           AUTO           0000:68f0       00000066
-SD_PlayDigitized_TEXT  CODE           AUTO           0000:6960       000000aa
-SD_SetPosition_TEXT    CODE           AUTO           0000:6a10       00000049
-SD_Poll_TEXT           CODE           AUTO           0000:6a60       00000080
-SD_StopDigitized_TEXT  CODE           AUTO           0000:6ae0       0000009b
-SDL_PlayDigiSegment_TEXT CODE         AUTO           0000:6b80       00000074
-SDL_LoadDigiSegment_TEXT CODE         AUTO           0000:6c00       0000002b
-SDL_ShutPC_TEXT        CODE           AUTO           0000:6c30       00000025
-SDL_PCStopSound_TEXT   CODE           AUTO           0000:6c60       00000025
-SDL_PCPlaySound_TEXT   CODE           AUTO           0000:6c90       0000003c
-SDL_PCStopSample_TEXT  CODE           AUTO           0000:6cd0       0000002a
-SDL_PCPlaySample_TEXT  CODE           AUTO           0000:6d00       00000035
-SDL_DetectSoundSource_TEXT CODE       AUTO           0000:6d40       00000040
-SDL_CheckSS_TEXT       CODE           AUTO           0000:6d80       0000009d
-SDL_ShutSS_TEXT        CODE           AUTO           0000:6e20       00000000
-SDL_StartSS_TEXT       CODE           AUTO           0000:6e20       0000005c
-SDL_SSPlaySample_TEXT  CODE           AUTO           0000:6e80       00000000
-SDL_SSService_TEXT     CODE           AUTO           0000:6e80       00000000
-SDL_SSStopSample_TEXT  CODE           AUTO           0000:6e80       00000000
-SDL_ShutSB_TEXT        CODE           AUTO           0000:6e80       0000005c
-SDL_StartSB_TEXT       CODE           AUTO           0000:6ee0       00000133
-SDL_SBSetDMA_TEXT      CODE           AUTO           0000:7020       0000003f
-SDL_DetectSoundBlaster_TEXT CODE      AUTO           0000:7060       00000068
-SDL_CheckSB_TEXT       CODE           AUTO           0000:70d0       00000081
-SDL_PositionSBP_TEXT   CODE           AUTO           0000:7160       0000005e
-SDL_SBPlaySample_TEXT  CODE           AUTO           0000:71c0       000000a7
-SDL_SBService_TEXT     CODE           AUTO           0000:7270       00000099
-SDL_SBPlaySeg_TEXT     CODE           AUTO           0000:7310       0000013b
-SDL_SBStopSample_TEXT  CODE           AUTO           0000:7450       0000006e
-SDL_SetTimerSpeed_TEXT CODE           AUTO           0000:74c0       0000008a
-SDL_SetIntsPerSec_TEXT CODE           AUTO           0000:7550       00000000
-SDL_SetTimer0_TEXT     CODE           AUTO           0000:7550       0000004d
-gamepal_TEXT           CODE           AUTO           0000:75a0       00000000
-signon_TEXT            CODE           AUTO           0000:75a0       00000000
-id_vl_TEXT             CODE           AUTO           0000:75a0       00000000
-VL_SetScreen_TEXT      CODE           AUTO           0000:75a0       00000025
-VGAREADMAP_TEXT        CODE           AUTO           0000:75d0       00000028
-VGAWRITEMODE_TEXT      CODE           AUTO           0000:7600       0000002b
-VGAMAPMASK_TEXT        CODE           AUTO           0000:7630       00000028
-VL_SizeTile8String_TEXT CODE          AUTO           0000:7660       0000002e
-VL_DrawLatch8String_TEXT CODE         AUTO           0000:7690       000000b1
-VL_DrawTile8String_TEXT CODE          AUTO           0000:7750       00000110
-VL_ScreenToScreen_TEXT CODE           AUTO           0000:7860       00000057
-VL_LatchToScreen_TEXT  CODE           AUTO           0000:78c0       00000069
-VL_MaskedToScreen_TEXT CODE           AUTO           0000:7930       000000a0
-VL_MemToScreen_TEXT    CODE           AUTO           0000:79d0       000000a9
-VL_MemToLatch_TEXT     CODE           AUTO           0000:7a80       00000071
-VL_Bar_TEXT            CODE           AUTO           0000:7b00       000000e5
-VL_Vlin_TEXT           CODE           AUTO           0000:7bf0       00000056
-VL_Hlin_TEXT           CODE           AUTO           0000:7c50       000000b9
-VL_Plot_TEXT           CODE           AUTO           0000:7d10       00000046
-VL_ColorBorder_TEXT    CODE           AUTO           0000:7d60       00000030
-VL_TestPaletteSet_TEXT CODE           AUTO           0000:7d90       00000078
-VL_FadeIn_TEXT         CODE           AUTO           0000:7e10       000000dd
-VL_FadeOut_TEXT        CODE           AUTO           0000:7ef0       0000012d
-VL_GetPalette_TEXT     CODE           AUTO           0000:8020       0000002d
-VL_SetPalette_TEXT     CODE           AUTO           0000:8050       00000042
-VL_GetColor_TEXT       CODE           AUTO           0000:80a0       00000028
-VL_SetColor_TEXT       CODE           AUTO           0000:80d0       0000001d
-VL_FillPalette_TEXT    CODE           AUTO           0000:80f0       00000036
-VL_SetSplitScreen_TEXT CODE           AUTO           0000:8130       00000066
-VL_SetLineWidth_TEXT   CODE           AUTO           0000:81a0       0000003a
-VL_DePlaneVGA_TEXT     CODE           AUTO           0000:81e0       00000068
-VL_ClearVideo_TEXT     CODE           AUTO           0000:8250       0000003e
-VL_SetTextMode_TEXT    CODE           AUTO           0000:8290       0000001b
-VL_SetVGAPlaneMode_TEXT CODE          AUTO           0000:82b0       0000002e
-VL_Shutdown_TEXT       CODE           AUTO           0000:82e0       0000001b
-VL_Startup_TEXT        CODE           AUTO           0000:8300       0000005e
-id_vh_TEXT             CODE           AUTO           0000:8360       00000000
-FizzleFade_TEXT        CODE           AUTO           0000:8360       00000138
-LoadLatchMem_TEXT      CODE           AUTO           0000:84a0       000000fa
-LatchDrawPic_TEXT      CODE           AUTO           0000:85a0       0000004c
-VW_UpdateScreen_TEXT   CODE           AUTO           0000:85f0       00000010
-VWB_Vlin_TEXT          CODE           AUTO           0000:8600       00000044
-VWB_Hlin_TEXT          CODE           AUTO           0000:8650       00000046
-VWB_Plot_TEXT          CODE           AUTO           0000:86a0       0000003c
-VWB_Bar_TEXT           CODE           AUTO           0000:86e0       00000049
-VWB_DrawPropString_TEXT CODE          AUTO           0000:8730       00000032
-VWB_DrawPic_TEXT       CODE           AUTO           0000:8770       00000074
+SD_PlayDigitized_TEXT  CODE           AUTO           0000:6960       000000b5
+SD_SetPosition_TEXT    CODE           AUTO           0000:6a20       00000049
+SD_Poll_TEXT           CODE           AUTO           0000:6a70       00000080
+SD_StopDigitized_TEXT  CODE           AUTO           0000:6af0       0000009b
+SDL_PlayDigiSegment_TEXT CODE         AUTO           0000:6b90       00000074
+SDL_LoadDigiSegment_TEXT CODE         AUTO           0000:6c10       0000002b
+SDL_ShutPC_TEXT        CODE           AUTO           0000:6c40       00000025
+SDL_PCStopSound_TEXT   CODE           AUTO           0000:6c70       00000025
+SDL_PCPlaySound_TEXT   CODE           AUTO           0000:6ca0       0000003c
+SDL_PCStopSample_TEXT  CODE           AUTO           0000:6ce0       0000002a
+SDL_PCPlaySample_TEXT  CODE           AUTO           0000:6d10       00000035
+SDL_DetectSoundSource_TEXT CODE       AUTO           0000:6d50       00000040
+SDL_CheckSS_TEXT       CODE           AUTO           0000:6d90       0000009d
+SDL_ShutSS_TEXT        CODE           AUTO           0000:6e30       00000000
+SDL_StartSS_TEXT       CODE           AUTO           0000:6e30       0000005c
+SDL_SSPlaySample_TEXT  CODE           AUTO           0000:6e90       00000000
+SDL_SSService_TEXT     CODE           AUTO           0000:6e90       00000000
+SDL_SSStopSample_TEXT  CODE           AUTO           0000:6e90       00000000
+SDL_ShutSB_TEXT        CODE           AUTO           0000:6e90       0000005c
+SDL_StartSB_TEXT       CODE           AUTO           0000:6ef0       00000133
+SDL_SBSetDMA_TEXT      CODE           AUTO           0000:7030       0000003f
+SDL_DetectSoundBlaster_TEXT CODE      AUTO           0000:7070       00000068
+SDL_CheckSB_TEXT       CODE           AUTO           0000:70e0       00000081
+SDL_PositionSBP_TEXT   CODE           AUTO           0000:7170       0000005e
+SDL_SBPlaySample_TEXT  CODE           AUTO           0000:71d0       000000a7
+SDL_SBService_TEXT     CODE           AUTO           0000:7280       00000099
+SDL_SBPlaySeg_TEXT     CODE           AUTO           0000:7320       0000013b
+SDL_SBStopSample_TEXT  CODE           AUTO           0000:7460       0000006e
+SDL_SetTimerSpeed_TEXT CODE           AUTO           0000:74d0       0000008a
+SDL_SetIntsPerSec_TEXT CODE           AUTO           0000:7560       00000000
+SDL_SetTimer0_TEXT     CODE           AUTO           0000:7560       0000004d
+gamepal_TEXT           CODE           AUTO           0000:75b0       00000000
+signon_TEXT            CODE           AUTO           0000:75b0       00000000
+id_vl_TEXT             CODE           AUTO           0000:75b0       00000000
+VL_SetScreen_TEXT      CODE           AUTO           0000:75b0       00000025
+VGAREADMAP_TEXT        CODE           AUTO           0000:75e0       00000028
+VGAWRITEMODE_TEXT      CODE           AUTO           0000:7610       0000002b
+VGAMAPMASK_TEXT        CODE           AUTO           0000:7640       00000028
+VL_SizeTile8String_TEXT CODE          AUTO           0000:7670       0000002e
+VL_DrawLatch8String_TEXT CODE         AUTO           0000:76a0       000000b1
+VL_DrawTile8String_TEXT CODE          AUTO           0000:7760       00000110
+VL_ScreenToScreen_TEXT CODE           AUTO           0000:7870       00000057
+VL_LatchToScreen_TEXT  CODE           AUTO           0000:78d0       00000069
+VL_MaskedToScreen_TEXT CODE           AUTO           0000:7940       000000a0
+VL_MemToScreen_TEXT    CODE           AUTO           0000:79e0       000000a9
+VL_MemToLatch_TEXT     CODE           AUTO           0000:7a90       00000071
+VL_Bar_TEXT            CODE           AUTO           0000:7b10       000000e5
+VL_Vlin_TEXT           CODE           AUTO           0000:7c00       00000056
+VL_Hlin_TEXT           CODE           AUTO           0000:7c60       000000b9
+VL_Plot_TEXT           CODE           AUTO           0000:7d20       00000046
+VL_ColorBorder_TEXT    CODE           AUTO           0000:7d70       00000030
+VL_TestPaletteSet_TEXT CODE           AUTO           0000:7da0       00000078
+VL_FadeIn_TEXT         CODE           AUTO           0000:7e20       000000dd
+VL_FadeOut_TEXT        CODE           AUTO           0000:7f00       0000012d
+VL_GetPalette_TEXT     CODE           AUTO           0000:8030       0000002d
+VL_SetPalette_TEXT     CODE           AUTO           0000:8060       00000042
+VL_GetColor_TEXT       CODE           AUTO           0000:80b0       00000028
+VL_SetColor_TEXT       CODE           AUTO           0000:80e0       0000001d
+VL_FillPalette_TEXT    CODE           AUTO           0000:8100       00000036
+VL_SetSplitScreen_TEXT CODE           AUTO           0000:8140       00000066
+VL_SetLineWidth_TEXT   CODE           AUTO           0000:81b0       0000003a
+VL_DePlaneVGA_TEXT     CODE           AUTO           0000:81f0       00000068
+VL_ClearVideo_TEXT     CODE           AUTO           0000:8260       0000003e
+VL_SetTextMode_TEXT    CODE           AUTO           0000:82a0       0000001b
+VL_SetVGAPlaneMode_TEXT CODE          AUTO           0000:82c0       0000002e
+VL_Shutdown_TEXT       CODE           AUTO           0000:82f0       0000001b
+VL_Startup_TEXT        CODE           AUTO           0000:8310       0000005e
+id_vh_TEXT             CODE           AUTO           0000:8370       00000000
+FizzleFade_TEXT        CODE           AUTO           0000:8370       00000138
+LoadLatchMem_TEXT      CODE           AUTO           0000:84b0       000000fa
+LatchDrawPic_TEXT      CODE           AUTO           0000:85b0       0000004d
+VW_UpdateScreen_TEXT   CODE           AUTO           0000:8600       00000010
+VWB_Vlin_TEXT          CODE           AUTO           0000:8610       00000044
+VWB_Hlin_TEXT          CODE           AUTO           0000:8660       00000046
+VWB_Plot_TEXT          CODE           AUTO           0000:86b0       0000003c
+VWB_Bar_TEXT           CODE           AUTO           0000:86f0       00000049
+VWB_DrawPropString_TEXT CODE          AUTO           0000:8740       00000032
+VWB_DrawPic_TEXT       CODE           AUTO           0000:8780       0000006f
 VWB_DrawTile8M_TEXT    CODE           AUTO           0000:87f0       00000051
 VWB_DrawTile8_TEXT     CODE           AUTO           0000:8850       00000051
 VW_MarkUpdateBlock_TEXT CODE          AUTO           0000:88b0       000000b3
 VW_MeasureMPropString_TEXT CODE       AUTO           0000:8970       0000001d
 VW_MeasurePropString_TEXT CODE        AUTO           0000:8990       0000001b
-VWL_MeasureString_TEXT CODE           AUTO           0000:89b0       0000004d
-VL_MungePic_TEXT       CODE           AUTO           0000:8a00       0000002d
-VW_DrawColorPropString_TEXT CODE      AUTO           0000:8a30       00000136
-VW_DrawPropString_TEXT CODE           AUTO           0000:8b70       0000012c
-wl_scale_TEXT          CODE           AUTO           0000:8ca0       00000000
-SimpleScaleShape_TEXT  CODE           AUTO           0000:8ca0       000003b4
-ScaleShape_TEXT        CODE           AUTO           0000:9060       0000093c
-ScaleLine_TEXT         CODE           AUTO           0000:99a0       00000157
-BuildCompScale_TEXT    CODE           AUTO           0000:9b00       0000016b
-SetupScaling_TEXT      CODE           AUTO           0000:9c70       00000189
-BadScale_TEXT          CODE           AUTO           0000:9e00       00000011
-id_us_1_TEXT           CODE           AUTO           0000:9e20       00000000
-US_LineInput_TEXT      CODE           AUTO           0000:9e20       000003b4
-USL_XORICursor_TEXT    CODE           AUTO           0000:a1e0       00000095
-US_RestoreWindow_TEXT  CODE           AUTO           0000:a280       00000031
-US_SaveWindow_TEXT     CODE           AUTO           0000:a2c0       00000033
-US_CenterWindow_TEXT   CODE           AUTO           0000:a300       0000002d
-US_DrawWindow_TEXT     CODE           AUTO           0000:a330       00000106
-US_ClearWindow_TEXT    CODE           AUTO           0000:a440       00000034
-US_CPrint_TEXT         CODE           AUTO           0000:a480       00000056
-US_CPrintLine_TEXT     CODE           AUTO           0000:a4e0       0000005c
-US_PrintCentered_TEXT  CODE           AUTO           0000:a540       00000042
-USL_PrintInCenter_TEXT CODE           AUTO           0000:a590       00000057
-US_PrintSigned_TEXT    CODE           AUTO           0000:a5f0       00000025
-US_PrintUnsigned_TEXT  CODE           AUTO           0000:a620       00000023
-US_Print_TEXT          CODE           AUTO           0000:a650       000000a5
-US_SetPrintRoutines_TEXT CODE         AUTO           0000:a700       00000018
-US_CheckParm_TEXT      CODE           AUTO           0000:a720       0000008e
-US_Shutdown_TEXT       CODE           AUTO           0000:a7b0       0000001a
-US_Startup_TEXT        CODE           AUTO           0000:a7d0       000000be
-USL_HardError_TEXT     CODE           AUTO           0000:a890       00000122
-wl_debug_TEXT          CODE           AUTO           0000:a9c0       00000000
-DebugKeys_TEXT         CODE           AUTO           0000:a9c0       000003ac
-ShapeTest_TEXT         CODE           AUTO           0000:ad70       0000042b
-PicturePause_TEXT      CODE           AUTO           0000:b1a0       00000013
-CountObjects_TEXT      CODE           AUTO           0000:b1c0       000000d2
-DebugMemory_TEXT       CODE           AUTO           0000:b2a0       0000009f
-wl_inter_TEXT          CODE           AUTO           0000:b340       00000000
-NonShareware_TEXT      CODE           AUTO           0000:b340       000000bd
-CheckHighScore_TEXT    CODE           AUTO           0000:b400       00000164
-DrawHighScores_TEXT    CODE           AUTO           0000:b570       0000019a
-PreloadGraphics_TEXT   CODE           AUTO           0000:b710       000000a0
-PreloadUpdate_TEXT     CODE           AUTO           0000:b7b0       000000a4
-LevelCompleted_TEXT    CODE           AUTO           0000:b860       00000943
-BJ_Breathe_TEXT        CODE           AUTO           0000:c1b0       00000065
-Write_TEXT             CODE           AUTO           0000:c220       00000108
-PG13_TEXT              CODE           AUTO           0000:c330       00000099
-Victory_TEXT           CODE           AUTO           0000:c3d0       00000348
-ClearSplitVWB_TEXT     CODE           AUTO           0000:c720       00000038
-wl_agent_TEXT          CODE           AUTO           0000:c760       00000000
-T_Player_TEXT          CODE           AUTO           0000:c760       00000094
-T_Attack_TEXT          CODE           AUTO           0000:c800       000001ad
-VictorySpin_TEXT       CODE           AUTO           0000:c9b0       00000095
-GunAttack_TEXT         CODE           AUTO           0000:ca50       00000138
-KnifeAttack_TEXT       CODE           AUTO           0000:cb90       00000096
-SpawnPlayer_TEXT       CODE           AUTO           0000:cc30       000000a5
-Cmd_Use_TEXT           CODE           AUTO           0000:cce0       00000157
-Cmd_Fire_TEXT          CODE           AUTO           0000:ce40       00000047
-Thrust_TEXT            CODE           AUTO           0000:ce90       000000dd
-VictoryTile_TEXT       CODE           AUTO           0000:cf70       00000014
-ClipMove_TEXT          CODE           AUTO           0000:cf90       00000107
-TryMove_TEXT           CODE           AUTO           0000:d0a0       0000015c
-GetBonus_TEXT          CODE           AUTO           0000:d200       00000201
-GiveKey_TEXT           CODE           AUTO           0000:d410       0000001e
-GiveAmmo_TEXT          CODE           AUTO           0000:d430       0000005b
-DrawAmmo_TEXT          CODE           AUTO           0000:d490       00000024
-GiveWeapon_TEXT        CODE           AUTO           0000:d4c0       0000003c
-DrawKeys_TEXT          CODE           AUTO           0000:d500       00000044
-DrawWeapon_TEXT        CODE           AUTO           0000:d550       00000020
-GivePoints_TEXT        CODE           AUTO           0000:d570       00000065
-DrawScore_TEXT         CODE           AUTO           0000:d5e0       00000023
-GiveExtraMan_TEXT      CODE           AUTO           0000:d610       00000037
-DrawLives_TEXT         CODE           AUTO           0000:d650       00000022
-DrawLevel_TEXT         CODE           AUTO           0000:d680       00000024
-HealSelf_TEXT          CODE           AUTO           0000:d6b0       0000003d
-TakeDamage_TEXT        CODE           AUTO           0000:d6f0       00000069
-DrawHealth_TEXT        CODE           AUTO           0000:d760       00000022
-LatchNumber_TEXT       CODE           AUTO           0000:d790       00000087
-UpdateFace_TEXT        CODE           AUTO           0000:d820       00000050
-DrawFace_TEXT          CODE           AUTO           0000:d870       0000005d
-StatusDrawPic_TEXT     CODE           AUTO           0000:d8d0       00000054
-ControlMovement_TEXT   CODE           AUTO           0000:d930       0000015f
-CheckWeaponChange_TEXT CODE           AUTO           0000:da90       0000004f
-wl_draw_TEXT           CODE           AUTO           0000:dae0       00000000
-ThreeDRefresh_TEXT     CODE           AUTO           0000:dae0       000000b8
-WallRefresh_TEXT       CODE           AUTO           0000:dba0       00000163
-AsmRefresh_TEXT        CODE           AUTO           0000:dd10       00000bbc
-FixOfs_TEXT            CODE           AUTO           0000:e8d0       00000037
-CalcTics_TEXT          CODE           AUTO           0000:e910       00000066
-DrawPlayerWeapon_TEXT  CODE           AUTO           0000:e980       00000087
-DrawScaleds_TEXT       CODE           AUTO           0000:ea10       00000251
-CalcRotate_TEXT        CODE           AUTO           0000:ec70       00000087
-VGAClearScreen_TEXT    CODE           AUTO           0000:ed00       0000007e
-HitVertPWall_TEXT      CODE           AUTO           0000:ed80       000001d3
-HitHorizPWall_TEXT     CODE           AUTO           0000:ef60       000001d1
-HitVertDoor_TEXT       CODE           AUTO           0000:f140       000001f9
-HitHorizDoor_TEXT      CODE           AUTO           0000:f340       000001f4
-HitHorizWall_TEXT      CODE           AUTO           0000:f540       00000202
-HitVertWall_TEXT       CODE           AUTO           0000:f750       00000200
-FarScalePost_TEXT      CODE           AUTO           0000:f950       00000082
-ScalePost_TEXT         CODE           AUTO           0000:f9e0       0000007e
-CalcHeight_TEXT        CODE           AUTO           0000:fa60       00000261
-TransformTile_TEXT     CODE           AUTO           0000:fcd0       0000015d
-TransformActor_TEXT    CODE           AUTO           0000:fe30       00000145
-FixedByFrac_TEXT       CODE           AUTO           0000:ff80       00000064
-wl_menu_TEXT           CODE           AUTO           0000:fff0       00000000
-CheckForEpisodes_TEXT  CODE           AUTO           0fff:0000       0000020a
-ShootSnd_TEXT          CODE           AUTO           0fff:0210       00000013
-DrawStripes_TEXT       CODE           AUTO           0fff:0230       00000036
-DrawMenuGun_TEXT       CODE           AUTO           0fff:0270       00000037
-CheckPause_TEXT        CODE           AUTO           0fff:02b0       0000003f
-IN_GetScanName_TEXT    CODE           AUTO           0fff:02f0       0000004d
-FreeMusic_TEXT         CODE           AUTO           0fff:0340       0000002e
-StartCPMusic_TEXT      CODE           AUTO           0fff:0370       00000082
-Message_TEXT           CODE           AUTO           0fff:0400       00000115
-Confirm_TEXT           CODE           AUTO           0fff:0520       00000114
-ReadAnyControl_TEXT    CODE           AUTO           0fff:0640       000001aa
-WaitKeyUp_TEXT         CODE           AUTO           0fff:07f0       00000030
-SetTextColor_TEXT      CODE           AUTO           0fff:0820       00000034
-DrawMenu_TEXT          CODE           AUTO           0fff:0860       000000d9
-TicDelay_TEXT          CODE           AUTO           0fff:0940       0000003a
-DrawGun_TEXT           CODE           AUTO           0fff:0980       000000c6
-DrawHalfStep_TEXT      CODE           AUTO           0fff:0a50       0000001c
-EraseGun_TEXT          CODE           AUTO           0fff:0a70       00000089
-HandleMenu_TEXT        CODE           AUTO           0fff:0b00       00000495
-CleanupControlPanel_TEXT CODE         AUTO           0fff:0fa0       0000001e
-SetupControlPanel_TEXT CODE           AUTO           0fff:0fc0       0000011c
-DrawOutline_TEXT       CODE           AUTO           0fff:10e0       00000065
-DrawWindow_TEXT        CODE           AUTO           0fff:1150       0000003c
-UnCacheLump_TEXT       CODE           AUTO           0fff:1190       00000046
-CacheLump_TEXT         CODE           AUTO           0fff:11e0       00000020
-ClearMScreen_TEXT      CODE           AUTO           0fff:1200       00000025
-IntroScreen_TEXT       CODE           AUTO           0fff:1230       00000205
-CP_Quit_TEXT           CODE           AUTO           0fff:1440       00000089
-DrawChangeView_TEXT    CODE           AUTO           0fff:14d0       00000081
-CP_ChangeView_TEXT     CODE           AUTO           0fff:1560       00000122
-DrawCustKeys_TEXT      CODE           AUTO           0fff:1690       00000037
-PrintCustKeys_TEXT     CODE           AUTO           0fff:16d0       00000042
-DrawCustKeybd_TEXT     CODE           AUTO           0fff:1720       00000037
-PrintCustKeybd_TEXT    CODE           AUTO           0fff:1760       00000040
-DrawCustJoy_TEXT       CODE           AUTO           0fff:17a0       0000005f
-PrintCustJoy_TEXT      CODE           AUTO           0fff:1800       0000005f
-DrawCustMouse_TEXT     CODE           AUTO           0fff:1860       0000005f
-PrintCustMouse_TEXT    CODE           AUTO           0fff:18c0       0000005f
-DrawCustomScreen_TEXT  CODE           AUTO           0fff:1920       000002a5
-FixupCustom_TEXT       CODE           AUTO           0fff:1bd0       0000016d
-EnterCtrlData_TEXT     CODE           AUTO           0fff:1d40       00000459
-DefineKeyMove_TEXT     CODE           AUTO           0fff:21a0       00000044
-DefineKeyBtns_TEXT     CODE           AUTO           0fff:21f0       00000042
-DefineJoyBtns_TEXT     CODE           AUTO           0fff:2240       00000044
-DefineMouseBtns_TEXT   CODE           AUTO           0fff:2290       00000041
-CustomControls_TEXT    CODE           AUTO           0fff:22e0       000000a2
-DrawCtlScreen_TEXT     CODE           AUTO           0fff:2390       000001a3
-MouseSensitivity_TEXT  CODE           AUTO           0fff:2540       000001d2
-DrawMouseSens_TEXT     CODE           AUTO           0fff:2720       0000012e
-CP_Control_TEXT        CODE           AUTO           0fff:2850       00000112
-CalibrateJoystick_TEXT CODE           AUTO           0fff:2970       00000205
-CP_SaveGame_TEXT       CODE           AUTO           0fff:2b80       000002e3
-PrintLSEntry_TEXT      CODE           AUTO           0fff:2e70       00000092
-DrawLoadSaveScreen_TEXT CODE          AUTO           0fff:2f10       000000af
-TrackWhichGame_TEXT    CODE           AUTO           0fff:2fc0       00000029
-CP_LoadGame_TEXT       CODE           AUTO           0fff:2ff0       00000180
-DrawLSAction_TEXT      CODE           AUTO           0fff:3170       00000082
-DrawSoundMenu_TEXT     CODE           AUTO           0fff:3200       000001bd
-CP_Sound_TEXT          CODE           AUTO           0fff:33c0       00000181
-DrawNewGameDiff_TEXT   CODE           AUTO           0fff:3550       00000020
-DrawNewGame_TEXT       CODE           AUTO           0fff:3570       000000a1
-DrawNewEpisode_TEXT    CODE           AUTO           0fff:3620       000000bb
-CP_NewGame_TEXT        CODE           AUTO           0fff:36e0       0000013d
-CP_ViewScores_TEXT     CODE           AUTO           0fff:3820       00000066
-CP_EndGame_TEXT        CODE           AUTO           0fff:3890       0000007a
-CP_CheckQuick_TEXT     CODE           AUTO           0fff:3910       000004b4
-BossKey_TEXT           CODE           AUTO           0fff:3dd0       00000066
-DrawMainMenu_TEXT      CODE           AUTO           0fff:3e40       000000e5
-US_ControlPanel_TEXT   CODE           AUTO           0fff:3f30       000001ef
-wl_state_TEXT          CODE           AUTO           0fff:4120       00000000
-SightPlayer_TEXT       CODE           AUTO           0fff:4120       00000149
-FirstSighting_TEXT     CODE           AUTO           0fff:4270       0000021f
-CheckSight_TEXT        CODE           AUTO           0fff:4490       00000109
-CheckLine_TEXT         CODE           AUTO           0fff:45a0       000002c3
-DamageActor_TEXT       CODE           AUTO           0fff:4870       00000113
-KillActor_TEXT         CODE           AUTO           0fff:4990       00000256
-DropItem_TEXT          CODE           AUTO           0fff:4bf0       00000084
-MoveObj_TEXT           CODE           AUTO           0fff:4c80       000001b8
-SelectRunDir_TEXT      CODE           AUTO           0fff:4e40       000000c4
-SelectChaseDir_TEXT    CODE           AUTO           0fff:4f10       00000141
-SelectDodgeDir_TEXT    CODE           AUTO           0fff:5060       00000131
-TryWalk_TEXT           CODE           AUTO           0fff:51a0       000004ab
-NewState_TEXT          CODE           AUTO           0fff:5650       0000001d
-SpawnNewObj_TEXT       CODE           AUTO           0fff:5670       000000a3
-wl_text_TEXT           CODE           AUTO           0fff:5720       00000000
-EndText_TEXT           CODE           AUTO           0fff:5720       000000a3
-HelpScreens_TEXT       CODE           AUTO           0fff:57d0       0000006f
-ShowArticle_TEXT       CODE           AUTO           0fff:5840       0000005a
-CacheLayoutGraphics_TEXT CODE         AUTO           0fff:58a0       00000105
-BackPage_TEXT          CODE           AUTO           0fff:59b0       0000002f
-PageLayout_TEXT        CODE           AUTO           0fff:59e0       00000204
-HandleWord_TEXT        CODE           AUTO           0fff:5bf0       000000a2
-HandleCtrls_TEXT       CODE           AUTO           0fff:5ca0       0000002b
-NewLine_TEXT           CODE           AUTO           0fff:5cd0       0000005e
-HandleCommand_TEXT     CODE           AUTO           0fff:5d30       000002c9
-TimedPicCommand_TEXT   CODE           AUTO           0fff:6000       00000040
-ParseTimedCommand_TEXT CODE           AUTO           0fff:6040       00000042
-ParsePicCommand_TEXT   CODE           AUTO           0fff:6090       00000038
-ParseNumber_TEXT       CODE           AUTO           0fff:60d0       0000004c
-RipToEOL_TEXT          CODE           AUTO           0fff:6120       00000020
-wl_game_TEXT           CODE           AUTO           0fff:6140       00000000
-GameLoop_TEXT          CODE           AUTO           0fff:6140       0000026a
-Died_TEXT              CODE           AUTO           0fff:63b0       00000225
-PlayDemo_TEXT          CODE           AUTO           0fff:65e0       00000138
-RecordDemo_TEXT        CODE           AUTO           0fff:6720       0000013a
-FinishDemoRecord_TEXT  CODE           AUTO           0fff:6860       000000b4
-StartDemoRecord_TEXT   CODE           AUTO           0fff:6920       00000053
-DrawPlayScreen_TEXT    CODE           AUTO           0fff:6980       00000097
-DrawPlayBorder_TEXT    CODE           AUTO           0fff:6a20       000000cc
-DrawAllPlayBorder_TEXT CODE           AUTO           0fff:6af0       0000002c
-DrawAllPlayBorderSides_TEXT CODE      AUTO           0fff:6b20       0000002e
-DrawPlayBorderSides_TEXT CODE         AUTO           0fff:6b50       00000092
-SetupGameLevel_TEXT    CODE           AUTO           0fff:6bf0       000002ca
-ScanInfoPlane_TEXT     CODE           AUTO           0fff:6ec0       000004ab
-ClearMemory_TEXT       CODE           AUTO           0fff:7370       0000001d
-UpdateSoundLoc_TEXT    CODE           AUTO           0fff:7390       00000040
-PlaySoundLocGlobal_TEXT CODE          AUTO           0fff:73d0       0000005f
-SetSoundLoc_TEXT       CODE           AUTO           0fff:7430       000000e1
-wl_act1_TEXT           CODE           AUTO           0fff:7520       00000000
-MovePWalls_TEXT        CODE           AUTO           0fff:7520       000001ac
-PushWall_TEXT          CODE           AUTO           0fff:76d0       00000120
-MoveDoors_TEXT         CODE           AUTO           0fff:77f0       00000066
-DoorClosing_TEXT       CODE           AUTO           0fff:7860       00000125
-DoorOpening_TEXT       CODE           AUTO           0fff:7990       00000161
-DoorOpen_TEXT          CODE           AUTO           0fff:7b00       00000038
-OperateDoor_TEXT       CODE           AUTO           0fff:7b40       00000088
-CloseDoor_TEXT         CODE           AUTO           0fff:7bd0       00000262
-OpenDoor_TEXT          CODE           AUTO           0fff:7e40       0000002f
-SpawnDoor_TEXT         CODE           AUTO           0fff:7e70       000000c0
-InitDoorList_TEXT      CODE           AUTO           0fff:7f30       00000048
-InitAreas_TEXT         CODE           AUTO           0fff:7f80       0000003b
-ConnectAreas_TEXT      CODE           AUTO           0fff:7fc0       00000044
-RecursiveConnect_TEXT  CODE           AUTO           0fff:8010       00000052
-PlaceItemType_TEXT     CODE           AUTO           0fff:8070       00000093
-SpawnStatic_TEXT       CODE           AUTO           0fff:8110       000000d5
-InitStaticList_TEXT    CODE           AUTO           0fff:81f0       0000000f
-wl_act2_TEXT           CODE           AUTO           0fff:8200       00000000
-A_StartDeathCam_TEXT   CODE           AUTO           0fff:8200       000002cf
-CheckPosition_TEXT     CODE           AUTO           0fff:84d0       0000009d
-T_BJDone_TEXT          CODE           AUTO           0fff:8570       00000011
-T_BJYell_TEXT          CODE           AUTO           0fff:8590       00000026
-T_BJJump_TEXT          CODE           AUTO           0fff:85c0       00000037
-T_BJRun_TEXT           CODE           AUTO           0fff:8600       0000008c
-SpawnBJVictory_TEXT    CODE           AUTO           0fff:8690       00000054
-T_Bite_TEXT            CODE           AUTO           0fff:86f0       000000b3
-T_Shoot_TEXT           CODE           AUTO           0fff:87b0       000001e4
-T_Path_TEXT            CODE           AUTO           0fff:89a0       00000126
-SelectPathDir_TEXT     CODE           AUTO           0fff:8ad0       00000057
-T_DogChase_TEXT        CODE           AUTO           0fff:8b30       0000015c
-T_Ghosts_TEXT          CODE           AUTO           0fff:8c90       000000a8
-T_Chase_TEXT           CODE           AUTO           0fff:8d40       00000267
-T_Stand_TEXT           CODE           AUTO           0fff:8fb0       00000010
-T_Fake_TEXT            CODE           AUTO           0fff:8fc0       000000d1
-T_FakeFire_TEXT        CODE           AUTO           0fff:90a0       000000fe
-A_Slurpie_TEXT         CODE           AUTO           0fff:91a0       00000011
-A_MechaSound_TEXT      CODE           AUTO           0fff:91c0       00000046
-A_HitlerMorph_TEXT     CODE           AUTO           0fff:9210       0000008b
-SpawnHitler_TEXT       CODE           AUTO           0fff:92a0       00000079
-SpawnFakeHitler_TEXT   CODE           AUTO           0fff:9320       00000077
-T_Fat_TEXT             CODE           AUTO           0fff:93a0       00000174
-T_Gift_TEXT            CODE           AUTO           0fff:9520       00000172
-T_Schabb_TEXT          CODE           AUTO           0fff:96a0       00000174
-T_GiftThrow_TEXT       CODE           AUTO           0fff:9820       000000fc
-T_SchabbThrow_TEXT     CODE           AUTO           0fff:9920       000000fe
-SpawnFat_TEXT          CODE           AUTO           0fff:9a20       00000077
-SpawnGift_TEXT         CODE           AUTO           0fff:9aa0       00000079
-SpawnSchabbs_TEXT      CODE           AUTO           0fff:9b20       00000077
-SpawnGhosts_TEXT       CODE           AUTO           0fff:9ba0       00000070
-A_DeathScream_TEXT     CODE           AUTO           0fff:9c10       000001ac
-SpawnPatrol_TEXT       CODE           AUTO           0fff:9dc0       00000121
-SpawnGretel_TEXT       CODE           AUTO           0fff:9ef0       00000062
-SpawnBoss_TEXT         CODE           AUTO           0fff:9f60       00000064
-SpawnDeadGuard_TEXT    CODE           AUTO           0fff:9fd0       0000001d
-SpawnStand_TEXT        CODE           AUTO           0fff:9ff0       0000013e
-T_Projectile_TEXT      CODE           AUTO           0fff:a130       000001ea
-ProjectileTryMove_TEXT CODE           AUTO           0fff:a320       0000009f
-A_Smoke_TEXT           CODE           AUTO           0fff:a3c0       00000056
-wl_play_TEXT           CODE           AUTO           0fff:a420       00000000
-PlayLoop_TEXT          CODE           AUTO           0fff:a420       000001a3
-DoActor_TEXT           CODE           AUTO           0fff:a5d0       0000018c
-FinishPaletteShifts_TEXT CODE         AUTO           0fff:a760       00000034
-UpdatePaletteShifts_TEXT CODE         AUTO           0fff:a7a0       000000ed
-StartDamageFlash_TEXT  CODE           AUTO           0fff:a890       0000000f
-StartBonusFlash_TEXT   CODE           AUTO           0fff:a8a0       0000000f
-ClearPaletteShifts_TEXT CODE          AUTO           0fff:a8b0       00000013
-InitRedShifts_TEXT     CODE           AUTO           0fff:a8d0       00000143
-StartMusic_TEXT        CODE           AUTO           0fff:aa20       00000077
-StopMusic_TEXT         CODE           AUTO           0fff:aaa0       00000045
-RemoveObj_TEXT         CODE           AUTO           0fff:aaf0       00000055
-GetNewActor_TEXT       CODE           AUTO           0fff:ab50       00000067
-InitActorList_TEXT     CODE           AUTO           0fff:abc0       00000049
-CheckKeys_TEXT         CODE           AUTO           0fff:ac10       000003a4
-CenterWindow_TEXT      CODE           AUTO           0fff:afc0       00000030
-PollControls_TEXT      CODE           AUTO           0fff:aff0       0000022c
-PollJoystickMove_TEXT  CODE           AUTO           0fff:b220       00000139
-PollMouseMove_TEXT     CODE           AUTO           0fff:b360       00000058
-PollKeyboardMove_TEXT  CODE           AUTO           0fff:b3c0       00000126
-PollJoystickButtons_TEXT CODE         AUTO           0fff:b4f0       00000093
-PollMouseButtons_TEXT  CODE           AUTO           0fff:b590       0000004e
-PollKeyboardButtons_TEXT CODE         AUTO           0fff:b5e0       0000002d
-wolfass_TEXT           CODE           AUTO           0fff:b610       00000000
-US_RndT_TEXT           CODE           AUTO           0fff:b610       0000001d
-US_InitRndT_TEXT       CODE           AUTO           0fff:b630       00000036
-alOutInIRQ_TEXT        CODE           AUTO           0fff:b670       00000055
-SDL_DigitizedDoneInIRQ_TEXT CODE      AUTO           0fff:b6d0       00000066
-SDL_IndicatePC_TEXT    CODE           AUTO           0fff:b740       0000000e
-SDL_t0SlowAsmService_TEXT CODE        AUTO           0fff:b750       00000062
-SDL_t0FastAsmService_TEXT CODE        AUTO           0fff:b7c0       00000028
-__SDL_t0ExtremeAsmService_TEXT CODE   AUTO           0fff:b7f0       00000092
-SDL_t0ExtremeAsmService_TEXT CODE     AUTO           0fff:b890       00000094
-SDL_DoFast_TEXT        CODE           AUTO           0fff:b930       00000185
-SDL_DoFX_TEXT          CODE           AUTO           0fff:bac0       00000100
-SDL_setPCSpeaker_TEXT  CODE           AUTO           0fff:bbc0       00000026
-SDL_turnOffPCSpeaker_TEXT CODE        AUTO           0fff:bbf0       0000001c
-SDL_turnOnPCSpeaker_TEXT CODE         AUTO           0fff:bc10       0000002b
-SDL_SetDS_TEXT         CODE           AUTO           0fff:bc40       0000001e
-VH_UpdateScreen_TEXT   CODE           AUTO           0fff:bc60       000000a0
-VL_WaitVBL_TEXT        CODE           AUTO           0fff:bd00       0000002a
-VL_VideoID_TEXT        CODE           AUTO           0fff:bd30       0000000b
-_TEXT                  CODE           AUTO           1bd3:0000       00006aad
-wolf3d13_DATA          FAR_DATA       AUTO           227e:0000       00000318
-id_in13_DATA           FAR_DATA       AUTO           227e:0320       00000180
-id_mm13_DATA           FAR_DATA       AUTO           227e:04a0       000020d0
-id_ca13_DATA           FAR_DATA       AUTO           227e:2570       00000095
-gamepal13_DATA         FAR_DATA       AUTO           227e:2610       00000300
-signon13_DATA          FAR_DATA       AUTO           250f:0000       0000fa00
-id_vl13_DATA           FAR_DATA       AUTO           34af:0000       00000600
-wl_draw13_DATA         FAR_DATA       AUTO           34af:0600       00001518
-wl_menu13_DATA         FAR_DATA       AUTO           34af:1b20       00000d70
-wl_act113_DATA         FAR_DATA       AUTO           34af:2890       00000559
-wl_play13_DATA         FAR_DATA       AUTO           34af:2df0       00002400
-FAR_DATA               FAR_DATA       AUTO           39ce:0000       00000000
-_NULL                  BEGDATA        DGROUP         39ce:0000       00000020
-_AFTERNULL             BEGDATA        DGROUP         39d0:0000       00000002
-CONST                  DATA           DGROUP         39d0:0002       00001822
-CONST2                 DATA           DGROUP         3b53:0000       0000015c
-_DATA                  DATA           DGROUP         3b69:0000       00002f06
-XIB                    DATA           DGROUP         3e59:0006       00000000
-XI                     DATA           DGROUP         3e59:0006       00000036
-XIE                    DATA           DGROUP         3e5c:000c       00000000
-YIB                    DATA           DGROUP         3e5c:000c       00000000
-YI                     DATA           DGROUP         3e5c:000c       00000018
-YIE                    DATA           DGROUP         3e5e:0004       00000000
-STRINGS                DATA           DGROUP         3e5e:0004       00000000
-DATA                   DATA           DGROUP         3e5e:0004       00000000
-_emu_init_start        EMU            DGROUP         3e5e:0004       00000000
-_emu_init_end          EMU            DGROUP         3e5e:0004       00000000
-_BSS                   BSS            DGROUP         3e5f:0000       0000ab04
-STACK                  STACK          DGROUP         4910:0000       00000800
+VWL_MeasureString_TEXT CODE           AUTO           0000:89b0       00000041
+VL_MungePic_TEXT       CODE           AUTO           0000:8a00       000000c5
+VW_DrawColorPropString_TEXT CODE      AUTO           0000:8ad0       00000136
+VW_DrawPropString_TEXT CODE           AUTO           0000:8c10       0000012c
+wl_scale_TEXT          CODE           AUTO           0000:8d40       00000000
+SimpleScaleShape_TEXT  CODE           AUTO           0000:8d40       000003b2
+ScaleShape_TEXT        CODE           AUTO           0000:9100       00000939
+ScaleLine_TEXT         CODE           AUTO           0000:9a40       00000157
+BuildCompScale_TEXT    CODE           AUTO           0000:9ba0       00000160
+SetupScaling_TEXT      CODE           AUTO           0000:9d00       0000017d
+BadScale_TEXT          CODE           AUTO           0000:9e80       00000011
+id_us_1_TEXT           CODE           AUTO           0000:9ea0       00000000
+US_LineInput_TEXT      CODE           AUTO           0000:9ea0       000003b4
+USL_XORICursor_TEXT    CODE           AUTO           0000:a260       00000095
+US_RestoreWindow_TEXT  CODE           AUTO           0000:a300       00000031
+US_SaveWindow_TEXT     CODE           AUTO           0000:a340       00000033
+US_CenterWindow_TEXT   CODE           AUTO           0000:a380       0000002d
+US_DrawWindow_TEXT     CODE           AUTO           0000:a3b0       00000106
+US_ClearWindow_TEXT    CODE           AUTO           0000:a4c0       00000034
+US_CPrint_TEXT         CODE           AUTO           0000:a500       00000056
+US_CPrintLine_TEXT     CODE           AUTO           0000:a560       0000005c
+US_PrintCentered_TEXT  CODE           AUTO           0000:a5c0       00000042
+USL_PrintInCenter_TEXT CODE           AUTO           0000:a610       00000057
+US_PrintSigned_TEXT    CODE           AUTO           0000:a670       00000025
+US_PrintUnsigned_TEXT  CODE           AUTO           0000:a6a0       00000023
+US_Print_TEXT          CODE           AUTO           0000:a6d0       000000a5
+US_SetPrintRoutines_TEXT CODE         AUTO           0000:a780       00000018
+US_CheckParm_TEXT      CODE           AUTO           0000:a7a0       0000008e
+US_Shutdown_TEXT       CODE           AUTO           0000:a830       0000001a
+US_Startup_TEXT        CODE           AUTO           0000:a850       000000be
+USL_HardError_TEXT     CODE           AUTO           0000:a910       00000122
+wl_debug_TEXT          CODE           AUTO           0000:aa40       00000000
+DebugKeys_TEXT         CODE           AUTO           0000:aa40       000003ac
+ShapeTest_TEXT         CODE           AUTO           0000:adf0       0000042d
+PicturePause_TEXT      CODE           AUTO           0000:b220       00000013
+CountObjects_TEXT      CODE           AUTO           0000:b240       000000d2
+DebugMemory_TEXT       CODE           AUTO           0000:b320       0000009f
+wl_inter_TEXT          CODE           AUTO           0000:b3c0       00000000
+NonShareware_TEXT      CODE           AUTO           0000:b3c0       000000bd
+CheckHighScore_TEXT    CODE           AUTO           0000:b480       00000164
+DrawHighScores_TEXT    CODE           AUTO           0000:b5f0       0000019a
+PreloadGraphics_TEXT   CODE           AUTO           0000:b790       000000a0
+PreloadUpdate_TEXT     CODE           AUTO           0000:b830       000000a4
+LevelCompleted_TEXT    CODE           AUTO           0000:b8e0       00000943
+BJ_Breathe_TEXT        CODE           AUTO           0000:c230       00000065
+Write_TEXT             CODE           AUTO           0000:c2a0       00000108
+PG13_TEXT              CODE           AUTO           0000:c3b0       00000099
+Victory_TEXT           CODE           AUTO           0000:c450       00000348
+ClearSplitVWB_TEXT     CODE           AUTO           0000:c7a0       00000038
+wl_agent_TEXT          CODE           AUTO           0000:c7e0       00000000
+T_Player_TEXT          CODE           AUTO           0000:c7e0       00000094
+T_Attack_TEXT          CODE           AUTO           0000:c880       000001ad
+VictorySpin_TEXT       CODE           AUTO           0000:ca30       00000095
+GunAttack_TEXT         CODE           AUTO           0000:cad0       00000138
+KnifeAttack_TEXT       CODE           AUTO           0000:cc10       00000096
+SpawnPlayer_TEXT       CODE           AUTO           0000:ccb0       000000a5
+Cmd_Use_TEXT           CODE           AUTO           0000:cd60       00000157
+Cmd_Fire_TEXT          CODE           AUTO           0000:cec0       00000047
+Thrust_TEXT            CODE           AUTO           0000:cf10       000000dd
+VictoryTile_TEXT       CODE           AUTO           0000:cff0       00000014
+ClipMove_TEXT          CODE           AUTO           0000:d010       00000107
+TryMove_TEXT           CODE           AUTO           0000:d120       0000015c
+GetBonus_TEXT          CODE           AUTO           0000:d280       00000201
+GiveKey_TEXT           CODE           AUTO           0000:d490       0000001e
+GiveAmmo_TEXT          CODE           AUTO           0000:d4b0       0000005b
+DrawAmmo_TEXT          CODE           AUTO           0000:d510       00000024
+GiveWeapon_TEXT        CODE           AUTO           0000:d540       0000003c
+DrawKeys_TEXT          CODE           AUTO           0000:d580       00000044
+DrawWeapon_TEXT        CODE           AUTO           0000:d5d0       00000020
+GivePoints_TEXT        CODE           AUTO           0000:d5f0       00000065
+DrawScore_TEXT         CODE           AUTO           0000:d660       00000023
+GiveExtraMan_TEXT      CODE           AUTO           0000:d690       00000037
+DrawLives_TEXT         CODE           AUTO           0000:d6d0       00000022
+DrawLevel_TEXT         CODE           AUTO           0000:d700       00000024
+HealSelf_TEXT          CODE           AUTO           0000:d730       0000003d
+TakeDamage_TEXT        CODE           AUTO           0000:d770       00000069
+DrawHealth_TEXT        CODE           AUTO           0000:d7e0       00000022
+LatchNumber_TEXT       CODE           AUTO           0000:d810       00000087
+UpdateFace_TEXT        CODE           AUTO           0000:d8a0       00000050
+DrawFace_TEXT          CODE           AUTO           0000:d8f0       0000005d
+StatusDrawPic_TEXT     CODE           AUTO           0000:d950       00000054
+ControlMovement_TEXT   CODE           AUTO           0000:d9b0       0000015f
+CheckWeaponChange_TEXT CODE           AUTO           0000:db10       0000004f
+wl_draw_TEXT           CODE           AUTO           0000:db60       00000000
+ThreeDRefresh_TEXT     CODE           AUTO           0000:db60       000000b8
+WallRefresh_TEXT       CODE           AUTO           0000:dc20       00000163
+AsmRefresh_TEXT        CODE           AUTO           0000:dd90       00000bbc
+FixOfs_TEXT            CODE           AUTO           0000:e950       00000037
+CalcTics_TEXT          CODE           AUTO           0000:e990       00000066
+DrawPlayerWeapon_TEXT  CODE           AUTO           0000:ea00       00000087
+DrawScaleds_TEXT       CODE           AUTO           0000:ea90       00000251
+CalcRotate_TEXT        CODE           AUTO           0000:ecf0       00000087
+VGAClearScreen_TEXT    CODE           AUTO           0000:ed80       0000007e
+HitVertPWall_TEXT      CODE           AUTO           0000:ee00       000001d3
+HitHorizPWall_TEXT     CODE           AUTO           0000:efe0       000001d1
+HitVertDoor_TEXT       CODE           AUTO           0000:f1c0       000001f9
+HitHorizDoor_TEXT      CODE           AUTO           0000:f3c0       000001f4
+HitHorizWall_TEXT      CODE           AUTO           0000:f5c0       00000202
+HitVertWall_TEXT       CODE           AUTO           0000:f7d0       00000200
+FarScalePost_TEXT      CODE           AUTO           0000:f9d0       00000082
+ScalePost_TEXT         CODE           AUTO           0000:fa60       0000007e
+CalcHeight_TEXT        CODE           AUTO           0000:fae0       00000261
+TransformTile_TEXT     CODE           AUTO           0000:fd50       0000015d
+TransformActor_TEXT    CODE           AUTO           0000:feb0       00000145
+FixedByFrac_TEXT       CODE           AUTO           1000:0000       00000064
+wl_menu_TEXT           CODE           AUTO           1000:0070       00000000
+CheckForEpisodes_TEXT  CODE           AUTO           1000:0070       0000020a
+ShootSnd_TEXT          CODE           AUTO           1000:0280       00000013
+DrawStripes_TEXT       CODE           AUTO           1000:02a0       00000036
+DrawMenuGun_TEXT       CODE           AUTO           1000:02e0       00000037
+CheckPause_TEXT        CODE           AUTO           1000:0320       0000003f
+IN_GetScanName_TEXT    CODE           AUTO           1000:0360       0000004d
+FreeMusic_TEXT         CODE           AUTO           1000:03b0       0000002e
+StartCPMusic_TEXT      CODE           AUTO           1000:03e0       00000082
+Message_TEXT           CODE           AUTO           1000:0470       00000115
+Confirm_TEXT           CODE           AUTO           1000:0590       00000114
+ReadAnyControl_TEXT    CODE           AUTO           1000:06b0       000001aa
+WaitKeyUp_TEXT         CODE           AUTO           1000:0860       00000030
+SetTextColor_TEXT      CODE           AUTO           1000:0890       00000034
+DrawMenu_TEXT          CODE           AUTO           1000:08d0       000000d9
+TicDelay_TEXT          CODE           AUTO           1000:09b0       0000003a
+DrawGun_TEXT           CODE           AUTO           1000:09f0       000000c6
+DrawHalfStep_TEXT      CODE           AUTO           1000:0ac0       0000001c
+EraseGun_TEXT          CODE           AUTO           1000:0ae0       00000089
+HandleMenu_TEXT        CODE           AUTO           1000:0b70       00000495
+CleanupControlPanel_TEXT CODE         AUTO           1000:1010       0000001e
+SetupControlPanel_TEXT CODE           AUTO           1000:1030       0000011c
+DrawOutline_TEXT       CODE           AUTO           1000:1150       00000065
+DrawWindow_TEXT        CODE           AUTO           1000:11c0       0000003c
+UnCacheLump_TEXT       CODE           AUTO           1000:1200       00000046
+CacheLump_TEXT         CODE           AUTO           1000:1250       00000020
+ClearMScreen_TEXT      CODE           AUTO           1000:1270       00000025
+IntroScreen_TEXT       CODE           AUTO           1000:12a0       00000205
+CP_Quit_TEXT           CODE           AUTO           1000:14b0       00000089
+DrawChangeView_TEXT    CODE           AUTO           1000:1540       00000081
+CP_ChangeView_TEXT     CODE           AUTO           1000:15d0       00000122
+DrawCustKeys_TEXT      CODE           AUTO           1000:1700       00000037
+PrintCustKeys_TEXT     CODE           AUTO           1000:1740       00000042
+DrawCustKeybd_TEXT     CODE           AUTO           1000:1790       00000037
+PrintCustKeybd_TEXT    CODE           AUTO           1000:17d0       00000040
+DrawCustJoy_TEXT       CODE           AUTO           1000:1810       0000005f
+PrintCustJoy_TEXT      CODE           AUTO           1000:1870       0000005f
+DrawCustMouse_TEXT     CODE           AUTO           1000:18d0       0000005f
+PrintCustMouse_TEXT    CODE           AUTO           1000:1930       0000005f
+DrawCustomScreen_TEXT  CODE           AUTO           1000:1990       000002a5
+FixupCustom_TEXT       CODE           AUTO           1000:1c40       0000016d
+EnterCtrlData_TEXT     CODE           AUTO           1000:1db0       00000459
+DefineKeyMove_TEXT     CODE           AUTO           1000:2210       00000044
+DefineKeyBtns_TEXT     CODE           AUTO           1000:2260       00000042
+DefineJoyBtns_TEXT     CODE           AUTO           1000:22b0       00000044
+DefineMouseBtns_TEXT   CODE           AUTO           1000:2300       00000041
+CustomControls_TEXT    CODE           AUTO           1000:2350       000000a2
+DrawCtlScreen_TEXT     CODE           AUTO           1000:2400       000001a3
+MouseSensitivity_TEXT  CODE           AUTO           1000:25b0       000001d2
+DrawMouseSens_TEXT     CODE           AUTO           1000:2790       0000012e
+CP_Control_TEXT        CODE           AUTO           1000:28c0       00000112
+CalibrateJoystick_TEXT CODE           AUTO           1000:29e0       00000205
+CP_SaveGame_TEXT       CODE           AUTO           1000:2bf0       000002e3
+PrintLSEntry_TEXT      CODE           AUTO           1000:2ee0       00000092
+DrawLoadSaveScreen_TEXT CODE          AUTO           1000:2f80       000000af
+TrackWhichGame_TEXT    CODE           AUTO           1000:3030       00000029
+CP_LoadGame_TEXT       CODE           AUTO           1000:3060       00000180
+DrawLSAction_TEXT      CODE           AUTO           1000:31e0       00000082
+DrawSoundMenu_TEXT     CODE           AUTO           1000:3270       000001bd
+CP_Sound_TEXT          CODE           AUTO           1000:3430       00000181
+DrawNewGameDiff_TEXT   CODE           AUTO           1000:35c0       00000020
+DrawNewGame_TEXT       CODE           AUTO           1000:35e0       000000a1
+DrawNewEpisode_TEXT    CODE           AUTO           1000:3690       000000bb
+CP_NewGame_TEXT        CODE           AUTO           1000:3750       0000013d
+CP_ViewScores_TEXT     CODE           AUTO           1000:3890       00000066
+CP_EndGame_TEXT        CODE           AUTO           1000:3900       0000007a
+CP_CheckQuick_TEXT     CODE           AUTO           1000:3980       000004b4
+BossKey_TEXT           CODE           AUTO           1000:3e40       00000066
+DrawMainMenu_TEXT      CODE           AUTO           1000:3eb0       000000e5
+US_ControlPanel_TEXT   CODE           AUTO           1000:3fa0       000001ef
+wl_state_TEXT          CODE           AUTO           1000:4190       00000000
+SightPlayer_TEXT       CODE           AUTO           1000:4190       00000149
+FirstSighting_TEXT     CODE           AUTO           1000:42e0       0000021f
+CheckSight_TEXT        CODE           AUTO           1000:4500       00000109
+CheckLine_TEXT         CODE           AUTO           1000:4610       000002c3
+DamageActor_TEXT       CODE           AUTO           1000:48e0       00000113
+KillActor_TEXT         CODE           AUTO           1000:4a00       00000256
+DropItem_TEXT          CODE           AUTO           1000:4c60       00000084
+MoveObj_TEXT           CODE           AUTO           1000:4cf0       000001b8
+SelectRunDir_TEXT      CODE           AUTO           1000:4eb0       000000c4
+SelectChaseDir_TEXT    CODE           AUTO           1000:4f80       00000141
+SelectDodgeDir_TEXT    CODE           AUTO           1000:50d0       00000131
+TryWalk_TEXT           CODE           AUTO           1000:5210       000004ab
+NewState_TEXT          CODE           AUTO           1000:56c0       0000001d
+SpawnNewObj_TEXT       CODE           AUTO           1000:56e0       000000a3
+wl_text_TEXT           CODE           AUTO           1000:5790       00000000
+EndText_TEXT           CODE           AUTO           1000:5790       000000a3
+HelpScreens_TEXT       CODE           AUTO           1000:5840       0000006f
+ShowArticle_TEXT       CODE           AUTO           1000:58b0       0000005a
+CacheLayoutGraphics_TEXT CODE         AUTO           1000:5910       00000105
+BackPage_TEXT          CODE           AUTO           1000:5a20       0000002f
+PageLayout_TEXT        CODE           AUTO           1000:5a50       00000204
+HandleWord_TEXT        CODE           AUTO           1000:5c60       000000a2
+HandleCtrls_TEXT       CODE           AUTO           1000:5d10       0000002b
+NewLine_TEXT           CODE           AUTO           1000:5d40       0000005e
+HandleCommand_TEXT     CODE           AUTO           1000:5da0       000002c9
+TimedPicCommand_TEXT   CODE           AUTO           1000:6070       00000040
+ParseTimedCommand_TEXT CODE           AUTO           1000:60b0       00000042
+ParsePicCommand_TEXT   CODE           AUTO           1000:6100       00000038
+ParseNumber_TEXT       CODE           AUTO           1000:6140       0000004c
+RipToEOL_TEXT          CODE           AUTO           1000:6190       00000020
+wl_game_TEXT           CODE           AUTO           1000:61b0       00000000
+GameLoop_TEXT          CODE           AUTO           1000:61b0       0000026a
+Died_TEXT              CODE           AUTO           1000:6420       00000225
+PlayDemo_TEXT          CODE           AUTO           1000:6650       00000138
+RecordDemo_TEXT        CODE           AUTO           1000:6790       0000013a
+FinishDemoRecord_TEXT  CODE           AUTO           1000:68d0       000000b4
+StartDemoRecord_TEXT   CODE           AUTO           1000:6990       00000053
+DrawPlayScreen_TEXT    CODE           AUTO           1000:69f0       00000097
+DrawPlayBorder_TEXT    CODE           AUTO           1000:6a90       000000cc
+DrawAllPlayBorder_TEXT CODE           AUTO           1000:6b60       0000002c
+DrawAllPlayBorderSides_TEXT CODE      AUTO           1000:6b90       0000002e
+DrawPlayBorderSides_TEXT CODE         AUTO           1000:6bc0       00000092
+SetupGameLevel_TEXT    CODE           AUTO           1000:6c60       000002cc
+ScanInfoPlane_TEXT     CODE           AUTO           1000:6f30       000004ab
+ClearMemory_TEXT       CODE           AUTO           1000:73e0       0000001d
+UpdateSoundLoc_TEXT    CODE           AUTO           1000:7400       00000040
+PlaySoundLocGlobal_TEXT CODE          AUTO           1000:7440       0000005f
+SetSoundLoc_TEXT       CODE           AUTO           1000:74a0       000000e1
+wl_act1_TEXT           CODE           AUTO           1000:7590       00000000
+MovePWalls_TEXT        CODE           AUTO           1000:7590       000001ac
+PushWall_TEXT          CODE           AUTO           1000:7740       00000120
+MoveDoors_TEXT         CODE           AUTO           1000:7860       00000066
+DoorClosing_TEXT       CODE           AUTO           1000:78d0       00000125
+DoorOpening_TEXT       CODE           AUTO           1000:7a00       00000161
+DoorOpen_TEXT          CODE           AUTO           1000:7b70       00000038
+OperateDoor_TEXT       CODE           AUTO           1000:7bb0       00000088
+CloseDoor_TEXT         CODE           AUTO           1000:7c40       00000262
+OpenDoor_TEXT          CODE           AUTO           1000:7eb0       0000002f
+SpawnDoor_TEXT         CODE           AUTO           1000:7ee0       000000c0
+InitDoorList_TEXT      CODE           AUTO           1000:7fa0       00000048
+InitAreas_TEXT         CODE           AUTO           1000:7ff0       0000003b
+ConnectAreas_TEXT      CODE           AUTO           1000:8030       00000044
+RecursiveConnect_TEXT  CODE           AUTO           1000:8080       00000052
+PlaceItemType_TEXT     CODE           AUTO           1000:80e0       00000093
+SpawnStatic_TEXT       CODE           AUTO           1000:8180       000000d5
+InitStaticList_TEXT    CODE           AUTO           1000:8260       0000000f
+wl_act2_TEXT           CODE           AUTO           1000:8270       00000000
+A_StartDeathCam_TEXT   CODE           AUTO           1000:8270       000002cf
+CheckPosition_TEXT     CODE           AUTO           1000:8540       0000009d
+T_BJDone_TEXT          CODE           AUTO           1000:85e0       00000011
+T_BJYell_TEXT          CODE           AUTO           1000:8600       00000026
+T_BJJump_TEXT          CODE           AUTO           1000:8630       00000037
+T_BJRun_TEXT           CODE           AUTO           1000:8670       0000008c
+SpawnBJVictory_TEXT    CODE           AUTO           1000:8700       00000054
+T_Bite_TEXT            CODE           AUTO           1000:8760       000000b3
+T_Shoot_TEXT           CODE           AUTO           1000:8820       000001e4
+T_Path_TEXT            CODE           AUTO           1000:8a10       00000126
+SelectPathDir_TEXT     CODE           AUTO           1000:8b40       00000057
+T_DogChase_TEXT        CODE           AUTO           1000:8ba0       0000015c
+T_Ghosts_TEXT          CODE           AUTO           1000:8d00       000000a8
+T_Chase_TEXT           CODE           AUTO           1000:8db0       00000267
+T_Stand_TEXT           CODE           AUTO           1000:9020       00000010
+T_Fake_TEXT            CODE           AUTO           1000:9030       000000d1
+T_FakeFire_TEXT        CODE           AUTO           1000:9110       000000fe
+A_Slurpie_TEXT         CODE           AUTO           1000:9210       00000011
+A_MechaSound_TEXT      CODE           AUTO           1000:9230       00000046
+A_HitlerMorph_TEXT     CODE           AUTO           1000:9280       0000008b
+SpawnHitler_TEXT       CODE           AUTO           1000:9310       00000079
+SpawnFakeHitler_TEXT   CODE           AUTO           1000:9390       00000077
+T_Fat_TEXT             CODE           AUTO           1000:9410       00000174
+T_Gift_TEXT            CODE           AUTO           1000:9590       00000172
+T_Schabb_TEXT          CODE           AUTO           1000:9710       00000174
+T_GiftThrow_TEXT       CODE           AUTO           1000:9890       000000fc
+T_SchabbThrow_TEXT     CODE           AUTO           1000:9990       000000fe
+SpawnFat_TEXT          CODE           AUTO           1000:9a90       00000077
+SpawnGift_TEXT         CODE           AUTO           1000:9b10       00000079
+SpawnSchabbs_TEXT      CODE           AUTO           1000:9b90       00000077
+SpawnGhosts_TEXT       CODE           AUTO           1000:9c10       00000070
+A_DeathScream_TEXT     CODE           AUTO           1000:9c80       000001ac
+SpawnPatrol_TEXT       CODE           AUTO           1000:9e30       00000121
+SpawnGretel_TEXT       CODE           AUTO           1000:9f60       00000062
+SpawnBoss_TEXT         CODE           AUTO           1000:9fd0       00000064
+SpawnDeadGuard_TEXT    CODE           AUTO           1000:a040       0000001d
+SpawnStand_TEXT        CODE           AUTO           1000:a060       0000013e
+T_Projectile_TEXT      CODE           AUTO           1000:a1a0       000001ea
+ProjectileTryMove_TEXT CODE           AUTO           1000:a390       0000009f
+A_Smoke_TEXT           CODE           AUTO           1000:a430       00000056
+wl_play_TEXT           CODE           AUTO           1000:a490       00000000
+PlayLoop_TEXT          CODE           AUTO           1000:a490       000001a3
+DoActor_TEXT           CODE           AUTO           1000:a640       0000018c
+FinishPaletteShifts_TEXT CODE         AUTO           1000:a7d0       00000034
+UpdatePaletteShifts_TEXT CODE         AUTO           1000:a810       000000ed
+StartDamageFlash_TEXT  CODE           AUTO           1000:a900       0000000f
+StartBonusFlash_TEXT   CODE           AUTO           1000:a910       0000000f
+ClearPaletteShifts_TEXT CODE          AUTO           1000:a920       00000013
+InitRedShifts_TEXT     CODE           AUTO           1000:a940       00000143
+StartMusic_TEXT        CODE           AUTO           1000:aa90       00000077
+StopMusic_TEXT         CODE           AUTO           1000:ab10       00000045
+RemoveObj_TEXT         CODE           AUTO           1000:ab60       00000055
+GetNewActor_TEXT       CODE           AUTO           1000:abc0       00000067
+InitActorList_TEXT     CODE           AUTO           1000:ac30       00000049
+CheckKeys_TEXT         CODE           AUTO           1000:ac80       000003a4
+CenterWindow_TEXT      CODE           AUTO           1000:b030       00000030
+PollControls_TEXT      CODE           AUTO           1000:b060       0000022c
+PollJoystickMove_TEXT  CODE           AUTO           1000:b290       00000139
+PollMouseMove_TEXT     CODE           AUTO           1000:b3d0       00000058
+PollKeyboardMove_TEXT  CODE           AUTO           1000:b430       00000126
+PollJoystickButtons_TEXT CODE         AUTO           1000:b560       00000093
+PollMouseButtons_TEXT  CODE           AUTO           1000:b600       0000004e
+PollKeyboardButtons_TEXT CODE         AUTO           1000:b650       0000002d
+wolfass_TEXT           CODE           AUTO           1000:b680       00000000
+US_RndT_TEXT           CODE           AUTO           1000:b680       0000001d
+US_InitRndT_TEXT       CODE           AUTO           1000:b6a0       00000036
+alOutInIRQ_TEXT        CODE           AUTO           1000:b6e0       00000055
+SDL_DigitizedDoneInIRQ_TEXT CODE      AUTO           1000:b740       00000066
+SDL_IndicatePC_TEXT    CODE           AUTO           1000:b7b0       0000000e
+SDL_t0SlowAsmService_TEXT CODE        AUTO           1000:b7c0       00000062
+SDL_t0FastAsmService_TEXT CODE        AUTO           1000:b830       00000028
+__SDL_t0ExtremeAsmService_TEXT CODE   AUTO           1000:b860       00000092
+SDL_t0ExtremeAsmService_TEXT CODE     AUTO           1000:b900       00000094
+SDL_DoFast_TEXT        CODE           AUTO           1000:b9a0       00000185
+SDL_DoFX_TEXT          CODE           AUTO           1000:bb30       00000100
+SDL_setPCSpeaker_TEXT  CODE           AUTO           1000:bc30       00000026
+SDL_turnOffPCSpeaker_TEXT CODE        AUTO           1000:bc60       0000001c
+SDL_turnOnPCSpeaker_TEXT CODE         AUTO           1000:bc80       0000002b
+SDL_SetDS_TEXT         CODE           AUTO           1000:bcb0       0000001e
+VH_UpdateScreen_TEXT   CODE           AUTO           1000:bcd0       000000a0
+VL_WaitVBL_TEXT        CODE           AUTO           1000:bd70       0000002a
+VL_VideoID_TEXT        CODE           AUTO           1000:bda0       0000000b
+_TEXT                  CODE           AUTO           1bdb:0000       00006aad
+wolf3d13_DATA          FAR_DATA       AUTO           2286:0000       00000318
+id_in13_DATA           FAR_DATA       AUTO           2286:0320       00000180
+id_mm13_DATA           FAR_DATA       AUTO           2286:04a0       000020d0
+id_ca13_DATA           FAR_DATA       AUTO           2286:2570       00000095
+gamepal13_DATA         FAR_DATA       AUTO           2286:2610       00000300
+signon13_DATA          FAR_DATA       AUTO           2517:0000       0000fa00
+id_vl13_DATA           FAR_DATA       AUTO           34b7:0000       00000600
+wl_draw13_DATA         FAR_DATA       AUTO           34b7:0600       00001518
+wl_menu13_DATA         FAR_DATA       AUTO           34b7:1b20       00000d70
+wl_act113_DATA         FAR_DATA       AUTO           34b7:2890       00000559
+wl_play13_DATA         FAR_DATA       AUTO           34b7:2df0       00002400
+FAR_DATA               FAR_DATA       AUTO           39d6:0000       00000000
+_NULL                  BEGDATA        DGROUP         39d6:0000       00000020
+_AFTERNULL             BEGDATA        DGROUP         39d8:0000       00000002
+CONST                  DATA           DGROUP         39d8:0002       00001822
+CONST2                 DATA           DGROUP         3b5b:0000       0000015c
+_DATA                  DATA           DGROUP         3b71:0000       00002f06
+XIB                    DATA           DGROUP         3e61:0006       00000000
+XI                     DATA           DGROUP         3e61:0006       00000036
+XIE                    DATA           DGROUP         3e64:000c       00000000
+YIB                    DATA           DGROUP         3e64:000c       00000000
+YI                     DATA           DGROUP         3e64:000c       00000018
+YIE                    DATA           DGROUP         3e66:0004       00000000
+STRINGS                DATA           DGROUP         3e66:0004       00000000
+DATA                   DATA           DGROUP         3e66:0004       00000000
+_emu_init_start        EMU            DGROUP         3e66:0004       00000000
+_emu_init_end          EMU            DGROUP         3e66:0004       00000000
+_BSS                   BSS            DGROUP         3e67:0000       0000ab04
+STACK                  STACK          DGROUP         4918:0000       00000800
 
 
                         +----------------+
@@ -643,15 +643,15 @@ Address        Symbol
 =======        ======
 
 Module: wolf3d.obj(/dos/z/owwolf3d/src/wolf3d.c)
-39ce:4910      _str
-39ce:4960      _heightnumerator
-39ce:4964      _scale
-39ce:4968+     _maxslope
-39ce:496c      _str2
-39ce:4980      _focallength
-39ce:19b0      _dirangle
-39ce:19c2      _configname
-39ce:1a8e+     _MusicItems
+39d6:4910      _str
+39d6:4960      _heightnumerator
+39d6:4964      _scale
+39d6:4968+     _maxslope
+39d6:496c      _str2
+39d6:4980      _focallength
+39d6:19b0      _dirangle
+39d6:19c2      _configname
+39d6:1a8e+     _MusicItems
 0000:15b0+     ReadConfig_
 0000:14b2+     WriteConfig_
 0000:1450      NewGame_
@@ -674,38 +674,38 @@ Module: wolf3d.obj(/dos/z/owwolf3d/src/wolf3d.c)
 0000:0342      NewViewSize_
 0000:0220      Quit_
 0000:0022+     DemoLoop_
-39ce:1850+     _radtoint
-39ce:1ac6*     _nosprtxt
-39ce:4992+     _minheightdiv
-39ce:4994      _virtualreality
-39ce:4996      _viewheight
-39ce:4998      _mouseadjustment
-39ce:499a      _startgame
-39ce:499c*     _nospr
-39ce:499e      _centerx
-39ce:49a0      _screenofs
-39ce:49a2      _viewwidth
-39ce:49a4      _shootdelta
-39ce:49a6      _tedlevelnum
-39ce:49a8      _tedlevel
-39ce:49aa      _loadedgame
-227e:0000+     _MusicMenu
+39d6:1850+     _radtoint
+39d6:1ac6*     _nosprtxt
+39d6:4992+     _minheightdiv
+39d6:4994      _virtualreality
+39d6:4996      _viewheight
+39d6:4998      _mouseadjustment
+39d6:499a      _startgame
+39d6:499c*     _nospr
+39d6:499e      _centerx
+39d6:49a0      _screenofs
+39d6:49a2      _viewwidth
+39d6:49a4      _shootdelta
+39d6:49a6      _tedlevelnum
+39d6:49a8      _tedlevel
+39d6:49aa      _loadedgame
+2286:0000+     _MusicMenu
 0000:0000      main_
 Module: id_in.obj(/dos/z/owwolf3d/src/id_in.c)
-39ce:49b0+     _btnstate
-39ce:49c0+     _Controls
-39ce:49c8+     _JoyDefs
-39ce:49f8      _Keyboard
-39ce:4afc*     _MouseDownCount
-39ce:4b04      _JoysPresent
-39ce:4b18*     _JoyPadPresent
-39ce:4b1c+     _DemoSize
-39ce:4b1e+     _DemoBuffer
-39ce:4b20+     _DemoOffset
-39ce:4b22      _MousePresent
-39ce:4b24      _Paused
-39ce:1aca+     _KbdDefs
-39ce:1ad4+     _DemoMode
+39d6:49b0+     _btnstate
+39d6:49c0+     _Controls
+39d6:49c8+     _JoyDefs
+39d6:49f8      _Keyboard
+39d6:4afc*     _MouseDownCount
+39d6:4b04      _JoysPresent
+39d6:4b18*     _JoyPadPresent
+39d6:4b1c+     _DemoSize
+39d6:4b1e+     _DemoBuffer
+39d6:4b20+     _DemoOffset
+39d6:4b22      _MousePresent
+39d6:4b24      _Paused
+39d6:1aca+     _KbdDefs
+39d6:1ad4+     _DemoMode
 0000:2360+     INL_KeyService_
 0000:2232      IN_GetJoyAbs_
 0000:2100      INL_GetJoyDelta_
@@ -725,20 +725,20 @@ Module: id_in.obj(/dos/z/owwolf3d/src/id_in.c)
 0000:1880      IN_Ack_
 0000:1822      IN_UserInput_
 0000:17e0      IN_MouseButtons_
-39ce:4b28      _LastASCII
-39ce:4b29      _LastScan
+39d6:4b28      _LastASCII
+39d6:4b29      _LastScan
 0000:17c2      IN_JoyButtons_
 Module: id_mm.obj(/dos/z/owwolf3d/src/id_mm.c)
-39ce:4b30*     _UMBbase
-39ce:4b44+     _mmhead
-39ce:4b48+     _farheap
-39ce:4b4c+     _mmnew
-39ce:4b50+     _mmrover
-39ce:4b54+     _mmfree
-39ce:4b58*     _XMSaddr
-39ce:4b5c+     _beforesort
-39ce:4b60+     _aftersort
-39ce:4b64      _mminfo
+39d6:4b30*     _UMBbase
+39d6:4b44+     _mmhead
+39d6:4b48+     _farheap
+39d6:4b4c+     _mmnew
+39d6:4b50+     _mmrover
+39d6:4b54+     _mmfree
+39d6:4b58*     _XMSaddr
+39d6:4b5c+     _beforesort
+39d6:4b60+     _aftersort
+39d6:4b64      _mminfo
 0000:3070      MML_UseSpace_
 0000:3002+     MML_ClearBlock_
 0000:2e30      MM_Startup_
@@ -752,37 +752,37 @@ Module: id_mm.obj(/dos/z/owwolf3d/src/id_mm.c)
 0000:25b0*     MM_DumpData_
 0000:2532      MM_UnusedMemory_
 0000:24a0      MM_TotalFree_
-39ce:4b86*     _numUMBs
-39ce:4b88+     _nearheap
-39ce:4b8a+     _mmstarted
-39ce:4b8c+     _bombonerror
-39ce:4b8e      _bufferseg
-39ce:4b90      _mmerror
-227e:04a0+     _mmblocks
+39d6:4b86*     _numUMBs
+39d6:4b88+     _nearheap
+39d6:4b8a+     _mmstarted
+39d6:4b8c+     _bombonerror
+39d6:4b8e      _bufferseg
+39d6:4b90      _mmerror
+2286:04a0+     _mmblocks
 0000:2492      MM_BombOnError_
 Module: id_pm.obj(/dos/z/owwolf3d/src/id_pm.c)
-39ce:4ba0+     _MainMemUsed
-39ce:4c68+     _EMSList
-39ce:4c88+     _MainMemPages
-39ce:4d50+     _XMSDriver
-39ce:4d54+     _PMFrameCount
-39ce:4d58      _PMPages
-39ce:4d6a+     _MainPagesUsed
-39ce:4d6c+     _PMSegPages
-39ce:4d6e+     _PMThrashing
-39ce:4d70+     _XMSPagesUsed
-39ce:4d72+     _EMSPagesUsed
-39ce:4d74+     _PMNumBlocks
-39ce:4d76+     _PMPanicMode
-39ce:4d78+     _PMStarted
-39ce:4d7a+     _MainPresent
-39ce:4d7c+     _XMSAvail
-39ce:4d7e+     _XMSHandle
-39ce:4d80+     _EMSAvail
-39ce:4d82+     _EMSPageFrame
-39ce:1af4+     _XMSProtectPage
-39ce:1af6      _PageFileName
-39ce:1b04+     _PageFile
+39d6:4ba0+     _MainMemUsed
+39d6:4c68+     _EMSList
+39d6:4c88+     _MainMemPages
+39d6:4d50+     _XMSDriver
+39d6:4d54+     _PMFrameCount
+39d6:4d58      _PMPages
+39d6:4d6a+     _MainPagesUsed
+39d6:4d6c+     _PMSegPages
+39d6:4d6e+     _PMThrashing
+39d6:4d70+     _XMSPagesUsed
+39d6:4d72+     _EMSPagesUsed
+39d6:4d74+     _PMNumBlocks
+39d6:4d76+     _PMPanicMode
+39d6:4d78+     _PMStarted
+39d6:4d7a+     _MainPresent
+39d6:4d7c+     _XMSAvail
+39d6:4d7e+     _XMSHandle
+39d6:4d80+     _EMSAvail
+39d6:4d82+     _EMSPageFrame
+39d6:1af4+     _XMSProtectPage
+39d6:1af6      _PageFileName
+39d6:1b04+     _PageFile
 0000:43f0+     PML_MapEMS_
 0000:42c2+     PML_StartupEMS_
 0000:4280+     PML_ShutdownEMS_
@@ -811,26 +811,26 @@ Module: id_pm.obj(/dos/z/owwolf3d/src/id_pm.c)
 0000:3302      PM_NextFrame_
 0000:3290+     PM_Reset_
 0000:31e2*     PM_Startup_
-39ce:4d84+     _EMSPhysicalPage
-39ce:4d86+     _MainPagesAvail
-39ce:4d88+     _EMSHandle
-39ce:4d8a      _ChunksInFile
-39ce:4d8c      _PMSpriteStart
-39ce:4d8e      _EMSPagesAvail
-39ce:4d90      _XMSPagesAvail
-39ce:4d92      _PMSoundStart
-39ce:4d94      _EMSPresent
-39ce:4d96      _XMSPresent
+39d6:4d84+     _EMSPhysicalPage
+39d6:4d86+     _MainPagesAvail
+39d6:4d88+     _EMSHandle
+39d6:4d8a      _ChunksInFile
+39d6:4d8c      _PMSpriteStart
+39d6:4d8e      _EMSPagesAvail
+39d6:4d90      _XMSPagesAvail
+39d6:4d92      _PMSoundStart
+39d6:4d94      _EMSPresent
+39d6:4d96      _XMSPresent
 0000:31b0      PM_Shutdown_
 Module: id_ca.obj(/dos/z/owwolf3d/src/id_ca.c)
-39ce:4da0      _mapheaderseg
-39ce:4e18      _audiosegs
-39ce:5058+     _grhuffman
-39ce:5454*     _audiohuffman
-39ce:5850+     _chunkexplen
-39ce:5854+     _chunkcomplen
-39ce:5858      _mapsegs
-39ce:585c      _grsegs
+39d6:4da0      _mapheaderseg
+39d6:4e18      _audiosegs
+39d6:5058+     _grhuffman
+39d6:5454*     _audiohuffman
+39d6:5850+     _chunkexplen
+39d6:5854+     _chunkcomplen
+39d6:5858      _mapsegs
+39d6:585c      _grsegs
 0000:5b00+     GRFILEPOS_
 0000:5ad2*     CA_OpenDebug_
 0000:5ab0*     CA_CloseDebug_
@@ -863,94 +863,94 @@ Module: id_ca.obj(/dos/z/owwolf3d/src/id_ca.c)
 0000:47d2+     CA_SetGrPurge_
 0000:4790*     CA_SetAllPurge_
 0000:44d2      CA_CacheMarks_
-39ce:1b18      _audioname
-39ce:1b25+     _gheadname
-39ce:1b2f+     _gfilename
-39ce:1b39+     _gdictname
-39ce:1b43+     _mheadname
-39ce:1b4d*     _mfilename
-39ce:1b57+     _aheadname
-39ce:1b61+     _afilename
-39ce:5994+     _maphandle
-39ce:5996+     _oldsoundmode
-39ce:5998+     _grhandle
-39ce:599a+     _audiohandle
-39ce:599c+     _grstarts
-39ce:599e+     _audiostarts
-39ce:59a0      _mapon
-39ce:59a2*     _profilehandle
-39ce:59a4+     _debughandle
-39ce:59a6+     _tinf
-39ce:59a8      _extension
-39ce:59ad+     _ca_levelnum
-39ce:59ae      _ca_levelbit
-227e:2570      _grneeded
+39d6:1b18      _audioname
+39d6:1b25+     _gheadname
+39d6:1b2f+     _gfilename
+39d6:1b39+     _gdictname
+39d6:1b43+     _mheadname
+39d6:1b4d*     _mfilename
+39d6:1b57+     _aheadname
+39d6:1b61+     _afilename
+39d6:5994+     _maphandle
+39d6:5996+     _oldsoundmode
+39d6:5998+     _grhandle
+39d6:599a+     _audiohandle
+39d6:599c+     _grstarts
+39d6:599e+     _audiostarts
+39d6:59a0      _mapon
+39d6:59a2*     _profilehandle
+39d6:59a4+     _debughandle
+39d6:59a6+     _tinf
+39d6:59a8      _extension
+39d6:59ad+     _ca_levelnum
+39d6:59ae      _ca_levelbit
+2286:2570      _grneeded
 0000:4430+     CA_CannotOpen_
 Module: id_sd.obj(/dos/z/owwolf3d/src/id_sd.c)
-39ce:59b0+     _alZeroInst
-39ce:5b48+     _LocalTime
-39ce:5b54      _alTimeCount
-39ce:5b58      _TimerCount
-39ce:5b5c      _sqHackTime
-39ce:5b60      _ssSample
-39ce:5b64      _TimerDivisor
-39ce:5b68      _t0OldService
-39ce:5b6c      _sqHackPtr
-39ce:5b70      _sqHack
-39ce:5b74      _ssLengthLeft
-39ce:5b78      _pcLengthLeft
-39ce:5b7c      _alSound
-39ce:5b80      _alLengthLeft
-39ce:5b84      _pcSound
-39ce:5b88      _TimeCount
-39ce:5b8c+     _pcSoundLookup
-39ce:5d8a      _DigiMap
-39ce:5e4c+     _ssNoCheck
-39ce:5e4e+     _alNoCheck
-39ce:5e50*     _ssActive
-39ce:5e54+     _DigiLastStart
-39ce:5e56+     _DigiPage
-39ce:5e58      _DigiList
-39ce:5e60+     _DigiLastEnd
-39ce:5e64      _NumDigi
-39ce:5e66+     _TimerRate
-39ce:5e68+     _DigiLeft
-39ce:5e6e+     _RightPosition
-39ce:5e70+     _nextsoundpos
-39ce:5e72+     _ssIsTandy
-39ce:5e74+     _SoundTable
-39ce:5e76+     _NeedsDigitized
-39ce:5e78+     _LeftPosition
-39ce:5e7a*     _HackCount
-39ce:5e7e+     _SBProPresent
-39ce:5e80      _sqHackLen
-39ce:5e82      _ssStatus
-39ce:5e84      _sqHackSeqLen
-39ce:5e86      _ssControl
-39ce:5e88      _ssData
-39ce:5e8a      _SoundNumber
-39ce:5e8c      _alBlock
-39ce:5e8e      _sqActive
-39ce:5e90      _DigiPriority
-39ce:5e92      _SoundPriority
-39ce:5e94      _DigiNumber
-39ce:5e96      _DigiPlaying
-39ce:5e98      _SoundSourcePresent
-39ce:5e9a      _SoundMode
-39ce:5e9c      _DigiMode
-39ce:5e9e+     _NeedsMusic
-39ce:5ea0      _SoundBlasterPresent
-39ce:5ea2      _AdLibPresent
-39ce:5ea4      _SoundPositioned
-39ce:5ea6      _MusicMode
-39ce:1b6c+     _ssPort
-0000:7270+     SDL_SBService_
-0000:7022+     SDL_SBSetDMA_
-0000:6c00+     SDL_LoadDigiSegment_
-0000:6b82      SDL_PlayDigiSegment_
-0000:6ae0      SD_StopDigitized_
-0000:6a62      SD_Poll_
-0000:6a10      SD_SetPosition_
+39d6:59b0+     _alZeroInst
+39d6:5b48+     _LocalTime
+39d6:5b54      _alTimeCount
+39d6:5b58      _TimerCount
+39d6:5b5c      _sqHackTime
+39d6:5b60      _ssSample
+39d6:5b64      _TimerDivisor
+39d6:5b68      _t0OldService
+39d6:5b6c      _sqHackPtr
+39d6:5b70      _sqHack
+39d6:5b74      _ssLengthLeft
+39d6:5b78      _pcLengthLeft
+39d6:5b7c      _alSound
+39d6:5b80      _alLengthLeft
+39d6:5b84      _pcSound
+39d6:5b88      _TimeCount
+39d6:5b8c+     _pcSoundLookup
+39d6:5d8a      _DigiMap
+39d6:5e4c+     _ssNoCheck
+39d6:5e4e+     _alNoCheck
+39d6:5e50*     _ssActive
+39d6:5e54+     _DigiLastStart
+39d6:5e56+     _DigiPage
+39d6:5e58      _DigiList
+39d6:5e60+     _DigiLastEnd
+39d6:5e64      _NumDigi
+39d6:5e66+     _TimerRate
+39d6:5e68+     _DigiLeft
+39d6:5e6e+     _RightPosition
+39d6:5e70+     _nextsoundpos
+39d6:5e72+     _ssIsTandy
+39d6:5e74+     _SoundTable
+39d6:5e76+     _NeedsDigitized
+39d6:5e78+     _LeftPosition
+39d6:5e7a*     _HackCount
+39d6:5e7e+     _SBProPresent
+39d6:5e80      _sqHackLen
+39d6:5e82      _ssStatus
+39d6:5e84      _sqHackSeqLen
+39d6:5e86      _ssControl
+39d6:5e88      _ssData
+39d6:5e8a      _SoundNumber
+39d6:5e8c      _alBlock
+39d6:5e8e      _sqActive
+39d6:5e90      _DigiPriority
+39d6:5e92      _SoundPriority
+39d6:5e94      _DigiNumber
+39d6:5e96      _DigiPlaying
+39d6:5e98      _SoundSourcePresent
+39d6:5e9a      _SoundMode
+39d6:5e9c      _DigiMode
+39d6:5e9e+     _NeedsMusic
+39d6:5ea0      _SoundBlasterPresent
+39d6:5ea2      _AdLibPresent
+39d6:5ea4      _SoundPositioned
+39d6:5ea6      _MusicMode
+39d6:1b6c+     _ssPort
+0000:7280+     SDL_SBService_
+0000:7032+     SDL_SBSetDMA_
+0000:6c10+     SDL_LoadDigiSegment_
+0000:6b92      SDL_PlayDigiSegment_
+0000:6af0      SD_StopDigitized_
+0000:6a72      SD_Poll_
+0000:6a20      SD_SetPosition_
 0000:6962+     SD_PlayDigitized_
 0000:68f0+     SDL_DigitizedDone_
 0000:6872      SD_SetDigiDevice_
@@ -971,66 +971,66 @@ Module: id_sd.obj(/dos/z/owwolf3d/src/id_sd.c)
 0000:5be2      SD_MusicOff_
 0000:5b80      SD_StartMusic_
 0000:5b62*     SD_FadeOutMusic_
-39ce:5eaa      _ssOff
-39ce:5eab      _ssOn
-39ce:5eac      _pcLastSample
+39d6:5eaa      _ssOff
+39d6:5eab      _ssOn
+39d6:5eac      _pcLastSample
 0000:5b40+     SD_MusicPlaying_
 Module: gamepal.obj(/dos/z/owwolf3d/src/gamepal.c)
-227e:2610      _gamepal
+2286:2610      _gamepal
 Module: signon.obj(/dos/z/owwolf3d/src/signon.c)
-250f:0000      _signon
+2517:0000      _signon
 Module: id_vl.obj(/dos/z/owwolf3d/src/id_vl.c)
-39ce:5eae      _ylookup
-39ce:1bca      _screenseg
-0000:8300*     VL_Startup_
-0000:82e2      VL_Shutdown_
-0000:82b0      VL_SetVGAPlaneMode_
-0000:8292      VL_SetTextMode_
-0000:8250+     VL_ClearVideo_
-0000:81e2+     VL_DePlaneVGA_
-0000:81a0+     VL_SetLineWidth_
-0000:8132*     VL_SetSplitScreen_
-0000:80f0+     VL_FillPalette_
-0000:80d2*     VL_SetColor_
-0000:80a0*     VL_GetColor_
-0000:8052      VL_SetPalette_
-0000:8020+     VL_GetPalette_
-0000:7ef2      VL_FadeOut_
-0000:7e10      VL_FadeIn_
-0000:7d92      VL_TestPaletteSet_
-0000:7d60      VL_ColorBorder_
-0000:7d12      VL_Plot_
-0000:7c50      VL_Hlin_
-0000:7bf2      VL_Vlin_
-0000:7b00      VL_Bar_
-0000:7a82      VL_MemToLatch_
-0000:79d0      VL_MemToScreen_
-0000:7932*     VL_MaskedToScreen_
-0000:78c0      VL_LatchToScreen_
-0000:7862      VL_ScreenToScreen_
-0000:7750*     VL_DrawTile8String_
-0000:7692*     VL_DrawLatch8String_
-0000:7660*     VL_SizeTile8String_
-0000:7632      VGAMAPMASK_
-0000:7600      VGAWRITEMODE_
-0000:75d2      VGAREADMAP_
-39ce:1bd0+     _pixmasks
-39ce:1bd4+     _leftmasks
-39ce:1bd8+     _rightmasks
-39ce:604c+     _fastpalette
-39ce:604e      _linewidth
-39ce:6050      _screenfaded
-39ce:6052+     _bordercolor
-39ce:6054*     _pelpan
-39ce:6056      _bufferofs
-39ce:6058      _displayofs
-34af:0000+     _palette2
-34af:0300+     _palette1
-0000:75a0      VL_SetScreen_
+39d6:5eae      _ylookup
+39d6:1bca      _screenseg
+0000:8310*     VL_Startup_
+0000:82f2      VL_Shutdown_
+0000:82c0      VL_SetVGAPlaneMode_
+0000:82a2      VL_SetTextMode_
+0000:8260+     VL_ClearVideo_
+0000:81f2+     VL_DePlaneVGA_
+0000:81b0+     VL_SetLineWidth_
+0000:8142*     VL_SetSplitScreen_
+0000:8100+     VL_FillPalette_
+0000:80e2*     VL_SetColor_
+0000:80b0*     VL_GetColor_
+0000:8062      VL_SetPalette_
+0000:8030+     VL_GetPalette_
+0000:7f02      VL_FadeOut_
+0000:7e20      VL_FadeIn_
+0000:7da2      VL_TestPaletteSet_
+0000:7d70      VL_ColorBorder_
+0000:7d22      VL_Plot_
+0000:7c60      VL_Hlin_
+0000:7c02      VL_Vlin_
+0000:7b10      VL_Bar_
+0000:7a92      VL_MemToLatch_
+0000:79e0      VL_MemToScreen_
+0000:7942*     VL_MaskedToScreen_
+0000:78d0      VL_LatchToScreen_
+0000:7872      VL_ScreenToScreen_
+0000:7760*     VL_DrawTile8String_
+0000:76a2*     VL_DrawLatch8String_
+0000:7670*     VL_SizeTile8String_
+0000:7642      VGAMAPMASK_
+0000:7610      VGAWRITEMODE_
+0000:75e2      VGAREADMAP_
+39d6:1bd0+     _pixmasks
+39d6:1bd4+     _leftmasks
+39d6:1bd8+     _rightmasks
+39d6:604c+     _fastpalette
+39d6:604e      _linewidth
+39d6:6050      _screenfaded
+39d6:6052+     _bordercolor
+39d6:6054*     _pelpan
+39d6:6056      _bufferofs
+39d6:6058      _displayofs
+34b7:0000+     _palette2
+34b7:0300+     _palette1
+0000:75b0      VL_SetScreen_
 Module: id_vh.obj(/dos/z/owwolf3d/src/id_vh.c)
-39ce:605a      _update
-0000:8b70+     VW_DrawPropString_
-0000:8a32*     VW_DrawColorPropString_
+39d6:605a      _update
+0000:8c10+     VW_DrawPropString_
+0000:8ad2*     VW_DrawColorPropString_
 0000:8a00      VL_MungePic_
 0000:89b2+     VWL_MeasureString_
 0000:8990      VW_MeasurePropString_
@@ -1038,1133 +1038,1133 @@ Module: id_vh.obj(/dos/z/owwolf3d/src/id_vh.c)
 0000:88b0      VW_MarkUpdateBlock_
 0000:8852      VWB_DrawTile8_
 0000:87f0*     VWB_DrawTile8M_
-0000:8772      VWB_DrawPic_
-0000:8730      VWB_DrawPropString_
-0000:86e2      VWB_Bar_
-0000:86a0      VWB_Plot_
-0000:8652      VWB_Hlin_
-0000:8600      VWB_Vlin_
-0000:85f2      VW_UpdateScreen_
-0000:85a0      LatchDrawPic_
-0000:84a2      LoadLatchMem_
-39ce:616c+     _bufferheight
-39ce:616e+     _bufferwidth
-39ce:6170      _fontnumber
-39ce:6172      _pictable
-39ce:6174      _px
-39ce:6176      _py
-39ce:6178      _backcolor
-39ce:6179      _fontcolor
-0000:8360      FizzleFade_
+0000:8782      VWB_DrawPic_
+0000:8740      VWB_DrawPropString_
+0000:86f2      VWB_Bar_
+0000:86b0      VWB_Plot_
+0000:8662      VWB_Hlin_
+0000:8610      VWB_Vlin_
+0000:8602      VW_UpdateScreen_
+0000:85b0      LatchDrawPic_
+0000:84b2      LoadLatchMem_
+39d6:616c+     _bufferheight
+39d6:616e+     _bufferwidth
+39d6:6170      _fontnumber
+39d6:6172      _pictable
+39d6:6174      _px
+39d6:6176      _py
+39d6:6178      _backcolor
+39d6:6179      _fontcolor
+0000:8370      FizzleFade_
 Module: wl_scale.obj(/dos/z/owwolf3d/src/wl_scale.c)
-39ce:6184+     _linecmds
-39ce:6188+     _linescale
-39ce:618c      _fullscalefarcall
-39ce:6590+     _scaledirectory
-0000:9e00+     BadScale_
-0000:9c72      SetupScaling_
-0000:9b00+     BuildCompScale_
-0000:99a2*     ScaleLine_
-0000:9060      ScaleShape_
-39ce:1be4      _mapmasks1
-39ce:1c04      _mapmasks2
-39ce:1c24      _mapmasks3
-39ce:1c44*     _wordmasks
-39ce:67a0*     _maskword
-39ce:67a2+     _slinewidth
-39ce:67a4+     _slinex
-39ce:67a6+     _work
-39ce:67a8+     _stepbytwo
-39ce:67aa      _insetupscaling
-39ce:67ac      _maxscaleshl2
-39ce:67ae+     _maxscale
-39ce:67b0+     _mask1
-39ce:67b1+     _mask2
-39ce:67b2+     _mask3
-0000:8ca2      SimpleScaleShape_
+39d6:6184+     _linecmds
+39d6:6188+     _linescale
+39d6:618c      _fullscalefarcall
+39d6:6590+     _scaledirectory
+0000:9e80+     BadScale_
+0000:9d02      SetupScaling_
+0000:9ba0+     BuildCompScale_
+0000:9a42*     ScaleLine_
+0000:9100      ScaleShape_
+39d6:1be4      _mapmasks1
+39d6:1c04      _mapmasks2
+39d6:1c24      _mapmasks3
+39d6:1c44*     _wordmasks
+39d6:67a0*     _maskword
+39d6:67a2+     _slinewidth
+39d6:67a4+     _slinex
+39d6:67a6+     _work
+39d6:67a8+     _stepbytwo
+39d6:67aa      _insetupscaling
+39d6:67ac      _maxscaleshl2
+39d6:67ae+     _maxscale
+39d6:67b0+     _mask1
+39d6:67b1+     _mask2
+39d6:67b2+     _mask3
+0000:8d42      SimpleScaleShape_
 Module: id_us_1.obj(/dos/z/owwolf3d/src/id_us_1.c)
-39ce:67b4*     _Games
-0000:a890*     USL_HardError_
-0000:a7d2*     US_Startup_
-0000:a7b0      US_Shutdown_
-0000:a722      US_CheckParm_
-0000:a700*     US_SetPrintRoutines_
-0000:a652      US_Print_
-0000:a620      US_PrintUnsigned_
-0000:a5f2*     US_PrintSigned_
-0000:a590+     USL_PrintInCenter_
-0000:a542      US_PrintCentered_
-0000:a4e0+     US_CPrintLine_
-0000:a482      US_CPrint_
-0000:a440      US_ClearWindow_
-0000:a332      US_DrawWindow_
-0000:a300*     US_CenterWindow_
-0000:a2c2+     US_SaveWindow_
-0000:a280+     US_RestoreWindow_
-39ce:1cd8      _USL_MeasureString
-39ce:1cdc+     _USL_DrawString
-39ce:1ce0      _Scores
-39ce:68c0*     _CursorBad
-39ce:68c2*     _CursorY
-39ce:68c4*     _CursorX
-39ce:68c6      _NoWait
-39ce:68c8      _WindowH
-39ce:68ca      _WindowW
-39ce:68cc      _WindowY
-39ce:68ce      _WindowX
-39ce:68d0*     _Button1
-39ce:68d2*     _Button0
-39ce:68d4      _PrintY
-39ce:68d6      _PrintX
-39ce:68d8+     _abortprogram
-0000:9e22      US_LineInput_
+39d6:67b4*     _Games
+0000:a910*     USL_HardError_
+0000:a852*     US_Startup_
+0000:a830      US_Shutdown_
+0000:a7a2      US_CheckParm_
+0000:a780*     US_SetPrintRoutines_
+0000:a6d2      US_Print_
+0000:a6a0      US_PrintUnsigned_
+0000:a672*     US_PrintSigned_
+0000:a610+     USL_PrintInCenter_
+0000:a5c2      US_PrintCentered_
+0000:a560+     US_CPrintLine_
+0000:a502      US_CPrint_
+0000:a4c0      US_ClearWindow_
+0000:a3b2      US_DrawWindow_
+0000:a380*     US_CenterWindow_
+0000:a342+     US_SaveWindow_
+0000:a300+     US_RestoreWindow_
+39d6:1cd8      _USL_MeasureString
+39d6:1cdc+     _USL_DrawString
+39d6:1ce0      _Scores
+39d6:68c0*     _CursorBad
+39d6:68c2*     _CursorY
+39d6:68c4*     _CursorX
+39d6:68c6      _NoWait
+39d6:68c8      _WindowH
+39d6:68ca      _WindowW
+39d6:68cc      _WindowY
+39d6:68ce      _WindowX
+39d6:68d0*     _Button1
+39d6:68d2*     _Button0
+39d6:68d4      _PrintY
+39d6:68d6      _PrintX
+39d6:68d8+     _abortprogram
+0000:9ea2      US_LineInput_
 Module: wl_debug.obj(/dos/z/owwolf3d/src/wl_debug.c)
-0000:b2a0+     DebugMemory_
-0000:b1c2+     CountObjects_
-0000:b1a0      PicturePause_
-0000:ad72+     ShapeTest_
-39ce:6916*     _viewtype
-39ce:6918*     _maporgx
-39ce:691a*     _maporgy
-0000:a9c0      DebugKeys_
+0000:b320+     DebugMemory_
+0000:b242+     CountObjects_
+0000:b220      PicturePause_
+0000:adf2+     ShapeTest_
+39d6:6916*     _viewtype
+39d6:6918*     _maporgx
+39d6:691a*     _maporgy
+0000:aa40      DebugKeys_
 Module: wl_inter.obj(/dos/z/owwolf3d/src/wl_inter.c)
-39ce:6930      _LevelRatios
-0000:c720      ClearSplitVWB_
-0000:c3d2      Victory_
-0000:c330      PG13_
-0000:c222      Write_
-0000:c1b0+     BJ_Breathe_
-0000:b862      LevelCompleted_
-0000:b7b0+     PreloadUpdate_
-0000:b712      PreloadGraphics_
-0000:b570      DrawHighScores_
-0000:b402      CheckHighScore_
-0000:b340*     NonShareware_
+39d6:6930      _LevelRatios
+0000:c7a0      ClearSplitVWB_
+0000:c452      Victory_
+0000:c3b0      PG13_
+0000:c2a2      Write_
+0000:c230+     BJ_Breathe_
+0000:b8e2      LevelCompleted_
+0000:b830+     PreloadUpdate_
+0000:b792      PreloadGraphics_
+0000:b5f0      DrawHighScores_
+0000:b482      CheckHighScore_
+0000:b3c0*     NonShareware_
 Module: wl_agent.obj(/dos/z/owwolf3d/src/wl_agent.c)
-39ce:69a0+     _playerxmove
-39ce:69a4+     _playerymove
-39ce:69a8      _thrustspeed
-0000:da90+     CheckWeaponChange_
-0000:d932+     ControlMovement_
-0000:d8d0+     StatusDrawPic_
-0000:d872      DrawFace_
-0000:d820+     UpdateFace_
-0000:d792+     LatchNumber_
-0000:d760      DrawHealth_
-0000:d6f2      TakeDamage_
-0000:d6b0      HealSelf_
-0000:d682      DrawLevel_
-0000:d650      DrawLives_
-0000:d612+     GiveExtraMan_
-0000:d5e0      DrawScore_
-0000:d572      GivePoints_
-0000:d550      DrawWeapon_
-0000:d502      DrawKeys_
-0000:d4c0      GiveWeapon_
-0000:d492      DrawAmmo_
-0000:d430+     GiveAmmo_
-0000:d412*     GiveKey_
-0000:d226      GetBonus_
-0000:d0a0+     TryMove_
-0000:cf92+     ClipMove_
-0000:cf70*     VictoryTile_
-0000:ce92+     Thrust_
-0000:ce40+     Cmd_Fire_
-0000:cce2+     Cmd_Use_
-0000:cc30      SpawnPlayer_
-0000:cb92+     KnifeAttack_
-0000:ca50+     GunAttack_
-0000:c9b2+     VictorySpin_
-0000:c80c+     T_Attack_
-39ce:21f0+     _s_player
-39ce:2204+     _s_attack
-39ce:2218+     _attackinfo
-39ce:22c0*     _strafeangle
-39ce:69ba+     _gotgatgun
-39ce:69bc+     _LastAttacker
-39ce:69be      _running
-39ce:69c0      _anglefrac
-39ce:69c2      _facecount
-39ce:69c4      _pluy
-39ce:69c6      _plux
-0000:c760+     T_Player_
+39d6:69a0+     _playerxmove
+39d6:69a4+     _playerymove
+39d6:69a8      _thrustspeed
+0000:db10+     CheckWeaponChange_
+0000:d9b2+     ControlMovement_
+0000:d950+     StatusDrawPic_
+0000:d8f2      DrawFace_
+0000:d8a0+     UpdateFace_
+0000:d812+     LatchNumber_
+0000:d7e0      DrawHealth_
+0000:d772      TakeDamage_
+0000:d730      HealSelf_
+0000:d702      DrawLevel_
+0000:d6d0      DrawLives_
+0000:d692+     GiveExtraMan_
+0000:d660      DrawScore_
+0000:d5f2      GivePoints_
+0000:d5d0      DrawWeapon_
+0000:d582      DrawKeys_
+0000:d540      GiveWeapon_
+0000:d512      DrawAmmo_
+0000:d4b0+     GiveAmmo_
+0000:d492*     GiveKey_
+0000:d2a6      GetBonus_
+0000:d120+     TryMove_
+0000:d012+     ClipMove_
+0000:cff0*     VictoryTile_
+0000:cf12+     Thrust_
+0000:cec0+     Cmd_Fire_
+0000:cd62+     Cmd_Use_
+0000:ccb0      SpawnPlayer_
+0000:cc12+     KnifeAttack_
+0000:cad0+     GunAttack_
+0000:ca32+     VictorySpin_
+0000:c88c+     T_Attack_
+39d6:21f0+     _s_player
+39d6:2204+     _s_attack
+39d6:2218+     _attackinfo
+39d6:22c0*     _strafeangle
+39d6:69ba+     _gotgatgun
+39d6:69bc+     _LastAttacker
+39d6:69be      _running
+39d6:69c0      _anglefrac
+39d6:69c2      _facecount
+39d6:69c4      _pluy
+39d6:69c6      _plux
+0000:c7e0+     T_Player_
 Module: wl_draw.obj(/dos/z/owwolf3d/src/wl_draw.c)
-39ce:69d0      _horizwall
-39ce:6a50      _vertwall
-39ce:6ad0      _wallheight
-39ce:6d50      _pixelangle
-39ce:6fd0+     _vislist
-39ce:70fc+     _xintercept
-39ce:7100+     _yintercept
-39ce:7104*     _xstep
-39ce:7108*     _ystep
-39ce:710c+     _lastintercept
-39ce:7110      _postsource
-39ce:7114      _lasttimecount
-39ce:7118      _frameon
-39ce:711c      _viewsin
-39ce:7120      _viewy
-39ce:7124      _viewx
-39ce:7128      _viewcos
-39ce:713a+     _xspot
-39ce:713c+     _yspot
-39ce:713e+     _texdelta
-39ce:7140+     _pwalltile
-39ce:7142+     _visptr
-39ce:7144+     _farthest
-39ce:7146+     _visstep
-39ce:7148+     _tilehit
-39ce:714a*     _xinttile
-39ce:714c+     _ytilestep
-39ce:714e+     _pixx
-39ce:7150*     _xpartial
-39ce:7152+     _ypartialdown
-39ce:7154+     _ytile
-39ce:7156+     _xpartialup
-39ce:7158+     _xtilestep
-39ce:715a*     _yinttile
-39ce:715c*     _ypartial
-39ce:715e+     _xtile
-39ce:7160+     _ypartialup
-39ce:7162+     _xpartialdown
-39ce:7164+     _focalty
-39ce:7166+     _focaltx
-39ce:7168*     _angle
-39ce:716a+     _viewtx
-39ce:716c+     _viewty
-39ce:716e+     _lastside
-39ce:7170+     _lasttilehit
-39ce:7172+     _midangle
-39ce:7174      _postwidth
-39ce:7176      _postx
-0000:ff80      FixedByFrac_
-0000:fe32+     TransformActor_
-0000:fcd0+     TransformTile_
-0000:fa62      CalcHeight_
-0000:f9e0*     ScalePost_
-0000:f952      FarScalePost_
-0000:f750+     HitVertWall_
-0000:f542+     HitHorizWall_
-0000:f34c+     HitHorizDoor_
-0000:f14e+     HitVertDoor_
-0000:ef60*     HitHorizPWall_
-0000:ed82*     HitVertPWall_
-0000:ed00+     VGAClearScreen_
-0000:ec72+     CalcRotate_
-0000:ea10+     DrawScaleds_
-0000:e982+     DrawPlayerWeapon_
-0000:e910      CalcTics_
-0000:e8d2      FixOfs_
-0000:dd10+     AsmRefresh_
-0000:dba2+     WallRefresh_
-39ce:22e0      _screenloc
-39ce:22e6      _freelatch
-39ce:22e8      _tileglobal
-39ce:22ec+     _mindist
-39ce:22f0      _costable
-39ce:22f4      _chsw
-39ce:22f6+     _vgaCeiling
-39ce:236e+     _weaponscale
-39ce:7178+     _viewangle
-34af:0600      _sintable
-34af:0d08      _finetangent
-0000:dae0      ThreeDRefresh_
+39d6:69d0      _horizwall
+39d6:6a50      _vertwall
+39d6:6ad0      _wallheight
+39d6:6d50      _pixelangle
+39d6:6fd0+     _vislist
+39d6:70fc+     _xintercept
+39d6:7100+     _yintercept
+39d6:7104*     _xstep
+39d6:7108*     _ystep
+39d6:710c+     _lastintercept
+39d6:7110      _postsource
+39d6:7114      _lasttimecount
+39d6:7118      _frameon
+39d6:711c      _viewsin
+39d6:7120      _viewy
+39d6:7124      _viewx
+39d6:7128      _viewcos
+39d6:713a+     _xspot
+39d6:713c+     _yspot
+39d6:713e+     _texdelta
+39d6:7140+     _pwalltile
+39d6:7142+     _visptr
+39d6:7144+     _farthest
+39d6:7146+     _visstep
+39d6:7148+     _tilehit
+39d6:714a*     _xinttile
+39d6:714c+     _ytilestep
+39d6:714e+     _pixx
+39d6:7150*     _xpartial
+39d6:7152+     _ypartialdown
+39d6:7154+     _ytile
+39d6:7156+     _xpartialup
+39d6:7158+     _xtilestep
+39d6:715a*     _yinttile
+39d6:715c*     _ypartial
+39d6:715e+     _xtile
+39d6:7160+     _ypartialup
+39d6:7162+     _xpartialdown
+39d6:7164+     _focalty
+39d6:7166+     _focaltx
+39d6:7168*     _angle
+39d6:716a+     _viewtx
+39d6:716c+     _viewty
+39d6:716e+     _lastside
+39d6:7170+     _lasttilehit
+39d6:7172+     _midangle
+39d6:7174      _postwidth
+39d6:7176      _postx
+1000:0000      FixedByFrac_
+0000:feb2+     TransformActor_
+0000:fd50+     TransformTile_
+0000:fae2      CalcHeight_
+0000:fa60*     ScalePost_
+0000:f9d2      FarScalePost_
+0000:f7d0+     HitVertWall_
+0000:f5c2+     HitHorizWall_
+0000:f3cc+     HitHorizDoor_
+0000:f1ce+     HitVertDoor_
+0000:efe0*     HitHorizPWall_
+0000:ee02*     HitVertPWall_
+0000:ed80+     VGAClearScreen_
+0000:ecf2+     CalcRotate_
+0000:ea90+     DrawScaleds_
+0000:ea02+     DrawPlayerWeapon_
+0000:e990      CalcTics_
+0000:e952      FixOfs_
+0000:dd90+     AsmRefresh_
+0000:dc22+     WallRefresh_
+39d6:22e0      _screenloc
+39d6:22e6      _freelatch
+39d6:22e8      _tileglobal
+39d6:22ec+     _mindist
+39d6:22f0      _costable
+39d6:22f4      _chsw
+39d6:22f6+     _vgaCeiling
+39d6:236e+     _weaponscale
+39d6:7178+     _viewangle
+34b7:0600      _sintable
+34b7:0d08      _finetangent
+0000:db60      ThreeDRefresh_
 Module: wl_menu.obj(/dos/z/owwolf3d/src/wl_menu.c)
-39ce:717a+     _SaveGameNames
-39ce:72ba+     _SaveGamesAvail
-39ce:2378      _MainItems
-39ce:2382+     _SndItems
-39ce:238c+     _LSItems
-39ce:2396+     _CtlItems
-39ce:23a0+     _CusItems
-39ce:23aa+     _NewEitems
-39ce:23b4+     _NewItems
-39ce:23be+     _color_hlite
-39ce:23c6+     _color_norml
-39ce:23ce+     _EpisodeSelect
-39ce:23da+     _SoundStatus
-39ce:23dc+     _SaveName
-34af:1b20+     _endStrings
-34af:1df0      _MainMenu
-34af:1f7c+     _SndMenu
-34af:218c+     _CtlMenu
-34af:2294+     _NewEmenu
-34af:2478+     _NewMenu
-34af:2528+     _LSMenu
-34af:26e0+     _CusMenu
-0fff:3f50      US_ControlPanel_
-0fff:3e40+     DrawMainMenu_
-0fff:3dd2+     BossKey_
-0fff:3918+     CP_CheckQuick_
-0fff:3890+     CP_EndGame_
-0fff:3822      CP_ViewScores_
-0fff:36e0+     CP_NewGame_
-0fff:3622+     DrawNewEpisode_
-0fff:3570+     DrawNewGame_
-0fff:3552+     DrawNewGameDiff_
-0fff:33d8+     CP_Sound_
-0fff:321a+     DrawSoundMenu_
-0fff:3170+     DrawLSAction_
-0fff:2ff2+     CP_LoadGame_
-0fff:2fc0+     TrackWhichGame_
-0fff:2f12+     DrawLoadSaveScreen_
-0fff:2e70+     PrintLSEntry_
-0fff:2b82+     CP_SaveGame_
-0fff:2970+     CalibrateJoystick_
-0fff:285c+     CP_Control_
-0fff:2720+     DrawMouseSens_
-0fff:254e+     MouseSensitivity_
-0fff:2390+     DrawCtlScreen_
-0fff:22f2+     CustomControls_
-0fff:2290+     DefineMouseBtns_
-0fff:2242+     DefineJoyBtns_
-0fff:21f0+     DefineKeyBtns_
-0fff:21a2+     DefineKeyMove_
-0fff:1d56+     EnterCtrlData_
-0fff:1bf4+     FixupCustom_
-0fff:1920+     DrawCustomScreen_
-0fff:18c2+     PrintCustMouse_
-0fff:1860+     DrawCustMouse_
-0fff:1802+     PrintCustJoy_
-0fff:17a0+     DrawCustJoy_
-0fff:1762+     PrintCustKeybd_
-0fff:1720+     DrawCustKeybd_
-0fff:16d2+     PrintCustKeys_
-0fff:1690+     DrawCustKeys_
-0fff:156e+     CP_ChangeView_
-0fff:14d0+     DrawChangeView_
-0fff:1442+     CP_Quit_
-0fff:1230      IntroScreen_
-0fff:1202      ClearMScreen_
-0fff:11e0      CacheLump_
-0fff:1192      UnCacheLump_
-0fff:1150      DrawWindow_
-0fff:10e2+     DrawOutline_
-0fff:0fc0+     SetupControlPanel_
-0fff:0fa2*     CleanupControlPanel_
-0fff:0b00      HandleMenu_
-0fff:0a72+     EraseGun_
-0fff:0a50+     DrawHalfStep_
-0fff:0982+     DrawGun_
-0fff:0940+     TicDelay_
-0fff:0862      DrawMenu_
-0fff:0820+     SetTextColor_
-0fff:07f2+     WaitKeyUp_
-0fff:0640+     ReadAnyControl_
-0fff:0522+     Confirm_
-0fff:0400      Message_
-0fff:0372      StartCPMusic_
-0fff:0340      FreeMusic_
-0fff:02f2+     IN_GetScanName_
-0fff:02b0+     CheckPause_
-0fff:0272+     DrawMenuGun_
-0fff:0230      DrawStripes_
-0fff:0212*     ShootSnd_
-39ce:2598+     _mbarray
-39ce:25a4+     _order
-39ce:25c8+     _moveorder
-39ce:72de+     _pickquick
-39ce:72e0*     _menuitems
-39ce:72e2+     _StartGame
-0fff:0000*     CheckForEpisodes_
+39d6:717a+     _SaveGameNames
+39d6:72ba+     _SaveGamesAvail
+39d6:2378      _MainItems
+39d6:2382+     _SndItems
+39d6:238c+     _LSItems
+39d6:2396+     _CtlItems
+39d6:23a0+     _CusItems
+39d6:23aa+     _NewEitems
+39d6:23b4+     _NewItems
+39d6:23be+     _color_hlite
+39d6:23c6+     _color_norml
+39d6:23ce+     _EpisodeSelect
+39d6:23da+     _SoundStatus
+39d6:23dc+     _SaveName
+34b7:1b20+     _endStrings
+34b7:1df0      _MainMenu
+34b7:1f7c+     _SndMenu
+34b7:218c+     _CtlMenu
+34b7:2294+     _NewEmenu
+34b7:2478+     _NewMenu
+34b7:2528+     _LSMenu
+34b7:26e0+     _CusMenu
+1000:3fc0      US_ControlPanel_
+1000:3eb0+     DrawMainMenu_
+1000:3e42+     BossKey_
+1000:3988+     CP_CheckQuick_
+1000:3900+     CP_EndGame_
+1000:3892      CP_ViewScores_
+1000:3750+     CP_NewGame_
+1000:3692+     DrawNewEpisode_
+1000:35e0+     DrawNewGame_
+1000:35c2+     DrawNewGameDiff_
+1000:3448+     CP_Sound_
+1000:328a+     DrawSoundMenu_
+1000:31e0+     DrawLSAction_
+1000:3062+     CP_LoadGame_
+1000:3030+     TrackWhichGame_
+1000:2f82+     DrawLoadSaveScreen_
+1000:2ee0+     PrintLSEntry_
+1000:2bf2+     CP_SaveGame_
+1000:29e0+     CalibrateJoystick_
+1000:28cc+     CP_Control_
+1000:2790+     DrawMouseSens_
+1000:25be+     MouseSensitivity_
+1000:2400+     DrawCtlScreen_
+1000:2362+     CustomControls_
+1000:2300+     DefineMouseBtns_
+1000:22b2+     DefineJoyBtns_
+1000:2260+     DefineKeyBtns_
+1000:2212+     DefineKeyMove_
+1000:1dc6+     EnterCtrlData_
+1000:1c64+     FixupCustom_
+1000:1990+     DrawCustomScreen_
+1000:1932+     PrintCustMouse_
+1000:18d0+     DrawCustMouse_
+1000:1872+     PrintCustJoy_
+1000:1810+     DrawCustJoy_
+1000:17d2+     PrintCustKeybd_
+1000:1790+     DrawCustKeybd_
+1000:1742+     PrintCustKeys_
+1000:1700+     DrawCustKeys_
+1000:15de+     CP_ChangeView_
+1000:1540+     DrawChangeView_
+1000:14b2+     CP_Quit_
+1000:12a0      IntroScreen_
+1000:1272      ClearMScreen_
+1000:1250      CacheLump_
+1000:1202      UnCacheLump_
+1000:11c0      DrawWindow_
+1000:1152+     DrawOutline_
+1000:1030+     SetupControlPanel_
+1000:1012*     CleanupControlPanel_
+1000:0b70      HandleMenu_
+1000:0ae2+     EraseGun_
+1000:0ac0+     DrawHalfStep_
+1000:09f2+     DrawGun_
+1000:09b0+     TicDelay_
+1000:08d2      DrawMenu_
+1000:0890+     SetTextColor_
+1000:0862+     WaitKeyUp_
+1000:06b0+     ReadAnyControl_
+1000:0592+     Confirm_
+1000:0470      Message_
+1000:03e2      StartCPMusic_
+1000:03b0      FreeMusic_
+1000:0362+     IN_GetScanName_
+1000:0320+     CheckPause_
+1000:02e2+     DrawMenuGun_
+1000:02a0      DrawStripes_
+1000:0282*     ShootSnd_
+39d6:2598+     _mbarray
+39d6:25a4+     _order
+39d6:25c8+     _moveorder
+39d6:72de+     _pickquick
+39d6:72e0*     _menuitems
+39d6:72e2+     _StartGame
+1000:0070*     CheckForEpisodes_
 Module: wl_state.obj(/dos/z/owwolf3d/src/wl_state.c)
-0fff:5670      SpawnNewObj_
-0fff:5652      NewState_
-0fff:51c2      TryWalk_
-0fff:5060      SelectDodgeDir_
-0fff:4f12      SelectChaseDir_
-0fff:4e40      SelectRunDir_
-0fff:4ca4      MoveObj_
-0fff:4bf0*     DropItem_
-0fff:49b2+     KillActor_
-0fff:4882      DamageActor_
-0fff:45a0      CheckLine_
-0fff:449e+     CheckSight_
-0fff:4292+     FirstSighting_
-39ce:2616+     _opposite
-39ce:2628+     _diagonal
-0fff:4150      SightPlayer_
+1000:56e0      SpawnNewObj_
+1000:56c2      NewState_
+1000:5232      TryWalk_
+1000:50d0      SelectDodgeDir_
+1000:4f82      SelectChaseDir_
+1000:4eb0      SelectRunDir_
+1000:4d14      MoveObj_
+1000:4c60*     DropItem_
+1000:4a22+     KillActor_
+1000:48f2      DamageActor_
+1000:4610      CheckLine_
+1000:450e+     CheckSight_
+1000:4302+     FirstSighting_
+39d6:2616+     _opposite
+39d6:2628+     _diagonal
+1000:41c0      SightPlayer_
 Module: wl_text.obj(/dos/z/owwolf3d/src/wl_text.c)
-39ce:7300+     _text
-39ce:7304+     _rightmargin
-39ce:7322+     _leftmargin
-0fff:6120*     RipToEOL_
-0fff:60d2+     ParseNumber_
-0fff:6090*     ParsePicCommand_
-0fff:6042+     ParseTimedCommand_
-0fff:6000+     TimedPicCommand_
-0fff:5d64+     HandleCommand_
-0fff:5cd0+     NewLine_
-0fff:5ca2+     HandleCtrls_
-0fff:5bf0+     HandleWord_
-0fff:59e2+     PageLayout_
-0fff:59b0*     BackPage_
-0fff:58a2+     CacheLayoutGraphics_
-0fff:5840+     ShowArticle_
-0fff:57d2*     HelpScreens_
-39ce:26ca+     _endextern
-39ce:26cc+     _helpextern
-39ce:26ce*     _helpfilename
-39ce:26db      _endfilename
-39ce:734e+     _layoutdone
-39ce:7350+     _picdelay
-39ce:7352+     _picnum
-39ce:7354+     _rowon
-39ce:7356+     _pagenum
-39ce:7358+     _picx
-39ce:735a+     _picy
-39ce:735c+     _numpages
-0fff:5720      EndText_
+39d6:7300+     _text
+39d6:7304+     _rightmargin
+39d6:7322+     _leftmargin
+1000:6190*     RipToEOL_
+1000:6142+     ParseNumber_
+1000:6100*     ParsePicCommand_
+1000:60b2+     ParseTimedCommand_
+1000:6070+     TimedPicCommand_
+1000:5dd4+     HandleCommand_
+1000:5d40+     NewLine_
+1000:5d12+     HandleCtrls_
+1000:5c60+     HandleWord_
+1000:5a52+     PageLayout_
+1000:5a20*     BackPage_
+1000:5912+     CacheLayoutGraphics_
+1000:58b0+     ShowArticle_
+1000:5842*     HelpScreens_
+39d6:26ca+     _endextern
+39d6:26cc+     _helpextern
+39d6:26ce*     _helpfilename
+39d6:26db      _endfilename
+39d6:734e+     _layoutdone
+39d6:7350+     _picdelay
+39d6:7352+     _picnum
+39d6:7354+     _rowon
+39d6:7356+     _pagenum
+39d6:7358+     _picx
+39d6:735a+     _picy
+39d6:735c+     _numpages
+1000:5790      EndText_
 Module: wl_game.obj(/dos/z/owwolf3d/src/wl_game.c)
-39ce:7360      _latchpics
-39ce:7428+     _globalsoundy
-39ce:742c+     _globalsoundx
-39ce:7430      _speary
-39ce:7434      _spearx
-39ce:7438      _gamestate
-0fff:7430+     SetSoundLoc_
-0fff:73d2      PlaySoundLocGlobal_
-0fff:7390      UpdateSoundLoc_
-0fff:7372      ClearMemory_
-0fff:70a2+     ScanInfoPlane_
-0fff:6c08      SetupGameLevel_
-0fff:6b50+     DrawPlayBorderSides_
-0fff:6b22      DrawAllPlayBorderSides_
-0fff:6af0      DrawAllPlayBorder_
-0fff:6a22      DrawPlayBorder_
-0fff:6980      DrawPlayScreen_
-0fff:6922+     StartDemoRecord_
-0fff:6860+     FinishDemoRecord_
-0fff:6722      RecordDemo_
-0fff:65e0      PlayDemo_
-0fff:63b2+     Died_
-39ce:26e8+     _ElevatorBackTo
-39ce:26f4+     _righttable
-39ce:28b6+     _lefttable
-39ce:2a78      _demoname
-39ce:748a+     _rightchannel
-39ce:748c+     _leftchannel
-39ce:748e      _spearflag
-39ce:7490      _spearangle
-39ce:7492      _fizzlein
-39ce:7494      _ingame
-0fff:6152      GameLoop_
+39d6:7360      _latchpics
+39d6:7428+     _globalsoundy
+39d6:742c+     _globalsoundx
+39d6:7430      _speary
+39d6:7434      _spearx
+39d6:7438      _gamestate
+1000:74a0+     SetSoundLoc_
+1000:7442      PlaySoundLocGlobal_
+1000:7400      UpdateSoundLoc_
+1000:73e2      ClearMemory_
+1000:7112+     ScanInfoPlane_
+1000:6c78      SetupGameLevel_
+1000:6bc0+     DrawPlayBorderSides_
+1000:6b92      DrawAllPlayBorderSides_
+1000:6b60      DrawAllPlayBorder_
+1000:6a92      DrawPlayBorder_
+1000:69f0      DrawPlayScreen_
+1000:6992+     StartDemoRecord_
+1000:68d0+     FinishDemoRecord_
+1000:6792      RecordDemo_
+1000:6650      PlayDemo_
+1000:6422+     Died_
+39d6:26e8+     _ElevatorBackTo
+39d6:26f4+     _righttable
+39d6:28b6+     _lefttable
+39d6:2a78      _demoname
+39d6:748a+     _rightchannel
+39d6:748c+     _leftchannel
+39d6:748e      _spearflag
+39d6:7490      _spearangle
+39d6:7492      _fizzlein
+39d6:7494      _ingame
+1000:61c2      GameLoop_
 Module: wl_act1.obj(/dos/z/owwolf3d/src/wl_act1.c)
-39ce:7496      _doorposition
-39ce:7516      _statobjlist
-39ce:8196      _doorobjlist
-39ce:8416      _areabyplayer
-0fff:81f0      InitStaticList_
-0fff:813a      SpawnStatic_
-0fff:8070      PlaceItemType_
-0fff:8012+     RecursiveConnect_
-0fff:7fc0+     ConnectAreas_
-0fff:7f82      InitAreas_
-0fff:7f30      InitDoorList_
-0fff:7e72      SpawnDoor_
-0fff:7e40      OpenDoor_
-0fff:7bd2+     CloseDoor_
-0fff:7b48      OperateDoor_
-0fff:7b00*     DoorOpen_
-0fff:7992+     DoorOpening_
-0fff:7860+     DoorClosing_
-0fff:77f2      MoveDoors_
-0fff:76d8      PushWall_
-39ce:2a8e+     _statinfo
-39ce:846e      _pwallstate
-39ce:8470      _pwally
-39ce:8472      _pwallx
-39ce:8474      _pwalldir
-39ce:8476      _pwallpos
-39ce:8478      _laststatobj
-39ce:847a+     _lastdoorobj
-39ce:847c      _doornum
-34af:2890      _areaconnect
-0fff:752a      MovePWalls_
+39d6:7496      _doorposition
+39d6:7516      _statobjlist
+39d6:8196      _doorobjlist
+39d6:8416      _areabyplayer
+1000:8260      InitStaticList_
+1000:81aa      SpawnStatic_
+1000:80e0      PlaceItemType_
+1000:8082+     RecursiveConnect_
+1000:8030+     ConnectAreas_
+1000:7ff2      InitAreas_
+1000:7fa0      InitDoorList_
+1000:7ee2      SpawnDoor_
+1000:7eb0      OpenDoor_
+1000:7c42+     CloseDoor_
+1000:7bb8      OperateDoor_
+1000:7b70*     DoorOpen_
+1000:7a02+     DoorOpening_
+1000:78d0+     DoorClosing_
+1000:7862      MoveDoors_
+1000:7748      PushWall_
+39d6:2a8e+     _statinfo
+39d6:846e      _pwallstate
+39d6:8470      _pwally
+39d6:8472      _pwallx
+39d6:8474      _pwalldir
+39d6:8476      _pwallpos
+39d6:8478      _laststatobj
+39d6:847a+     _lastdoorobj
+39d6:847c      _doornum
+34b7:2890      _areaconnect
+1000:759a      MovePWalls_
 Module: wl_act2.obj(/dos/z/owwolf3d/src/wl_act2.c)
-39ce:2b60*     _dirtable
-39ce:2b72+     _starthitpoints
-39ce:2c24+     _s_rocket
-39ce:2c38+     _s_smoke1
-39ce:2c4c+     _s_smoke2
-39ce:2c60+     _s_smoke3
-39ce:2c74+     _s_smoke4
-39ce:2c88+     _s_boom1
-39ce:2c9c+     _s_boom2
-39ce:2cb0+     _s_boom3
-39ce:2cc4+     _s_grdstand
-39ce:2cd8+     _s_grdpath1
-39ce:2cec+     _s_grdpath1s
-39ce:2d00+     _s_grdpath2
-39ce:2d14+     _s_grdpath3
-39ce:2d28+     _s_grdpath3s
-39ce:2d3c+     _s_grdpath4
-39ce:2d50      _s_grdpain
-39ce:2d64      _s_grdpain1
-39ce:2d78+     _s_grdshoot1
-39ce:2d8c+     _s_grdshoot2
-39ce:2da0+     _s_grdshoot3
-39ce:2db4      _s_grdchase1
-39ce:2dc8+     _s_grdchase1s
-39ce:2ddc+     _s_grdchase2
-39ce:2df0+     _s_grdchase3
-39ce:2e04+     _s_grdchase3s
-39ce:2e18+     _s_grdchase4
-39ce:2e2c      _s_grddie1
-39ce:2e40+     _s_grddie2
-39ce:2e54+     _s_grddie3
-39ce:2e68+     _s_grddie4
-39ce:2e7c      _s_blinkychase1
-39ce:2e90+     _s_blinkychase2
-39ce:2ea4+     _s_inkychase1
-39ce:2eb8+     _s_inkychase2
-39ce:2ecc+     _s_pinkychase1
-39ce:2ee0+     _s_pinkychase2
-39ce:2ef4+     _s_clydechase1
-39ce:2f08+     _s_clydechase2
-39ce:2f1c+     _s_dogpath1
-39ce:2f30+     _s_dogpath1s
-39ce:2f44+     _s_dogpath2
-39ce:2f58+     _s_dogpath3
-39ce:2f6c+     _s_dogpath3s
-39ce:2f80+     _s_dogpath4
-39ce:2f94+     _s_dogjump1
-39ce:2fa8+     _s_dogjump2
-39ce:2fbc+     _s_dogjump3
-39ce:2fd0+     _s_dogjump4
-39ce:2fe4+     _s_dogjump5
-39ce:2ff8      _s_dogchase1
-39ce:300c+     _s_dogchase1s
-39ce:3020+     _s_dogchase2
-39ce:3034+     _s_dogchase3
-39ce:3048+     _s_dogchase3s
-39ce:305c+     _s_dogchase4
-39ce:3070      _s_dogdie1
-39ce:3084+     _s_dogdie2
-39ce:3098+     _s_dogdie3
-39ce:30ac+     _s_dogdead
-39ce:30c0+     _s_ofcstand
-39ce:30d4+     _s_ofcpath1
-39ce:30e8+     _s_ofcpath1s
-39ce:30fc+     _s_ofcpath2
-39ce:3110+     _s_ofcpath3
-39ce:3124+     _s_ofcpath3s
-39ce:3138+     _s_ofcpath4
-39ce:314c      _s_ofcpain
-39ce:3160      _s_ofcpain1
-39ce:3174+     _s_ofcshoot1
-39ce:3188+     _s_ofcshoot2
-39ce:319c+     _s_ofcshoot3
-39ce:31b0      _s_ofcchase1
-39ce:31c4+     _s_ofcchase1s
-39ce:31d8+     _s_ofcchase2
-39ce:31ec+     _s_ofcchase3
-39ce:3200+     _s_ofcchase3s
-39ce:3214+     _s_ofcchase4
-39ce:3228      _s_ofcdie1
-39ce:323c+     _s_ofcdie2
-39ce:3250+     _s_ofcdie3
-39ce:3264+     _s_ofcdie4
-39ce:3278+     _s_ofcdie5
-39ce:328c+     _s_mutstand
-39ce:32a0+     _s_mutpath1
-39ce:32b4+     _s_mutpath1s
-39ce:32c8+     _s_mutpath2
-39ce:32dc+     _s_mutpath3
-39ce:32f0+     _s_mutpath3s
-39ce:3304+     _s_mutpath4
-39ce:3318      _s_mutpain
-39ce:332c      _s_mutpain1
-39ce:3340+     _s_mutshoot1
-39ce:3354+     _s_mutshoot2
-39ce:3368+     _s_mutshoot3
-39ce:337c+     _s_mutshoot4
-39ce:3390      _s_mutchase1
-39ce:33a4+     _s_mutchase1s
-39ce:33b8+     _s_mutchase2
-39ce:33cc+     _s_mutchase3
-39ce:33e0+     _s_mutchase3s
-39ce:33f4+     _s_mutchase4
-39ce:3408      _s_mutdie1
-39ce:341c+     _s_mutdie2
-39ce:3430+     _s_mutdie3
-39ce:3444+     _s_mutdie4
-39ce:3458+     _s_mutdie5
-39ce:346c+     _s_ssstand
-39ce:3480+     _s_sspath1
-39ce:3494+     _s_sspath1s
-39ce:34a8+     _s_sspath2
-39ce:34bc+     _s_sspath3
-39ce:34d0+     _s_sspath3s
-39ce:34e4+     _s_sspath4
-39ce:34f8      _s_sspain
-39ce:350c      _s_sspain1
-39ce:3520+     _s_ssshoot1
-39ce:3534+     _s_ssshoot2
-39ce:3548+     _s_ssshoot3
-39ce:355c+     _s_ssshoot4
-39ce:3570+     _s_ssshoot5
-39ce:3584+     _s_ssshoot6
-39ce:3598+     _s_ssshoot7
-39ce:35ac+     _s_ssshoot8
-39ce:35c0+     _s_ssshoot9
-39ce:35d4      _s_sschase1
-39ce:35e8+     _s_sschase1s
-39ce:35fc+     _s_sschase2
-39ce:3610+     _s_sschase3
-39ce:3624+     _s_sschase3s
-39ce:3638+     _s_sschase4
-39ce:364c      _s_ssdie1
-39ce:3660+     _s_ssdie2
-39ce:3674+     _s_ssdie3
-39ce:3688+     _s_ssdie4
-39ce:369c+     _s_bossstand
-39ce:36b0      _s_bosschase1
-39ce:36c4+     _s_bosschase1s
-39ce:36d8+     _s_bosschase2
-39ce:36ec+     _s_bosschase3
-39ce:3700+     _s_bosschase3s
-39ce:3714+     _s_bosschase4
-39ce:3728      _s_bossdie1
-39ce:373c+     _s_bossdie2
-39ce:3750+     _s_bossdie3
-39ce:3764+     _s_bossdie4
-39ce:3778+     _s_bossshoot1
-39ce:378c+     _s_bossshoot2
-39ce:37a0+     _s_bossshoot3
-39ce:37b4+     _s_bossshoot4
-39ce:37c8+     _s_bossshoot5
-39ce:37dc+     _s_bossshoot6
-39ce:37f0+     _s_bossshoot7
-39ce:3804+     _s_bossshoot8
-39ce:3818+     _s_gretelstand
-39ce:382c      _s_gretelchase1
-39ce:3840+     _s_gretelchase1s
-39ce:3854+     _s_gretelchase2
-39ce:3868+     _s_gretelchase3
-39ce:387c+     _s_gretelchase3s
-39ce:3890+     _s_gretelchase4
-39ce:38a4      _s_greteldie1
-39ce:38b8+     _s_greteldie2
-39ce:38cc+     _s_greteldie3
-39ce:38e0+     _s_greteldie4
-39ce:38f4+     _s_gretelshoot1
-39ce:3908+     _s_gretelshoot2
-39ce:391c+     _s_gretelshoot3
-39ce:3930+     _s_gretelshoot4
-39ce:3944+     _s_gretelshoot5
-39ce:3958+     _s_gretelshoot6
-39ce:396c+     _s_gretelshoot7
-39ce:3980+     _s_gretelshoot8
-39ce:39a8+     _s_schabbstand
-39ce:39bc      _s_schabbchase1
-39ce:39d0+     _s_schabbchase1s
-39ce:39e4+     _s_schabbchase2
-39ce:39f8+     _s_schabbchase3
-39ce:3a0c+     _s_schabbchase3s
-39ce:3a20+     _s_schabbchase4
-39ce:3a34+     _s_schabbdeathcam
-39ce:3a48      _s_schabbdie1
-39ce:3a5c+     _s_schabbdie2
-39ce:3a70+     _s_schabbdie3
-39ce:3a84+     _s_schabbdie4
-39ce:3a98+     _s_schabbdie5
-39ce:3aac+     _s_schabbdie6
-39ce:3ac0+     _s_schabbshoot1
-39ce:3ad4+     _s_schabbshoot2
-39ce:3ae8+     _s_needle1
-39ce:3afc+     _s_needle2
-39ce:3b10+     _s_needle3
-39ce:3b24+     _s_needle4
-39ce:3b38+     _s_giftstand
-39ce:3b4c      _s_giftchase1
-39ce:3b60+     _s_giftchase1s
-39ce:3b74+     _s_giftchase2
-39ce:3b88+     _s_giftchase3
-39ce:3b9c+     _s_giftchase3s
-39ce:3bb0+     _s_giftchase4
-39ce:3bc4+     _s_giftdeathcam
-39ce:3bd8      _s_giftdie1
-39ce:3bec+     _s_giftdie2
-39ce:3c00+     _s_giftdie3
-39ce:3c14+     _s_giftdie4
-39ce:3c28+     _s_giftdie5
-39ce:3c3c+     _s_giftdie6
-39ce:3c50+     _s_giftshoot1
-39ce:3c64+     _s_giftshoot2
-39ce:3c78+     _s_fatstand
-39ce:3c8c      _s_fatchase1
-39ce:3ca0+     _s_fatchase1s
-39ce:3cb4+     _s_fatchase2
-39ce:3cc8+     _s_fatchase3
-39ce:3cdc+     _s_fatchase3s
-39ce:3cf0+     _s_fatchase4
-39ce:3d04+     _s_fatdeathcam
-39ce:3d18      _s_fatdie1
-39ce:3d2c+     _s_fatdie2
-39ce:3d40+     _s_fatdie3
-39ce:3d54+     _s_fatdie4
-39ce:3d68+     _s_fatdie5
-39ce:3d7c+     _s_fatdie6
-39ce:3d90+     _s_fatshoot1
-39ce:3da4+     _s_fatshoot2
-39ce:3db8+     _s_fatshoot3
-39ce:3dcc+     _s_fatshoot4
-39ce:3de0+     _s_fatshoot5
-39ce:3df4+     _s_fatshoot6
-39ce:3e08+     _s_fakestand
-39ce:3e1c      _s_fakechase1
-39ce:3e30+     _s_fakechase1s
-39ce:3e44+     _s_fakechase2
-39ce:3e58+     _s_fakechase3
-39ce:3e6c+     _s_fakechase3s
-39ce:3e80+     _s_fakechase4
-39ce:3e94      _s_fakedie1
-39ce:3ea8+     _s_fakedie2
-39ce:3ebc+     _s_fakedie3
-39ce:3ed0+     _s_fakedie4
-39ce:3ee4+     _s_fakedie5
-39ce:3ef8+     _s_fakedie6
-39ce:3f0c+     _s_fakeshoot1
-39ce:3f20+     _s_fakeshoot2
-39ce:3f34+     _s_fakeshoot3
-39ce:3f48+     _s_fakeshoot4
-39ce:3f5c+     _s_fakeshoot5
-39ce:3f70+     _s_fakeshoot6
-39ce:3f84+     _s_fakeshoot7
-39ce:3f98+     _s_fakeshoot8
-39ce:3fac+     _s_fakeshoot9
-39ce:3fc0+     _s_fire1
-39ce:3fd4+     _s_fire2
-39ce:3fe8+     _s_mechastand
-39ce:3ffc      _s_mechachase1
-39ce:4010+     _s_mechachase1s
-39ce:4024+     _s_mechachase2
-39ce:4038+     _s_mechachase3
-39ce:404c+     _s_mechachase3s
-39ce:4060+     _s_mechachase4
-39ce:4074      _s_mechadie1
-39ce:4088+     _s_mechadie2
-39ce:409c+     _s_mechadie3
-39ce:40b0+     _s_mechadie4
-39ce:40c4+     _s_mechashoot1
-39ce:40d8+     _s_mechashoot2
-39ce:40ec+     _s_mechashoot3
-39ce:4100+     _s_mechashoot4
-39ce:4114+     _s_mechashoot5
-39ce:4128+     _s_mechashoot6
-39ce:413c      _s_hitlerchase1
-39ce:4150+     _s_hitlerchase1s
-39ce:4164+     _s_hitlerchase2
-39ce:4178+     _s_hitlerchase3
-39ce:418c+     _s_hitlerchase3s
-39ce:41a0+     _s_hitlerchase4
-39ce:41b4+     _s_hitlerdeathcam
-39ce:41c8      _s_hitlerdie1
-39ce:41dc+     _s_hitlerdie2
-39ce:41f0+     _s_hitlerdie3
-39ce:4204+     _s_hitlerdie4
-39ce:4218+     _s_hitlerdie5
-39ce:422c+     _s_hitlerdie6
-39ce:4240+     _s_hitlerdie7
-39ce:4254+     _s_hitlerdie8
-39ce:4268+     _s_hitlerdie9
-39ce:427c+     _s_hitlerdie10
-39ce:4290+     _s_hitlershoot1
-39ce:42a4+     _s_hitlershoot2
-39ce:42b8+     _s_hitlershoot3
-39ce:42cc+     _s_hitlershoot4
-39ce:42e0+     _s_hitlershoot5
-39ce:42f4+     _s_hitlershoot6
-0fff:a3c0+     A_Smoke_
-0fff:a322+     ProjectileTryMove_
-0fff:a152+     T_Projectile_
-0fff:a002      SpawnStand_
-0fff:9fd0      SpawnDeadGuard_
-0fff:9f62      SpawnBoss_
-0fff:9ef0      SpawnGretel_
-0fff:9dda      SpawnPatrol_
-0fff:9c32      A_DeathScream_
-0fff:9ba8      SpawnGhosts_
-0fff:9b20      SpawnSchabbs_
-0fff:9aa2      SpawnGift_
-0fff:9a20      SpawnFat_
-0fff:9922+     T_SchabbThrow_
-0fff:9820+     T_GiftThrow_
-0fff:96a2+     T_Schabb_
-0fff:9520+     T_Gift_
-0fff:93a2+     T_Fat_
-0fff:9320      SpawnFakeHitler_
-0fff:92a2      SpawnHitler_
-0fff:9210+     A_HitlerMorph_
-0fff:91c2+     A_MechaSound_
-0fff:91a0+     A_Slurpie_
-0fff:90a2+     T_FakeFire_
-0fff:8fc0+     T_Fake_
-0fff:8fb2+     T_Stand_
-0fff:8d5e+     T_Chase_
-0fff:8c90+     T_Ghosts_
-0fff:8b32+     T_DogChase_
-0fff:8ad0+     SelectPathDir_
-0fff:89a2+     T_Path_
-0fff:87ce+     T_Shoot_
-0fff:86f0+     T_Bite_
-0fff:8692      SpawnBJVictory_
-0fff:8600+     T_BJRun_
-0fff:85c2+     T_BJJump_
-0fff:8590+     T_BJYell_
-0fff:8572+     T_BJDone_
-0fff:84d0+     CheckPosition_
-39ce:4310+     _s_bjrun1
-39ce:4324+     _s_bjrun1s
-39ce:4338+     _s_bjrun2
-39ce:434c+     _s_bjrun3
-39ce:4360+     _s_bjrun3s
-39ce:4374+     _s_bjrun4
-39ce:4388+     _s_bjjump1
-39ce:439c+     _s_bjjump2
-39ce:43b0+     _s_bjjump3
-39ce:43c4+     _s_bjjump4
-39ce:43d8      _s_deathcam
-0fff:8218+     A_StartDeathCam_
+39d6:2b60*     _dirtable
+39d6:2b72+     _starthitpoints
+39d6:2c24+     _s_rocket
+39d6:2c38+     _s_smoke1
+39d6:2c4c+     _s_smoke2
+39d6:2c60+     _s_smoke3
+39d6:2c74+     _s_smoke4
+39d6:2c88+     _s_boom1
+39d6:2c9c+     _s_boom2
+39d6:2cb0+     _s_boom3
+39d6:2cc4+     _s_grdstand
+39d6:2cd8+     _s_grdpath1
+39d6:2cec+     _s_grdpath1s
+39d6:2d00+     _s_grdpath2
+39d6:2d14+     _s_grdpath3
+39d6:2d28+     _s_grdpath3s
+39d6:2d3c+     _s_grdpath4
+39d6:2d50      _s_grdpain
+39d6:2d64      _s_grdpain1
+39d6:2d78+     _s_grdshoot1
+39d6:2d8c+     _s_grdshoot2
+39d6:2da0+     _s_grdshoot3
+39d6:2db4      _s_grdchase1
+39d6:2dc8+     _s_grdchase1s
+39d6:2ddc+     _s_grdchase2
+39d6:2df0+     _s_grdchase3
+39d6:2e04+     _s_grdchase3s
+39d6:2e18+     _s_grdchase4
+39d6:2e2c      _s_grddie1
+39d6:2e40+     _s_grddie2
+39d6:2e54+     _s_grddie3
+39d6:2e68+     _s_grddie4
+39d6:2e7c      _s_blinkychase1
+39d6:2e90+     _s_blinkychase2
+39d6:2ea4+     _s_inkychase1
+39d6:2eb8+     _s_inkychase2
+39d6:2ecc+     _s_pinkychase1
+39d6:2ee0+     _s_pinkychase2
+39d6:2ef4+     _s_clydechase1
+39d6:2f08+     _s_clydechase2
+39d6:2f1c+     _s_dogpath1
+39d6:2f30+     _s_dogpath1s
+39d6:2f44+     _s_dogpath2
+39d6:2f58+     _s_dogpath3
+39d6:2f6c+     _s_dogpath3s
+39d6:2f80+     _s_dogpath4
+39d6:2f94+     _s_dogjump1
+39d6:2fa8+     _s_dogjump2
+39d6:2fbc+     _s_dogjump3
+39d6:2fd0+     _s_dogjump4
+39d6:2fe4+     _s_dogjump5
+39d6:2ff8      _s_dogchase1
+39d6:300c+     _s_dogchase1s
+39d6:3020+     _s_dogchase2
+39d6:3034+     _s_dogchase3
+39d6:3048+     _s_dogchase3s
+39d6:305c+     _s_dogchase4
+39d6:3070      _s_dogdie1
+39d6:3084+     _s_dogdie2
+39d6:3098+     _s_dogdie3
+39d6:30ac+     _s_dogdead
+39d6:30c0+     _s_ofcstand
+39d6:30d4+     _s_ofcpath1
+39d6:30e8+     _s_ofcpath1s
+39d6:30fc+     _s_ofcpath2
+39d6:3110+     _s_ofcpath3
+39d6:3124+     _s_ofcpath3s
+39d6:3138+     _s_ofcpath4
+39d6:314c      _s_ofcpain
+39d6:3160      _s_ofcpain1
+39d6:3174+     _s_ofcshoot1
+39d6:3188+     _s_ofcshoot2
+39d6:319c+     _s_ofcshoot3
+39d6:31b0      _s_ofcchase1
+39d6:31c4+     _s_ofcchase1s
+39d6:31d8+     _s_ofcchase2
+39d6:31ec+     _s_ofcchase3
+39d6:3200+     _s_ofcchase3s
+39d6:3214+     _s_ofcchase4
+39d6:3228      _s_ofcdie1
+39d6:323c+     _s_ofcdie2
+39d6:3250+     _s_ofcdie3
+39d6:3264+     _s_ofcdie4
+39d6:3278+     _s_ofcdie5
+39d6:328c+     _s_mutstand
+39d6:32a0+     _s_mutpath1
+39d6:32b4+     _s_mutpath1s
+39d6:32c8+     _s_mutpath2
+39d6:32dc+     _s_mutpath3
+39d6:32f0+     _s_mutpath3s
+39d6:3304+     _s_mutpath4
+39d6:3318      _s_mutpain
+39d6:332c      _s_mutpain1
+39d6:3340+     _s_mutshoot1
+39d6:3354+     _s_mutshoot2
+39d6:3368+     _s_mutshoot3
+39d6:337c+     _s_mutshoot4
+39d6:3390      _s_mutchase1
+39d6:33a4+     _s_mutchase1s
+39d6:33b8+     _s_mutchase2
+39d6:33cc+     _s_mutchase3
+39d6:33e0+     _s_mutchase3s
+39d6:33f4+     _s_mutchase4
+39d6:3408      _s_mutdie1
+39d6:341c+     _s_mutdie2
+39d6:3430+     _s_mutdie3
+39d6:3444+     _s_mutdie4
+39d6:3458+     _s_mutdie5
+39d6:346c+     _s_ssstand
+39d6:3480+     _s_sspath1
+39d6:3494+     _s_sspath1s
+39d6:34a8+     _s_sspath2
+39d6:34bc+     _s_sspath3
+39d6:34d0+     _s_sspath3s
+39d6:34e4+     _s_sspath4
+39d6:34f8      _s_sspain
+39d6:350c      _s_sspain1
+39d6:3520+     _s_ssshoot1
+39d6:3534+     _s_ssshoot2
+39d6:3548+     _s_ssshoot3
+39d6:355c+     _s_ssshoot4
+39d6:3570+     _s_ssshoot5
+39d6:3584+     _s_ssshoot6
+39d6:3598+     _s_ssshoot7
+39d6:35ac+     _s_ssshoot8
+39d6:35c0+     _s_ssshoot9
+39d6:35d4      _s_sschase1
+39d6:35e8+     _s_sschase1s
+39d6:35fc+     _s_sschase2
+39d6:3610+     _s_sschase3
+39d6:3624+     _s_sschase3s
+39d6:3638+     _s_sschase4
+39d6:364c      _s_ssdie1
+39d6:3660+     _s_ssdie2
+39d6:3674+     _s_ssdie3
+39d6:3688+     _s_ssdie4
+39d6:369c+     _s_bossstand
+39d6:36b0      _s_bosschase1
+39d6:36c4+     _s_bosschase1s
+39d6:36d8+     _s_bosschase2
+39d6:36ec+     _s_bosschase3
+39d6:3700+     _s_bosschase3s
+39d6:3714+     _s_bosschase4
+39d6:3728      _s_bossdie1
+39d6:373c+     _s_bossdie2
+39d6:3750+     _s_bossdie3
+39d6:3764+     _s_bossdie4
+39d6:3778+     _s_bossshoot1
+39d6:378c+     _s_bossshoot2
+39d6:37a0+     _s_bossshoot3
+39d6:37b4+     _s_bossshoot4
+39d6:37c8+     _s_bossshoot5
+39d6:37dc+     _s_bossshoot6
+39d6:37f0+     _s_bossshoot7
+39d6:3804+     _s_bossshoot8
+39d6:3818+     _s_gretelstand
+39d6:382c      _s_gretelchase1
+39d6:3840+     _s_gretelchase1s
+39d6:3854+     _s_gretelchase2
+39d6:3868+     _s_gretelchase3
+39d6:387c+     _s_gretelchase3s
+39d6:3890+     _s_gretelchase4
+39d6:38a4      _s_greteldie1
+39d6:38b8+     _s_greteldie2
+39d6:38cc+     _s_greteldie3
+39d6:38e0+     _s_greteldie4
+39d6:38f4+     _s_gretelshoot1
+39d6:3908+     _s_gretelshoot2
+39d6:391c+     _s_gretelshoot3
+39d6:3930+     _s_gretelshoot4
+39d6:3944+     _s_gretelshoot5
+39d6:3958+     _s_gretelshoot6
+39d6:396c+     _s_gretelshoot7
+39d6:3980+     _s_gretelshoot8
+39d6:39a8+     _s_schabbstand
+39d6:39bc      _s_schabbchase1
+39d6:39d0+     _s_schabbchase1s
+39d6:39e4+     _s_schabbchase2
+39d6:39f8+     _s_schabbchase3
+39d6:3a0c+     _s_schabbchase3s
+39d6:3a20+     _s_schabbchase4
+39d6:3a34+     _s_schabbdeathcam
+39d6:3a48      _s_schabbdie1
+39d6:3a5c+     _s_schabbdie2
+39d6:3a70+     _s_schabbdie3
+39d6:3a84+     _s_schabbdie4
+39d6:3a98+     _s_schabbdie5
+39d6:3aac+     _s_schabbdie6
+39d6:3ac0+     _s_schabbshoot1
+39d6:3ad4+     _s_schabbshoot2
+39d6:3ae8+     _s_needle1
+39d6:3afc+     _s_needle2
+39d6:3b10+     _s_needle3
+39d6:3b24+     _s_needle4
+39d6:3b38+     _s_giftstand
+39d6:3b4c      _s_giftchase1
+39d6:3b60+     _s_giftchase1s
+39d6:3b74+     _s_giftchase2
+39d6:3b88+     _s_giftchase3
+39d6:3b9c+     _s_giftchase3s
+39d6:3bb0+     _s_giftchase4
+39d6:3bc4+     _s_giftdeathcam
+39d6:3bd8      _s_giftdie1
+39d6:3bec+     _s_giftdie2
+39d6:3c00+     _s_giftdie3
+39d6:3c14+     _s_giftdie4
+39d6:3c28+     _s_giftdie5
+39d6:3c3c+     _s_giftdie6
+39d6:3c50+     _s_giftshoot1
+39d6:3c64+     _s_giftshoot2
+39d6:3c78+     _s_fatstand
+39d6:3c8c      _s_fatchase1
+39d6:3ca0+     _s_fatchase1s
+39d6:3cb4+     _s_fatchase2
+39d6:3cc8+     _s_fatchase3
+39d6:3cdc+     _s_fatchase3s
+39d6:3cf0+     _s_fatchase4
+39d6:3d04+     _s_fatdeathcam
+39d6:3d18      _s_fatdie1
+39d6:3d2c+     _s_fatdie2
+39d6:3d40+     _s_fatdie3
+39d6:3d54+     _s_fatdie4
+39d6:3d68+     _s_fatdie5
+39d6:3d7c+     _s_fatdie6
+39d6:3d90+     _s_fatshoot1
+39d6:3da4+     _s_fatshoot2
+39d6:3db8+     _s_fatshoot3
+39d6:3dcc+     _s_fatshoot4
+39d6:3de0+     _s_fatshoot5
+39d6:3df4+     _s_fatshoot6
+39d6:3e08+     _s_fakestand
+39d6:3e1c      _s_fakechase1
+39d6:3e30+     _s_fakechase1s
+39d6:3e44+     _s_fakechase2
+39d6:3e58+     _s_fakechase3
+39d6:3e6c+     _s_fakechase3s
+39d6:3e80+     _s_fakechase4
+39d6:3e94      _s_fakedie1
+39d6:3ea8+     _s_fakedie2
+39d6:3ebc+     _s_fakedie3
+39d6:3ed0+     _s_fakedie4
+39d6:3ee4+     _s_fakedie5
+39d6:3ef8+     _s_fakedie6
+39d6:3f0c+     _s_fakeshoot1
+39d6:3f20+     _s_fakeshoot2
+39d6:3f34+     _s_fakeshoot3
+39d6:3f48+     _s_fakeshoot4
+39d6:3f5c+     _s_fakeshoot5
+39d6:3f70+     _s_fakeshoot6
+39d6:3f84+     _s_fakeshoot7
+39d6:3f98+     _s_fakeshoot8
+39d6:3fac+     _s_fakeshoot9
+39d6:3fc0+     _s_fire1
+39d6:3fd4+     _s_fire2
+39d6:3fe8+     _s_mechastand
+39d6:3ffc      _s_mechachase1
+39d6:4010+     _s_mechachase1s
+39d6:4024+     _s_mechachase2
+39d6:4038+     _s_mechachase3
+39d6:404c+     _s_mechachase3s
+39d6:4060+     _s_mechachase4
+39d6:4074      _s_mechadie1
+39d6:4088+     _s_mechadie2
+39d6:409c+     _s_mechadie3
+39d6:40b0+     _s_mechadie4
+39d6:40c4+     _s_mechashoot1
+39d6:40d8+     _s_mechashoot2
+39d6:40ec+     _s_mechashoot3
+39d6:4100+     _s_mechashoot4
+39d6:4114+     _s_mechashoot5
+39d6:4128+     _s_mechashoot6
+39d6:413c      _s_hitlerchase1
+39d6:4150+     _s_hitlerchase1s
+39d6:4164+     _s_hitlerchase2
+39d6:4178+     _s_hitlerchase3
+39d6:418c+     _s_hitlerchase3s
+39d6:41a0+     _s_hitlerchase4
+39d6:41b4+     _s_hitlerdeathcam
+39d6:41c8      _s_hitlerdie1
+39d6:41dc+     _s_hitlerdie2
+39d6:41f0+     _s_hitlerdie3
+39d6:4204+     _s_hitlerdie4
+39d6:4218+     _s_hitlerdie5
+39d6:422c+     _s_hitlerdie6
+39d6:4240+     _s_hitlerdie7
+39d6:4254+     _s_hitlerdie8
+39d6:4268+     _s_hitlerdie9
+39d6:427c+     _s_hitlerdie10
+39d6:4290+     _s_hitlershoot1
+39d6:42a4+     _s_hitlershoot2
+39d6:42b8+     _s_hitlershoot3
+39d6:42cc+     _s_hitlershoot4
+39d6:42e0+     _s_hitlershoot5
+39d6:42f4+     _s_hitlershoot6
+1000:a430+     A_Smoke_
+1000:a392+     ProjectileTryMove_
+1000:a1c2+     T_Projectile_
+1000:a072      SpawnStand_
+1000:a040      SpawnDeadGuard_
+1000:9fd2      SpawnBoss_
+1000:9f60      SpawnGretel_
+1000:9e4a      SpawnPatrol_
+1000:9ca2      A_DeathScream_
+1000:9c18      SpawnGhosts_
+1000:9b90      SpawnSchabbs_
+1000:9b12      SpawnGift_
+1000:9a90      SpawnFat_
+1000:9992+     T_SchabbThrow_
+1000:9890+     T_GiftThrow_
+1000:9712+     T_Schabb_
+1000:9590+     T_Gift_
+1000:9412+     T_Fat_
+1000:9390      SpawnFakeHitler_
+1000:9312      SpawnHitler_
+1000:9280+     A_HitlerMorph_
+1000:9232+     A_MechaSound_
+1000:9210+     A_Slurpie_
+1000:9112+     T_FakeFire_
+1000:9030+     T_Fake_
+1000:9022+     T_Stand_
+1000:8dce+     T_Chase_
+1000:8d00+     T_Ghosts_
+1000:8ba2+     T_DogChase_
+1000:8b40+     SelectPathDir_
+1000:8a12+     T_Path_
+1000:883e+     T_Shoot_
+1000:8760+     T_Bite_
+1000:8702      SpawnBJVictory_
+1000:8670+     T_BJRun_
+1000:8632+     T_BJJump_
+1000:8600+     T_BJYell_
+1000:85e2+     T_BJDone_
+1000:8540+     CheckPosition_
+39d6:4310+     _s_bjrun1
+39d6:4324+     _s_bjrun1s
+39d6:4338+     _s_bjrun2
+39d6:434c+     _s_bjrun3
+39d6:4360+     _s_bjrun3s
+39d6:4374+     _s_bjrun4
+39d6:4388+     _s_bjjump1
+39d6:439c+     _s_bjjump2
+39d6:43b0+     _s_bjjump3
+39d6:43c4+     _s_bjjump4
+39d6:43d8      _s_deathcam
+1000:8288+     A_StartDeathCam_
 Module: wl_play.obj(/dos/z/owwolf3d/src/wl_play.c)
-39ce:8490*     _mapwidthtable
-39ce:8510      _buttonheld
-39ce:8520      _buttonstate
-39ce:8530      _spotvis
-39ce:9530      _nearmapylookup
-39ce:95b0      _tilemap
-39ce:a5b0      _objlist
-39ce:cd88      _farmapylookup
-39ce:ce08      _actorat
-39ce:ee08      _blockstarts
-39ce:f010+     _funnyticount
-39ce:f014*     _dummyobj
-39ce:f058      _demoptr
-39ce:f05c      _lastdemoptr
-39ce:f060      _uwidthtable
-39ce:f088+     _palshifted
-39ce:f08a+     _damagecount
-39ce:f08c+     _bonuscount
-39ce:f08e+     _objcount
-39ce:f090+     _DebugOk
-39ce:f092      _demoplayback
-39ce:f094      _demobuffer
-39ce:f096      _demorecord
-39ce:f098      _noclip
-39ce:f09a      _godmode
-39ce:f09c      _joystickprogressive
-39ce:f09e      _controly
-39ce:f0a0      _controlx
-39ce:f0a2      _mouseenabled
-39ce:f0a4      _joystickport
-39ce:f0a6      _joypadenabled
-39ce:f0a8      _viewsize
-39ce:f0aa      _joystickenabled
-39ce:f0ac      _singlestep
-39ce:f0ae      _extravbls
-39ce:f0b0      _new
-39ce:f0b2      _player
-39ce:f0b4      _killerobj
-39ce:f0b6+     _objfreelist
-39ce:f0b8+     _lastobj
-39ce:f0ba+     _obj
-39ce:f0bc      _playstate
-0fff:b5e0+     PollKeyboardButtons_
-0fff:b592+     PollMouseButtons_
-0fff:b4f0+     PollJoystickButtons_
-0fff:b3c2+     PollKeyboardMove_
-0fff:b360+     PollMouseMove_
-0fff:b222+     PollJoystickMove_
-0fff:aff0+     PollControls_
-0fff:afc2      CenterWindow_
-0fff:ac10+     CheckKeys_
-0fff:abc2      InitActorList_
-0fff:ab50      GetNewActor_
-0fff:aaf2+     RemoveObj_
-0fff:aaa0      StopMusic_
-0fff:aa22      StartMusic_
-0fff:a8d0      InitRedShifts_
-0fff:a8b2*     ClearPaletteShifts_
-0fff:a8a0      StartBonusFlash_
-0fff:a892      StartDamageFlash_
-0fff:a7a0+     UpdatePaletteShifts_
-0fff:a762      FinishPaletteShifts_
-0fff:a5d0+     DoActor_
-39ce:43ec      _dirscan
-39ce:43f4      _buttonscan
-39ce:4404      _buttonmouse
-39ce:440c      _buttonjoy
-39ce:4414+     _songs
-39ce:f0be      _madenoise
-39ce:f0c0      _updateptr
-39ce:f0c2      _mapwidth
-39ce:f0c4      _compatability
-39ce:f0c6      _tics
-39ce:f0c8      _mapheight
-34af:2df0+     _redshifts
-34af:3ff0+     _whiteshifts
-0fff:a422      PlayLoop_
+39d6:8490*     _mapwidthtable
+39d6:8510      _buttonheld
+39d6:8520      _buttonstate
+39d6:8530      _spotvis
+39d6:9530      _nearmapylookup
+39d6:95b0      _tilemap
+39d6:a5b0      _objlist
+39d6:cd88      _farmapylookup
+39d6:ce08      _actorat
+39d6:ee08      _blockstarts
+39d6:f010+     _funnyticount
+39d6:f014*     _dummyobj
+39d6:f058      _demoptr
+39d6:f05c      _lastdemoptr
+39d6:f060      _uwidthtable
+39d6:f088+     _palshifted
+39d6:f08a+     _damagecount
+39d6:f08c+     _bonuscount
+39d6:f08e+     _objcount
+39d6:f090+     _DebugOk
+39d6:f092      _demoplayback
+39d6:f094      _demobuffer
+39d6:f096      _demorecord
+39d6:f098      _noclip
+39d6:f09a      _godmode
+39d6:f09c      _joystickprogressive
+39d6:f09e      _controly
+39d6:f0a0      _controlx
+39d6:f0a2      _mouseenabled
+39d6:f0a4      _joystickport
+39d6:f0a6      _joypadenabled
+39d6:f0a8      _viewsize
+39d6:f0aa      _joystickenabled
+39d6:f0ac      _singlestep
+39d6:f0ae      _extravbls
+39d6:f0b0      _new
+39d6:f0b2      _player
+39d6:f0b4      _killerobj
+39d6:f0b6+     _objfreelist
+39d6:f0b8+     _lastobj
+39d6:f0ba+     _obj
+39d6:f0bc      _playstate
+1000:b650+     PollKeyboardButtons_
+1000:b602+     PollMouseButtons_
+1000:b560+     PollJoystickButtons_
+1000:b432+     PollKeyboardMove_
+1000:b3d0+     PollMouseMove_
+1000:b292+     PollJoystickMove_
+1000:b060+     PollControls_
+1000:b032      CenterWindow_
+1000:ac80+     CheckKeys_
+1000:ac32      InitActorList_
+1000:abc0      GetNewActor_
+1000:ab62+     RemoveObj_
+1000:ab10      StopMusic_
+1000:aa92      StartMusic_
+1000:a940      InitRedShifts_
+1000:a922*     ClearPaletteShifts_
+1000:a910      StartBonusFlash_
+1000:a902      StartDamageFlash_
+1000:a810+     UpdatePaletteShifts_
+1000:a7d2      FinishPaletteShifts_
+1000:a640+     DoActor_
+39d6:43ec      _dirscan
+39d6:43f4      _buttonscan
+39d6:4404      _buttonmouse
+39d6:440c      _buttonjoy
+39d6:4414+     _songs
+39d6:f0be      _madenoise
+39d6:f0c0      _updateptr
+39d6:f0c2      _mapwidth
+39d6:f0c4      _compatability
+39d6:f0c6      _tics
+39d6:f0c8      _mapheight
+34b7:2df0+     _redshifts
+34b7:3ff0+     _whiteshifts
+1000:a492      PlayLoop_
 Module: wolfass.obj(/dos/z/owwolf3d/src/wolfass.c)
-39ce:f0de+     _alNoIRQ
-39ce:f0e0+     _pcindicate
-39ce:f0e2+     _MyDS
-39ce:448c+     _vbuf
-39ce:448e+     _vdisp
-39ce:4490+     _count_time
-39ce:4492+     _count_fx
-39ce:4494+     _extreme
-39ce:4496+     _rndindex
-0fff:bd30      VL_VideoID_
-0fff:bd02      VL_WaitVBL_
-0fff:bc60      VH_UpdateScreen_
-0fff:bc42      SDL_SetDS_
-0fff:bc10+     SDL_turnOnPCSpeaker_
-0fff:bbf2*     SDL_turnOffPCSpeaker_
-0fff:bbc0+     SDL_setPCSpeaker_
-0fff:bac2+     SDL_DoFX_
-0fff:b930+     SDL_DoFast_
-0fff:b892      SDL_t0ExtremeAsmService_
-0fff:b7f0*     __SDL_t0ExtremeAsmService_
-0fff:b7c2      SDL_t0FastAsmService_
-0fff:b750      SDL_t0SlowAsmService_
-0fff:b742      SDL_IndicatePC_
-0fff:b6d0+     SDL_DigitizedDoneInIRQ_
-0fff:b672+     alOutInIRQ_
-0fff:b630      US_InitRndT_
-0fff:b612      US_RndT_
+39d6:f0de+     _alNoIRQ
+39d6:f0e0+     _pcindicate
+39d6:f0e2+     _MyDS
+39d6:448c+     _vbuf
+39d6:448e+     _vdisp
+39d6:4490+     _count_time
+39d6:4492+     _count_fx
+39d6:4494+     _extreme
+39d6:4496+     _rndindex
+1000:bda0      VL_VideoID_
+1000:bd72      VL_WaitVBL_
+1000:bcd0      VH_UpdateScreen_
+1000:bcb2      SDL_SetDS_
+1000:bc80+     SDL_turnOnPCSpeaker_
+1000:bc62*     SDL_turnOffPCSpeaker_
+1000:bc30+     SDL_setPCSpeaker_
+1000:bb32+     SDL_DoFX_
+1000:b9a0+     SDL_DoFast_
+1000:b902      SDL_t0ExtremeAsmService_
+1000:b860*     __SDL_t0ExtremeAsmService_
+1000:b832      SDL_t0FastAsmService_
+1000:b7c0      SDL_t0SlowAsmService_
+1000:b7b2      SDL_IndicatePC_
+1000:b740+     SDL_DigitizedDoneInIRQ_
+1000:b6e2+     alOutInIRQ_
+1000:b6a0      US_InitRndT_
+1000:b682      US_RndT_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(printf.c)
-1bd3:0000      printf_
+1bdb:0000      printf_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(iob.c)
-39ce:4598      ___iob
-39ce:f0e6      ___OpenStreams
-39ce:f0e8      ___ClosedStreams
+39d6:4598      ___iob
+39d6:f0e6      ___OpenStreams
+39d6:f0e8      ___ClosedStreams
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(fflush.c)
-1bd3:0022      fflush_
+1bdb:0022      fflush_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(open.c)
-1bd3:01ef      open_
-1bd3:020f      sopen_
+1bdb:01ef      open_
+1bdb:020f      sopen_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(read.c)
-1bd3:0234      read_
+1bdb:0234      read_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(close.c)
-1bd3:0308      close_
+1bdb:0308      close_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(write.c)
-1bd3:042b      write_
+1bdb:042b      write_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(ddisk086.asm)
-1bd3:05e4      _dos_getdiskfree_
+1bdb:05e4      _dos_getdiskfree_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(i4m.asm)
-1bd3:060e      __I4M
-1bd3:060e      __U4M
+1bdb:060e      __I4M
+1bdb:060e      __U4M
 Module: /dos/fdos/watcom2/lib286/math87m.lib(trig87.asm)
-1bd3:074d*     sin_
-1bd3:073e*     cos_
-1bd3:0802*     tan_
-1bd3:0654*     IF@COS
-1bd3:0654*     IF@DCOS
-1bd3:0666*     IF@SIN
-1bd3:0666      IF@DSIN
-1bd3:075c*     IF@TAN
-1bd3:075c      IF@DTAN
+1bdb:074d*     sin_
+1bdb:073e*     cos_
+1bdb:0802*     tan_
+1bdb:0654*     IF@COS
+1bdb:0654*     IF@DCOS
+1bdb:0666*     IF@SIN
+1bdb:0666      IF@DSIN
+1bdb:075c*     IF@TAN
+1bdb:075c      IF@DTAN
 Module: /dos/fdos/watcom2/lib286/math87m.lib(fchop87.asm)
-1bd3:0812      __CHP
+1bdb:0812      __CHP
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(i4d.asm)
-1bd3:083a      __I4D
-1bd3:0889*     __U4D
+1bdb:083a      __I4D
+1bdb:0889*     __U4D
 Module: /dos/fdos/watcom2/lib286/math87m.lib(atan87.asm)
-1bd3:0a15*     atan_
-1bd3:0a24*     atan2_
-1bd3:0918*     IF@ATAN
-1bd3:0918      IF@DATAN
-1bd3:0978*     IF@ATAN2
-1bd3:0978      IF@DATAN2
+1bdb:0a15*     atan_
+1bdb:0a24*     atan2_
+1bdb:0918*     IF@ATAN
+1bdb:0918      IF@DATAN
+1bdb:0978*     IF@ATAN2
+1bdb:0978      IF@DATAN2
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(argcv.c)
-39ce:f0ea      __argc
-39ce:f0ec      __argv
-39ce:f0ee      ___argc
-39ce:f0f0      ___argv
+39d6:f0ea      __argc
+39d6:f0ec      __argv
+39d6:f0ee      ___argc
+39d6:f0f0      ___argv
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(istable.c)
-39ce:1854      __IsTable
+39d6:1854      __IsTable
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(fstricmp.c)
-1bd3:0a37      _fstricmp_
+1bdb:0a37      _fstricmp_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(gtime086.asm)
-1bd3:0a76*     _dos_getdate_
-1bd3:0a90      _dos_gettime_
+1bdb:0a76*     _dos_getdate_
+1bdb:0a90      _dos_gettime_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(getch.c)
-1bd3:0aaa      getch_
+1bdb:0aaa      getch_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(exit.c)
-1bd3:0abf+     __null_int23_exit_
-1bd3:0ac0      exit_
-1bd3:0ad3*     _exit_
-39ce:46b0+     ___int23_exit
-39ce:46b4      ___FPE_handler_exit
+1bdb:0abf+     __null_int23_exit_
+1bdb:0ac0      exit_
+1bdb:0ad3*     _exit_
+39d6:46b0+     ___int23_exit
+39d6:46b4      ___FPE_handler_exit
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(intx086.c)
-1bd3:0ae4+     int86x_
-1bd3:0b6a      int86_
+1bdb:0ae4+     int86x_
+1bdb:0b6a      int86_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(puts.c)
-1bd3:0b8b      puts_
+1bdb:0b8b      puts_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(cstart)
-39ce:0000*     __nullarea
-39ce:46b8*     __ovlflag
-39ce:46b9*     __intno
-39ce:46ba*     __ovlvec
-1bd3:0bb6      _cstart_
-1bd3:0c89*     _Not_Enough_Memory_
-1bd3:0dbb      __exit_
-1bd3:0dd8      __do_exit_with_msg__
-1bd3:0e31      __GETDS
+39d6:0000*     __nullarea
+39d6:46b8*     __ovlflag
+39d6:46b9*     __intno
+39d6:46ba*     __ovlvec
+1bdb:0bb6      _cstart_
+1bdb:0c89*     _Not_Enough_Memory_
+1bdb:0dbb      __exit_
+1bdb:0dd8      __do_exit_with_msg__
+1bdb:0e31      __GETDS
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(fltused.c)
-39ce:46be      _fltused_
+39d6:46be      _fltused_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(cmodel.asm)
-1bd3:0e3c      _big_code_
-1bd3:0e3c*     CodeModelMismatch
+1bdb:0e3c      _big_code_
+1bdb:0e3c*     CodeModelMismatch
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(_8087086.asm)
-39ce:46c0      __8087
-39ce:46c1      __real87
-39ce:46c2      __dos87emucall
-39ce:46c4      __dos87real
+39d6:46c0      __8087
+39d6:46c1      __real87
+39d6:46c2      __dos87emucall
+39d6:46c4      __dos87real
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(d_getvec.c)
-1bd3:0e3c      _dos_getvect_
+1bdb:0e3c      _dos_getvect_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(d_setvec.c)
-1bd3:0e47      _dos_setvect_
+1bdb:0e47      _dos_setvect_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(heapgrow.c)
-1bd3:0e54      _fheapgrow_
-1bd3:0e55      _nheapgrow_
-1bd3:0e55*     _heapgrow_
+1bdb:0e54      _fheapgrow_
+1bdb:0e55      _nheapgrow_
+1bdb:0e55*     _heapgrow_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(memavl.c)
-1bd3:0ec2      _memavl_
+1bdb:0ec2      _memavl_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(nmalloc.c)
-1bd3:0ef3      _nmalloc_
-1bd3:0ef3      malloc_
-39ce:46c6      ___nheapbeg
-39ce:46c8      ___MiniHeapRover
-39ce:46ca      ___LargestSizeB4MiniHeapRover
+1bdb:0ef3      _nmalloc_
+1bdb:0ef3      malloc_
+39d6:46c6      ___nheapbeg
+39d6:46c8      ___MiniHeapRover
+39d6:46ca      ___LargestSizeB4MiniHeapRover
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(fmalloc.c)
-1bd3:0fb2      _fmalloc_
-39ce:46cc+     ___fheap
-39ce:46ce      ___fheapRover
-39ce:46d0      ___LargestSizeB4Rover
+1bdb:0fb2      _fmalloc_
+39d6:46cc+     ___fheap
+39d6:46ce      ___fheapRover
+39d6:46d0      ___LargestSizeB4Rover
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(ffree.c)
-1bd3:10a7      _ffree_
+1bdb:10a7      _ffree_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(nfree.c)
-1bd3:10e1      _nfree_
-1bd3:10e1      free_
-39ce:f0f2+     ___MiniHeapFreeRover
+1bdb:10e1      _nfree_
+1bdb:10e1      free_
+39d6:f0f2+     ___MiniHeapFreeRover
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(fopen.c)
-1bd3:11a6+     __open_flags_
-1bd3:134e+     _fsopen_
-1bd3:1393      fopen_
-1bd3:13f0*     freopen_
+1bdb:11a6+     __open_flags_
+1bdb:134e+     _fsopen_
+1bdb:1393      fopen_
+1bdb:13f0*     freopen_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(fprintf.c)
-1bd3:1434      fprintf_
+1bdb:1434      fprintf_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(fclose.c)
-1bd3:1456      __doclose_
-1bd3:14ec      __shutdown_stream_
-1bd3:1500      fclose_
-39ce:f0f4+     ___RmTmpFileFn
+1bdb:1456      __doclose_
+1bdb:14ec      __shutdown_stream_
+1bdb:1500      fclose_
+39d6:f0f4+     ___RmTmpFileFn
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(lseek.c)
-1bd3:1523      lseek_
+1bdb:1523      lseek_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(unlnk.c)
-1bd3:1554      unlink_
+1bdb:1554      unlink_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(filelen.c)
-1bd3:1562      filelength_
+1bdb:1562      filelength_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(pia.asm)
-1bd3:15c7      __PIA
-1bd3:15c0*     __PIS
+1bdb:15c7      __PIA
+1bdb:15c0*     __PIS
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(ptc.asm)
-1bd3:15d8      __PTC
+1bdb:15d8      __PTC
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(pts.asm)
-1bd3:1604      __PTS
+1bdb:1604      __PTS
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(getenv.c)
-1bd3:162e      getenv_
+1bdb:162e      getenv_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(toupper.c)
-1bd3:16b5      toupper_
+1bdb:16b5      toupper_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(strtol.c)
-1bd3:18ba*     strtoul_
-1bd3:18c2      strtol_
+1bdb:18ba*     strtoul_
+1bdb:18c2      strtol_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(atoi.c)
-1bd3:18c8      atoi_
+1bdb:18c8      atoi_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(tolower.c)
-1bd3:191e      tolower_
+1bdb:191e      tolower_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(ltoa.c)
-1bd3:192c      ultoa_
-1bd3:197f      ltoa_
+1bdb:192c      ultoa_
+1bdb:197f      ltoa_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(sprintf.c)
-1bd3:19a0      sprintf_
+1bdb:19a0      sprintf_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(itoa.c)
-1bd3:19c2+     utoa_
-1bd3:1a07      itoa_
+1bdb:19c2+     utoa_
+1bdb:1a07      itoa_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(creat.c)
-1bd3:1a23      creat_
+1bdb:1a23      creat_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(io086.asm)
-1bd3:1a32*     _dos_read_
-1bd3:1a55      _dos_write_
+1bdb:1a32*     _dos_read_
+1bdb:1a55      _dos_write_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(finddos.c)
-1bd3:1a65      _dos_findfirst_
-1bd3:1a7d      _dos_findnext_
-1bd3:1a8f*     _dos_findclose_
+1bdb:1a65      _dos_findfirst_
+1bdb:1a7d      _dos_findnext_
+1bdb:1a8f*     _dos_findclose_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(fprtf.c)
-1bd3:1aa5      __fprtf_
+1bdb:1aa5      __fprtf_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(initfile.c)
-1bd3:1b40      __InitFiles_
+1bdb:1b40      __InitFiles_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(ioexit.c)
-1bd3:1c22*     fcloseall_
-1bd3:1c29      __full_io_exit_
+1bdb:1c22*     fcloseall_
+1bdb:1c29      __full_io_exit_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(flushall.c)
-1bd3:1c33*     __flushall_
-1bd3:1c66      flushall_
+1bdb:1c33*     __flushall_
+1bdb:1c66      flushall_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(flush.c)
-1bd3:1c6b      __flush_
+1bdb:1c6b      __flush_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(opendos.c)
-1bd3:1d5a      _dos_open_
+1bdb:1d5a      _dos_open_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(iomode.c)
-1bd3:1d70      __GetIOMode_
-1bd3:1d87      __SetIOMode_nogrow_
-39ce:475e      ___NFiles
-39ce:4760      ___init_mode
-39ce:4788      ___io_mode
+1bdb:1d70      __GetIOMode_
+1bdb:1d87      __SetIOMode_nogrow_
+39d6:475e      ___NFiles
+39d6:4760      ___init_mode
+39d6:4788      ___io_mode
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(isatt.c)
-1bd3:1d9c      isatty_
+1bdb:1d9c      isatty_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(doserrno.c)
-1bd3:1db8*     __get_doserrno_ptr_
-39ce:f0f8      __doserrno
+1bdb:1db8*     __get_doserrno_ptr_
+39d6:f0f8      __doserrno
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(umaskval.c)
-39ce:478a      ___umaskval
+39d6:478a      ___umaskval
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(creatdos.c)
-1bd3:1dbc      _dos_creat_
-1bd3:1dd0*     _dos_creatnew_
+1bdb:1dbc      _dos_creat_
+1bdb:1dd0*     _dos_creatnew_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(stiomode.c)
-1bd3:1de4+     __grow_iomode_
-1bd3:1e6c+     __shrink_iomode_
-1bd3:1e87      __SetIOMode_
+1bdb:1de4+     __grow_iomode_
+1bdb:1e6c+     __shrink_iomode_
+1bdb:1e87      __SetIOMode_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(errno.c)
-1bd3:1edb*     __get_errno_ptr_
-39ce:f0fc      _errno
+1bdb:1edb*     __get_errno_ptr_
+39d6:f0fc      _errno
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(dosret.c)
-1bd3:1edf*     __dosretax
-1bd3:1ee4*     __dosret0
-1bd3:1eeb      __set_errno_dos_
-1bd3:1f3a*     __set_errno_dos_reterr_
+1bdb:1edf*     __dosretax
+1bdb:1ee4*     __dosret0
+1bdb:1eeb      __set_errno_dos_
+1bdb:1f3a*     __set_errno_dos_reterr_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(textmode.c)
-39ce:47a0      __fmode
+39d6:47a0      __fmode
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(iomodtty.c)
-1bd3:1f45      __ChkTTYIOMode_
-1bd3:1f79*     __IOMode_
+1bdb:1f45      __ChkTTYIOMode_
+1bdb:1f79*     __IOMode_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(__lseek.c)
-1bd3:1f89      __lseek_
+1bdb:1f89      __lseek_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(_clse.c)
-1bd3:1fc3      __close_
+1bdb:1fc3      __close_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(stack086.c)
-1bd3:1ff4      stackavail_
+1bdb:1ff4      stackavail_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(stk086.asm)
-1bd3:2001*     __STK
-1bd3:2018      __STKOVERFLOW_
+1bdb:2001*     __STK
+1bdb:2018      __STKOVERFLOW_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(seterrno.c)
-1bd3:2035*     __set_EDOM_
-1bd3:203c      __set_ERANGE_
-1bd3:2043      __set_EINVAL_
+1bdb:2035*     __set_EDOM_
+1bdb:203c      __set_ERANGE_
+1bdb:2043      __set_EINVAL_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(chipvar)
-39ce:47a4      ___chipbug
-39ce:47a4      __chipbug
+39d6:47a4      ___chipbug
+39d6:47a4      __chipbug
 Module: /dos/fdos/watcom2/lib286/noemu87.lib(emustub.asm)
 0000:0000*     FJSRQQ
 0000:0000*     FISRQQ
@@ -2175,235 +2175,235 @@ Module: /dos/fdos/watcom2/lib286/noemu87.lib(emustub.asm)
 0000:0000*     FJARQQ
 0000:0000      FICRQQ
 0000:0000*     FIARQQ
-1bd3:204e*     __init_87_emulator
+1bdb:204e*     __init_87_emulator
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(chipt16.asm)
-1bd3:2068      __fptan_chk
+1bdb:2068      __fptan_chk
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(chipw16.asm)
-1bd3:2110      __fpatan_wrap
+1bdb:2110      __fpatan_wrap
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(initargv.c)
-1bd3:22a8      __Init_Argv_
-1bd3:22df      __Fini_Argv_
+1bdb:22a8      __Init_Argv_
+1bdb:22df      __Fini_Argv_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(crwdata)
-39ce:47a8      __curbrk
-39ce:47b0      __STACKLOW
-39ce:47b2      __STACKTOP
-39ce:47b4      __cbyte
-39ce:47b6      __child
-39ce:47b8      __no87
-39ce:47c5      ___FPE_handler
-39ce:47aa      __psp
-39ce:47b9      __get_ovl_stack
-39ce:47bd      __restore_ovl_stack
-39ce:47c1      __close_ovl_file
-39ce:47c9      __LpCmdLine
-39ce:47cd      __LpPgmName
-39ce:47ac      __osmajor
-39ce:47ad      __osminor
-39ce:47ae      __osmode
-39ce:47af      __HShift
+39d6:47a8      __curbrk
+39d6:47b0      __STACKLOW
+39d6:47b2      __STACKTOP
+39d6:47b4      __cbyte
+39d6:47b6      __child
+39d6:47b8      __no87
+39d6:47c5      ___FPE_handler
+39d6:47aa      __psp
+39d6:47b9      __get_ovl_stack
+39d6:47bd      __restore_ovl_stack
+39d6:47c1      __close_ovl_file
+39d6:47c9      __LpCmdLine
+39d6:47cd      __LpPgmName
+39d6:47ac      __osmajor
+39d6:47ad      __osminor
+39d6:47ae      __osmode
+39d6:47af      __HShift
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(initrtns.c)
-1bd3:2331      __InitRtns
-1bd3:2331*     __FInitRtns
-1bd3:238c      __FiniRtns
-1bd3:238c*     __FFiniRtns
+1bdb:2331      __InitRtns
+1bdb:2331*     __FInitRtns
+1bdb:238c      __FiniRtns
+1bdb:238c*     __FFiniRtns
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(intr.c)
-1bd3:23f0      intr_
+1bdb:23f0      intr_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(segread.c)
-1bd3:2404      segread_
+1bdb:2404      segread_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(fputs.c)
-1bd3:241c      fputs_
+1bdb:241c      fputs_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(fputc.c)
-1bd3:2498      fputc_
+1bdb:2498      fputc_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(xmsg.c)
-1bd3:2544*     __exit_with_msg_
-1bd3:2549      __fatal_runtime_error_
+1bdb:2544*     __exit_with_msg_
+1bdb:2549      __fatal_runtime_error_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(cmain086.c)
-1bd3:2563      __CMain
+1bdb:2563      __CMain
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(uselfn.c)
-39ce:47d2      ___uselfn
+39d6:47d2      ___uselfn
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(dosseg)
-1bd3:2580      __DOSseg__
+1bdb:2580      __DOSseg__
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(setefg.c)
-1bd3:2581      __setEFGfmt_
+1bdb:2581      __setEFGfmt_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(chk8087.c)
-1bd3:25ac*     _fpreset_
-1bd3:25d2      __init_8087_
-1bd3:2642      __chk8087_
+1bdb:25ac*     _fpreset_
+1bdb:25d2      __init_8087_
+1bdb:2642      __chk8087_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(grownear.c)
-1bd3:2705      __LastFree_
-1bd3:276d      __ExpandDGROUP_
+1bdb:2705      __LastFree_
+1bdb:276d      __ExpandDGROUP_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(mem.c)
-1bd3:2850      __MemAllocator
-1bd3:291a      __MemFree
+1bdb:2850      __MemAllocator
+1bdb:291a      __MemFree
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(nmemneed.c)
-1bd3:2a86      __nmemneed_
+1bdb:2a86      __nmemneed_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(growseg.c)
-1bd3:2a89      __GrowSeg_
+1bdb:2a89      __GrowSeg_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(allocseg.c)
-1bd3:2b94      __AllocSeg_
+1bdb:2b94      __AllocSeg_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(fmemneed.c)
-1bd3:2c38      __fmemneed_
+1bdb:2c38      __fmemneed_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(comtflag.c)
-1bd3:2c3b*     __set_commode_
-39ce:47f2      __commode
+1bdb:2c3b*     __set_commode_
+39d6:47f2      __commode
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(fseek.c)
-1bd3:2c96      fseek_
+1bdb:2c96      fseek_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(chktty.c)
-1bd3:2d9d      __chktty_
+1bdb:2d9d      __chktty_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(freefp.c)
-1bd3:2dc4      __freefp_
-1bd3:2de8      __purgefp_
+1bdb:2dc4      __freefp_
+1bdb:2de8      __purgefp_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(allocfp.c)
-1bd3:2e01      __allocfp_
+1bdb:2e01      __allocfp_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(error086.asm)
-1bd3:2e8e      __doserror_
-1bd3:2e9c      __doserror1_
+1bdb:2e8e      __doserror_
+1bdb:2e9c      __doserror1_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(environ.c)
-39ce:f100      ___env_mask
-39ce:f102      _environ
-39ce:f104*     __wenviron
+39d6:f100      ___env_mask
+39d6:f102      _environ
+39d6:f104*     __wenviron
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(mbterm.c)
-1bd3:2ea8      _mbterm_
+1bdb:2ea8      _mbterm_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(mbsnextc.c)
-1bd3:2edf      _mbsnextc_
+1bdb:2edf      _mbsnextc_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(mbcupper.c)
-1bd3:2f09      _mbctoupper_
+1bdb:2f09      _mbctoupper_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(mbsinc.c)
-1bd3:2f21      _mbsinc_
+1bdb:2f21      _mbsinc_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(alphabet.c)
-39ce:1956      ___Alphabet
+39d6:1956      ___Alphabet
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(vsprintf.c)
-1bd3:2f60      vsprintf_
+1bdb:2f60      vsprintf_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(ioalloc.c)
-1bd3:2f7b      __ioalloc_
+1bdb:2f7b      __ioalloc_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(prtf.c)
-1bd3:2feb      __prtf_
+1bdb:2feb      __prtf_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(qwrit.c)
-1bd3:3b75      __qwrite_
+1bdb:3b75      __qwrite_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(fsync.c)
-1bd3:3bcf      fsync_
+1bdb:3bcf      fsync_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(nrealloc.c)
-1bd3:3bd4*     _nrealloc_
-1bd3:3bd4      realloc_
+1bdb:3bd4*     _nrealloc_
+1bdb:3bd4      realloc_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(chipbug.c)
-1bd3:3c50      __verify_pentium_fdiv_bug_
+1bdb:3c50      __verify_pentium_fdiv_bug_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(chipa16.asm)
-1bd3:3e48      __fpatan_chk
+1bdb:3e48      __fpatan_chk
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(histsplt.c)
-39ce:f106      ___historical_splitparms
+39d6:f106      ___historical_splitparms
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(___argc.c)
-39ce:f108      ____Argc
-39ce:f10a      ____Argv
+39d6:f108      ____Argc
+39d6:f10a      ____Argv
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(sgdef086)
-39ce:48b6      __Start_XI
-39ce:48ec      __End_XI
-39ce:48ec      __Start_YI
-39ce:4904      __End_YI
+39d6:48b6      __Start_XI
+39d6:48ec      __End_XI
+39d6:48ec      __Start_YI
+39d6:4904      __End_YI
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(dointr)
-1bd3:400e      _DoINTR_
+1bdb:400e      _DoINTR_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(enterdb.c)
-1bd3:4387      __EnterWVIDEO_
-39ce:47f4+     ___WD_Present
+1bdb:4387      __EnterWVIDEO_
+39d6:47f4+     ___WD_Present
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(amblksiz.c)
-39ce:47f6      __amblksiz
+39d6:47f6      __amblksiz
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(noefgfmt.c)
-39ce:47f8      ___EFG_printf
-39ce:47fc      ___EFG_scanf
+39d6:47f8      ___EFG_printf
+39d6:47fc      ___EFG_scanf
 Module: /dos/fdos/watcom2/lib286/math87m.lib(efgfmt.c)
-1bd3:43b2      _EFG_Format_
+1bdb:43b2      _EFG_Format_
 Module: /dos/fdos/watcom2/lib286/math87m.lib(cnvs2d.c)
-1bd3:452f      __cnvs2d_
+1bdb:452f      __cnvs2d_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(8087cw.c)
-39ce:4800      __8087cw
+39d6:4800      __8087cw
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(save8087.c)
-39ce:4802      ___Save8087
-39ce:4806      ___Rest8087
+39d6:4802      ___Save8087
+39d6:4806      ___Rest8087
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(grabfp87.c)
-1bd3:4547      __GrabFP87_
+1bdb:4547      __GrabFP87_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(ini87086.asm)
-1bd3:4570*     __init_8087_emu
-1bd3:4576      __x87id
+1bdb:4570*     __init_8087_emu
+1bdb:4576      __x87id
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(heapen.c)
-1bd3:45d3*     _heapenable_
-39ce:480a      ___heap_enabled
+1bdb:45d3*     _heapenable_
+39d6:480a      ___heap_enabled
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(sbrk.c)
-1bd3:45df      __brk_
-1bd3:4630*     sbrk_
+1bdb:45df      __brk_
+1bdb:4630*     sbrk_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(tell.c)
-1bd3:4636      tell_
+1bdb:4636      tell_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(setenvp.c)
-1bd3:4647      __setenvp_
-1bd3:46f4      __freeenvp_
+1bdb:4647      __setenvp_
+1bdb:46f4      __freeenvp_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(mbisdbcs.c)
-39ce:480c      ___IsDBCS
+39d6:480c      ___IsDBCS
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(mbislead.c)
-1bd3:471f*     _ismbblead_
-39ce:f10e      ___MBCSIsTable
+1bdb:471f*     _ismbblead_
+39d6:f10e      ___MBCSIsTable
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(mbinit.c)
-1bd3:476a      __mbinit_
-39ce:480e      ___MBCodePage
+1bdb:476a      __mbinit_
+39d6:480e      ___MBCodePage
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(mbdtoupp.c)
-1bd3:483a      _mbdtoupper_
+1bdb:483a      _mbdtoupper_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(wctomb.c)
-1bd3:4848      wctomb_
+1bdb:4848      wctomb_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(strupr.c)
-1bd3:4865      strupr_
+1bdb:4865      strupr_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(lltoa.c)
-1bd3:4885      ulltoa_
-1bd3:494a*     lltoa_
+1bdb:4885      ulltoa_
+1bdb:494a*     lltoa_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(filedos.c)
-1bd3:499e*     _dos_close_
-1bd3:49ac      _dos_commit_
+1bdb:499e*     _dos_close_
+1bdb:49ac      _dos_commit_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(nmsize.c)
-1bd3:49bb*     _msize_
-1bd3:49bb      _nmsize_
+1bdb:49bb*     _msize_
+1bdb:49bb      _nmsize_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(nexpand.c)
-1bd3:49ca      _nexpand_
-1bd3:49ca*     _expand_
+1bdb:49ca      _nexpand_
+1bdb:49ca*     _expand_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(fdiv_patch)
-1bd3:4b9c      __fdiv_fpr
-1bd3:503c*     __fdiv_chk
-1bd3:5050*     __fdiv_m32
-1bd3:5097*     __fdiv_m64
-1bd3:50de*     __fdiv_m32r
-1bd3:5125*     __fdiv_m64r
+1bdb:4b9c      __fdiv_fpr
+1bdb:503c*     __fdiv_chk
+1bdb:5050*     __fdiv_m32
+1bdb:5097*     __fdiv_m64
+1bdb:50de*     __fdiv_m32r
+1bdb:5125*     __fdiv_m64r
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(rtcntrl.c)
-1bd3:516c*     _SetLD64bit_
-1bd3:5172*     _SetLD80bit_
-1bd3:5178      _LDisDouble_
+1bdb:516c*     _SetLD64bit_
+1bdb:5172*     _SetLD80bit_
+1bdb:5178      _LDisDouble_
 Module: /dos/fdos/watcom2/lib286/math87m.lib(ldcvt.c)
-1bd3:5297      _LDScale10x_
-1bd3:57a0+     __cvtld_
-1bd3:5ca8      __LDcvt_
+1bdb:5297      _LDScale10x_
+1bdb:57a0+     __cvtld_
+1bdb:5ca8      __LDcvt_
 Module: /dos/fdos/watcom2/lib286/math87m.lib(strtod.c)
-1bd3:6171+     __Strtold_
-1bd3:62d2      strtod_
+1bdb:6171+     __Strtold_
+1bdb:62d2      strtod_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(fpe87.asm)
-1bd3:6464      __Init_FPE_handler_
-1bd3:649d      __Fini_FPE_handler_
-1bd3:64d4*     __FPEHandler
+1bdb:6464      __Init_FPE_handler_
+1bdb:649d      __Fini_FPE_handler_
+1bdb:64d4*     __FPEHandler
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(clearenv.c)
-1bd3:6766      clearenv_
+1bdb:6766      clearenv_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(_expand.c)
-1bd3:67db      __HeapManager_expand_
+1bdb:67db      __HeapManager_expand_
 Module: /dos/fdos/watcom2/lib286/math87m.lib(ldclass.c)
-1bd3:695e      __LDClass_
-1bd3:69aa*     _FLClass_
+1bdb:695e      __LDClass_
+1bdb:69aa*     _FLClass_
 Module: /dos/fdos/watcom2/lib286/math87m.lib(bufld086.asm)
-1bd3:69ba      __ZBuf2LD
+1bdb:69ba      __ZBuf2LD
 Module: /dos/fdos/watcom2/lib286/math87m.lib(inf_nan.c)
-39ce:197c*     ___f_infinity
-39ce:1980*     ___f_posqnan
-39ce:1984      ___d_infinity
-39ce:198c      ___d_posqnan
-39ce:1994*     ___ld_infinity
-39ce:199c*     ___ld_posqnan
+39d6:197c*     ___f_infinity
+39d6:1980*     ___f_posqnan
+39d6:1984      ___d_infinity
+39d6:198c      ___d_posqnan
+39d6:1994*     ___ld_infinity
+39d6:199c*     ___ld_posqnan
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(hugeval.c)
-39ce:19a4      __HugeValue
+39d6:19a4      __HugeValue
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(fpeint.c)
-39ce:48b4      ___FPE_int
+39d6:48b4      ___FPE_int
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(bfree.c)
-1bd3:6a88      _bfree_
+1bdb:6a88      _bfree_
 
 
                         +--------------------+
@@ -2420,6 +2420,6 @@ Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(bfree.c)
                         +-----------------------+
 
 Stack size:  0800 (2048.)
-Memory size:  00049900 (301312.)
-Entry point address: 1bd3:0bb6
+Memory size:  00049980 (301440.)
+Entry point address: 1bdb:0bb6
 Link time: 00:00.10
