@@ -211,8 +211,8 @@ void VL_MungePic (byte far *source, unsigned width, unsigned height)
 	MM_GetPtr (&(memptr)temp,size);
 	printf("VL_MungePic");
 	printf("====================================\n");
-	printf("%Fp\n%Fp\n%Fp\n", &(memptr)temp, (memptr)temp, temp);
-	printf("=============================================\n");
+	printf("%Fp	&(memptr)temp\n%Fp	(memptr)temp\n%Fp	&temp\n%Fp	temp\n", &(memptr)temp, (memptr)temp, &temp, temp);
+	printf("===============================================\n");
 #ifdef __WATCOMC__
 	return;
 #endif
