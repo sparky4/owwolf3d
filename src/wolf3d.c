@@ -1164,11 +1164,7 @@ void InitGame (void)
 
 	SignonScreen ();
 #ifdef __WATCOMC__
-	getch();
-	VL_SetTextMode ();
-	printf("\nVW_Startup breaks. i do not know how to fix this.\n");
-	MM_Shutdown ();
-	exit(1);
+	BAKAPEEQUIT;
 #endif
 	VW_Startup ();
 	IN_Startup ();
