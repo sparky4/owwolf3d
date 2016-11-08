@@ -1,0 +1,30 @@
+VL_MungePic====================================
+4db5:fc5c
+4db5:4db5
+096e:fc6b
+=============================================
+VL_MungePic breaks
+
+VW_Startup breaks. i do not know how to fix this.
+VL_MungePic====================================
+4F84:FFA6
+4598:4F84
+3E83:457A
+=============================================
+VL_MungePic breaks
+CalcHeight()
+heightnumerator
+211968	15360	828	0
+a	6234
+b	12
+d	8734
+d	8
+ax	4
+al	5
+	nx	0
+pee	2408
+gxt	gyt	nx	gx	gy
+0	0	22528	0	0
+0	0	0	0	22528
+ch	14
+compiled on Nov 08 2016  11:03:53
