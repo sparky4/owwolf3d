@@ -1,2 +1,2 @@
-src/id_mm.c(687): Warning! W120: lvalue cast is not standard C
-src/id_mm.c(758): Warning! W120: lvalue cast is not standard C
+src/id_mm.c(694): Warning! W120: lvalue cast is not standard C
+src/id_mm.c(765): Warning! W120: lvalue cast is not standard C

@@ -1,9 +1,35 @@
-046b:0b7a:	y
+Borland C
+MM_GetPtr
+	baseptr=4628:E6D8	useptr=4628:E6D8
+	*baseptr=4628:0000	*useptr=4628:0000
+	&baseptr=4628:FFB0	&useptr=3C1E:002A
+MM_GetPtr
+	baseptr=4628:FFA6	useptr=4628:FFA6
+	*baseptr=4628:4628	*useptr=4628:4628
+	&baseptr=4628:FF9A	&useptr=3C1E:0036
+VL_MungePic====================================
+4F8C:FFA6	&(memptr)temp
+4F8C:FFA6	(memptr)temp
+460A:4628	&temp
+4F8C:3E8B	temp
+===============================================
+VL_MungePic breaks
 
-046b:3478:	*x
-6966:0040:	x =1131
-0x40:0x28
+Open Watcom C
+MM_GetPtr
+	baseptr=4c8e:4c8e	useptr=4c8e:4c8e
+	*baseptr=4c8e:0000	*useptr=4c8e:0000
+	&baseptr=4c8e:feca	&useptr=2581:04ca
+MM_GetPtr
+	baseptr=feec:feec	useptr=feec:feec
+	*baseptr=feec:0140	*useptr=feec:0140
+	&baseptr=feec:feca	&useptr=2581:04d6
+VL_MungePic====================================
+4dca:feec	&(memptr)temp
+4dca:feec	(memptr)temp
+fefb:4dca	&temp
+02ef:096e	temp
+===============================================
+VL_MungePic breaks
 
-0350:0000:	*x
-3920:0040:	x =848
-0x40:0x28
+_fmemcpy() and VW_Startup breaks. I do not know how to fix this.
