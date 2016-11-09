@@ -1,32 +1,9 @@
-VL_MungePic====================================
-4db6:fc7c	&(memptr)temp
-4db6:fc7c	(memptr)temp
-fc8b:4db6	&temp
-02ef:096e	temp
-===============================================
-VL_MungePic breaks
+046b:0b7a:	y
 
-VW_Startup breaks. i do not know how to fix this.
-VL_MungePic====================================
-4F84:FFA6	&(memptr)temp
-4F84:FFA6	(memptr)temp
-45AA:45C8	&temp
-4F84:3E83	temp
-===============================================
-VL_MungePic breaks
-CalcHeight()
-heightnumerator
-211968	15360	828	0
-a	6234
-b	12
-d	8734
-d	8
-ax	4
-al	5
-	nx	0
-pee	2408
-gxt	gyt	nx	gx	gy
-0	0	22528	0	0
-0	0	0	0	22528
-ch	14
-compiled on Nov 08 2016  11:03:53
+046b:3478:	*x
+6966:0040:	x =1131
+0x40:0x28
+
+0350:0000:	*x
+3920:0040:	x =848
+0x40:0x28

@@ -2,7 +2,9 @@
 #ifdef __WATCOMC__
 //#include "type.h"
 //#define _seg __segment// __based( void )
-#define _seg __based( void )
+#define _SEGA __segment
+#else
+#define _SEGA int _seg
 #endif
 
 /*
@@ -40,14 +42,14 @@
 
 void main()
 {
-	int _seg *x;
+	_SEGA *x;
 #ifdef __WATCOMC__
 	__segment y;
 #endif
 	int value;
 
 	//printf("%Fp:	%d\n", x, value);
-	x = (int _seg *)0x40;
+	x = (_SEGA *)0x40;
 	value = *(x + 20);
 #ifdef __WATCOMC__
 	//printf("%Fp:	*y\n", *y);
