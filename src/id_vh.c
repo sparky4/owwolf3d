@@ -198,7 +198,8 @@ bufferwidth = ((dest+1)-origdest)*4;
 void VL_MungePic (byte far *source, unsigned width, unsigned height)
 {
 	unsigned	x,y,plane,size,pwidth;
-	byte		far *dest, far *srcline, _seg *temp;
+	byte		far *dest, far *srcline;
+	_BSEG *temp;
 
 	size = width*height;
 
@@ -440,7 +441,7 @@ void LoadLatchMem (void)
 //
 	latchpics[0] = freelatch;
 	CA_CacheGrChunk (STARTTILE8);
-	src = (byte _seg *)grsegs[STARTTILE8];
+	src = (_BSEG *)grsegs[STARTTILE8];
 	destoff = freelatch;
 
 	for (i=0;i<NUMTILE8;i++)
@@ -455,13 +456,13 @@ void LoadLatchMem (void)
 //
 // tile 16s
 //
-	src = (byte _seg *)grsegs[STARTTILE16];
+	src = (_BSEG *)grsegs[STARTTILE16];
 	latchpics[1] = destoff;
 
 	for (i=0;i<NUMTILE16;i++)
 	{
 		CA_CacheGrChunk (STARTTILE16+i);
-		src = (byte _seg *)grsegs[STARTTILE16+i];
+		src = (_BSEG *)grsegs[STARTTILE16+i];
 		VL_MemToLatch (src,16,16,destoff);
 		destoff+=64;
 		if (src)

@@ -52,12 +52,12 @@ typedef struct
 =============================================================================
 */
 
-byte 		_seg	*tinf;
+_BSEG	*tinf;
 int			mapon;
 
 unsigned	_seg	*mapsegs[MAPPLANES];
 maptype		_seg	*mapheaderseg[NUMMAPS];
-byte		_seg	*audiosegs[NUMSNDCHUNKS];
+_BSEG	*audiosegs[NUMSNDCHUNKS];
 void		_seg	*grsegs[NUMCHUNKS];
 
 byte		far	grneeded[NUMCHUNKS];
@@ -1107,7 +1107,7 @@ void CAL_SetupMapFile (void)
 	close(handle);
 #else
 
-	tinf = (byte _seg *)FP_SEG(&maphead);
+	tinf = (_BSEG *)FP_SEG(&maphead);
 
 #endif
 
@@ -1847,7 +1847,7 @@ void CA_CacheMarks (void)
 				&& bufferend>= endpos)
 				{
 				// data is allready in buffer
-					source = (byte _seg *)bufferseg+(pos-bufferstart);
+					source = (_BSEG *)bufferseg+(pos-bufferstart);
 				}
 				else
 				{
