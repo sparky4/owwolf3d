@@ -1,5 +1,6 @@
 #ifndef __TYPE_H__
 #define __TYPE_H__
+#ifdef __WATCOMC__
 /*
  * open watcom definitions for wolf3d
  * by sparky4
@@ -117,5 +118,6 @@ typedef long fixed;
 
 #define _argv __argv
 #define _argc __argc
+#endif
 #define BAKAPEEQUIT 	getch(); VL_SetTextMode (); printf("\n_fmemcpy() and VW_Startup breaks. I do not know how to fix this.\n"); MM_Shutdown (); exit(1);
 #endif

@@ -7,9 +7,7 @@
 #include "id_head.h"
 #include "id_vl.h"
 #include "id_us.h"
-#ifdef __WATCOMC__
 #include "type.h"
-#endif
 #pragma hdrstop
 
 //
