@@ -19,9 +19,9 @@
 #endif
 #ifdef __WATCOMC__
 #include <limits.h> /* for LONG_MAX */
-#include "type.h"
 #endif
 #define __ID_GLOB__
+#include "type.h"
 #include "VERSION.H"
 
 //--------------------------------------------------------------------------
