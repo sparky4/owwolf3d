@@ -445,13 +445,13 @@ void MM_GetPtr (memptr *baseptr,unsigned long size)
 	mmnew->length = needed;
 	mmnew->useptr = baseptr;
 
-//#ifdef __DEBUG_MM__
+#ifdef __DEBUG_MM__
 	printf("MM_GetPtr\n");
 	//%04x
 	printf("	baseptr=%Fp	", baseptr); printf("useptr=%Fp\n", mmnew->useptr);
 	printf("	*baseptr=%Fp	", *baseptr); printf("*useptr=%Fp\n", *(mmnew->useptr));
 	printf("	&baseptr=%Fp	", &baseptr); printf("&useptr=%Fp\n", &(mmnew->useptr));
-//#endif
+#endif
 
 	mmnew->attributes = BASEATTRIBUTES;
 
