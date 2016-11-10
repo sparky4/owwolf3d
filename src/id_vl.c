@@ -72,10 +72,11 @@ static	char *ParmStrings[] = {"HIDDENCARD",""};
 
 void	VL_Startup (void)
 {
+#ifdef __BORLANDC__
 	int i,videocard;
 
 	asm	cld;
-	printf("wwww\n");
+
 	videocard = VL_VideoID ();
 	for (i = 1;i < _argc;i++)
 		if (US_CheckParm(_argv[i],ParmStrings) == 0)
@@ -87,7 +88,7 @@ void	VL_Startup (void)
 	if (videocard != 5)
 Quit ("Improper video card!  If you really have a VGA card that I am not \n"
 	  "detecting, use the -HIDDENCARD command line parameter!");
-
+#endif
 }
 
 
