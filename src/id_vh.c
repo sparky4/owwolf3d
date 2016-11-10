@@ -210,15 +210,12 @@ void VL_MungePic (byte far *source, unsigned width, unsigned height)
 //
 // copy the pic to a temp buffer
 //
-	MM_GetPtr (&temp,size);
+	MM_GetPtr (&/*(memptr)*/temp,size);
 	printf("VL_MungePic");
 	printf("====================================\n");
 	printf("%Fp	&(memptr)temp\n%Fp	(memptr)temp\n%Fp	&temp\n%Fp	temp\n", &(memptr)temp, (memptr)temp, &temp, temp);
 	printf("===============================================\n");
-#ifdef __WATCOMC__
-	return;
-#endif
-	_fmemcpy (temp,source,size);
+	//_fmemcpy (temp,source,size);
 
 //
 // munge it back into the original buffer
@@ -237,7 +234,7 @@ void VL_MungePic (byte far *source, unsigned width, unsigned height)
 		}
 	}
 
-	MM_FreePtr (&(memptr)temp);
+	MM_FreePtr (&/*(memptr)*/temp);
 }
 
 void VWL_MeasureString (char far *string, word *width, word *height
