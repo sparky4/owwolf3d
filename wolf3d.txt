@@ -1,7 +1,7 @@
 Open Watcom Linker Version 2.0 beta Oct 30 2016 15:04:21 (32-bit)
 Copyright (c) 2002-2016 The Open Watcom Contributors. All Rights Reserved.
 Portions Copyright (c) 1985-2002 Sybase, Inc. All Rights Reserved.
-Created on:       16/11/10 09:36:22
+Created on:       16/11/10 09:44:58
 Executable Image: wolf3d.exe
 creating a DOS executable
 
@@ -98,8 +98,8 @@ MM_Startup_TEXT        CODE           AUTO           0000:2ec0       000001c8
 MML_ClearBlock_TEXT    CODE           AUTO           0000:3090       00000062
 MML_UseSpace_TEXT      CODE           AUTO           0000:3100       00000139
 id_pm_TEXT             CODE           AUTO           0000:3240       00000000
-PM_Shutdown_TEXT       CODE           AUTO           0000:3240       00000029
-PM_Startup_TEXT        CODE           AUTO           0000:3270       000000ae
+PM_Shutdown_TEXT       CODE           AUTO           0000:3240       00000024
+PM_Startup_TEXT        CODE           AUTO           0000:3270       000000a9
 PM_Reset_TEXT          CODE           AUTO           0000:3320       00000067
 PM_NextFrame_TEXT      CODE           AUTO           0000:3390       00000082
 PM_Preload_TEXT        CODE           AUTO           0000:3420       00000246
@@ -794,8 +794,8 @@ Module: id_pm.obj(/dos/z/owwolf3d/src/id_pm.c)
 0000:3fa0+     PML_StartupMainMem_
 0000:3f72+     PML_ShutdownMainMem_
 0000:3ef0+     PML_ReadFromFile_
-0000:3d52+     PML_OpenPageFile_
-0000:3d10+     PML_ClosePageFile_
+0000:3d52*     PML_OpenPageFile_
+0000:3d10*     PML_ClosePageFile_
 0000:3c42+     PML_GetEMSAddress_
 0000:3be0      PM_GetPageAddress_
 0000:3b42+     PML_GiveLRUPage_
