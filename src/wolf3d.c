@@ -742,7 +742,7 @@ void SignonScreen (void)                        // VGA version
 //#ifndef __WATCOMC__
 		VL_MungePic (&signon,320,200);
 //#else
-		printf("VL_MungePic breaks\n");
+		//printf("VL_MungePic breaks\n");
 //#endif
 		VL_MemToScreen (&signon,320,200,0,0);
 		VW_SetScreen(0);//,0);
@@ -1163,10 +1163,10 @@ void InitGame (void)
 	MM_Startup ();                  // so the signon screen can be freed
 
 	SignonScreen ();
-#ifdef __WATCOMC__
+/*#ifdef __WATCOMC__
 	BAKAPEEQUIT;
-#endif
-	VW_Startup ();
+#endif*/
+	VL_Startup ();
 	IN_Startup ();
 	PM_Startup ();
 	PM_UnlockMainMem ();

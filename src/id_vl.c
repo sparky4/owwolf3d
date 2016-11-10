@@ -75,7 +75,7 @@ void	VL_Startup (void)
 	int i,videocard;
 
 	asm	cld;
-
+	printf("wwww\n");
 	videocard = VL_VideoID ();
 	for (i = 1;i < _argc;i++)
 		if (US_CheckParm(_argv[i],ParmStrings) == 0)
