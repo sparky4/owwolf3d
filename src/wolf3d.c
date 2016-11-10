@@ -1169,11 +1169,15 @@ void InitGame (void)
 	VL_Startup ();
 	IN_Startup ();
 	PM_Startup ();
+	printf(".");
 	PM_UnlockMainMem ();
+	printf(".");
 	SD_Startup ();
+	printf(".");
 	CA_Startup ();
+	printf(".");
 	US_Startup ();
-
+	printf("ok\n");
 
 #ifndef SPEAR
 	if (mminfo.mainmem < 235000L)
