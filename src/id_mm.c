@@ -444,6 +444,7 @@ void MM_GetPtr (memptr *baseptr,unsigned long size)
 	GETNEWBLOCK;				// fill in start and next after a spot is found
 	mmnew->length = needed;
 	mmnew->useptr = baseptr;
+
 //#ifdef __DEBUG_MM__
 	printf("MM_GetPtr\n");
 	//%04x
@@ -451,6 +452,7 @@ void MM_GetPtr (memptr *baseptr,unsigned long size)
 	printf("	*baseptr=%Fp	", *baseptr); printf("*useptr=%Fp\n", *(mmnew->useptr));
 	printf("	&baseptr=%Fp	", &baseptr); printf("&useptr=%Fp\n", &(mmnew->useptr));
 //#endif
+
 	mmnew->attributes = BASEATTRIBUTES;
 
 tryagain:
