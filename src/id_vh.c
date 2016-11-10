@@ -199,7 +199,8 @@ void VL_MungePic (byte far *source, unsigned width, unsigned height)
 {
 	unsigned	x,y,plane,size,pwidth;
 	byte		far *dest, far *srcline;
-	_BSEG *temp;
+	//_BSEG	*
+	memptr	temp;
 
 	size = width*height;
 
@@ -209,7 +210,7 @@ void VL_MungePic (byte far *source, unsigned width, unsigned height)
 //
 // copy the pic to a temp buffer
 //
-	MM_GetPtr (&(memptr)temp,size);
+	MM_GetPtr (&temp,size);
 	printf("VL_MungePic");
 	printf("====================================\n");
 	printf("%Fp	&(memptr)temp\n%Fp	(memptr)temp\n%Fp	&temp\n%Fp	temp\n", &(memptr)temp, (memptr)temp, &temp, temp);
