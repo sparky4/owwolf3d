@@ -1187,8 +1187,9 @@ PM_Startup(void)
 			break;
 		}
 	}
-
+#ifdef __BORLANDC__
 	PML_OpenPageFile();
+#endif
 
 	if (!noems)
 		PML_StartupEMS();
@@ -1216,8 +1217,8 @@ PM_Shutdown(void)
 
 	if (!PMStarted)
 		return;
-
+#ifdef __BORLANDC__
 	PML_ClosePageFile();
-
+#endif
 	PML_ShutdownMainMem();
 }
