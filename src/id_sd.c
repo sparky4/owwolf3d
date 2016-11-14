@@ -1935,14 +1935,15 @@ SD_Startup(void)
 
 	if (SD_Started)
 		return;
-
+	printf("	SDL_SetDS():");
 	SDL_SetDS();
-
+	printf("	OK\n");
 	ssIsTandy = false;
 	ssNoCheck = false;
 	alNoCheck = false;
 	sbNoCheck = false;
 	sbNoProCheck = false;
+
 #ifndef	_MUSE_
 	for (i = 1;i < _argc;i++)
 	{
@@ -1979,7 +1980,7 @@ SD_Startup(void)
 	}
 #endif
 
-	SoundUserHook = 0;
+	//SoundUserHook = 0;
 
 	t0OldService = getvect(8);	// Get old timer 0 ISR
 

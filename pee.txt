@@ -1,7 +1,0 @@
-VL_MungePic====================================
-4db9:fdba	&(memptr)temp
-4db9:fdba	(memptr)temp
-0140:4db9	&temp
-00c8:fdcf	temp
-===============================================
-..
