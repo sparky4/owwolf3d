@@ -120,11 +120,13 @@ typedef long fixed;
 #define _argc __argc
 
 #define _BSEG byte _seg
+#define _USEG unsinged _seg
 #define _C_CTSEG t_compscale __far
 #define _C_TSSEG t_compshape __far
 #endif
 #ifdef __BORLANDC__
 #define _BSEG byte _seg
+#define _USEG unsinged _seg
 #define _C_CTSEG t_compscale _seg
 #define _C_TSSEG t_compshape _seg
 #endif
