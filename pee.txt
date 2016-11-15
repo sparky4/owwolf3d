@@ -1,0 +1,7 @@
+VL_MungePic====================================
+4db9:fdda	&(memptr)temp
+4db9:fdda	(memptr)temp
+0140:4db9	&temp
+00c8:fdef	temp
+===============================================
+CA_Startup ()

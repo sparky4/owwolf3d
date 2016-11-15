@@ -1163,17 +1163,14 @@ void InitGame (void)
 	MM_Startup ();                  // so the signon screen can be freed
 
 	SignonScreen ();
-/*#ifdef __WATCOMC__
-	BAKAPEEQUIT;
-#endif*/
 	VL_Startup ();
 	IN_Startup ();
 	PM_Startup ();
-	printf(".");
 	PM_UnlockMainMem ();
-	printf(".");
+#ifndef __WATCOMC__
 	SD_Startup ();
-	printf(".");
+#endif
+	printf("CA_Startup ()");
 	CA_Startup ();
 	printf(".");
 	US_Startup ();
