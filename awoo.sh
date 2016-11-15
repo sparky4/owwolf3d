@@ -9,4 +9,4 @@ if [ -z "$*" ]; then
 fi
 git add .
 . ./boop.sh "$pee"
-mv ../wolf3d/wolf3d/*.wl6 ./
+cp ../wolf3d/wolf3d/*.wl6 ./
