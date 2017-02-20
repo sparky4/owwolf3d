@@ -1,7 +1,7 @@
-Open Watcom Linker Version 2.0 beta Oct 30 2016 15:04:21 (32-bit)
+Open Watcom Linker Version 2.0 beta Nov 19 2016 01:49:19 (64-bit)
 Copyright (c) 2002-2016 The Open Watcom Contributors. All Rights Reserved.
 Portions Copyright (c) 1985-2002 Sybase, Inc. All Rights Reserved.
-Created on:       16/11/15 10:23:53
+Created on:       17/02/08 08:08:47
 Executable Image: sega.exe
 creating a DOS executable
 
@@ -74,8 +74,8 @@ Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(cmodel.asm)
 0000:02f8*     CodeModelMismatch
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(iob.c)
 01fe:00c6      ___iob
-01fe:027c      ___OpenStreams
-01fe:027e      ___ClosedStreams
+01fe:027c      ___ClosedStreams
+01fe:027e      ___OpenStreams
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(fprtf.c)
 0000:030b      __fprtf_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(xmsg.c)
@@ -122,9 +122,9 @@ Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(ioalloc.c)
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(prtf.c)
 0000:06ec      __prtf_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(flush.c)
-0000:1276      __flush_
+0000:1270      __flush_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(enterdb.c)
-0000:1365      __EnterWVIDEO_
+0000:135f      __EnterWVIDEO_
 01fe:020a+     ___WD_Present
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(___argc.c)
 01fe:0280      ____Argc
@@ -132,9 +132,9 @@ Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(___argc.c)
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(amblksiz.c)
 01fe:020c      __amblksiz
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(exit.c)
-0000:1381+     __null_int23_exit_
-0000:1382      exit_
-0000:1395*     _exit_
+0000:137b+     __null_int23_exit_
+0000:137c      exit_
+0000:138f*     _exit_
 01fe:020e+     ___int23_exit
 01fe:0212+     ___FPE_handler_exit
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(sgdef086)
@@ -143,54 +143,54 @@ Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(sgdef086)
 01fe:0276      __Start_YI
 01fe:027c      __End_YI
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(nmalloc.c)
-0000:13a6      _nmalloc_
-0000:13a6      malloc_
+0000:13a0      _nmalloc_
+0000:13a0      malloc_
 01fe:0216      ___nheapbeg
 01fe:0218      ___MiniHeapRover
 01fe:021a      ___LargestSizeB4MiniHeapRover
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(fclose.c)
-0000:1465+     __doclose_
-0000:14fb      __shutdown_stream_
-0000:150f*     fclose_
+0000:145f+     __doclose_
+0000:14f5      __shutdown_stream_
+0000:1509*     fclose_
 01fe:0284+     ___RmTmpFileFn
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(freefp.c)
-0000:1532      __freefp_
-0000:1556      __purgefp_
+0000:152c      __freefp_
+0000:1550      __purgefp_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(errno.c)
-0000:156f*     __get_errno_ptr_
+0000:1569*     __get_errno_ptr_
 01fe:0288      _errno
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(chktty.c)
-0000:1573      __chktty_
+0000:156d      __chktty_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(wctomb.c)
-0000:159a      wctomb_
+0000:1594      wctomb_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(itoa.c)
-0000:15b7+     utoa_
-0000:15fc      itoa_
+0000:15b1+     utoa_
+0000:15f6      itoa_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(i4m.asm)
-0000:1618*     __I4M
-0000:1618      __U4M
+0000:1612*     __I4M
+0000:1612      __U4M
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(strupr.c)
-0000:1630      strupr_
+0000:162a      strupr_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(noefgfmt.c)
 01fe:021c      ___EFG_printf
 01fe:0220*     ___EFG_scanf
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(mbisdbcs.c)
 01fe:0224      ___IsDBCS
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(mbislead.c)
-0000:165f*     _ismbblead_
+0000:1659*     _ismbblead_
 01fe:028a      ___MBCSIsTable
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(lltoa.c)
-0000:1676      ulltoa_
-0000:173b*     lltoa_
+0000:1670      ulltoa_
+0000:1735*     lltoa_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(ltoa.c)
-0000:178f      ultoa_
-0000:17e2*     ltoa_
+0000:1789      ultoa_
+0000:17dc*     ltoa_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(__lseek.c)
-0000:1803      __lseek_
+0000:17fd      __lseek_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(qwrit.c)
-0000:183d      __qwrite_
+0000:1837      __qwrite_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(fsync.c)
-0000:1897      fsync_
+0000:1891      fsync_
 Module: /dos/fdos/watcom2/lib286/dos/clibm.lib(mem.c)
 0000:18a0      __MemAllocator
 0000:196a      __MemFree
