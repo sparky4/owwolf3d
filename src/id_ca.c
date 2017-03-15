@@ -742,13 +742,13 @@ void CAL_CarmackExpand (unsigned far *source, unsigned far *dest, unsigned lengt
 			count = ch&0xff;
 			if (!count)
 			{				// have to insert a word containing the tag byte
-				ch |= *((unsigned char far *)inptr)++;
+				ch |= *(BYTEFARPTRCONV inptr)++;
 				*outptr++ = ch;
 				length--;
 			}
 			else
 			{
-				offset = *((unsigned char far *)inptr)++;
+				offset = *(BYTEFARPTRCONV inptr)++;
 				copyptr = outptr - offset;
 				length -= count;
 				while (count--)
@@ -760,7 +760,7 @@ void CAL_CarmackExpand (unsigned far *source, unsigned far *dest, unsigned lengt
 			count = ch&0xff;
 			if (!count)
 			{				// have to insert a word containing the tag byte
-				ch |= *((unsigned char far *)inptr)++;
+				ch |= *(BYTEFARPTRCONV inptr)++;
 				*outptr++ = ch;
 				length --;
 			}
@@ -1034,7 +1034,7 @@ void CAL_SetupGrFile (void)
 //
 // load the data offsets from ???head.ext
 //
-	MM_GetPtr (&(memptr)grstarts,(NUMCHUNKS+1)*FILEPOSSIZE);
+	MM_GetPtr (MEMPTRCONV grstarts,(NUMCHUNKS+1)*FILEPOSSIZE);
 
 	strcpy(fname,gheadname);
 	strcat(fname,extension);
@@ -1064,12 +1064,12 @@ void CAL_SetupGrFile (void)
 //
 // load the pic and sprite headers into the arrays in the data segment
 //
-	MM_GetPtr(&(memptr)pictable,NUMPICS*sizeof(pictabletype));
+	MM_GetPtr(MEMPTRCONV pictable,NUMPICS*sizeof(pictabletype));
 	CAL_GetGrChunkLength(STRUCTPIC);		// position file pointer
-	MM_GetPtr(&compseg,chunkcomplen);
+	MM_GetPtr(MEMPTRANDPERCONV compseg,chunkcomplen);
 	CA_FarRead (grhandle,compseg,chunkcomplen);
 	CAL_HuffExpand (compseg, (byte huge *)pictable,NUMPICS*sizeof(pictabletype),grhuffman,false);
-	MM_FreePtr(&compseg);
+	MM_FreePtr(MEMPTRANDPERCONV compseg);
 }
 
 //==========================================================================
@@ -1102,7 +1102,7 @@ void CAL_SetupMapFile (void)
 		CA_CannotOpen(fname);
 
 	length = filelength(handle);
-	MM_GetPtr (&(memptr)tinf,length);
+	MM_GetPtr (MEMPTRCONV tinf,length);
 	CA_FarRead(handle, tinf, length);
 	close(handle);
 #else
@@ -1139,8 +1139,8 @@ void CAL_SetupMapFile (void)
 		if (pos<0)						// $FFFFFFFF start is a sparse map
 			continue;
 
-		MM_GetPtr(&(memptr)mapheaderseg[i],sizeof(maptype));
-		MM_SetLock(&(memptr)mapheaderseg[i],true);
+		MM_GetPtr(MEMPTRCONV mapheaderseg[i],sizeof(maptype));
+		MM_SetLock(MEMPTRCONV mapheaderseg[i],true);
 		lseek(maphandle,pos,SEEK_SET);
 		CA_FarRead (maphandle,(memptr)mapheaderseg[i],sizeof(maptype));
 	}
@@ -1150,8 +1150,8 @@ void CAL_SetupMapFile (void)
 //
 	for (i=0;i<MAPPLANES;i++)
 	{
-		MM_GetPtr (&(memptr)mapsegs[i],64*64*2);
-		MM_SetLock (&(memptr)mapsegs[i],true);
+		MM_GetPtr (MEMPTRCONV mapsegs[i],64*64*2);
+		MM_SetLock (MEMPTRCONV mapsegs[i],true);
 	}
 }
 
@@ -1185,7 +1185,7 @@ void CAL_SetupAudioFile (void)
 		CA_CannotOpen(fname);
 
 	length = filelength(handle);
-	MM_GetPtr (&(memptr)audiostarts,length);
+	MM_GetPtr (MEMPTRCONV audiostarts,length);
 	CA_FarRead(handle, (byte far *)audiostarts, length);
 	close(handle);
 #else
@@ -1286,7 +1286,7 @@ void CA_CacheAudioChunk (int chunk)
 
 	if (audiosegs[chunk])
 	{
-		MM_SetPurge (&(memptr)audiosegs[chunk],0);
+		MM_SetPurge (MEMPTRCONV audiosegs[chunk],0);
 		return;							// allready in memory
 	}
 
@@ -1301,7 +1301,7 @@ void CA_CacheAudioChunk (int chunk)
 
 #ifndef AUDIOHEADERLINKED
 
-	MM_GetPtr (&(memptr)audiosegs[chunk],compressed);
+	MM_GetPtr (MEMPTRCONV audiosegs[chunk],compressed);
 	if (mmerror)
 		return;
 
@@ -1316,24 +1316,24 @@ void CA_CacheAudioChunk (int chunk)
 	}
 	else
 	{
-		MM_GetPtr(&bigbufferseg,compressed);
+		MM_GetPtr(MEMPTRANDPERCONV bigbufferseg,compressed);
 		if (mmerror)
 			return;
-		MM_SetLock (&bigbufferseg,true);
+		MM_SetLock (MEMPTRANDPERCONV bigbufferseg,true);
 		CA_FarRead(audiohandle,bigbufferseg,compressed);
 		source = bigbufferseg;
 	}
 
 	expanded = *(long far *)source;
 	source += 4;			// skip over length
-	MM_GetPtr (&(memptr)audiosegs[chunk],expanded);
+	MM_GetPtr (MEMPTRCONV audiosegs[chunk],expanded);
 	if (mmerror)
 		goto done;
 	CAL_HuffExpand (source,audiosegs[chunk],expanded,audiohuffman,false);
 
 done:
 	if (compressed>BUFFERSIZE)
-		MM_FreePtr(&bigbufferseg);
+		MM_FreePtr(MEMPTRANDPERCONV bigbufferseg);
 #endif
 }
 
@@ -1367,7 +1367,7 @@ void CA_LoadAllSounds (void)
 
 	for (i=0;i<NUMSOUNDS;i++,start++)
 		if (audiosegs[start])
-			MM_SetPurge (&(memptr)audiosegs[start],3);		// make purgable
+			MM_SetPurge (MEMPTRCONV audiosegs[start],3);		// make purgable
 
 cachein:
 
@@ -1496,8 +1496,8 @@ void CA_CacheGrChunk (int chunk)
 	}
 	else
 	{
-		MM_GetPtr(&bigbufferseg,compressed);
-		MM_SetLock (&bigbufferseg,true);
+		MM_GetPtr(MEMPTRANDPERCONV bigbufferseg,compressed);
+		MM_SetLock (MEMPTRANDPERCONV bigbufferseg,true);
 		CA_FarRead(grhandle,bigbufferseg,compressed);
 		source = bigbufferseg;
 	}
@@ -1505,7 +1505,7 @@ void CA_CacheGrChunk (int chunk)
 	CAL_ExpandGrChunk (chunk,source);
 
 	if (compressed>BUFFERSIZE)
-		MM_FreePtr(&bigbufferseg);
+		MM_FreePtr(MEMPTRANDPERCONV bigbufferseg);
 }
 
 
@@ -1540,8 +1540,8 @@ void CA_CacheScreen (int chunk)
 
 	lseek(grhandle,pos,SEEK_SET);
 
-	MM_GetPtr(&bigbufferseg,compressed);
-	MM_SetLock (&bigbufferseg,true);
+	MM_GetPtr(MEMPTRANDPERCONV bigbufferseg,compressed);
+	MM_SetLock (MEMPTRANDPERCONV bigbufferseg,true);
 	CA_FarRead(grhandle,bigbufferseg,compressed);
 	source = bigbufferseg;
 
@@ -1554,7 +1554,7 @@ void CA_CacheScreen (int chunk)
 //
 	CAL_HuffExpand (source,MK_FP(SCREENSEG,bufferofs),expanded,grhuffman,true);
 	VW_MarkUpdateBlock (0,0,319,199);
-	MM_FreePtr(&bigbufferseg);
+	MM_FreePtr(MEMPTRANDPERCONV bigbufferseg);
 }
 
 //==========================================================================
@@ -1593,15 +1593,15 @@ void CA_CacheMap (int mapnum)
 		pos = mapheaderseg[mapnum]->planestart[plane];
 		compressed = mapheaderseg[mapnum]->planelength[plane];
 
-		dest = &(memptr)mapsegs[plane];
+		dest = MEMPTRCONV mapsegs[plane];
 
 		lseek(maphandle,pos,SEEK_SET);
 		if (compressed<=BUFFERSIZE)
 			source = bufferseg;
 		else
 		{
-			MM_GetPtr(&bigbufferseg,compressed);
-			MM_SetLock (&bigbufferseg,true);
+			MM_GetPtr(MEMPTRANDPERCONV bigbufferseg,compressed);
+			MM_SetLock (MEMPTRANDPERCONV bigbufferseg,true);
 			source = bigbufferseg;
 		}
 
@@ -1615,11 +1615,11 @@ void CA_CacheMap (int mapnum)
 		//
 		expanded = *source;
 		source++;
-		MM_GetPtr (&buffer2seg,expanded);
+		MM_GetPtr (MEMPTRANDPERCONV buffer2seg,expanded);
 		CAL_CarmackExpand (source, (unsigned far *)buffer2seg,expanded);
 		CA_RLEWexpand (((unsigned far *)buffer2seg)+1,*dest,size,
 		((mapfiletype _seg *)tinf)->RLEWtag);
-		MM_FreePtr (&buffer2seg);
+		MM_FreePtr (MEMPTRANDPERCONV buffer2seg);
 
 #else
 		//
@@ -1630,7 +1630,7 @@ void CA_CacheMap (int mapnum)
 #endif
 
 		if (compressed>BUFFERSIZE)
-			MM_FreePtr(&bigbufferseg);
+			MM_FreePtr(MEMPTRANDPERCONV bigbufferseg);
 	}
 }
 
@@ -1656,7 +1656,7 @@ void CA_UpLevel (void)
 
 	for (i=0;i<NUMCHUNKS;i++)
 		if (grsegs[i])
-			MM_SetPurge (&(memptr)grsegs[i],3);
+			MM_SetPurge (MEMPTRCONV grsegs[i],3);
 	ca_levelbit<<=1;
 	ca_levelnum++;
 }
@@ -1747,7 +1747,7 @@ void CA_SetGrPurge (void)
 
 	for (i=0;i<NUMCHUNKS;i++)
 		if (grsegs[i])
-			MM_SetPurge (&(memptr)grsegs[i],3);
+			MM_SetPurge (MEMPTRCONV grsegs[i],3);
 }
 
 
@@ -1772,7 +1772,7 @@ void CA_SetAllPurge (void)
 //
 	for (i=0;i<NUMSNDCHUNKS;i++)
 		if (audiosegs[i])
-			MM_SetPurge (&(memptr)audiosegs[i],3);
+			MM_SetPurge (MEMPTRCONV audiosegs[i],3);
 
 //
 // free graphics
@@ -1882,10 +1882,10 @@ void CA_CacheMarks (void)
 			else
 			{
 			// big chunk, allocate temporary buffer
-				MM_GetPtr(&bigbufferseg,compressed);
+				MM_GetPtr(MEMPTRANDPERCONV bigbufferseg,compressed);
 				if (mmerror)
 					return;
-				MM_SetLock (&bigbufferseg,true);
+				MM_SetLock (MEMPTRANDPERCONV bigbufferseg,true);
 				lseek(grhandle,pos,SEEK_SET);
 				CA_FarRead(grhandle,bigbufferseg,compressed);
 				source = bigbufferseg;
@@ -1896,7 +1896,7 @@ void CA_CacheMarks (void)
 				return;
 
 			if (compressed>BUFFERSIZE)
-				MM_FreePtr(&bigbufferseg);
+				MM_FreePtr(MEMPTRANDPERCONV bigbufferseg);
 
 		}
 }

@@ -399,7 +399,7 @@ void PollJoystickMove (void)
 {
 	int	joyx,joyy;
 
-	INL_GetJoyDelta(joystickport,&joyx,&joyy);
+	INL_GetJoyDelta(joystickport,(int *)joyx,(int *)joyy);
 
 	if (joystickprogressive)
 	{
@@ -1004,8 +1004,8 @@ void StopMusic(void)
 	for (i = 0;i < LASTMUSIC;i++)
 		if (audiosegs[STARTMUSIC + i])
 		{
-			MM_SetPurge(&((memptr)audiosegs[STARTMUSIC + i]),3);
-			MM_SetLock(&((memptr)audiosegs[STARTMUSIC + i]),false);
+			MM_SetPurge(MEMPTRCONV audiosegs[STARTMUSIC + i],3);
+			MM_SetLock(MEMPTRCONV audiosegs[STARTMUSIC + i],false);
 		}
 }
 
@@ -1037,7 +1037,7 @@ void StartMusic(void)
 		mmerror = false;
 	else
 	{
-		MM_SetLock(&((memptr)audiosegs[STARTMUSIC + chunk]),true);
+		MM_SetLock(MEMPTRCONV audiosegs[STARTMUSIC + chunk],true);
 		SD_StartMusic((MusicGroup far *)audiosegs[STARTMUSIC + chunk]);
 	}
 }

@@ -24,6 +24,8 @@
 #include "type.h"
 #include "VERSION.H"
 
+#include "id_tail.h"
+
 //--------------------------------------------------------------------------
 
 extern	char		far signon;

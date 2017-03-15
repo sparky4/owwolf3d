@@ -1292,6 +1292,3 @@ extern	void	EndText(void);
 
 extern boolean chsw;
 extern unsigned CalcHeight (void);
-
-//======
-extern word bakapee;

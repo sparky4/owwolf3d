@@ -212,7 +212,7 @@ bomb: .symbolic
 	@wmake -h clean
 !ifdef __LINUX__
 	@if exist src/obj/*.OBJ	$(REMOVECOMMAND) src/obj/*.OBJ
-	@if exist src/obj/TC*.SWP	$(REMOVECOMMAND) src/obj/TC*.SWP
+	@if exist src/TC*.SWP	$(REMOVECOMMAND) src/TC*.SWP
 !endif
 
 backupconfig: .symbolic

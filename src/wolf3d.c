@@ -6,7 +6,6 @@
 #include "type.h"
 #include "wolfass.h"
 #endif
-#include "id_tail.h"
 #pragma hdrstop
 
 
@@ -108,9 +107,9 @@ void ReadConfig(void)
 	//
 		read(file,Scores,sizeof(HighScore) * MaxScores);
 
-		read(file,&sd,sizeof(sd));
-		read(file,&sm,sizeof(sm));
-		read(file,&sds,sizeof(sds));
+		read(file,(void *)&sd,sizeof(sd));
+		read(file,(void *)&sm,sizeof(sm));
+		read(file,(void *)&sds,sizeof(sds));
 
 		read(file,&mouseenabled,sizeof(mouseenabled));
 		read(file,&joystickenabled,sizeof(joystickenabled));
@@ -333,7 +332,7 @@ boolean SaveTheGame(int file,int x,int y)
 	objtype *ob,nullobj;
 
 
-	if (_dos_getdiskfree(0,&dfree))
+	if (_dos_getdiskfree(0,SDFPTRANDPERCONV dfree))
 	  Quit("Error in _dos_getdiskfree call");
 
 	avail = (long)dfree.avail_clusters *
@@ -494,7 +493,7 @@ boolean LoadTheGame(int file,int x,int y)
 			break;
 		GetNewActor ();
 	 // don't copy over the links
-		memcpy (new,&nullobj,sizeof(nullobj)-4);
+		memcpy (new,(void const *)&nullobj,sizeof(nullobj)-4);
 	}
 
 
@@ -1071,7 +1070,7 @@ void DoJukebox(void)
 
 #ifndef SPEAR
 #ifndef UPLOAD
-	_dos_gettime(&time);
+	_dos_gettime(SDTPTRANDPERCONV time);
 	start = (time.hsecond%3)*6;
 #else
 	start = 0;
@@ -1631,8 +1630,9 @@ void main (void)
 	//----Patch386 ();
 
 	InitGame ();
-
+#ifndef NOSAFERUNDEMOLOOP
 	DemoLoop();
+#endif
 #endif
 
 	Quit("Demo loop exited???");
