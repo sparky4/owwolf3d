@@ -78,13 +78,13 @@ T_FLAGS=-bt=dos -mm -0 -fpi87 -fo=.$(OBJ) -d1
 CPPFLAGS=-DTARGET_MSDOS=16 -DMSDOS=1
 AFLAGS=$(WCLQ) $(T_FLAGS)
 CFLAGS=$(WCLQ) $(T_FLAGS) -wo $(O_FLAGS) $(S_FLAGS) $(Z_FLAGS)
-LFLAGS=$(WCLQ) -l=dos -fm=$^&.txt $(S_FLAGS)
+LFLAGS=$(WCLQ) -l=dos -fm=$^&.map $(S_FLAGS)
 LIBFLAGS=$(WLIBQ) -b -n
 
 #
 # objects
 #
-TESTOBJS = id_in.$(OBJ) id_mm.$(OBJ) id_pm.$(OBJ) id_ca.$(OBJ) id_sd.$(OBJ) gamepal.$(OBJ) signon.$(OBJ) id_vl.$(OBJ) id_vh.$(OBJ) wl_scale.$(OBJ) id_us_1.$(OBJ) wl_debug.$(OBJ)
+TESTOBJS = id_in.$(OBJ) id_mm.$(OBJ) id_pm.$(OBJ) id_ca.$(OBJ) id_sd.$(OBJ) gamepal.$(OBJ) id_vl.$(OBJ) id_vh.$(OBJ) wl_scale.$(OBJ) id_us_1.$(OBJ) wl_debug.$(OBJ)
 WOLFOBJS = $(TESTOBJS) wl_inter.$(OBJ) wl_agent.$(OBJ) wl_draw.$(OBJ) wl_menu.$(OBJ) wl_state.$(OBJ) wl_text.$(OBJ) wl_game.$(OBJ) wl_act1.$(OBJ) wl_act2.$(OBJ) wl_play.$(OBJ) &
 wolfass.$(OBJ)#lib
 #id_us_a.$(OBJ) id_sd_a.$(OBJ) id_sd_a.$(OBJ)
@@ -124,25 +124,26 @@ wolfass.$(OBJ)#lib
 # List of executables to build
 #
 EXEC = &
+#	wolf3dte.exe &
 	wolf3d.exe
 
-all: $(EXEC) sega.exe#test.exe
+all: $(EXEC)#sega.exe
 
 #
 # game executables
 #
-wolf3d.exe:	wolf3d.$(OBJ) $(WOLFOBJS)
+wolf3d.exe:	wolf3d.$(OBJ) $(WOLFOBJS) src/obj/signon.$(OBJ)
 
 #
 # Test Executables!
 #
-test.exe:	test.$(OBJ) $(TESTOBJS)
+wolf3dte.exe:	wolf3dte.$(OBJ) $(WOLFOBJS)# $(TESTOBJS)
 
 #
 # executable's objects
 #
 wolf3d.$(OBJ):	$(SRC)/wolf3d.c
-test.$(OBJ):	test.c
+wolf3dte.$(OBJ):	$(SRC)/wolf3dte.c
 sega.$(OBJ):	sega.c
 
 #
@@ -161,7 +162,7 @@ id_ca.$(OBJ):	$(SRC)/id_ca.c
 id_vl.$(OBJ):	$(SRC)/id_vl.c
 wl_inter.$(OBJ):	$(SRC)/wl_inter.c
 wl_menu.$(OBJ):	$(SRC)/wl_menu.c
-signon.$(OBJ):	$(SRC)/signon.c
+#signon.$(OBJ):	$(SRC)/signon.c
 gamepal.$(OBJ):	$(SRC)/gamepal.c
 id_in.$(OBJ):	$(SRC)/id_in.c
 id_sd.$(OBJ):	$(SRC)/id_sd.c
@@ -193,6 +194,7 @@ clean: .symbolic
 	@rm *.EXE
 	@if exist src/obj/*.EXE	mv src/obj/*.EXE bcwolf.exe
 	####@if exist src/obj/*_A.OBJ	cp src/obj/*_A.OBJ src/
+	#@wmake -h bomb
 !endif
 	@if exist *.obj $(REMOVECOMMAND) *.obj
 	@if exist *.OBJ $(REMOVECOMMAND) *.OBJ
@@ -207,8 +209,10 @@ clean: .symbolic
 	@if exist *.err $(REMOVECOMMAND) *.err
 
 bomb: .symbolic
+	@wmake -h clean
 !ifdef __LINUX__
 	@if exist src/obj/*.OBJ	$(REMOVECOMMAND) src/obj/*.OBJ
+	@if exist src/obj/TC*.SWP	$(REMOVECOMMAND) src/obj/TC*.SWP
 !endif
 
 backupconfig: .symbolic

@@ -6,6 +6,7 @@
 #include "type.h"
 #include "wolfass.h"
 #endif
+#include "id_tail.h"
 #pragma hdrstop
 
 
@@ -72,6 +73,7 @@ boolean         startgame,loadedgame,virtualreality;
 int             mouseadjustment;
 
 char	configname[13]="CONFIG.";
+word bakapee=0;
 
 
 /*
@@ -732,20 +734,18 @@ void SignonScreen (void)                        // VGA version
 {
 	unsigned        segstart,seglength;
 
+#ifndef VIDEO_NORUN
 	VL_SetVGAPlaneMode ();
+#endif
 	VL_TestPaletteSet ();
 	VL_SetPalette (&gamepal);
 
 	if (!virtualreality)
 	{
-		VW_SetScreen(0x8000);//,0);
-//#ifndef __WATCOMC__
+		VW_SetScreen(0x8000,0);
 		VL_MungePic (&signon,320,200);
-//#else
-		//printf("VL_MungePic breaks\n");
-//#endif
 		VL_MemToScreen (&signon,320,200,0,0);
-		VW_SetScreen(0);//,0);
+		VW_SetScreen(0,0);
 	}
 
 //
@@ -1162,17 +1162,18 @@ void InitGame (void)
 
 	MM_Startup ();                  // so the signon screen can be freed
 
-//	SignonScreen ();
-	VL_Startup ();
-	IN_Startup ();
+	SignonScreen ();
+	VL_Startup ();	PTDT
+	IN_Startup ();	PTDT
 	PM_Startup ();
-	PM_UnlockMainMem ();
-#ifndef __WATCOMC__
+	PM_UnlockMainMem ();	PTDT
+#ifndef SD_NORUN
 	SD_Startup ();
-	printf("CA_Startup ()");
-	CA_Startup ();
 #endif
-	printf(".");
+#ifndef CA_NORUN
+PTDT
+	CA_Startup ();	PTOK
+#endif
 	US_Startup ();
 
 #ifndef SPEAR
@@ -1234,13 +1235,14 @@ void InitGame (void)
 //
 // load in and lock down some basic chunks
 //
-printf("\nCA_CacheGrChunk()	");
-	CA_CacheGrChunk(STARTFONT);			printf("ok\n"); printf("MM_");
-	MM_SetLock (&grsegs[STARTFONT],true);	printf("ok\n");
+#ifndef CA_NORUNMISC
+	CA_CacheGrChunk(STARTFONT);
+	MM_SetLock (&grsegs[STARTFONT],true);
 
 	LoadLatchMem ();
-	BuildTables ();          // trig tables
+	BuildTables ();	// trig tables
 	SetupWalls ();
+#endif
 
 #if 0
 {
@@ -1254,15 +1256,18 @@ close(profilehandle);
 }
 #endif
 
+#ifndef CA_NORUNMISC
 	NewViewSize (viewsize);
-
+#endif
 
 //
 // initialize variables
 //
 	InitRedShifts ();
+#ifndef CA_NORUNMISC
 	if (!virtualreality)
 		FinishSignon();
+#endif
 
 	displayofs = PAGE1START;
 	bufferofs = PAGE2START;
@@ -1363,7 +1368,7 @@ void Quit (char *error)
 	ClearMemory ();
 	if (!*error)
 	{
-	 #ifndef JAPAN
+	 #ifndef JAPAN2
 	 CA_CacheGrChunk (ORDERSCREEN);
 	 screen = grsegs[ORDERSCREEN];
 	 #endif
@@ -1371,15 +1376,19 @@ void Quit (char *error)
 	}
 	else
 	{
+#ifndef CA_NORUNMISC
 	 CA_CacheGrChunk (ERRORSCREEN);
 	 screen = grsegs[ERRORSCREEN];
+#endif
 	}
 
 	ShutdownId ();
 
 	if (error && *error)
 	{
+#ifndef CA_NORUNMISC
 	  movedata ((unsigned)screen,7,0xb800,0,7*160);
+#endif
 	  gotoxy (10,4);
 	  puts(error);
 	  gotoxy (1,8);
@@ -1614,14 +1623,17 @@ void main (void)
 	 exit(1);
 	}
 #endif
-#ifndef __WATCOMC__
+#ifndef NOSAFERUN
+#ifndef NOSAFERUNCHKFOREP
 	CheckForEpisodes();
 #endif
+
 	//----Patch386 ();
 
 	InitGame ();
 
 	DemoLoop();
+#endif
 
 	Quit("Demo loop exited???");
 }

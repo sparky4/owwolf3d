@@ -1,19 +1,19 @@
-src/wolf3d.c(109): Warning! W112: Parameter 2: Pointer truncated
-src/wolf3d.c(109): Note! I2003: source conversion type is 'SDMode __far *'
-src/wolf3d.c(109): Note! I2004: target conversion type is 'void *'
-src/wolf3d.c(110): Warning! W112: Parameter 2: Pointer truncated
-src/wolf3d.c(110): Note! I2003: source conversion type is 'SMMode __far *'
-src/wolf3d.c(110): Note! I2004: target conversion type is 'void *'
 src/wolf3d.c(111): Warning! W112: Parameter 2: Pointer truncated
-src/wolf3d.c(111): Note! I2003: source conversion type is 'SDSMode __far *'
+src/wolf3d.c(111): Note! I2003: source conversion type is 'SDMode __far *'
 src/wolf3d.c(111): Note! I2004: target conversion type is 'void *'
-src/wolf3d.c(334): Warning! W112: Parameter 2: Pointer truncated
-src/wolf3d.c(334): Note! I2003: source conversion type is 'struct _diskfree_t __far *'
-src/wolf3d.c(334): Note! I2004: target conversion type is 'struct _diskfree_t *'
-src/wolf3d.c(334): Note! I2002: '_dos_getdiskfree' defined in: /dos/fdos/watcom2/h/DOS.H(178)
-src/wolf3d.c(495): Warning! W112: Parameter 2: Pointer truncated
-src/wolf3d.c(495): Note! I2003: source conversion type is 'struct objstruct __far *'
-src/wolf3d.c(495): Note! I2004: target conversion type is 'void const *'
+src/wolf3d.c(112): Warning! W112: Parameter 2: Pointer truncated
+src/wolf3d.c(112): Note! I2003: source conversion type is 'SMMode __far *'
+src/wolf3d.c(112): Note! I2004: target conversion type is 'void *'
+src/wolf3d.c(113): Warning! W112: Parameter 2: Pointer truncated
+src/wolf3d.c(113): Note! I2003: source conversion type is 'SDSMode __far *'
+src/wolf3d.c(113): Note! I2004: target conversion type is 'void *'
+src/wolf3d.c(336): Warning! W112: Parameter 2: Pointer truncated
+src/wolf3d.c(336): Note! I2003: source conversion type is 'struct _diskfree_t __far *'
+src/wolf3d.c(336): Note! I2004: target conversion type is 'struct _diskfree_t *'
+src/wolf3d.c(336): Note! I2002: '_dos_getdiskfree' defined in: /dos/fdos/watcom2/h/DOS.H(178)
+src/wolf3d.c(497): Warning! W112: Parameter 2: Pointer truncated
+src/wolf3d.c(497): Note! I2003: source conversion type is 'struct objstruct __far *'
+src/wolf3d.c(497): Note! I2004: target conversion type is 'void const *'
 src/wolf3d.c(1074): Warning! W112: Parameter 1: Pointer truncated
 src/wolf3d.c(1074): Note! I2003: source conversion type is 'struct dostime_t __far *'
 src/wolf3d.c(1074): Note! I2004: target conversion type is 'struct dostime_t *'

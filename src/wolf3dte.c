@@ -51,14 +51,14 @@ boolean         IsA386;
 //
 // proejection variables
 //
-//fixed           focallength;
+fixed           focallength;
 unsigned        screenofs;
 int             viewwidth;
 int             viewheight;
 short             centerx;
 int             shootdelta;                     // pixels away from centerx a target can be
-//fixed           scale,maxslope;
-//long            heightnumerator;
+fixed           scale,maxslope;
+long            heightnumerator;
 int                     minheightdiv;
 
 void            Quit (char *error);
@@ -1574,7 +1574,7 @@ void    DemoLoop (void)
 			StartCPMusic(INTROSONG);*/
 		}
 	}
-	MM_Report_();
+//	MM_Report_();
 	ShutdownId();
 	printf("test.exe\n");
 	printf("version %s\n", VERSION);
