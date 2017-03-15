@@ -32,7 +32,7 @@ int count_time=0;
 int count_fx=0;
 int extreme=0;
 volatile boolean pcindicate;
-volatile boolean MyDS;
+volatile unsigned/*boolean*/ MyDS;
 
 static  boolean                 DigiMissed,DigiLastSegment;
 static  memptr                  DigiNextAddr;
@@ -491,7 +491,7 @@ void alOutInIRQ(byte n,byte b)
 //      current time
 //
 ///////////////////////////////////////////////////////////////////////////
-void US_InitRndT(boolean randomize)
+void US_InitRndT(unsigned randomize)
 {
 	__asm {
 		mov	ax,SEG rndtable

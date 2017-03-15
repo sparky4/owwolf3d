@@ -64,15 +64,15 @@ UPXQ=-qqq
 #
 # compile flags
 #
+
+
 #-zd{f,p} DS floats vs DS pegged to DGROUP
 #-zu SS != DGROUP
-#-zp{1,2,4,8,16} struct packing align.
-#-ei force enums to be type int
-#-wo diagnose problems in overlaid code
-S_FLAGS=-s -wo -zu -zdp
-#-sg -st -of+ -zdf -zff -zgf# -k16768# -zt=84
-Z_FLAGS=-zk0 -zc -zm -ei -zp16
-O_FLAGS=-opnr -oe=24 -oil+ -outback -ohm -okf+
+S_FLAGS= -wo -k3072 -zu -zdf#-s
+#-sg -st -of+  -zff -zgf# -k16768# -zt=84
+Z_FLAGS=-zk0 -zc -zp8 -zm
+
+O_FLAGS=-opnr -oe=24 -oil+ -outback -ohm -okf+ #-zp4##-ei
 T_FLAGS=-bt=dos -mm -0 -fpi87 -fo=.$(OBJ) -d1
 
 CPPFLAGS=-DTARGET_MSDOS=16 -DMSDOS=1

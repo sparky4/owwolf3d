@@ -1,0 +1,30 @@
+src/id_us_1.c(300): Warning! W112: Parameter 2: Pointer truncated
+src/id_us_1.c(300): Note! I2003: source conversion type is 'unsigned int __far *'
+src/id_us_1.c(300): Note! I2004: target conversion type is 'unsigned int *'
+src/id_us_1.c(300): Warning! W112: Parameter 3: Pointer truncated
+src/id_us_1.c(300): Note! I2003: source conversion type is 'unsigned int __far *'
+src/id_us_1.c(300): Note! I2004: target conversion type is 'unsigned int *'
+src/id_us_1.c(356): Warning! W112: Parameter 2: Pointer truncated
+src/id_us_1.c(356): Note! I2003: source conversion type is 'unsigned int __far *'
+src/id_us_1.c(356): Note! I2004: target conversion type is 'unsigned int *'
+src/id_us_1.c(356): Warning! W112: Parameter 3: Pointer truncated
+src/id_us_1.c(356): Note! I2003: source conversion type is 'unsigned int __far *'
+src/id_us_1.c(356): Note! I2004: target conversion type is 'unsigned int *'
+src/id_us_1.c(394): Warning! W112: Parameter 2: Pointer truncated
+src/id_us_1.c(394): Note! I2003: source conversion type is 'unsigned int __far *'
+src/id_us_1.c(394): Note! I2004: target conversion type is 'unsigned int *'
+src/id_us_1.c(394): Warning! W112: Parameter 3: Pointer truncated
+src/id_us_1.c(394): Note! I2003: source conversion type is 'unsigned int __far *'
+src/id_us_1.c(394): Note! I2004: target conversion type is 'unsigned int *'
+src/id_us_1.c(547): Warning! W112: Parameter 2: Pointer truncated
+src/id_us_1.c(547): Note! I2003: source conversion type is 'unsigned int __far *'
+src/id_us_1.c(547): Note! I2004: target conversion type is 'unsigned int *'
+src/id_us_1.c(547): Warning! W112: Parameter 3: Pointer truncated
+src/id_us_1.c(547): Note! I2003: source conversion type is 'unsigned int __far *'
+src/id_us_1.c(547): Note! I2004: target conversion type is 'unsigned int *'
+src/id_us_1.c(690): Warning! W112: Parameter 2: Pointer truncated
+src/id_us_1.c(690): Note! I2003: source conversion type is 'unsigned int __far *'
+src/id_us_1.c(690): Note! I2004: target conversion type is 'unsigned int *'
+src/id_us_1.c(690): Warning! W112: Parameter 3: Pointer truncated
+src/id_us_1.c(690): Note! I2003: source conversion type is 'unsigned int __far *'
+src/id_us_1.c(690): Note! I2004: target conversion type is 'unsigned int *'

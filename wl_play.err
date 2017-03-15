@@ -1,3 +1,10 @@
+src/wl_play.c(402): Warning! W112: Parameter 2: Pointer truncated
+src/wl_play.c(402): Note! I2003: source conversion type is 'int __far *'
+src/wl_play.c(402): Note! I2004: target conversion type is 'int *'
+src/wl_play.c(402): Warning! W112: Parameter 3: Pointer truncated
+src/wl_play.c(402): Note! I2003: source conversion type is 'int __far *'
+src/wl_play.c(402): Note! I2004: target conversion type is 'int *'
+src/wl_play.c(402): Note! I2002: 'INL_GetJoyDelta' defined in: src/ID_IN.H(198)
 src/wl_play.c(1007): Warning! W120: lvalue cast is not standard C
 src/wl_play.c(1008): Warning! W120: lvalue cast is not standard C
 src/wl_play.c(1040): Warning! W120: lvalue cast is not standard C

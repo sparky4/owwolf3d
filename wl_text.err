@@ -1,1 +1,7 @@
-src/wl_text.c(790): Warning! W131: No prototype found for function 'FreeMusic'
+src/wl_text.c(375): Warning! W112: Parameter 2: Pointer truncated
+src/wl_text.c(375): Note! I2003: source conversion type is 'unsigned int __far *'
+src/wl_text.c(375): Note! I2004: target conversion type is 'unsigned int *'
+src/wl_text.c(375): Warning! W112: Parameter 3: Pointer truncated
+src/wl_text.c(375): Note! I2003: source conversion type is 'unsigned int __far *'
+src/wl_text.c(375): Note! I2004: target conversion type is 'unsigned int *'
+src/wl_text.c(375): Note! I2002: 'VW_MeasurePropString' defined in: src/ID_VH.H(113)

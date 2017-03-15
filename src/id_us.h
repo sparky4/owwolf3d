@@ -92,7 +92,7 @@ extern	HighScore	Scores[];
 extern	void	US_Startup(void),
 				US_Setup(void),
 				US_Shutdown(void),
-				US_InitRndT(boolean randomize),
+				US_InitRndT(unsigned randomize),
 				US_SetLoadSaveHooks(boolean (*load)(int),
 									boolean (*save)(int),
 									void (*reset)(void)),

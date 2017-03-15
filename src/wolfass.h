@@ -1,3 +1,5 @@
+#ifndef __WOLFASS_H__
+#define __WOLFASS_H__
 #include "type.h"
 //#include "id_sd.h"
 
@@ -39,7 +41,7 @@ void	SDL_SetDS(void),
 	SDL_IndicatePC(boolean on),
 	VL_WaitVBL (int vbls),
 	VH_UpdateScreen(),
-	US_InitRndT(boolean randomize),
+	US_InitRndT(unsigned randomize),
 	VL_ScreenToScreen (unsigned source, unsigned dest,int width, int height);
 
 /*#pragma aux VL_SetScreen = \
@@ -53,3 +55,4 @@ void	SDL_SetDS(void),
 		"sti" \
 		parm [ax] \
 		modify exact [dx ax]*/
+#endif

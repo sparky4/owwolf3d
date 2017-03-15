@@ -1162,19 +1162,18 @@ void InitGame (void)
 
 	MM_Startup ();                  // so the signon screen can be freed
 
-	SignonScreen ();
+//	SignonScreen ();
 	VL_Startup ();
 	IN_Startup ();
 	PM_Startup ();
 	PM_UnlockMainMem ();
 #ifndef __WATCOMC__
 	SD_Startup ();
-#endif
 	printf("CA_Startup ()");
 	CA_Startup ();
+#endif
 	printf(".");
 	US_Startup ();
-	printf("ok\n");
 
 #ifndef SPEAR
 	if (mminfo.mainmem < 235000L)
@@ -1191,7 +1190,6 @@ void InitGame (void)
 		gotoxy (1,23);
 		exit(1);
 	}
-
 
 //
 // build some tables
@@ -1236,9 +1234,9 @@ void InitGame (void)
 //
 // load in and lock down some basic chunks
 //
-
-	CA_CacheGrChunk(STARTFONT);
-	MM_SetLock (&grsegs[STARTFONT],true);
+printf("\nCA_CacheGrChunk()	");
+	CA_CacheGrChunk(STARTFONT);			printf("ok\n"); printf("MM_");
+	MM_SetLock (&grsegs[STARTFONT],true);	printf("ok\n");
 
 	LoadLatchMem ();
 	BuildTables ();          // trig tables

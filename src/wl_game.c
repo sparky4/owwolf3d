@@ -1268,7 +1268,7 @@ restartgame:
 	SETFONTCOLOR(0,15);
 	DrawPlayScreen ();
 	died = false;
-restart:
+//restart:
 	do
 	{
 		if (!loadedgame)
@@ -1300,7 +1300,9 @@ restart:
 		fizzlein = true;
 		DrawLevel ();
 
+#ifdef SPEAR
 startplayloop:
+#endif
 		PlayLoop ();
 
 #ifdef SPEAR

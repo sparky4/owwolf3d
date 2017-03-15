@@ -1,3 +1,5 @@
+#ifndef __WL_MENU_H__
+#define __WL_MENU_H__
 //
 // WL_MENU.H
 //
@@ -227,3 +229,5 @@ extern LRstruct LevelRatios[];
 void Write (int x,int y,char *string);
 void NonShareware(void);
 int GetYorN(int x,int y,int pic);
+void FreeMusic (void);
+#endif

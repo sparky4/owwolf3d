@@ -1,2 +1,2 @@
-void            US_InitRndT(boolean randomize);
+void            US_InitRndT(unsigned randomize);
 int             US_RndT();

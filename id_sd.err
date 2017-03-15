@@ -2,4 +2,20 @@ src/id_sd.c(653): Warning! W120: lvalue cast is not standard C
 src/id_sd.c(698): Warning! W120: lvalue cast is not standard C
 src/id_sd.c(914): Warning! W120: lvalue cast is not standard C
 src/id_sd.c(962): Warning! W120: lvalue cast is not standard C
+src/id_sd.c(1299): Warning! W112: Parameter 1: Pointer truncated
+src/id_sd.c(1299): Note! I2003: source conversion type is 'void __based(void) *__far *'
+src/id_sd.c(1299): Note! I2004: target conversion type is 'void __based(void) **'
+src/id_sd.c(1313): Warning! W112: Parameter 1: Pointer truncated
+src/id_sd.c(1313): Note! I2003: source conversion type is 'void __based(void) *__far *'
+src/id_sd.c(1313): Note! I2004: target conversion type is 'void __based(void) **'
+src/id_sd.c(1313): Note! I2002: 'MM_FreePtr' defined in: src/ID_MM.H(81)
 src/id_sd.c(1450): Warning! W120: lvalue cast is not standard C
+src/id_sd.c(2013): Warning! W112: Parameter 2: Pointer truncated
+src/id_sd.c(2013): Note! I2003: source conversion type is 'char *__far *'
+src/id_sd.c(2013): Note! I2004: target conversion type is 'char **'
+src/id_sd.c(2025): Warning! W112: Parameter 2: Pointer truncated
+src/id_sd.c(2025): Note! I2003: source conversion type is 'char *__far *'
+src/id_sd.c(2025): Note! I2004: target conversion type is 'char **'
+src/id_sd.c(2040): Warning! W112: Parameter 2: Pointer truncated
+src/id_sd.c(2040): Note! I2003: source conversion type is 'char *__far *'
+src/id_sd.c(2040): Note! I2004: target conversion type is 'char **'
