@@ -8,8 +8,6 @@ extern unsigned bakapee;
 //#define VIDEO_NORUN
 //#define __DEBUG_MM__
 
-//#define SMDPTRANDPERCONV	(void *)&
-
 //bcc
 #ifdef __BORLANDC__
 #define MEMPTRCONV			&(memptr)
@@ -31,13 +29,14 @@ extern unsigned bakapee;
 #define SDFPTRANDPERCONV	(struct diskfree_t *)&
 //#define OBTPTRANDPERCONV	(void const *)&
 #define SDTPTRANDPERCONV	(struct dostime_t *)&
+
 //
 // enabled means do NOT run
 //
 #define VIDEO_NORUN
 //#define NOSAFERUN
 #define NOSAFERUNCHKFOREP
-//#define NOSAFERUNDEMOLOOP
+#define NOSAFERUNDEMOLOOP
 #define SD_NORUN
 //#define CA_NORUN
 //#define CA_NORUNMISC
