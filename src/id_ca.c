@@ -52,12 +52,12 @@ typedef struct
 =============================================================================
 */
 
-_BSEG	*tinf;
+byte _seg	*tinf;
 int			mapon;
 
 unsigned	_seg	*mapsegs[MAPPLANES];
 maptype		_seg	*mapheaderseg[NUMMAPS];
-_BSEG	*audiosegs[NUMSNDCHUNKS];
+byte _seg	*audiosegs[NUMSNDCHUNKS];
 void		_seg	*grsegs[NUMCHUNKS];
 
 byte		far	grneeded[NUMCHUNKS];
@@ -1847,7 +1847,7 @@ void CA_CacheMarks (void)
 				&& bufferend>= endpos)
 				{
 				// data is allready in buffer
-					source = (_BSEG *)bufferseg+(pos-bufferstart);
+					source = (byte _seg *)bufferseg+(pos-bufferstart);
 				}
 				else
 				{

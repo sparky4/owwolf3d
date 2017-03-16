@@ -212,7 +212,7 @@ clean: .symbolic
 bomb: .symbolic
 	@if exist $(SRC)/obj/*.*	$(REMOVECOMMAND) $(SRC)/obj/*.*
 !ifdef __LINUX__
-	@if exist src/TC*.SWP	$(REMOVECOMMAND) src/TC*.SWP
+	#@if exist src/TC*.SWP	$(REMOVECOMMAND) src/TC*.SWP
 	@if exist $(SRC)/obj	rmdir $(SRC)/obj
 	@mkdir $(SRC)/obj
 !endif

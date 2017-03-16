@@ -8,9 +8,10 @@ extern unsigned bakapee;
 //#define VIDEO_NORUN
 //#define __DEBUG_MM__
 
+#define MEMPTRCONV			(memptr *)&
+
 //bcc
 #ifdef __BORLANDC__
-#define MEMPTRCONV			&(memptr)
 #define MEMPTRANDPERCONV	&
 #define BYTEFARPTRCONV		(unsigned char far *)
 //#define SMDPTRANDPERCONV	&
@@ -22,7 +23,6 @@ extern unsigned bakapee;
 
 //wcc
 #ifdef __WATCOMC__
-#define MEMPTRCONV			(memptr *)
 #define MEMPTRANDPERCONV
 #define BYTEFARPTRCONV
 //#define SMDPTRANDPERCONV	(void *)&

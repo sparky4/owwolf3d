@@ -13,7 +13,7 @@
 =============================================================================
 */
 
-_C_CTSEG *scaledirectory[MAXSCALEHEIGHT+1];
+t_compscale _seg *scaledirectory[MAXSCALEHEIGHT+1];
 long			fullscalefarcall[MAXSCALEHEIGHT+1];
 
 int			maxscale,maxscaleshl2;
@@ -28,7 +28,7 @@ boolean	insetupscaling;
 =============================================================================
 */
 
-_C_CTSEG *work;
+t_compscale _seg *work;
 unsigned BuildCompScale (int height, memptr *finalspot);
 
 int			stepbytwo;
@@ -222,7 +222,7 @@ unsigned BuildCompScale (int height, memptr *finalspot)
 
 	totalsize = FP_OFF(code);
 	MM_GetPtr (finalspot,totalsize);
-	_fmemcpy ((_BSEG *)(*finalspot),(_BSEG *)work,totalsize);
+	_fmemcpy ((byte _seg *)(*finalspot),(byte _seg *)work,totalsize);
 
 	return totalsize;
 }
@@ -467,8 +467,8 @@ static	long		longtemp;
 
 void ScaleShape (int xcenter, int shapenum, unsigned height)
 {
-	_C_TSSEG *shape;
-	_C_CTSEG *comptable;
+	t_compshape _seg *shape;
+	t_compscale _seg *comptable;
 	unsigned	scale,srcx,stopx,tempx;
 	int			t;
 	unsigned	far *cmdptr;
@@ -671,8 +671,8 @@ void ScaleShape (int xcenter, int shapenum, unsigned height)
 
 void SimpleScaleShape (int xcenter, int shapenum, unsigned height)
 {
-	_C_TSSEG *shape;
-	_C_CTSEG *comptable;
+	t_compshape _seg *shape;
+	t_compscale _seg *comptable;
 	unsigned	scale,srcx,stopx,tempx;
 	int			t;
 	unsigned	far *cmdptr;
@@ -777,4 +777,3 @@ int			slinex,slinewidth;
 unsigned	far *linecmds;
 long		linescale;
 unsigned	maskword;
-

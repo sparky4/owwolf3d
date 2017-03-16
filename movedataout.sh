@@ -1,2 +1,2 @@
 #!/bin/bash
-mv ./*.wl6 ../
+rm ./*.wl6
