@@ -68,7 +68,7 @@ boolean			JoyPadPresent;
 		longword	MouseDownCount;
 
 		Demo		DemoMode = demo_Off;
-		_BSEG	*DemoBuffer;
+		byte _seg	*DemoBuffer;
 		word		DemoOffset,DemoSize;
 
 /*

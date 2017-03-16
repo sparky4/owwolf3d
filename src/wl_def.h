@@ -1092,7 +1092,7 @@ typedef struct
 }	t_compshape;
 
 
-extern	_C_CTSEG *scaledirectory[MAXSCALEHEIGHT+1];
+extern	t_compscale _seg *scaledirectory[MAXSCALEHEIGHT+1];
 extern	long			fullscalefarcall[MAXSCALEHEIGHT+1];
 
 extern	byte		bitmasks1[8][8];
