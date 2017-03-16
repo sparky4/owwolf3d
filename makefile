@@ -132,7 +132,7 @@ all: $(EXEC)#sega.exe
 #
 # game executables
 #
-wolf3d.exe:	wolf3d.$(OBJ) $(WOLFOBJS) src/obj/signon.$(OBJ)
+wolf3d.exe:	wolf3d.$(OBJ) $(WOLFOBJS) $(SRC)/obj/signon.$(OBJ)
 
 #
 # Test Executables!
@@ -188,6 +188,7 @@ wolfass..$(OBJ):	$(SRC)/wolfass..c
 #other~
 #
 clean: .symbolic
+	@if not exist $(SRC)/obj/signon.obj wmake -h initlibs
 	@for %f in ($(EXEC)) do @if exist %f $(REMOVECOMMAND) %f
 !ifdef __LINUX__
 	@rm *.LIB
@@ -209,9 +210,8 @@ clean: .symbolic
 	@if exist *.err $(REMOVECOMMAND) *.err
 
 bomb: .symbolic
-	@wmake -h clean
+	@if exist $(SRC)/obj/*.*	$(REMOVECOMMAND) $(SRC)/obj/*.*
 !ifdef __LINUX__
-	@if exist src/obj/*.OBJ	$(REMOVECOMMAND) src/obj/*.OBJ
 	@if exist src/TC*.SWP	$(REMOVECOMMAND) src/TC*.SWP
 !endif
 
@@ -230,10 +230,12 @@ vomitchan: .symbolic
 	@if exist *.err $(DUMP) *.err
 
 ##
-##	External library management~ ^^
+##	Library management~ ^^
 ##
 #git submodule add <repo>
 initlibs: .symbolic
+	@wmake -b bomb
+	@$(COPYCOMMAND) $(SRC)/*.$(OBJ) $(SRC)/obj/
 	@cp git_con.fig .git/config
 	@cp git_modu.les .gitmodules
 	@cp git_igno.re .gitignore
