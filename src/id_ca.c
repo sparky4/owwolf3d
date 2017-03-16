@@ -1107,7 +1107,7 @@ void CAL_SetupMapFile (void)
 	close(handle);
 #else
 
-	tinf = (_BSEG *)FP_SEG(&maphead);
+	tinf = (byte _seg *)FP_SEG(&maphead);
 
 #endif
 

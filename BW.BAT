@@ -1,0 +1,1 @@
+bcwolf.exe > wolfbc.log

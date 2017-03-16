@@ -1,0 +1,3 @@
+[submodule "wolf3d"]
+	path = wolf3d
+	url = https://github.com/id-Software/wolf3d.git

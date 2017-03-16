@@ -1,0 +1,6 @@
+VL_MungePic====================================
+4EB8:FFAE	(memptr *)&temp
+4EB8:FFAE	(memptr)temp
+45AA:45C8	&temp
+45C8:3DB7	temp
+===============================================

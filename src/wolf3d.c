@@ -1162,15 +1162,15 @@ void InitGame (void)
 	MM_Startup ();                  // so the signon screen can be freed
 
 	SignonScreen ();
-	VL_Startup ();	PTDT
-	IN_Startup ();	PTDT
+	VL_Startup ();//	PTDT
+	IN_Startup ();//	PTDT
 	PM_Startup ();
-	PM_UnlockMainMem ();	PTDT
+	PM_UnlockMainMem ();//	PTDT
 #ifndef SD_NORUN
 	SD_Startup ();
 #endif
 #ifndef CA_NORUN
-PTDT
+//PTDT
 	CA_Startup ();	PTOK
 #endif
 	US_Startup ();

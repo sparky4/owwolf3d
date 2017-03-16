@@ -69,7 +69,8 @@ UPXQ=-qqq
 #-zp{1,2,4,8,16} struct packing align.
 #-ei force enums to be type int
 #-wo diagnose problems in overlaid code
-S_FLAGS=-s -wo -zu -zdp
+S_FLAGS=-s -wo
+## -zu -zdp
 #-sg -st -of+ -zdf -zff -zgf# -k16768# -zt=84
 Z_FLAGS=-zk0 -zc -zm -ei -zp16
 O_FLAGS=-opnr -oe=24 -oil+ -outback -ohm -okf+
@@ -188,12 +189,12 @@ wolfass..$(OBJ):	$(SRC)/wolfass..c
 #other~
 #
 clean: .symbolic
+	@if not exist wolf3d/WOLFSRC.1 wmake -h initlibs
 	@for %f in ($(EXEC)) do @if exist %f $(REMOVECOMMAND) %f
 !ifdef __LINUX__
 	@rm *.LIB
 	@rm *.EXE
 	@if exist src/obj/*.EXE	mv src/obj/*.EXE bcwolf.exe
-	####@if exist src/obj/*_A.OBJ	cp src/obj/*_A.OBJ src/
 	#@wmake -h bomb
 !endif
 	@if exist *.obj $(REMOVECOMMAND) *.obj
@@ -209,15 +210,16 @@ clean: .symbolic
 	@if exist *.err $(REMOVECOMMAND) *.err
 
 bomb: .symbolic
-	@wmake -h clean
+	#@wmake -h clean
+	@if exist src/obj/*.*	$(REMOVECOMMAND) src/obj/*.*
 !ifdef __LINUX__
-	@if exist src/obj/*.OBJ	$(REMOVECOMMAND) src/obj/*.OBJ
+	#@if exist src/obj/*.OBJ	$(REMOVECOMMAND) src/obj/*.OBJ
 	@if exist src/TC*.SWP	$(REMOVECOMMAND) src/TC*.SWP
 !endif
 
 backupconfig: .symbolic
 	@$(COPYCOMMAND) .git$(DIRSEP)config git_con.fig
-	#@$(COPYCOMMAND) .gitmodules git_modu.les
+	@$(COPYCOMMAND) .gitmodules git_modu.les
 	@$(COPYCOMMAND) .gitignore git_igno.re
 
 comp: .symbolic
@@ -233,7 +235,12 @@ vomitchan: .symbolic
 ##	External library management~ ^^
 ##
 #git submodule add <repo>
+reinitlibs: .symbolic
+	@$(REMOVECOMMAND) wolf3d
+	@wmake -h initlibs
+
 initlibs: .symbolic
 	@cp git_con.fig .git/config
 	@cp git_modu.les .gitmodules
 	@cp git_igno.re .gitignore
+	@git clone https://github.com/id-Software/wolf3d.git

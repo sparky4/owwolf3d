@@ -198,7 +198,9 @@ bufferwidth = ((dest+1)-origdest)*4;
 void VL_MungePic (byte far *source, unsigned width, unsigned height)
 {
 	unsigned	x,y,plane,size,pwidth;
-	byte		_seg *temp, far *dest, far *srcline;
+	//byte		_seg *temp, far *dest, far *srcline;
+	memptr	temp;
+	byte		far *dest, far *srcline;
 
 	size = width*height;
 
@@ -211,9 +213,11 @@ void VL_MungePic (byte far *source, unsigned width, unsigned height)
 	MM_GetPtr (MEMPTRCONV temp,size);
 	printf("VL_MungePic");
 	printf("====================================\n");
+//	printf("%Fp	(memptr *)&temp\n%Fp	(memptr *)temp\n%Fp	(memptr)temp\n%Fp	&temp\n%Fp	*temp\n%Fp	temp\n",
+//	       (memptr *)&temp, (memptr *)temp, (memptr)temp, &temp, *temp, temp);
 	printf("%Fp	(memptr *)&temp\n%Fp	(memptr)temp\n%Fp	&temp\n%Fp	temp\n", (memptr *)&temp, (memptr)temp, &temp, temp);
 	printf("===============================================\n");
-	//_fmemcpy (temp,source,size);
+	_fmemcpy (temp,source,size);
 
 //
 // munge it back into the original buffer
