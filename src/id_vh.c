@@ -198,7 +198,9 @@ bufferwidth = ((dest+1)-origdest)*4;
 void VL_MungePic (byte far *source, unsigned width, unsigned height)
 {
 	unsigned	x,y,plane,size,pwidth;
-	byte		_seg *temp, far *dest, far *srcline;
+	byte		far *dest, far *srcline;
+	//_BSEG	*
+	memptr	temp;
 
 	size = width*height;
 
@@ -208,10 +210,10 @@ void VL_MungePic (byte far *source, unsigned width, unsigned height)
 //
 // copy the pic to a temp buffer
 //
-	MM_GetPtr (MEMPTRCONV temp,size);
+	MM_GetPtr (&/*(memptr)*/temp,size);
 	printf("VL_MungePic");
 	printf("====================================\n");
-	printf("%Fp	(memptr *)&temp\n%Fp	(memptr)temp\n%Fp	&temp\n%Fp	temp\n", (memptr *)&temp, (memptr)temp, &temp, temp);
+	printf("%Fp	&(memptr)temp\n%Fp	(memptr)temp\n%Fp	&temp\n%Fp	temp\n", &(memptr)temp, (memptr)temp, &temp, temp);
 	printf("===============================================\n");
 	//_fmemcpy (temp,source,size);
 
@@ -232,7 +234,7 @@ void VL_MungePic (byte far *source, unsigned width, unsigned height)
 		}
 	}
 
-	MM_FreePtr (MEMPTRCONV temp);
+	MM_FreePtr (&/*(memptr)*/temp);
 }
 
 void VWL_MeasureString (char far *string, word *width, word *height
@@ -437,7 +439,7 @@ void LoadLatchMem (void)
 //
 	latchpics[0] = freelatch;
 	CA_CacheGrChunk (STARTTILE8);
-	src = (byte _seg *)grsegs[STARTTILE8];
+	src = (_BSEG *)grsegs[STARTTILE8];
 	destoff = freelatch;
 
 	for (i=0;i<NUMTILE8;i++)
@@ -452,13 +454,13 @@ void LoadLatchMem (void)
 //
 // tile 16s
 //
-	src = (byte _seg *)grsegs[STARTTILE16];
+	src = (_BSEG *)grsegs[STARTTILE16];
 	latchpics[1] = destoff;
 
 	for (i=0;i<NUMTILE16;i++)
 	{
 		CA_CacheGrChunk (STARTTILE16+i);
-		src = (byte _seg *)grsegs[STARTTILE16+i];
+		src = (_BSEG *)grsegs[STARTTILE16+i];
 		VL_MemToLatch (src,16,16,destoff);
 		destoff+=64;
 		if (src)

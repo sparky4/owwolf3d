@@ -84,7 +84,7 @@ LIBFLAGS=$(WLIBQ) -b -n
 #
 # objects
 #
-TESTOBJS = id_in.$(OBJ) id_mm.$(OBJ) id_pm.$(OBJ) id_ca.$(OBJ) id_sd.$(OBJ) gamepal.$(OBJ) id_vl.$(OBJ) id_vh.$(OBJ) wl_scale.$(OBJ) id_us_1.$(OBJ) wl_debug.$(OBJ)
+TESTOBJS = id_in.$(OBJ) id_mm.$(OBJ) id_pm.$(OBJ) id_ca.$(OBJ) id_sd.$(OBJ) gamepal.$(OBJ) signon.$(OBJ) id_vl.$(OBJ) id_vh.$(OBJ) wl_scale.$(OBJ) id_us_1.$(OBJ) wl_debug.$(OBJ)
 WOLFOBJS = $(TESTOBJS) wl_inter.$(OBJ) wl_agent.$(OBJ) wl_draw.$(OBJ) wl_menu.$(OBJ) wl_state.$(OBJ) wl_text.$(OBJ) wl_game.$(OBJ) wl_act1.$(OBJ) wl_act2.$(OBJ) wl_play.$(OBJ) &
 wolfass.$(OBJ)#lib
 #id_us_a.$(OBJ) id_sd_a.$(OBJ) id_sd_a.$(OBJ)
@@ -132,7 +132,7 @@ all: $(EXEC)#sega.exe
 #
 # game executables
 #
-wolf3d.exe:	wolf3d.$(OBJ) $(WOLFOBJS) $(SRC)/obj/signon.$(OBJ)
+wolf3d.exe:	wolf3d.$(OBJ) $(WOLFOBJS) #src/obj/signon.$(OBJ)
 
 #
 # Test Executables!
@@ -162,7 +162,7 @@ id_ca.$(OBJ):	$(SRC)/id_ca.c
 id_vl.$(OBJ):	$(SRC)/id_vl.c
 wl_inter.$(OBJ):	$(SRC)/wl_inter.c
 wl_menu.$(OBJ):	$(SRC)/wl_menu.c
-#signon.$(OBJ):	$(SRC)/signon.c
+signon.$(OBJ):	$(SRC)/signon.c
 gamepal.$(OBJ):	$(SRC)/gamepal.c
 id_in.$(OBJ):	$(SRC)/id_in.c
 id_sd.$(OBJ):	$(SRC)/id_sd.c
@@ -188,7 +188,6 @@ wolfass..$(OBJ):	$(SRC)/wolfass..c
 #other~
 #
 clean: .symbolic
-	@if not exist $(SRC)/obj/signon.obj wmake -h initlibs
 	@for %f in ($(EXEC)) do @if exist %f $(REMOVECOMMAND) %f
 !ifdef __LINUX__
 	@rm *.LIB
@@ -210,11 +209,10 @@ clean: .symbolic
 	@if exist *.err $(REMOVECOMMAND) *.err
 
 bomb: .symbolic
-	@if exist $(SRC)/obj/*.*	$(REMOVECOMMAND) $(SRC)/obj/*.*
+	@wmake -h clean
 !ifdef __LINUX__
-	#@if exist src/TC*.SWP	$(REMOVECOMMAND) src/TC*.SWP
-	@if exist $(SRC)/obj	rmdir $(SRC)/obj
-	@mkdir $(SRC)/obj
+	@if exist src/obj/*.OBJ	$(REMOVECOMMAND) src/obj/*.OBJ
+	@if exist src/TC*.SWP	$(REMOVECOMMAND) src/TC*.SWP
 !endif
 
 backupconfig: .symbolic
@@ -232,12 +230,10 @@ vomitchan: .symbolic
 	@if exist *.err $(DUMP) *.err
 
 ##
-##	Library management~ ^^
+##	External library management~ ^^
 ##
 #git submodule add <repo>
 initlibs: .symbolic
-	@wmake -b bomb
-	@$(COPYCOMMAND) $(SRC)/*.$(OBJ) $(SRC)/obj/
 	@cp git_con.fig .git/config
 	@cp git_modu.les .gitmodules
 	@cp git_igno.re .gitignore

@@ -526,30 +526,30 @@ PML_OpenPageFile(void)
 
 	// Allocate and clear the page list
 	PMNumBlocks = ChunksInFile;
-	MM_GetPtr(MEMPTRCONV PMSegPages,sizeof(PageListStruct) * PMNumBlocks);
-	MM_SetLock(MEMPTRCONV PMSegPages,true);
+	MM_GetPtr(&(memptr)PMSegPages,sizeof(PageListStruct) * PMNumBlocks);
+	MM_SetLock(&(memptr)PMSegPages,true);
 	PMPages = (PageListStruct far *)PMSegPages;
 	_fmemset(PMPages,0,sizeof(PageListStruct) * PMNumBlocks);
 
 	// Read in the chunk offsets
 	size = sizeof(longword) * ChunksInFile;
-	MM_GetPtr(MEMPTRCONV buf,size);
+	MM_GetPtr(&buf,size);
 	if (!CA_FarRead(PageFile,(byte far *)buf,size))
 		Quit("PML_OpenPageFile: Offset read failed");
 	offsetptr = (longword far *)buf;
 	for (i = 0,page = PMPages;i < ChunksInFile;i++,page++)
 		page->offset = *offsetptr++;
-	MM_FreePtr(MEMPTRCONV buf);
+	MM_FreePtr(&buf);
 
 	// Read in the chunk lengths
 	size = sizeof(word) * ChunksInFile;
-	MM_GetPtr(MEMPTRCONV buf,size);
+	MM_GetPtr(&buf,size);
 	if (!CA_FarRead(PageFile,(byte far *)buf,size))
 		Quit("PML_OpenPageFile: Length read failed");
 	lengthptr = (word far *)buf;
 	for (i = 0,page = PMPages;i < ChunksInFile;i++,page++)
 		page->length = *lengthptr++;
-	MM_FreePtr(MEMPTRCONV buf);
+	MM_FreePtr(&buf);
 }
 
 //
@@ -562,8 +562,8 @@ PML_ClosePageFile(void)
 		close(PageFile);
 	if (PMSegPages)
 	{
-		MM_SetLock(MEMPTRCONV PMSegPages,false);
-		MM_FreePtr(MEMPTRCONV PMSegPages);
+		MM_SetLock(&(memptr)PMSegPages,false);
+		MM_FreePtr(&(void _seg *)PMSegPages);
 	}
 }
 

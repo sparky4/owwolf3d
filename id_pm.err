@@ -1,0 +1,18 @@
+src/id_pm.c(529): Warning! W120: lvalue cast is not standard C
+src/id_pm.c(530): Warning! W120: lvalue cast is not standard C
+src/id_pm.c(536): Warning! W112: Parameter 1: Pointer truncated
+src/id_pm.c(536): Note! I2003: source conversion type is 'void __based(void) *__far *'
+src/id_pm.c(536): Note! I2004: target conversion type is 'void __based(void) **'
+src/id_pm.c(542): Warning! W112: Parameter 1: Pointer truncated
+src/id_pm.c(542): Note! I2003: source conversion type is 'void __based(void) *__far *'
+src/id_pm.c(542): Note! I2004: target conversion type is 'void __based(void) **'
+src/id_pm.c(542): Note! I2002: 'MM_FreePtr' defined in: src/ID_MM.H(81)
+src/id_pm.c(546): Warning! W112: Parameter 1: Pointer truncated
+src/id_pm.c(546): Note! I2003: source conversion type is 'void __based(void) *__far *'
+src/id_pm.c(546): Note! I2004: target conversion type is 'void __based(void) **'
+src/id_pm.c(552): Warning! W112: Parameter 1: Pointer truncated
+src/id_pm.c(552): Note! I2003: source conversion type is 'void __based(void) *__far *'
+src/id_pm.c(552): Note! I2004: target conversion type is 'void __based(void) **'
+src/id_pm.c(552): Note! I2002: 'MM_FreePtr' defined in: src/ID_MM.H(81)
+src/id_pm.c(565): Warning! W120: lvalue cast is not standard C
+src/id_pm.c(566): Warning! W120: lvalue cast is not standard C
