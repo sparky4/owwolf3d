@@ -1630,6 +1630,7 @@ void main (void)
 	//----Patch386 ();
 
 	InitGame ();
+MM_ShowMemory();
 #ifndef NOSAFERUNDEMOLOOP
 	DemoLoop();
 #endif
