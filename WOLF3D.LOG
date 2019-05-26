@@ -1,6 +1,6 @@
 VL_MungePic====================================
-4cdc:fbbe	(memptr *)&temp
-4cdc:fbbe	(memptr)temp
+4cf6:fc2e	(memptr *)&temp
+4cf6:fc2e	(memptr)temp
 0140:00c8	&temp
-0000:273f	temp
+0000:2752	temp
 ===============================================

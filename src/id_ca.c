@@ -1066,6 +1066,8 @@ void CAL_SetupGrFile (void)
 //
 	MM_GetPtr(MEMPTRCONV pictable,NUMPICS*sizeof(pictabletype));
 	CAL_GetGrChunkLength(STRUCTPIC);		// position file pointer
+	printf("CAL_SetupGrFile:\n");
+	printf("	chunkcomplen size is %lu\n", chunkcomplen);
 	MM_GetPtr(MEMPTRANDPERCONV compseg,chunkcomplen);
 	CA_FarRead (grhandle,compseg,chunkcomplen);
 	CAL_HuffExpand (compseg, (byte huge *)pictable,NUMPICS*sizeof(pictabletype),grhuffman,false);

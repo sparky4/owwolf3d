@@ -1,9 +1,1 @@
-wolf3dx my port of wolf3dx to 8088
-16 king crimson's wolf3d for 8088
-wf3d original wolf3d (slightly edited)
-_16_ experimental with 8088 port
 src source
-32 from https://github.com/TobiasKarnat/Wolf4GW
-_32_ from https://virtuallyfun.superglobalmegacorp.com/2013/07/12/wolfenstien-3d-for-dos4gw/
-
-zrc global variable reworkings

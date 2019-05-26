@@ -30,11 +30,13 @@ extern unsigned bakapee;
 //#define OBTPTRANDPERCONV	(void const *)&
 #define SDTPTRANDPERCONV	(struct dostime_t *)&
 
+//#endif
+
 //
 // enabled means do NOT run
 //
 #define VIDEO_NORUN
-//#define NOSAFERUN
+#define NOSAFERUN
 #define NOSAFERUNCHKFOREP
 #define NOSAFERUNDEMOLOOP
 #define SD_NORUN

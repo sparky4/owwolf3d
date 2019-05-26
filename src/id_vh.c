@@ -564,6 +564,11 @@ noxor:
 			if (x>width || y>height)
 				continue;
 			drawofs = source+ylookup[y] + (x>>2);
+printf("	drawofs	%Fp\n", drawofs);
+printf("	pagedelta	%Fp\n", pagedelta);
+printf("	source	%Fp\n", source);
+printf("	dest	%Fp\n", dest);
+printf("\n");
 
 			//
 			// copy one pixel
