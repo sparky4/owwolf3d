@@ -1,7 +1,7 @@
 // ID_HEAD.H
 
 
-#define	EXTENSION	"WLF"
+#define	EXTENSION	"SOD"
 #define WOLF
 
 #define	TEXTGR	0
@@ -11,7 +11,7 @@
 
 #define GRMODE	VGAGR
 
-#include "VERSION.H"
+#include "SODVER.H"
 
 typedef	enum	{false,true}	boolean;
 typedef	unsigned	char		byte;

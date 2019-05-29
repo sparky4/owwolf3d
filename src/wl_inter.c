@@ -3,6 +3,25 @@
 #include "WL_DEF.H"
 #pragma hdrstop
 
+extern enum
+{
+	newgame,
+	soundmenu,
+	control,
+	loadgame,
+	savegame,
+	changeview,
+
+#ifndef GOODTIMES
+#ifndef SPEAR
+	readthis,
+#endif
+#endif
+
+	viewscores,
+	backtodemo,
+	quit
+} menuitems;
 
 //==========================================================================
 
@@ -1311,7 +1330,8 @@ void NonShareware(void)
 #endif
 #endif
 
-#ifdef SPEAR
+#if 0
+//def SPEAR
 #ifndef SPEARDEMO
 ////////////////////////////////////////////////////////
 //

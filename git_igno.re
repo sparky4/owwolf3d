@@ -1,4 +1,8 @@
 *.wl6
+*.sod
+*.sd1
+*.sd2
+*.sd3
 *.obj
 *.OBJ
 *.EXE

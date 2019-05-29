@@ -6,6 +6,7 @@
 
 //#define DEBUGWALLS
 //#define DEBUGTICS
+//#define SHOWFPS
 
 /*
 =============================================================================
@@ -100,6 +101,11 @@ long	xintercept,yintercept;
 long	xstep,ystep;
 
 int		horizwall[MAXWALLTILES],vertwall[MAXWALLTILES];
+#ifdef SHOWFPS
+long lasttimecount;
+long frameon;
+int fps_frames=0, fps_time=0, fps=0;
+#endif
 
 
 /*
@@ -2023,6 +2029,23 @@ asm	rep stosw
 		bufferofs = PAGE1START;
 
 	frameon++;
+#ifdef SHOWFPS
+	fps_frames++;
+	fps_time+=tics;
+	if(fps_time>35)
+	{
+		fps_time-=35;
+		fps=fps_frames<<1;
+		fps_frames=0;
+	}
+
+	SETFONTCOLOR(7,127);
+	PrintX=8; PrintY=190;
+	VWB_Bar(2,189,50,10,127);
+	US_PrintSigned(fps);
+	US_Print(" fps" );
+#endif
+
 	PM_NextFrame();
 }
 

@@ -22,7 +22,7 @@
 #endif
 #define __ID_GLOB__
 #include "type.h"
-#include "VERSION.H"
+#include "SODVER.H"
 
 #include "id_tail.h"
 

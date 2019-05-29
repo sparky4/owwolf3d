@@ -1,0 +1,4 @@
+src/F_SPEAR.H(87): Error! E1061: Expecting data or function declaration, but found ' '
+src/F_SPEAR.H(87): Warning! W138: No newline at end of file
+src/WL_DEF.H(171): Error! E1026: Invalid declarator
+src/WL_DEF.H(171): Error! E1009: Expecting ';' but found 'enum'
