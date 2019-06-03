@@ -1,6 +1,6 @@
-cd src
+cd wf3d8086
 bc
-call bcwolf.bat
-rem call objbomb.bat
 cd ..
+call bcwolf.bat
+call objbomb.bat
 
