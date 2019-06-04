@@ -1,0 +1,93 @@
+///////////////////////////////////////////////////////////////////////////
+// FILE: iterator (Iterator utilities)
+//
+//                          Open Watcom Project
+//
+//    Portions Copyright (c) 1983-2002 Sybase, Inc. All Rights Reserved.
+//
+//  ========================================================================
+//
+//    This file contains Original Code and/or Modifications of Original
+//    Code as defined in and that are subject to the Sybase Open Watcom
+//    Public License version 1.0 (the 'License'). You may not use this file
+//    except in compliance with the License. BY USING THIS FILE YOU AGREE TO
+//    ALL TERMS AND CONDITIONS OF THE LICENSE. A copy of the License is
+//    provided with the Original Code and Modifications, and is also
+//    available at www.sybase.com/developer/opensource.
+//
+//    The Original Code and all software distributed under the License are
+//    distributed on an 'AS IS' basis, WITHOUT WARRANTY OF ANY KIND, EITHER
+//    EXPRESS OR IMPLIED, AND SYBASE AND ALL CONTRIBUTORS HEREBY DISCLAIM
+//    ALL SUCH WARRANTIES, INCLUDING WITHOUT LIMITATION, ANY WARRANTIES OF
+//    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, QUIET ENJOYMENT OR
+//    NON-INFRINGEMENT. Please see the License for the specific language
+//    governing rights and limitations under the License.
+//
+//  ========================================================================
+//
+// Description: This header is part of the C++ standard library. It
+//              defines a number of helper templates that are useful
+//              when creating or manipulating iterators.
+///////////////////////////////////////////////////////////////////////////
+#ifndef _ITERATOR_INCLUDED
+#define _ITERATOR_INCLUDED
+
+#if !defined(_ENABLE_AUTODEPEND)
+  #pragma read_only_file;
+#endif
+
+
+#ifndef __cplusplus
+#error The header iterator requires C++
+#endif
+
+#include <cstddef>
+
+#define typename
+
+namespace std {
+
+  struct input_iterator_tag  { };
+  struct output_iterator_tag { };
+  struct forward_iterator_tag       : public input_iterator_tag         { };
+  struct bidirectional_iterator_tag : public forward_iterator_tag       { };
+  struct random_access_iterator_tag : public bidirectional_iterator_tag { };
+
+  template<class Iterator>
+  struct iterator_traits {
+    typedef typename Iterator::difference_type   difference_type;
+    typedef typename Iterator::value_type        value_type;
+    typedef typename Iterator::pointer           pointer;
+    typedef typename Iterator::reference         reference;
+    typedef typename Iterator::iterator_catagory iterator_catagory;
+  };
+  // Need partial specialization for pointers const pointers, far pointers.
+
+  // Full specialization for the important case of char *. This can be
+  // removed once the compiler can do partial specializations.
+  //
+  // template<>
+  struct iterator_traits<char *> {
+    typedef ptrdiff_t                  difference_type;
+    typedef char                       value_type;
+    typedef char                      *pointer;
+    typedef char                      &reference;
+    typedef random_access_iterator_tag iterator_catagory;
+  };
+
+  template<class Catagory,
+           class T,
+           class Distance /* = ptrdiff_t */,
+           class Pointer /* = T* */,
+           class Reference /* = T& */>
+  struct iterator {
+    typedef T         value_type;
+    typedef Distance  difference_type;
+    typedef Pointer   pointer;
+    typedef Reference reference;
+    typedef Catagory  iterator_catagory;
+  };
+
+} // namespace std
+
+#endif

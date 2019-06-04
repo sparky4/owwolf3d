@@ -1,0 +1,407 @@
+***  Installation Started 07/12/2013 10:51  ***
+Title: Open Watcom Installation
+Source: Y:\Downloads\open-watcom-win32-1.3.exe | 07-12-2013 | 10:40:28 | 67148636
+Made Dir: C:\watcom
+File Copy: C:\watcom\UNWISE.EXE | 11-05-2001 | 10:30:50 | | 165376 | 6ef8d7f9
+RegDB Key: Software\Microsoft\Windows\CurrentVersion\Uninstall\Open Watcom 1.3
+RegDB Val: Open Watcom 1.3
+RegDB Name: DisplayName
+RegDB Root: 2
+RegDB Key: Software\Microsoft\Windows\CurrentVersion\Uninstall\Open Watcom 1.3
+RegDB Val: C:\watcom\UNWISE.EXE C:\watcom\install.log
+RegDB Name: UninstallString
+RegDB Root: 2
+File Copy: C:\watcom\readme.txt | 07-02-2004 | 12:50:04 | | 5816 | 9df0b2ca
+File Copy: C:\watcom\license.txt | 06-16-2003 | 19:42:44 | | 21128 | 3ffec11
+Made Dir: C:\watcom\binw
+File Copy: C:\watcom\binw\1252.uni | 06-24-2004 | 11:57:02 | | 796 | 6c404e2
+File Copy: C:\watcom\binw\bpatch.exe | 08-02-2004 | 12:31:20 | | 77159 | 3c0c0fc
+File Copy: C:\watcom\binw\cmdedit.txt | 06-24-2004 | 13:37:06 | | 10504 | 83cc12aa
+File Copy: C:\watcom\binw\kanji.uni | 06-24-2004 | 11:57:02 | | 31492 | e8cc8888
+File Copy: C:\watcom\binw\techinfo.exe | 08-02-2004 | 12:31:22 | | 50520 | d9ea55b3
+File Copy: C:\watcom\binw\wlsystem.lnk | 06-24-2004 | 13:10:22 | | 11974 | 60ed80b9
+Made Dir: C:\watcom\BACKUP
+File Overwrite: C:\watcom\license.txt | 06-16-2003 | 19:42:44 | | 21128 | 3ffec11
+File Copy: C:\watcom\binw\whelp.exe | 08-02-2004 | 12:31:26 | | 121124 | e57f918f
+File Copy: C:\watcom\binw\wrc.exe | 08-02-2004 | 10:51:34 | | 239766 | f8907253
+File Overwrite: C:\watcom\license.txt | 06-16-2003 | 19:42:44 | | 21128 | 3ffec11
+File Copy: C:\watcom\binw\batchbox.pif | 06-24-2004 | 19:23:50 | | 545 | 5751bace
+File Copy: C:\watcom\binw\cmdedit.exe | 08-02-2004 | 12:31:28 | | 13035 | de8710a2
+File Copy: C:\watcom\binw\dmpobj.exe | 08-02-2004 | 12:46:26 | | 82602 | dc52c334
+File Copy: C:\watcom\binw\fcenable.exe | 08-02-2004 | 12:04:28 | | 26990 | e75a0d05
+File Copy: C:\watcom\binw\ms2wlink.exe | 08-02-2004 | 12:04:28 | | 28150 | 510f924a
+File Copy: C:\watcom\binw\wasm.exe | 08-02-2004 | 11:26:38 | | 287609 | 9b244497
+File Copy: C:\watcom\binw\wdis.exe | 08-02-2004 | 12:31:14 | | 298270 | ae5df818
+File Copy: C:\watcom\binw\wlib.exe | 08-02-2004 | 11:26:00 | | 192154 | 7ec22192
+File Copy: C:\watcom\binw\wlink.exe | 08-02-2004 | 12:04:28 | | 409004 | 8ff897b4
+File Copy: C:\watcom\binw\wlink.lnk | 06-24-2004 | 13:10:24 | | 368 | 5cb1554b
+File Copy: C:\watcom\binw\wmake.exe | 08-02-2004 | 12:39:32 | | 200010 | a42800cf
+File Copy: C:\watcom\binw\wstrip.exe | 08-02-2004 | 12:39:36 | | 43074 | 5952203e
+File Copy: C:\watcom\binw\wtouch.exe | 08-02-2004 | 12:39:34 | | 45300 | 7b3fb19
+File Overwrite: C:\watcom\license.txt | 06-16-2003 | 19:42:44 | | 21128 | 3ffec11
+File Copy: C:\watcom\binw\unicode.437 | 06-24-2004 | 13:36:58 | | 512 | c4247276
+File Copy: C:\watcom\binw\unicode.850 | 06-24-2004 | 13:36:58 | | 512 | 8bcabbc2
+File Overwrite: C:\watcom\license.txt | 06-16-2003 | 19:42:44 | | 21128 | 3ffec11
+File Copy: C:\watcom\binw\wcl.exe | 08-02-2004 | 11:38:08 | | 40394 | 260ba46b
+File Copy: C:\watcom\binw\wcl386.exe | 08-02-2004 | 11:38:08 | | 40250 | 304dae20
+File Overwrite: C:\watcom\license.txt | 06-16-2003 | 19:42:44 | | 21128 | 3ffec11
+File Copy: C:\watcom\binw\wcc.exe | 08-02-2004 | 11:37:52 | | 849856 | b62074ab
+File Copy: C:\watcom\binw\wcc386.exe | 08-02-2004 | 11:37:52 | | 860420 | ff5ecec1
+File Overwrite: C:\watcom\license.txt | 06-16-2003 | 19:42:44 | | 21128 | 3ffec11
+Made Dir: C:\watcom\h
+File Copy: C:\watcom\h\assert.h | 08-02-2004 | 10:48:48 | | 3089 | cfd86f5
+File Copy: C:\watcom\h\bios.h | 08-02-2004 | 10:48:48 | | 5613 | 28efd422
+File Copy: C:\watcom\h\common.cnv | 08-02-2004 | 10:48:48 | | 1808 | d466dfe5
+File Copy: C:\watcom\h\conio.h | 08-02-2004 | 10:48:48 | | 3443 | 1b869c4f
+File Copy: C:\watcom\h\crtdbg.h | 08-02-2004 | 10:48:48 | | 6826 | 6dcb7e55
+File Copy: C:\watcom\h\ctype.h | 08-02-2004 | 10:48:48 | | 4838 | 7352ba09
+File Copy: C:\watcom\h\direct.h | 08-02-2004 | 10:48:48 | | 6281 | a1077c63
+File Copy: C:\watcom\h\dos.h | 08-02-2004 | 10:48:48 | | 10202 | fb9da32a
+File Copy: C:\watcom\h\dosfunc.h | 08-02-2004 | 10:48:48 | | 2465 | c2235227
+File Copy: C:\watcom\h\eh.h | 08-02-2004 | 10:48:48 | | 1627 | c0ccdf96
+File Copy: C:\watcom\h\env.h | 08-02-2004 | 10:48:48 | | 3118 | f4c30788
+File Copy: C:\watcom\h\errno.h | 08-02-2004 | 10:48:48 | | 4014 | 650fe8d3
+File Copy: C:\watcom\h\excpt.h | 08-02-2004 | 10:48:48 | | 3494 | 90c845fc
+File Copy: C:\watcom\h\fcntl.h | 08-02-2004 | 10:48:48 | | 3810 | 18eb6e78
+File Copy: C:\watcom\h\fenv.h | 08-02-2004 | 10:48:48 | | 4255 | 949d5431
+File Copy: C:\watcom\h\float.h | 08-02-2004 | 10:48:48 | | 9250 | 14550f56
+File Copy: C:\watcom\h\graph.h | 08-02-2004 | 10:48:48 | | 19224 | 800c79f8
+File Copy: C:\watcom\h\i86.h | 08-02-2004 | 10:48:48 | | 8365 | 98a74a73
+File Copy: C:\watcom\h\inttypes.h | 08-02-2004 | 10:48:48 | | 8530 | 7becb794
+File Copy: C:\watcom\h\io.h | 08-02-2004 | 10:48:48 | | 8881 | fe579602
+File Copy: C:\watcom\h\iso646.h | 08-02-2004 | 10:48:48 | | 1781 | b9fd2a50
+File Copy: C:\watcom\h\jctype.h | 08-02-2004 | 10:48:48 | | 3630 | b482ab43
+File Copy: C:\watcom\h\jstring.h | 08-02-2004 | 10:48:48 | | 8677 | fc732711
+File Copy: C:\watcom\h\jtime.h | 08-02-2004 | 10:48:48 | | 1878 | 5c2715f6
+File Copy: C:\watcom\h\limits.h | 08-02-2004 | 10:48:48 | | 5584 | d81d96d9
+File Copy: C:\watcom\h\locale.h | 08-02-2004 | 10:48:48 | | 3889 | ec54c129
+File Copy: C:\watcom\h\malloc.h | 08-02-2004 | 10:48:48 | | 9570 | 595da01
+File Copy: C:\watcom\h\math.h | 08-02-2004 | 10:48:48 | | 7042 | 55b121c1
+File Copy: C:\watcom\h\mbctype.h | 08-02-2004 | 10:48:48 | | 7276 | 8fb2aa16
+File Copy: C:\watcom\h\mbstring.h | 08-02-2004 | 10:48:48 | | 16311 | fd2a3703
+File Copy: C:\watcom\h\mem.h | 08-02-2004 | 10:48:48 | | 2195 | 41483275
+File Copy: C:\watcom\h\memory.h | 08-02-2004 | 10:48:48 | | 1581 | 4c6689ae
+File Copy: C:\watcom\h\mmintrin.h | 08-02-2004 | 10:48:48 | | 21735 | e5ff8340
+File Copy: C:\watcom\h\pgchart.h | 08-02-2004 | 10:48:48 | | 9938 | 3af0ad3f
+File Copy: C:\watcom\h\process.h | 08-02-2004 | 10:48:48 | | 9558 | 5dd63891
+File Copy: C:\watcom\h\search.h | 08-02-2004 | 10:48:48 | | 2133 | afd651a2
+File Copy: C:\watcom\h\setjmp.h | 08-02-2004 | 10:48:48 | | 2303 | 8e871877
+File Copy: C:\watcom\h\share.h | 08-02-2004 | 10:48:48 | | 1797 | e29bcdde
+File Copy: C:\watcom\h\signal.h | 08-02-2004 | 10:48:48 | | 2804 | 12593895
+File Copy: C:\watcom\h\stdarg.h | 08-02-2004 | 10:48:48 | | 5055 | 661dd79a
+File Copy: C:\watcom\h\stdbool.h | 08-02-2004 | 10:48:48 | | 2068 | 232d858f
+File Copy: C:\watcom\h\stddef.h | 08-02-2004 | 10:48:48 | | 4669 | 45665fc0
+File Copy: C:\watcom\h\stdint.h | 08-02-2004 | 10:48:48 | | 8354 | 140d0a7c
+File Copy: C:\watcom\h\stdio.h | 08-02-2004 | 10:48:48 | | 20625 | 69f795b0
+File Copy: C:\watcom\h\stdiobuf.h | 08-02-2004 | 10:48:48 | | 2668 | dc994f22
+File Copy: C:\watcom\h\stdlib.h | 08-02-2004 | 10:48:48 | | 20130 | 19d6786b
+File Copy: C:\watcom\h\string.h | 08-02-2004 | 10:48:48 | | 16220 | 6a67feef
+File Copy: C:\watcom\h\tchar.h | 08-02-2004 | 10:48:48 | | 32127 | 6c68e3b7
+File Copy: C:\watcom\h\time.h | 08-02-2004 | 10:48:48 | | 7775 | 74130a9b
+File Copy: C:\watcom\h\typeinfo.h | 08-02-2004 | 10:48:48 | | 2403 | aa4b7807
+File Copy: C:\watcom\h\unistd.h | 08-02-2004 | 10:48:48 | | 2363 | e55708bf
+File Copy: C:\watcom\h\varargs.h | 08-02-2004 | 10:48:48 | | 2642 | 8b813a7a
+File Copy: C:\watcom\h\wchar.h | 08-02-2004 | 10:48:48 | | 12113 | 6fe1754
+File Copy: C:\watcom\h\wctype.h | 08-02-2004 | 10:48:48 | | 4484 | 8502f426
+File Copy: C:\watcom\h\wdefwin.h | 08-02-2004 | 10:48:48 | | 2446 | d997deb
+File Copy: C:\watcom\h\_comdef.h | 08-02-2004 | 10:48:48 | | 4974 | 1a34b916
+Made Dir: C:\watcom\h\sys
+File Copy: C:\watcom\h\sys\locking.h | 08-02-2004 | 10:48:48 | | 2281 | 948b3925
+File Copy: C:\watcom\h\sys\stat.h | 08-02-2004 | 10:48:48 | | 11425 | be15e537
+File Copy: C:\watcom\h\sys\timeb.h | 08-02-2004 | 10:48:48 | | 2995 | 836b125c
+File Copy: C:\watcom\h\sys\types.h | 08-02-2004 | 10:48:48 | | 2798 | 19f0893
+File Copy: C:\watcom\h\sys\utime.h | 08-02-2004 | 10:48:48 | | 3145 | f2948a69
+File Overwrite: C:\watcom\license.txt | 06-16-2003 | 19:42:44 | | 21128 | 3ffec11
+Made Dir: C:\watcom\lib386
+File Copy: C:\watcom\lib386\math387r.lib | 08-02-2004 | 11:24:58 | | 53760 | 7f0a4f86
+File Copy: C:\watcom\lib386\math387s.lib | 08-02-2004 | 11:24:58 | | 55296 | 1c131924
+File Copy: C:\watcom\lib386\math3r.lib | 08-02-2004 | 11:24:58 | | 66560 | f7127ae5
+File Copy: C:\watcom\lib386\math3s.lib | 08-02-2004 | 11:24:58 | | 67584 | 6ad24771
+File Copy: C:\watcom\lib386\noemu387.lib | 08-02-2004 | 11:01:00 | | 2048 | f6b1c8e4
+File Overwrite: C:\watcom\license.txt | 06-16-2003 | 19:42:44 | | 21128 | 3ffec11
+File Copy: C:\watcom\binw\wstub.exe | 08-02-2004 | 10:48:04 | | 15194 | c5fea238
+File Copy: C:\watcom\binw\wstubq.exe | 08-02-2004 | 10:48:04 | | 16886 | f854fd30
+Made Dir: C:\watcom\lib386\dos
+File Copy: C:\watcom\lib386\dos\binmode.obj | 08-02-2004 | 11:23:16 | | 377 | 7ba6e575
+File Copy: C:\watcom\lib386\dos\clib3r.lib | 08-02-2004 | 11:23:14 | | 471552 | 4de7c680
+File Copy: C:\watcom\lib386\dos\clib3s.lib | 08-02-2004 | 11:23:14 | | 480768 | 21a754a2
+File Copy: C:\watcom\lib386\dos\commode.obj | 08-02-2004 | 11:23:16 | | 378 | ead2d727
+File Copy: C:\watcom\lib386\dos\cstrtx3r.obj | 08-02-2004 | 11:23:16 | | 2212 | 9dbcc9b9
+File Copy: C:\watcom\lib386\dos\cstrtx3s.obj | 08-02-2004 | 11:23:16 | | 2199 | c92cf202
+File Copy: C:\watcom\lib386\dos\emu387.lib | 08-02-2004 | 11:01:00 | | 20480 | 5171ec98
+File Copy: C:\watcom\lib386\dos\graph.lib | 08-02-2004 | 11:25:40 | | 423424 | a8308b52
+File Overwrite: C:\watcom\license.txt | 06-16-2003 | 19:42:44 | | 21128 | 3ffec11
+File Copy: C:\watcom\binw\wpp.exe | 08-02-2004 | 11:51:34 | | 1357788 | 62f52e6d
+File Copy: C:\watcom\binw\wpp386.exe | 08-02-2004 | 11:51:34 | | 1362684 | 5a5a4e65
+File Overwrite: C:\watcom\license.txt | 06-16-2003 | 19:42:44 | | 21128 | 3ffec11
+File Copy: C:\watcom\lib386\plib3r.lib | 08-02-2004 | 12:25:48 | | 425472 | c1151256
+File Overwrite: C:\watcom\license.txt | 06-16-2003 | 19:42:44 | | 21128 | 3ffec11
+File Copy: C:\watcom\h\cassert | 06-24-2004 | 11:54:12 | | 3015 | 71aa18a0
+File Copy: C:\watcom\h\cctype | 06-24-2004 | 11:54:12 | | 3513 | 5e624f2c
+File Copy: C:\watcom\h\cerrno | 06-24-2004 | 11:54:12 | | 3940 | a994fbfe
+File Copy: C:\watcom\h\cfloat | 06-24-2004 | 11:54:12 | | 9176 | 2e58649c
+File Copy: C:\watcom\h\ciso646 | 06-24-2004 | 11:54:12 | | 1781 | b9fd2a50
+File Copy: C:\watcom\h\climits | 06-24-2004 | 11:54:12 | | 5584 | d81d96d9
+File Copy: C:\watcom\h\clocale | 06-24-2004 | 11:54:12 | | 3575 | 452fb62b
+File Copy: C:\watcom\h\cmath | 06-24-2004 | 11:54:12 | | 6134 | ca8d7897
+File Copy: C:\watcom\h\complex.h | 08-02-2004 | 10:48:48 | | 14921 | 436d0394
+File Copy: C:\watcom\h\csetjmp | 06-24-2004 | 11:54:12 | | 2229 | 4d563d5d
+File Copy: C:\watcom\h\csignal | 06-24-2004 | 11:54:12 | | 2724 | 3256ec79
+File Copy: C:\watcom\h\cstdarg | 06-24-2004 | 11:54:12 | | 5077 | 5445e465
+File Copy: C:\watcom\h\cstddef | 06-24-2004 | 11:54:12 | | 3466 | 9afd007
+File Copy: C:\watcom\h\cstdio | 06-24-2004 | 11:54:12 | | 17335 | 744bdf4b
+File Copy: C:\watcom\h\cstdlib | 06-24-2004 | 11:54:12 | | 18241 | 5ee04b8e
+File Copy: C:\watcom\h\cstring | 06-24-2004 | 11:54:12 | | 13758 | 1bf27bb3
+File Copy: C:\watcom\h\ctime | 06-24-2004 | 11:54:12 | | 6110 | ca286d5a
+File Copy: C:\watcom\h\cwchar | 08-02-2004 | 10:48:48 | | 9523 | 43c8b3af
+File Copy: C:\watcom\h\cwctype | 06-24-2004 | 11:54:12 | | 3397 | efb64f96
+File Copy: C:\watcom\h\except.h | 08-02-2004 | 10:48:48 | | 2626 | cab287d2
+File Copy: C:\watcom\h\exceptio.h | 08-02-2004 | 10:48:48 | | 3344 | 143268cd
+File Copy: C:\watcom\h\exstring.h | 08-02-2004 | 10:48:48 | | 1967 | e5a86bff
+File Copy: C:\watcom\h\fstream | 06-24-2004 | 11:54:12 | | 7714 | 17fa63dc
+File Copy: C:\watcom\h\fstream.h | 08-02-2004 | 10:48:48 | | 2101 | 14d5ba52
+File Copy: C:\watcom\h\generic.h | 08-02-2004 | 10:48:48 | | 2702 | 9a70a0d0
+File Copy: C:\watcom\h\iomanip | 06-24-2004 | 11:54:12 | | 6688 | b5e4aab1
+File Copy: C:\watcom\h\iomanip.h | 08-02-2004 | 10:48:48 | | 2137 | 3787e0e0
+File Copy: C:\watcom\h\ios | 06-24-2004 | 11:54:12 | | 11605 | 6d382ccf
+File Copy: C:\watcom\h\ios.h | 08-02-2004 | 10:48:48 | | 1964 | f679f6f8
+File Copy: C:\watcom\h\iosfwd | 06-24-2004 | 11:54:12 | | 2399 | ff0280d2
+File Copy: C:\watcom\h\iosfwd.h | 08-02-2004 | 10:48:48 | | 2199 | 85a8ace6
+File Copy: C:\watcom\h\iostream | 06-24-2004 | 11:54:12 | | 2644 | d2d1606b
+File Copy: C:\watcom\h\iostream.h | 08-02-2004 | 10:48:48 | | 2307 | 90ad8118
+File Copy: C:\watcom\h\istream | 06-24-2004 | 11:54:12 | | 9109 | 43326da4
+File Copy: C:\watcom\h\istream.h | 08-02-2004 | 10:48:48 | | 2171 | fe409383
+File Copy: C:\watcom\h\iterator | 06-24-2004 | 11:54:12 | | 3628 | 373731c3
+File Copy: C:\watcom\h\memory | 06-24-2004 | 11:54:12 | | 7979 | 3cdc23fb
+File Copy: C:\watcom\h\new.h | 08-02-2004 | 10:48:48 | | 2862 | 5b995cdf
+File Copy: C:\watcom\h\ostream | 06-24-2004 | 11:54:12 | | 7679 | 4858d3cb
+File Copy: C:\watcom\h\ostream.h | 08-02-2004 | 10:48:48 | | 2092 | dc06d24a
+File Copy: C:\watcom\h\stdexcep.h | 08-02-2004 | 10:48:48 | | 4142 | 9af7fba1
+File Copy: C:\watcom\h\streambu | 06-24-2004 | 11:54:12 | | 9388 | ac6939eb
+File Copy: C:\watcom\h\streambu.h | 08-02-2004 | 10:48:48 | | 1877 | b575f8ac
+File Copy: C:\watcom\h\string.hpp | 08-02-2004 | 10:48:48 | | 12148 | d748031e
+File Copy: C:\watcom\h\strstrea | 06-24-2004 | 11:54:12 | | 6972 | 5212e8d
+File Copy: C:\watcom\h\strstrea.h | 08-02-2004 | 10:48:48 | | 2120 | 1a05cf52
+File Copy: C:\watcom\h\wcdefs.h | 08-02-2004 | 10:48:48 | | 2346 | ca3dea32
+File Copy: C:\watcom\h\wcexcept.h | 08-02-2004 | 10:48:48 | | 8331 | 1abbd33b
+File Copy: C:\watcom\h\wchash.h | 08-02-2004 | 10:48:48 | | 31239 | 4769583
+File Copy: C:\watcom\h\wchbase.h | 08-02-2004 | 10:48:48 | | 5982 | a88ac515
+File Copy: C:\watcom\h\wchiter.h | 08-02-2004 | 10:48:48 | | 9975 | 9d786b22
+File Copy: C:\watcom\h\wclbase.h | 08-02-2004 | 10:48:48 | | 23621 | e10afe7c
+File Copy: C:\watcom\h\wclcom.h | 08-02-2004 | 10:48:48 | | 3355 | 7603b05e
+File Copy: C:\watcom\h\wclibase.h | 08-02-2004 | 10:48:48 | | 10390 | eeaf9dbf
+File Copy: C:\watcom\h\wclist.h | 08-02-2004 | 10:48:48 | | 9533 | a70e8b93
+File Copy: C:\watcom\h\wclistit.h | 08-02-2004 | 10:48:48 | | 11651 | 61c513c3
+File Copy: C:\watcom\h\wcqueue.h | 08-02-2004 | 10:48:48 | | 3203 | e4e5a765
+File Copy: C:\watcom\h\wcsbase.h | 08-02-2004 | 10:48:48 | | 19035 | ecc4ee39
+File Copy: C:\watcom\h\wcsibase.h | 08-02-2004 | 10:48:48 | | 4134 | a99808d7
+File Copy: C:\watcom\h\wcskip.h | 08-02-2004 | 10:48:48 | | 18657 | ead9fd28
+File Copy: C:\watcom\h\wcskipit.h | 08-02-2004 | 10:48:48 | | 8152 | 70875103
+File Copy: C:\watcom\h\wcstack.h | 08-02-2004 | 10:48:48 | | 2986 | e03b15e
+File Copy: C:\watcom\h\wcvbase.h | 08-02-2004 | 10:48:48 | | 28565 | 749497d7
+File Copy: C:\watcom\h\wcvector.h | 08-02-2004 | 10:48:48 | | 11928 | 80166b58
+File Overwrite: C:\watcom\license.txt | 06-16-2003 | 19:42:44 | | 21128 | 3ffec11
+File Copy: C:\watcom\lib386\cplx3r.lib | 08-02-2004 | 12:25:50 | | 17920 | fc27372c
+File Copy: C:\watcom\lib386\cplx3s.lib | 08-02-2004 | 12:25:50 | | 17920 | 932eee2a
+File Copy: C:\watcom\lib386\cplx73r.lib | 08-02-2004 | 12:25:50 | | 17408 | 1bf63625
+File Copy: C:\watcom\lib386\cplx73s.lib | 08-02-2004 | 12:25:50 | | 17408 | ae8eebc1
+File Copy: C:\watcom\lib386\plbx3r.lib | 08-02-2004 | 12:25:48 | | 479232 | fd6bc11c
+File Copy: C:\watcom\lib386\plbx3s.lib | 08-02-2004 | 12:25:50 | | 490496 | b327125b
+File Copy: C:\watcom\lib386\plbxmt3r.lib | 08-02-2004 | 12:25:50 | | 567808 | a45f800b
+File Copy: C:\watcom\lib386\plbxmt3s.lib | 08-02-2004 | 12:25:50 | | 582656 | d7dfb15b
+File Copy: C:\watcom\lib386\plib3s.lib | 08-02-2004 | 12:25:48 | | 437248 | 960ad31a
+File Copy: C:\watcom\lib386\plibmt3r.lib | 08-02-2004 | 12:25:50 | | 489984 | a629f73f
+File Copy: C:\watcom\lib386\plibmt3s.lib | 08-02-2004 | 12:25:50 | | 504320 | 943f1959
+File Overwrite: C:\watcom\license.txt | 06-16-2003 | 19:42:44 | | 21128 | 3ffec11
+File Copy: C:\watcom\binw\ide.cfg | 06-24-2004 | 13:50:10 | | 74706 | 9b086593
+File Copy: C:\watcom\binw\idedos.cfg | 06-24-2004 | 13:50:10 | | 166 | 9e53d243
+File Copy: C:\watcom\binw\idedos32.cfg | 06-24-2004 | 13:50:10 | | 384 | 9ce70dd9
+File Copy: C:\watcom\binw\idenlm.cfg | 06-24-2004 | 13:50:10 | | 121 | 1be9115
+File Copy: C:\watcom\binw\ideos2.cfg | 06-24-2004 | 13:50:10 | | 333 | d99dda4e
+File Copy: C:\watcom\binw\ideos232.cfg | 06-24-2004 | 13:50:10 | | 370 | 3874f122
+File Copy: C:\watcom\binw\idew32.cfg | 06-24-2004 | 13:50:10 | | 287 | 836e2e73
+File Copy: C:\watcom\binw\idew386.cfg | 06-24-2004 | 13:50:10 | | 223 | 5e1d2845
+File Copy: C:\watcom\binw\idewin.cfg | 06-24-2004 | 13:50:10 | | 204 | b7402af
+File Copy: C:\watcom\binw\idex.cfg | 08-02-2004 | 12:44:50 | | 806 | 8bcab183
+Made Dir: C:\watcom\eddat
+File Copy: C:\watcom\eddat\basic.dat | 06-24-2004 | 13:36:22 | | 7258 | 5f533a1a
+File Copy: C:\watcom\eddat\bat.dat | 06-24-2004 | 13:36:22 | | 983 | d41c8b67
+File Copy: C:\watcom\eddat\bindvi.bat | 06-24-2004 | 13:36:24 | | 324 | b47bd2b1
+File Copy: C:\watcom\eddat\bindvi.cmd | 06-24-2004 | 13:36:24 | | 324 | 144e3fb2
+File Copy: C:\watcom\eddat\c.dat | 06-24-2004 | 13:36:22 | | 419 | ca5137ef
+File Copy: C:\watcom\eddat\chkout.vi | 06-24-2004 | 13:36:22 | | 162 | b496cd4
+File Copy: C:\watcom\eddat\clibhelp.vi | 06-24-2004 | 13:36:22 | | 1630 | d67d14aa
+File Copy: C:\watcom\eddat\cmd.hlp | 06-24-2004 | 13:36:24 | | 21893 | 3ff8aefe
+File Copy: C:\watcom\eddat\cmdme.vi | 06-24-2004 | 13:36:22 | | 1080 | 2f4873ce
+File Copy: C:\watcom\eddat\cpp.dat | 06-24-2004 | 13:36:22 | | 542 | b820f396
+File Copy: C:\watcom\eddat\dde.vi | 06-24-2004 | 13:36:22 | | 355 | 97f4567b
+File Copy: C:\watcom\eddat\ddecb.vi | 06-24-2004 | 13:36:22 | | 2063 | 72ccad64
+File Copy: C:\watcom\eddat\ddesinit.vi | 06-24-2004 | 13:36:22 | | 277 | 4adc6a63
+File Copy: C:\watcom\eddat\debug.cfg | 07-01-2004 | 19:14:10 | | 8942 | 4596df6a
+File Copy: C:\watcom\eddat\ed.cfg | 07-01-2004 | 19:14:10 | | 11883 | ec3474b3
+File Copy: C:\watcom\eddat\edbind.dat | 06-24-2004 | 13:36:22 | | 96 | c9cb5f6d
+File Copy: C:\watcom\eddat\err.vi | 06-24-2004 | 13:36:22 | | 25 | f2ba3650
+File Copy: C:\watcom\eddat\errmsg.dat | 06-24-2004 | 13:36:22 | | 3121 | bc5316ad
+File Copy: C:\watcom\eddat\error.dat | 06-24-2004 | 13:36:22 | | 3851 | 31d993b2
+File Copy: C:\watcom\eddat\fin.vi | 06-24-2004 | 13:36:22 | | 17 | 6ba4590e
+File Copy: C:\watcom\eddat\forceout.vi | 06-24-2004 | 13:36:22 | | 14 | 58b91487
+File Copy: C:\watcom\eddat\fortran.dat | 06-24-2004 | 13:36:22 | | 675 | 5f2757a6
+File Copy: C:\watcom\eddat\html.dat | 06-24-2004 | 13:36:22 | | 661 | 9e4652c0
+File Copy: C:\watcom\eddat\ideact.vi | 06-24-2004 | 13:36:22 | | 76 | e311ee66
+File Copy: C:\watcom\eddat\java.dat | 06-24-2004 | 13:36:22 | | 461 | f8efd8f0
+File Copy: C:\watcom\eddat\key.hlp | 06-24-2004 | 13:36:24 | | 13732 | 2619cb78
+File Copy: C:\watcom\eddat\keys.dat | 06-24-2004 | 13:36:22 | | 1835 | 1e328ba8
+File Copy: C:\watcom\eddat\lnum.vi | 06-24-2004 | 13:36:22 | | 91 | 9c902d47
+File Copy: C:\watcom\eddat\mcsel.vi | 06-24-2004 | 13:36:22 | | 414 | 690d45cd
+File Copy: C:\watcom\eddat\mcselw.vi | 06-24-2004 | 13:36:22 | | 970 | 86fd55d6
+File Copy: C:\watcom\eddat\menu.vi | 06-24-2004 | 13:36:22 | | 301 | 6e582071
+File Copy: C:\watcom\eddat\menuwin.vi | 06-24-2004 | 13:36:22 | | 897 | caeade77
+File Copy: C:\watcom\eddat\mfchelp.vi | 06-24-2004 | 13:36:22 | | 145 | 811b6557
+File Copy: C:\watcom\eddat\mif.dat | 07-01-2004 | 19:14:10 | | 315 | 66b8ae7b
+File Copy: C:\watcom\eddat\mlsel.vi | 06-24-2004 | 13:36:22 | | 198 | c242f3a9
+File Copy: C:\watcom\eddat\mlselw.vi | 06-24-2004 | 13:36:22 | | 319 | ce492cf
+File Copy: C:\watcom\eddat\perl.dat | 06-24-2004 | 13:36:22 | | 1893 | 75c0d9ba
+File Copy: C:\watcom\eddat\proc.vi | 06-24-2004 | 13:36:22 | | 466 | ce1f498c
+File Copy: C:\watcom\eddat\qall.vi | 06-24-2004 | 13:36:22 | | 397 | 348953b9
+File Copy: C:\watcom\eddat\qh.vi | 06-24-2004 | 13:36:22 | | 1227 | c973772e
+File Copy: C:\watcom\eddat\qh2.vi | 06-24-2004 | 13:36:22 | | 118 | 631d913b
+File Copy: C:\watcom\eddat\rcs.vi | 06-24-2004 | 13:36:22 | | 78 | d67ea5b2
+File Copy: C:\watcom\eddat\rdme.vi | 06-24-2004 | 13:36:22 | | 1681 | e64bdf3
+File Copy: C:\watcom\eddat\rdmewin.vi | 06-24-2004 | 13:36:22 | | 47 | b69a23d2
+File Copy: C:\watcom\eddat\regexp.hlp | 06-24-2004 | 13:36:24 | | 5538 | 61ab299e
+File Copy: C:\watcom\eddat\script.hlp | 07-01-2004 | 19:14:10 | | 12443 | 5d6bfb31
+File Copy: C:\watcom\eddat\set.hlp | 06-24-2004 | 13:36:24 | | 9993 | 75a17605
+File Copy: C:\watcom\eddat\skel.dat | 06-24-2004 | 13:36:22 | | 88 | 269e1958
+File Copy: C:\watcom\eddat\start.hlp | 06-24-2004 | 13:36:24 | | 2647 | aa3b6a6d
+File Copy: C:\watcom\eddat\toggle.vi | 06-24-2004 | 13:36:22 | | 52 | b96e6573
+File Copy: C:\watcom\eddat\tryme.vi | 06-24-2004 | 13:36:22 | | 1030 | df150a5e
+File Copy: C:\watcom\eddat\unlock.vi | 06-24-2004 | 13:36:22 | | 159 | 61e0b8b9
+File Copy: C:\watcom\eddat\untitled.vi | 06-24-2004 | 13:36:22 | | 63 | 30fc8057
+File Copy: C:\watcom\eddat\user.vi | 06-24-2004 | 13:36:22 | | 53 | 27604e59
+File Copy: C:\watcom\eddat\weditor.ini | 06-24-2004 | 13:36:24 | | 13054 | 1a5bad1b
+File Copy: C:\watcom\eddat\winbind.dat | 06-24-2004 | 13:36:24 | | 171 | ce33555
+File Copy: C:\watcom\eddat\winkeys.dat | 06-24-2004 | 13:36:24 | | 1887 | 731f6d31
+File Copy: C:\watcom\eddat\wqh.vi | 06-24-2004 | 13:36:22 | | 33 | f709154a
+File Copy: C:\watcom\eddat\wqh2.vi | 06-24-2004 | 13:36:22 | | 145 | fa314b44
+File Copy: C:\watcom\eddat\writeall.vi | 06-24-2004 | 13:36:22 | | 119 | 514a703e
+File Copy: C:\watcom\eddat\writewin.vi | 06-24-2004 | 13:36:22 | | 60 | 60759205
+File Copy: C:\watcom\eddat\wrme.vi | 06-24-2004 | 13:36:22 | | 392 | ad02ebfd
+File Overwrite: C:\watcom\license.txt | 06-16-2003 | 19:42:44 | | 21128 | 3ffec11
+File Copy: C:\watcom\binw\edbind.exe | 08-02-2004 | 12:30:46 | | 35510 | a5e426b8
+File Copy: C:\watcom\binw\gen_ci.bat | 06-24-2004 | 12:31:18 | | 415 | f04344e5
+File Copy: C:\watcom\binw\gen_co.bat | 06-24-2004 | 12:31:18 | | 567 | 3c800d75
+File Copy: C:\watcom\binw\mks_ci.bat | 06-24-2004 | 12:31:18 | | 96 | 3a810c28
+File Copy: C:\watcom\binw\mks_co.bat | 06-24-2004 | 12:31:18 | | 129 | 6dc1c99f
+File Copy: C:\watcom\binw\pvcs_ci.bat | 06-24-2004 | 12:31:18 | | 101 | 540282d7
+File Copy: C:\watcom\binw\pvcs_co.bat | 06-24-2004 | 12:31:18 | | 126 | 3221925a
+File Copy: C:\watcom\binw\rcsdll.dll | 08-02-2004 | 11:26:06 | | 25528 | 5417ed3
+File Copy: C:\watcom\binw\vi.exe | 08-02-2004 | 12:30:46 | | 376992 | 66204fd1
+File Copy: C:\watcom\binw\cw.trp | 08-02-2004 | 12:33:34 | | 17137 | f789a74a
+File Copy: C:\watcom\binw\cwc.exe | 06-24-2004 | 13:52:54 | | 55625 | 6131796c
+File Copy: C:\watcom\binw\cwdstub.exe | 06-24-2004 | 13:52:54 | | 568 | 4f4e38bb
+File Copy: C:\watcom\binw\cwhelp.cfg | 06-24-2004 | 13:52:54 | | 678 | ffb2bc7e
+File Copy: C:\watcom\binw\cwhelp.exe | 08-02-2004 | 12:33:34 | | 49764 | 66803d07
+File Copy: C:\watcom\binw\cwstub.exe | 06-24-2004 | 13:52:54 | | 47120 | 12c92f0f
+File Copy: C:\watcom\binw\dos4gw.doc | 06-24-2004 | 13:52:54 | | 21490 | e4c761ca
+File Copy: C:\watcom\binw\dos4gw.exe | 06-24-2004 | 13:52:54 | | 265396 | 5cc34b0f
+File Copy: C:\watcom\binw\pminfo.exe | 06-24-2004 | 13:52:54 | | 99336 | ff654ec3
+File Copy: C:\watcom\binw\rminfo.exe | 06-24-2004 | 13:52:54 | | 64424 | f3a0008a
+File Copy: C:\watcom\binw\rsi.trp | 08-02-2004 | 12:33:34 | | 17361 | b07b366c
+File Copy: C:\watcom\binw\rsihelp.exp | 06-24-2004 | 13:52:54 | | 31504 | 97521cbf
+File Copy: C:\watcom\binw\dos32a.exe | 06-24-2004 | 13:52:54 | | 28172 | 20add882
+File Copy: C:\watcom\binw\license.d32 | 06-24-2004 | 13:52:54 | | 1902 | 84e0b6ab
+File Copy: C:\watcom\binw\readme.d32 | 06-24-2004 | 13:52:54 | | 19276 | 42b3f904
+File Copy: C:\watcom\binw\sb.exe | 06-24-2004 | 13:52:54 | | 83326 | 98cdb9f
+File Copy: C:\watcom\binw\sc.exe | 06-24-2004 | 13:52:54 | | 98618 | d32410db
+File Copy: C:\watcom\binw\sd.exe | 06-24-2004 | 13:52:54 | | 108280 | b566d6be
+File Copy: C:\watcom\binw\ss.exe | 06-24-2004 | 13:52:54 | | 104580 | 9cb49529
+File Copy: C:\watcom\binw\stub32a.exe | 06-24-2004 | 13:52:54 | | 535 | e4b6da15
+File Copy: C:\watcom\binw\stub32c.exe | 06-24-2004 | 13:52:54 | | 682 | 824a2827
+File Copy: C:\watcom\binw\sver.exe | 06-24-2004 | 13:52:54 | | 20914 | 1e019dda
+File Copy: C:\watcom\binw\pmodew.doc | 06-24-2004 | 13:52:54 | | 75980 | 6bb77a23
+File Copy: C:\watcom\binw\pmodew.exe | 06-24-2004 | 13:52:54 | | 11484 | 9f8ceff2
+File Copy: C:\watcom\binw\pmodew.faq | 06-24-2004 | 13:52:54 | | 5922 | 5c0d2e2f
+File Copy: C:\watcom\binw\pmwbind.exe | 06-24-2004 | 13:52:54 | | 31274 | 6f7f17cf
+File Copy: C:\watcom\binw\pmwlite.exe | 06-24-2004 | 13:52:54 | | 35293 | 1c17a69f
+File Copy: C:\watcom\binw\pmwsetup.exe | 06-24-2004 | 13:52:54 | | 30379 | f3f69e9
+File Copy: C:\watcom\binw\pmwver.com | 06-24-2004 | 13:52:54 | | 490 | b2e796f9
+Shell Link: C:\users\Public\Start Menu\Programs\Open Watcom\Read Me.lnk
+Link Info: C:\windows\notepad.exe |  |  | 0 | 1 | 0 | C:\watcom\readme.txt
+Shell Link: C:\users\Public\Start Menu\Programs\Open Watcom\Command Prompt.lnk
+Link Info: C:\windows\system32\CMD.EXE | C:\watcom |  | 0 | 1 | 0 | /k C:\watcom\setvars.bat
+Shell Link: C:\users\Public\Start Menu\Programs\Open Watcom\Profiler.lnk
+Link Info: C:\watcom\binnt\wprof.exe |  |  | 0 | 1 | 0 | 
+Shell Link: C:\users\Public\Start Menu\Programs\Open Watcom\Text Editor.lnk
+Link Info: C:\watcom\binnt\viw.exe |  |  | 0 | 1 | 0 | 
+Shell Link: C:\users\Public\Start Menu\Programs\Open Watcom\Spy.lnk
+Link Info: C:\watcom\binnt\wspy.exe |  |  | 0 | 1 | 0 | 
+Shell Link: C:\users\Public\Start Menu\Programs\Open Watcom\Doctor WATCOM.lnk
+Link Info: C:\watcom\binnt\drwatcom.exe |  |  | 0 | 1 | 0 | 
+Shell Link: C:\users\Public\Start Menu\Programs\Open Watcom\Image Editor.lnk
+Link Info: C:\watcom\binnt\wimgedit.exe |  |  | 0 | 1 | 0 | 
+Shell Link: C:\users\Public\Start Menu\Programs\Open Watcom\Resource Editor.lnk
+Link Info: C:\watcom\binnt\wre.exe |  |  | 0 | 1 | 0 | 
+Shell Link: C:\users\Public\Start Menu\Programs\Open Watcom\IDE.lnk
+Link Info: C:\watcom\binnt\ide.exe |  |  | 0 | 1 | 0 | 
+Shell Link: C:\users\Public\Start Menu\Programs\Open Watcom\Windowed Debugger.lnk
+Link Info: C:\watcom\binnt\wdw.exe |  |  | 0 | 1 | 0 | 
+Shell Link: C:\users\Public\Start Menu\Programs\Open Watcom\DDE Spy.lnk
+Link Info: C:\watcom\binnt\wddespy.exe |  |  | 0 | 1 | 0 | 
+Shell Link: C:\users\Public\Start Menu\Programs\Open Watcom\Zoom.lnk
+Link Info: C:\watcom\binnt\wzoom.exe |  |  | 0 | 1 | 0 | 
+Shell Link: C:\users\Public\Start Menu\Programs\Open Watcom\Dialog Editor.lnk
+Link Info: C:\watcom\binnt\wde.exe |  |  | 0 | 1 | 0 | 
+Shell Link: C:\users\Public\Start Menu\Programs\Open Watcom\Source Browser.lnk
+Link Info: C:\watcom\binnt\wbrw.exe |  |  | 0 | 1 | 0 | 
+Shell Link: C:\users\Public\Start Menu\Programs\Open Watcom\Uninstall Open Watcom.lnk
+Link Info: C:\watcom\UNWISE.EXE |  |  | 0 | 1 | 0 | C:\watcom\install.log
+Shell Link: C:\users\Public\Start Menu\Programs\Open Watcom\C and C++ Online Help\C and C++ Master Help Index.lnk
+Link Info: C:\watcom\binnt\cbooks.hlp |  |  | 0 | 1 | 0 | 
+Shell Link: C:\users\Public\Start Menu\Programs\Open Watcom\C and C++ Online Help\Open Watcom C and C++ Getting Stated.lnk
+Link Info: C:\watcom\binnt\c_readme.hlp |  |  | 0 | 1 | 0 | 
+Shell Link: C:\users\Public\Start Menu\Programs\Open Watcom\C and C++ Online Help\Open Watcom C and C++ User's Guide.lnk
+Link Info: C:\watcom\binnt\cguide.hlp |  |  | 0 | 1 | 0 | 
+Shell Link: C:\users\Public\Start Menu\Programs\Open Watcom\C and C++ Online Help\Open Watcom C and C++ Programmer's Guide.lnk
+Link Info: C:\watcom\binnt\pguide.hlp |  |  | 0 | 1 | 0 | 
+Shell Link: C:\users\Public\Start Menu\Programs\Open Watcom\C and C++ Online Help\Open Watcom C and C++ Tools User's Guide.lnk
+Link Info: C:\watcom\binnt\tools.hlp |  |  | 0 | 1 | 0 | 
+Shell Link: C:\users\Public\Start Menu\Programs\Open Watcom\C and C++ Online Help\Open Watcom C Library Reference.lnk
+Link Info: C:\watcom\binnt\clib.hlp |  |  | 0 | 1 | 0 | 
+Shell Link: C:\users\Public\Start Menu\Programs\Open Watcom\C and C++ Online Help\Open Watcom C Language Reference.lnk
+Link Info: C:\watcom\binnt\clr.hlp |  |  | 0 | 1 | 0 | 
+Shell Link: C:\users\Public\Start Menu\Programs\Open Watcom\C and C++ Online Help\Open Watcom C Diagnostic Messages.lnk
+Link Info: C:\watcom\binnt\wccerrs.hlp |  |  | 0 | 1 | 0 | 
+Shell Link: C:\users\Public\Start Menu\Programs\Open Watcom\C and C++ Online Help\Open Watcom C++ Class Library Reference.lnk
+Link Info: C:\watcom\binnt\cpplib.hlp |  |  | 0 | 1 | 0 | 
+Shell Link: C:\users\Public\Start Menu\Programs\Open Watcom\C and C++ Online Help\Open Watcom C++ Diagnostic Messages.lnk
+Link Info: C:\watcom\binnt\wpperrs.hlp |  |  | 0 | 1 | 0 | 
+Shell Link: C:\users\Public\Start Menu\Programs\Open Watcom\Tools Online Help\Open Watcom Editor.lnk
+Link Info: C:\watcom\binnt\editor.hlp |  |  | 0 | 1 | 0 | 
+Shell Link: C:\users\Public\Start Menu\Programs\Open Watcom\Tools Online Help\Open Watcom Linker Guide.lnk
+Link Info: C:\watcom\binnt\lguide.hlp |  |  | 0 | 1 | 0 | 
+Shell Link: C:\users\Public\Start Menu\Programs\Open Watcom\Tools Online Help\Open Watcom Integrated Development Environment.lnk
+Link Info: C:\watcom\binnt\ide.hlp |  |  | 0 | 1 | 0 | 
+Shell Link: C:\users\Public\Start Menu\Programs\Open Watcom\Tools Online Help\Open Watcom Accelerator Editor.lnk
+Link Info: C:\watcom\binnt\resacc.hlp |  |  | 0 | 1 | 0 | 
+Shell Link: C:\users\Public\Start Menu\Programs\Open Watcom\Tools Online Help\Open Watcom Resource Compiler.lnk
+Link Info: C:\watcom\binnt\rescomp.hlp |  |  | 0 | 1 | 0 | 
+Shell Link: C:\users\Public\Start Menu\Programs\Open Watcom\Tools Online Help\Open Watcom Dialog Editor.lnk
+Link Info: C:\watcom\binnt\resdlg.hlp |  |  | 0 | 1 | 0 | 
+Shell Link: C:\users\Public\Start Menu\Programs\Open Watcom\Tools Online Help\Open Watcom Resource Editor.lnk
+Link Info: C:\watcom\binnt\resedt.hlp |  |  | 0 | 1 | 0 | 
+Shell Link: C:\users\Public\Start Menu\Programs\Open Watcom\Tools Online Help\Open Watcom Image Editor.lnk
+Link Info: C:\watcom\binnt\resimg.hlp |  |  | 0 | 1 | 0 | 
+Shell Link: C:\users\Public\Start Menu\Programs\Open Watcom\Tools Online Help\Open Watcom Menu Editor.lnk
+Link Info: C:\watcom\binnt\resmnu.hlp |  |  | 0 | 1 | 0 | 
+Shell Link: C:\users\Public\Start Menu\Programs\Open Watcom\Tools Online Help\Open Watcom String Editor.lnk
+Link Info: C:\watcom\binnt\resstr.hlp |  |  | 0 | 1 | 0 | 
+Shell Link: C:\users\Public\Start Menu\Programs\Open Watcom\Tools Online Help\Open Watcom Browser.lnk
+Link Info: C:\watcom\binnt\wbrw.hlp |  |  | 0 | 1 | 0 | 
+Shell Link: C:\users\Public\Start Menu\Programs\Open Watcom\Tools Online Help\Open Watcom Debugger Guide.lnk
+Link Info: C:\watcom\binnt\wd.hlp |  |  | 0 | 1 | 0 | 
+Shell Link: C:\users\Public\Start Menu\Programs\Open Watcom\Tools Online Help\Open Watcom Profiler.lnk
+Link Info: C:\watcom\binnt\wprof.hlp |  |  | 0 | 1 | 0 | 
+Shell Link: C:\users\Public\Start Menu\Programs\Open Watcom\C and C++ Online Help\CauseWay User's Guide.lnk
+Link Info: C:\watcom\binnt\cw.hlp |  |  | 0 | 1 | 0 | 
+Delete in-use files: On
+User Rights: Admin

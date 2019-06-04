@@ -1,0 +1,4 @@
+wl_def.h(1412): Error! E1071: Type of parameter 1 does not agree with previous definition
+wl_def.h(1412): Note! I2003: source conversion type is 'int'
+wl_def.h(1412): Note! I2004: target conversion type is 'char'
+wl_def.h(1412): Note! I2002: 'US_InitRndT' defined in: id_us.h(91)

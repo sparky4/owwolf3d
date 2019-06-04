@@ -1,0 +1,119 @@
+id_us_a.obj: id_us_a.asm .symbolic
+   *wasm id_us_a.asm -i=h -mf -5r -w4 -e25 -zq
+
+Gamepal3.obj: Gamepal3.c .symbolic
+   *wcc386 Gamepal3.c -i=h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=d&
+os -mf
+
+id_ca.obj: id_ca.&
+c .AUTODEPEND
+   *wcc386 id_ca.c -i=h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=dos -&
+mf
+
+id_in.obj: id_in.&
+c .AUTODEPEND
+   *wcc386 id_in.c -i=h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=dos -&
+mf
+
+id_pm.obj: id_pm.&
+c .AUTODEPEND
+   *wcc386 id_pm.c -i=h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=dos -&
+mf
+
+id_sd.obj: id_sd.&
+c .AUTODEPEND
+   *wcc386 id_sd.c -i=h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=dos -&
+mf
+
+id_us_1.obj: id_u&
+s_1.c .AUTODEPEND
+   *wcc386 id_us_1.c -i=h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=dos&
+ -mf
+
+id_vh.obj: id_vh.&
+c .AUTODEPEND
+   *wcc386 id_vh.c -i=h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=dos -&
+mf
+
+id_vl.obj: id_vl.&
+c .AUTODEPEND
+   *wcc386 id_vl.c -i=h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=dos -&
+mf
+
+signon.obj: signo&
+n.c .AUTODEPEND
+   *wcc386 signon.c -i=h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=dos &
+-mf
+
+wl_act1.obj: wl_a&
+ct1.c .AUTODEPEND
+   *wcc386 wl_act1.c -i=h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=dos&
+ -mf
+
+wl_act2.obj: wl_a&
+ct2.c .AUTODEPEND
+   *wcc386 wl_act2.c -i=h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=dos&
+ -mf
+
+wl_agent.obj: wl_&
+agent.c .AUTODEPEND
+   *wcc386 wl_agent.c -i=h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=do&
+s -mf
+
+wl_debug.obj: wl_&
+debug.c .AUTODEPEND
+   *wcc386 wl_debug.c -i=h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=do&
+s -mf
+
+wl_draw.obj: wl_d&
+raw.c .AUTODEPEND
+   *wcc386 wl_draw.c -i=h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=dos&
+ -mf
+
+wl_game.obj: wl_g&
+ame.c .AUTODEPEND
+   *wcc386 wl_game.c -i=h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=dos&
+ -mf
+
+wl_inter.obj: wl_&
+inter.c .AUTODEPEND
+   *wcc386 wl_inter.c -i=h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=do&
+s -mf
+
+wl_main.obj: wl_m&
+ain.c .AUTODEPEND
+   *wcc386 wl_main.c -i=h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=dos&
+ -mf
+
+wl_menu.obj: wl_menu.c .AUTODEPEND
+   *wcc386 wl_menu.c -i=h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=dos&
+ -mf
+
+wl_play.obj: wl_play.c .AUTODEPEND
+   *wcc386 wl_play.c -i=h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=dos&
+ -mf
+
+wl_state.obj: wl_state.c .AUTODEPEND
+   *wcc386 wl_state.c -i=h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=do&
+s -mf
+
+wl_text.obj: wl_t&
+ext.c .AUTODEPEND
+ *wcc386 wl_text.c -i=h -w4 -e25 -j -zp1 -zq -od -d2 -5r -bt=dos&
+ -mf
+
+Wolf4GW.exe : id_us_a.obj Gamepal3.obj id_ca.obj id_in.obj &
+id_pm.obj id_sd.obj &
+id_us_1.obj id_vh.obj id_vl.obj signon.obj wl_act1.obj wl_act2.obj wl_agent.obj wl_debug.obj wl_draw.obj wl_game&
+.obj wl_inter.obj &
+wl_main.obj wl_menu.obj wl_play.obj wl_state.obj wl_text.obj .AUTODEPEND
+  @%write Wolf4GW.lk1 FIL id_us_a.obj,Gamepal3d.obj,id_ca.obj,id_in.obj,id_pm.&
+obj,id_sd.obj,id_us_1.obj,id_vh.obj,id_vl.obj,signon.obj,wl_act1.obj,wl_act2&
+.obj,wl_agent.obj,wl_debug.obj,wl_draw.obj,wl_game.obj,wl_inter.obj,wl_main.&
+obj,wl_menu.obj,wl_play.obj,wl_state.obj,wl_text.obj
+ @%append Wolf4GW.lk1
+ *wlink name Wolf4GW d all SYS dos4g op inc op m op maxe=25 op q op symf @Wol&
+f4GW.lk1
+ copy wolf4GW.exe .
+ cd .
+ wolf4GW.exe
